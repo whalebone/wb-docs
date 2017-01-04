@@ -11,9 +11,3 @@ Whalebone je služba určená pro bezpečnostní filtraci DNS provozu. Využív�
    quickstart
    local_resolver
 
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`

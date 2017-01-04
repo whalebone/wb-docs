@@ -1,5 +1,50 @@
 Lokální resolver
 ================
 
+Lokální Whalebone resolver přináší oproti cloudovým resolverům zásadní výhodu ve viditelnosti konkrétních lokálních IP adres, které na něj posílají dotazy. Cloudový resolver ve většině případů komunikuje pouze s cachujícím resolverem, kterého se dotazují ostatní klienti a nemůže proto při detekci incidentu podat dostatečné množství informací.
+
+
 Systémové požadavky
 -------------------
+
+Lokální resolver předpokládá, že bude provozovován na dedikovaném stroji na čerstvě nainstalovaném a podporovaném operačním systému.
+
+* Podporované operační systémy:
+
+  * Red Hat Enterprise Linux 7
+  * CentOS 7
+
+* Doporučené hardwarové nároky pro běžný provoz
+
+  * 2 CPU jádra
+  * 4 GB RAM
+  * 40 GB HDD
+  * 1 síťové rozhraní
+
+S doporučenými hardwarovými prostředky zajistí resolver stabilní a rychlý DNS překlad. Resolver je možné provozovat i s menšími prostředky, ale nižší konfigurace může mít negativní dopad na stabilitu.
+
+.. tip:: Kvůli odhadu sizingu pro větší podnikové a ISP sítě kontaktujte svého dodavatele. Nárůst systémových požadavků oproti standardním DNS resolverům (BIND, unbound, apod.) se dá očekávat v řádu desítek procent na úrovni spotřeby RAM i CPU.
+
+
+Instalace nového resolveru
+--------------------------
+
+V menu ``Resolvery`` vyberte záložku ``Vytvořit nový``. Zde zvolte název pro nový lokální resolver a případně lokaci, kterou obsluhuje. Jedná se o čistě informativní údaje, která nemají přímý vliv na fungování resolveru.
+Po vyplnění údaju klikněte na tlačítko ``Vytvořit`` 
+
+.. image:: ./img/lr_new.png
+   :align: center
+
+Po stiknutí tlačítka ``Vytvořit`` se zobrazí informativní okno se seznamem podporovaných platforem a s příkazem pro instalaci, který zkopírujte na cílový stroj a spusťte.
+Příkaz se postará o stažení instalačního skriptu, kterému předá jednorázový kód určený pro aktivaci lokálního resolveru.
+
+.. image:: ./img/lr_install.png
+   :align: center
+
+Po spuštění příkazu je prováděna kontrola operačního systému a případná instalace závislostí nutných pro běh lokálního resolveru. Skript o svém průběhu interaktivně informuje a zároveň vytváří i detailní log pro případ řešení neočekávaných chyb.
+Úspěšný běh instalačního skriptu je zakončen oznámením ``Installing resolver package`` s hodnotou ``[ OK ]``. Po instalaci resolveru je na pozadí ještě prováděna jeho inicializace, která může trvat až jednotky minut, než začne resolver poskytovat své služby. 
+
+.. image:: ./img/lr_install_script.png
+   :align: center
+
+.. tip:: Lokální resolver je nakonfigurován jako tzv. open resolver. Bude se tedy snažit vyhovět komukoliv, kdo na něj zašle svůj dotaz. To je pohodlné z pohledu zajištění dostupnosti DNS překladu všem klientům na síti, ale je nutné zajistit, aby resolver, resp. port 53 (UDP+TCP), nebyl volně dostupný z Internetu.

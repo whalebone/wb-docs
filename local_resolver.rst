@@ -1,0 +1,5 @@
+Lokální resolver
+================
+
+Systémové požadavky
+-------------------

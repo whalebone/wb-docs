@@ -13,15 +13,19 @@ Lokální resolver předpokládá, že bude provozovován na dedikovaném stroji
 
   * Red Hat Enterprise Linux 7
   * CentOS 7
+  * Debian 8
+  * Ubuntu 16.04
 
-* Doporučené hardwarové nároky pro běžný provoz
+* Doporučené hardwarové nároky pro běžný provoz (podporujeme fyzické i virtuální stroje)
 
   * 2 CPU jádra
   * 4 GB RAM
   * 40 GB HDD
   * 1 síťové rozhraní
 
-S doporučenými hardwarovými prostředky zajistí resolver stabilní a rychlý DNS překlad. Resolver je možné provozovat i s menšími prostředky, ale nižší konfigurace může mít negativní dopad na stabilitu.
+.. warning:: Stroj s více síťovými rozhraními může zapříčinit problémy se sběrem auditu DNS provozu
+
+S doporučenými hardwarovými prostředky zajistí resolver stabilní a rychlý DNS překlad. Resolver je možné provozovat i s výrazně menšími prostředky, ale to je doporučeno pouze pro testovací účely.
 
 .. tip:: Kvůli odhadu sizingu pro větší podnikové a ISP sítě kontaktujte svého dodavatele. Nárůst systémových požadavků oproti standardním DNS resolverům (BIND, unbound, apod.) se dá očekávat v řádu desítek procent na úrovni spotřeby RAM i CPU.
 
@@ -35,7 +39,12 @@ Po vyplnění údaju klikněte na tlačítko ``Vytvořit``
 .. image:: ./img/lr_new.png
    :align: center
 
-Po stiknutí tlačítka ``Vytvořit`` se zobrazí informativní okno se seznamem podporovaných platforem a s příkazem pro instalaci, který zkopírujte na cílový stroj a spusťte.
+Po stiknutí tlačítka ``Vytvořit`` budete přesunuti na seznam dostupných resolverů. Klikněte na zelené tlačítko připomínající prompt.
+
+.. image:: ./img/lr_list.png
+   :align: center
+
+Po kliknutí na tlačítko se zobrazí informativní okno se seznamem podporovaných platforem a s příkazem pro instalaci, který zkopírujte na cílový stroj a spusťte.
 Příkaz se postará o stažení instalačního skriptu, kterému předá jednorázový kód určený pro aktivaci lokálního resolveru.
 
 .. image:: ./img/lr_install.png
@@ -47,4 +56,4 @@ Po spuštění příkazu je prováděna kontrola operačního systému a přípa
 .. image:: ./img/lr_install_script.png
    :align: center
 
-.. tip:: Lokální resolver je nakonfigurován jako tzv. open resolver. Bude se tedy snažit vyhovět komukoliv, kdo na něj zašle svůj dotaz. To je pohodlné z pohledu zajištění dostupnosti DNS překladu všem klientům na síti, ale je nutné zajistit, aby resolver, resp. port 53 (UDP+TCP), nebyl volně dostupný z Internetu.
+.. warning:: Lokální resolver je nakonfigurován jako tzv. open resolver. Bude se tedy snažit vyhovět komukoliv, kdo na něj zašle svůj dotaz. To je pohodlné z pohledu zajištění dostupnosti DNS překladu všem klientům na síti, ale je nutné zajistit, aby resolver, resp. port 53 (UDP+TCP), nebyl volně dostupný z Internetu.

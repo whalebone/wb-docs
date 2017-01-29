@@ -153,4 +153,8 @@ texinfo_documents = [
 ]
 
 
-
+#remove blank pages from pdf
+latex_elements = {
+  'classoptions': ',openany,oneside',
+  'babel': '\\usepackage[english]{babel}'
+}

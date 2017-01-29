@@ -8,6 +8,7 @@ Whalebone je služba určená pro bezpečnostní filtraci DNS provozu. Využív�
    :maxdepth: 2
    :caption: Contents:
 
+   deployment
    quickstart
    local_resolver
 

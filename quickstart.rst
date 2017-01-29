@@ -32,6 +32,8 @@ Síťové rozsahy slouží k rozeznávání provozu jednotlivých zákazníků. 
 * Stisknutím tlačítka ``Přidat sítě`` můžete přidávat postupné změny
 * Na závěr nezapomeňte všechny změny zapsat tlačítkem ``Uložit``
 
+.. tip:: Při testování filtrace (např. přidáním testovací domény do vlastního blacklistu) nezapomeňte, že mnoho DNS záznamů může být aktuálně zaneseno v DNS cache kdekoliv po cestě (v browseru, operačním systému nebo resolveru). Test otevřením stránky v browseru chvíli po nasazení filtrace Whalebone může tedy selhat a doba do zapomenutí/obnovení DNS cache pro danou doménu bude závislá na velikosti TTL.
+
 
 Nastavení vlastností filtrace
 -----------------------------

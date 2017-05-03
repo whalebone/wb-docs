@@ -35,7 +35,7 @@ Lokální resolver předpokládá, že bude provozovován na dedikovaném stroji
 
 S doporučenými hardwarovými prostředky zajistí resolver stabilní a rychlý DNS překlad. Resolver je možné provozovat i s výrazně menšími prostředky, ale to je doporučeno pouze pro testovací účely.
 
-.. tip:: Kvůli odhadu sizingu pro větší podnikové a ISP sítě kontaktujte svého dodavatele. Nárůst systémových požadavků oproti standardním DNS resolverům (BIND, unbound, apod.) se dá očekávat v řádu desítek procent na úrovni spotřeby RAM i CPU.
+.. tip:: Kvůli odhadu sizingu pro větší podnikové a ISP sítě kontaktujte svého dodavatele. Nárůst systémových požadavků oproti standardním DNS resolverům (BIND, unbound, apod.) se dá očekávat v řádu desítek procent na úrovni spotřeby RAM a přibližně dvojnásobek v případě CPU.
 
 
 Instalace nového resolveru

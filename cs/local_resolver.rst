@@ -65,3 +65,14 @@ Po spuštění příkazu je prováděna kontrola operačního systému a přípa
    :align: center
 
 .. warning:: Lokální resolver je nakonfigurován jako tzv. open resolver. Bude se tedy snažit vyhovět komukoliv, kdo na něj zašle svůj dotaz. To je pohodlné z pohledu zajištění dostupnosti DNS překladu všem klientům na síti, ale je nutné zajistit, aby resolver, resp. port 53 (UDP+TCP), nebyl volně dostupný z Internetu.
+
+Konfigurace
+-----------
+
+Konfiguraci lokálního resolveru jako čisté reverzní proxy bez vlastního překladu je nutné provést v hlavním konfiguračním souboru a po změně restartovat službu.
+V jakémkoliv textovém editoru otevřete soubor ``/etc/whalebone/docker-compose.yml`` a najděte parametr ``SINKIT_BACKEND_RESOLVERS``, který je ve výchozím stavu nastaven na hodnotu ``127.0.0.1:5353``. Upravte konfiguraci cílovou adresu existujících překladačů v síti (konfigurace může obsahovat více překladačů oddělených čárkami), např. ``SINKIT_BACKEND_RESOLVERS: '10.20.30.40:53,192.168.1.20:53'``
+
+.. image:: ./img/lr_forwarder.png
+   :align: center
+
+Po uložení změn v konfiguračním souboru je nutné restartovat služby resolveru (na krátkou chvíli bude nedostupný DNS překlad) následujícím příkazem: ``cd /etc/whalebone && sudo docker-compose down && sudo docker-compose up -d``

@@ -74,4 +74,4 @@ Open configuration file ``/etc/whalebone/docker-compose.yml`` in your favorite e
 .. image:: ./img/lr_forwarder.png
    :align: center
 
-After saving the changes you have to restart the resolver services with the following command: ``cd /etc/whalebone && docker-compose down && docker-compose up -d``
+After saving the changes you have to restart the resolver services (DNS service will be down during restart) with the following command: ``cd /etc/whalebone && sudo docker-compose down && sudo docker-compose up -d``

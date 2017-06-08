@@ -36,8 +36,8 @@ With recommended hardware resources the resolver will provide stable and fast DN
 
 .. tip:: Should you need sizing estimation for large ISP or Enterprise network contact Whalebone. Whalebone local resolver will need slightly more RAM than usual resolver and approx. twice the CPU power. 
 
-Local resolver installation
----------------------------
+Installation
+------------
 
 In menu ``Resolvers`` select the tab ``Create new``. Choose a name (identifier) for your new resolver and optionally a location. Both inputs are purely informative and won't affect the functionality.
 Once you've entered the details, click ``Create`` button
@@ -63,3 +63,15 @@ Successul run of the install script is ended with the notification ```Installing
    :align: center
 
 .. warning:: Local resolver is configured as an open resolver. It will respond to any request sent. This is quite comfortable in terms of availability of the services, but also could be a risk if the service is available from the outside networks. Please make sure you limit the access to the local resolver on port 53 (UDP and TCP) from the trusted networks only, otherwise it can be misused for various DoS attacks.
+
+
+Configuration
+-------------
+
+Configuring the local resolver as a pure reverse proxy forwarding requests to other existing resolvers requires a simple change of the configuration and a service restart.
+Open configuration file ``/etc/whalebone/docker-compose.yml`` in your favorite editor and edit the parameter ``SINKIT_BACKEND_RESOLVERS`` which is in default configuration se to ``127.0.0.1:5353``. Reconfigure the destination IP address and port to include your resolvers (it can list several resolvers separated by comma), e.g. ``SINKIT_BACKEND_RESOLVERS: '10.20.30.40:53,192.168.1.20:53'``
+
+.. image:: ./img/lr_forwarder.png
+   :align: center
+
+After saving the changes you have to restart the resolver services with the following command: ``cd /etc/whalebone && docker-compose down && docker-compose up -d``

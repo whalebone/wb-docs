@@ -1,76 +1,78 @@
-Začínáme
-========
+Quickstart
+==========
 
-Založení účtu v portálu
-------------------------
+Creating the portal account
+---------------------------
 
-Po otevření odkazu z aktivačního emailu si nastavte heslo k vašemu účtu. Nevynucujeme žádná pravidla složitosti hesla, ale doporučujeme dostatečně silné heslo pro ochranu vašeho účtu. Získáním přístupu může dojít k narušení soukromí uživatelů nebo zneužití konfigurace služby.
+After accessing the URL from your activation email, you will be asked to setup the password for your account. We don't enforce any password complexity, but we recommend using unique and non-trivial password. An unauthorized access would be a threat to users privacy and could misuse the configuration to harm your network.
 
 .. image:: ./img/password_setup.png
    :align: center
 
-Po změně hesla budete vyzváni k prvnímu přihlášení pomocí vašeho uživatelského jména a nově zvoleného hesla.
+After the password setup you will be asked to login using your username and newly created password.
 
 .. image:: ./img/login.png
    :align: center
 
-Po prvním přihlášení se zobrazí průvodce, který vás provede hlavními možnostmi portálu. Můžete ho kdykoliv ukončit a případně znovu spustit z menu po ikonkou otazníku a volbou ``Zobrazit nápovědu``.
+Right after the first login the tutorial will pop up and will guide you through the very basics of the Whalebone portal. You can skip the tutorial any time and get back to it later from the main menu (the question mark icon) option ``Start tutorial``.
 
 .. image:: ./img/help.png
    :align: center
 
 
-Definice síťových rozsahů
--------------------------
+Public network ranges
+---------------------
 
-Síťové rozsahy slouží k rozeznávání provozu jednotlivých zákazníků. Doporučujeme uvádět celou podsíť, ze které může přijít jak DNS provoz, tak další síťový provoz. Sítí a adres může být uvedeno více a mohou být rozčleněny do tzv. lokalit pro snazší kategorizaci DNS provozu a detekovaných událostí. 
+Public network range definition serves to distinguish individual customers and their users. It is necessary to include all the public network ranges that will be used by DNS resolver as well as the users browsing the internet. The definition is used to customize the block page appearance (described later).
+Single customer can manage more network ranges, such ranges can be assigned to localities to easily distinguish between logical network zones in DNS traffic audit and incidents.
 
 .. image:: ./img/client_networks.png
    :align: center
 
-* Do pole ``Přidat nové sítě`` vložte jeden nebo více síťových rozsahů v notaci <adresa sítě>/<bitová maska>, např: ``198.51.100.0/24`` 
-* Stisknutím tlačítka ``Přidat sítě`` můžete přidávat postupné změny
-* Na závěr nezapomeňte všechny změny zapsat tlačítkem ``Uložit``
+* Into the field ``Add new network`` insert one or more network ranges using notation <network address>/<mask>, např: ``198.51.100.0/24`` 
+* Press button ``Add networks`` to add changes
+* Don't forget to save your new setup through the ``Save`` button
 
-.. tip:: Při testování filtrace (např. přidáním testovací domény do vlastního blacklistu) nezapomeňte, že mnoho DNS záznamů může být aktuálně zaneseno v DNS cache kdekoliv po cestě (v browseru, operačním systému nebo resolveru). Test otevřením stránky v browseru chvíli po nasazení filtrace Whalebone může tedy selhat a doba do zapomenutí/obnovení DNS cache pro danou doménu bude závislá na velikosti TTL.
+.. tip:: While testing Whalebone (e.g. through adding a testing domain into blacklist) don't forget that many DNS records could be recently in the DNS cache anywhere between the resolver and the user (including the browser, operating system or forwarders). Testing right after the configuration change could therefore fail and the timespan before the protection becomes active could vary based on the TTL of the particular DNS record (should all the caches along the way actually honor the TTL value).
 
+Feed filtering options
+----------------------
 
-Nastavení vlastností filtrace
------------------------------
+Every Threat Intelligence Feed could be setup in a different manner. As long as the button ``Uses recommendation`` is pressed the configuration is left to the Whalebone specialist and it honors the Whalebone best practice. If you prefer your own configuration you can choose from these three options:
 
-Každý zdroj informací o hrozbách (Threat Intelligence Feed) může být nastaven jiným způsobem. Pokud je stisknuté tlačítko ``Používá doporučení``, řídí se nastavení doporučením provozovatele služby Whalebone. Pokud preferujete vlastní nastavení, můžete vybrat vlastní akci z možných tří voleb: 
-
-* **Blok**
+* **Block**
 * **Audit**
-* **Zrušeno**
+* **Disabled**
 
 .. image:: ./img/feeds.png
    :align: center
 
 
-Cloudové DNS resolvery
-----------------------
+Cloud DNS resolvers
+--------------------
 
-Na cloudové DNS resolvery služby Whalebone nasměrujte požadovaný provoz. Buď svých aktuálních resolverů, routerů nebo přímo jednotlivých počítačů a dalších zařízení. K dispozici jsou překladače dostupné na dvou nezávislých IP adresách::
+You should forward your DNS traffic towards Whalebone cloud resolvers if this is your preferred deployment option. Cloud resolver are available on two independent IP addresses::
 ``52.169.120.89``
 ``52.166.249.114``
 
 .. image:: ./img/resolver_ip.png
    :align: center
 
-**V konfiguraci vždy používejte IP adresy obou překladačů.** Garance dostupnosti služby se vztahuje pouze na případy využití obou IP adres v konfiguracích, aby došlo k automatickému využití sekundárního DNS překladače při výpadku primárního.
+**Always use both IP addresses in your configuration** The guarantee of availability of the DNS resolution service is applied only in cases where both of the IP addresses are configured to use primary and secondary resolvers automatically. 
 
-
-Kontrola provozu
-----------------
+DNS traffic
+-----------
 
 Jestli je provoz správně nasměrován na DNS resolvery Whalebone je možné zkontrolovat z portálu Whalebone pod položkou „DNS provoz“, kde jsou zaznamenávány jednotlivé DNS dotazy.
 Pokud je vše správně nakonfigurováno a funkční, bude v grafu v řádu jednotek minut viditelný DNS provoz. Pokud DNS provoz nebude na úrovni služby viditelný, překontrolujte manuálně dostupnost cloudových resolverů ze zdrojových zařízení.
 
+Should the traffic be properly forwarded on Whalebone DNS resolvers (cloud or local) the DNS traffic will be visible under the menu option ``DNS traffic``, where the individual request and responses are available for further investigation.
+The traffic should be visible in several minutes after everything has been properly setup. If there is no traffic recorded even in several hours don't hesitate to contact Whalebone support to help you doublecheck the configuration or any sort of network issues.
+
 .. image:: ./img/dns_traffic.png
    :align: center
 
-Kontrolu je možné provést identicky ze strojů s OS Windows i Linux pomocí nástroje ``nslookup``. Po jeho spuštění nastavte IP adresu Whalebone resolveru a zkuste přeložit doménové jméno existující domény.
+The DNS resolution check could be also done manually on Windows or Linux machines through ``nslookup`` tool. Set the Whalebone resolver IP and try to resolve an existing domain name.
 
 .. image:: ./img/nslookup.png
    :align: center

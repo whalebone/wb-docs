@@ -28,7 +28,7 @@ Pokud nejsou jednotlivá zdrojová zařízení schovaná za překladem adres (NA
 Lokální resolver
 ----------------
 
-Tento způsob zapojení využívá lokálního resolveru Whalebone, který komunikuje skrze API s Whalebone cloudem. DNS překlad ale vykonává přímo a je zcela nezávislý na dostupnosti DNS překladačů Whalebone. Případný výpadek API nemá negativní dopad na dostupnost DNS překladu (samozřejmě ale ovlivní detekční schopnosti).
+Tento způsob zapojení využívá lokálního resolveru Whalebone, který komunikuje skrze API s Whalebone cloudem. DNS překlad ale vykonává přímo a je zcela nezávislý na dostupnosti DNS překladačů Whalebone. Případný výpadek API nemá negativní dopad na dostupnost DNS překladu, ale resolver nebude schopen aktualizovat informace o hrozbách a reportovat incidenty.
 Hlavní výhodou tohoto způsobu nasazení je viditelnost lokálních IP adres komunikujících zařízení.
 
 .. image:: ./img/deployment_lr.png
@@ -37,7 +37,8 @@ Hlavní výhodou tohoto způsobu nasazení je viditelnost lokálních IP adres k
 Lokální resolver (přesměrování)
 -------------------------------
 
-Identický způsob zapojení jako v předchozím případě s tím rozdílem, že lokální resolver Whalebone nepřekládá DNS dotazy sám, ale přesměrovává dotazy na vybrané nadřazené servery. Jedná se o vhodný způsob nasazení, pokud aktuálně spravujete vlastní DNS zóny a potřebujete zajistit kontinuitu jejich překladu.
+Identický způsob zapojení jako v předchozím případě s tím rozdílem, že lokální resolver Whalebone nepřekládá DNS dotazy sám, ale přesměrovává dotazy na vybrané nadřazené servery. Jedná se o vhodný způsob nasazení, pokud aktuálně spravujete vlastní DNS zóny a potřebujete zajistit kontinuitu jejich překladu (např. Active Directory).
+Tento způsob nasazení má také nižší hardwarové nároky, cca poloviční oproti celému resolveru.
 
 .. warning:: Nedoporučujeme přesměrovávat dotazy na cloudové resolvery Whalebone. Taková situace by vyústila v duplikaci detekovaných incidentů (jeden z lokálního resolveru, druhý z cloudového) aniž by tato situace přinesla vyšší úroveň zabezpečení.
 

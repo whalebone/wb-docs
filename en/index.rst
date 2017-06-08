@@ -2,7 +2,7 @@
 Whalebone
 #########
 
-Whalebone je služba určená pro bezpečnostní filtraci DNS provozu. Využívá k filtraci logiku navázanou na své DNS resolvery. Resolvery mohou být buď cloudové, provozované přímo společností Whalebone, nebo lokální, provozované přímo v infrastruktuře zákazníka.  Pro rozpoznávání hrozeb Whalebone využívá externí zdroje dat a vlastní algoritmy.
+Whalebone is a service for security filtering of DNS traffic. It uses logic on top of own DNS resolvers. Such resolvers could be either cloud ones maintained directly by Whalebone, or on-premise software resolvers using cloud just for threat intelligence updates and reporting. For threat prevention Whalebone relies on external intelligence sources as well as on own methods.
 
 .. toctree::
    :maxdepth: 2

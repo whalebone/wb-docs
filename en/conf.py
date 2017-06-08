@@ -63,7 +63,7 @@ release = u'1'
 #
 # This is also used if you do content translation via gettext catalogs.
 # Usually you set "language" from the command line for these cases.
-language = 'cs'
+language = 'en'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
@@ -126,7 +126,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'Whalebone.tex', u'Whalebone příručka',
+    (master_doc, 'Whalebone.tex', u'Whalebone admin guide',
      u'', 'manual'),
 ]
 
@@ -136,7 +136,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'whalebone', u'Whalebone příručka',
+    (master_doc, 'whalebone', u'Whalebone admin guide',
      [author], 1)
 ]
 
@@ -147,8 +147,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'Whalebone', u'Whalebone příručka',
-     author, 'Whalebone', 'One line description of project.',
+    (master_doc, 'Whalebone', u'Whalebone admin guide',
+     author, 'Whalebone', 'Filter online threats off your network',
      'Miscellaneous'),
 ]
 

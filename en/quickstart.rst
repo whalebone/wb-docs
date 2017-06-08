@@ -29,7 +29,7 @@ Single customer can manage more network ranges, such ranges can be assigned to l
 .. image:: ./img/client_networks.png
    :align: center
 
-* Into the field ``Add new network`` insert one or more network ranges using notation <network address>/<mask>, např: ``198.51.100.0/24`` 
+* Into the field ``Add new network`` insert one or more network ranges using notation <network address>/<mask>, e.g.: ``198.51.100.0/24`` 
 * Press button ``Add networks`` to add changes
 * Don't forget to save your new setup through the ``Save`` button
 
@@ -51,7 +51,7 @@ Every Threat Intelligence Feed could be setup in a different manner. As long as 
 Cloud DNS resolvers
 --------------------
 
-You should forward your DNS traffic towards Whalebone cloud resolvers if this is your preferred deployment option. Cloud resolver are available on two independent IP addresses::
+You should forward your DNS traffic towards Whalebone cloud resolvers if this is your preferred deployment option. Cloud resolver are available on two independent IP addresses:
 ``52.169.120.89``
 ``52.166.249.114``
 
@@ -62,9 +62,6 @@ You should forward your DNS traffic towards Whalebone cloud resolvers if this is
 
 DNS traffic
 -----------
-
-Jestli je provoz správně nasměrován na DNS resolvery Whalebone je možné zkontrolovat z portálu Whalebone pod položkou „DNS provoz“, kde jsou zaznamenávány jednotlivé DNS dotazy.
-Pokud je vše správně nakonfigurováno a funkční, bude v grafu v řádu jednotek minut viditelný DNS provoz. Pokud DNS provoz nebude na úrovni služby viditelný, překontrolujte manuálně dostupnost cloudových resolverů ze zdrojových zařízení.
 
 Should the traffic be properly forwarded on Whalebone DNS resolvers (cloud or local) the DNS traffic will be visible under the menu option ``DNS traffic``, where the individual request and responses are available for further investigation.
 The traffic should be visible in several minutes after everything has been properly setup. If there is no traffic recorded even in several hours don't hesitate to contact Whalebone support to help you doublecheck the configuration or any sort of network issues.

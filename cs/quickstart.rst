@@ -51,7 +51,7 @@ Každý zdroj informací o hrozbách (Threat Intelligence Feed) může být nast
 Cloudové DNS resolvery
 ----------------------
 
-Na cloudové DNS resolvery služby Whalebone nasměrujte požadovaný provoz. Buď svých aktuálních resolverů, routerů nebo přímo jednotlivých počítačů a dalších zařízení. K dispozici jsou překladače dostupné na dvou nezávislých IP adresách::
+Na cloudové DNS resolvery služby Whalebone nasměrujte požadovaný provoz. Buď svých aktuálních resolverů, routerů nebo přímo jednotlivých počítačů a dalších zařízení. K dispozici jsou překladače dostupné na dvou nezávislých IP adresách:
 ``52.169.120.89``
 ``52.166.249.114``
 

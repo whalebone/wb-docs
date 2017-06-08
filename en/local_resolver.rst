@@ -1,13 +1,11 @@
 Local resolver
 ==============
 
-Lokální Whalebone resolver přináší oproti cloudovým resolverům zásadní výhodu ve viditelnosti konkrétních lokálních IP adres, které na něj posílají dotazy. Cloudový resolver ve většině případů komunikuje pouze s cachujícím resolverem, kterého se dotazují ostatní klienti a nemůže proto při detekci incidentu podat dostatečné množství informací.
 Whalebone local resolver brings the advantage of visibility of local IP addresses that send the actual requests. Cloud resolver usually communicates with the caching resolver IP and can't distinguish between the individual clients and log the original client IP address.
 
 System requirements
 -------------------
 
-Lokální resolver předpokládá, že bude provozovován na dedikovaném stroji na čerstvě nainstalovaném a podporovaném operačním systému.
 Local resolver is supported on dedicated (hardware or virtual) machine running a supported operating system.
 
 * Supported operating system (server editions of following distributions):

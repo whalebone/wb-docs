@@ -89,5 +89,5 @@ In case firewalld service is enabled and started on the server with Whalebone re
 
     firewall-cmd --permanent --add-port=53/tcp
     firewall-cmd --permanent --add-port=53/udp
-    firewall-cmd --reload``
+    firewall-cmd --reload
 

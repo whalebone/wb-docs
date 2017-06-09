@@ -65,8 +65,8 @@ Successul run of the install script is ended with the notification ```Installing
 .. warning:: Local resolver is configured as an open resolver. It will respond to any request sent. This is quite comfortable in terms of availability of the services, but also could be a risk if the service is available from the outside networks. Please make sure you limit the access to the local resolver on port 53 (UDP and TCP) from the trusted networks only, otherwise it can be misused for various DoS attacks.
 
 
-Configuration
--------------
+Reverse proxy configuration
+---------------------------
 
 Configuring the local resolver as a pure reverse proxy forwarding requests to other existing resolvers requires a simple change of the configuration and a service restart.
 Open configuration file ``/etc/whalebone/docker-compose.yml`` in your favorite editor and edit the parameter ``SINKIT_BACKEND_RESOLVERS`` which is in default configuration se to ``127.0.0.1:5353``. Reconfigure the destination IP address and port to include your resolvers (it can list several resolvers separated by comma), e.g. ``SINKIT_BACKEND_RESOLVERS: '10.20.30.40:53,192.168.1.20:53'``
@@ -75,3 +75,12 @@ Open configuration file ``/etc/whalebone/docker-compose.yml`` in your favorite e
    :align: center
 
 After saving the changes you have to restart the resolver services (DNS service will be down during restart) with the following command: ``cd /etc/whalebone && sudo docker-compose down && sudo docker-compose up -d``
+
+firewalld configuration
+-----------------------
+
+In case firewalld service is enabled and started on the server with Whalebone resolver, ports 53/TCP,UPD will have to be opened to allow other machines sending requests to the resolver. You can open the ports with following command sequence:
+
+`firewall-cmd --permanent --add-port=53/tcp`
+`firewall-cmd --permanent --add-port=53/udp`
+`firewall-cmd --reload`

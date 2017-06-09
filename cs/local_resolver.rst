@@ -90,5 +90,5 @@ V případě aktivního firewallu firewalld na stroji s resolverem nebo reverzn�
 
     firewall-cmd --permanent --add-port=53/tcp
     firewall-cmd --permanent --add-port=53/udp
-    firewall-cmd --reload``
+    firewall-cmd --reload
 

@@ -81,6 +81,6 @@ firewalld configuration
 
 In case firewalld service is enabled and started on the server with Whalebone resolver, ports 53/TCP,UPD will have to be opened to allow other machines sending requests to the resolver. You can open the ports with following command sequence:
 
-`firewall-cmd --permanent --add-port=53/tcp`
-`firewall-cmd --permanent --add-port=53/udp`
-`firewall-cmd --reload`
+``firewall-cmd --permanent --add-port=53/tcp``
+``firewall-cmd --permanent --add-port=53/udp``
+``firewall-cmd --reload``

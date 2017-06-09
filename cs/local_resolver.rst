@@ -78,6 +78,7 @@ V jakémkoliv textovém editoru otevřete soubor ``/etc/whalebone/docker-compose
 Po uložení změn v konfiguračním souboru je nutné restartovat služby resolveru (na krátkou chvíli bude nedostupný DNS překlad) následujícím příkazem:
 
 .. code-block:: bash
+
      cd /etc/whalebone && sudo docker-compose down && sudo docker-compose up -d
 
 Konfigurace firewalld
@@ -86,6 +87,7 @@ Konfigurace firewalld
 V případě aktivního firewallu firewalld na stroji s resolverem nebo reverzní proxy Whalebone je nutné otevřít port 53/TCP,UDP, aby začala služba odpovídat na dotazy od ostatních strojů. Otevření portů je možné provést následujícími příkazy:
 
 .. code-block:: bash
+
     firewall-cmd --permanent --add-port=53/tcp
     firewall-cmd --permanent --add-port=53/udp
     firewall-cmd --reload``

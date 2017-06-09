@@ -83,6 +83,8 @@ Konfigurace firewalld
 V případě aktivního firewallu firewalld na stroji s resolverem nebo reverzní proxy Whalebone je nutné otevřít port 53/TCP,UDP, aby začala služba odpovídat na dotazy od ostatních strojů. Otevření portů je možné provést následujícími příkazy:
 
 ``firewall-cmd --permanent --add-port=53/tcp``
+
 ``firewall-cmd --permanent --add-port=53/udp``
+
 ``firewall-cmd --reload``
 

@@ -13,7 +13,7 @@ Lokální resolver předpokládá, že bude provozovován na dedikovaném stroji
 
   * Red Hat Enterprise Linux 7
   * CentOS 7
-  * Debian 8
+  * Debian 8,9
   * Ubuntu 16.04
 
 * Doporučené hardwarové nároky pro běžný provoz (podporujeme fyzické i virtuální stroje):
@@ -29,7 +29,7 @@ Lokální resolver předpokládá, že bude provozovován na dedikovaném stroji
   
   * ``TCP+UDP/53`` do celého internetu pro potřeby DNS překladu
   * ``TCP/8443`` na destinaci ``resolverapi.whalebone.io`` 
-  * ``TCP/55555`` na destinaci ``logger.whalebone.io``
+  * ``TCP/443`` na destinaci ``logger.whalebone.io``
 
 .. warning:: Bez dostupných portů 8443 a 55555 nebude resolver schopen provést inicializaci a nezačne poskytovat služby DNS překladu (port 53 na něm bude nedostupný)
 

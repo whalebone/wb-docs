@@ -12,7 +12,7 @@ Local resolver is supported on dedicated (hardware or virtual) machine running a
 
   * Red Hat Enterprise Linux 7
   * CentOS 7
-  * Debian 8
+  * Debian 8,9
   * Ubuntu 16.04
 
 * Recommended hardware sizing for usual traffic (physical or virtual):
@@ -28,7 +28,7 @@ Local resolver is supported on dedicated (hardware or virtual) machine running a
   
   * ``TCP+UDP/53`` into the internet destinations if responsible for the resolution
   * ``TCP/8443`` to ``resolverapi.whalebone.io`` 
-  * ``TCP/55555`` to ``logger.whalebone.io``
+  * ``TCP/443`` to ``logger.whalebone.io``
 
 .. warning:: Without communication on port 8443 and 55555 the resolver won't be able to proceed with initialization and won't start processing DNS requests (port 53 will stay closed until the initialization is complete)
 

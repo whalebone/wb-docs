@@ -31,7 +31,7 @@ Lokální resolver předpokládá, že bude provozovován na dedikovaném stroji
   * ``TCP/8443`` na destinaci ``resolverapi.whalebone.io`` 
   * ``TCP/443`` na destinaci ``logger.whalebone.io``
 
-.. warning:: Bez dostupných portů 8443 a 55555 nebude resolver schopen provést inicializaci a nezačne poskytovat služby DNS překladu (port 53 na něm bude nedostupný)
+.. warning:: Bez dostupných portů 8443 a 443 nebude resolver schopen provést inicializaci a nezačne poskytovat služby DNS překladu (port 53 na něm bude nedostupný)
 
 S doporučenými hardwarovými prostředky zajistí resolver stabilní a rychlý DNS překlad. Resolver je možné provozovat i s výrazně menšími prostředky, ale to je doporučeno pouze pro testovací účely.
 

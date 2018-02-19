@@ -30,7 +30,7 @@ Local resolver is supported on dedicated (hardware or virtual) machine running a
   * ``TCP/8443`` to ``resolverapi.whalebone.io`` 
   * ``TCP/443`` to ``logger.whalebone.io``
 
-.. warning:: Without communication on port 8443 and 55555 the resolver won't be able to proceed with initialization and won't start processing DNS requests (port 53 will stay closed until the initialization is complete)
+.. warning:: Without communication on port 8443 and 443 the resolver won't be able to proceed with initialization and won't start processing DNS requests (port 53 will stay closed until the initialization is complete)
 
 With recommended hardware resources the resolver will provide stable and fast DNS resolution and filtering. Resolver can be run with significantly lower resources, but this is recommended just for low volume testing environments.
 

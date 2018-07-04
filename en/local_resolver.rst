@@ -1,7 +1,7 @@
 Local resolver
 ==============
 
-Whalebone local resolver brings the advantage of visibility of local IP addresses that send the actual requests. Whalebone resolver is based on the implementation of `Knot Resolver<https://www.knot-resolver.cz/>_` developed in the CZ.NIC labs.
+Whalebone local resolver brings the advantage of visibility of local IP addresses that send the actual requests. Whalebone resolver is based on the implementation of `Knot Resolver<https://www.knot-resolver.cz/>`_ developed in the CZ.NIC labs.
 
 
 System requirements
@@ -121,7 +121,7 @@ Available configuration options:
 
 * ``Advanced DNS configuration``
 
-  * Text area for `complete Knot Resolver configuration<https://knot-resolver.readthedocs.io/en/stable/daemon.html#configuration>_`
+  * Text area for `complete Knot Resolver configuration<https://knot-resolver.readthedocs.io/en/stable/daemon.html#configuration>`_
   * Supports Lua scripting
   * Faulty configuration can impact stability, performance or security functions of the resolver
 

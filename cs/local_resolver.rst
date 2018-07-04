@@ -1,11 +1,12 @@
+****************
 Lokální resolver
-================
+****************
 
 Lokální Whalebone resolver přináší oproti cloudovým resolverům zásadní výhodu ve viditelnosti konkrétních lokálních IP adres, které na něj posílají dotazy. Whalebone resolver je založen na implementaci `Knot Resolveru <https://www.knot-resolver.cz/>`_ vyvíjeného v laboratořích CZ.NIC. 
 
 
 Systémové požadavky
--------------------
+===================
 
 Lokální resolver předpokládá, že bude provozovován na dedikovaném stroji na čerstvě nainstalovaném a podporovaném operačním systému.
 
@@ -36,7 +37,7 @@ S doporučenými hardwarovými prostředky zajistí resolver stabilní a rychlý
 
 
 Instalace nového resolveru
---------------------------
+==========================
 
 V menu **Resolvery** klikněte na tlačítko **Vytvořit nový**. Zde zvolte název pro nový lokální resolver. Jedná se o čistě informativní údaj, který nemá vliv na fungování resolveru.
 Po vyplnění názvu klikněte na tlačítko **Vytvořit resolver** 
@@ -56,7 +57,7 @@ Po spuštění příkazu je prováděna kontrola operačního systému a přípa
 
 
 Bezpečnostní politiky
----------------------
+=====================
 
 V menu **Konfigurace** a záložce **Bezpečnostní politiky** je možnost definovat chování filtrace DNS provozu na resolverech. Ve výchozím stavu je k dispozici **Výchozí politika**, která je automaticky přiřazována novým resolverům.
 V politice je možné definovat několik oblastí:
@@ -90,8 +91,9 @@ V politice je možné definovat několik oblastí:
 
 .. note:: Změny se na resolverech projeví cca do třiceti minut od uložení politik. Uložená změna konfigurace je použita pro přípravu nového balíku s informacemi o hrozbách, který si resolver z cloudu pravidelně stahuje.
 
+
 Nastavení DNS překladu
-----------------------
+======================
 
 V menu **Konfigurace** na záložce **DNS překlad** najdete možnosti konfigurace lokálního resolveru. Stránka umožňuje základní nastavení bez nutnosti znalosti konfigurační syntax použitého resolveru. Dále je k dispozici textové pole, které umožňuje zadat jakoukoliv konfiguraci, kterou podporuje `Knot Resolver <https://www.knot-resolver.cz/>`_.
 
@@ -111,7 +113,7 @@ Dostupné možnosti konfigurace:
 
   * **Všechny dotazy na**
 
-    * Možnost přesměrovat veškeré dotazy na jeden enbop více definovaných resolverů
+    * Možnost přesměrovat veškeré dotazy na jeden nebo více definovaných resolverů
 
   * **Následující domény**
 
@@ -125,7 +127,7 @@ Dostupné možnosti konfigurace:
 
 * **Pokročilé nastavení DNS**
 
-  * Textové pole pro `plnohodnotnou konfiguraci Knot Reoslveru <https://knot-resolver.readthedocs.io/en/stable/daemon.html#configuration>`_
+  * Textové pole pro `plnohodnotnou konfiguraci Knot Resolveru <https://knot-resolver.readthedocs.io/en/stable/daemon.html#configuration>`_
   * Podporuje Lua skriptování
   * Chybná konfigurace může ohrozit stabilitu, výkon a bezpečnostní funkce resolveru
 
@@ -133,3 +135,14 @@ Dostupné možnosti konfigurace:
    :align: center
 
 .. note:: Jakmile uživatel stiskne tlačítko **Uložit**, jsou změny v DNS překladu uloženy a nachystány na aplikaci na cílové resolvery. Samotné nasazení změn je ale nutné provést přímo ze stránky **Resolvery**. Je tedy možné dělat postupně více změn a aplikovat je najednou, aby se minimalizoval počet akcí zasílaných na resolver.
+
+
+Správa resolverů
+================
+
+Na stránce **Resolvery** lze sledovat stav používaných resolverů, upravovat jejich konfiguraci, nasazovat aktualizace a instalovat nové resolvery.
+
+
+
+.. image:: ./img/lrv2-deployconfig.gif
+   :align: center

@@ -45,8 +45,8 @@ The command will run the installation script and will pass the one time token us
 .. image:: ./img/lrv2-create.gif
    :align: center
 
-Once the command is run the operating system is being checked and requirements installed. Skript will inform you about the progress and it creates a detailed log named ``wb_install.log`` in current directory.
-Successul run of the install script is ended with the notification ```Final tuning of the OS``` with value ``[ OK ]``. Right after the installation also the initialization takes place and it could take several minutes before the resolver starts the services.
+Once the command is run the operating system is being checked and requirements installed. Script will inform you about the progress and it creates a detailed log named ``wb_install.log`` in current directory.
+Successul run of the installation script is ended with the notification ```Final tuning of the OS``` with value ``[ OK ]``. Right after the installation also the initialization takes place and it could take several minutes before the resolver starts the services.
 
 .. image:: ./img/lrv2-install.gif
    :align: center
@@ -63,7 +63,7 @@ In any policy there are several options to be defined:
 * **Malicious domains filtering**
 
   * Allows to apply actions Audit (logging) or Block (redirect to blocking page) on resolution of malicious domains
-  * Individual action could be turned off - e.g. turn off the blocking for testing purposes
+  * Individual actions could be turned off - e.g. turn off the blocking for testing purposes
   * The slider values define the probability that the particular domain is malicious on the scale from 0 to 100 (0 is a safe domain, 100 is malicious)
 
 .. tip:: The default threshold for blocking is set to ``80`` which is safe even for larger network with liberal policy towards the users. For more restrictive policy we suggest setting threshold for blocking to ``70-75``, in very restrictive networks even down to ``60``. Audit is purely informative, however setting the threshold too low can result in too many logged incidents.
@@ -133,3 +133,8 @@ Available configuration options:
    :align: center
 
    .. note:: Once the **Save** button is pressed changes in DNS resolution are saved and prepared to be deployed to target resolvers. The deployment itself has to be done from the **Resolvers** page. It is possible to do multiple changes and apply all of them at once to minimize the number of deployments to the resolver.
+
+
+Resolver management
+-------------------
+

@@ -1,7 +1,7 @@
 Lokální resolver
 ================
 
-Lokální Whalebone resolver přináší oproti cloudovým resolverům zásadní výhodu ve viditelnosti konkrétních lokálních IP adres, které na něj posílají dotazy. Whalebone resolver je založen na implementaci `Knot Resolveru<https://www.knot-resolver.cz/>`_ vyvíjeného v laboratořích CZ.NIC. 
+Lokální Whalebone resolver přináší oproti cloudovým resolverům zásadní výhodu ve viditelnosti konkrétních lokálních IP adres, které na něj posílají dotazy. Whalebone resolver je založen na implementaci `Knot Resolveru <https://www.knot-resolver.cz/>`_ vyvíjeného v laboratořích CZ.NIC. 
 
 
 Systémové požadavky
@@ -122,7 +122,7 @@ Dostupné možnosti konfigurace:
 
 * ``Pokročilé nastavení DNS``
 
-  * Textové pole pro `plnohodnotnou konfiguraci Knot Reoslveru<https://knot-resolver.readthedocs.io/en/stable/daemon.html#configuration>`_
+  * Textové pole pro `plnohodnotnou konfiguraci Knot Reoslveru <https://knot-resolver.readthedocs.io/en/stable/daemon.html#configuration>`_
   * Podporuje Lua skriptování
   * Chybná konfigurace může ohrozit stabilitu, výkon a bezpečnostní funkce resolveru
 

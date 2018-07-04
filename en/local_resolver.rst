@@ -37,8 +37,8 @@ With recommended hardware resources the resolver will provide stable and fast DN
 Installation of a new resolver
 ------------------------------
 
-In menu ``Resolvers`` press the button ``Create new``. Choose a name (identifier) for your new resolver. The input is purely informative and won't affect the functionality.
-Once you've entered the name, click ``Add resolver`` button
+In menu **Resolvers** press the button **Create new**. Choose a name (identifier) for your new resolver. The input is purely informative and won't affect the functionality.
+Once you've entered the name, click **Add resolver** button
 After clicking the button an informative window will pop up with list of supported platforms and the one-line command for the installation. Copy the command and run on the machine dedicated for the local resolver.
 The command will run the installation script and will pass the one time token used for the resolver activation (the same command can not be used repeatedly).
 
@@ -57,27 +57,27 @@ Successul run of the install script is ended with the notification ```Final tuni
 Security policies
 -----------------
 
-The behavior of DNS filtering on the resolvers could be defined in the menu item ``Configuration`` and tab ``Security poicies``. In the default state there is only the ``Default policy``, which is automatically assigned to any new resolver.
+The behavior of DNS filtering on the resolvers could be defined in the menu item **Configuration** and tab **Security poicies**. In the default state there is only the **Default policy**, which is automatically assigned to any new resolver.
 In any policy there are several options to be defined:
 
-* Malicious domains filtering
+* **Malicious domains filtering**
 
   * Allows to apply actions Audit (logging) or Block (redirect to blocking page) on resolution of malicious domains
   * Individual action could be turned off - e.g. turn off the blocking for testing purposes
   * The slider values define the probability that the particular domain is malicious on the scale from 0 to 100 (0 is a safe domain, 100 is malicious)
 
-* Lists of blocked domains
+* **Lists of blocked domains**
 
   * Lists of domains, that has to be blocked
   * Such domains do not have to be malicious, it could be just domains blokced based on legal requirements
   * These lists are regularly updated by Whalebone
 
-* Whitelist
+* **Whitelist**
 
   * Domains that won't be blocked at any time
   * The whitelist is applied to the domain and all of the subdomains, e.g.: whitelisted domain ``whalebone.io`` will also whitelist ``docs.whalebone.io``, but not vice versa
 
-* Blacklist
+* **Blacklist**
 
   * Domains that will be blocked at all times (higher priority has only ``Whitelist``)
   * The blacklist is applied to the domain and all of the subdomains, e.g.: whitelisted domain ``malware.ninja`` will also blacklist ``super.malware.ninja``, but not vice versa 
@@ -93,33 +93,33 @@ You can find the options to configure the resolver in the menu ``Configuration``
 
 Available configuration options:
 
-* ``Enable IPv6``
+* **Enable IPv6**
 
   * Should the system has the IPv6 properly configured and working, it is possible to enable it. Otherwise the activation of IPv6 could have negative effects on the performance and latency of the resolver.
 
-* ``Forward queries to``
+* **Forward queries to**
 
   * This option allows to redirect all or chosen queries to upstream resolvers or authoritative DNS servers (suitable e.g. for forwarding to domain controllers of Active Directory)
 
-  * ``Disable DNSSEC``
+  * **Disable DNSSEC**
 
     * If checked, the answers from the forwarded queries won't be DNSSEC validated. We recommend to check this option should the upstream server have not DNSSEC configured properly.
 
-  * ``All queries to``
+  * **All queries to**
 
     * Option to forward all queries to one or more resolver
 
-  * ``Following domains``
+  * **Following domains**
 
     * Option to choose particular domains that should be forwarded to on more resolvers
     * Different resolvers could be defined for different domains
 
-* ``Static records``
+* **Static records**
 
   * Predefined answers that should be returned for particular domains
   * Could serve for special purposes such as monitoring or very simple substition of records on authoritative server
 
-* ``Advanced DNS configuration``
+* **Advanced DNS configuration**
 
   * Text area for `complete Knot Resolver configuration <https://knot-resolver.readthedocs.io/en/stable/daemon.html#configuration>`_
   * Supports Lua scripting

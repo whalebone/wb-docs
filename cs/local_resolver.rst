@@ -38,8 +38,8 @@ S doporučenými hardwarovými prostředky zajistí resolver stabilní a rychlý
 Instalace nového resolveru
 --------------------------
 
-V menu ``Resolvery`` klikněte na tlačítko ``Vytvořit nový``. Zde zvolte název pro nový lokální resolver. Jedná se o čistě informativní údaj, který nemá vliv na fungování resolveru.
-Po vyplnění názvu klikněte na tlačítko ``Vytvořit resolver`` 
+V menu **Resolvery** klikněte na tlačítko **Vytvořit nový**. Zde zvolte název pro nový lokální resolver. Jedná se o čistě informativní údaj, který nemá vliv na fungování resolveru.
+Po vyplnění názvu klikněte na tlačítko **Vytvořit resolver** 
 Po stisknutí tlačítka se zobrazí informativní okno se seznamem podporovaných platforem a s příkazem pro instalaci, který zkopírujte na cílový stroj a spusťte.
 Příkaz se postará o stažení instalačního skriptu, kterému předá jednorázový kód určený pro aktivaci lokálního resolveru (stejný příkaz nelze použít opakovaně).
 
@@ -58,29 +58,29 @@ Po spuštění příkazu je prováděna kontrola operačního systému a přípa
 Bezpečnostní politiky
 ---------------------
 
-V menu ``Konfigurace`` a záložce ``Bezpečnostní politiky`` je možnost definovat chování filtrace DNS provozu na resolverech. Ve výchozím stavu je k dispozici ``Výchozí politika``, která je automaticky přiřazována novým resolverům.
+V menu **Konfigurace** a záložce **Bezpečnostní politiky** je možnost definovat chování filtrace DNS provozu na resolverech. Ve výchozím stavu je k dispozici **Výchozí politika**, která je automaticky přiřazována novým resolverům.
 V politice je možné definovat několik oblastí:
 
-* Filtrace nebezpečných domén
+* **Filtrace nebezpečných domén**
 
   * Umožňuje provádět akce Audit (logování) nebo Blokaci (přesměrování na blokační stránku) přístupu na nebezpečné domény
   * Jednotlivé akce je možné úplně vypnout - např. vypnout blokaci pro testovací účely
   * Hodnota na posuvníku určuje míru jistoty, že se jedná o nebezpečnou doménu na škále 0 až 100 (0 není riziková doména, 100 je jistě nebezpečná)
 
-* Seznam blokovaných domén
+* **Seznam blokovaných domén**
 
   * Seznamy domén, které mají být blokovány za všech okolností
   * Nemusí se jednat o rizikové domény, ale třeba o domény, které musí být blokovány na základě legislativního nařízení
   * O aktualizaci seznamů se stará společnost Whalebone
 
-* Výjimky
+* **Výjimky**
   
   * Domény, které nebudou za žádných okolností blokovány
   * Výjimka se uplatňuje na danou doménu a všechny její subdomény, např.: výjimka na doménu ``whalebone.io`` se uplatní i na doménu ``docs.whalebone.io``, ale ne naopak
 
-* Blokace
+* **Blokace**
   
-  * Domény, které budou za všech okolností blokovány (vyšší prioritu mají pouze ``Výjimky``)
+  * Domény, které budou za všech okolností blokovány (vyšší prioritu mají pouze **Výjimky**)
   * Blokace se uplatňuje na danou doménu a všechny její subdomény, např.: blokace domény ``malware.ninja`` se uplatní i na doménu ``super.malware.ninja``, ale ne naopak 
 
 .. image:: ./img/lrv2-policies.gif
@@ -94,33 +94,33 @@ V menu ``Konfigurace`` na záložce ``DNS překlad`` najdete možnosti konfigura
 
 Dostupné možnosti konfigurace:
 
-* ``Povolit IPv6``
+* **Povolit IPv6**
 
   * Pokud má stroj IPv6 správně nakonfigurovanou a funkční, je možné aktivovat pro resolver IPv6. V opačném případě může mít aktivace této volby negativní dopad na výkon a latenci.
 
-* ``Přesměrovat dotazy na nadřazené resolvery``
+* **Přesměrovat dotazy na nadřazené resolvery**
   
   * Tato volba umožňuje přesměrovat všechny nebo vybrané dotazy na vybrané nadřazené resolvery nebo autoritativní DNS servery (vhodné např. při přesměrování na doménové řadiče Active Directory)
   
-  * ``Zakázat DNSSEC validaci``
+  * **Zakázat DNSSEC validaci**
 
     *Při aktivaci této volby nebudou odpovědi z přesměrovaných dotazů validovány. Doporučujeme volbu aktivovat, pokud nadřazené servery nemají správně nakonfigurovaný DNSSEC
 
-  * ``Všechny dotazy na``
+  * **Všechny dotazy na**
 
     * Možnost přesměrovat veškeré dotazy na jeden enbop více definovaných resolverů
 
-  * ``Následující domény``
+  * **Následující domény**
 
     * Umožňuje zvolit konkrétní domény, které budou přesměrovány na definované resolvery
     * Je možné definovat různé resolvery pro různé domény
 
-* ``Statické záznamy``
+* **Statické záznamy**
 
   * Předdefinované odpovědi, které mají být vráceny na vybrané domény
   * Mohou sloužit pro speciální případy jako je monitoring, nebo velmi jednoduchá substituce vytvoření reálných záznamů na autoritativním serveru
 
-* ``Pokročilé nastavení DNS``
+* **Pokročilé nastavení DNS**
 
   * Textové pole pro `plnohodnotnou konfiguraci Knot Reoslveru <https://knot-resolver.readthedocs.io/en/stable/daemon.html#configuration>`_
   * Podporuje Lua skriptování

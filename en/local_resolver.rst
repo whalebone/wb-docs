@@ -9,20 +9,20 @@ System requirements
 
 Local resolver is supported on dedicated (hardware or virtual) machine running a supported operating system.
 
-* Supported operating system (server editions of following distributions):
+* **Supported operating system** (server editions of following distributions):
 
   * Red Hat Enterprise Linux 7
   * CentOS 7
   * Debian 8,9
   * Ubuntu 16.04
 
-* Recommended hardware sizing for usual traffic (physical or virtual):
+* **Recommended hardware sizing** for usual traffic (physical or virtual):
 
   * 2 CPU cores
   * 4 GB RAM
   * 40 GB HDD
 
-* Network setup requirements - local resolver needs the following ports opened:
+* **Network setup requirements** (local resolver needs the following ports opened):
   
   * ``TCP+UDP/53`` into the internet destinations if responsible for the resolution
   * ``TCP/8443`` to ``resolverapi.whalebone.io`` 
@@ -32,7 +32,7 @@ Local resolver is supported on dedicated (hardware or virtual) machine running a
 
 With recommended hardware resources the resolver will provide stable and fast DNS resolution and filtering. Resolver can be run with significantly lower resources, but that is recommended just for low volume testing environments.
 
-.. tip:: Should you need sizing estimation for large ISP or Enterprise network contact Whalebone. Whalebone local resolver will need approx. twice the RAM and CPU than usual resolver (BIND, Unbound). 
+.. note:: Should you need sizing estimation for large ISP or Enterprise network contact Whalebone. Whalebone local resolver will need approx. twice the RAM and CPU than usual resolver (BIND, Unbound). 
 
 Installation of a new resolver
 ------------------------------

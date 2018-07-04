@@ -9,20 +9,20 @@ Systémové požadavky
 
 Lokální resolver předpokládá, že bude provozovován na dedikovaném stroji na čerstvě nainstalovaném a podporovaném operačním systému.
 
-* Podporované operační systémy (serverové edice následujících distribucí):
+* **Podporované operační systémy** (serverové edice následujících distribucí):
 
   * Red Hat Enterprise Linux 7
   * CentOS 7
   * Debian 8,9
   * Ubuntu 16.04
 
-* Doporučené hardwarové nároky pro běžný provoz (podporujeme fyzické i virtuální stroje):
+* **Doporučené hardwarové zdroje** pro běžný provoz (podporujeme fyzické i virtuální stroje):
 
   * 2 CPU jádra
   * 4 GB RAM
   * 40 GB HDD
 
-* Požadavky na síťovou komunikaci, resolver pro svůj běh vyžaduje následující otevřené porty:
+* **Požadavky na síťovou komunikaci** (resolver pro svůj běh vyžaduje následující otevřené porty):
   
   * ``TCP+UDP/53`` do celého internetu pro potřeby DNS překladu
   * ``TCP/8443`` na destinaci ``resolverapi.whalebone.io`` 
@@ -32,7 +32,7 @@ Lokální resolver předpokládá, že bude provozovován na dedikovaném stroji
 
 S doporučenými hardwarovými prostředky zajistí resolver stabilní a rychlý DNS překlad. Resolver je možné provozovat i s výrazně menšími prostředky, ale to je doporučeno pouze pro testovací účely.
 
-.. tip:: Kvůli odhadu sizingu pro větší podnikové a ISP sítě kontaktujte svého dodavatele. Nárůst systémových požadavků oproti standardním DNS resolverům (BIND, Unbound, apod.) se dá očekávat přibližně dvojnásobný na úrovni spotřeby RAM i zatížení CPU.
+.. note:: Kvůli odhadu sizingu pro větší podnikové a ISP sítě kontaktujte svého dodavatele. Nárůst systémových požadavků oproti standardním DNS resolverům (BIND, Unbound, apod.) se dá očekávat přibližně dvojnásobný na úrovni spotřeby RAM i zatížení CPU.
 
 
 Instalace nového resolveru
@@ -105,7 +105,7 @@ Dostupné možnosti konfigurace:
   
   * **Zakázat DNSSEC validaci**
 
-    *Při aktivaci této volby nebudou odpovědi z přesměrovaných dotazů validovány. Doporučujeme volbu aktivovat, pokud nadřazené servery nemají správně nakonfigurovaný DNSSEC
+    * Při aktivaci této volby nebudou odpovědi z přesměrovaných dotazů validovány. Doporučujeme volbu aktivovat, pokud nadřazené servery nemají správně nakonfigurovaný DNSSEC
 
   * **Všechny dotazy na**
 

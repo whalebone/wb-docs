@@ -67,6 +67,8 @@ V politice je možné definovat několik oblastí:
   * Jednotlivé akce je možné úplně vypnout - např. vypnout blokaci pro testovací účely
   * Hodnota na posuvníku určuje míru jistoty, že se jedná o nebezpečnou doménu na škále 0 až 100 (0 není riziková doména, 100 je jistě nebezpečná)
 
+.. tip:: Výchozí prahová hodnota blokace ``80`` je bezpečná i pro velké sítě s benevolentní politikou. Pro přísnější politiku ve velkých sítích doporučujeme volit blokaci v rozmezí ``70-75``, velmi přísné sítě (typicky v podnikovém prostředí) si mohou dovolit blokaci až na úroveň hodnoty ``60``. Audit je čistě informativní, ale příliš nízká hodnota může výrazně zvýšit počet logovaných incidentů.
+
 * **Seznam blokovaných domén**
 
   * Seznamy domén, které mají být blokovány za všech okolností

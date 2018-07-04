@@ -86,11 +86,12 @@ V politice je možné definovat několik oblastí:
 .. image:: ./img/lrv2-policies.gif
    :align: center
 
+.. note:: Změny se na resolverech projeví cca do třiceti minut od uložení politik. Uložená změna konfigurace je použita pro přípravu nového balíku s informacemi o hrozbách, který si resolver z cloudu pravidelně stahuje.
 
 Nastavení DNS překladu
 ----------------------
 
-V menu ``Konfigurace`` na záložce ``DNS překlad`` najdete možnosti konfigurace lokálního resolveru. Stránka umožňuje základní nastavení bez nutnosti znalosti konfigurační syntax použitého resolveru. Dále je k dispozici textové pole, které umožňuje zadat jakoukoliv konfiguraci, kterou podporuje `Knot Resolver<https://www.knot-resolver.cz/>_`.
+V menu **Konfigurace** na záložce **DNS překlad** najdete možnosti konfigurace lokálního resolveru. Stránka umožňuje základní nastavení bez nutnosti znalosti konfigurační syntax použitého resolveru. Dále je k dispozici textové pole, které umožňuje zadat jakoukoliv konfiguraci, kterou podporuje `Knot Resolver <https://www.knot-resolver.cz/>`_.
 
 Dostupné možnosti konfigurace:
 
@@ -128,3 +129,5 @@ Dostupné možnosti konfigurace:
 
 .. image:: ./img/lrv2-resolution.gif
    :align: center
+
+.. note:: Jakmile uživatel stiskne tlačítko **Uložit**, jsou změny v DNS překladu uloženy a nachystány na aplikaci na cílové resolvery. Samotné nasazení změn je ale nutné provést přímo ze stránky **Resolvery**. Je tedy možné dělat postupně více změn a aplikovat je najednou, aby se minimalizoval počet akcí zasílaných na resolver.

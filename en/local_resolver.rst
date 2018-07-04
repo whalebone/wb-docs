@@ -79,17 +79,19 @@ In any policy there are several options to be defined:
 
 * **Blacklist**
 
-  * Domains that will be blocked at all times (higher priority has only ``Whitelist``)
+  * Domains that will be blocked at all times (higher priority has only **Whitelist**)
   * The blacklist is applied to the domain and all of the subdomains, e.g.: whitelisted domain ``malware.ninja`` will also blacklist ``super.malware.ninja``, but not vice versa 
 
 .. image:: ./img/lrv2-policies.gif
    :align: center
 
+.. note:: Changes will be applied to the resolvers in approx. 30 minutes. Saved configuration is used during preparation of the threat data package for the resolvers that download and apply those packages at regular intervals.
+
 
 DNS resolution configuration
 ----------------------------
 
-You can find the options to configure the resolver in the menu ``Configuration`` and tab ``DNS resolution``. This page allows you to do the basic configuration without the knowledge of configuration syntax. Furthermore there is a text area allowing you to define any configuration to the underlying `Knot Resolver<https://www.knot-resolver.cz/>_`.
+You can find the options to configure the resolver in the menu **Configuration** and tab **DNS resolution**. This page allows you to do the basic configuration without the knowledge of configuration syntax. Furthermore there is a text area allowing you to define any configuration to the underlying `Knot Resolver <https://www.knot-resolver.cz/>`_.
 
 Available configuration options:
 
@@ -127,3 +129,5 @@ Available configuration options:
 
 .. image:: ./img/lrv2-resolution.gif
    :align: center
+
+   .. note:: Once the **Save** button is pressed changes in DNS resolution are saved and prepared to be deployed to target resolvers. The deployment itself has to be done from the **Resolvers** page. It is possible to do multiple changes and apply all of them at once to minimize the number of deployments to the resolver.

@@ -23,10 +23,12 @@ Po prvním přihlášení se zobrazí průvodce, který vás provede hlavními m
 Definice síťových rozsahů
 -------------------------
 
-Síťové rozsahy slouží k rozeznávání provozu jednotlivých zákazníků. Doporučujeme uvádět celou podsíť, ze které může přijít jak DNS provoz, tak další síťový provoz. Sítí a adres může být uvedeno více a mohou být rozčleněny do tzv. lokalit pro snazší kategorizaci DNS provozu a detekovaných událostí. 
+Síťové rozsahy slouží k rozeznávání provozu jednotlivých zákazníků na cloudových resolverech a blokační stránce (sinkhole). Doporučujeme uvádět celou podsíť, ze které může přijít jak DNS provoz, tak další síťový provoz. Sítí a adres může být uvedeno více a mohou být rozčleněny do tzv. lokalit pro snazší kategorizaci DNS provozu a detekovaných událostí. 
 
 .. image:: ./img/client_networks.png
    :align: center
+
+.. warning:: Pokud nevyplníte informace o veřejných síťových rozsazích, cloudové resolvery budou provádět pouze překlad jakéhokoliv blokování. Pokud používáte lokální resolver, jsou sítě potřebné pro správné zobrazení a customnizaci blokační stránky (sinkhole).
 
 * Do pole ``Přidat nové sítě`` vložte jeden nebo více síťových rozsahů v notaci <adresa sítě>/<bitová maska>, např: ``198.51.100.0/24`` 
 * Stisknutím tlačítka ``Přidat sítě`` můžete přidávat postupné změny

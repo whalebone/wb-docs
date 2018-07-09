@@ -142,7 +142,18 @@ Správa resolverů
 
 Na stránce **Resolvery** lze sledovat stav používaných resolverů, upravovat jejich konfiguraci, nasazovat aktualizace a instalovat nové resolvery.
 
+Přehled resolverů
+-----------------
 
+V hlavním přehledu resolverů jsou k dispozici dlaždice s informacemi o jednotlivých resolverech. Přehled zahrnuje informace o operačním systému a využití zdrojů jako CPU, operační paměť a diskový prostor. V přehledu je také zahrnut stav služeb běžících na resolveru (očekává se, že je "Vše v pořádku") a stav odvozený od toho, zda resolver správně komunikuje s cloudem (pokud vše správně funguje, bude status "Aktivní").
+
+
+Nasazení konfigurace
+--------------------
+
+Pokud jste změnili jakoukoliv konfiguraci související s logikou DNS překladu, je nutné změny na resolver manuálně nasadit. Pokud jsou k dispozici nějaké změny, které ještě nebyly na resolver nasazeny, bude v kartě viditelná červená ikonka s šipkou doprava dolů. Po kliknutí na ikonku si stránka vyžádá potvrzení, konfiguraci nasadí a zobrazí zprávu s potvrzením.
+
+.. note:: Pokud se při pokusu o nasazení konfigurace zobrazí chyba místo potvrzení, může jít o krátkodobý výpadek spojení mezi resolverem a cloudem, zkuste tedy akci zopakovat.
 
 .. image:: ./img/lrv2-deployconfig.gif
    :align: center

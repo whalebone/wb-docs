@@ -1,11 +1,12 @@
+**************
 Local resolver
-==============
+**************
 
 Whalebone local resolver brings the advantage of visibility of local IP addresses that send the actual requests. Whalebone resolver is based on the implementation of `Knot Resolver <https://www.knot-resolver.cz/>`_ developed in the CZ.NIC labs.
 
 
 System requirements
--------------------
+===================
 
 Local resolver is supported on dedicated (hardware or virtual) machine running a supported operating system.
 
@@ -35,7 +36,7 @@ With recommended hardware resources the resolver will provide stable and fast DN
 .. note:: Should you need sizing estimation for large ISP or Enterprise network contact Whalebone. Whalebone local resolver will need approx. twice the RAM and CPU than usual resolver (BIND, Unbound). 
 
 Installation of a new resolver
-------------------------------
+==============================
 
 In menu **Resolvers** press the button **Create new**. Choose a name (identifier) for your new resolver. The input is purely informative and won't affect the functionality.
 Once you've entered the name, click **Add resolver** button
@@ -55,7 +56,7 @@ Successul run of the installation script is ended with the notification ```Final
 
 
 Security policies
------------------
+=================
 
 The behavior of DNS filtering on the resolvers could be defined in the menu item **Configuration** and tab **Security poicies**. In the default state there is only the **Default policy**, which is automatically assigned to any new resolver.
 In any policy there are several options to be defined:
@@ -91,7 +92,7 @@ In any policy there are several options to be defined:
 
 
 DNS resolution configuration
-----------------------------
+============================
 
 You can find the options to configure the resolver in the menu **Configuration** and tab **DNS resolution**. This page allows you to do the basic configuration without the knowledge of configuration syntax. Furthermore there is a text area allowing you to define any configuration to the underlying `Knot Resolver <https://www.knot-resolver.cz/>`_.
 
@@ -136,5 +137,21 @@ Available configuration options:
 
 
 Resolver management
--------------------
+===================
 
+On the **Resolvers** page there is an overview of created resolvers. Administrator can adjust the configuration, deploy updates and install new resolvers.
+
+Resolvers overview
+------------------
+
+In the main resolver overview there are tiles with resolver details and configuration options. The overview includes information about operating system and resources as CPU, Memory and HDD usage. Therre is also the state of services running on the resolvers (should state "Running" if everything is OK) and the status of the communication channel between the resolver and the cloud (it is expected to be "Active").
+
+Deploy configuration
+--------------------
+
+Should you change any configuration related to the DNS resolution, you have to deploy the configuration afterwards. If there are any configuration changes available to be deployed, there will be a red icon with down right arrow visible on the resolver card. Once clicked, the webpage will ask for confirmation and the successful deployment will be notified in the top right corner.
+
+.. note:: If the result is an deployment error, try to repeat the action. The reason for the error could be a short term communication outage between the cloud and the resolver.
+
+.. image:: ./img/lrv2-deployconfig.gif
+   :align: center

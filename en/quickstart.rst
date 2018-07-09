@@ -29,6 +29,8 @@ Single customer can manage more network ranges, such ranges can be assigned to l
 .. image:: ./img/client_networks.png
    :align: center
 
+.. warning:: Should you not fill in your public network ranges, cloud resolvers will serve as a simple DNS resolvers without any filtering. If you use local resolvers, you still have to input your network ranges to display fully customized blocking page (sinkhole) to the blocked users.
+
 * Into the field ``Add new network`` insert one or more network ranges using notation <network address>/<mask>, e.g.: ``198.51.100.0/24`` 
 * Press button ``Add networks`` to add changes
 * Don't forget to save your new setup through the ``Save`` button

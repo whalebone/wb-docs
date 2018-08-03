@@ -10,7 +10,7 @@ Systémové požadavky
 
 Lokální resolver předpokládá, že bude provozovován na dedikovaném stroji na čerstvě nainstalovaném a podporovaném operačním systému.
 
-* **Podporované operační systémy** (serverové edice následujících distribucí):
+* **Podporované operační systémy** (64-bitové, serverové edice následujících distribucí):
 
   * Red Hat Enterprise Linux 7
   * CentOS 7

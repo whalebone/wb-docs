@@ -10,7 +10,7 @@ System requirements
 
 Local resolver is supported on dedicated (hardware or virtual) machine running a supported operating system.
 
-* **Supported operating system** (server editions of following distributions):
+* **Supported operating system** (64-bit, server editions of following distributions):
 
   * Red Hat Enterprise Linux 7
   * CentOS 7

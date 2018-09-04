@@ -14,8 +14,8 @@ Lokální resolver předpokládá, že bude provozovován na dedikovaném stroji
 
   * Red Hat Enterprise Linux 7
   * CentOS 7
-  * Debian 8,9
-  * Ubuntu 16.04
+  * Debian 8, 9
+  * Ubuntu 16.04, 18.04 
 
 * **Doporučené hardwarové zdroje** pro běžný provoz (podporujeme fyzické i virtuální stroje):
 

@@ -11,4 +11,5 @@ Whalebone is a service for security filtering of DNS traffic. It uses logic on t
    deployment
    quickstart
    local_resolver
+   enduser
 

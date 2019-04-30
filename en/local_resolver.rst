@@ -17,6 +17,11 @@ Local resolver is supported on dedicated (hardware or virtual) machine running a
   * Debian 8, 9
   * Ubuntu 16.04, 18.04
 
+* **Supported filesystems** 
+
+  * ext4
+  * xfs only with d_type support (ftype=1)
+
 * **Recommended hardware sizing** for usual traffic (physical or virtual):
 
   * 2 CPU cores
@@ -27,7 +32,8 @@ Local resolver is supported on dedicated (hardware or virtual) machine running a
   
   * ``TCP+UDP/53`` into the internet destinations if responsible for the resolution
   * ``TCP/8443`` to ``resolverapi.whalebone.io`` 
-  * ``TCP/443`` to ``logger.whalebone.io, agentapi.whalebone.io, portal.whalebone.io``
+  * ``TCP/443`` to ``logger.whalebone.io, agentapi.whalebone.io, portal.whalebone.io, index.docker.io``
+  * Reachability of software repositories for the operating system
 
 .. warning:: Without communication on port 8443 and 443 to the domains listed above the resolver won't be installed at all (the installation script will abort).
 
@@ -155,3 +161,85 @@ Should you change any configuration related to the DNS resolution, you have to d
 
 .. image:: ./img/lrv2-deployconfig.gif
    :align: center
+
+Knot Resolver - Tips & Tricks
+=============================
+
+Advanced configuration of Whalebone resolver allows to apply any Knot Resolver configuration. In this section we are going to describe the most frequent use cases and examples of such configuration snippets.
+Views, policies and their actions are evaluated in the sequence as they are defined (except special chain actions that are described in the official Knot Resolver documentation). First match will execute the action, the rest of the policy rules is not evaluated. If you are going to combine different configuration snnippets, you can load the same module just once at the beginning of the configuration.
+
+Allow particular IP ranges
+--------------------------
+
+Define a list of IP ranges that will be allowed to use this DNS resolver. Queries from all other ranges will be refused.
+
+.. code-block:: lua
+
+  -- load modules
+  modules = {'policy', 'view'}
+
+  --define list of ranges to allow
+  allowed = {
+    '10.10.20.5/32',
+    '10.30.10.0/24'
+  }
+
+  -- allow list of ranges
+  for i,subnet in ipairs(allowed) do
+    view:addr(subnet, policy.all(policy.PASS))
+  end
+
+  -- block all other ranges
+  view:addr('0.0.0.0/0', policy.all(policy.DENY))
+
+
+Refuse particular IP ranges
+---------------------------
+
+Define a list of IP ranges that will be blocked to use this DNS resolver. Queries from all other ranges will be allowed.
+
+.. code-block:: lua
+
+  -- load modules
+  modules = {'policy', 'view'}
+
+  --define list of ranges to block
+  blocked = {
+    '10.10.20.5/32',
+    '10.30.10.0/24'
+  }
+
+  -- block list of ranges
+  for i,subnet in ipairs(blocked) do
+    view:addr(subnet, policy.all(policy.REFUSE))
+  end
+
+Allow list of domains
+---------------------
+
+.. code-block:: lua
+
+  -- load modules
+  modules = {'policy'}
+
+  --define list of allowed domains
+  domains = {
+    'example.com',
+    'anotherexample.org'
+  }
+
+  -- allow list of domains
+  for i,domain in ipairs(domains) do
+    policy.suffix(policy.PASS, {todname(domain)})
+  end
+
+Disable DNSSEC globally
+-----------------------
+
+.. code-block:: lua
+
+  trust_anchors.negative = { '.' }
+
+
+Outgoing IP address
+-------------------

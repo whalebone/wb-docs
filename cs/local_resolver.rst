@@ -15,7 +15,12 @@ Lokální resolver předpokládá, že bude provozovován na dedikovaném stroji
   * Red Hat Enterprise Linux 7
   * CentOS 7
   * Debian 8, 9
-  * Ubuntu 16.04, 18.04 
+  * Ubuntu 16.04, 18.04
+
+* **Podporované souborové systémy** 
+
+  * ext4
+  * xfs pouze s podporou d_type (ftype=1)
 
 * **Doporučené hardwarové zdroje** pro běžný provoz (podporujeme fyzické i virtuální stroje):
 
@@ -27,7 +32,8 @@ Lokální resolver předpokládá, že bude provozovován na dedikovaném stroji
   
   * ``TCP+UDP/53`` do celého internetu pro potřeby DNS překladu
   * ``TCP/8443`` na destinaci ``resolverapi.whalebone.io`` 
-  * ``TCP/443`` na destinace ``logger.whalebone.io, agentapi.whalebone.io, portal.whalebone.io``
+  * ``TCP/443`` na destinace ``logger.whalebone.io, agentapi.whalebone.io, portal.whalebone.io, index.docker.io``
+  * Dostupnost softwarových repozitářů pro daný operační systém
 
 .. warning:: Bez dostupných portů 8443 a 443 na výše zmíněné destinace instalace resolveru vůbec neproběhne (instalační skript bude přerušen).
 

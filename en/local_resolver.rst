@@ -26,7 +26,7 @@ Local resolver is supported on dedicated (hardware or virtual) machine running a
 
   * 2 CPU cores
   * 4 GB RAM
-  * 40 GB HDD
+  * 40 GB HDD (at least 30 GB in /var partition)
 
 * **Network setup requirements** (local resolver needs the following ports opened):
   

@@ -26,7 +26,7 @@ Lokální resolver předpokládá, že bude provozovován na dedikovaném stroji
 
   * 2 CPU jádra
   * 4 GB RAM
-  * 40 GB HDD
+  * 40 GB HDD (nejméně 30 GB v oddílu /var)
 
 * **Požadavky na síťovou komunikaci** (resolver pro svůj běh vyžaduje následující otevřené porty):
   

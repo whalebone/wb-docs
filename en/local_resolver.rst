@@ -14,7 +14,7 @@ Local resolver is supported on dedicated (hardware or virtual) machine running a
 
   * Red Hat Enterprise Linux 7
   * CentOS 7
-  * Debian 8, 9
+  * Debian 9
   * Ubuntu 16.04, 18.04
 
 * **Supported filesystems** 

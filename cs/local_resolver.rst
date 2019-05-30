@@ -163,3 +163,309 @@ Pokud jste změnili jakoukoliv konfiguraci související s logikou DNS překladu
 
 .. image:: ./img/lrv2-deployconfig.gif
    :align: center
+
+
+Resolver agent
+===================
+
+Interakce pomocí příkazové řádky
+------------------
+Akce, které provádí agent, je možné volat pomocí proxy bash skriput, který se nachází v adresíři **/var/whalebone/cli**. Tento skript volá python skript, který provádí příkazy jemu předané. Tyto příkazy jsou následující:
+
+* **sysinfo** - vrací systémová data v následujícím JSON formátu
+	* Parametry: žádné
+	* Výstup: 
+.. sourcecode:: js
+
+	{
+	   "hostname":"hostname",
+	   "system":"Linux",
+	   "platform":"CentOS Linux 7 (Core)",
+	   "cpu":{
+	      "count":4,
+	      "usage":28.6
+	   },
+	   "memory":{
+	      "total":7.6,
+	      "available":3.9,
+	      "usage":49.2
+	   },
+	   "hdd":{
+	      "total":50.0,
+	      "free":14.4,
+	      "usage":71.1
+	   },
+	   "swap":{
+	      "total":0.0,
+	      "free":0.0,
+	      "usage":0
+	   },
+	   "resolver":{
+	      "answer.nxdomain":3284,
+	      "answer.tc":35,
+	      "answer.ad":849,
+	      "answer.100ms":3983,
+	      "answer.cd":6,
+	      "answer.1500ms":74,
+	      "answer.slow":215,
+	      "answer.rd":224337,
+	      "answer.1ms":104683,
+	      "answer.servfail":215,
+	      "predict.epoch":24,
+	      "query.dnssec":6,
+	      "answer.250ms":14941,
+	      "query.edns":35498,
+	      "answer.cached":86713,
+	      "answer.nodata":3622,
+	      "answer.aa":2362,
+	      "answer.do":6,
+	      "answer.edns0":35498,
+	      "answer.ra":224337,
+	      "predict.queue":0,
+	      "answer.total":224337,
+	      "answer.10ms":35351,
+	      "answer.noerror":217216,
+	      "answer.50ms":59766,
+	      "answer.500ms":4642,
+	      "answer.1000ms":653,
+	      "predict.learned":80
+	   },
+	   "docker":{
+	      "Platform":{
+	         "Name":""
+	      },
+	      "Components":[
+	         {
+	            "Name":"Engine",
+	            "Version":"17.12.1-ce",
+	            "Details":{
+	               "ApiVersion":"1.35",
+	               "Arch":"amd64",
+	               "BuildTime":"2022-02-27T22:17:54.000000000+00:00",
+	               "Experimental":"false",
+	               "GitCommit":"88888fc6",
+	               "GoVersion":"go1.999.999",
+	               "KernelVersion":"3.22.66-693.21.1.el7.x86_64",
+	               "MinAPIVersion":"1.99",
+	               "Os":"linux"
+	            }
+	         }
+	      ],
+	      "Version":"19.32.1-ce",
+	      "ApiVersion":"1.98",
+	      "MinAPIVersion":"1.12",
+	      "GitCommit":"7390fc6",
+	      "GoVersion":"go1.9.4",
+	      "Os":"linux",
+	      "Arch":"amd64",
+	      "KernelVersion":"3.10.0-693.21.1.el7.x86_64",
+	      "BuildTime":"2018-02-27T22:17:54.000000000+00:00"
+	   },
+	   "check":{
+	      "resolve":"ok",
+	      "port":"ok"
+	   },
+	   "containers":{
+	      "lr-agent":"running",
+	      "passivedns":"running",
+	      "resolver":"running",
+	      "kresman":"running",
+	      "pcpy":"running",
+	      "logrotate":"running",
+	      "logstream":"running"
+	   },
+	   "images":{
+	      "lr-agent":"whalebone/agent:1.1.1",
+	      "passivedns":"whalebone/passivedns:1.1.1",
+	      "resolver":"whalebone/kres:1.1.1",
+	      "kresman":"whalebone/kresman:1.1.1",
+	      "logrotate":"whalebone/logrotate:1.1.1",
+	      "logstream":"whalebone/logstream:1.1.1"
+	   },
+	   "error_messages":{
+	   },
+	   "interfaces":[
+	      {
+	         "name":"lo",
+	         "addresses":[
+	            "127.0.0.1",
+	            "::1",
+	            "00:00:00:00:00:00"
+	         ]
+	      },
+	      {
+	         "name":"eth0",
+	         "addresses":[
+	            "1.1.1.1",
+	            "::c8",
+	            "fe80::",
+	            "00:00:00:00:00:00"
+	         ]
+	      },
+	      {
+	         "name":"docker0",
+	         "addresses":[
+	            "198.1.1.1",
+	            "00:00:00:00:00:00"
+	         ]
+	      }
+	   ]
+	}
+
+* **stop** - zastaví až tři kontejnery
+	* Parametry: kontejnery, které se mají zastavit (až 3), Příklad: ./cli.sh stop resolver lr-agent kresman
+	* Výstup:  
+.. sourcecode:: js
+
+	{
+		'resolver': {'status': 'success'}, 
+		'lr-agent': {'status': 'success'}, 
+		'kresman': {'status': 'success'}
+	}
+
+* **remove** - odtraní až 3 kontejnery
+	* Parametry: kontejnery, které se mají odstranit (až 3), Příklad: ./cli.sh remove resolver lr-agent kresman
+	* Výstup: 
+.. sourcecode:: js 
+
+	{
+		'resolver': {'status': 'success'}, 
+		'lr-agent': {'status': 'success'}, 
+		'kresman': {'status': 'success'}
+	}
+
+* **upgrade** - upgraduje až tři kontejnery, konfigrurace kontejnerů je dána docker-composem v kontejneru agenta (možné najít v **/etc/whalebone/agent**)
+	* Parametry: kontejnery, které se mají upgradovat (až 3), Příklad: ./cli.sh upgrade resolver lr-agent kresman
+	* Výstup: ```json 
+	{'resolver': {'status': 'success'}, 'lr-agent': {'status': 'success'}, 'kresman': {'status': 'success'}}
+	```
+* **create** - vytvoří kontejnery, konfigrurace kontejnerů je dána docker-composem v kontejneru agenta (možné najít v **/etc/whalebone/agent**)
+	* Parametry: žádné, Příklad: ./cli.sh create
+	* Výstup: 
+.. sourcecode:: js
+
+	{'resolver': {'status': 'success'}
+
+* **list** - zobrazí čekající příkazy a změny, který by tyto příkazy provedly na kontejnerech zmíněných v těchto příkazech, tato akce je určená pro přímou interakci
+	* Parametry: žádné, Příklad: ./cli.sh list
+	* Výstup: 
+.. code-block:: lua
+
+	-------------------------------
+	Changes for resolver
+	New value for label: resolver-1.1.1
+	  	Old value for label: resolver-1.0.0
+	-------------------------------
+	
+* **run** - provede čekající příkazy
+	* Parametry: žádné, Příklad: ./cli.sh run
+	* Výstup:
+.. sourcecode:: js
+
+	{'resolver': {'status': 'success'}
+
+* **updatecache** - vynutí update IoC cache (používané k blokaci). Tato akce je určena pro manuální katualizaci blokovaných domén mimo peroidický interval
+	* Parametry: žádné
+	* Výstup:
+.. sourcecode:: js
+
+	{'status': 'success', 'message': 'Cache update successful'}
+	
+* **containers** - lists the containers and their information which include: labels, image, name and status. 
+	* Parametry: žádné
+	* Výstup: 
+.. sourcecode:: js
+
+	[
+	   {
+	      "id":"b8f4489379",
+	      "image":{
+	         "id":"c893b4df5ca3",
+	         "tags":[
+	            "whalebone/agent:1.1.1"
+	         ]
+	      },
+	      "labels":{
+	         "lr-agent":"1.1.1"
+	      },
+	      "name":"lr-agent",
+	      "status":"running"
+	   },
+	   {
+	      "id":"e433d58f13",
+	      "image":{
+	         "id":"2c4b84a7daee",
+	         "tags":[
+	            "whalebone/passivedns:1.1.1"
+	         ]
+	      },
+	      "labels":{
+	         "passivedns":"1.1.1"
+	      },
+	      "name":"passivedns",
+	      "status":"running"
+	   },
+	   {
+	      "id":"2aeec00121",
+	      "image":{
+	         "id":"fc442e625539",
+	         "tags":[
+	            "whalebone/kres:1.1.1"
+	         ]
+	      },
+	      "labels":{
+	         "resolver":"1.1.1"
+	      },
+	      "name":"resolver",
+	      "status":"running"
+	   },
+	   {
+	      "id":"662dac2e6c",
+	      "image":{
+	         "id":"b37d0d1bd10b",
+	         "tags":[
+	            "whalebone/kresman:1.1.1"
+	         ]
+	      },
+	      "labels":{
+	         "kresman":"1.1.1"
+	      },
+	      "name":"kresman",
+	      "status":"running"
+	   },
+	   {
+	      "id":"05188ac1df",
+	      "image":{
+	         "id":"5b50cdc924fc",
+	         "tags":[
+	            "whalebone/logrotate:1.1.1"
+	         ]
+	      },
+	      "labels":{
+	         "logrotate":"1.1.1"
+	      },
+	      "name":"logrotate",
+	      "status":"running"
+	   },
+	   {
+	      "id":"01e64dd697",
+	      "image":{
+	         "id":"fffb52c2dadd",
+	         "tags":[
+	            "whalebone/logstream:1.1.1"
+	         ]
+	      },
+	      "labels":{
+	         "logstream":"1.1.1"
+	      },
+	      "name":"logstream",
+	      "status":"running"
+	   }
+	]
+
+
+Každý z představených příkazů provádí stejně pojmenovanou akci. Status a výstup této akce je zobrazován v terminálu. Akce **list** a **run** jsou určeny k řešení situací, kdy je potřeba potvrzení akcí před provedením. Akce pro zobrazení zobrazí změny, které se mají provést a kontejnery, které budou ovlivněny. Toto slouží jako náhled situace, která by se měla provést. Akce pro provedení těchto příkazu je potom provede.
+
+Akce pro upgrade a vytvoření kontejnerů používají docker-compose, který je možné najít v kontejneru agenta, jako konfiguraci pro provádění těchto akcí. Tento soucor je připnutý v adresáři **/etc/whalebone/agent** pokud se uživatel rozhodne ho upravovat. Všechny změny musí být zaneseny i do vzoru na adrese **portal.whalebone.io**. Bez nich budou tyto lokální změny přepsány při další akci manipulující s tímto souborem. 
+
+Bash skript by měl výt volán takto: **./cli.sh action param1 param2 param3**. Action je jméno akce a jednotlivé parametry jsou parametry této akce. Pouze akce pro zastavení, odstranění a upgradování kontejnerů tyto parametry používají. 

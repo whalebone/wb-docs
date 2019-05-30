@@ -280,7 +280,6 @@ Agent's actions can be invoked using a proxy bash script present at path **/var/
 	      "logstream":"whalebone/logstream:1.1.1"
 	   },
 	   "error_messages":{
-
 	   },
 	   "interfaces":[
 	      {

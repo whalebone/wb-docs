@@ -32,7 +32,7 @@ Local resolver is supported on dedicated (hardware or virtual) machine running a
   
   * ``TCP+UDP/53`` into the internet destinations if responsible for the resolution
   * ``TCP/8443`` to ``resolverapi.whalebone.io`` 
-  * ``TCP/443`` to ``logger.whalebone.io, agentapi.whalebone.io, portal.whalebone.io, index.docker.io``
+  * ``TCP/443`` to ``logger.whalebone.io, agentapi.whalebone.io, portal.whalebone.io, index.docker.io, registry-1.docker.io, data.iana.org``
   * Reachability of software repositories for the operating system
 
 .. warning:: Without communication on port 8443 and 443 to the domains listed above the resolver won't be installed at all (the installation script will abort).

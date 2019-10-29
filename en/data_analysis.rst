@@ -1,22 +1,21 @@
---------------
+.. _header-n152:
 
-Data analysis
-
---------------
+Data Analysis
+=============
 
 Whalebone Portal (graphical user interface) gives the user number of
 possibilities how to analyze what is happening on the DNS resolvers and
 the network.
 
-.. _header-n115:
+.. _header-n155:
 
 Threats
-=======
+-------
 
 Threats are special events where there is a DNS request for a domain
 that is present within the reputation database. There are two types of
-actions when a threat is detected. The first is to **audit** the event while
-the second is to **block** it.
+actions when a threat is detected. The first is to audit the event while
+the second is to block it.
 
 The action that is to be implemented depends on the policies that are
 assigned to the specific resolver. For more on that please refer to
@@ -29,10 +28,10 @@ the majority of the use cases but there is no hard limit as the
 available search engine is **full-text** and *any* query can be compiled
 impromptu.
 
-.. _header-n119:
+.. _header-n159:
 
 How to search for audit/block events.
--------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 | There are two options in order to filter the different types of
   events. 
@@ -40,7 +39,7 @@ How to search for audit/block events.
   a user clicks is disabled from the graph. This can aid the process of
   having a basic overview of the traffic's qualities.
 
-.. figure:: ./img/block_graph.gif
+.. figure:: /home/andronikos/Projects/dev/wb-docs/en/img/block_graph.gif
    :alt: 
 
 For more advanced usage a query can be issued:
@@ -53,13 +52,13 @@ For more advanced usage a query can be issued:
 
 This query updates the content of the whole dashboard.
 
-.. figure:: ./img/request_ip.gif
+.. figure:: /home/andronikos/Projects/dev/wb-docs/en/img/request_ip.gif
    :alt: 
 
-.. _header-n133:
+.. _header-n173:
 
 How to search for events based on specific IP address.
-------------------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 A filtering of an IP address is possible by clicking on the specific
 ``Source IP`` bar and in this way filtering the content of the whole
@@ -72,13 +71,13 @@ the search field.
 consider that instead of the previewed hash value, an IP address is
 used**
 
-.. figure:: ./img/request_ip.gif
+.. figure:: /home/andronikos/Projects/dev/wb-docs/en/img/request_ip.gif
    :alt: 
 
-.. _header-n138:
+.. _header-n178:
 
 How to search for events based on specific threat category.
------------------------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 There are multiple threat categories available.
 
@@ -88,27 +87,27 @@ To name a few: ``legal`` , ``malware``, ``c&c``, ``blacklist``,
 A *simple* alternative could be to click on the bar that matches the
 detected threat and filter only the specific type.
 
-.. figure:: ./img/phising.gif
+.. figure:: /home/andronikos/Projects/dev/wb-docs/en/img/phising.gif
    :alt: 
 
 Another approach could be to click on the filter icon and in this way
 specify the desired category, as can be seen in the next image.
 
-.. figure:: ./img/cc.gif
+.. figure:: /home/andronikos/Projects/dev/wb-docs/en/img/cc.gif
    :alt: 
 
-.. _header-n146:
+.. _header-n186:
 
 How to change the range of the available data
----------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 | The range of the dates that can be preview in the portal can change in
   multiple ways.
-| The following image shows three of the available ways. These can be
+| The following image show three of the available ways. These can be
   summarized as simply by clicking on the current date that
   automatically transcribes to the current time, by inserting the date
   in text in the ``YYYY.MM.DD HH:mm:ss`` format or by using the builtin
   tool that provides quick suggestions.
 
-.. figure:: ./img/date_range.gif
+.. figure:: /home/andronikos/Projects/dev/wb-docs/en/img/date_range.gif
    :alt:

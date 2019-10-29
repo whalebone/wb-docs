@@ -39,7 +39,7 @@ How to search for audit/block events.
   a user clicks is disabled from the graph. This can aid the process of
   having a basic overview of the traffic's qualities.
 
-.. figure:: /home/andronikos/Projects/dev/wb-docs/en/img/block_graph.gif
+.. figure:: .img/block_graph.gif
    :alt: 
 
 For more advanced usage a query can be issued:
@@ -52,7 +52,7 @@ For more advanced usage a query can be issued:
 
 This query updates the content of the whole dashboard.
 
-.. figure:: /home/andronikos/Projects/dev/wb-docs/en/img/request_ip.gif
+.. figure:: .img/request_ip.gif
    :alt: 
 
 .. _header-n173:
@@ -69,9 +69,9 @@ the search field.
 
 **In the following example the data are animized so a reader could
 consider that instead of the previewed hash value, an IP address is
-used**
+used**.
 
-.. figure:: /home/andronikos/Projects/dev/wb-docs/en/img/request_ip.gif
+.. figure:: .img/request_ip.gif
    :alt: 
 
 .. _header-n178:
@@ -87,13 +87,13 @@ To name a few: ``legal`` , ``malware``, ``c&c``, ``blacklist``,
 A *simple* alternative could be to click on the bar that matches the
 detected threat and filter only the specific type.
 
-.. figure:: /home/andronikos/Projects/dev/wb-docs/en/img/phising.gif
+.. figure:: .img/phising.gif
    :alt: 
 
 Another approach could be to click on the filter icon and in this way
 specify the desired category, as can be seen in the next image.
 
-.. figure:: /home/andronikos/Projects/dev/wb-docs/en/img/cc.gif
+.. figure:: .img/cc.gif
    :alt: 
 
 .. _header-n186:
@@ -109,5 +109,5 @@ How to change the range of the available data
   in text in the ``YYYY.MM.DD HH:mm:ss`` format or by using the builtin
   tool that provides quick suggestions.
 
-.. figure:: /home/andronikos/Projects/dev/wb-docs/en/img/date_range.gif
+.. figure:: .img/date_range.gif
    :alt:

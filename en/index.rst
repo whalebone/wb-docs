@@ -12,5 +12,6 @@ More information about the product and company is available on the official `Wha
    deployment
    quickstart
    local_resolver
+   data_analysis
    enduser
 

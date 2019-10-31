@@ -1,4 +1,4 @@
-.. _header-n40:
+.. _header-n233:
 
 Data Analysis
 =============
@@ -7,7 +7,7 @@ Whalebone Portal (graphical user interface) gives the user number of
 possibilities how to analyze what is happening on the DNS resolvers and
 the network.
 
-.. _header-n43:
+.. _header-n236:
 
 Threats
 -------
@@ -28,7 +28,7 @@ the majority of the use cases but there is no hard limit as the
 available search engine is **full-text** and *any* query can be compiled
 impromptu.
 
-.. _header-n47:
+.. _header-n240:
 
 How to search for audit/block events.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -52,10 +52,7 @@ For more advanced usage a query can be issued:
 
 This query updates the content of the whole dashboard.
 
-.. figure:: ./img/request_ip.gif
-   :alt: 
-
-.. _header-n62:
+.. _header-n253:
 
 How to search for events based on specific IP address.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -67,14 +64,14 @@ portal.
 A more advanced use case could be to directly insert the IP address in
 the search field.
 
-**In the following example the data are animized so a reader could
+.. tip:: In the following example the data are anonymized so a reader could
 consider that instead of the previewed hash value, an IP address is
-used**.
+used.
 
 .. figure:: ./img/request_ip.gif
    :alt: 
 
-.. _header-n67:
+.. _header-n258:
 
 How to search for events based on specific threat category.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -96,13 +93,13 @@ specify the desired category, as can be seen in the next image.
 .. figure:: ./img/cc.gif
    :alt: 
 
-.. _header-n75:
+.. _header-n266:
 
 How to change the date range of the available data
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-| The date range of the data that can be previewed in the portal can change
-  in multiple ways.
+| The date range of the data that can be previewed in the portal can
+  change in multiple ways.
 | The following image show three of the available ways. These can be
   summarized as simply by clicking on the current date that
   automatically transcribes to the current time, by inserting the date
@@ -112,7 +109,7 @@ How to change the date range of the available data
 .. figure:: ./img/date_range.gif
    :alt: 
 
-.. _header-n79:
+.. _header-n269:
 
 DNS Traffic
 -----------
@@ -122,7 +119,7 @@ been logged on the resolver. It contains all the queries along with some
 additional information such as the type, the answer and the TTL (time to
 live) of the answer.
 
-   The data are subject to de-duplication. This means that the resolver
+.. tip:: The data are subject to de-duplication. This means that the resolver
    logs only unique combinations of query, query type and answer per 24
    hour time frame. For this reason, a query might not be available on
    the portal even though it has been resolved.
@@ -130,7 +127,7 @@ live) of the answer.
 Below, some of the most useful filtering options of the available data
 will be described.
 
-.. _header-n83:
+.. _header-n274:
 
 How to view all queries of a specific type
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -146,7 +143,7 @@ could be in the form ``query_type:<type>.`` The possible types are:
 ``A``,\ ``AAAA``, ``CNAME``, ``MX``, ``NS``, ``PTR``, ``RRSIG``,
 ``SPF``, ``SRV`` and\ ``TXT``.
 
-.. _header-n86:
+.. _header-n279:
 
 How to view all answers of a specific type 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -158,7 +155,7 @@ issuing a query in the form ``answer:<answer_type>``.
 .. figure:: ./img/answer.gif
    :alt: 
 
-.. _header-n87:
+.. _header-n282:
 
 How to search for a domain
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -172,7 +169,16 @@ specific domain based on the available domain levels. The acceptable
 search fields are ``domain_l1:<domain_l1>`` and
 ``domain_l2:<domain_l2>``.
 
-.. _header-n88:
+.. _header-n285:
+
+How to change the date range of the available data
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Please refer to `How to change the date range of the available
+data <http://docs.whalebone.io/en/latest/data_analysis.html#how-to-change-the-date-range-of-the-available-data>`__
+of the Threats section.
+
+.. _header-n287:
 
 How to view DGA (Domain Generation Algorithm) indications
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

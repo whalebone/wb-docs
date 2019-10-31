@@ -100,7 +100,7 @@ How to change the date range of the available data
 
 | The date range of the data that can be previewed in the portal can
   change in multiple ways.
-| The following image show three of the available ways. These can be
+| The following image shows three of the available ways. These can be
   summarized as simply by clicking on the current date that
   automatically transcribes to the current time, by inserting the date
   in text in the ``YYYY.MM.DD HH:mm:ss`` format or by using the builtin

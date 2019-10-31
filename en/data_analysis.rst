@@ -65,8 +65,8 @@ A more advanced use case could be to directly insert the IP address in
 the search field.
 
 .. tip:: In the following example the data are anonymized so a reader could
-consider that instead of the previewed hash value, an IP address is
-used.
+         consider that instead of the previewed hash value, an IP address is
+         used.
 
 .. figure:: ./img/request_ip.gif
    :alt: 

@@ -72,27 +72,40 @@ In any policy there are several options to be defined:
   * Allows to apply actions Audit (logging) or Block (redirect to blocking page) on resolution of malicious domains
   * Individual actions could be turned off - e.g. turn off the blocking for testing purposes
   * The slider values define the probability that the particular domain is malicious on the scale from 0 to 100 (0 is a safe domain, 100 is malicious)
+  * There are available preconfigured policies that cover the most usual cases. This cases are: `Don't Block`, `Block carefully` and `Block strictly`.
 
 .. tip:: The default threshold for blocking is set to ``80`` which is safe even for larger network with liberal policy towards the users. For more restrictive policy we suggest setting threshold for blocking to ``70-75``, in very restrictive networks even down to ``60``. Audit is purely informative, however setting the threshold too low can result in too many logged incidents.
 
-* **Lists of blocked domains**
+* **Blacklist Feeds**
 
   * Lists of domains, that has to be blocked
-  * Such domains do not have to be malicious, it could be just domains blokced based on legal requirements
+  * Such domains do not have to be malicious, it could be just domains blocked based on legal requirements
   * These lists are regularly updated by Whalebone
+
+* **Types of threats**
+
+  * The default behaviour is to include all types of threats
+  * The drop-down menu allows the user to choose a more granular category of the threats they would like to <>. The available catecories are: `malware`, `phishing`, `c&c`, `blacklist` and `exploit`.
+
+.. image:: ./img/security-policies.gif
+   :align: center
 
 * **Whitelist**
 
   * Domains that won't be blocked at any time
   * The whitelist is applied to the domain and all of the subdomains, e.g.: whitelisted domain ``whalebone.io`` will also whitelist ``docs.whalebone.io``, but not vice versa
+  * The list can be configured on the `Blacklist/ Whitelist` tab
 
 * **Blacklist**
 
   * Domains that will be blocked at all times (higher priority has only **Whitelist**)
   * The blacklist is applied to the domain and all of the subdomains, e.g.: whitelisted domain ``malware.ninja`` will also blacklist ``super.malware.ninja``, but not vice versa 
+  * The list can be configured on the `Blacklist/ Whitelist` tab.
 
-.. image:: ./img/lrv2-policies.gif
+.. image:: ./img/whitelist.gif
    :align: center
+
+.. warning:: After creating a blacklist or a whitelist, it should be assugned to the specific security policy, or else the changes will not take effect.
 
 .. note:: Changes will be applied to the resolvers in approx. 30 minutes. Saved configuration is used during preparation of the threat data package for the resolvers that download and apply those packages at regular intervals.
 
@@ -358,6 +371,7 @@ Agent's actions can be invoked using a proxy bash script present at path **/var/
 	-------------------------------
 	Changes for resolver
 	New value for label: resolver-1.1.1
+	
 	  	Old value for label: resolver-1.0.0
 	-------------------------------
 	

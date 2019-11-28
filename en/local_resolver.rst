@@ -84,8 +84,8 @@ In any policy there are several options to be defined:
 
 * **Types of threats**
 
-  * The default behaviour is to include all types of threats
-  * The drop-down menu allows the user to choose a more granular category of the threats they would like to <>. The available catecories are: `malware`, `phishing`, `c&c`, `blacklist` and `exploit`.
+  * The default behavior is to include all types of threats
+  * The drop-down menu allows the user to choose a more granular category of the threats they would like to audit or block. The available categories are: `malware`, `phishing`, `c&c`, `blacklist` and `exploit`.
 
 .. image:: ./img/security-policies.gif
    :align: center
@@ -105,7 +105,7 @@ In any policy there are several options to be defined:
 .. image:: ./img/whitelist.gif
    :align: center
 
-.. warning:: After creating a blacklist or a whitelist, it should be assugned to the specific security policy, or else the changes will not take effect.
+.. warning:: After creating a blacklist or a whitelist, it should be assigned to the specific security policy, or else the changes will not take effect.
 
 .. note:: Changes will be applied to the resolvers in approx. 30 minutes. Saved configuration is used during preparation of the threat data package for the resolvers that download and apply those packages at regular intervals.
 

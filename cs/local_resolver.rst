@@ -22,7 +22,7 @@ Lokální resolver předpokládá, že bude provozovován na dedikovaném stroji
   * ext4
   * xfs pouze s podporou d_type (ftype=1)
 
-* **Doporučené hardwarové zdroje** pro běžný provoz (podporujeme fyzické i virtuální stroje):
+* **Minimální hardwarové požadavky** (podporujeme fyzické i virtuální stroje):
 
   * 2 CPU jádra
   * 4 GB RAM
@@ -36,8 +36,6 @@ Lokální resolver předpokládá, že bude provozovován na dedikovaném stroji
   * Dostupnost softwarových repozitářů pro daný operační systém
 
 .. warning:: Bez dostupných portů 8443 a 443 na výše zmíněné destinace instalace resolveru vůbec neproběhne (instalační skript bude přerušen).
-
-S doporučenými hardwarovými prostředky zajistí resolver stabilní a rychlý DNS překlad. Resolver je možné provozovat i s výrazně menšími prostředky, ale to je doporučeno pouze pro testovací účely.
 
 .. note:: Kvůli odhadu sizingu pro větší podnikové a ISP sítě kontaktujte svého dodavatele. Nárůst systémových požadavků oproti standardním DNS resolverům (BIND, Unbound, apod.) se dá očekávat přibližně dvojnásobný na úrovni spotřeby RAM i zatížení CPU.
 

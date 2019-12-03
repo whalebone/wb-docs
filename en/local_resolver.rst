@@ -22,7 +22,7 @@ Local resolver is supported on dedicated (hardware or virtual) machine running a
   * ext4
   * xfs only with d_type support (ftype=1)
 
-* **Recommended hardware sizing** for usual traffic (physical or virtual):
+* **Minimum hardware sizing** (physical or virtual):
 
   * 2 CPU cores
   * 4 GB RAM
@@ -36,8 +36,6 @@ Local resolver is supported on dedicated (hardware or virtual) machine running a
   * Reachability of software repositories for the operating system
 
 .. warning:: Without communication on port 8443 and 443 to the domains listed above the resolver won't be installed at all (the installation script will abort).
-
-With recommended hardware resources the resolver will provide stable and fast DNS resolution and filtering. Resolver can be run with significantly lower resources, but that is recommended just for low volume testing environments.
 
 .. note:: Should you need sizing estimation for large ISP or Enterprise network contact Whalebone. Whalebone local resolver will need approx. twice the RAM and CPU than usual resolver (BIND, Unbound). 
 

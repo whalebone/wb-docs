@@ -503,7 +503,9 @@ Define a list of IP ranges that will be allowed to use this DNS resolver. Querie
   modules = {'policy', 'view'}
 
   --define list of ranges to allow
+  --127.0.0.1 should always be allowed
   allowed = {
+    '127.0.0.1/32',
     '10.10.20.5/32',
     '10.30.10.0/24'
   }

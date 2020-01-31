@@ -48,7 +48,7 @@ For more advanced usage a query can be issued:
 
 -  ``action: audit`` in order to filter the auditing events
 
--  ``action: whitelist`` in order to view the Block page redirects
+-  ``action: allow`` in order to view the Block page redirects
 
 This query updates the content of the whole dashboard.
 

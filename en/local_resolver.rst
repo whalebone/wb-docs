@@ -572,7 +572,7 @@ Disable DNSSEC globally
 Uninstalling a local resolver
 =============================
 
-In order to uninstall a resolver and all Whalebone configuration files the following steps should be followed:
+In order to uninstall a resolver and remove all Whalebone configuration files the following steps should be followed:
 
 .. warning:: Before starting the process it should be noted that all the individual components that support the resolver functionality are being executed as docker containers. Steps 1 and 2 apply only in case the host server is **dedicated** and **no other services** are running as containers. Should the situation be different, please contact us and we will provide an up to date list of the containers that should be removed.
 

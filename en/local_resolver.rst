@@ -569,3 +569,37 @@ Disable DNSSEC globally
 
 Outgoing IP address
 -------------------
+
+
+Uninstalling a local resolver
+=============================
+
+In order to uninstall a resolver and all Whalebone configuration files the following steps should be followed:
+
+Before starting the process it should be noted that all the individual components that support the resolver functionality are being executed as docker containers.
+Steps 1 and 2 apply only in case the host server is **dedicated** and **no other services** are running as containers. Should the situation be different, please contact us and we will provide an up to date list of the containers that should be removed.
+
+1. Stop and remove all the running docker containers:
+
+   ``docker rm -f lr-agent && docker rm -f $(docker ps -q)``
+
+2. Uninstall Docker:
+
+   Please follow the instructions for the applicable operating system:
+
+   -  `CentOS < https://docs.docker.com/install/linux/docker-ce/centos/#uninstall-docker-engine---community>`__
+
+   -  `Red Hat < https://docs.docker.com/install/linux/docker-ce/centos/#uninstall-docker-engine---community>`__
+
+   -  `Debian < https://docs.docker.com/install/linux/docker-ce/debian/#uninstall-docker-engine---community>`__
+
+   -  `Ubuntu < https://docs.docker.com/install/linux/docker-ce/ubuntu/#uninstall-docker-engine---community>`__
+
+1. Remove all resolver configuration files, log files and related data:
+
+   .. code:: 
+
+      rm -rf /etc/whalebone 
+      rm -rf /var/whalebone
+      rm -rf /var/log/whalebone
+      rm -rf /var/lib/kres

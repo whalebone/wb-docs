@@ -574,12 +574,11 @@ Uninstalling a local resolver
 
 In order to uninstall a resolver and all Whalebone configuration files the following steps should be followed:
 
-Before starting the process it should be noted that all the individual components that support the resolver functionality are being executed as docker containers.
-Steps 1 and 2 apply only in case the host server is **dedicated** and **no other services** are running as containers. Should the situation be different, please contact us and we will provide an up to date list of the containers that should be removed.
+.. warning:: Before starting the process it should be noted that all the individual components that support the resolver functionality are being executed as docker containers. Steps 1 and 2 apply only in case the host server is **dedicated** and **no other services** are running as containers. Should the situation be different, please contact us and we will provide an up to date list of the containers that should be removed.
 
 1. **Stop and remove all the running docker containers**:
 
-   ..code::
+   .. code::
 
    		docker rm -f lr-agent && docker rm -f $(docker ps -q)
 

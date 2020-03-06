@@ -143,7 +143,7 @@ Available configuration options:
 
 * **Advanced DNS configuration**
 
-  * Text area for `complete Knot Resolver configuration <https://knot-resolver.readthedocs.io/en/stable/daemon.html#configuration>`_
+  * Text area for `complete Knot Resolver configuration <https://knot-resolver.readthedocs.io/en/stable/config-overview.html>`_
   * Supports Lua scripting
   * Faulty configuration can impact stability, performance or security functions of the resolver
 

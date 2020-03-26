@@ -12,8 +12,8 @@ Lokální resolver předpokládá, že bude provozovován na dedikovaném stroji
 
 * **Podporované operační systémy** (64-bitové, serverové edice následujících distribucí):
 
-  * Red Hat Enterprise Linux 7
-  * CentOS 7
+  * Red Hat Enterprise Linux 7, 8
+  * CentOS 7, 8
   * Debian 9, 10
   * Ubuntu 16.04, 18.04
 

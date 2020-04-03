@@ -31,11 +31,10 @@ Local resolver is supported on dedicated (hardware or virtual) machine running a
 * **Network setup requirements** (local resolver needs the following ports opened):
   
   * ``TCP+UDP/53`` into the internet destinations if responsible for the resolution
-  * ``TCP/8443`` to ``resolverapi.whalebone.io`` 
-  * ``TCP/443`` to ``logger.whalebone.io, agentapi.whalebone.io, portal.whalebone.io, index.docker.io, registry-1.docker.io, data.iana.org``
+  * ``TCP/443`` to ``resolverapi.whalebone.io``, ``logger.whalebone.io``, ``agentapi.whalebone.io``, ``portal.whalebone.io``, ``index.docker.io``,``registry-1.docker.io``,`` data.iana.org``
   * Reachability of software repositories for the operating system
 
-.. warning:: Without communication on port 8443 and 443 to the domains listed above the resolver won't be installed at all (the installation script will abort).
+.. warning:: Without communication on port 443 to the domains listed above the resolver won't be installed at all (the installation script will abort).
 
 .. note:: Should you need sizing estimation for large ISP or Enterprise network contact Whalebone. Whalebone local resolver will need approx. twice the RAM and CPU than usual resolver (BIND, Unbound). 
 

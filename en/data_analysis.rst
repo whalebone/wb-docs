@@ -44,13 +44,22 @@ How to search for audit/block events.
 
 For more advanced usage a query can be issued:
 
--  ``action: block`` in order to filter the blocking events
+-  ``action: block`` in order to filter the blocked events
 
--  ``action: audit`` in order to filter the auditing events
+-  ``action: audit`` in order to filter the audited events
 
--  ``action: allow`` in order to view the Block page redirects
+-  ``action: allow`` in order to view the Block page bypasses
 
 This query updates the content of the whole dashboard.
+
+.. _header-n300:
+
+How to search for a domain
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In order to search for a domain's instances in the events, the easiest way
+is to click on it in the provided log history. Alternatively a query
+could be issued in the search engine with the term: ``domain:<domain>``
 
 .. _header-n253:
 
@@ -61,8 +70,8 @@ A filtering of an IP address is possible by clicking on the specific
 ``Source IP`` bar and in this way filtering the content of the whole
 portal.
 
-A more advanced use case could be to directly insert the IP address in
-the search field.
+A more advanced use case could be to directly search for IP address in
+the search field and use the operator ``client_ip`` such as: ``client_ip:<IP address>``.
 
 .. tip:: In the following example the data are anonymized so a reader could
          consider that instead of the previewed hash value, an IP address is
@@ -79,7 +88,7 @@ How to search for events based on specific threat category.
 There are multiple threat categories available.
 
 To name a few: ``legal`` , ``malware``, ``c&c``, ``blacklist``,
-``phishing`` and ``exploit``.
+``phishing``, ``coinminer``, ``spam``, and ``compromised``.
 
 A *simple* alternative could be to click on the bar that matches the
 detected threat and filter only the specific type.
@@ -151,6 +160,7 @@ How to view all answers of a specific type
 The answers can be filtered by selecting the specific bar in the
 respective ``Answers`` field. Additionally, the answers can be viewed by
 issuing a query in the form ``answer:<answer_type>``.
+Useful answer types are ``NXDOMAIN`` or ``SERVFAIL``.
 
 .. figure:: ./img/answer.gif
    :alt: 
@@ -185,7 +195,49 @@ How to view DGA (Domain Generation Algorithm) indications
 
 Whalebone provides a view of indicators of DGA instances. These
 indications can be accessed by using the filter icon and selecting DGA
-as can be seen below.
+as can be seen below. Alternatively the query ``dga.class:1`` can be issued.
 
 .. figure:: ./img/dga.gif
    :alt:
+
+.. _header-n301:
+
+Other Tips and Tricks
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Search operators (wildcard (*), logical AND, logical OR) can also be used to improve the search result precision.
+It should be noted that some requested fields in ``DNS traffic`` and ``Threats`` are slightly different.
+
+
+Example queries are:
+
+- All queries from IP addresses that start with 10:
+
++-----------------------------+-----------------------------+
+|DNS Traffic                  |   Threats                   |
++=============================+=============================+
+| ``client: 10.*``            |   ``client_ip: 10.*``       |
++-----------------------------+-----------------------------+ 
+ 
+ - All queries for domain whalebone.io:
+
++----------------------------------------------------------------------+----------------------------------------+
+|DNS Traffic                                                           |   Threats                              |
++======================================================================+========================================+
+| ``query: whalebone.io.``  (please also include the dot at the end)   |   ``domain: whalebone.io``             |
++----------------------------------------------------------------------+----------------------------------------+ 
+
+- Queries from IP address 1.2.3.4 for whalebone.io:
+
++--------------------------------------------------+---------------------------------------------------+
+|DNS Traffic                                       |   Threats                                         |
++==================================================+===================================================+
+| ``client: 1.2.3.4 AND query: whalebone.io.``     |   ``client_ip: 1.2.3.4 AND domain: whalebone.io`` |
++--------------------------------------------------+---------------------------------------------------+ 
+
+
+.. tip:: Filtering operators are placed statically to the URL address. Therefore, you can create your set of
+	filters in advance (such as view on individual IPs) and to use them when necessary. Afterwards, you
+	can place them to your CRM for the specific user’s account and to access the filtered view immediately. It
+	will help saving your time when customer asks for the support as you can immediately open their
+	details.

@@ -25,6 +25,7 @@ Public network ranges
 
 Public network range definition serves to distinguish individual customers and their users. It is necessary to include all the public network ranges that will be used by DNS resolver as well as the users browsing the internet. The definition is used to customize the block page appearance (described later).
 Single customer can manage more network ranges, such ranges can be assigned to localities to easily distinguish between logical network zones in DNS traffic audit and incidents.
+The networks can be configured under ``Sinkhole > Networks``.
 
 .. image:: ./img/client_networks.png
    :align: center

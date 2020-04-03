@@ -219,7 +219,7 @@ Example queries are:
 | ``client: 10.*``            |   ``client_ip: 10.*``       |
 +-----------------------------+-----------------------------+ 
  
- - All queries for domain whalebone.io:
+- All queries for domain whalebone.io:
 
 +----------------------------------------------------------------------+----------------------------------------+
 |DNS Traffic                                                           |   Threats                              |

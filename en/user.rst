@@ -34,7 +34,7 @@ to shape their final role. Below are described the different roles and the actio
 **View DNS Traffic**            ☑                                                    ☑             ☑
 **View Whitelists/Blacklists**                   ☑                                   ☑             ☑
 **Edit Whitelists/Blacklists**                   ☑                                                 ☑
-**View Security Policies**                       ☑                                   ☑             ☑
+**View Security Policies**                                                           ☑             ☑
 **Edit Security Policies**                                                                         ☑
 **View Resolver Configuration**                                                      ☑             ☑
 **Edit Resolver Configuration**                                                                    ☑

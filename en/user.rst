@@ -86,7 +86,7 @@ Whalebone's Portal. The following settings can be configured:
 Password Policy
 ~~~~~~~~~~~~~~~
 
-The following password setting can be configured:
+The following password settings can be configured:
 
 -  **Expiration Time**: Number of days before a password needs to be
    changed.

@@ -14,7 +14,9 @@ More information about the product and company is available on the official `Wha
    local_resolver
    data_analysis
    reporting
+   user
    enduser
+
 
 
 

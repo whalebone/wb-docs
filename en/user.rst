@@ -1,7 +1,10 @@
 .. _header-n18:
 
-Users
-=====
+User/Organization Management
+============================
+
+User Management
+---------------
 
 The users can be managed under the respective tab on the User Menu.
 
@@ -48,14 +51,14 @@ to shape their final role. Below are described the different roles and the actio
 .. _header-n748:
 
 Organization Settings
-=====================
+---------------------
 
 The Organization Setting can be found under the User Menu.
 
 .. _header-n750:
 
 Portal Access Policy
---------------------
+~~~~~~~~~~~~~~~~~~~~
 
 Portal Access Policy defines security mechanism for users accessing
 Whalebone's Portal. The following settings can be configured:
@@ -81,7 +84,9 @@ Whalebone's Portal. The following settings can be configured:
 .. _header-n766:
 
 Password Policy
----------------
+~~~~~~~~~~~~~~~
+
+The following password setting can be configured:
 
 -  **Expiration Time**: Number of days before a password needs to be
    changed.

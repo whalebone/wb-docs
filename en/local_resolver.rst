@@ -360,27 +360,6 @@ Agent's actions can be invoked using a proxy bash script present at path **/var/
 
 	{'resolver': {'status': 'success'}
 	
-* **list** - lists the awaiting command and the changes that would be made to the containers specified in the awaiting action, this action is intended for human check hence it's format 
-	* Parameters: None, Example: ./cli.sh list
-	* Output: 
-.. code-block:: lua
-
-	-------------------------------
-	Changes for resolver
-	New value for label: resolver-1.1.1
-	
-	  	Old value for label: resolver-1.0.0
-	-------------------------------
-	
-* **run** - executes the awaiting command
-	* Parameters: none, Example: ./cli.sh run
-.. sourcecode:: js
-
-	{'resolver': {'status': 'success'}
-
-* **delete_request** - deletes the awaiting request
-	* Parameters: none, Example: ./cli.sh delete_request
-.. code-block:: lua
 
 	Pending configuration request deleted.
 	
@@ -490,11 +469,33 @@ The actions of upgrade and create use the docker-compose template present in the
 
 The bash script should be invoked like this: **./cli.sh action param1 param2 param3**. Action is the action name and parameters are the action parameters. Only actions for container stop, remove and upgrade use these and specify what containers should be affected by the respective action.
 
-The agent's default option is to execute given actions immediately. It is however possible to enable persistence of requests
-in order to confirm their execution. This gives the user control over when and what gets executed. To enable the persistence 
-of requests set env variable **CONFIRMATION_REQUIRED** to **true**. To list changes the request introduces
-the cli option **list** option should be used. To execute the request use cli option **run**. There can only be one persisted request.
-If a new request comes while some request is persisted it will be overwritten. To delete waiting request use cli option **delete_request**. The actions that can be persisted are: **upgrade**, **create** and **suicide**.
+Strict mode
+------------------
+The agent's default option is to execute actions from the cloud management immediately. It is however possible to enable manual confirmation of requests. This gives the administrator control over when and what gets executed. To enable the resolver Strict mode, please create a ticket to Whalebone support.
+
+To list changes the request introduces the cli option **list** option should be used. To execute the request use cli option **run**. There can only be one  request pending in the queue. New request from the cloud will ovewrite the previous one, but the new one holds the full desired state anyway. To delete waiting request use cli option **delete_request**. The actions that can be persisted are: **upgrade**, **create** and **suicide**. Please see examples of the CLI command usage.
+
+* **list** - lists the awaiting command and the changes that would be made to the containers specified in the awaiting action, this action is intended for human check hence it's format 
+	* Parameters: None, Example: ./cli.sh list
+	* Output: 
+.. code-block:: lua
+
+	-------------------------------
+	Changes for resolver
+	New value for label: resolver-1.1.1
+	
+	  	Old value for label: resolver-1.0.0
+	-------------------------------
+	
+* **run** - executes the awaiting command
+	* Parameters: none, Example: ./cli.sh run
+.. sourcecode:: js
+
+	{'resolver': {'status': 'success'}
+
+* **delete_request** - deletes the awaiting request
+	* Parameters: none, Example: ./cli.sh delete_request
+.. code-block:: lua
 
 
 Knot Resolver - Tips & Tricks

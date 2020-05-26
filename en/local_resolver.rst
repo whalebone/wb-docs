@@ -377,6 +377,12 @@ Agent's actions can be invoked using a proxy bash script present at path **/var/
 .. sourcecode:: js
 
 	{'resolver': {'status': 'success'}
+
+* **delete_request** - deletes the awaiting request
+	* Parameters: none, Example: ./cli.sh delete_request
+.. code-block:: lua
+
+	Pending configuration request deleted.
 	
 * **updatecache** - forces the update of resolver's IoC cache (which is used for blocking), this action should be done to manually force the update and refresh of the domains present in the malicous domain cache
 	* Parameters: None
@@ -483,6 +489,12 @@ Each of those actions execute similarly named actions and the status of that act
 The actions of upgrade and create use the docker-compose template present in the agent container to create/upgrade the desired container. This template is mounted in the volume **/etc/whalebone/agent** if the user decides to change it. However this change needs to be done also to the template present at **portal.whalebone.io**, if not than the local changes will be overwritten from the cloud during next upgrade. 
 
 The bash script should be invoked like this: **./cli.sh action param1 param2 param3**. Action is the action name and parameters are the action parameters. Only actions for container stop, remove and upgrade use these and specify what containers should be affected by the respective action.
+
+The agent's default option is to execute given actions immediately. It is however possible to enable persistence of requests
+in order to confirm their execution. This gives the user control over when and what gets executed. To enable the persistence 
+of requests set env variable **CONFIRMATION_REQUIRED** to **true**. To list changes the request introduces
+the cli option **list** option should be used. To execute the request use cli option **run**. There can only be one persisted request.
+If a new request comes while some request is persisted it will be overwritten. To delete waiting request use cli option **delete_request**. The actions that can be persisted are: **upgrade**, **create** and **suicide**.
 
 
 Knot Resolver - Tips & Tricks

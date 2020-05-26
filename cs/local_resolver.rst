@@ -362,6 +362,13 @@ Akce, které provádí agent, je možné volat pomocí proxy bash skriput, kter�
 
 	{'resolver': {'status': 'success'}
 
+* **delete_request** - odstraní čekající příkaz
+	* Parametry: žádné, Příklad: ./cli.sh delete_request
+	* Výstup:
+.. code-block:: lua
+
+	Pending configuration request deleted.
+
 * **updatecache** - vynutí update IoC cache (používané k blokaci). Tato akce je určena pro manuální katualizaci blokovaných domén mimo peroidický interval
 	* Parametry: žádné
 	* Výstup:
@@ -467,3 +474,5 @@ Každý z představených příkazů provádí stejně pojmenovanou akci. Status
 Akce pro upgrade a vytvoření kontejnerů používají docker-compose, který je možné najít v kontejneru agenta, jako konfiguraci pro provádění těchto akcí. Tento soucor je připnutý v adresáři **/etc/whalebone/agent** pokud se uživatel rozhodne ho upravovat. Všechny změny musí být zaneseny i do vzoru na adrese **portal.whalebone.io**. Bez nich budou tyto lokální změny přepsány při další akci manipulující s tímto souborem. 
 
 Bash skript by měl výt volán takto: **./cli.sh action param1 param2 param3**. Action je jméno akce a jednotlivé parametry jsou parametry této akce. Pouze akce pro zastavení, odstranění a upgradování kontejnerů tyto parametry používají. 
+
+Ve výchozím nastavení agent provádí všechny změny okamžitě. Je ale možné nastavit ukládání příkazů a jejich následné ruční provádění. Díky této možnosti je možné získat větší kontrolu nad tím, které akce agent provádí. Pro zapnutí této funkcionality je nutné nastavti proměnnou prostředí **CONFIRMATION_REQUIRED** na hodnotu **true**. Pro zobrazení změn je možné použít cli akci **list**. Pro provedení uložené akce je nutné využít cli možnosti **run**. Uložený příkaz může být právě jeden, pokud přijde další, nový přepíše ten starý. Pro manuální smazání čekajícího příkazu je možné využít akci **delete_request**. Akce, které mohou být uloženy touto možností, jsou: **upgrade**, **create** a **suicide**.

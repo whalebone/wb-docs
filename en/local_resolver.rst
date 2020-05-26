@@ -496,6 +496,7 @@ To list changes the request introduces the cli option **list** option should be 
 * **delete_request** - deletes the awaiting request
 	* Parameters: none, Example: ./cli.sh delete_request
 .. code-block:: lua
+	Pending configuration request deleted.
 
 
 Knot Resolver - Tips & Tricks

@@ -182,7 +182,7 @@ The setting applies per resolver and can be configured under **Resolvers** > ``<
 
 The policies can be applied by adding IP ranges in the available input form:
 
-.. image:: ./img/add-policy.png
+.. image:: ./img/add-policy.PNG
    :align: center
 
 In order to provide a get a better understanding let's consider an example with the network range ``10.10.0.0/16``. 
@@ -190,29 +190,30 @@ We have created 3 different policies:
 
 * **Default**: the policy that we want to apply to the whole network, this is the most generic policy
 
-.. image:: ./img/Default.png
+.. image:: ./img/Default.PNG
    :align: center
 
 .. note:: The default policy is applied in cases where a more granular policy for a subnet is not defined. 
 
 * **Exception**: a policy that must be applied to a specific segment in the network which will have all security and content filtering disabled.
 
-.. image:: ./img/exception.png
+.. image:: ./img/exception.PNG
    :align: center
 
 * **School**: a policy that we want to apply to 2 different subnets that have been assigned to school environments. In this case we have chosen to be more strict in the blocking.
 
-.. image:: ./img/schools.png
+.. image:: ./img/schools.PNG
    :align: center
 
 Let's summarize it the requirements in the following matrix:
 
-============= ===============================
-**Policy**    **Network**                    
-============= ===============================
-**Default**   10.10.0.0/16                   
-**Exception** 10.10.10.0/24                  
-**School**    10.10.20.0/24 and 10.10.40.0.24
+========== ===============================
+**Policy** **Network**
+========== ===============================
+Default    10.10.0.0/16
+Exception  10.10.10.0/24
+School     10.10.20.0/24 and 10.10.40.0/24
+========== ===============================
 
 In the following capture the process of assigning the polcies is described:
 
@@ -224,6 +225,7 @@ In the following capture the process of assigning the polcies is described:
 
 In order to assign additional entries to an existing assignment, a new network range can be appended using `newline` as a separator.
 Building on the previous example, in case we wanted to add the subnet 10.10.30.0/24 to the Exception Policy:
+
 .. image:: ./img/add-range.gif
    :align: center
 

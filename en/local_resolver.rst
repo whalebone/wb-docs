@@ -172,6 +172,62 @@ Should you change any configuration related to the DNS resolution, you have to d
 .. image:: ./img/lrv2-deployconfig.gif
    :align: center
 
+Configure Policy per Network Segment
+--------------------
+Security and content polices can be asssigned in a granular manner to different segments of the network. 
+
+The setting applies per resolver and can be configured under **Resolvers** > ``<Name of the resolver>`` > **Policy Assignment** 
+
+.. note:: The configuration is **per resolver**. In case you want to apply the configuration to more than one resolvers, please modify all the necessary resolvers. 
+
+The policies can be applied by adding IP ranges in the available input form:
+
+.. image:: ./img/add-policy.png
+   :align: center
+
+In order to provide a get a better understanding let's consider an example with the network range ``10.10.0.0/16``. 
+We have created 3 different policies: 
+
+* **Default**: the policy that we want to apply to the whole network, this is the most generic policy
+
+.. image:: ./img/Default.png
+   :align: center
+
+.. note:: The default policy is applied in cases where a more granular policy for a subnet is not defined. 
+
+* **Exception**: a policy that must be applied to a specific segment in the network which will have all security and content filtering disabled.
+
+.. image:: ./img/exception.png
+   :align: center
+
+* **School**: a policy that we want to apply to 2 different subnets that have been assigned to school environments. In this case we have chosen to be more strict in the blocking.
+
+.. image:: ./img/schools.png
+   :align: center
+
+Let's summarize it the requirements in the following matrix:
+
+============= ===============================
+**Policy**    **Network**                    
+============= ===============================
+**Default**   10.10.0.0/16                   
+**Exception** 10.10.10.0/24                  
+**School**    10.10.20.0/24 and 10.10.40.0.24
+
+In the following capture the process of assigning the polcies is described:
+
+.. image:: ./img/policy-assignment.gif
+   :align: center
+
+
+.. note::  After adding the networks, and in order to take effect, you must click on `Save to resolver`. The changes will be then validated and a pop-up message will provide additional information.
+
+In order to assign additional entries to an existing assignment, a new network range can be appended using `newline` as a separator.
+Building on the previous example, in case we wanted to add the subnet 10.10.30.0/24 to the Exception Policy:
+.. image:: ./img/add-range.gif
+   :align: center
+
+
 Resolver agent
 ===================
 

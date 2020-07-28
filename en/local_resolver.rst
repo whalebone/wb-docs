@@ -173,7 +173,7 @@ Should you change any configuration related to the DNS resolution, you have to d
    :align: center
 
 Configure Policy per Network Segment
---------------------
+------------------------------------
 Security and content polices can be asssigned in a granular manner to different segments of the network. 
 
 The setting applies per resolver and can be configured under **Resolvers** > ``<Name of the resolver>`` > **Policy Assignment** 
@@ -205,7 +205,7 @@ We have created 3 different policies:
 .. image:: ./img/schools.PNG
    :align: center
 
-Let's summarize it the requirements in the following matrix:
+Let's summarize the requirements in the following matrix:
 
 ========== ===============================
 **Policy** **Network**
@@ -215,7 +215,7 @@ Exception  10.10.10.0/24
 School     10.10.20.0/24 and 10.10.40.0/24
 ========== ===============================
 
-In the following capture the process of assigning the polcies is described:
+In the following capture the process of assigning the policies is described:
 
 .. image:: ./img/policy-assignment.gif
    :align: center

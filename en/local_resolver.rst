@@ -196,7 +196,7 @@ We have created 3 different policies:
    :align: center
 
 
-.. note:: The default policy is applied in cases where a more granular policy for a subnet is not defined. 
+.. note:: The first policy that is defined acts as a **default** policy and is applied in cases where a more granular policy for a network range is not available. This policy is always on the top of the list, is marked with a special icon and cannot be deleted. 
 
 
 

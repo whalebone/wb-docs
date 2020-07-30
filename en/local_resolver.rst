@@ -185,25 +185,20 @@ The policies can be applied by adding IP ranges in the available input form:
 .. image:: ./img/add-policy.PNG
    :align: center
 
-In order to provide a get a better understanding let's consider an example with the network range ``10.10.0.0/16``. 
+In order to provide a better understanding let's consider an example with the network range ``10.10.0.0/16``. 
 We have created 3 different policies: 
 
 * **Default**: the policy that we want to apply to the whole network, this is the most generic policy
+* **Exception**: a policy that must be applied to a specific segment in the network which will have all security and content filtering disabled.
+* **School**: a policy that we want to apply to 2 different subnets that have been assigned to school environments. In this case we have chosen to be more strict in the blocking.
 
-.. image:: ./img/Default.PNG
+.. image:: ./img/policies-example.png
    :align: center
+
 
 .. note:: The default policy is applied in cases where a more granular policy for a subnet is not defined. 
 
-* **Exception**: a policy that must be applied to a specific segment in the network which will have all security and content filtering disabled.
 
-.. image:: ./img/exception.PNG
-   :align: center
-
-* **School**: a policy that we want to apply to 2 different subnets that have been assigned to school environments. In this case we have chosen to be more strict in the blocking.
-
-.. image:: ./img/schools.PNG
-   :align: center
 
 Let's summarize the requirements in the following matrix:
 

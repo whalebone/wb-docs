@@ -34,7 +34,7 @@ Lokální resolver předpokládá, že bude provozovován na dedikovaném stroji
   * ``TCP/443`` to ``resolverapi.whalebone.io``, ``logger.whalebone.io``, ``agentapi.whalebone.io``, ``transfer.whalebone.io``, ``portal.whalebone.io``, ``index.docker.io``, ``registry-1.docker.io``, ``data.iana.org``
   * Dostupnost softwarových repozitářů pro daný operační systém
 
-.. warning:: Bez dostupných portů 8443 a 443 na výše zmíněné destinace instalace resolveru vůbec neproběhne (instalační skript bude přerušen).
+.. warning:: Bez dostupného portu 443 na výše zmíněné destinace instalace resolveru vůbec neproběhne (instalační skript bude přerušen).
 
 .. note:: Kvůli odhadu sizingu pro větší podnikové a ISP sítě kontaktujte svého dodavatele. Nárůst systémových požadavků oproti standardním DNS resolverům (BIND, Unbound, apod.) se dá očekávat přibližně dvojnásobný na úrovni spotřeby RAM i zatížení CPU.
 

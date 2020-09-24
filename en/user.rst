@@ -24,29 +24,38 @@ The two types of users that are supported are:
    organization but can be assigned a role under a different Whalebone
    Portal tenant. e.g. resellers
 
-Each user can be assigned one or more roles which can be combined
-to shape their final role. Below are described the different roles and the actions that they are able to perform.
+.. tip:: Each user can be assigned one or more roles which can be combined to shape their final role.
 
-=============================== ================ =============== =================== ============= =========
-**Action**                      **Read Traffic** **List Editor** **API Credentials** **Read only** **Admin**
-=============================== ================ =============== =================== ============= =========
-**View Threat Data**            ☑                                                    ☑             ☑
-**View DNS Traffic**            ☑                                                    ☑             ☑
-**View Whitelists/Blacklists**                   ☑                                   ☑             ☑
-**Edit Whitelists/Blacklists**                   ☑                                                 ☑
-**View Security Policies**                                                           ☑             ☑
-**Edit Security Policies**                                                                         ☑
-**View Resolver Configuration**                                                      ☑             ☑
-**Edit Resolver Configuration**                                                                    ☑
-**View API Tokens**                                              ☑                   ☑             ☑
-**Generate API Tokens**                                          ☑                                 ☑
-**View Network Configuration**                                                       ☑             ☑
-**Edit Network Configuration**                                                                     ☑
-**View Alerts**                                                                      ☑             ☑
-**Edit Alerts**                                                                                    ☑
-**View Reports**                                                                     ☑             ☑
-**Edit Reports**                                                                                   ☑
-=============================== ================ =============== =================== ============= =========
+Below are described the different roles and the actions that they are able to perform.
+
+
+.. csv-table:: 
+   :align: left
+   :header: "Action", "Read Traffic", "List Editor", "Security policy Admin", "API Credentials", "Read only", "Operations Read Only", "DNS Admin", "Admin"
+
+   "**View Threat Data**", "☑", " ", " ", " ", "☑", " ", " ", "☑"
+   "**View DNS Traffic**", "☑", " ", " ", " ", "☑", " ", " ", "☑"
+   "**View Whitelists/Blacklists**", " ", "☑", "☑", " ", "☑", " ", " ", "☑"
+   "**Edit Whitelists/Blacklists**", " ", "☑", "☑", " ", " ", " ", " ", "☑"
+   "**View Security Policies**", " ", " ", "☑",  " ", "☑", " ", " ", "☑"
+   "**Edit Security Policies**", " ", " ", "☑", " ", " ", " ", " ", "☑"
+   "**View Resolver Configuration**", " ", " ", "☑", " ", "☑", "☑", "☑", "☑"
+   "**Edit Resolver Configuration**", " ", " ", "☑", " ", " ", " ", "☑", "☑"
+   "**View API Tokens**", " ", " ", " ", "☑", "☑", " ", " ", "☑"
+   "**Generate API Tokens**", " ", " ", " ", "☑", " ", " ", " ", "☑"
+   "**View Network Configuration**", " ", " ", "☑", " ", "☑", "☑", "☑", "☑"
+   "**Edit Network Configuration**", " ", " ", "☑", " ", " ", " ", "☑", "☑"
+   "**View Alerts**", " ", " ", " ", " ", "☑", " ", " ", "☑"
+   "**Edit Alerts**", " ", " ", " ", " ", " ", " ", " ", "☑"
+   "**View Reports**", " ", " ", " ", " ", "☑", " ", " ", "☑"
+   "**Edit Reports**", " ", " ", " ", " ", " ", " ", " ", "☑"
+
+
+
+
+
+                                                                                 
+  
 
 .. _header-n748:
 
@@ -80,6 +89,8 @@ Whalebone's Portal. The following settings can be configured:
 
    -  **CAPTCHA Threshold**: Number of unsuccessful login attempts
       before enabling the CAPTCHA verification.
+
+- **Multi Factor Authentication**: Require users to use a two factor authentication (2FA) application and enter additional tokens upon logging to the portal.
 
 .. _header-n766:
 

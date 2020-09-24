@@ -57,6 +57,8 @@ Successul run of the installation script is ended with the notification ```Final
 
 .. warning:: Local resolver is configured as an open resolver. It will respond to any request sent. This is quite comfortable in terms of availability of the services, but also could be a risk if the service is available from the outside networks. Please make sure you limit the access to the local resolver on port 53 (UDP and TCP) from the trusted networks only, otherwise it can be misused for various DoS attacks.
 
+.. tip:: The resolver's processes need to communicate on localhost. In case some firewall is in place please make sure that the traffic is allowed, i.e. ``iptables -A INPUT -s 127.0.0.1 -j ACCEPT``
+
 
 Security policies
 =================
@@ -229,7 +231,7 @@ Resolver agent
 ===================
 
 Command line interface
-------------------
+-----------------------
 Agent's actions can be invoked using a proxy bash script present at path **/var/whalebone/cli**. This script calls a python script which handles the execution of the following agent actions: 
 
 * **sysinfo** - returns the system status data in JSON format.

@@ -632,8 +632,51 @@ Disable DNSSEC globally
 
   trust_anchors.negative = { '.' }
 
+Disable DNSSEC validation for a domain
+--------------------------------------
+
+.. code-block:: lua
+
+  trust_anchors.set_insecure({ 'domain.com' })
 
 
+Disable Query Case Randomization
+--------------------------------
+
+.. code-block:: lua
+
+  policy.add(policy.suffix(policy.FLAGS('NO_0X20'), {todname('domain.com')}))
+
+
+Disable QNAME Minimization
+--------------------------
+
+.. code-block:: lua
+
+  policy.add(policy.suffix(policy.FLAGS('NO_MINIMIZE'), {todname('domain.com')}))
+
+Disable Domain caching
+----------------------
+
+.. code-block:: lua
+
+  policy.add(policy.suffix(policy.FLAGS('NO_CACHE'), {todname('domain.com')}))
+
+Enable Prometheus Metrics
+-------------------------
+
+The resolver can expose its metrics in Prometheus text format. 
+The following script enables the HTTP module and the respective ``/metrics`` endpoint is made available.
+
+More information and configuration options can be found on `Knot Resolver Documentation <https://knot-resolver.readthedocs.io/en/stable/modules-stats.html#prometheus-metrics-endpoint>`_
+
+.. code-block:: lua
+
+	modules.load('http')
+	function startHttp ()
+	net.listen('127.0.0.1', 8453, { kind = 'webmgmt' })
+	end
+	pcall(startHttp)
 
 Uninstalling a local resolver
 =============================

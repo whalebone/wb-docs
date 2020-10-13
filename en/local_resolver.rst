@@ -129,7 +129,7 @@ A full list of what each category includes can be found below:
 *	**Porn**: sexual and pornographic material
 *	**Gambling**: games and activities involving betting money
 *	**Weapons**: guns and weapon-related sites
-*  **Audio-video**: audio and video streaming services
+*   **Audio-video**: audio and video streaming services
 *	**Games**: online games and gaming websites
 *	**Chat**: instant messaging and chatting applications
 *	**Social-networks**: social networking sites and applications
@@ -188,6 +188,68 @@ Available configuration options:
 
    .. note:: Once the **Save** button is pressed changes in DNS resolution are saved and prepared to be deployed to target resolvers. The deployment itself has to be done from the **Resolvers** page. It is possible to do multiple changes and apply all of them at once to minimize the number of deployments to the resolver.
 
+Blocking Pages
+============================
+
+In the case of blocking access to a domain (due to security, content or regulatory reasons), the resolvers are answering to the clients with a specific IP address that leads to the Blocking pages. Should the clients initiate the HTTP(S) connections towards the blocked domain, they are presented with the custom Blocking page with different content based on the reason of the blocking. 
+
+Whalebone provides sample template pages for the Blocking Pages, however, they do not have to be followed and virtually every modification, branding and copywriting is possible. The template code is written to be compatible with the widest range of browsers to avoid problems with older versions.
+
+Different versions of the Blocking Pages can be assigned to different segments of the networks. In case of no explicit assignment, the first blocking page is used as a default-fallback.
+
+.. figure:: ./img/blocking-pages-overview.png
+   :alt: Blocking Pages Overview
+   :align: center
+   
+   Blocking Pages Overview
+
+For each version, based on the deployment details, there are four variants of the Blocking Pages that are available and can be configured:
+
+* **Security**: displayed when access is blocked due to security reasons
+* **Blacklist**: displayed when access is blocked by the Administrators
+* **Regulatory**: displayed when access is regulated due to law or court order
+* **Content**: displayed when access is blocked due to the content of the domain
+
+Furthermore, each version can have different localization options. The language that is going to be presented to the user is infered from the language of the browser that is visiting the Blocking Page. New locales can be seamlessly added as an option.
+
+.. figure:: ./img/blocking-pages.png
+   :alt: Blocking Pages Menu
+   :align: center
+   
+   Blocking Pages Menu
+
+For each Locale several options are available. In the example above, the English version has the following options:
+
+**1) Use Template**
+
+  When using the template option, the information that are provided as input to the following form are injected in the template code. This is the fastest and easiest way to customized the blocking pages.
+
+.. figure:: ./img/template.png
+   :alt: Template Customization
+   :align: center
+   
+   Template Customization
+
+**2) Set as default locale**
+
+  This option can customize the default language of the Blocking Pages. In case some browser does not declare its preferred language, the "Default" language acts as a fallback mechanism.
+
+**3) Delete the local**
+
+  In case the local is no longer needed, it can be deleted.
+
+
+Each of the Versions of the Blocking Page (Security, Blacklist, Regulatory, Content) can be customized in more detail by modifying the HTML code. Upon clicking on each version an editor is presented that allows for any required changes.
+
+The editor is also exposing a "Verification" interface which parses the final HTML code and checks for the enabled functionalities. The check is based on the ``id`` of the specific elements. More information and requirements for each functionality can be found by selecting the respective labels.
+
+.. note:: Each Version of the Blocking Page has unique characteristics that can be selected. For example, the Security Blocking Page can include a "Bypass" button which is not available in the respective Regulatory and Blackilist versions.
+
+
+After editing and saving the changes to the Blocking Pages it is important that they are applied to the individual resolvers. More information can be found :ref:`here<Configure Blocking Pages>`
+
+
+.. tip:: The Redirection Pages are served from a web server directly on the Resolvers. The pages are expected to be a single file so any additional resources (CSS, images, scripts) must be either embedded directly in the HTML code or served from a publicly accessible web server. The resolver does not provide any option to serve other content.
 
 Resolver management
 ===================
@@ -261,6 +323,27 @@ Building on the previous example, in case we wanted to add the subnet 10.10.30.0
 .. image:: ./img/add-range.gif
    :align: center
 
+
+Configure Blocking Pages
+-------------------------
+
+In a similar manner to the Security Policies, the Blocking Pages can be also assigned to particular network ranges.
+
+The first step is to select ``On-premise local resolver`` for the ``Blocking Page Location`` option. Two new fields are enabled where the IPv4 and IPv6 addresses of the Blocking Pages must be completed.
+
+.. tip:: The Blocking Pages are being hosted **directly** on the Resolvers so the IP addresses that are advertised to the clients must be used. The clients will then be redirected to the IP address of the resolver upon blocking. Please ensure that ports 80 and 443 are accessible on the firewall.
+
+For each IP range that is added, there is a drop-down menu for the Blocking Page that should be assigned. 
+
+.. figure:: ./img/blocking-page-assign.png
+   :alt: Assign Blocking Page to IP range
+   :align: center
+   
+   Assign Blocking Page to IP range
+
+.. important:: The first entry in the ``Policy Assignment`` is considered the Default/Fallback. In case a client accesses the resolver from an undefined IP range, the respective options will apply.
+
+.. note:: After making the necessary changes to the Blocking Page settings, please check whether the resolvers need to be re-deployed.  
 
 Upgrade/Rollback Resolver
 ------------------------------------

@@ -84,7 +84,18 @@ In any policy there are several options to be defined:
 * **Types of threats**
 
   * The default behavior is to include all types of threats
-  * The drop-down menu allows the user to choose a more granular category of the threats they would like to audit or block. The available categories are: `malware`, `phishing`, `c&c`, `blacklist` and `exploit`.
+  * The drop-down menu allows the user to choose a more granular category of the threats they would like to audit or block. The available categories are: `blacklist`, `c&c`, `coinminer`, `compromised`, `malware`, `phishing` and `spam`.
+
+A full list of what each category includes can be found below: 
+
+* **C&C (Command and Control)**: domains that facilitate botnet communication for coordination of their activity 
+* **Malware**: domains that host and distribute malware
+* **Phishing**: domains aiming to trick users and extract sensitive information such as credit card details, login credentials etc. 
+* **Blacklist**: domains that are known to serve multiple nefarious purposes
+* **Spam**: domains that are linked with the spreading of spam email messages and scam offerings
+* **Compromised**: legitimate domains that have been hacked and are temporarily used for malicious purposes
+* **Coinminer**: domains linked with hijacking CPU resources and crypto mining activity
+
 
 .. image:: ./img/security-policies.gif
    :align: center

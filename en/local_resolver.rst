@@ -113,6 +113,13 @@ A full list of what each category includes can be found below:
 
 .. note:: Changes will be applied to the resolvers in approx. 30 minutes. Saved configuration is used during preparation of the threat data package for the resolvers that download and apply those packages at regular intervals.
 
+* **Regulatory Restrictions**
+
+  * Integrated list of domains that must be applied in order to conform to Regulatory Restrictions of a country.
+  * Examples of these domains include cases of illegal gambling or child pornograpy. 
+
+.. warning:: Each country has different Regulatory lists. In case of multi-country deployments different policies can be used in order to apply the proper Regulatory Restrictions. 
+
 
 DNS resolution configuration
 ============================

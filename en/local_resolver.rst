@@ -227,6 +227,27 @@ Building on the previous example, in case we wanted to add the subnet 10.10.30.0
    :align: center
 
 
+Upgrade/Rollback Resolver
+------------------------------------
+
+When a new version of the Resolver is released, a red ``Upgrade`` icon appears on the resolvers' management interface.
+
+.. image:: ./img/upgrade.png
+   :align: center
+
+Upon clicking on the ``Upgrade`` icon, the respective menu is selected and important information about the new release are provided. 
+
+.. image:: ./img/upgrade-2.png
+   :align: center
+
+From this menu, the upgrade of the resolver can be initiated.
+
+In case the installation of the new version does not yield the expected outcome, a Rollback to the previous version is possible anytime:
+
+.. image:: ./img/rollback.png
+   :align: center
+
+
 Resolver agent
 ===================
 

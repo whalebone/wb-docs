@@ -75,12 +75,6 @@ In any policy there are several options to be defined:
 
 .. tip:: The default threshold for blocking is set to ``80`` which is safe even for larger network with liberal policy towards the users. For more restrictive policy we suggest setting threshold for blocking to ``70-75``, in very restrictive networks even down to ``60``. Audit is purely informative, however setting the threshold too low can result in too many logged incidents.
 
-* **Blacklist Feeds**
-
-  * Lists of domains, that has to be blocked
-  * Such domains do not have to be malicious, it could be just domains blocked based on legal requirements
-  * These lists are regularly updated by Whalebone
-
 * **Types of threats**
 
   * The default behavior is to include all types of threats

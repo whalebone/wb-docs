@@ -120,6 +120,29 @@ A full list of what each category includes can be found below:
 
 .. warning:: Each country has different Regulatory lists. In case of multi-country deployments different policies can be used in order to apply the proper Regulatory Restrictions. 
 
+* **Content Filtering** 
+
+  Particular Content categories can be applied on a per-policy level. This is useful in case different segments of the networks come with different requirements. For example, in case of a School environment all the **Adult** categories can be enabled and access to relevant content can be restricted.
+
+  A diverse set of content filtering categories are available:
+
+*	**Porn**: sexual and pornographic material
+*	**Gambling**: games and activities involving betting money
+*	**Weapons**: guns and weapon-related sites
+*  **Audio-video**: audio and video streaming services
+*	**Games**: online games and gaming websites
+*	**Chat**: instant messaging and chatting applications
+*	**Social-networks**: social networking sites and applications
+*	**Drugs**: drug related websites including alcohol and tobacco
+*	**Racism**: content linked to racism and xenophobia
+*	**Violence**: explicit violence and gore
+*	**Terrorism**: domains linked to terrorism support
+*	**Advertisement**: banners, context advertisements and other advertisements systems
+*	**Tracking**: web and email tracking systems
+*	**Fake news**: domains hosting fake news
+*	**Coinminers**: domains connected to crypto-currency mining activities
+
+
 
 DNS resolution configuration
 ============================

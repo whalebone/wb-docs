@@ -246,7 +246,7 @@ The editor is also exposing a "Verification" interface which parses the final HT
 .. note:: Each Version of the Blocking Page has unique characteristics that can be selected. For example, the Security Blocking Page can include a "Bypass" button which is not available in the respective Regulatory and Blackilist versions.
 
 
-After editing and saving the changes to the Blocking Pages it is important that they are applied to the individual resolvers. More information can be found :ref:`here<Configure Blocking Pages>`
+After editing and saving the changes to the Blocking Pages it is important that they are applied to the individual resolvers. More information can be found at the :ref:`Configure Blocking Pages Section<Configure Blocking Pages>`
 
 
 .. tip:: The Redirection Pages are served from a web server directly on the Resolvers. The pages are expected to be a single file so any additional resources (CSS, images, scripts) must be either embedded directly in the HTML code or served from a publicly accessible web server. The resolver does not provide any option to serve other content.

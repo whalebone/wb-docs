@@ -195,7 +195,7 @@ In the case of blocking access to a domain (due to security, content or regulato
 
 Whalebone provides sample template pages for the Blocking Pages, however, they do not have to be followed and virtually every modification, branding and copywriting is possible. The template code is written to be compatible with the widest range of browsers to avoid problems with older versions.
 
-Different versions of the Blocking Pages can be assigned to different segments of the networks. In case of no explicit assignment, the first blocking page is used as a default-fallback.
+Different versions of the Blocking Pages can be assigned to different segments of the networks.
 
 .. figure:: ./img/blocking-pages-overview.png
    :alt: Blocking Pages Overview
@@ -222,7 +222,7 @@ For each Locale several options are available. In the example above, the English
 
 **1) Use Template**
 
-  When using the template option, the information that are provided as input to the following form are injected in the template code. This is the fastest and easiest way to customized the blocking pages.
+  When using the template option, the information that are provided as input to the following form are injected in the template code. This is the fastest and easiest way to customize the blocking pages.
 
 .. figure:: ./img/template.png
    :alt: Template Customization
@@ -234,16 +234,16 @@ For each Locale several options are available. In the example above, the English
 
   This option can customize the default language of the Blocking Pages. In case some browser does not declare its preferred language, the "Default" language acts as a fallback mechanism.
 
-**3) Delete the local**
+**3) Delete the locale**
 
-  In case the local is no longer needed, it can be deleted.
+  In case the locale is no longer needed, it can be deleted.
 
 
 Each of the Versions of the Blocking Page (Security, Blacklist, Regulatory, Content) can be customized in more detail by modifying the HTML code. Upon clicking on each version an editor is presented that allows for any required changes.
 
-The editor is also exposing a "Verification" interface which parses the final HTML code and checks for the enabled functionalities. The check is based on the ``id`` of the specific elements. More information and requirements for each functionality can be found by selecting the respective labels.
+The editor also exposes a "Verification" interface which parses the final HTML code and checks for the enabled functionalities. The check is based on the ``id`` of the specific elements. More information and requirements for each functionality can be found by clicking the respective labels.
 
-.. note:: Each Version of the Blocking Page has unique characteristics that can be selected. For example, the Security Blocking Page can include a "Bypass" button which is not available in the respective Regulatory and Blackilist versions.
+.. note:: Each Version of the Blocking Page has unique characteristics that can be selected. For example, the Security Blocking Page can include a "Bypass" button which is not available in the respective Regulatory and Blacklist versions.
 
 
 After editing and saving the changes to the Blocking Pages it is important that they are applied to the individual resolvers. More information can be found at the :ref:`Configure Blocking Pages Section<Configure Blocking Pages>`

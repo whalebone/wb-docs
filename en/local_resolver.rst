@@ -59,6 +59,34 @@ Successul run of the installation script is ended with the notification ```Final
 
 .. tip:: The resolver's processes need to communicate on localhost. In case some firewall is in place please make sure that the traffic is allowed, i.e. ``iptables -A INPUT -s 127.0.0.1 -j ACCEPT``
 
+Verifying the installation
+--------------------------
+
+Whalebone resolvers come with a set of testing domains for the verification of the installation and the Security filtering.
+These domains can be used in order to ensure that you are effectively using a Whalebone resolver:
+
+* ``http://malware.test.whalebone.io``
+* ``http://c2server.test.whalebone.io``
+* ``http://spam.test.whalebone.io``
+* ``http://phishing.test.whalebone.io``
+* ``http://coinminer.test.whalebone.io``
+
+Upon visiting these domains a blocking page similar to the following should be presented:
+
+.. figure:: ./img/blocking-page-default.png
+   :alt: Blocking Pages (Default)
+   :align: center
+   
+   Blocking Page - Whalebone Resolver is being used
+
+In case you come accross this page, please review your settings and if the issue persists, please contact support.
+
+.. figure:: ./img/testing-page.png
+   :alt: Blocking Pages (Target)
+   :align: center
+   
+   Blocking Page - Whalebone Resolver is not being used
+
 
 Security policies
 =================

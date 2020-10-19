@@ -79,7 +79,8 @@ Upon visiting these domains a blocking page similar to the following should be p
    
    Blocking Page - Whalebone Resolver is being used
 
-In case you come accross this page, please review your settings and if the issue persists, please contact support.
+In case you come accross the following page, it means that the request was not blocked and thus a Whalebone resolver is not being used. 
+Please review your settings and if the issue persists, please contact support.
 
 .. figure:: ./img/testing-page.png
    :alt: Blocking Pages (Target)

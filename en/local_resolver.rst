@@ -28,6 +28,8 @@ Local resolver is supported on dedicated (hardware or virtual) machine running a
   * 4 GB RAM
   * 40 GB HDD (at least 30 GB in /var partition)
 
+.. warning:: In case the resolver is installed on vSphere you will have to `disable the balloon driver<https://kb.vmware.com/s/article/1002586>`_ to avoid memory issues.
+
 * **Network setup requirements** (local resolver needs the following ports opened):
   
   * ``TCP+UDP/53`` into the internet destinations if responsible for the resolution

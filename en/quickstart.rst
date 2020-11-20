@@ -14,11 +14,6 @@ After the password setup you will be asked to login using your username and newl
 .. image:: ./img/login.png
    :align: center
 
-Right after the first login the tutorial will pop up and will guide you through the very basics of the Whalebone portal. You can skip the tutorial any time and get back to it later from the main menu (the question mark icon) option ``Start tutorial``.
-
-.. image:: ./img/help.png
-   :align: center
-
 
 Public network ranges
 ---------------------

@@ -41,6 +41,8 @@ You should forward your DNS traffic towards Whalebone cloud resolvers if this is
 ``52.169.120.89``
 ``52.166.249.114``
 
+The IP addresses of the resolvers are accessible under ``Cloud resolvers`` and under the menu ``Help > DNS resolvers``
+
 .. image:: ./img/resolver_ip.png
    :align: center
 

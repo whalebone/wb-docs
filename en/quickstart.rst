@@ -33,18 +33,6 @@ The networks can be configured under ``Cloud resolvers``.
 
 .. tip:: While testing Whalebone (e.g. through adding a testing domain into blacklist) don't forget that many DNS records could be recently in the DNS cache anywhere between the resolver and the user (including the browser, operating system or forwarders). Testing right after the configuration change could therefore fail and the timespan before the protection becomes active could vary based on the TTL of the particular DNS record (should all the caches along the way actually honor the TTL value).
 
-Feed filtering options
-----------------------
-
-Every Threat Intelligence Feed could be setup in a different manner. As long as the button ``Uses recommendation`` is pressed the configuration is left to the Whalebone specialist and it honors the Whalebone best practice. If you prefer your own configuration you can choose from these three options:
-
-* **Block**
-* **Audit**
-* **Disabled**
-
-.. image:: ./img/feeds.png
-   :align: center
-
 
 Cloud DNS resolvers
 --------------------

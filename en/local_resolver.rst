@@ -127,14 +127,14 @@ A full list of what each category includes can be found below:
 
 * **Whitelist**
 
-  * Domains that won't be blocked at any time
+  * Domains that won't be blocked at any time (higher priority has only **Blacklist**)
   * The whitelist is applied to the domain and all of the subdomains, e.g.: whitelisted domain ``whalebone.io`` will also whitelist ``docs.whalebone.io``, but not vice versa
   * The list can be configured on the `Blacklist/ Whitelist` tab
 
 * **Blacklist**
 
-  * Domains that will be blocked at all times (higher priority has only **Whitelist**)
-  * The blacklist is applied to the domain and all of the subdomains, e.g.: whitelisted domain ``malware.ninja`` will also blacklist ``super.malware.ninja``, but not vice versa 
+  * Domains that will be blocked at all times 
+  * The blacklist is applied to the domain and all of the subdomains, e.g.: blacklisted domain ``malware.ninja`` will also blacklist ``super.malware.ninja``, but not vice versa 
   * The list can be configured on the `Blacklist/ Whitelist` tab.
 
 .. image:: ./img/whitelist.gif

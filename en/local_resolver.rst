@@ -1,6 +1,6 @@
-**************
-Local resolver
-**************
+******************
+Local DNS resolver
+******************
 
 Whalebone local resolver brings the advantage of visibility of local IP addresses that send the actual requests. Whalebone resolver is based on the implementation of `Knot Resolver <https://www.knot-resolver.cz/>`_ developed in the CZ.NIC labs.
 

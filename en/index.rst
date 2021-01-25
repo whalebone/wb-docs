@@ -15,7 +15,6 @@ More information about the product and company is available on the official `Wha
    data_analysis
    reporting
    user
-   enduser
 
 
 

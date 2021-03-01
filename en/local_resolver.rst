@@ -28,7 +28,7 @@ Local resolver is supported on dedicated (hardware or virtual) machine running a
   * 4 GB RAM
   * 40 GB HDD (at least 30 GB in /var partition)
 
-.. warning:: In case the resolver is installed on vSphere you will have to `disable the balloon driver <https://kb.vmware.com/s/article/1002586>`_ to avoid memory issues.
+.. warning:: Please note that Whalebone only supports deloyments with desktop environments such as GNOME, KDE or Xfce as those can impact available memory and DNS processing on the server.
 
 * **Network setup requirements** (local resolver needs the following ports opened):
   

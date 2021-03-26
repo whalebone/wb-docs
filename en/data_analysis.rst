@@ -172,7 +172,7 @@ How to search for a domain
 
 In order to search for a domain's instances in the logs, the easiest way
 is to click on it in the provided log history. Alternatively a query
-could be issued in the search engine with the term: ``query:<domain>.``
+could be issued in the search engine with a fully qualified domain: ``query:<domain>.``
 Please note the ``.`` at the end of the query
 
 A more fine-grained search can be performed by searching for more

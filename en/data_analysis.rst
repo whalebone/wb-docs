@@ -87,7 +87,7 @@ How to search for events based on specific threat category.
 
 There are multiple threat categories available.
 
-To name a few: ``legal`` , ``malware``, ``c&c``, ``blacklist``,
+To name a few: ``malware``, ``c&c``, ``blacklist``,
 ``phishing``, ``coinminer``, ``spam``, and ``compromised``.
 
 A *simple* alternative could be to click on the bar that matches the

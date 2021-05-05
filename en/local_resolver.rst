@@ -115,10 +115,10 @@ A full list of what each category includes can be found below:
 
 * **C&C (Command and Control)**:  domains that facilitate botnet communication to coordinate its activity. A botnet is a network of infected computers, which are controlled as a group. 
 * **Malware**: domains that host and distribute any kind of malicious code
-* **Phishing**: domains that are known to serve multiple nefarious purposes at the same time or over a period of time 
-* **Blacklist**: domains that are known to serve multiple nefarious purposes at the same time or over a period of time.
+* **Phishing**: domains aiming to trick users and extract sensitive information such as credit card details, login credentials, etc
+* **Blacklist**: domains that are known to serve multiple nefarious purposes at the same time or over a period of time
 * **Spam**: domains that are linked to spreading spam emails and scam schemes.
-* **Compromised**: otherwise legitimate domains that have been hacked. They are temporarily used for malicious purposes
+* **Compromised**: otherwise legitimate domains that have been hacked and are temporarily used for malicious purposes
 * **Coinminer**: domains that hijack processing and energy resources for unsolicited cryptocurrency mining
 
 

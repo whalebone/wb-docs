@@ -22,11 +22,8 @@ HOS is constantly monitoring changes on the network interfaces and based on the 
 ``Active`` 
     All DNS traffic is diverted to DoH server. HOS becomes ``Active`` when it is connected to the public network, but the ``Internal server`` is unreachable. This state is used for the danger zones such as public wifi.
 
-``Mixed`` 
-    When the device is connected to public network and ``Internal erver`` is reachable HOS diverts only packets which are not safely routed. DNS queries that go into your Organization are left intact while the rest is corrected. 
-    
 ``Inactive`` 
-    DNS trafic is unprotected. This state is used when device can't connect to the Internet.
+    DNS trafic is left intact. This state is used when device can't connect to the Internet or when it is connected through internal network.
 
 Security
 ========================
@@ -35,7 +32,7 @@ In the background HOS uses ``DNS-over-HTTPs`` or ``DoH``. The ``Hostname`` of th
 ************************
 Installation
 ************************
-HOS comes with Windows Installer for the deployment. No user interaction is required to perform the installation, installer requires a token though. Default target directory:
+HOS comes with Windows Installer for the deployment. No user interaction is required to perform the installation, installer requires ``token`` though. Default target directory:
 
 ``C:\Program Files (x86)\Whalebone\Home Office Security\``
 
@@ -58,26 +55,47 @@ Windows 7 systems must be up-to-date or at least have KB3033929 installed.
 
 Windows Server 2016 systems must have secure boot disabled.
 
+Portal 
+====================
+
+First, check that your organization have policies and device groups prepared. If you haven't set any policies or device groups, please you proceed further.
+
+.. image:: ./img/hos-create_policy.png
+    :align: center
+
 Installation Token
 ====================
 
-``Token`` must be provided for the installation to succeed. You may obtain one on ``Portal`` page titled ``Device groups`` when you click ``>_`` [Install to group] button on any of the ``Device group`` panel. If there is none create it. After that you can run the installer as follows. Successfull installation gives no message.
+``Token`` must be provided for the installation to succeed. You may obtain one on ``Portal`` page titled ``Device groups`` when you click ``>_`` [Install to group] button on any of the ``Device group`` panel. If there is none create it. After that you can run the installer with token you find on the page ``Install to group...`` page. This token is unique for your Origanization.
+
+Successfull installation gives no message.
+
+.. image:: ./img/hos-device_groups.png
+    :align: center
+
+.. image:: ./img/hos-install_token.png
+    :align: center
+
 
 Install Instructions
 =====================
 
 Install or Update:
+
 .. code-block:: shell
-    msiexec /i "Whalebone Home Office Security Installer.msi" TOKEN="31a02428-addb-432d-9dd6-c142e91e8500"``
+
+    msiexec /i "Whalebone Home Office Security Installer.msi" TOKEN="60d5806e-07fe-432a-a4ad-7797d82781b3" UI="false"
 
 Uninstall:
+
 .. code-block:: shell
-    msiexec /u "Whalebone Home Office Security Installer.msi``
+
+    msiexec /u "Whalebone Home Office Security Installer.msi
 
 Service requirements
 ====================
 
-Because HOS must intecept network traffic it requres to run as SYSTEM account. You can query the service by name ``hos`` to see if it started properly. When invalid installation token is supplied the service will stop.
+Because HOS must intecept network traffic it requres to run as SYSTEM account. You can query the service by name ``hos`` to see if it started properly. When none or invalid installation token is supplied the service it will stop.
 
 .. code-block:: shell
 
@@ -108,22 +126,18 @@ On first run HOS also installs ``windivert`` system driver.
             CHECKPOINT         : 0x0
             WAIT_HINT          : 0x0
 
-### Endpoint
+Service is configured to recover after crash three times and then stay stopped.
 
-Enable TCP port XXXX for the *Whalebone Home Office Security.exe* in the application firewall. o enable it for all network profiles in Windows, use following command:
+Endpoint
+====================
 
-```cmd
-netsh advfirewall firewall add rule name="Whalebone Home Office Security" dir=out action=allow program="C:\Program Files (x86)\Whalebone\Home Office Security\Whalebone Home Office Security.exe" enable=yes remoteip=185.150.10.71,LocalSubnet
-```
+Enable TCP port 443 for the *Whalebone Home Office Security.exe* in the application firewall. o enable it for all network profiles in Windows, adjust following command to let HOS connect to your DoH server (e.g. 185.150.10.71):
+
+.. code-block:: shell
+
+    netsh advfirewall firewall add rule name="Whalebone Home Office Security" dir=out action=allow program="C:\Program Files (x86)\Whalebone\Home Office Security\Whalebone Home Office Security.exe" enable=yes remoteip=185.150.10.71,LocalSubnet
+
 
 It is not necessary for the service to listen on port 53, thus there is no requirement for the application firewall to follow.
 
-## Operation
-
-How it works
-
-## Status check
-
-```cmd
-ping internal.test.whalebone.io
-```
+Additionally, service is listening on *TCP endpoint localhost:9000* to provide data endpoint for UI app, and UI app server ``whosui.exe`` listens on *TCP endpoint localhost:55221*  to render graphical components. Even though theese ports are not critical for HOS operation they are relevant for UI app ``AdminUI.exe``. Please ensure that services are allowed to listen on those local ports as this allows user to have insight into app operation.

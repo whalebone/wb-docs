@@ -1,6 +1,6 @@
-==============================
-Whalebone Home Office Security
-==============================
+====================
+Home Office Security
+====================
 
 Whalebone Home Office Security (HOS) provides a DNS filtering functionality for your desktop and mobile devices. It intercepts DNS traffic and inspects it before sending network packets to the wild. It protects the device from network threats by the divertion by scanning every DNS packet.
 
@@ -58,10 +58,7 @@ Windows Server 2016 systems must have secure boot disabled.
 Portal 
 ====================
 
-First, check that your organization have policies and device groups prepared. If you haven't set any policies or device groups, please you proceed further.
-
-.. image:: ./img/hos-create_policy.png
-    :align: center
+First, check that your organization have <a href='https://docs.whalebone.io/en/hos/local_resolver.html#security-policies'>policies</a> and device groups prepared. If you haven't set any <a href='https://docs.whalebone.io/en/hos/local_resolver.html#security-policies'>policies</a> or device groups, please you proceed further.
 
 Installation Token
 ====================
@@ -84,7 +81,7 @@ Install or Update:
 
 .. code-block:: shell
 
-    msiexec /i "Whalebone Home Office Security Installer.msi" TOKEN="60d5806e-07fe-432a-a4ad-7797d82781b3" UI="false"
+    msiexec /i "Whalebone Home Office Security Installer.msi" TOKEN="60d5806e-07fe-432a-a4ad-7797d82782b3" UI="false"
 
 Uninstall:
 
@@ -140,4 +137,4 @@ Enable TCP port 443 for the *Whalebone Home Office Security.exe* in the applicat
 
 It is not necessary for the service to listen on port 53, thus there is no requirement for the application firewall to follow.
 
-Additionally, service is listening on *TCP endpoint localhost:9000* to provide data endpoint for UI app, and UI app server ``whosui.exe`` listens on *TCP endpoint localhost:55221*  to render graphical components. Even though theese ports are not critical for HOS operation they are relevant for UI app ``AdminUI.exe``. Please ensure that services are allowed to listen on those local ports as this allows user to have insight into app operation.
+Additionally, service is listening on *TCP endpoint localhost:9000* to provide data endpoint for UI app, and UI app server ``whosui.exe`` listens on *TCP endpoint localhost:55221* to render graphical components. Even though theese ports are not critical for HOS operation they are relevant for UI app ``AdminUI.exe``. Please ensure that services are allowed to listen on those local ports as this allows user to have insight into app operation.

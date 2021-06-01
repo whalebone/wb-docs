@@ -58,7 +58,7 @@ Windows Server 2016 systems must have secure boot disabled.
 Portal 
 ====================
 
-First, check that your organization have <a href='https://docs.whalebone.io/en/hos/local_resolver.html#security-policies'>policies</a> and device groups prepared. If you haven't set any <a href='https://docs.whalebone.io/en/hos/local_resolver.html#security-policies'>policies</a> or device groups, please you proceed further.
+First, check that your organization have `policies <https://docs.whalebone.io/en/hos/local_resolver.html#security-policies>`__ and device groups prepared. If you haven't set any `policies <https://docs.whalebone.io/en/hos/local_resolver.html#security-policies>`__ or device groups, please you proceed further.
 
 Installation Token
 ====================
@@ -81,7 +81,7 @@ Install or Update:
 
 .. code-block:: shell
 
-    msiexec /i "Whalebone Home Office Security Installer.msi" TOKEN="60d5806e-07fe-432a-a4ad-7797d82782b3" UI="false"
+    msiexec /i "Whalebone Home Office Security Installer.msi" TOKEN="60d5806e-07fe-432a-a4ad-7797d82782b3"
 
 Uninstall:
 

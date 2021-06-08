@@ -128,7 +128,7 @@ Service is configured to recover after crash three times and then stay stopped.
 Endpoint
 ====================
 
-Enable TCP port 443 for the *Whalebone Home Office Security.exe* in the application firewall. o enable it for all network profiles in Windows, adjust following command to let HOS connect to your DoH server (e.g. 185.150.10.71):
+Enable TCP port 443 for the *Whalebone Home Office Security.exe* in the application firewall. To enable it for all network profiles in Windows, adjust following command to let HOS connect to your DoH server (e.g. 185.150.10.71):
 
 .. code-block:: shell
 
@@ -137,4 +137,4 @@ Enable TCP port 443 for the *Whalebone Home Office Security.exe* in the applicat
 
 It is not necessary for the service to listen on port 53, thus there is no requirement for the application firewall to follow.
 
-Additionally, service is listening on *TCP endpoint localhost:9000* to provide data endpoint for UI app, and UI app server ``whosui.exe`` listens on *TCP endpoint localhost:55221* to render graphical components. Even though theese ports are not critical for HOS operation they are relevant for UI app ``AdminUI.exe``. Please ensure that services are allowed to listen on those local ports as this allows user to have insight into app operation.
+Additionally, service is listening on *TCP endpoint localhost:9000* to provide data endpoint for UI app, and UI app server ``whosui.exe`` listens on *TCP endpoint localhost:55221* to render graphical components. Even though these ports are not critical for HOS operation they are relevant for UI app ``AdminUI.exe``. Please ensure that services are allowed to listen on those local ports as this allows user to have insight into app operation.

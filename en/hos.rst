@@ -63,7 +63,7 @@ First, check that your organization have `policies <https://docs.whalebone.io/en
 Installation Token
 ====================
 
-``Token`` must be provided for the installation to succeed. You may obtain one on ``Portal`` page titled ``Device groups`` when you click ``>_`` [Install to group] button on any of the ``Device group`` panel. If there is none create it. After that you can run the installer with token you find on the page ``Install to group...`` page. This token is unique for your Origanization.
+``Token`` must be provided for the installation to succeed. You may obtain one on ``Portal`` page titled ``Device groups`` when you click ``>_`` [Install to group] button on any of the ``Device group`` panel. If there is none create it. After that you can run the installer with token you find on the page ``Install to group...`` page. This token is unique for your Organization.
 
 Successfull installation gives no message.
 

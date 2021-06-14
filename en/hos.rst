@@ -13,17 +13,20 @@ Policy is a set of rules that instructs how to operate. Based on policy the devi
 
 Devices
 ========================
-Your organization may divide devices into single or multiple groups. Every device may belong exactly to a single group only. Each must be a member of ``Device group`` before they get monitored. Each group provides a security ``Policy`` which is later conditionally applied to them. Whether the device is present on the ``internal`` or ``external`` network makes it ``active`` or ``inactive``. It separates the network location into ``internal`` or ``external`` and the biggest role here has the ``Internal server`` setting which must be defined in the ``Device group``. If HOS detects the ``Internal server`` the network location is decided as ``internal``.
+Your organization may divide devices into single or multiple groups. Every device may belong exactly to a single group only. Each must be a member of ``Device group`` before they get monitored. Each group provides a security ``Policy`` which is later conditionally applied to them. Whether the device is present on the ``internal`` or ``external`` network makes it ``active`` or ``inactive``.
+
+It separates the network location into ``internal`` or ``external`` and the biggest role here has the ``Internal domain`` setting which must be defined in the ``Device group``. If HOS detects the ``Internal domain`` the network location is decided as ``internal``. Detection is performed by running DNS query for the configured internal domain and receiving the configured answer.
 
 States
 ========================
 HOS is constantly monitoring changes on the network interfaces and based on the conditions it changes its states. 
 
 ``Active`` 
-    All DNS traffic is diverted to DoH server. HOS becomes ``Active`` when it is connected to the public network, but the ``Internal server`` is unreachable. This state is used for the danger zones such as public wifi.
+    All DNS traffic is diverted to DoH server. HOS becomes ``Active`` when it is connected to the public network, but the ``Internal domain`` is unreachable. This state is used for the danger zones such as public wifi.
 
 ``Inactive`` 
     DNS trafic is left intact. This state is used when device can't connect to the Internet or when it is connected through internal network.
+
 
 Security
 ========================
@@ -58,7 +61,7 @@ Windows Server 2016 systems must have secure boot disabled.
 Portal 
 ====================
 
-First, check that your organization have `policies <https://docs.whalebone.io/en/hos/local_resolver.html#security-policies>`__ and device groups prepared. If you haven't set any `policies <https://docs.whalebone.io/en/hos/local_resolver.html#security-policies>`__ or device groups, please you proceed further.
+First, check that your organization have `policies <https://docs.whalebone.io/en/hos/local_resolver.html#security-policies>`__ and device groups prepared. If you haven't set any `policies <https://docs.whalebone.io/en/hos/local_resolver.html#security-policies>`__ or device groups, please configure them before you proceed further.
 
 Installation Token
 ====================

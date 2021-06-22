@@ -170,10 +170,12 @@ On first run HOS also installs ``windivert`` system driver.
 
 Service is configured to recover after crash three times and then stay stopped.
 
-Endpoint
-====================
+Application Firewall Settings
+=============================
 
 Enable TCP port 443 for the *Whalebone Home Office Security.exe* in the application firewall. To enable it for all network profiles in Windows, adjust following command to let HOS connect to your DoH server (e.g. 185.150.10.71):
+
+If HOS service does not work please ensure that HOS service can connect to `hos.whalebone.io` and `mobileapi.whalebone.io`.
 
 .. code-block:: shell
 

@@ -18,8 +18,8 @@ Create (3) a Device group.
     :align: center
 
 
-Fill the form.
-ID may represent your organization group, such as Active Directory group. `Name` field makes the friendly description of this group. Select policy and blocking pages. Click (4) `Add` button to create this group.
+Fill the form to suit your organization needs. 
+ID states group identifer. It's value could be a Active Directory group or you can define a unique custom identifer on your own. `Name` field makes the human friendly description. Select policy and a blocking page and then click (4) `Add` button to create this group.
 
 HOS may become inactive when it detects that device is connected to secure network. 
 
@@ -27,13 +27,13 @@ HOS may become inactive when it detects that device is connected to secure netwo
     :align: center
 
 
-Click (5)  `Install to group` see installation instructions and download link to the installer.
+Click (5)  `Install to group` button to see installation instructions and/or get download link to the HOS installer.
 
 .. image:: ./img/hos-sbs-4.png
     :align: center
 
 
-If you haven't already download the installer (6). While the installer is being downloaded copy the installation command to clipboard (7).
+If you haven't already download the installer (6). While the installer is being downloaded please copy the installation command to clipboard (7). 
 
 .. image:: ./img/hos-sbs-5.png
     :align: center
@@ -42,6 +42,8 @@ If you haven't already download the installer (6). While the installer is being 
 Find the folder where the installer is located. It should be file named `Whalebone Home Office Security Installer.msi`.
 
 Open up a command prompt, change directory to the folder where is the installer and paste (8) the command with your mouse (right click). Execute the command. This requires admin priviledges.
+
+Installer will end prematurely with error when executed without token argument.
 
 .. image:: ./img/hos-sbs-6.png
     :align: center
@@ -53,11 +55,13 @@ Installer has minimal UI, if there was no error message installation succeeded.
 
 Device is now visible in the Whalebone Portal web page. 
 
-Whalebone Home Office Security (HOS) provides a DNS filtering functionality for your desktop and mobile devices. It intercepts DNS traffic and inspects it before sending network packets to the wild. It protects the device from network threats by the divertion by scanning every DNS packet.
 
 ************************
 Operation
 ************************
+
+Whalebone Home Office Security (HOS) provides a DNS filtering functionality for your desktop and mobile devices. It intercepts DNS traffic and inspects it before sending network packets to the wild. It protects the device from network threats by the divertion by scanning every DNS packet.
+
 Policies 
 ========================
 Policy is a set of rules that instructs how to operate. Based on policy the device or the local/cloud resolver decides what to during DNS resolution. This set of rules persist on the device and is updated initially and later synchronized. Because of that Portal provides monitoring of these devices.
@@ -83,9 +87,9 @@ Security
 ========================
 In the background HOS uses ``DNS-over-HTTPs`` or ``DoH``. The ``Hostname`` of the ``Resolver`` is never diverted and is cached. The identification and authenticity is left to the TLS protocol. When device belongs to any ``Domain``, then all domain names and their subdomains are allowed to reach the DNS servers they route to. HOS uses `Win32_NetworkAdapterConfiguration` WMI table to get the information.
 
-************************
-Installation
-************************
+******************************
+Service details and specifics
+******************************
 HOS comes with Windows Installer for the deployment. No user interaction is required to perform the installation, installer requires ``token`` though. Default target directory:
 
 ``C:\Program Files (x86)\Whalebone\Home Office Security\``
@@ -113,19 +117,6 @@ Portal
 ====================
 
 First, check that your organization have `policies <https://docs.whalebone.io/en/hos/local_resolver.html#security-policies>`__ and device groups prepared. If you haven't set any `policies <https://docs.whalebone.io/en/hos/local_resolver.html#security-policies>`__ or device groups, please configure them before you proceed further.
-
-Installation Token
-====================
-
-``Token`` must be provided for the installation to succeed. You may obtain one on ``Portal`` page titled ``Device groups`` when you click ``>_`` [Install to group] button on any of the ``Device group`` panel. If there is none create it. After that you can run the installer with token you find on the page ``Install to group...`` page. This token is unique for your Organization.
-
-Successfull installation gives no message.
-
-.. image:: ./img/hos-device_groups.png
-    :align: center
-
-.. image:: ./img/hos-install_token.png
-    :align: center
 
 
 Install Instructions

@@ -2,6 +2,57 @@
 Home Office Security
 ====================
 
+*************************
+Step by step installation
+*************************
+
+To install HOS on device you need to configure it first. Please open `Whalebone Portal` web page and use (1) `User menu` to navigate to (2) `Home Office Security`.
+
+.. image:: ./img/hos-sbs-1.png
+    :align: center
+
+
+Create (3) a Device group.
+
+.. image:: ./img/hos-sbs-2.png
+    :align: center
+
+
+Fill the form.
+ID may represent your organization group, such as Active Directory group. `Name` field makes the friendly description of this group. Select policy and blocking pages. Click (4) `Add` button to create this group.
+
+HOS may become inactive when it detects that device is connected to secure network. 
+
+.. image:: ./img/hos-sbs-3.png
+    :align: center
+
+
+Click (5)  `Install to group` see installation instructions and download link to the installer.
+
+.. image:: ./img/hos-sbs-4.png
+    :align: center
+
+
+If you haven't already download the installer (6). While the installer is being downloaded copy the installation command to clipboard (7).
+
+.. image:: ./img/hos-sbs-5.png
+    :align: center
+
+
+Find the folder where the installer is located. It should be file named `Whalebone Home Office Security Installer.msi`.
+
+Open up a command prompt, change directory to the folder where is the installer and paste (8) the command with your mouse (right click). Execute the command. This requires admin priviledges.
+
+.. image:: ./img/hos-sbs-6.png
+    :align: center
+
+Installer has minimal UI, if there was no error message installation succeeded.
+
+.. image:: ./img/hos-sbs-7.png
+    :align: center
+
+Device is now visible in the Whalebone Portal web page. 
+
 Whalebone Home Office Security (HOS) provides a DNS filtering functionality for your desktop and mobile devices. It intercepts DNS traffic and inspects it before sending network packets to the wild. It protects the device from network threats by the divertion by scanning every DNS packet.
 
 ************************

@@ -16,8 +16,6 @@ More information about the product and company is available on the official `Wha
    reporting
    user
    hos
-   hos-sbs
-
 
 
 

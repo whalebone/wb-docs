@@ -70,6 +70,14 @@ Local resolver is supported on dedicated (hardware or virtual) machine running a
 
 Installation of a new resolver
 ==============================
+Simplified procedure can be found in the youtube video below.
+
+.. image:: ./img/youtube.png
+	:target: https://www.youtube.com/watch?v=W_sWor-Wg-U
+
+.. raw:: html
+
+	<iframe width="560" height="315" src="https://www.youtube.com/embed/W_sWor-Wg-U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 In menu **Resolvers** press the button **Create new**. Choose a name (identifier) for your new resolver. The input is purely informative and won't affect the functionality.
 Once you've entered the name, click **Add resolver** button
@@ -77,7 +85,10 @@ After clicking the button an informative window will pop up with list of support
 The command will run the installation script and will pass the one time token used for the resolver activation (the same command can not be used repeatedly).
 
 .. image:: ./img/lrv2-create.gif
-   :align: center
+	:align: center
+
+.. raw:: HTML
+
 
 Once the command is run the operating system is being checked and requirements installed. Script will inform you about the progress and it creates a detailed log named ``wb_install.log`` in current directory.
 Successful run of the installation script is ended with the notification ```Final tuning of the OS``` with value ``[ OK ]``. Right after the installation also the initialization takes place and it could take several minutes before the resolver starts the services.

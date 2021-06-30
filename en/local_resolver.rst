@@ -279,6 +279,7 @@ Different versions of the Blocking Pages can be assigned to different segments o
 
 	<iframe width="560" height="315" src="https://www.youtube.com/embed/K0p2l-qxHtk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+	
 .. figure:: ./img/blocking-pages-overview.png
    :alt: Blocking Pages Overview
    :align: center

@@ -134,6 +134,7 @@ Brief walkthrough of basic configuration can be found in youtube video below.
 
 	<iframe width="560" height="315" src="https://www.youtube.com/embed/sUqVXKaPuIc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+
 Deeper explanation of security policy tuning is described in youtube video below.
 
 .. raw:: html
@@ -273,6 +274,10 @@ In the case of blocking access to a domain (due to security, content or regulato
 Whalebone provides sample template pages for the Blocking Pages, however, they do not have to be followed and virtually every modification, branding and copywriting is possible. The template code is written to be compatible with the widest range of browsers to avoid problems with older versions.
 
 Different versions of the Blocking Pages can be assigned to different segments of the networks.
+
+.. raw:: html
+
+	<iframe width="560" height="315" src="https://www.youtube.com/embed/K0p2l-qxHtk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 .. figure:: ./img/blocking-pages-overview.png
    :alt: Blocking Pages Overview

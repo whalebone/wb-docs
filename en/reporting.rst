@@ -28,7 +28,7 @@ All of these information can be passed through multiple channels e.g. email, sla
 
    <iframe width="560" height="315" src="https://www.youtube.com/embed/GXUkPICav-o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-
+|
 
 API
 -------
@@ -40,6 +40,7 @@ In order to authenticate to the API, every user needs a set of `Access Key` and 
 
    <iframe width="560" height="315" src="https://www.youtube.com/embed/9SsxMVR6ino" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+|
    
 * **API Key Generation**
 

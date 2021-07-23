@@ -9,6 +9,7 @@ Sooner or later every administrator will encounter with situation, when DNS reso
 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/sV2Ql8erWwY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+|
 
 .. raw:: html
 

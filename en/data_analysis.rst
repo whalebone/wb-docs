@@ -32,6 +32,7 @@ impromptu.
 
    <iframe width="560" height="315" src="https://www.youtube.com/embed/GVZoMOEUWzM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+|
 
 .. _header-n240:
 
@@ -137,6 +138,7 @@ know about it, then watch video below.
 
    <iframe width="560" height="315" src="https://www.youtube.com/embed/WJzsGvBiF80" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+|
 
 .. _header-n269:
 
@@ -157,8 +159,9 @@ live) of the answer.
 
    <iframe width="560" height="315" src="https://www.youtube.com/embed/Qgj-fUHS5qg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+|
 
-Below, some of the most useful filtering options of the available data
+Below are some of the most useful filtering options of the available data
 will be described.
 
 .. _header-n274:

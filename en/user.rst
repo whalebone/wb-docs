@@ -31,24 +31,24 @@ Below are described the different roles and the actions that they are able to pe
 
 .. csv-table:: 
    :align: left
-   :header: "Action", "Read Traffic", "List Editor", "Security policy Admin", "API Credentials", "Read only", "Operations Read Only", "DNS Admin", "Admin"
+   :header: "Action", "Read Traffic", "Read threats", "List Editor", "Security policy Admin", "API Credentials", "Read only", "Operations Read Only", "DNS Admin", "Admin"
 
-   "**View Threat Data**", "☑", " ", " ", " ", "☑", " ", " ", "☑"
-   "**View DNS Traffic**", "☑", " ", " ", " ", "☑", " ", " ", "☑"
-   "**View Whitelists/Blacklists**", " ", "☑", "☑", " ", "☑", " ", " ", "☑"
-   "**Edit Whitelists/Blacklists**", " ", "☑", "☑", " ", " ", " ", " ", "☑"
-   "**View Security Policies**", " ", " ", "☑",  " ", "☑", " ", " ", "☑"
-   "**Edit Security Policies**", " ", " ", "☑", " ", " ", " ", " ", "☑"
-   "**View Resolver Configuration**", " ", " ", "☑", " ", "☑", "☑", "☑", "☑"
-   "**Edit Resolver Configuration**", " ", " ", "☑", " ", " ", " ", "☑", "☑"
-   "**View API Tokens**", " ", " ", " ", "☑", "☑", " ", " ", "☑"
-   "**Generate API Tokens**", " ", " ", " ", "☑", " ", " ", " ", "☑"
-   "**View Network Configuration**", " ", " ", "☑", " ", "☑", "☑", "☑", "☑"
-   "**Edit Network Configuration**", " ", " ", "☑", " ", " ", " ", "☑", "☑"
-   "**View Alerts**", " ", " ", " ", " ", "☑", " ", " ", "☑"
-   "**Edit Alerts**", " ", " ", " ", " ", " ", " ", " ", "☑"
-   "**View Reports**", " ", " ", " ", " ", "☑", " ", " ", "☑"
-   "**Edit Reports**", " ", " ", " ", " ", " ", " ", " ", "☑"
+   "**View Threat Data**", "☑", "☑", " ", " ", " ", "☑", " ", " ", "☑"
+   "**View DNS Traffic**", "☑", " ", " ", " ", " ", "☑", " ", " ", "☑"
+   "**View Whitelists/Blacklists**", " ", " ", "☑", "☑", " ", "☑", " ", " ", "☑"
+   "**Edit Whitelists/Blacklists**", " ", " ", "☑", "☑", " ", " ", " ", " ", "☑"
+   "**View Security Policies**", " ", " ", " ", "☑",  " ", "☑", " ", " ", "☑"
+   "**Edit Security Policies**", " ", " ", " ", "☑", " ", " ", " ", " ", "☑"
+   "**View Resolver Configuration**", " ", " ", " ", "☑", " ", "☑", "☑", "☑", "☑"
+   "**Edit Resolver Configuration**", " ", " ", " ", "☑", " ", " ", " ", "☑", "☑"
+   "**View API Tokens**", " ", " ", " ", " ", "☑", "☑", " ", " ", "☑"
+   "**Generate API Tokens**", " ", " ", " ", " ", "☑", " ", " ", " ", "☑"
+   "**View Network Configuration**", " ", " ", " ", "☑", " ", "☑", "☑", "☑", "☑"
+   "**Edit Network Configuration**", " ", " ", " ", "☑", " ", " ", " ", "☑", "☑"
+   "**View Alerts**", " ", " ", " ", " ", " ", "☑", " ", " ", "☑"
+   "**Edit Alerts**", " ", " ", " ", " ", " ", " ", " ", " ", "☑"
+   "**View Reports**", " ", " ", " ", " ", " ", "☑", " ", " ", "☑"
+   "**Edit Reports**", " ", " ", " ", " ", " ", " ", " ", " ", "☑"
 
 
 

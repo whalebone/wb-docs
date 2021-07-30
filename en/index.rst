@@ -12,9 +12,10 @@ More information about the product and company is available on the official `Wha
    deployment
    quickstart
    local_resolver
+   cloud_resolver
    data_analysis
    reporting
-   troubleshooting
+   domain_resolution_analysis
    user
 
 

@@ -22,7 +22,9 @@ The properties that can be customized, include the frequency that the reports ar
 Alerts
 -------
 Whalebone alerting provides live updates about key information such as resolver's health, resolution status, hardware usage and it also informs about crucial security incidents and many more.
-All of these information can be passed through multiple channels e.g. email, slack, syslog or webhook. You can create new alert from predefined template and alerts can be then customized by threshold, time and many others. Tutorial with configuration examples is in the youtube video below. 
+All of these information can be passed through multiple channels e.g. email, slack, syslog or webhook. You can create new alert from predefined template and alerts can be then customized by threshold, time and many others.
+
+You can watch step-by-step video guide below:
 
 .. raw:: html
 
@@ -34,7 +36,9 @@ API
 -------
 Whalebone API is a practical way to access all the data that are gathered by Whalebone's resolvers and integrate them to external systems. The API documentation can be accessed at https://apidocs.whalebone.io/public/
 
-In order to authenticate to the API, every user needs a set of `Access Key` and `Secret Key`. These can be managed from the option `API keys` on the dropdown menu, under the user's account. Creation of API key is discussed in youtube video below.
+In order to authenticate to the API, every user needs a set of `Access Key` and `Secret Key`. These can be managed from the option `API keys` on the dropdown menu, under the user's account.
+
+You can watch step-by-step video guide below:
 
 .. raw:: html
 

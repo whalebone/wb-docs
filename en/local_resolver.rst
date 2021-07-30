@@ -36,7 +36,8 @@ Local resolver is supported on dedicated (hardware or virtual) machine running a
   Direction   Protocol(s)  Port    Destination IP/Domain    Description         
   =========== =========== ======= ======================== ======================
   Outbound    TCP+UDP     53      Any                      DNS resolution        
-  Outbound    TCP         443     resolverapi.whalebone.io Threat Database updates   
+  Outbound    TCP         443     resolverapi.whalebone.io Threat Database updates
+  Outbound    TCP         443     stream.whalebone.io      Threat Database updates     
   Outbound    TCP         443     logger.whalebone.io      Logging stream   
   Outbound    TCP         443     agentapi.whalebone.io    Resolver management
   Outbound    TCP         443     transfer.whalebone.io    Support Log collection
@@ -63,14 +64,15 @@ Local resolver is supported on dedicated (hardware or virtual) machine running a
   ============ ========= ======= =========================== ===================================
   Direction    Protocol  Port    Source IP/Domain            Description                        
   ============ ========= ======= =========================== ===================================
-  Inbound      TCP       80      127.0.0.1                   Resolver's processes communication 
+  Inbound      TCP       ANY     127.0.0.1                   Resolver's processes communication 
   ============ ========= ======= =========================== ===================================
 
 .. note:: Should you need sizing estimation for large ISP or Enterprise network contact Whalebone. Whalebone local resolver will need approx. twice the RAM and CPU than usual resolver (BIND, Unbound). 
 
 Installation of a new resolver
 ==============================
-Simplified procedure can be found in the youtube video below.
+
+You can watch step-by-step video guide about installation procedure below:
 
 .. raw:: html
 
@@ -117,7 +119,7 @@ Upon visiting these domains a blocking page similar to the following should be p
    
    Blocking Page - Whalebone Resolver is being used
 
-In case you come across the following page below, it means that the request was not blocked and thus a Whalebone resolver is not being used. 
+In case you come across the page below, it means that the request was not blocked and thus a Whalebone resolver is not being used. 
 Please review your settings and if the issue persists, please contact support.
 
 .. figure:: ./img/testing-page.png
@@ -130,7 +132,7 @@ Please review your settings and if the issue persists, please contact support.
 Security policies
 =================
 
-Brief walkthrough of basic configuration can be found in youtube video below. 
+You can watch step-by-step video guide of basic security policy configuration below:
 
 .. raw:: html
 
@@ -138,7 +140,7 @@ Brief walkthrough of basic configuration can be found in youtube video below.
 
 |
 
-Deeper explanation of security policy tuning is described in youtube video below.
+You can watch step-by-step video guide with deeper xplanation of security policy tuning below:
 
 .. raw:: html
 
@@ -275,6 +277,8 @@ Blocking Pages
 ============================
 
 In the case of blocking access to a domain (due to security, content or regulatory reasons), the resolvers are answering to the clients with a specific IP address that leads to the Blocking pages. Should the clients initiate the HTTP(S) connections towards the blocked domain, they are presented with the custom Blocking page with different content based on the reason of the blocking. 
+
+You can watch step-by-step video guide below:
 
 .. raw:: html
 

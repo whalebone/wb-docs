@@ -39,7 +39,7 @@ If you haven't already download the installer (6). While the installer is being 
     :align: center
 
 
-Find the folder where the installer is located. It should be file named `Whalebone Home Office Security Installer.msi`.
+Find the folder where the installer is located. It should be file named `Whalebone.Home.Office.Security.Installer.msi`.
 
 Open up a command prompt, change directory to the folder where is the installer and paste (8) the command with your mouse (right click). Execute the command. This requires admin priviledges.
 
@@ -126,13 +126,13 @@ Install or Update:
 
 .. code-block:: shell
 
-    msiexec /i "Whalebone Home Office Security Installer.msi" TOKEN="60d5806e-07fe-432a-a4ad-7797d82782b3"
+    msiexec /i "Whalebone.Home.Office.Security.Installer.msi" TOKEN="60d5806e-07fe-432a-a4ad-7797d82782b3"
 
 Uninstall:
 
 .. code-block:: shell
 
-    msiexec /u "Whalebone Home Office Security Installer.msi
+    msiexec /x "Whalebone.Home.Office.Security.Installer.msi
 
 Service requirements
 ====================

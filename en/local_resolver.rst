@@ -140,7 +140,7 @@ You can watch step-by-step video guide of basic security policy configuration be
 
 |
 
-You can watch step-by-step video guide with deeper xplanation of security policy tuning below:
+You can watch step-by-step video guide with deeper exxplanation of security policy tuning below:
 
 .. raw:: html
 
@@ -156,7 +156,7 @@ In any policy there are several options to be defined:
   * Allows to apply actions Audit (logging) or Block (redirect to blocking page) on resolution of malicious domains
   * Individual actions could be turned off - e.g. turn off the blocking for testing purposes
   * The slider values define the probability that the particular domain is malicious on the scale from 0 to 100 (0 is a safe domain, 100 is malicious)
-  * There are available preconfigured policies that cover the most usual cases. This cases are: `Don't Block`, `Block carefully` and `Block strictly`.
+  * There are available preconfigured policies that cover the most usual cases. These cases are: `Don't Block`, `Block carefully` and `Block strictly`.
 
 .. tip:: The default threshold for blocking is set to ``80`` which is safe even for larger network with liberal policy towards the users. For more restrictive policy we suggest setting threshold for blocking to ``70-75``, in very restrictive networks even down to ``60``. Audit is purely informative, however setting the threshold too low can result in too many logged incidents.
 
@@ -169,7 +169,7 @@ A full list of what each category includes can be found below:
 
 * **C&C (Command and Control)**:  domains that facilitate botnet communication to coordinate its activity. A botnet is a network of infected computers, which are controlled as a group. 
 * **Malware**: domains that host and distribute any kind of malicious code
-* **Phishing**: domains aiming to trick users and extract sensitive information such as credit card details, login credentials, etc
+* **Phishing**: domains aiming to trick users and extract sensitive information such as credit card details, login credentials, etc.
 * **Blacklist**: domains that are known to serve multiple nefarious purposes at the same time or over a period of time
 * **Spam**: domains that are linked to spreading spam emails and scam schemes.
 * **Compromised**: otherwise legitimate domains that have been hacked and are temporarily used for malicious purposes
@@ -179,22 +179,22 @@ A full list of what each category includes can be found below:
 .. image:: ./img/security-policies.gif
    :align: center
 
-* **Whitelist**
+* **Allow List**
 
   * Domains that won't be blocked at any time (higher priority has only **Blacklist**)
-  * The whitelist is applied to the domain and all of the subdomains, e.g.: whitelisted domain ``whalebone.io`` will also whitelist ``docs.whalebone.io``, but not vice versa
-  * The list can be configured on the `Blacklist/ Whitelist` tab
+  * The allow list is applied to the domain and all of the subdomains, e.g.: allowed domain ``whalebone.io`` will also allow ``docs.whalebone.io``, but not vice versa
+  * The list can be configured on the `Allow / Deny List` tab
 
-* **Blacklist**
+* **Deny List**
 
   * Domains that will be blocked at all times 
-  * The blacklist is applied to the domain and all of the subdomains, e.g.: blacklisted domain ``malware.ninja`` will also blacklist ``super.malware.ninja``, but not vice versa 
-  * The list can be configured on the `Blacklist/ Whitelist` tab.
+  * The deny list is applied to the domain and all of the subdomains, e.g.: denied domain ``malware.ninja`` will also deny ``super.malware.ninja``, but not vice versa 
+  * The list can be configured on the `Allow / Deny List` tab.
 
 .. image:: ./img/whitelist.gif
    :align: center
 
-.. warning:: After creating a blacklist or a whitelist, it should be assigned to the specific security policy, or else the changes will not take effect.
+.. warning:: After creating an allow or deny list, it should be assigned to the specific security policy, or else the changes will not take effect.
 
 .. note:: Changes will be applied to the resolvers in approx. 2-3 minutes. Saved configuration is used during preparation of the threat data package for the resolvers that download and apply those packages at regular intervals.
 
@@ -211,21 +211,24 @@ A full list of what each category includes can be found below:
 
   A diverse set of content filtering categories are available:
 
-*	**Porn**: sexual and pornographic material
+*	**Sexual content**: sexual and pornographic material
 *	**Gambling**: games and activities involving betting money
 *	**Weapons**: guns and weapon-related sites
 *   **Audio-video**: audio and video streaming services
 *	**Games**: online games and gaming websites
 *	**Chat**: instant messaging and chatting applications
 *	**Social-networks**: social networking sites and applications
+*	**Child abuse**: websites related to child abuse dissemination of child pornography
 *	**Drugs**: drug related websites including alcohol and tobacco
 *	**Racism**: content linked to racism and xenophobia
 *	**Violence**: explicit violence and gore
 *	**Terrorism**: domains linked to terrorism support
 *	**Advertisement**: banners, context advertisements and other advertisements systems
+*	**Crypto-mining**: domains connected to crypto-currency mining activities
+*	**DoH**: DNS over HTTPS. These are domains that provide obfuscation of the DNS requests in HTTP traffic 
+*	**P2P**: domains linked to peer to peer networks where multimedia content is shared by the users
 *	**Tracking**: web and email tracking systems
-*	**Fake news**: domains hosting fake news
-*	**Coinminers**: domains connected to crypto-currency mining activities
+
 
 
 
@@ -238,7 +241,7 @@ Available configuration options:
 
 * **Enable IPv6**
 
-  * Should the system has the IPv6 properly configured and working, it is possible to enable it. Otherwise the activation of IPv6 could have negative effects on the performance and latency of the resolver.
+  * Should the system have the IPv6 properly configured and working, it is possible to enable it. Otherwise the activation of IPv6 could have negative effects on the performance and latency of the resolver.
 
 * **Forward queries to**
 
@@ -276,7 +279,7 @@ Available configuration options:
 Blocking Pages
 ============================
 
-In the case of blocking access to a domain (due to security, content or regulatory reasons), the resolvers are answering to the clients with a specific IP address that leads to the Blocking pages. Should the clients initiate the HTTP(S) connections towards the blocked domain, they are presented with the custom Blocking page with different content based on the reason of the blocking. 
+In case of blocking access to a domain (due to security, content or regulatory reasons), the resolvers are answering to the clients with a specific IP address that leads to one of the Blocking pages. Should the clients initiate the HTTP(S) connections towards the blocked domain, they are presented with a custom Blocking page with different content based on the reason of the blocking. 
 
 You can watch step-by-step video guide below:
 
@@ -316,7 +319,7 @@ For each Locale several options are available. In the example above, the English
 
 **1) Use Template**
 
-  When using the template option, the information that are provided as input to the following form are injected in the template code. This is the fastest and easiest way to customize the blocking pages.
+  When using the template option, the information that is provided as input to the following form are injected in the template code. This is the fastest and easiest way to customize the blocking pages.
 
 .. figure:: ./img/template.png
    :alt: Template Customization
@@ -343,7 +346,7 @@ The editor also exposes a "Verification" interface which parses the final HTML c
 After editing and saving the changes to the Blocking Pages it is important that they are applied to the individual resolvers. More information can be found at the :ref:`Configure Blocking Pages Section<Configure Blocking Pages>`
 
 
-.. tip:: The Redirection Pages are served from a web server directly on the Resolvers. The pages are expected to be a single file so any additional resources (CSS, images, scripts) must be either embedded directly in the HTML code or served from a publicly accessible web server. The resolver does not provide any option to serve other content.
+.. tip:: The Redirection Pages are served from a web server directly on the Resolver. The pages are expected to be a single file so any additional resources (CSS, images, scripts) must be either embedded directly in the HTML code or served from a publicly accessible web server. The resolver does not provide any option to serve other content.
 
 Resolver management
 ===================
@@ -353,12 +356,18 @@ On the **Resolvers** page there is an overview of created resolvers. Administrat
 Resolvers overview
 ------------------
 
-In the main resolver overview there are tiles with resolver details and configuration options. The overview includes information about operating system and resources as CPU, Memory and HDD usage. Therre is also the state of services running on the resolvers (should state "Running" if everything is OK) and the status of the communication channel between the resolver and the cloud (it is expected to be "Active").
+In the main resolver overview there are tiles with resolver details and configuration options. The overview includes information about operating system and resources as CPU, Memory and HDD usage. There is also the status of the communication channel between the resolver and the cloud indicated by the color-coded dot.
+
+The resolver can be in one of these states:
+* **Active** - This is the expected status in production environments and signalizes that everything is running correctly. 
+* **Minor Issue** - Represents a synchronization issue or an issue with component version mismatch. Minor issue does not affect DNS resolution at all. Incoming DNS request are being processed and/or blocked as they should. 
+* **Resolution problem** - The resolver is unable to translate DNS requests.
+* **Not installed** - The resolver was not yet installed. 
 
 Deploy configuration
 --------------------
 
-Should you change any configuration related to the DNS resolution, you have to deploy the configuration afterwards. If there are any configuration changes available to be deployed, there will be a red icon with down right arrow visible on the resolver card. Once clicked, the webpage will ask for confirmation and the successful deployment will be notified in the top right corner.
+Should you change any configuration related to the DNS resolution, you have to deploy the configuration afterwards. Otherwise the changes will not take effect. If there are any configuration changes available to be deployed, there will be a red icon with down right arrow visible on the resolver card. Once clicked, the webpage will ask for confirmation and the successful deployment will be notified in the top right corner.
 
 .. note:: If the result is an deployment error, try to repeat the action. The reason for the error could be a short term communication outage between the cloud and the resolver.
 
@@ -412,7 +421,7 @@ In the following capture the process of assigning the policies is described:
 .. note::  After adding the networks, and in order to take effect, you must click on `Save to resolver`. The changes will be then validated and a pop-up message will provide additional information.
 
 In order to assign additional entries to an existing assignment, a new network range can be appended using `newline` as a separator.
-Building on the previous example, in case we wanted to add the subnet 10.10.30.0/24 to the Exception Policy:
+Building on the previous example, in case we wanted to add the subnet ``10.10.30.0/24`` to the Exception Policy:
 
 .. image:: ./img/add-range.gif
    :align: center
@@ -421,9 +430,9 @@ Building on the previous example, in case we wanted to add the subnet 10.10.30.0
 Configure Blocking Pages
 -------------------------
 
-In a similar manner to the Security Policies, the Blocking Pages can be also assigned to particular network ranges.
+In a similar manner to the Security Policies, the Blocking Pages can also be assigned to particular network ranges.
 
-The first step is to select ``On-premise local resolver`` for the ``Blocking Page Location`` option. Two new fields are enabled where the IPv4 and IPv6 addresses of the Blocking Pages must be completed.
+The first step is to select ``On-premise local resolver`` for the ``Blocking Page Location`` option. Two new fields are enabled where the IPv4 and IPv6 addresses of the Blocking Pages must be filled in.
 
 .. tip:: The Blocking Pages are being hosted **directly** on the Resolvers so the IP addresses that are advertised to the clients must be used. The clients will then be redirected to the IP address of the resolver upon blocking. Please ensure that ports 80 and 443 are accessible on the firewall.
 
@@ -447,14 +456,14 @@ When a new version of the Resolver is released, a red ``Upgrade`` icon appears o
 .. image:: ./img/upgrade.png
    :align: center
 
-Upon clicking on the ``Upgrade`` icon, the respective menu is selected and important information about the new release are provided. 
+Upon clicking on the ``Upgrade`` icon, the respective menu is selected and important information about the new release is provided. 
 
 .. image:: ./img/upgrade-2.png
    :align: center
 
 From this menu, the upgrade of the resolver can be initiated.
 
-In case the installation of the new version does not yield the expected outcome, a Rollback to the previous version is possible anytime:
+In case the installation of the new version does not yield the expected outcome, a Rollback to the previous version is possible anytime in the **Rollback** tab:
 
 .. image:: ./img/rollback.png
    :align: center
@@ -465,7 +474,7 @@ Resolver agent
 
 Command line interface
 -----------------------
-Agent's actions can be invoked using a proxy bash script present at path **/var/whalebone/cli**. This script calls a python script which handles the execution of the following agent actions: 
+Agent's actions can be invoked using a proxy bash script present at path **/var/whalebone/cli/cli.sh**. This script calls a python script which handles the execution of the following agent actions: 
 
 * **sysinfo** - returns the system status data in JSON format.
 	* Parameters: None
@@ -755,7 +764,7 @@ Each of those actions execute similarly named actions and the status of that act
 
 The actions of upgrade and create use the docker-compose template present in the agent container to create/upgrade the desired container. This template is mounted in the volume **/etc/whalebone/agent** if the user decides to change it. However this change needs to be done also to the template present at **portal.whalebone.io**, if not than the local changes will be overwritten from the cloud during next upgrade. 
 
-The bash script should be invoked like this: **./cli.sh action param1 param2 param3**. Action is the action name and parameters are the action parameters. Only actions for container stop, remove and upgrade use these and specify what containers should be affected by the respective action.
+The bash script should be invoked like this: ``./cli.sh action param1 param2 param3``. Action is the action name and parameters are the action parameters. Only actions for container stop, remove and upgrade use these and specify what containers should be affected by the respective action.
 
 Strict mode
 ------------------

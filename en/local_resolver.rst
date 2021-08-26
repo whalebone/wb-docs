@@ -2,7 +2,9 @@
 Local DNS resolver
 ******************
 
-Whalebone local resolver brings the advantage of visibility of local IP addresses that send the actual requests. Whalebone resolver is based on the implementation of `Knot Resolver <https://www.knot-resolver.cz/>`_ developed in the CZ.NIC labs.
+Deploying the Whalebone solution deployed as a **local** resolver brings the advantage of visibility of local IP addresses that send the actual requests. If deploying locally is not a suitable option for you, 
+check out the other deployment options `<https://docs.whalebone.io/en/adam-edited/deployment.html>`_
+Whalebone resolver is based on the implementation of `Knot Resolver <https://www.knot-resolver.cz/>`_ developed in the CZ.NIC labs.
 
 
 System requirements
@@ -148,7 +150,7 @@ You can watch step-by-step video guide with deeper exxplanation of security poli
 
 |
 
-The behavior of DNS filtering on the resolvers could be defined in the menu item **Configuration** and tab **Security poicies**. In the default state there is only the **Default policy**, which is automatically assigned to any new resolver.
+The behavior of DNS filtering on the resolvers could be defined in the menu item **Configuration** and tab **Security policies**. In the default state there is only the **Default policy**, which is automatically assigned to any new resolver.
 In any policy there are several options to be defined:
 
 * **Malicious domains filtering**
@@ -362,6 +364,8 @@ The resolver can be in one of these states:
 * **Active** - This is the expected status in production environments and signalizes that everything is running correctly. 
 * **Minor Issue** - Represents a synchronization issue or an issue with component version mismatch. Minor issue does not affect DNS resolution at all. Incoming DNS request are being processed and/or blocked as they should. 
 * **Resolution problem** - The resolver is unable to translate DNS requests.
+* **Unavailable** - The resolver 
+* **Upgrading** - An upgrade command has been issued to the resolver. This state should not persist for more than a few minutes.
 * **Not installed** - The resolver was not yet installed. 
 
 Deploy configuration
@@ -760,7 +764,7 @@ Agent's actions can be invoked using a proxy bash script present at path **/var/
 	]
 
 
-Each of those actions execute similarly named actions and the status of that action, or output of that action, is printed. The **list** and **run** actions are intended for the scenario when a confirmation of a certain action is required. The action list shows the action that should be executed and the changes that would be done by that action for containers specified in that action. This serves as an example of what would happen if the awaiting action would have been executed. The run action then executes the awaiting action cleans up afterwards. 
+Each of those actions execute similarly named actions and the status of that action, or output of that action, is printed. The **list** and **run** actions are intended for the scenario when a confirmation of a certain action is required. The action list shows the action that should be executed and the changes that would be done by that action for containers specified in that action. This serves as an example of what would happen if the awaiting action would have been executed. The run action then executes the awaiting action and cleans up afterwards. 
 
 The actions of upgrade and create use the docker-compose template present in the agent container to create/upgrade the desired container. This template is mounted in the volume **/etc/whalebone/agent** if the user decides to change it. However this change needs to be done also to the template present at **portal.whalebone.io**, if not than the local changes will be overwritten from the cloud during next upgrade. 
 
@@ -800,7 +804,7 @@ Knot Resolver - Tips & Tricks
 =============================
 
 Advanced configuration of Whalebone resolver allows to apply any Knot Resolver configuration. In this section we are going to describe the most frequent use cases and examples of such configuration snippets.
-Views, policies and their actions are evaluated in the sequence as they are defined (except special chain actions that are described in the official Knot Resolver documentation). First match will execute the action, the rest of the policy rules is not evaluated. If you are going to combine different configuration snnippets, you can load the same module just once at the beginning of the configuration.
+Views, policies and their actions are evaluated in the sequence as they are defined (except special chain actions that are described in the official Knot Resolver documentation). First match will execute the action, the rest of the policy rules is not evaluated. If you are going to combine different configuration snippets, you can load the same module just once at the beginning of the configuration.
 
 Allow particular IP ranges
 --------------------------
@@ -956,88 +960,4 @@ In order to uninstall a resolver and remove all Whalebone configuration files th
       rm -rf /var/log/whalebone
       rm -rf /var/lib/kres
 
-License Disclaimers
-====================
 
-The Local Resolver uses the CRC64 variant with Jones coefficient:
-
-.. code::
-
-	Copyright (c) 2012, Salvatore Sanfilippo <antirez at gmail dot com>
-	All rights reserved.
-	
-	Redistribution and use in source and binary forms, with or without
-	modification, are permitted provided that the following conditions are met:
-	
-	* Redistributions of source code must retain the above copyright notice,
-	  this list of conditions and the following disclaimer.
-	* Redistributions in binary form must reproduce the above copyright
-	  notice, this list of conditions and the following disclaimer in the
-	  documentation and/or other materials provided with the distribution.
-	* Neither the name of Redis nor the names of its contributors may be used
-	  to endorse or promote products derived from this software without
-	  specific prior written permission.
-	
-	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-	AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-	IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-	ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
-	LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
-	CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
-	SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
-	INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
-	CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
-	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-	POSSIBILITY OF SUCH DAMAGE. 
-
-The Local Resolver utilizes the Lightning.NET Library:
-
-.. code::
-
-	The OpenLDAP Public License
-	Version 2.8, 17 August 2003
-
-	Redistribution and use of this software and associated documentation
-	("Software"), with or without modification, are permitted provided
-	that the following conditions are met:
-
-	1. Redistributions in source form must retain copyright statements
-	and notices,
-
-	2. Redistributions in binary form must reproduce applicable copyright
-	statements and notices, this list of conditions, and the following
-	disclaimer in the documentation and/or other materials provided
-	with the distribution, and
-
-	3. Redistributions must contain a verbatim copy of this document.
-
-	The OpenLDAP Foundation may revise this license from time to time.
-	Each revision is distinguished by a version number.  You may use
-	this Software under terms of this license revision or under the
-	terms of any subsequent revision of the license.
-
-	THIS SOFTWARE IS PROVIDED BY THE OPENLDAP FOUNDATION AND ITS
-	CONTRIBUTORS ``AS IS'' AND ANY EXPRESSED OR IMPLIED WARRANTIES,
-	INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
-	AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT
-	SHALL THE OPENLDAP FOUNDATION, ITS CONTRIBUTORS, OR THE AUTHOR(S)
-	OR OWNER(S) OF THE SOFTWARE BE LIABLE FOR ANY DIRECT, INDIRECT,
-	INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
-	BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-	LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-	CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
-	LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
-	ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-	POSSIBILITY OF SUCH DAMAGE.
-
-	The names of the authors and copyright holders must not be used in
-	advertising or otherwise to promote the sale, use or other dealing
-	in this Software without specific, written prior permission.  Title
-	to copyright in this Software shall at all times remain with copyright
-	holders.
-
-	OpenLDAP is a registered trademark of the OpenLDAP Foundation.
-
-	Copyright 1999-2003 The OpenLDAP Foundation, Redwood City,
-	California, USA.  All Rights Reserved.  Permission to copy and
-	distribute verbatim copies of this document is granted.

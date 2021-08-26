@@ -15,6 +15,18 @@ After the password setup you will be asked to login using your username and newl
    :align: center
 
 
+Securing your resolver
+-------------------------
+
+Upon initial installation, the resolver is configured as an open resolver. It will respond to any request sent to it regardless of where the request originated from. This is quite 
+comfortable in terms of availability of the services, but could also be a risk if the service is available from the outside networks. Please make sure you limit the access 
+to the local resolver on port 53 (UDP and TCP) from the trusted networks only, otherwise it can be misused for various DoS attacks.
+
+To do that, navigate to the **Resolvers** tab and select the resolver you want to secure. Under the **Policy assignment** menu click the green button **Add IP range**, insert
+IP addresses in CIDR format, separated by newline and choose a policy to apply. Finally click the blue button **Save to Resolver**. This stages the change in configuration for deployment.
+As a final step, navigate to the  **Resolvers** tab again and click the red **Upgrade resolver services** button.
+
+
 DNS traffic
 -----------
 

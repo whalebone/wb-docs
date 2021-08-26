@@ -10,7 +10,7 @@ More information about the product and company is available on the official `Wha
 .. toctree::
    :maxdepth: 2
    
-   :caption: Getting started
+   :caption: Getting started:
    quickstart
 
    :caption: Contents

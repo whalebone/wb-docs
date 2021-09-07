@@ -185,3 +185,9 @@ If HOS service does not work please ensure that HOS service can connect to `hos.
 It is not necessary for the service to listen on port 53, thus there is no requirement for the application firewall to follow.
 
 Additionally, service is listening on *TCP endpoint localhost:9000* to provide data endpoint for UI app, and UI app server ``whosui.exe`` listens on *TCP endpoint localhost:55221* to render graphical components. Even though these ports are not critical for HOS operation they are relevant for UI app ``AdminUI.exe``. Please ensure that services are allowed to listen on those local ports as this allows user to have insight into app operation.
+
+
+Application Logs
+================
+
+Service logs can be found at ``c:\ProgramData\Whalebone\Home Office Security\Logs\``, which contain detailed information about application states and operation. In case you encounther unexpected service behaviour please include this Log folder and/or Config folder along inside your support ticket. Application provides additional information for operation trace, in AdminUI.exe app, Events tab may give you better insight in HOS operation.

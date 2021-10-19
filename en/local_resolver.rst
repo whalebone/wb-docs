@@ -105,11 +105,11 @@ Verifying the installation
 Whalebone resolvers come with a set of testing domains for the verification of the installation and the Security filtering.
 These domains can be used in order to ensure that you are effectively using a Whalebone resolver:
 
-* ``http://malware.test.whalebone.io``
-* ``http://c2server.test.whalebone.io``
-* ``http://spam.test.whalebone.io``
-* ``http://phishing.test.whalebone.io``
-* ``http://coinminer.test.whalebone.io``
+* ``http://malware.test.attacker.online``
+* ``http://c2server.test.attacker.online``
+* ``http://spam.test.attacker.online``
+* ``http://phishing.test.attacker.online``
+* ``http://coinminer.test.attacker.online``
 
 Upon visiting these domains a blocking page similar to the following should be presented:
 

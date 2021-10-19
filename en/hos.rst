@@ -60,7 +60,7 @@ Device is now visible in the Whalebone Portal web page.
 Operation
 ************************
 
-Whalebone Home Office Security (HOS) provides a DNS filtering functionality for your desktop and mobile devices. It intercepts DNS traffic and inspects it before sending network packets to the wild. It protects the device from network threats by the divertion by scanning every DNS packet.
+Whalebone Home Office Security (HOS) provides a DNS filtering functionality for your desktop and mobile devices. It intercepts DNS traffic and inspects it before sending network packets to the wild. It protects the device from network threat by scanning every DNS packet.
 
 Policies 
 ========================

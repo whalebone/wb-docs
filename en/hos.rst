@@ -141,7 +141,7 @@ Because HOS must intecept network traffic it requres to run as SYSTEM account. Y
 
 .. code-block:: shell
 
-    C:\Users\admin>sc query HOS
+    C:\Users\admin>sc query "Whalebone Home Office Security"
 
     SERVICE_NAME: HOS
             TYPE               : 10  WIN32_OWN_PROCESS

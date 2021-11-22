@@ -1,5 +1,6 @@
 On-premise resolver deployment
 ------------------------------
+
 Unlike other similar services, Whalebone can be deployed as a full-fledged local DNS resolver. This is the type of deployment we encourage.
 The installation is fairly simple. All you need is access to Whalebone Portal and a virtual or physical server, which is rather undemanding in terms of hardware.
 First, let's take a look at system requirements. Whalebone suports the latest versions of the most popular Linux distributions Debian, Ubuntu, CentOS, and Red hat Enterprise Linux.
@@ -21,6 +22,7 @@ Before long, the status of the resolver changes. As soon as the resolver becomes
 
 Cloud resolvers
 ---------------------------
+
 Whalebone also offers cloud resolvers with malware protection and content blocking. Their addresses are to be found in the Whalebone Portal in the Cloud resolver tab.
 You can use them directly as primary or secondary resolvers or as a backup to your existing local resolver. It's not rocket science to use them.
 First of all, type in your public IP ranges you want to direct to the cloud resolvers. Afterward, all you need to do is set the Whalebone cloud resolver address as the DNS server address in your network.
@@ -38,6 +40,7 @@ which don't necessarily get their connectivity from you, but you administer thei
 
 Basic configuration
 -------------------
+
 Every network has its own specific needs. Whalebone can and will adapt to every single one of them. One of the key components that need to be configured when implementing Whalebone is setting up your “Security Policies.”
 This part of the configuration allows you to adjust the default settings. You can for example lower the blocking threshold or deactivate blocking entirely which leaves you with the audit mode.
 In this mode, Whalebone monitors the incidents without preventing them from happening. The core of the configuration of audit and blocking is a so-called "score", which is assigned to individual domains by our algorithm. The higher the score, the more dangerous the domain. It's up to you to choose from the preset levels of sensitivity

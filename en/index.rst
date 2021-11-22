@@ -10,10 +10,12 @@ More information about the product and company is available on the official `Wha
 .. toctree::
    :maxdepth: 2
    
-   :caption: Getting startedAA:
+   :caption: Getting started:
+
    quickstart
 
    :caption: Contents
+
    deployment
    local_resolver
    cloud_resolver
@@ -22,14 +24,17 @@ More information about the product and company is available on the official `Wha
    :caption: Advanced configuration
 
    :caption: Analysis and reporting
+   
    data_analysis
    domain_resolution_analysis
    reporting
 
    :caption: Step-by-Step Video Guides
+   
    video_guides
 
-   :caption: About:
+   :caption: About
+
    licence_disclaimer
 
 

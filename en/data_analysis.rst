@@ -1,4 +1,4 @@
-.. _header-n233:
+
 
 Data Analysis
 =============
@@ -7,7 +7,6 @@ Whalebone Portal (graphical user interface) gives the user number of
 possibilities how to analyze what is happening on the DNS resolvers and
 the network.
 
-.. _header-n236:
 
 Threats
 -------
@@ -36,8 +35,6 @@ You can watch step-by-step video guide below:
 
 |
 
-.. _header-n240:
-
 How to search for audit/block events.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -60,7 +57,7 @@ For more advanced usage a query can be issued:
 
 This query updates the content of the whole dashboard.
 
-.. _header-n300:
+
 
 How to search for a domain
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -69,7 +66,6 @@ In order to search for a domain's instances in the events, the easiest way
 is to click on it in the provided log history. Alternatively a query
 could be issued in the search engine with the term: ``domain:<domain>``
 
-.. _header-n253:
 
 How to search for events based on specific IP address.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -88,7 +84,6 @@ the search field and use the operator ``client_ip`` such as: ``client_ip:<IP add
 .. figure:: ./img/request_ip.gif
    :alt: 
 
-.. _header-n258:
 
 How to search for events based on specific threat category.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -110,8 +105,6 @@ specify the desired category, as can be seen in the next image.
 .. figure:: ./img/cc.gif
    :alt: 
 
-.. _header-n266:
-
 How to change the date range of the available data
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -126,7 +119,6 @@ How to change the date range of the available data
 .. figure:: ./img/date_range.gif
    :alt: 
 
-.. _header-n266:
 
 How to analyze a domain
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -141,8 +133,6 @@ know about it, then watch step-by-step video below:
    <iframe width="560" height="315" src="https://www.youtube.com/embed/WJzsGvBiF80" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 |
-
-.. _header-n269:
 
 DNS Traffic
 -----------
@@ -168,7 +158,6 @@ You can watch step-by-step video guide below:
 Below are some of the most useful filtering options of the available data
 will be described.
 
-.. _header-n274:
 
 How to view all queries of a specific type
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -184,7 +173,6 @@ could be in the form ``query_type:<type>.`` The possible types are:
 ``A``,\ ``AAAA``, ``CNAME``, ``MX``, ``NS``, ``PTR``, ``RRSIG``,
 ``SPF``, ``SRV`` and\ ``TXT``.
 
-.. _header-n279:
 
 How to view all answers of a specific type 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -197,7 +185,6 @@ Useful answer types are ``NXDOMAIN`` or ``SERVFAIL``.
 .. figure:: ./img/answer.gif
    :alt: 
 
-.. _header-n282:
 
 How to search for a domain
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -212,7 +199,6 @@ specific domain based on the available domain levels. The acceptable
 search fields are ``domain_l1:<domain_l1>`` and
 ``domain_l2:<domain_l2>``.
 
-.. _header-n285:
 
 How to change the date range of the available data
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -221,7 +207,6 @@ Please refer to `How to change the date range of the available
 data <http://docs.whalebone.io/en/latest/data_analysis.html#how-to-change-the-date-range-of-the-available-data>`__
 of the Threats section.
 
-.. _header-n287:
 
 How to view DGA (Domain Generation Algorithm) indications
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -231,9 +216,7 @@ indications can be accessed by using the filter icon and selecting DGA
 as can be seen below. Alternatively the query ``dga.class:1`` can be issued.
 
 .. figure:: ./img/dga.gif
-   :alt:
-
-.. _header-n301:
+   :alt
 
 Other Tips and Tricks
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

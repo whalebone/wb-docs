@@ -13,7 +13,7 @@ Before long, the status of the resolver changes. As soon as the resolver becomes
 
 .. raw:: html
 
-    <iframe width="560" height="315" src="https://www.youtube.com/watch?v=W_sWor-Wg-U&list=PLqtoGboy8K8lTmzl0nJwi4WOz4_Xck-08&index=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/W_sWor-Wg-U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 
@@ -31,7 +31,7 @@ which don't necessarily get their connectivity from you, but you administer thei
 
 .. raw:: html
 
-    <iframe width="560" height="315" src="https://www.youtube.com/watch?v=kdpjCenhTVg&list=PLqtoGboy8K8lTmzl0nJwi4WOz4_Xck-08&index=2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/kdpjCenhTVg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 
@@ -53,7 +53,7 @@ and assign a policy to a particular IP address or range. Make sure to save the s
 
 .. raw:: html
 
-    <iframe width="560" height="315" src="https://www.youtube.com/watch?v=sUqVXKaPuIc&list=PLqtoGboy8K8lTmzl0nJwi4WOz4_Xck-08&index=3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/sUqVXKaPuIc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 
@@ -64,7 +64,7 @@ Security policies
 
 .. raw:: html
 
-    <iframe width="560" height="315" src="https://www.youtube.com/watch?v=vjzOeHAYi4A&list=PLqtoGboy8K8lTmzl0nJwi4WOz4_Xck-08&index=4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/vjzOeHAYi4A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 Blocking page configuration
@@ -72,7 +72,7 @@ Blocking page configuration
 
 .. raw:: html
 
-    <iframe width="560" height="315" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/K0p2l-qxHtk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 
@@ -81,7 +81,7 @@ Alerts
 
 .. raw:: html
 
-    <iframe width="560" height="315" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/GXUkPICav-o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 DNS traffic
@@ -89,7 +89,7 @@ DNS traffic
 
 .. raw:: html
 
-    <iframe width="560" height="315" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/Qgj-fUHS5qg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 
@@ -98,7 +98,7 @@ Threats
 
 .. raw:: html
 
-    <iframe width="560" height="315" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/GVZoMOEUWzM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 Data Analysis
@@ -107,7 +107,7 @@ Data Analysis
 
 .. raw:: html
 
-    <iframe width="560" height="315" src="https://www.youtube.com/watch?v=TVhyQP_AG-Y&list=PLqtoGboy8K8lTmzl0nJwi4WOz4_Xck-08&index=9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/TVhyQP_AG-Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 API
@@ -124,7 +124,7 @@ Before you start modeling API calls in the documentation, we recommend authorizi
 
 .. raw:: html
 
-    <iframe width="560" height="315" src="https://www.youtube.com/watch?v=9SsxMVR6ino&list=PLqtoGboy8K8lTmzl0nJwi4WOz4_Xck-08&index=10" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/9SsxMVR6ino" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 Domain analysis

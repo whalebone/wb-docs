@@ -216,7 +216,7 @@ indications can be accessed by using the filter icon and selecting DGA
 as can be seen below. Alternatively the query ``dga.class:1`` can be issued.
 
 .. figure:: ./img/dga.gif
-   :alt
+   :alt:
 
 Other Tips and Tricks
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -9,7 +9,9 @@ Come up with a fitting name, which can be changed later on. Once you initiate th
 At this point, access the terminal of the server created for this resolver. All that's left to do is to run the installation script previously copied to the clipboard.
 The installation shouldn't take more than a couple of minutes. The script will inform you about the progress. If the installation wasn't successful, send us the installation log and we'll look into it.
 Before long, the status of the resolver changes. As soon as the resolver becomes Active, you can route the traffic to it and start protecting your network.
+
 .. raw:: html
+
     <iframe width="560" height="315" src="https://www.youtube.com/watch?v=W_sWor-Wg-U&list=PLqtoGboy8K8lTmzl0nJwi4WOz4_Xck-08&index=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
@@ -24,7 +26,9 @@ You can use them directly as primary or secondary resolvers or as a backup to yo
 First of all, type in your public IP ranges you want to direct to the cloud resolvers. Afterward, all you need to do is set the Whalebone cloud resolver address as the DNS server address in your network.
 As with the local resolvers, you can create different policies and assign them to individual IP addresses or ranges. This allows you to offer Whalebone to institutions such as schools,
 which don't necessarily get their connectivity from you, but you administer their network. After having saved and directed the traffic, you're good to go. Just wait for the changes to be propagated to your clients.
+
 .. raw:: html
+
     <iframe width="560" height="315" src="https://www.youtube.com/watch?v=kdpjCenhTVg&list=PLqtoGboy8K8lTmzl0nJwi4WOz4_Xck-08&index=2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
@@ -43,7 +47,9 @@ of their government for them. If you don't find your country our list, let us kn
 If you activated the content filtering add-on, you can configure it here as well. Create as many unique security policies as you want.
 Afterward, you can go into the configuration of a given resolver and assign these policies to different IP addresses or ranges. All you need to do is to go to the "Policy Assignment" section in the resolver details
 and assign a policy to a particular IP address or range. Make sure to save the settings.
+
 .. raw:: html
+
     <iframe width="560" height="315" src="https://www.youtube.com/watch?v=sUqVXKaPuIc&list=PLqtoGboy8K8lTmzl0nJwi4WOz4_Xck-08&index=3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
@@ -52,33 +58,43 @@ and assign a policy to a particular IP address or range. Make sure to save the s
 
 Security policies
 -----------------
+
 .. raw:: html
+
     <iframe width="560" height="315" src="https://www.youtube.com/watch?v=vjzOeHAYi4A&list=PLqtoGboy8K8lTmzl0nJwi4WOz4_Xck-08&index=4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 Blocking page configuration
 ---------------------------
+
 .. raw:: html
+
     <iframe width="560" height="315" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 
 Alerts
 ------
+
 .. raw:: html
+
     <iframe width="560" height="315" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 DNS traffic
 ------------
+
 .. raw:: html
+
     <iframe width="560" height="315" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 
 Threats
 ---------
+
 .. raw:: html
+
     <iframe width="560" height="315" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
@@ -87,6 +103,7 @@ Data Analysis
 
 
 .. raw:: html
+
     <iframe width="560" height="315" src="https://www.youtube.com/watch?v=TVhyQP_AG-Y&list=PLqtoGboy8K8lTmzl0nJwi4WOz4_Xck-08&index=9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
@@ -103,6 +120,7 @@ such as the DNSSEC validation details. Naturally, you can access information abo
 Before you start modeling API calls in the documentation, we recommend authorizing it with your API keys. This will allow you to directly work with your account in the documentation.
 
 .. raw:: html
+
     <iframe width="560" height="315" src="https://www.youtube.com/watch?v=9SsxMVR6ino&list=PLqtoGboy8K8lTmzl0nJwi4WOz4_Xck-08&index=10" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
@@ -118,18 +136,23 @@ ordered by law. You can inquire into any domain like that. Just enter it into th
 there's quite some traffic going on and Whalebone categorizes it as a social network. If we type in porn.com, we can see that the category has changed into "Sexual content".
 
 .. raw:: html
+
     <iframe width="560" height="315" src="https://www.youtube.com/embed/WJzsGvBiF80" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
  
 
 Domain resolution troubleshooting
 ----------------------------------
+
 .. raw:: html
+
     <iframe width="560" height="315" src="https://www.youtube.com/embed/sV2Ql8erWwY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 Domain Tracing
 -----------------
+
 .. raw:: html
+
     <iframe width="560" height="315" src="https://www.youtube.com/embed/WD6RawjWGqo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 

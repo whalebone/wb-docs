@@ -28,20 +28,58 @@ Local resolver is supported on dedicated (hardware or virtual) machine running a
   * 4 GB RAM
   * 40 GB HDD (at least 30 GB in /var partition)
 
-.. warning:: Please note that Whalebone only supports deloyments with desktop environments such as GNOME, KDE or Xfce as those can impact available memory and DNS processing on the server.
+.. warning:: Please note that Whalebone only supports deloyments without desktop environments such as GNOME, KDE or Xfce as those can impact available memory and DNS processing on the server.
 
 * **Network setup requirements** (local resolver needs the following ports opened):
   
-  * ``TCP+UDP/53`` into the internet destinations if responsible for the resolution
-  * ``TCP/443`` to ``resolverapi.whalebone.io``, ``logger.whalebone.io``, ``agentapi.whalebone.io``, ``transfer.whalebone.io``, ``portal.whalebone.io``, ``harbor.whalebone.io``, ``download.docker.com``, ``data.iana.org``
-  * Reachability of software repositories for the operating system
+  =========== =========== ======= ======================== ======================
+  Direction   Protocol(s)  Port    Destination IP/Domain    Description         
+  =========== =========== ======= ======================== ======================
+  Outbound    TCP+UDP     53      Any                      DNS resolution        
+  Outbound    TCP         443     resolverapi.whalebone.io Threat Database updates
+  Outbound    TCP         443     stream.whalebone.io      Threat Database updates     
+  Outbound    TCP         443     logger.whalebone.io      Logging stream   
+  Outbound    TCP         443     agentapi.whalebone.io    Resolver management
+  Outbound    TCP         443     transfer.whalebone.io    Support Log collection
+  Outbound    TCP         443     portal.whalebone.io      Admin portal
+  Outbound    TCP         443     harbor.whalebone.io      Resolver updates
+  Outbound    TCP         443     download.docker.com      Installation Process
+  Outbound    TCP         443     data.iana.org            DNSSEC keys       
+  =========== =========== ======= ======================== ======================
+  
+  .. warning:: Without communication on port 443 to the domains listed above the resolver won't be installed at all (the installation script will abort).
 
-.. warning:: Without communication on port 443 to the domains listed above the resolver won't be installed at all (the installation script will abort).
+  
+  The Blocking Pages are being hosted **directly** on the Resolvers so the IP addresses that are advertised to the clients must be used. The clients will then be redirected to the IP address of the resolver upon blocking. It is advised to allow only subnet(s) assigned to customers or trusted networks, otherwise it can be misused for various attacks or unauthorized users.
+  
+  ============ ========= ======= =========================== =========================
+  Direction    Protocol  Port    Source IP/Domain            Description              
+  ============ ========= ======= =========================== =========================
+  Inbound      TCP       80      Customer's subnet range(s)  Redirection/Blocking page
+  Inbound      TCP       443     Customer's subnet range(s)  Redirection/Blocking page
+  ============ ========= ======= =========================== =========================
+
+  The resolver's processes need to communicate on localhost. In case some firewall is in place please make sure that the traffic is allowed, i.e. ``iptables -A INPUT -s 127.0.0.1 -j ACCEPT``
+
+  ============ ========= ======= =========================== ===================================
+  Direction    Protocol  Port    Source IP/Domain            Description                        
+  ============ ========= ======= =========================== ===================================
+  Inbound      TCP       ANY     127.0.0.1                   Resolver's processes communication 
+  ============ ========= ======= =========================== ===================================
 
 .. note:: Should you need sizing estimation for large ISP or Enterprise network contact Whalebone. Whalebone local resolver will need approx. twice the RAM and CPU than usual resolver (BIND, Unbound). 
 
 Installation of a new resolver
 ==============================
+
+You can watch step-by-step video guide about installation procedure below:
+
+.. raw:: html
+
+	<iframe width="560" height="315" src="https://www.youtube.com/embed/W_sWor-Wg-U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+	</iframe>
+
+|
 
 In menu **Resolvers** press the button **Create new**. Choose a name (identifier) for your new resolver. The input is purely informative and won't affect the functionality.
 Once you've entered the name, click **Add resolver** button
@@ -49,17 +87,17 @@ After clicking the button an informative window will pop up with list of support
 The command will run the installation script and will pass the one time token used for the resolver activation (the same command can not be used repeatedly).
 
 .. image:: ./img/lrv2-create.gif
-   :align: center
+	:align: center
 
 Once the command is run the operating system is being checked and requirements installed. Script will inform you about the progress and it creates a detailed log named ``wb_install.log`` in current directory.
-Successul run of the installation script is ended with the notification ```Final tuning of the OS``` with value ``[ OK ]``. Right after the installation also the initialization takes place and it could take several minutes before the resolver starts the services.
+Successful run of the installation script is ended with the notification ```Final tuning of the OS``` with value ``[ OK ]``. Right after the installation also the initialization takes place and it could take several minutes before the resolver starts the services.
 
 .. image:: ./img/lrv2-install.gif
    :align: center
 
 .. warning:: Local resolver is configured as an open resolver. It will respond to any request sent. This is quite comfortable in terms of availability of the services, but also could be a risk if the service is available from the outside networks. Please make sure you limit the access to the local resolver on port 53 (UDP and TCP) from the trusted networks only, otherwise it can be misused for various DoS attacks.
 
-.. tip:: The resolver's processes need to communicate on localhost. In case some firewall is in place please make sure that the traffic is allowed, i.e. ``iptables -A INPUT -s 127.0.0.1 -j ACCEPT``
+.. important:: The resolver's processes need to communicate on localhost. In case some firewall is in place please make sure that the traffic is allowed, i.e. ``iptables -A INPUT -s 127.0.0.1 -j ACCEPT``
 
 Verifying the installation
 --------------------------
@@ -67,11 +105,11 @@ Verifying the installation
 Whalebone resolvers come with a set of testing domains for the verification of the installation and the Security filtering.
 These domains can be used in order to ensure that you are effectively using a Whalebone resolver:
 
-* ``http://malware.test.whalebone.io``
-* ``http://c2server.test.whalebone.io``
-* ``http://spam.test.whalebone.io``
-* ``http://phishing.test.whalebone.io``
-* ``http://coinminer.test.whalebone.io``
+* ``http://malware.test.attacker.online``
+* ``http://c2server.test.attacker.online``
+* ``http://spam.test.attacker.online``
+* ``http://phishing.test.attacker.online``
+* ``http://coinminer.test.attacker.online``
 
 Upon visiting these domains a blocking page similar to the following should be presented:
 
@@ -81,7 +119,7 @@ Upon visiting these domains a blocking page similar to the following should be p
    
    Blocking Page - Whalebone Resolver is being used
 
-In case you come accross the following page, it means that the request was not blocked and thus a Whalebone resolver is not being used. 
+In case you come across the page below, it means that the request was not blocked and thus a Whalebone resolver is not being used. 
 Please review your settings and if the issue persists, please contact support.
 
 .. figure:: ./img/testing-page.png
@@ -93,6 +131,22 @@ Please review your settings and if the issue persists, please contact support.
 
 Security policies
 =================
+
+You can watch step-by-step video guide of basic security policy configuration below:
+
+.. raw:: html
+
+	<iframe width="560" height="315" src="https://www.youtube.com/embed/sUqVXKaPuIc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+You can watch step-by-step video guide with deeper xplanation of security policy tuning below:
+
+.. raw:: html
+
+	<iframe width="560" height="315" src="https://www.youtube.com/embed/vjzOeHAYi4A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
 
 The behavior of DNS filtering on the resolvers could be defined in the menu item **Configuration** and tab **Security poicies**. In the default state there is only the **Default policy**, which is automatically assigned to any new resolver.
 In any policy there are several options to be defined:
@@ -212,7 +266,7 @@ Available configuration options:
 
   * Text area for `complete Knot Resolver configuration <https://knot-resolver.readthedocs.io/en/stable/config-overview.html>`_
   * Supports Lua scripting
-  * Faulty configuration can impact stability, performance or security functions of the resolver
+  .. warning:: Faulty configuration can impact stability, performance or security functions of the resolver
 
 .. image:: ./img/lrv2-resolution.gif
    :align: center
@@ -224,9 +278,18 @@ Blocking Pages
 
 In the case of blocking access to a domain (due to security, content or regulatory reasons), the resolvers are answering to the clients with a specific IP address that leads to the Blocking pages. Should the clients initiate the HTTP(S) connections towards the blocked domain, they are presented with the custom Blocking page with different content based on the reason of the blocking. 
 
+You can watch step-by-step video guide below:
+
+.. raw:: html
+
+	<iframe width="560" height="315" src="https://www.youtube.com/embed/K0p2l-qxHtk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
 Whalebone provides sample template pages for the Blocking Pages, however, they do not have to be followed and virtually every modification, branding and copywriting is possible. The template code is written to be compatible with the widest range of browsers to avoid problems with older versions.
 
 Different versions of the Blocking Pages can be assigned to different segments of the networks.
+
 
 .. figure:: ./img/blocking-pages-overview.png
    :alt: Blocking Pages Overview
@@ -875,7 +938,7 @@ In order to uninstall a resolver and remove all Whalebone configuration files th
 
    -  `Ubuntu <https://docs.docker.com/install/linux/docker-ce/ubuntu/#uninstall-docker-engine---community>`__
 
-1. **Remove all resolver configuration files, log files and related data**:
+3. **Remove all resolver configuration files, log files and related data**:
 
    .. code:: 
 

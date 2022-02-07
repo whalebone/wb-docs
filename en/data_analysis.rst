@@ -28,6 +28,14 @@ the majority of the use cases but there is no hard limit as the
 available search engine is **full-text** and *any* query can be compiled
 impromptu.
 
+You can watch step-by-step video guide below:
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/GVZoMOEUWzM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
 .. _header-n240:
 
 How to search for audit/block events.
@@ -118,6 +126,22 @@ How to change the date range of the available data
 .. figure:: ./img/date_range.gif
    :alt: 
 
+.. _header-n266:
+
+How to analyze a domain
+~~~~~~~~~~~~~~~~~~~~~~~
+
+In case to know further information about domain, especially what score 
+Whalebone assigns to particular domain, when was first seen and categorized 
+as malicious, if it falls under regulatory category or what external sources 
+know about it, then watch step-by-step video below:
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/WJzsGvBiF80" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
 .. _header-n269:
 
 DNS Traffic
@@ -133,7 +157,15 @@ live) of the answer.
    hour time frame. For this reason, a query might not be available on
    the portal even though it has been resolved.
 
-Below, some of the most useful filtering options of the available data
+You can watch step-by-step video guide below:
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/Qgj-fUHS5qg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
+Below are some of the most useful filtering options of the available data
 will be described.
 
 .. _header-n274:

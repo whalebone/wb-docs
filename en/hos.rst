@@ -118,6 +118,13 @@ Portal
 
 First, check that your organization have `policies <https://docs.whalebone.io/en/hos/local_resolver.html#security-policies>`__ and device groups prepared. If you haven't set any `policies <https://docs.whalebone.io/en/hos/local_resolver.html#security-policies>`__ or device groups, please configure them before you proceed further.
 
+Device Group Configuration 
+===========================
+
+Automatic upgrade: When this configuration option is checked, HOS application on Windows will update to latest production version when a newer version is available to download. This option takes effect on Windows only, on mobile upgrades are performed by the vendor ecosystem.
+Domain exception: HOS service will not divert any DNS queries that contain question for domain on the exception list. E.g. when ``example.com`` is specified, the DNS request will be resolved as usual on the resolver configured by operating system.
+
+Please note that two settings mentioned above (Automatic upgrade and Domain exception) are featured in version 2.10.0 for Windows only. If you are running earlier version, please update to 2.10.0 manually.
 
 Install Instructions
 =====================

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="cs" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Způsoby nasazení &mdash; Dokumentace pro Whalebone 3.2.1-12</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/translations.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Rejstřík" href="genindex.html" />
+    <link rel="search" title="Vyhledávání" href="search.html" />
+    <link rel="next" title="Začínáme" href="quickstart.html" />
+    <link rel="prev" title="Whalebone" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Whalebone
+          </a>
+              <div class="version">
+                3.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Způsoby nasazení</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#cloud-dns">Cloud DNS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cloud-dns-prime-spojeni">Cloud DNS (přímé spojení)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#lokalni-resolver">Lokální resolver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#lokalni-resolver-presmerovani">Lokální resolver (přesměrování)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Začínáme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="local_resolver.html">Lokální resolver</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Whalebone</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Způsoby nasazení</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/deployment.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="zpusoby-nasazeni">
+<h1>Způsoby nasazení<a class="headerlink" href="#zpusoby-nasazeni" title="Trvalý odkaz na tento nadpis"></a></h1>
+<p>Službu Whalebone je možné nasadit a využívat v různých scénářích, které je mezi sebou možné kombinovat podle požadavků konkrétní sítě. Jedná se o kombinace využití cloudového a lokálního DNS resolveru Whalebone.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Všechny níže zmíněné způsoby nasazení lze navzájem kombinovat. Různé segmenty sítí mohou mít odlišné požadavky a jiné možnosti v provozování infrastruktury.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Pokud narazíte na problémy s nasazením Whalebone do svého prostředí a žádný z navrhovaných scénářů není vhodný, kontaktujte nás a společně navrhneme možnosti řešení vašeho konkrétního požadavku.</p>
+</div>
+<section id="cloud-dns">
+<h2>Cloud DNS<a class="headerlink" href="#cloud-dns" title="Trvalý odkaz na tento nadpis"></a></h2>
+<p>Jedná se o nejjednodušší variantu nasazení. Pro nasazení stačí úprava konfigurace aktuálních resolverů a jejich nasměrování na cloudové resolvery Whalebone.
+Nevýhodou tohoto nasazení je, že v případě detekce incidentu bude k dispozici pouze zdrojová IP adresa resolveru a ne původního zdrojového zařízení. Pokud je ale cílem požadavky blokovat a není důležité jednotlivá zdrojová zařízení rozlišovat, nemusí to být překážkou nasazení.</p>
+<img alt="_images/deployment_cloud.png" class="align-center" src="_images/deployment_cloud.png" />
+</section>
+<section id="cloud-dns-prime-spojeni">
+<h2>Cloud DNS (přímé spojení)<a class="headerlink" href="#cloud-dns-prime-spojeni" title="Trvalý odkaz na tento nadpis"></a></h2>
+<p>Podobný způsob jako přesměrování dotazů z vlastního resolveru na Whalebone cloud, ale dotazy jsou směrovány na cloud přímo ze zdrojových zařízení. Pro konfiguraci zařízení je ideální využít DHCP nebo jiný způsob centrální úpravy nastavení DNS překladačů. Nevýhodou tohoto způsobu nasazení je absence cache na místním resolveru, což bude mít za následek zvýšení latence překladu.
+Pokud nejsou jednotlivá zdrojová zařízení schovaná za překladem adres (NAT), tak budou jejich zdrojové IP viditelné v detekovaných incidentech na portálu Whalebone.</p>
+<img alt="_images/deployment_cloud_direct.png" class="align-center" src="_images/deployment_cloud_direct.png" />
+</section>
+<section id="lokalni-resolver">
+<h2>Lokální resolver<a class="headerlink" href="#lokalni-resolver" title="Trvalý odkaz na tento nadpis"></a></h2>
+<p>Tento způsob zapojení využívá lokálního resolveru Whalebone, který komunikuje skrze API s Whalebone cloudem. DNS překlad ale vykonává přímo a je zcela nezávislý na dostupnosti DNS překladačů Whalebone. Případný výpadek API nemá negativní dopad na dostupnost DNS překladu, ale resolver nebude schopen aktualizovat informace o hrozbách a reportovat incidenty.
+Hlavní výhodou tohoto způsobu nasazení je viditelnost lokálních IP adres komunikujících zařízení.</p>
+<img alt="_images/deployment_lr.png" class="align-center" src="_images/deployment_lr.png" />
+</section>
+<section id="lokalni-resolver-presmerovani">
+<h2>Lokální resolver (přesměrování)<a class="headerlink" href="#lokalni-resolver-presmerovani" title="Trvalý odkaz na tento nadpis"></a></h2>
+<p>Identický způsob zapojení jako v předchozím případě s tím rozdílem, že lokální resolver Whalebone nepřekládá DNS dotazy sám, ale přesměrovává dotazy na vybrané nadřazené servery. Jedná se o vhodný způsob nasazení, pokud aktuálně spravujete vlastní DNS zóny a potřebujete zajistit kontinuitu jejich překladu (např. Active Directory).
+Tento způsob nasazení má také nižší hardwarové nároky, cca poloviční oproti celému resolveru.</p>
+<div class="admonition warning">
+<p class="admonition-title">Varování</p>
+<p>Nedoporučujeme přesměrovávat dotazy na cloudové resolvery Whalebone. Taková situace by vyústila v duplikaci detekovaných incidentů (jeden z lokálního resolveru, druhý z cloudového) aniž by tato situace přinesla vyšší úroveň zabezpečení.</p>
+</div>
+<img alt="_images/deployment_lr_fw.png" class="align-center" src="_images/deployment_lr_fw.png" />
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Whalebone" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="quickstart.html" class="btn btn-neutral float-right" title="Začínáme" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Whalebone, s.r.o..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

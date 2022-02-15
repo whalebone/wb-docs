@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="cs" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lokální resolver &mdash; Dokumentace pro Whalebone 3.2.1-12</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/translations.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Rejstřík" href="genindex.html" />
+    <link rel="search" title="Vyhledávání" href="search.html" />
+    <link rel="prev" title="Začínáme" href="quickstart.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Whalebone
+          </a>
+              <div class="version">
+                3.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="deployment.html">Způsoby nasazení</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Začínáme</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Lokální resolver</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#systemove-pozadavky">Systémové požadavky</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#instalace-noveho-resolveru">Instalace nového resolveru</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bezpecnostni-politiky">Bezpečnostní politiky</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nastaveni-dns-prekladu">Nastavení DNS překladu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sprava-resolveru">Správa resolverů</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#prehled-resolveru">Přehled resolverů</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nasazeni-konfigurace">Nasazení konfigurace</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#resolver-agent">Resolver agent</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#interakce-pomoci-prikazove-radky">Interakce pomocí příkazové řádky</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Whalebone</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Lokální resolver</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/local_resolver.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="lokalni-resolver">
+<h1>Lokální resolver<a class="headerlink" href="#lokalni-resolver" title="Trvalý odkaz na tento nadpis"></a></h1>
+<p>Lokální Whalebone resolver přináší oproti cloudovým resolverům zásadní výhodu ve viditelnosti konkrétních lokálních IP adres, které na něj posílají dotazy. Whalebone resolver je založen na implementaci <a class="reference external" href="https://www.knot-resolver.cz/">Knot Resolveru</a> vyvíjeného v laboratořích CZ.NIC.</p>
+<section id="systemove-pozadavky">
+<h2>Systémové požadavky<a class="headerlink" href="#systemove-pozadavky" title="Trvalý odkaz na tento nadpis"></a></h2>
+<p>Lokální resolver předpokládá, že bude provozovován na dedikovaném stroji na čerstvě nainstalovaném a podporovaném operačním systému.</p>
+<ul class="simple">
+<li><p><strong>Podporované operační systémy</strong> (64-bitové, serverové edice následujících distribucí):</p>
+<ul>
+<li><p>Red Hat Enterprise Linux 7, 8</p></li>
+<li><p>CentOS 7, 8</p></li>
+<li><p>Debian 9, 10</p></li>
+<li><p>Ubuntu 16.04, 18.04, 20.04</p></li>
+</ul>
+</li>
+<li><p><strong>Podporované souborové systémy</strong></p>
+<ul>
+<li><p>ext4</p></li>
+<li><p>xfs pouze s podporou d_type (ftype=1)</p></li>
+</ul>
+</li>
+<li><p><strong>Minimální hardwarové požadavky</strong> (podporujeme fyzické i virtuální stroje):</p>
+<ul>
+<li><p>2 CPU jádra</p></li>
+<li><p>4 GB RAM</p></li>
+<li><p>40 GB HDD (nejméně 30 GB v oddílu /var)</p></li>
+</ul>
+</li>
+<li><p><strong>Požadavky na síťovou komunikaci</strong> (resolver pro svůj běh vyžaduje následující otevřené porty):</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">TCP+UDP/53</span></code> do celého internetu pro potřeby DNS překladu</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TCP/443</span></code> to <code class="docutils literal notranslate"><span class="pre">resolverapi.whalebone.io</span></code>, <code class="docutils literal notranslate"><span class="pre">logger.whalebone.io</span></code>, <code class="docutils literal notranslate"><span class="pre">agentapi.whalebone.io</span></code>, <code class="docutils literal notranslate"><span class="pre">transfer.whalebone.io</span></code>, <code class="docutils literal notranslate"><span class="pre">portal.whalebone.io</span></code>, <code class="docutils literal notranslate"><span class="pre">index.docker.io</span></code>, <code class="docutils literal notranslate"><span class="pre">registry-1.docker.io</span></code>, <code class="docutils literal notranslate"><span class="pre">data.iana.org</span></code></p></li>
+<li><p>Dostupnost softwarových repozitářů pro daný operační systém</p></li>
+</ul>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Varování</p>
+<p>Bez dostupného portu 443 na výše zmíněné destinace instalace resolveru vůbec neproběhne (instalační skript bude přerušen).</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Kvůli odhadu sizingu pro větší podnikové a ISP sítě kontaktujte svého dodavatele. Nárůst systémových požadavků oproti standardním DNS resolverům (BIND, Unbound, apod.) se dá očekávat přibližně dvojnásobný na úrovni spotřeby RAM i zatížení CPU.</p>
+</div>
+</section>
+<section id="instalace-noveho-resolveru">
+<h2>Instalace nového resolveru<a class="headerlink" href="#instalace-noveho-resolveru" title="Trvalý odkaz na tento nadpis"></a></h2>
+<p>V menu <strong>Resolvery</strong> klikněte na tlačítko <strong>Vytvořit nový</strong>. Zde zvolte název pro nový lokální resolver. Jedná se o čistě informativní údaj, který nemá vliv na fungování resolveru.
+Po vyplnění názvu klikněte na tlačítko <strong>Vytvořit resolver</strong>
+Po stisknutí tlačítka se zobrazí informativní okno se seznamem podporovaných platforem a s příkazem pro instalaci, který zkopírujte na cílový stroj a spusťte.
+Příkaz se postará o stažení instalačního skriptu, kterému předá jednorázový kód určený pro aktivaci lokálního resolveru (stejný příkaz nelze použít opakovaně).</p>
+<img alt="_images/lrv2-create.gif" class="align-center" src="_images/lrv2-create.gif" />
+<p>Po spuštění příkazu je prováděna kontrola operačního systému a případná instalace závislostí nutných pro běh lokálního resolveru. Skript o svém průběhu interaktivně informuje a zároveň vytváří i detailní log v souboru <code class="docutils literal notranslate"><span class="pre">wb_install.log</span></code> v aktuálním adresáři pro případ řešení neočekávaných chyb.
+Úspěšný běh instalačního skriptu je zakončen oznámením <code class="docutils literal notranslate"><span class="pre">Final</span> <span class="pre">tuning</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">OS</span></code> s hodnotou <code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">OK</span> <span class="pre">]</span></code>. Po instalaci resolveru je na pozadí ještě prováděna jeho inicializace, která může trvat až jednotky minut, než začne resolver poskytovat své služby.</p>
+<img alt="_images/lrv2-install.gif" class="align-center" src="_images/lrv2-install.gif" />
+<div class="admonition warning">
+<p class="admonition-title">Varování</p>
+<p>Lokální resolver je nakonfigurován jako tzv. open resolver. Bude se tedy snažit vyhovět komukoliv, kdo na něj zašle svůj dotaz. To je pohodlné z pohledu zajištění dostupnosti DNS překladu všem klientům na síti, ale je nutné zajistit, aby resolver, resp. port 53 (UDP a TCP), nebyl volně dostupný z Internetu, kvůli možnému zneužití pro DoS útoky.</p>
+</div>
+</section>
+<section id="bezpecnostni-politiky">
+<h2>Bezpečnostní politiky<a class="headerlink" href="#bezpecnostni-politiky" title="Trvalý odkaz na tento nadpis"></a></h2>
+<p>V menu <strong>Konfigurace</strong> a záložce <strong>Bezpečnostní politiky</strong> je možnost definovat chování filtrace DNS provozu na resolverech. Ve výchozím stavu je k dispozici <strong>Výchozí politika</strong>, která je automaticky přiřazována novým resolverům.
+V politice je možné definovat několik oblastí:</p>
+<ul class="simple">
+<li><p><strong>Filtrace nebezpečných domén</strong></p>
+<ul>
+<li><p>Umožňuje provádět akce Audit (logování) nebo Blokaci (přesměrování na blokační stránku) přístupu na nebezpečné domény</p></li>
+<li><p>Jednotlivé akce je možné úplně vypnout - např. vypnout blokaci pro testovací účely</p></li>
+<li><p>Hodnota na posuvníku určuje míru jistoty, že se jedná o nebezpečnou doménu na škále 0 až 100 (0 není riziková doména, 100 je jistě nebezpečná)</p></li>
+</ul>
+</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Výchozí prahová hodnota blokace <code class="docutils literal notranslate"><span class="pre">80</span></code> je bezpečná i pro velké sítě s benevolentní politikou. Pro přísnější politiku ve velkých sítích doporučujeme volit blokaci v rozmezí <code class="docutils literal notranslate"><span class="pre">70-75</span></code>, velmi přísné sítě (typicky v podnikovém prostředí) si mohou dovolit blokaci až na úroveň hodnoty <code class="docutils literal notranslate"><span class="pre">60</span></code>. Audit je čistě informativní, ale příliš nízká hodnota může výrazně zvýšit počet logovaných incidentů.</p>
+</div>
+<ul class="simple">
+<li><p><strong>Seznam blokovaných domén</strong></p>
+<ul>
+<li><p>Seznamy domén, které mají být blokovány za všech okolností</p></li>
+<li><p>Nemusí se jednat o rizikové domény, ale třeba o domény, které musí být blokovány na základě legislativního nařízení</p></li>
+<li><p>O aktualizaci seznamů se stará společnost Whalebone</p></li>
+</ul>
+</li>
+<li><p><strong>Výjimky</strong></p>
+<ul>
+<li><p>Domény, které nebudou za žádných okolností blokovány</p></li>
+<li><p>Výjimka se uplatňuje na danou doménu a všechny její subdomény, např.: výjimka na doménu <code class="docutils literal notranslate"><span class="pre">whalebone.io</span></code> se uplatní i na doménu <code class="docutils literal notranslate"><span class="pre">docs.whalebone.io</span></code>, ale ne naopak</p></li>
+</ul>
+</li>
+<li><p><strong>Blokace</strong></p>
+<ul>
+<li><p>Domény, které budou za všech okolností blokovány (vyšší prioritu mají pouze <strong>Výjimky</strong>)</p></li>
+<li><p>Blokace se uplatňuje na danou doménu a všechny její subdomény, např.: blokace domény <code class="docutils literal notranslate"><span class="pre">malware.ninja</span></code> se uplatní i na doménu <code class="docutils literal notranslate"><span class="pre">super.malware.ninja</span></code>, ale ne naopak</p></li>
+</ul>
+</li>
+</ul>
+<img alt="_images/lrv2-policies.gif" class="align-center" src="_images/lrv2-policies.gif" />
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Změny se na resolverech projeví cca do třiceti minut od uložení politik. Uložená změna konfigurace je použita pro přípravu nového balíku s informacemi o hrozbách, který si resolver z cloudu pravidelně stahuje.</p>
+</div>
+</section>
+<section id="nastaveni-dns-prekladu">
+<h2>Nastavení DNS překladu<a class="headerlink" href="#nastaveni-dns-prekladu" title="Trvalý odkaz na tento nadpis"></a></h2>
+<p>V menu <strong>Konfigurace</strong> na záložce <strong>DNS překlad</strong> najdete možnosti konfigurace lokálního resolveru. Stránka umožňuje základní nastavení bez nutnosti znalosti konfigurační syntax použitého resolveru. Dále je k dispozici textové pole, které umožňuje zadat jakoukoliv konfiguraci, kterou podporuje <a class="reference external" href="https://www.knot-resolver.cz/">Knot Resolver</a>.</p>
+<p>Dostupné možnosti konfigurace:</p>
+<ul class="simple">
+<li><p><strong>Povolit IPv6</strong></p>
+<ul>
+<li><p>Pokud má stroj IPv6 správně nakonfigurovanou a funkční, je možné aktivovat pro resolver IPv6. V opačném případě může mít aktivace této volby negativní dopad na výkon a latenci.</p></li>
+</ul>
+</li>
+<li><p><strong>Přesměrovat dotazy na nadřazené resolvery</strong></p>
+<ul>
+<li><p>Tato volba umožňuje přesměrovat všechny nebo vybrané dotazy na vybrané nadřazené resolvery nebo autoritativní DNS servery (vhodné např. při přesměrování na doménové řadiče Active Directory)</p></li>
+<li><p><strong>Zakázat DNSSEC validaci</strong></p>
+<ul>
+<li><p>Při aktivaci této volby nebudou odpovědi z přesměrovaných dotazů validovány. Doporučujeme volbu aktivovat, pokud nadřazené servery nemají správně nakonfigurovaný DNSSEC</p></li>
+</ul>
+</li>
+<li><p><strong>Všechny dotazy na</strong></p>
+<ul>
+<li><p>Možnost přesměrovat veškeré dotazy na jeden nebo více definovaných resolverů</p></li>
+</ul>
+</li>
+<li><p><strong>Následující domény</strong></p>
+<ul>
+<li><p>Umožňuje zvolit konkrétní domény, které budou přesměrovány na definované resolvery</p></li>
+<li><p>Je možné definovat různé resolvery pro různé domény</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Statické záznamy</strong></p>
+<ul>
+<li><p>Předdefinované odpovědi, které mají být vráceny na vybrané domény</p></li>
+<li><p>Mohou sloužit pro speciální případy jako je monitoring, nebo velmi jednoduchá substituce vytvoření reálných záznamů na autoritativním serveru</p></li>
+</ul>
+</li>
+<li><p><strong>Pokročilé nastavení DNS</strong></p>
+<ul>
+<li><p>Textové pole pro <a class="reference external" href="https://knot-resolver.readthedocs.io/en/stable/daemon.html#configuration">plnohodnotnou konfiguraci Knot Resolveru</a></p></li>
+<li><p>Podporuje Lua skriptování</p></li>
+<li><p>Chybná konfigurace může ohrozit stabilitu, výkon a bezpečnostní funkce resolveru</p></li>
+</ul>
+</li>
+</ul>
+<img alt="_images/lrv2-resolution.gif" class="align-center" src="_images/lrv2-resolution.gif" />
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Jakmile uživatel stiskne tlačítko <strong>Uložit</strong>, jsou změny v DNS překladu uloženy a nachystány na aplikaci na cílové resolvery. Samotné nasazení změn je ale nutné provést přímo ze stránky <strong>Resolvery</strong>. Je tedy možné dělat postupně více změn a aplikovat je najednou, aby se minimalizoval počet akcí zasílaných na resolver.</p>
+</div>
+</section>
+<section id="sprava-resolveru">
+<h2>Správa resolverů<a class="headerlink" href="#sprava-resolveru" title="Trvalý odkaz na tento nadpis"></a></h2>
+<p>Na stránce <strong>Resolvery</strong> lze sledovat stav používaných resolverů, upravovat jejich konfiguraci, nasazovat aktualizace a instalovat nové resolvery.</p>
+<section id="prehled-resolveru">
+<h3>Přehled resolverů<a class="headerlink" href="#prehled-resolveru" title="Trvalý odkaz na tento nadpis"></a></h3>
+<p>V hlavním přehledu resolverů jsou k dispozici dlaždice s informacemi o jednotlivých resolverech. Přehled zahrnuje informace o operačním systému a využití zdrojů jako CPU, operační paměť a diskový prostor. V přehledu je také zahrnut stav služeb běžících na resolveru (očekává se, že je „Vše v pořádku“) a stav odvozený od toho, zda resolver správně komunikuje s cloudem (pokud vše správně funguje, bude status „Aktivní“).</p>
+</section>
+<section id="nasazeni-konfigurace">
+<h3>Nasazení konfigurace<a class="headerlink" href="#nasazeni-konfigurace" title="Trvalý odkaz na tento nadpis"></a></h3>
+<p>Pokud jste změnili jakoukoliv konfiguraci související s logikou DNS překladu, je nutné změny na resolver manuálně nasadit. Pokud jsou k dispozici nějaké změny, které ještě nebyly na resolver nasazeny, bude v kartě viditelná červená ikonka s šipkou doprava dolů. Po kliknutí na ikonku si stránka vyžádá potvrzení, konfiguraci nasadí a zobrazí zprávu s potvrzením.</p>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Pokud se při pokusu o nasazení konfigurace zobrazí chyba místo potvrzení, může jít o krátkodobý výpadek spojení mezi resolverem a cloudem, zkuste tedy akci zopakovat.</p>
+</div>
+<img alt="_images/lrv2-deployconfig.gif" class="align-center" src="_images/lrv2-deployconfig.gif" />
+</section>
+</section>
+<section id="resolver-agent">
+<h2>Resolver agent<a class="headerlink" href="#resolver-agent" title="Trvalý odkaz na tento nadpis"></a></h2>
+<section id="interakce-pomoci-prikazove-radky">
+<h3>Interakce pomocí příkazové řádky<a class="headerlink" href="#interakce-pomoci-prikazove-radky" title="Trvalý odkaz na tento nadpis"></a></h3>
+<p>Akce, které provádí agent, je možné volat pomocí proxy bash skriput, který se nachází v adresíři <strong>/var/whalebone/cli</strong>. Tento skript volá python skript, který provádí příkazy jemu předané. Tyto příkazy jsou následující:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><strong>sysinfo</strong> - vrací systémová data v následujícím JSON formátu</dt><dd><ul>
+<li><p>Parametry: žádné</p></li>
+<li><p>Výstup:</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+   <span class="s2">&quot;hostname&quot;</span><span class="o">:</span><span class="s2">&quot;hostname&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;system&quot;</span><span class="o">:</span><span class="s2">&quot;Linux&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;platform&quot;</span><span class="o">:</span><span class="s2">&quot;CentOS Linux 7 (Core)&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;cpu&quot;</span><span class="o">:</span><span class="p">{</span>
+      <span class="s2">&quot;count&quot;</span><span class="o">:</span><span class="mf">4</span><span class="p">,</span>
+      <span class="s2">&quot;usage&quot;</span><span class="o">:</span><span class="mf">28.6</span>
+   <span class="p">},</span>
+   <span class="s2">&quot;memory&quot;</span><span class="o">:</span><span class="p">{</span>
+      <span class="s2">&quot;total&quot;</span><span class="o">:</span><span class="mf">7.6</span><span class="p">,</span>
+      <span class="s2">&quot;available&quot;</span><span class="o">:</span><span class="mf">3.9</span><span class="p">,</span>
+      <span class="s2">&quot;usage&quot;</span><span class="o">:</span><span class="mf">49.2</span>
+   <span class="p">},</span>
+   <span class="s2">&quot;hdd&quot;</span><span class="o">:</span><span class="p">{</span>
+      <span class="s2">&quot;total&quot;</span><span class="o">:</span><span class="mf">50.0</span><span class="p">,</span>
+      <span class="s2">&quot;free&quot;</span><span class="o">:</span><span class="mf">14.4</span><span class="p">,</span>
+      <span class="s2">&quot;usage&quot;</span><span class="o">:</span><span class="mf">71.1</span>
+   <span class="p">},</span>
+   <span class="s2">&quot;swap&quot;</span><span class="o">:</span><span class="p">{</span>
+      <span class="s2">&quot;total&quot;</span><span class="o">:</span><span class="mf">0.0</span><span class="p">,</span>
+      <span class="s2">&quot;free&quot;</span><span class="o">:</span><span class="mf">0.0</span><span class="p">,</span>
+      <span class="s2">&quot;usage&quot;</span><span class="o">:</span><span class="mf">0</span>
+   <span class="p">},</span>
+   <span class="s2">&quot;resolver&quot;</span><span class="o">:</span><span class="p">{</span>
+      <span class="s2">&quot;answer.nxdomain&quot;</span><span class="o">:</span><span class="mf">3284</span><span class="p">,</span>
+      <span class="s2">&quot;answer.tc&quot;</span><span class="o">:</span><span class="mf">35</span><span class="p">,</span>
+      <span class="s2">&quot;answer.ad&quot;</span><span class="o">:</span><span class="mf">849</span><span class="p">,</span>
+      <span class="s2">&quot;answer.100ms&quot;</span><span class="o">:</span><span class="mf">3983</span><span class="p">,</span>
+      <span class="s2">&quot;answer.cd&quot;</span><span class="o">:</span><span class="mf">6</span><span class="p">,</span>
+      <span class="s2">&quot;answer.1500ms&quot;</span><span class="o">:</span><span class="mf">74</span><span class="p">,</span>
+      <span class="s2">&quot;answer.slow&quot;</span><span class="o">:</span><span class="mf">215</span><span class="p">,</span>
+      <span class="s2">&quot;answer.rd&quot;</span><span class="o">:</span><span class="mf">224337</span><span class="p">,</span>
+      <span class="s2">&quot;answer.1ms&quot;</span><span class="o">:</span><span class="mf">104683</span><span class="p">,</span>
+      <span class="s2">&quot;answer.servfail&quot;</span><span class="o">:</span><span class="mf">215</span><span class="p">,</span>
+      <span class="s2">&quot;predict.epoch&quot;</span><span class="o">:</span><span class="mf">24</span><span class="p">,</span>
+      <span class="s2">&quot;query.dnssec&quot;</span><span class="o">:</span><span class="mf">6</span><span class="p">,</span>
+      <span class="s2">&quot;answer.250ms&quot;</span><span class="o">:</span><span class="mf">14941</span><span class="p">,</span>
+      <span class="s2">&quot;query.edns&quot;</span><span class="o">:</span><span class="mf">35498</span><span class="p">,</span>
+      <span class="s2">&quot;answer.cached&quot;</span><span class="o">:</span><span class="mf">86713</span><span class="p">,</span>
+      <span class="s2">&quot;answer.nodata&quot;</span><span class="o">:</span><span class="mf">3622</span><span class="p">,</span>
+      <span class="s2">&quot;answer.aa&quot;</span><span class="o">:</span><span class="mf">2362</span><span class="p">,</span>
+      <span class="s2">&quot;answer.do&quot;</span><span class="o">:</span><span class="mf">6</span><span class="p">,</span>
+      <span class="s2">&quot;answer.edns0&quot;</span><span class="o">:</span><span class="mf">35498</span><span class="p">,</span>
+      <span class="s2">&quot;answer.ra&quot;</span><span class="o">:</span><span class="mf">224337</span><span class="p">,</span>
+      <span class="s2">&quot;predict.queue&quot;</span><span class="o">:</span><span class="mf">0</span><span class="p">,</span>
+      <span class="s2">&quot;answer.total&quot;</span><span class="o">:</span><span class="mf">224337</span><span class="p">,</span>
+      <span class="s2">&quot;answer.10ms&quot;</span><span class="o">:</span><span class="mf">35351</span><span class="p">,</span>
+      <span class="s2">&quot;answer.noerror&quot;</span><span class="o">:</span><span class="mf">217216</span><span class="p">,</span>
+      <span class="s2">&quot;answer.50ms&quot;</span><span class="o">:</span><span class="mf">59766</span><span class="p">,</span>
+      <span class="s2">&quot;answer.500ms&quot;</span><span class="o">:</span><span class="mf">4642</span><span class="p">,</span>
+      <span class="s2">&quot;answer.1000ms&quot;</span><span class="o">:</span><span class="mf">653</span><span class="p">,</span>
+      <span class="s2">&quot;predict.learned&quot;</span><span class="o">:</span><span class="mf">80</span>
+   <span class="p">},</span>
+   <span class="s2">&quot;docker&quot;</span><span class="o">:</span><span class="p">{</span>
+      <span class="s2">&quot;Platform&quot;</span><span class="o">:</span><span class="p">{</span>
+         <span class="s2">&quot;Name&quot;</span><span class="o">:</span><span class="s2">&quot;&quot;</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;Components&quot;</span><span class="o">:</span><span class="p">[</span>
+         <span class="p">{</span>
+            <span class="s2">&quot;Name&quot;</span><span class="o">:</span><span class="s2">&quot;Engine&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Version&quot;</span><span class="o">:</span><span class="s2">&quot;17.12.1-ce&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Details&quot;</span><span class="o">:</span><span class="p">{</span>
+               <span class="s2">&quot;ApiVersion&quot;</span><span class="o">:</span><span class="s2">&quot;1.35&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;Arch&quot;</span><span class="o">:</span><span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;BuildTime&quot;</span><span class="o">:</span><span class="s2">&quot;2022-02-27T22:17:54.000000000+00:00&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;Experimental&quot;</span><span class="o">:</span><span class="s2">&quot;false&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;GitCommit&quot;</span><span class="o">:</span><span class="s2">&quot;88888fc6&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;GoVersion&quot;</span><span class="o">:</span><span class="s2">&quot;go1.999.999&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;KernelVersion&quot;</span><span class="o">:</span><span class="s2">&quot;3.22.66-693.21.1.el7.x86_64&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;MinAPIVersion&quot;</span><span class="o">:</span><span class="s2">&quot;1.99&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;Os&quot;</span><span class="o">:</span><span class="s2">&quot;linux&quot;</span>
+            <span class="p">}</span>
+         <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="s2">&quot;Version&quot;</span><span class="o">:</span><span class="s2">&quot;19.32.1-ce&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;ApiVersion&quot;</span><span class="o">:</span><span class="s2">&quot;1.98&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;MinAPIVersion&quot;</span><span class="o">:</span><span class="s2">&quot;1.12&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;GitCommit&quot;</span><span class="o">:</span><span class="s2">&quot;7390fc6&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;GoVersion&quot;</span><span class="o">:</span><span class="s2">&quot;go1.9.4&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;Os&quot;</span><span class="o">:</span><span class="s2">&quot;linux&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;Arch&quot;</span><span class="o">:</span><span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;KernelVersion&quot;</span><span class="o">:</span><span class="s2">&quot;3.10.0-693.21.1.el7.x86_64&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;BuildTime&quot;</span><span class="o">:</span><span class="s2">&quot;2018-02-27T22:17:54.000000000+00:00&quot;</span>
+   <span class="p">},</span>
+   <span class="s2">&quot;check&quot;</span><span class="o">:</span><span class="p">{</span>
+      <span class="s2">&quot;resolve&quot;</span><span class="o">:</span><span class="s2">&quot;ok&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;port&quot;</span><span class="o">:</span><span class="s2">&quot;ok&quot;</span>
+   <span class="p">},</span>
+   <span class="s2">&quot;containers&quot;</span><span class="o">:</span><span class="p">{</span>
+      <span class="s2">&quot;lr-agent&quot;</span><span class="o">:</span><span class="s2">&quot;running&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;passivedns&quot;</span><span class="o">:</span><span class="s2">&quot;running&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;resolver&quot;</span><span class="o">:</span><span class="s2">&quot;running&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;kresman&quot;</span><span class="o">:</span><span class="s2">&quot;running&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;pcpy&quot;</span><span class="o">:</span><span class="s2">&quot;running&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;logrotate&quot;</span><span class="o">:</span><span class="s2">&quot;running&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;logstream&quot;</span><span class="o">:</span><span class="s2">&quot;running&quot;</span>
+   <span class="p">},</span>
+   <span class="s2">&quot;images&quot;</span><span class="o">:</span><span class="p">{</span>
+      <span class="s2">&quot;lr-agent&quot;</span><span class="o">:</span><span class="s2">&quot;whalebone/agent:1.1.1&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;passivedns&quot;</span><span class="o">:</span><span class="s2">&quot;whalebone/passivedns:1.1.1&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;resolver&quot;</span><span class="o">:</span><span class="s2">&quot;whalebone/kres:1.1.1&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;kresman&quot;</span><span class="o">:</span><span class="s2">&quot;whalebone/kresman:1.1.1&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;logrotate&quot;</span><span class="o">:</span><span class="s2">&quot;whalebone/logrotate:1.1.1&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;logstream&quot;</span><span class="o">:</span><span class="s2">&quot;whalebone/logstream:1.1.1&quot;</span>
+   <span class="p">},</span>
+   <span class="s2">&quot;error_messages&quot;</span><span class="o">:</span><span class="p">{</span>
+   <span class="p">},</span>
+   <span class="s2">&quot;interfaces&quot;</span><span class="o">:</span><span class="p">[</span>
+      <span class="p">{</span>
+         <span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="s2">&quot;lo&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;addresses&quot;</span><span class="o">:</span><span class="p">[</span>
+            <span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;::1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;00:00:00:00:00:00&quot;</span>
+         <span class="p">]</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+         <span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="s2">&quot;eth0&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;addresses&quot;</span><span class="o">:</span><span class="p">[</span>
+            <span class="s2">&quot;1.1.1.1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;::c8&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;fe80::&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;00:00:00:00:00:00&quot;</span>
+         <span class="p">]</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+         <span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="s2">&quot;docker0&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;addresses&quot;</span><span class="o">:</span><span class="p">[</span>
+            <span class="s2">&quot;198.1.1.1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;00:00:00:00:00:00&quot;</span>
+         <span class="p">]</span>
+      <span class="p">}</span>
+   <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><dl class="simple">
+<dt><strong>stop</strong> - zastaví až tři kontejnery</dt><dd><ul>
+<li><p>Parametry: kontejnery, které se mají zastavit (až 3), Příklad: ./cli.sh stop resolver lr-agent kresman</p></li>
+<li><p>Výstup:</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+        <span class="s1">&#39;resolver&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;status&#39;</span><span class="o">:</span> <span class="s1">&#39;success&#39;</span><span class="p">},</span>
+        <span class="s1">&#39;lr-agent&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;status&#39;</span><span class="o">:</span> <span class="s1">&#39;success&#39;</span><span class="p">},</span>
+        <span class="s1">&#39;kresman&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;status&#39;</span><span class="o">:</span> <span class="s1">&#39;success&#39;</span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><dl class="simple">
+<dt><strong>remove</strong> - odtraní až 3 kontejnery</dt><dd><ul>
+<li><p>Parametry: kontejnery, které se mají odstranit (až 3), Příklad: ./cli.sh remove resolver lr-agent kresman</p></li>
+<li><p>Výstup:</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+        <span class="s1">&#39;resolver&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;status&#39;</span><span class="o">:</span> <span class="s1">&#39;success&#39;</span><span class="p">},</span>
+        <span class="s1">&#39;lr-agent&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;status&#39;</span><span class="o">:</span> <span class="s1">&#39;success&#39;</span><span class="p">},</span>
+        <span class="s1">&#39;kresman&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;status&#39;</span><span class="o">:</span> <span class="s1">&#39;success&#39;</span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul>
+<li><dl>
+<dt><strong>upgrade</strong> - upgraduje až tři kontejnery, konfigrurace kontejnerů je dána docker-composem v kontejneru agenta (možné najít v <strong>/etc/whalebone/agent</strong>)</dt><dd><ul class="simple">
+<li><p>Parametry: kontejnery, které se mají upgradovat (až 3), Příklad: ./cli.sh upgrade resolver lr-agent kresman</p></li>
+<li><p>Výstup: <a href="#id1"><span class="problematic" id="id2">``</span></a><a href="#id3"><span class="problematic" id="id4">`</span></a>json</p></li>
+</ul>
+<p>{‚resolver‘: {‚status‘: ‚success‘}, ‚lr-agent‘: {‚status‘: ‚success‘}, ‚kresman‘: {‚status‘: ‚success‘}}
+<a href="#id5"><span class="problematic" id="id6">``</span></a><a href="#id7"><span class="problematic" id="id8">`</span></a></p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>create</strong> - vytvoří kontejnery, konfigrurace kontejnerů je dána docker-composem v kontejneru agenta (možné najít v <strong>/etc/whalebone/agent</strong>)</dt><dd><ul class="simple">
+<li><p>Parametry: žádné, Příklad: ./cli.sh create</p></li>
+<li><p>Výstup:</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;resolver&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;status&#39;</span><span class="o">:</span> <span class="s1">&#39;success&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><dl class="simple">
+<dt><strong>list</strong> - zobrazí čekající příkazy a změny, který by tyto příkazy provedly na kontejnerech zmíněných v těchto příkazech, tato akce je určená pro přímou interakci</dt><dd><ul>
+<li><p>Parametry: žádné, Příklad: ./cli.sh list</p></li>
+<li><p>Výstup:</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-------------------------------</span>
+<span class="n">Changes</span> <span class="kr">for</span> <span class="n">resolver</span>
+<span class="n">New</span> <span class="n">value</span> <span class="kr">for</span> <span class="n">label</span><span class="p">:</span> <span class="n">resolver</span><span class="o">-</span><span class="mf">1.1.1</span>
+        <span class="n">Old</span> <span class="n">value</span> <span class="kr">for</span> <span class="n">label</span><span class="p">:</span> <span class="n">resolver</span><span class="o">-</span><span class="mf">1.0.0</span>
+<span class="c1">-------------------------------</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><dl class="simple">
+<dt><strong>run</strong> - provede čekající příkazy</dt><dd><ul>
+<li><p>Parametry: žádné, Příklad: ./cli.sh run</p></li>
+<li><p>Výstup:</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;resolver&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;status&#39;</span><span class="o">:</span> <span class="s1">&#39;success&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><dl class="simple">
+<dt><strong>delete_request</strong> - odstraní čekající příkaz</dt><dd><ul>
+<li><p>Parametry: žádné, Příklad: ./cli.sh delete_request</p></li>
+<li><p>Výstup:</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">Pending</span> <span class="n">configuration</span> <span class="n">request</span> <span class="n">deleted</span><span class="p">.</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><dl class="simple">
+<dt><strong>updatecache</strong> - vynutí update IoC cache (používané k blokaci). Tato akce je určena pro manuální katualizaci blokovaných domén mimo peroidický interval</dt><dd><ul>
+<li><p>Parametry: žádné</p></li>
+<li><p>Výstup:</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;status&#39;</span><span class="o">:</span> <span class="s1">&#39;success&#39;</span><span class="p">,</span> <span class="s1">&#39;message&#39;</span><span class="o">:</span> <span class="s1">&#39;Cache update successful&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><dl class="simple">
+<dt><strong>containers</strong> - lists the containers and their information which include: labels, image, name and status.</dt><dd><ul>
+<li><p>Parametry: žádné</p></li>
+<li><p>Výstup:</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+   <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;b8f4489379&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;image&quot;</span><span class="o">:</span><span class="p">{</span>
+         <span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;c893b4df5ca3&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;tags&quot;</span><span class="o">:</span><span class="p">[</span>
+            <span class="s2">&quot;whalebone/agent:1.1.1&quot;</span>
+         <span class="p">]</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;labels&quot;</span><span class="o">:</span><span class="p">{</span>
+         <span class="s2">&quot;lr-agent&quot;</span><span class="o">:</span><span class="s2">&quot;1.1.1&quot;</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="s2">&quot;lr-agent&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;status&quot;</span><span class="o">:</span><span class="s2">&quot;running&quot;</span>
+   <span class="p">},</span>
+   <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;e433d58f13&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;image&quot;</span><span class="o">:</span><span class="p">{</span>
+         <span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;2c4b84a7daee&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;tags&quot;</span><span class="o">:</span><span class="p">[</span>
+            <span class="s2">&quot;whalebone/passivedns:1.1.1&quot;</span>
+         <span class="p">]</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;labels&quot;</span><span class="o">:</span><span class="p">{</span>
+         <span class="s2">&quot;passivedns&quot;</span><span class="o">:</span><span class="s2">&quot;1.1.1&quot;</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="s2">&quot;passivedns&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;status&quot;</span><span class="o">:</span><span class="s2">&quot;running&quot;</span>
+   <span class="p">},</span>
+   <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;2aeec00121&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;image&quot;</span><span class="o">:</span><span class="p">{</span>
+         <span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;fc442e625539&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;tags&quot;</span><span class="o">:</span><span class="p">[</span>
+            <span class="s2">&quot;whalebone/kres:1.1.1&quot;</span>
+         <span class="p">]</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;labels&quot;</span><span class="o">:</span><span class="p">{</span>
+         <span class="s2">&quot;resolver&quot;</span><span class="o">:</span><span class="s2">&quot;1.1.1&quot;</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="s2">&quot;resolver&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;status&quot;</span><span class="o">:</span><span class="s2">&quot;running&quot;</span>
+   <span class="p">},</span>
+   <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;662dac2e6c&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;image&quot;</span><span class="o">:</span><span class="p">{</span>
+         <span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;b37d0d1bd10b&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;tags&quot;</span><span class="o">:</span><span class="p">[</span>
+            <span class="s2">&quot;whalebone/kresman:1.1.1&quot;</span>
+         <span class="p">]</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;labels&quot;</span><span class="o">:</span><span class="p">{</span>
+         <span class="s2">&quot;kresman&quot;</span><span class="o">:</span><span class="s2">&quot;1.1.1&quot;</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="s2">&quot;kresman&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;status&quot;</span><span class="o">:</span><span class="s2">&quot;running&quot;</span>
+   <span class="p">},</span>
+   <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;05188ac1df&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;image&quot;</span><span class="o">:</span><span class="p">{</span>
+         <span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;5b50cdc924fc&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;tags&quot;</span><span class="o">:</span><span class="p">[</span>
+            <span class="s2">&quot;whalebone/logrotate:1.1.1&quot;</span>
+         <span class="p">]</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;labels&quot;</span><span class="o">:</span><span class="p">{</span>
+         <span class="s2">&quot;logrotate&quot;</span><span class="o">:</span><span class="s2">&quot;1.1.1&quot;</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="s2">&quot;logrotate&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;status&quot;</span><span class="o">:</span><span class="s2">&quot;running&quot;</span>
+   <span class="p">},</span>
+   <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;01e64dd697&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;image&quot;</span><span class="o">:</span><span class="p">{</span>
+         <span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;fffb52c2dadd&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;tags&quot;</span><span class="o">:</span><span class="p">[</span>
+            <span class="s2">&quot;whalebone/logstream:1.1.1&quot;</span>
+         <span class="p">]</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;labels&quot;</span><span class="o">:</span><span class="p">{</span>
+         <span class="s2">&quot;logstream&quot;</span><span class="o">:</span><span class="s2">&quot;1.1.1&quot;</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="s2">&quot;logstream&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;status&quot;</span><span class="o">:</span><span class="s2">&quot;running&quot;</span>
+   <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>Každý z představených příkazů provádí stejně pojmenovanou akci. Status a výstup této akce je zobrazován v terminálu. Akce <strong>list</strong> a <strong>run</strong> jsou určeny k řešení situací, kdy je potřeba potvrzení akcí před provedením. Akce pro zobrazení zobrazí změny, které se mají provést a kontejnery, které budou ovlivněny. Toto slouží jako náhled situace, která by se měla provést. Akce pro provedení těchto příkazu je potom provede.</p>
+<p>Akce pro upgrade a vytvoření kontejnerů používají docker-compose, který je možné najít v kontejneru agenta, jako konfiguraci pro provádění těchto akcí. Tento soucor je připnutý v adresáři <strong>/etc/whalebone/agent</strong> pokud se uživatel rozhodne ho upravovat. Všechny změny musí být zaneseny i do vzoru na adrese <strong>portal.whalebone.io</strong>. Bez nich budou tyto lokální změny přepsány při další akci manipulující s tímto souborem.</p>
+<p>Bash skript by měl výt volán takto: <strong>./cli.sh action param1 param2 param3</strong>. Action je jméno akce a jednotlivé parametry jsou parametry této akce. Pouze akce pro zastavení, odstranění a upgradování kontejnerů tyto parametry používají.</p>
+<p>Ve výchozím nastavení agent provádí všechny změny okamžitě. Je ale možné nastavit ukládání příkazů a jejich následné ruční provádění. Díky této možnosti je možné získat větší kontrolu nad tím, které akce agent provádí. Pro zapnutí této funkcionality je nutné nastavti proměnnou prostředí <strong>CONFIRMATION_REQUIRED</strong> na hodnotu <strong>true</strong>. Pro zobrazení změn je možné použít cli akci <strong>list</strong>. Pro provedení uložené akce je nutné využít cli možnosti <strong>run</strong>. Uložený příkaz může být právě jeden, pokud přijde další, nový přepíše ten starý. Pro manuální smazání čekajícího příkazu je možné využít akci <strong>delete_request</strong>. Akce, které mohou být uloženy touto možností, jsou: <strong>upgrade</strong>, <strong>create</strong> a <strong>suicide</strong>.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="quickstart.html" class="btn btn-neutral float-left" title="Začínáme" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Whalebone, s.r.o..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

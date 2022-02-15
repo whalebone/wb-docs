@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cloud DNS resolvers &mdash; Whalebone 3.2.1-12 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Data Analysis" href="data_analysis.html" />
+    <link rel="prev" title="Local DNS resolver" href="local_resolver.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html">
+            <img src="_static/whalebone.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="deployment.html">Deployment options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="local_resolver.html">Local DNS resolver</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Cloud DNS resolvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_analysis.html">Data Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reporting.html">Reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="domain_resolution_analysis.html">Domain resolution analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user.html">User/Organization Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hos.html">Home Office Security</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Whalebone</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Cloud DNS resolvers</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/cloud_resolver.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="cloud-dns-resolvers">
+<h1>Cloud DNS resolvers<a class="headerlink" href="#cloud-dns-resolvers" title="Permalink to this headline"></a></h1>
+<p>You can watch step-by-step video guide below:</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/kdpjCenhTVg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Whalebone Cloud DNS resolvers is a service aimed mainly for small or medium customers which can use cloud resolvers for a backup. Typically it is aimed to ISPs that have only one
+on-premise resolver and to ensure high availability, they use cloud DNS resolvers as secondary recursive for their customers. One of the prerequisite is to define public IP address
+or ranges to Cloud DNS resolver policy assignment so cloud resolver can differentiate and deliver the right filtering policy which you have setup for your network.</p>
+<p>Public network range definition serves to distinguish individual customers and their users. It is necessary to include all the public network ranges that will be used by DNS resolver as well as the users browsing the internet. The definition is used to customize the block page appearance (described later).
+Single customer can manage more network ranges, such ranges can be assigned to localities to easily distinguish between logical network zones in DNS traffic audit and incidents.</p>
+<img alt="_images/client_networks.png" class="align-center" src="_images/client_networks.png" />
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you do not fill in your public network ranges, cloud resolvers will serve as a simple DNS resolvers <strong>without any filtering</strong>. If you use local resolvers, you still have to input your network ranges to display fully customized blocking page (sinkhole) to the blocked users.</p>
+</div>
+<ul class="simple">
+<li><p>Into the field <code class="docutils literal notranslate"><span class="pre">IP</span> <span class="pre">Range</span></code> insert one or more network ranges using notation &lt;network address&gt;/&lt;mask&gt;, e.g.: <code class="docutils literal notranslate"><span class="pre">198.51.100.0/24</span></code></p></li>
+<li><p>Press button <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">IP</span> <span class="pre">range</span></code> to add more segments of the network.</p></li>
+<li><p>Don’t forget to save your new setup through the <code class="docutils literal notranslate"><span class="pre">Save</span> <span class="pre">to</span> <span class="pre">resolver</span></code> button</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>While testing Whalebone (e.g. through adding a testing domain into blacklist) don’t forget that many DNS records could be recently in the DNS cache anywhere between the resolver and the user (including the browser, operating system or forwarders). Testing right after the configuration change could therefore fail and the timespan before the protection becomes active could vary based on the TTL of the particular DNS record (should all the caches along the way actually honor the TTL value).</p>
+</div>
+<p>You should forward your DNS traffic towards Whalebone cloud resolvers if this is your preferred deployment option. Cloud resolvers are available on an Anycasted IP address:
+<code class="docutils literal notranslate"><span class="pre">193.32.92.32</span></code></p>
+<p>The IP addresses of the resolvers are accessible under <code class="docutils literal notranslate"><span class="pre">Cloud</span> <span class="pre">resolvers</span></code> and under the menu <code class="docutils literal notranslate"><span class="pre">Help</span> <span class="pre">&gt;</span> <span class="pre">DNS</span> <span class="pre">resolvers</span></code></p>
+<img alt="_images/resolver_ip.png" class="align-center" src="_images/resolver_ip.png" />
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="local_resolver.html" class="btn btn-neutral float-left" title="Local DNS resolver" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="data_analysis.html" class="btn btn-neutral float-right" title="Data Analysis" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Whalebone, s.r.o..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

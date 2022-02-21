@@ -913,8 +913,10 @@ More information and configuration options can be found on `Knot Resolver Docume
 	end
 	pcall(startHttp)
 
+<<<<<<< Updated upstream
 Uninstalling a local resolver
 =============================
+=======
 SNMP Network Monitoring
 =======================
 
@@ -1216,6 +1218,7 @@ For reference, the Whalebone template ha a sample dashboard that overviews the d
 
 Uninstalling a local resolver 
 ============================= 
+>>>>>>> Stashed changes
 
 In order to uninstall a resolver and remove all Whalebone configuration files the following steps should be followed:
 

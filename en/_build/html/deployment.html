@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deployment options &mdash; Whalebone 3.2.1-12 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Quickstart" href="quickstart.html" />
+    <link rel="prev" title="Whalebone admin guide" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html">
+            <img src="_static/whalebone.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Deployment options</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#cloud-dns">Cloud DNS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cloud-dns-direct-connection">Cloud DNS (direct connection)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#local-dns-resolver">Local DNS resolver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#local-dns-forwarder">Local DNS forwarder</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="local_resolver.html">Local DNS resolver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cloud_resolver.html">Cloud DNS resolvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_analysis.html">Data Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reporting.html">Reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="domain_resolution_analysis.html">Domain resolution analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user.html">User/Organization Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hos.html">Home Office Security</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Whalebone</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Deployment options</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/deployment.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="deployment-options">
+<h1>Deployment options<a class="headerlink" href="#deployment-options" title="Permalink to this headline"></a></h1>
+<p>Whalebone could be deployed in several scenarios which can be even combined to satisfy requirements of particular networks. Combination of cloud and local DNS resolver with single management console will satisfy even complex and distributed networks.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>All of the options below could be combined together. Various network segments and zones could have different requirements and possibilities.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Should you believe none of the scenarios below is applicable to your use case, please contact Whalebone and we will help you with architecture that will suite your needs.</p>
+</div>
+<section id="cloud-dns">
+<h2>Cloud DNS<a class="headerlink" href="#cloud-dns" title="Permalink to this headline"></a></h2>
+<p>This is the simplest method o deployment. To use Whalebone filtering, just change the configuration of your recent DNS resolvers and point them to Whalebone cloud resolvers.
+The downside of this deployment is that all of the incidents will be visible with source IP of the DNS forwarder instead of the original source IP. Still this deployment could come in handy if the priority is to prevent the threats with as low effort and infrastructure changes as possible.</p>
+<img alt="_images/deployment_cloud.png" class="align-center" src="_images/deployment_cloud.png" />
+</section>
+<section id="cloud-dns-direct-connection">
+<h2>Cloud DNS (direct connection)<a class="headerlink" href="#cloud-dns-direct-connection" title="Permalink to this headline"></a></h2>
+<p>This deployment is similar to forwarding the requests to Whalebone cloud resolvers, but the requests are sent directly to the cloud without local DNS cache. This could be usually set for all endpoints through DHCP. However not using local DNS cache means increased latency introduced by the network communication between the client and cloud resolver.
+If the individual machines are not hidden behind a NAT, their IP addresses will be directly visible in the Whalebone reporting and the clients could be easilly distinguished.</p>
+<img alt="_images/deployment_cloud_direct.png" class="align-center" src="_images/deployment_cloud_direct.png" />
+</section>
+<section id="local-dns-resolver">
+<h2>Local DNS resolver<a class="headerlink" href="#local-dns-resolver" title="Permalink to this headline"></a></h2>
+<p>This deployment scenario uses local Whalebone resolver, that communicates with Whalebone cloud through API. The DNS resolution takes place directly on the resolver and is completely independent on the cloud availability. Should the resolver not be able to reach the cloud service, it won’t be able to update the threat intelligence and to reports any incidents.
+The main advantage of this deployment is visibility into local network and individual IP addresses and native DNS resolver latency.</p>
+<img alt="_images/deployment_lr.png" class="align-center" src="_images/deployment_lr.png" />
+</section>
+<section id="local-dns-forwarder">
+<h2>Local DNS forwarder<a class="headerlink" href="#local-dns-forwarder" title="Permalink to this headline"></a></h2>
+<p>Very similar deployment scenario as the local resolver, however Whalebone just forwards the requests to preconfigured resolvers. This scenario is very useful in case there are local DNS zones that has to be available for the clients (e.g. Active Directory) or cases when the recent resolver configuration is very specific and has to be preserved.
+This deployment has also lower hardware requirements, roughly half of the CPU and RAM recommended.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>We don’t recommend to forward the requests to Whalebone cloud resolvers. Such configuration would result in duplicit incident detection, no added security and unnecesary latency for the clients.</p>
+</div>
+<img alt="_images/deployment_lr_fw.png" class="align-center" src="_images/deployment_lr_fw.png" />
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Whalebone admin guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="quickstart.html" class="btn btn-neutral float-right" title="Quickstart" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Whalebone, s.r.o..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

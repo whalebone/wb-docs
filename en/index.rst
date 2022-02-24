@@ -50,7 +50,10 @@ More information about the product and company is available on the official `Wha
    licence_disclaimer
 
 
-
+.. toctree::
+   :caption: Home Office Security
+   user
+   hos
 
 
 

@@ -10,16 +10,22 @@ More information about the product and company is available on the official `Wha
 .. toctree::
    :maxdepth: 3
    :caption: Getting started
-
+   deployment
    quickstart
 
 .. toctree::
-   :caption: Contents
-
-   deployment
+   :caption: Configuration
+   installation
+   resolvers
+   security_policies
+   dns_resolution
+   knot_tips_tricks
+   blocking_pages
    local_resolver
+   resolver_agent
    cloud_resolver
    user
+   uninstalling
 
 .. toctree::
    :caption: Analysis and reporting
@@ -27,15 +33,16 @@ More information about the product and company is available on the official `Wha
    data_analysis
    domain_resolution_analysis
    reporting
+   integration
 
 .. toctree::
    :caption: Step-by-Step Video Guides
-   
+   configuration
+   analysis
    video_guides
 
 .. toctree::
    :caption: About
-
    licence_disclaimer
 
 

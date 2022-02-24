@@ -31,9 +31,7 @@ such ranges can be assigned to localities to easily distinguish between logical 
 .. tip:: While testing Whalebone (e.g. through adding a testing domain into blacklist) don't forget that many DNS records could be recently in the DNS cache anywhere between the resolver and the user (including the browser, operating system or forwarders). Testing right after the configuration change could therefore fail and the timespan before the protection becomes active could vary based on the TTL of the particular DNS record (should all the caches along the way actually honor the TTL value).
 
 
-You should forward your DNS traffic towards Whalebone cloud resolvers if this is your preferred deployment option. Cloud resolver are available on two independent IP addresses:
-``52.169.120.89``
-``52.166.249.114``
+You should forward your DNS traffic towards Whalebone cloud resolvers if this is your preferred deployment option. Cloud resolver is available on: ``193.32.92.32``
 
 The IP addresses of the resolvers are accessible under ``Cloud resolvers`` and under the menu ``Help > DNS resolvers``
 

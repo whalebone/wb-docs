@@ -1,3 +1,6 @@
+Deployment
+==========
+
 On-premise resolver deployment
 ------------------------------
 
@@ -36,7 +39,8 @@ which don't necessarily get their connectivity from you, but you administer thei
 
 
 
-
+Configuration
+=============
 
 Basic configuration
 -------------------
@@ -84,6 +88,25 @@ Alerts
     <iframe width="560" height="315" src="https://www.youtube.com/embed/GXUkPICav-o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
+Analysis
+========
+
+Domain analysis
+----------------
+
+There are two ways to manually perform an analysis of a domain against the Whalebone database. One way to open the "Domain Analysis" tool is from the user's menu.
+The other option is to check a specific domain from the context menu in "Threats" or "DNS traffic" overviews directly. Afterward, you will see all the information 
+that Whalebone has collected about the domain. We used kidos-bank.ru as an example. We can see that there are different types of threats associated with the domain.
+Its score is 95-100 and it was labeled as dangerous in November 2019. In the following graphs, you can see the development of the detections, or rather the DNS 
+resolution requests of the domain in your network. The outcome of the analysis also shows that the domain is not assigned a content category and its blocking wasn't 
+ordered by law. You can inquire into any domain like that. Just enter it into the top field. We can see that facebook.com is not considered a security threat, 
+there's quite some traffic going on and Whalebone categorizes it as a social network. If we type in porn.com, we can see that the category has changed into "Sexual content".
+
+.. raw:: html
+
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/WJzsGvBiF80" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+ 
+
 DNS traffic
 ------------
 
@@ -127,21 +150,7 @@ Before you start modeling API calls in the documentation, we recommend authorizi
     <iframe width="560" height="315" src="https://www.youtube.com/embed/9SsxMVR6ino" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
-Domain analysis
-----------------
 
-There are two ways to manually perform an analysis of a domain against the Whalebone database. One way to open the "Domain Analysis" tool is from the user's menu.
-The other option is to check a specific domain from the context menu in "Threats" or "DNS traffic" overviews directly. Afterward, you will see all the information 
-that Whalebone has collected about the domain. We used kidos-bank.ru as an example. We can see that there are different types of threats associated with the domain.
-Its score is 95-100 and it was labeled as dangerous in November 2019. In the following graphs, you can see the development of the detections, or rather the DNS 
-resolution requests of the domain in your network. The outcome of the analysis also shows that the domain is not assigned a content category and its blocking wasn't 
-ordered by law. You can inquire into any domain like that. Just enter it into the top field. We can see that facebook.com is not considered a security threat, 
-there's quite some traffic going on and Whalebone categorizes it as a social network. If we type in porn.com, we can see that the category has changed into "Sexual content".
-
-.. raw:: html
-
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/WJzsGvBiF80" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
- 
 
 Domain resolution troubleshooting
 ----------------------------------

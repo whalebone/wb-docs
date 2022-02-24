@@ -10,11 +10,13 @@ More information about the product and company is available on the official `Wha
 .. toctree::
    :maxdepth: 3
    :caption: Getting started
+
    deployment
    quickstart
 
 .. toctree::
    :caption: Configuration
+
    installation
    resolvers
    security_policies
@@ -37,12 +39,14 @@ More information about the product and company is available on the official `Wha
 
 .. toctree::
    :caption: Step-by-Step Video Guides
+
    configuration
    analysis
    video_guides
 
 .. toctree::
    :caption: About
+   
    licence_disclaimer
 
 

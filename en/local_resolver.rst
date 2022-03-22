@@ -858,7 +858,26 @@ Allow list of domains
 
   -- allow list of domains
   for i,domain in ipairs(domains) do
-    policy.suffix(policy.PASS, {todname(domain)})
+    policy.add(policy.suffix(policy.PASS, {todname(domain)}))
+  end
+ 
+Deny list of domains
+---------------------
+
+.. code-block:: lua
+
+  -- load modules
+  modules = {'policy'}
+
+  --define list of denied domains
+  domains = {
+    'example.com',
+    'anotherexample.org'
+  }
+
+  -- deny list of domains, while returning NXDOMAIN
+  for i,domain in ipairs(domains) do
+    policy.add(policy.suffix(policy.DENY, {todname(domain)}))
   end
 
 Disable DNSSEC globally

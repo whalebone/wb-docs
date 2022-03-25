@@ -13,9 +13,8 @@ Local resolver is supported on dedicated (hardware or virtual) machine running a
 * **Supported operating system** (64-bit, server editions of following distributions):
 
   * Red Hat Enterprise Linux 7, 8
-  * CentOS Linux 7, 8 
-  * CentOS Stream 8, 9
-  * Debian 9, 10, 11
+  * CentOS 7, 8
+  * Debian 9, 10
   * Ubuntu 16.04, 18.04, 20.04
 
 * **Supported filesystems** 
@@ -858,26 +857,7 @@ Allow list of domains
 
   -- allow list of domains
   for i,domain in ipairs(domains) do
-    policy.add(policy.suffix(policy.PASS, {todname(domain)}))
-  end
- 
-Deny list of domains
----------------------
-
-.. code-block:: lua
-
-  -- load modules
-  modules = {'policy'}
-
-  --define list of denied domains
-  domains = {
-    'example.com',
-    'anotherexample.org'
-  }
-
-  -- deny list of domains, while returning NXDOMAIN
-  for i,domain in ipairs(domains) do
-    policy.add(policy.suffix(policy.DENY, {todname(domain)}))
+    policy.suffix(policy.PASS, {todname(domain)})
   end
 
 Disable DNSSEC globally

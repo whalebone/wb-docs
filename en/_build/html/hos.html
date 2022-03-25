@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home Office Security &mdash; Whalebone 3.2.1-12 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="User/Organization Management" href="user.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html">
+            <img src="_static/whalebone.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="deployment.html">Deployment options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="local_resolver.html">Local DNS resolver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cloud_resolver.html">Cloud DNS resolvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_analysis.html">Data Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reporting.html">Reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="domain_resolution_analysis.html">Domain resolution analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user.html">User/Organization Management</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Home Office Security</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#step-by-step-installation">Step by step installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#operation">Operation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#policies">Policies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#devices">Devices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#states">States</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#security">Security</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#service-details-and-specifics">Service details and specifics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#supported-desktop-os">Supported desktop OS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#portal">Portal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#device-group-configuration">Device Group Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-instructions">Install Instructions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#service-requirements">Service requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#application-firewall-settings">Application Firewall Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#application-logs">Application Logs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Whalebone</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Home Office Security</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/hos.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="home-office-security">
+<h1>Home Office Security<a class="headerlink" href="#home-office-security" title="Permalink to this headline"></a></h1>
+<section id="step-by-step-installation">
+<h2>Step by step installation<a class="headerlink" href="#step-by-step-installation" title="Permalink to this headline"></a></h2>
+<p>To install HOS on device you need to configure it first. Please open <cite>Whalebone Portal</cite> web page and use (1) <cite>User menu</cite> to navigate to (2) <cite>Home Office Security</cite>.</p>
+<img alt="_images/hos-sbs-1.png" class="align-center" src="_images/hos-sbs-1.png" />
+<p>Create (3) a Device group.</p>
+<img alt="_images/hos-sbs-2.png" class="align-center" src="_images/hos-sbs-2.png" />
+<p>Fill the form to suit your organization needs.
+ID states group identifer. It’s value could be a Active Directory group or you can define a unique custom identifer on your own. <cite>Name</cite> field makes the human friendly description. Select policy and a blocking page and then click (4) <cite>Add</cite> button to create this group.</p>
+<p>HOS may become inactive when it detects that device is connected to secure network.</p>
+<img alt="_images/hos-sbs-3.png" class="align-center" src="_images/hos-sbs-3.png" />
+<p>Click (5)  <cite>Install to group</cite> button to see installation instructions and/or get download link to the HOS installer.</p>
+<img alt="_images/hos-sbs-4.png" class="align-center" src="_images/hos-sbs-4.png" />
+<p>If you haven’t already download the installer (6). While the installer is being downloaded please copy the installation command to clipboard (7).</p>
+<img alt="_images/hos-sbs-5.png" class="align-center" src="_images/hos-sbs-5.png" />
+<p>Find the folder where the installer is located. It should be file named <cite>Whalebone.Home.Office.Security.Installer.msi</cite>.</p>
+<p>Open up a command prompt, change directory to the folder where is the installer and paste (8) the command with your mouse (right click). Execute the command. This requires admin priviledges.</p>
+<p>Installer will end prematurely with error when executed without token argument.</p>
+<img alt="_images/hos-sbs-6.png" class="align-center" src="_images/hos-sbs-6.png" />
+<p>Installer has minimal UI, if there was no error message installation succeeded.</p>
+<img alt="_images/hos-sbs-7.png" class="align-center" src="_images/hos-sbs-7.png" />
+<p>Device is now visible in the Whalebone Portal web page.</p>
+</section>
+<section id="operation">
+<h2>Operation<a class="headerlink" href="#operation" title="Permalink to this headline"></a></h2>
+<p>Whalebone Home Office Security (HOS) provides a DNS filtering functionality for your desktop and mobile devices. It intercepts DNS traffic and inspects it before sending network packets to the wild. It protects the device from network threat by scanning every DNS packet.</p>
+<section id="policies">
+<h3>Policies<a class="headerlink" href="#policies" title="Permalink to this headline"></a></h3>
+<p>Policy is a set of rules that instructs how to operate. Based on policy the device or the local/cloud resolver decides what to during DNS resolution. This set of rules persist on the device and is updated initially and later synchronized. Because of that Portal provides monitoring of these devices.</p>
+</section>
+<section id="devices">
+<h3>Devices<a class="headerlink" href="#devices" title="Permalink to this headline"></a></h3>
+<p>Your organization may divide devices into single or multiple groups. Every device may belong exactly to a single group only. Each must be a member of <code class="docutils literal notranslate"><span class="pre">Device</span> <span class="pre">group</span></code> before they get monitored. Each group provides a security <code class="docutils literal notranslate"><span class="pre">Policy</span></code> which is later conditionally applied to them. Whether the device is present on the <code class="docutils literal notranslate"><span class="pre">internal</span></code> or <code class="docutils literal notranslate"><span class="pre">external</span></code> network makes it <code class="docutils literal notranslate"><span class="pre">active</span></code> or <code class="docutils literal notranslate"><span class="pre">inactive</span></code>.</p>
+<p>It separates the network location into <code class="docutils literal notranslate"><span class="pre">internal</span></code> or <code class="docutils literal notranslate"><span class="pre">external</span></code> and the biggest role here has the <code class="docutils literal notranslate"><span class="pre">Internal</span> <span class="pre">domain</span></code> setting which must be defined in the <code class="docutils literal notranslate"><span class="pre">Device</span> <span class="pre">group</span></code>. If HOS detects the <code class="docutils literal notranslate"><span class="pre">Internal</span> <span class="pre">domain</span></code> the network location is decided as <code class="docutils literal notranslate"><span class="pre">internal</span></code>. Detection is performed by running DNS query for the configured internal domain and receiving the configured answer.</p>
+</section>
+<section id="states">
+<h3>States<a class="headerlink" href="#states" title="Permalink to this headline"></a></h3>
+<p>HOS is constantly monitoring changes on the network interfaces and based on the conditions it changes its states.</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">Active</span></code></dt><dd><p>All DNS traffic is diverted to DoH server. HOS becomes <code class="docutils literal notranslate"><span class="pre">Active</span></code> when it is connected to the public network, but the <code class="docutils literal notranslate"><span class="pre">Internal</span> <span class="pre">domain</span></code> is unreachable. This state is used for the danger zones such as public wifi.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">Inactive</span></code></dt><dd><p>DNS trafic is left intact. This state is used when device can’t connect to the Internet or when it is connected through internal network.</p>
+</dd>
+</dl>
+</section>
+<section id="security">
+<h3>Security<a class="headerlink" href="#security" title="Permalink to this headline"></a></h3>
+<p>In the background HOS uses <code class="docutils literal notranslate"><span class="pre">DNS-over-HTTPs</span></code> or <code class="docutils literal notranslate"><span class="pre">DoH</span></code>. The <code class="docutils literal notranslate"><span class="pre">Hostname</span></code> of the <code class="docutils literal notranslate"><span class="pre">Resolver</span></code> is never diverted and is cached. The identification and authenticity is left to the TLS protocol. When device belongs to any <code class="docutils literal notranslate"><span class="pre">Domain</span></code>, then all domain names and their subdomains are allowed to reach the DNS servers they route to. HOS uses <cite>Win32_NetworkAdapterConfiguration</cite> WMI table to get the information.</p>
+</section>
+</section>
+<section id="service-details-and-specifics">
+<h2>Service details and specifics<a class="headerlink" href="#service-details-and-specifics" title="Permalink to this headline"></a></h2>
+<p>HOS comes with Windows Installer for the deployment. No user interaction is required to perform the installation, installer requires <code class="docutils literal notranslate"><span class="pre">token</span></code> though. Default target directory:</p>
+<p><code class="docutils literal notranslate"><span class="pre">C:\Program</span> <span class="pre">Files</span> <span class="pre">(x86)\Whalebone\Home</span> <span class="pre">Office</span> <span class="pre">Security\</span></code></p>
+<section id="supported-desktop-os">
+<h3>Supported desktop OS<a class="headerlink" href="#supported-desktop-os" title="Permalink to this headline"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 37%" />
+<col style="width: 63%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Desktop</p></th>
+<th class="head"><p>Server</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>☐ Windows XP</p></td>
+<td><p>☐ Windows 2000</p></td>
+</tr>
+<tr class="row-odd"><td><p>☐ Windows Vista</p></td>
+<td><p>☐ Windows 2003, Windows 2003 R2</p></td>
+</tr>
+<tr class="row-even"><td><p>☑ Windows 7</p></td>
+<td><p>☐ Windows 2008, Windows 2008 R2</p></td>
+</tr>
+<tr class="row-odd"><td><p>☑ Windows 8</p></td>
+<td><p>☑ Windows 2012, Windows 2012 R2</p></td>
+</tr>
+<tr class="row-even"><td><p>☑ Windows 8.1</p></td>
+<td><p>☑ Windows 2016</p></td>
+</tr>
+<tr class="row-odd"><td><p>☑ Windows 10</p></td>
+<td><p>☑ Windows 2019</p></td>
+</tr>
+</tbody>
+</table>
+<p>Windows 7 systems must be up-to-date or at least have KB3033929 installed.</p>
+<p>Windows Server 2016 systems must have secure boot disabled.</p>
+</section>
+<section id="portal">
+<h3>Portal<a class="headerlink" href="#portal" title="Permalink to this headline"></a></h3>
+<p>First, check that your organization have <a class="reference external" href="https://docs.whalebone.io/en/hos/local_resolver.html#security-policies">policies</a> and device groups prepared. If you haven’t set any <a class="reference external" href="https://docs.whalebone.io/en/hos/local_resolver.html#security-policies">policies</a> or device groups, please configure them before you proceed further.</p>
+</section>
+<section id="device-group-configuration">
+<h3>Device Group Configuration<a class="headerlink" href="#device-group-configuration" title="Permalink to this headline"></a></h3>
+<p>Automatic upgrade: When this configuration option is checked, HOS application on Windows will update to latest production version when a newer version is available to download. This option takes effect on Windows only, on mobile upgrades are performed by the vendor ecosystem.
+Domain exception: HOS service will not divert any DNS queries that contain question for domain on the exception list. E.g. when <code class="docutils literal notranslate"><span class="pre">example.com</span></code> is specified, the DNS request will be resolved as usual on the resolver configured by operating system. A same rule applies for question <code class="docutils literal notranslate"><span class="pre">subdomain.example.com</span></code>.</p>
+<p>Please note that two settings mentioned above (Automatic upgrade and Domain exception) are featured in version 2.10.0 for Windows only. If you are running earlier version, please update to 2.10.0 manually.</p>
+</section>
+<section id="install-instructions">
+<h3>Install Instructions<a class="headerlink" href="#install-instructions" title="Permalink to this headline"></a></h3>
+<p>Install or Update:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>msiexec /i <span class="s2">&quot;Whalebone.Home.Office.Security.Installer.msi&quot;</span> <span class="nv">TOKEN</span><span class="o">=</span><span class="s2">&quot;60d5806e-07fe-432a-a4ad-7797d82782b3&quot;</span>
+</pre></div>
+</div>
+<p>Uninstall:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>msiexec /x <span class="s2">&quot;Whalebone.Home.Office.Security.Installer.msi</span>
+</pre></div>
+</div>
+</section>
+<section id="service-requirements">
+<h3>Service requirements<a class="headerlink" href="#service-requirements" title="Permalink to this headline"></a></h3>
+<p>Because HOS must intecept network traffic it requres to run as SYSTEM account. You can query the service by name <code class="docutils literal notranslate"><span class="pre">hos</span></code> to see if it started properly. When none or invalid installation token is supplied the service it will stop.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>C:<span class="se">\U</span>sers<span class="se">\a</span>dmin&gt;sc query <span class="s2">&quot;Whalebone Home Office Security&quot;</span>
+
+SERVICE_NAME: HOS
+        TYPE               : <span class="m">10</span>  WIN32_OWN_PROCESS
+        STATE              : <span class="m">4</span>  RUNNING
+                                <span class="o">(</span>STOPPABLE, PAUSABLE, ACCEPTS_SHUTDOWN<span class="o">)</span>
+        WIN32_EXIT_CODE    : <span class="m">0</span>  <span class="o">(</span>0x0<span class="o">)</span>
+        SERVICE_EXIT_CODE  : <span class="m">0</span>  <span class="o">(</span>0x0<span class="o">)</span>
+        CHECKPOINT         : 0x0
+        WAIT_HINT          : 0x0
+</pre></div>
+</div>
+<p>On first run HOS also installs <code class="docutils literal notranslate"><span class="pre">windivert</span></code> system driver.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>C:<span class="se">\U</span>sers<span class="se">\a</span>dmin&gt;sc query windivert <span class="nv">type</span><span class="o">=</span>kernel
+
+SERVICE_NAME: windivert
+        TYPE               : <span class="m">1</span>  KERNEL_DRIVER
+        STATE              : <span class="m">4</span>  RUNNING
+                                <span class="o">(</span>STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN<span class="o">)</span>
+        WIN32_EXIT_CODE    : <span class="m">0</span>  <span class="o">(</span>0x0<span class="o">)</span>
+        SERVICE_EXIT_CODE  : <span class="m">0</span>  <span class="o">(</span>0x0<span class="o">)</span>
+        CHECKPOINT         : 0x0
+        WAIT_HINT          : 0x0
+</pre></div>
+</div>
+<p>Service is configured to recover after crash three times and then stay stopped.</p>
+</section>
+<section id="application-firewall-settings">
+<h3>Application Firewall Settings<a class="headerlink" href="#application-firewall-settings" title="Permalink to this headline"></a></h3>
+<p>Enable TCP port 443 for the <em>Whalebone Home Office Security.exe</em> in the application firewall. To enable it for all network profiles in Windows, adjust following command to let HOS connect to your DoH server (e.g. 185.150.10.71):</p>
+<p>If HOS service does not work please ensure that HOS service can connect to <cite>hos.whalebone.io</cite> and <cite>mobileapi.whalebone.io</cite>.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>netsh advfirewall firewall add rule <span class="nv">name</span><span class="o">=</span><span class="s2">&quot;Whalebone Home Office Security&quot;</span> <span class="nv">dir</span><span class="o">=</span>out <span class="nv">action</span><span class="o">=</span>allow <span class="nv">program</span><span class="o">=</span><span class="s2">&quot;C:\Program Files (x86)\Whalebone\Home Office Security\Whalebone Home Office Security.exe&quot;</span> <span class="nv">enable</span><span class="o">=</span>yes <span class="nv">remoteip</span><span class="o">=</span><span class="m">185</span>.150.10.71,LocalSubnet
+</pre></div>
+</div>
+<p>It is not necessary for the service to listen on port 53, thus there is no requirement for the application firewall to follow.</p>
+<p>Additionally, service is listening on <em>TCP endpoint localhost:9000</em> to provide data endpoint for UI app, and UI app server <code class="docutils literal notranslate"><span class="pre">whosui.exe</span></code> listens on <em>TCP endpoint localhost:55221</em> to render graphical components. Even though these ports are not critical for HOS operation they are relevant for UI app <code class="docutils literal notranslate"><span class="pre">AdminUI.exe</span></code>. Please ensure that services are allowed to listen on those local ports as this allows user to have insight into app operation.</p>
+</section>
+<section id="application-logs">
+<h3>Application Logs<a class="headerlink" href="#application-logs" title="Permalink to this headline"></a></h3>
+<p>Service logs can be found at <code class="docutils literal notranslate"><span class="pre">c:\ProgramData\Whalebone\Home</span> <span class="pre">Office</span> <span class="pre">Security\Logs\</span></code>, which contain detailed information about application states and operation. In case you encounther unexpected service behaviour please include this Log folder and/or Config folder along inside your support ticket. Application provides additional information for operation trace, in AdminUI.exe app, Events tab may give you better insight in HOS operation.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="user.html" class="btn btn-neutral float-left" title="User/Organization Management" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Whalebone, s.r.o..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

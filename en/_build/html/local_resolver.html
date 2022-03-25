@@ -1,0 +1,1790 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Local DNS resolver &mdash; Whalebone 3.2.1-12 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Cloud DNS resolvers" href="cloud_resolver.html" />
+    <link rel="prev" title="Quickstart" href="quickstart.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html">
+            <img src="_static/whalebone.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="deployment.html">Deployment options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Local DNS resolver</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#system-requirements">System requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation-of-a-new-resolver">Installation of a new resolver</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#verifying-the-installation">Verifying the installation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#security-policies">Security policies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dns-resolution-configuration">DNS resolution configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#blocking-pages">Blocking Pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#resolver-management">Resolver management</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#resolvers-overview">Resolvers overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#deploy-configuration">Deploy configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configure-policy-per-network-segment">Configure Policy per Network Segment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configure-blocking-pages">Configure Blocking Pages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#upgrade-rollback-resolver">Upgrade/Rollback Resolver</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#resolver-agent">Resolver agent</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#command-line-interface">Command line interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#strict-mode">Strict mode</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#knot-resolver-tips-tricks">Knot Resolver - Tips &amp; Tricks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#allow-particular-ip-ranges">Allow particular IP ranges</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#refuse-particular-ip-ranges">Refuse particular IP ranges</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#allow-list-of-domains">Allow list of domains</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#disable-dnssec-globally">Disable DNSSEC globally</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#disable-dnssec-validation-for-a-domain">Disable DNSSEC validation for a domain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#disable-query-case-randomization">Disable Query Case Randomization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#disable-qname-minimization">Disable QNAME Minimization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#disable-domain-caching">Disable Domain caching</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#enable-prometheus-metrics">Enable Prometheus Metrics</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#uninstalling-a-local-resolver">Uninstalling a local resolver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#snmp-network-monitoring">SNMP Network Monitoring</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#high-level-network-diagram">High Level Network Diagram</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#snmp-oid">SNMP OID</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#zabbix-integration">Zabbix Integration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-import-the-whalebone-template">How to import the Whalebone Template</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-add-the-resolver-in-zabbix-monitoring">How to add the resolver in Zabbix Monitoring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-add-the-whalebone-widget-on-zabbix-dashboard">How to add the Whalebone widget on Zabbix dashboard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-add-triggers-on-the-zabbix">How to add triggers on the Zabbix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-configure-the-trigger-actions">How to configure the trigger actions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-view-the-pre-defined-whalebone-dashboard">How to view the pre-defined Whalebone dashboard</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Uninstalling a local resolver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#license-disclaimers">License Disclaimers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cloud_resolver.html">Cloud DNS resolvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_analysis.html">Data Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reporting.html">Reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="domain_resolution_analysis.html">Domain resolution analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user.html">User/Organization Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hos.html">Home Office Security</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Whalebone</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Local DNS resolver</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/local_resolver.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="local-dns-resolver">
+<h1>Local DNS resolver<a class="headerlink" href="#local-dns-resolver" title="Permalink to this headline"></a></h1>
+<p>Whalebone local resolver brings the advantage of visibility of local IP addresses that send the actual requests. Whalebone resolver is based on the implementation of <a class="reference external" href="https://www.knot-resolver.cz/">Knot Resolver</a> developed in the CZ.NIC labs.</p>
+<section id="system-requirements">
+<h2>System requirements<a class="headerlink" href="#system-requirements" title="Permalink to this headline"></a></h2>
+<p>Local resolver is supported on dedicated (hardware or virtual) machine running a supported operating system.</p>
+<ul class="simple">
+<li><p><strong>Supported operating system</strong> (64-bit, server editions of following distributions):</p>
+<ul>
+<li><p>Red Hat Enterprise Linux 7, 8</p></li>
+<li><p>CentOS 7, 8</p></li>
+<li><p>Debian 9, 10</p></li>
+<li><p>Ubuntu 16.04, 18.04, 20.04</p></li>
+</ul>
+</li>
+<li><p><strong>Supported filesystems</strong></p>
+<ul>
+<li><p>ext4</p></li>
+<li><p>xfs only with d_type support (ftype=1)</p></li>
+</ul>
+</li>
+<li><p><strong>Minimum hardware sizing</strong> (physical or virtual):</p>
+<ul>
+<li><p>2 CPU cores</p></li>
+<li><p>4 GB RAM</p></li>
+<li><p>40 GB HDD (at least 30 GB in /var partition)</p></li>
+</ul>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Please note that Whalebone only supports deloyments without desktop environments such as GNOME, KDE or Xfce as those can impact available memory and DNS processing on the server.</p>
+</div>
+<ul>
+<li><p><strong>Network setup requirements</strong> (local resolver needs the following ports opened):</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 9%" />
+<col style="width: 32%" />
+<col style="width: 30%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Direction</p></th>
+<th class="head"><p>Protocol(s)</p></th>
+<th class="head"><p>Port</p></th>
+<th class="head"><p>Destination IP/Domain</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Outbound</p></td>
+<td><p>TCP+UDP</p></td>
+<td><p>53</p></td>
+<td><p>Any</p></td>
+<td><p>DNS resolution</p></td>
+</tr>
+<tr class="row-odd"><td><p>Outbound</p></td>
+<td><p>TCP</p></td>
+<td><p>443</p></td>
+<td><p>resolverapi.whalebone.io</p></td>
+<td><p>Threat Database updates</p></td>
+</tr>
+<tr class="row-even"><td><p>Outbound</p></td>
+<td><p>TCP</p></td>
+<td><p>443</p></td>
+<td><p>stream.whalebone.io</p></td>
+<td><p>Threat Database updates</p></td>
+</tr>
+<tr class="row-odd"><td><p>Outbound</p></td>
+<td><p>TCP</p></td>
+<td><p>443</p></td>
+<td><p>logger.whalebone.io</p></td>
+<td><p>Logging stream</p></td>
+</tr>
+<tr class="row-even"><td><p>Outbound</p></td>
+<td><p>TCP</p></td>
+<td><p>443</p></td>
+<td><p>agentapi.whalebone.io</p></td>
+<td><p>Resolver management</p></td>
+</tr>
+<tr class="row-odd"><td><p>Outbound</p></td>
+<td><p>TCP</p></td>
+<td><p>443</p></td>
+<td><p>transfer.whalebone.io</p></td>
+<td><p>Support Log collection</p></td>
+</tr>
+<tr class="row-even"><td><p>Outbound</p></td>
+<td><p>TCP</p></td>
+<td><p>443</p></td>
+<td><p>portal.whalebone.io</p></td>
+<td><p>Admin portal</p></td>
+</tr>
+<tr class="row-odd"><td><p>Outbound</p></td>
+<td><p>TCP</p></td>
+<td><p>443</p></td>
+<td><p>harbor.whalebone.io</p></td>
+<td><p>Resolver updates</p></td>
+</tr>
+<tr class="row-even"><td><p>Outbound</p></td>
+<td><p>TCP</p></td>
+<td><p>443</p></td>
+<td><p>download.docker.com</p></td>
+<td><p>Installation Process</p></td>
+</tr>
+<tr class="row-odd"><td><p>Outbound</p></td>
+<td><p>TCP</p></td>
+<td><p>443</p></td>
+<td><p>data.iana.org</p></td>
+<td><p>DNSSEC keys</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Without communication on port 443 to the domains listed above the resolver won’t be installed at all (the installation script will abort).</p>
+</div>
+<p>The Blocking Pages are being hosted <strong>directly</strong> on the Resolvers so the IP addresses that are advertised to the clients must be used. The clients will then be redirected to the IP address of the resolver upon blocking. It is advised to allow only subnet(s) assigned to customers or trusted networks, otherwise it can be misused for various attacks or unauthorized users.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 11%" />
+<col style="width: 9%" />
+<col style="width: 34%" />
+<col style="width: 31%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Direction</p></th>
+<th class="head"><p>Protocol</p></th>
+<th class="head"><p>Port</p></th>
+<th class="head"><p>Source IP/Domain</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Inbound</p></td>
+<td><p>TCP</p></td>
+<td><p>80</p></td>
+<td><p>Customer’s subnet range(s)</p></td>
+<td><p>Redirection/Blocking page</p></td>
+</tr>
+<tr class="row-odd"><td><p>Inbound</p></td>
+<td><p>TCP</p></td>
+<td><p>443</p></td>
+<td><p>Customer’s subnet range(s)</p></td>
+<td><p>Redirection/Blocking page</p></td>
+</tr>
+</tbody>
+</table>
+<p>The resolver’s processes need to communicate on localhost. In case some firewall is in place please make sure that the traffic is allowed, i.e. <code class="docutils literal notranslate"><span class="pre">iptables</span> <span class="pre">-A</span> <span class="pre">INPUT</span> <span class="pre">-s</span> <span class="pre">127.0.0.1</span> <span class="pre">-j</span> <span class="pre">ACCEPT</span></code></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 10%" />
+<col style="width: 8%" />
+<col style="width: 30%" />
+<col style="width: 39%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Direction</p></th>
+<th class="head"><p>Protocol</p></th>
+<th class="head"><p>Port</p></th>
+<th class="head"><p>Source IP/Domain</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Inbound</p></td>
+<td><p>TCP</p></td>
+<td><p>ANY</p></td>
+<td><p>127.0.0.1</p></td>
+<td><p>Resolver’s processes communication</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Should you need sizing estimation for large ISP or Enterprise network contact Whalebone. Whalebone local resolver will need approx. twice the RAM and CPU than usual resolver (BIND, Unbound).</p>
+</div>
+</section>
+<section id="installation-of-a-new-resolver">
+<h2>Installation of a new resolver<a class="headerlink" href="#installation-of-a-new-resolver" title="Permalink to this headline"></a></h2>
+<p>You can watch step-by-step video guide about installation procedure below:</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/W_sWor-Wg-U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>In menu <strong>Resolvers</strong> press the button <strong>Create new</strong>. Choose a name (identifier) for your new resolver. The input is purely informative and won’t affect the functionality.
+Once you’ve entered the name, click <strong>Add resolver</strong> button
+After clicking the button an informative window will pop up with list of supported platforms and the one-line command for the installation. Copy the command and run on the machine dedicated for the local resolver.
+The command will run the installation script and will pass the one time token used for the resolver activation (the same command can not be used repeatedly).</p>
+<img alt="_images/lrv2-create.gif" class="align-center" src="_images/lrv2-create.gif" />
+<p>Once the command is run the operating system is being checked and requirements installed. Script will inform you about the progress and it creates a detailed log named <code class="docutils literal notranslate"><span class="pre">wb_install.log</span></code> in current directory.
+Successful run of the installation script is ended with the notification <code class="docutils literal notranslate"><span class="pre">`Final</span> <span class="pre">tuning</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">OS`</span></code> with value <code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">OK</span> <span class="pre">]</span></code>. Right after the installation also the initialization takes place and it could take several minutes before the resolver starts the services.</p>
+<img alt="_images/lrv2-install.gif" class="align-center" src="_images/lrv2-install.gif" />
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Local resolver is configured as an open resolver. It will respond to any request sent. This is quite comfortable in terms of availability of the services, but also could be a risk if the service is available from the outside networks. Please make sure you limit the access to the local resolver on port 53 (UDP and TCP) from the trusted networks only, otherwise it can be misused for various DoS attacks.</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The resolver’s processes need to communicate on localhost. In case some firewall is in place please make sure that the traffic is allowed, i.e. <code class="docutils literal notranslate"><span class="pre">iptables</span> <span class="pre">-A</span> <span class="pre">INPUT</span> <span class="pre">-s</span> <span class="pre">127.0.0.1</span> <span class="pre">-j</span> <span class="pre">ACCEPT</span></code></p>
+</div>
+<section id="verifying-the-installation">
+<h3>Verifying the installation<a class="headerlink" href="#verifying-the-installation" title="Permalink to this headline"></a></h3>
+<p>Whalebone resolvers come with a set of testing domains for the verification of the installation and the Security filtering.
+These domains can be used in order to ensure that you are effectively using a Whalebone resolver:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">http://malware.test.attacker.online</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">http://c2server.test.attacker.online</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">http://spam.test.attacker.online</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">http://phishing.test.attacker.online</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">http://coinminer.test.attacker.online</span></code></p></li>
+</ul>
+<p>Upon visiting these domains a blocking page similar to the following should be presented:</p>
+<figure class="align-center" id="id3">
+<img alt="Blocking Pages (Default)" src="_images/blocking-page-default.png" />
+<figcaption>
+<p><span class="caption-text">Blocking Page - Whalebone Resolver is being used</span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>In case you come across the page below, it means that the request was not blocked and thus a Whalebone resolver is not being used.
+Please review your settings and if the issue persists, please contact support.</p>
+<figure class="align-center" id="id4">
+<img alt="Blocking Pages (Target)" src="_images/testing-page.png" />
+<figcaption>
+<p><span class="caption-text">Blocking Page - Whalebone Resolver is not being used</span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="security-policies">
+<h2>Security policies<a class="headerlink" href="#security-policies" title="Permalink to this headline"></a></h2>
+<p>You can watch step-by-step video guide of basic security policy configuration below:</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/sUqVXKaPuIc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>You can watch step-by-step video guide with deeper xplanation of security policy tuning below:</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/vjzOeHAYi4A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>The behavior of DNS filtering on the resolvers could be defined in the menu item <strong>Configuration</strong> and tab <strong>Security poicies</strong>. In the default state there is only the <strong>Default policy</strong>, which is automatically assigned to any new resolver.
+In any policy there are several options to be defined:</p>
+<ul class="simple">
+<li><p><strong>Malicious domains filtering</strong></p>
+<ul>
+<li><p>Allows to apply actions Audit (logging) or Block (redirect to blocking page) on resolution of malicious domains</p></li>
+<li><p>Individual actions could be turned off - e.g. turn off the blocking for testing purposes</p></li>
+<li><p>The slider values define the probability that the particular domain is malicious on the scale from 0 to 100 (0 is a safe domain, 100 is malicious)</p></li>
+<li><p>There are available preconfigured policies that cover the most usual cases. This cases are: <cite>Don’t Block</cite>, <cite>Block carefully</cite> and <cite>Block strictly</cite>.</p></li>
+</ul>
+</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The default threshold for blocking is set to <code class="docutils literal notranslate"><span class="pre">80</span></code> which is safe even for larger network with liberal policy towards the users. For more restrictive policy we suggest setting threshold for blocking to <code class="docutils literal notranslate"><span class="pre">70-75</span></code>, in very restrictive networks even down to <code class="docutils literal notranslate"><span class="pre">60</span></code>. Audit is purely informative, however setting the threshold too low can result in too many logged incidents.</p>
+</div>
+<ul class="simple">
+<li><p><strong>Types of threats</strong></p>
+<ul>
+<li><p>The default behavior is to include all types of threats</p></li>
+<li><p>The drop-down menu allows the user to choose a more granular category of the threats they would like to audit or block. The available categories are: <cite>blacklist</cite>, <cite>c&amp;c</cite>, <cite>coinminer</cite>, <cite>compromised</cite>, <cite>malware</cite>, <cite>phishing</cite> and <cite>spam</cite>.</p></li>
+</ul>
+</li>
+</ul>
+<p>A full list of what each category includes can be found below:</p>
+<ul class="simple">
+<li><p><strong>C&amp;C (Command and Control)</strong>:  domains that facilitate botnet communication to coordinate its activity. A botnet is a network of infected computers, which are controlled as a group.</p></li>
+<li><p><strong>Malware</strong>: domains that host and distribute any kind of malicious code</p></li>
+<li><p><strong>Phishing</strong>: domains aiming to trick users and extract sensitive information such as credit card details, login credentials, etc</p></li>
+<li><p><strong>Blacklist</strong>: domains that are known to serve multiple nefarious purposes at the same time or over a period of time</p></li>
+<li><p><strong>Spam</strong>: domains that are linked to spreading spam emails and scam schemes.</p></li>
+<li><p><strong>Compromised</strong>: otherwise legitimate domains that have been hacked and are temporarily used for malicious purposes</p></li>
+<li><p><strong>Coinminer</strong>: domains that hijack processing and energy resources for unsolicited cryptocurrency mining</p></li>
+</ul>
+<img alt="_images/security-policies.gif" class="align-center" src="_images/security-policies.gif" />
+<ul class="simple">
+<li><p><strong>Whitelist</strong></p>
+<ul>
+<li><p>Domains that won’t be blocked at any time (higher priority has only <strong>Blacklist</strong>)</p></li>
+<li><p>The whitelist is applied to the domain and all of the subdomains, e.g.: whitelisted domain <code class="docutils literal notranslate"><span class="pre">whalebone.io</span></code> will also whitelist <code class="docutils literal notranslate"><span class="pre">docs.whalebone.io</span></code>, but not vice versa</p></li>
+<li><p>The list can be configured on the <cite>Blacklist/ Whitelist</cite> tab</p></li>
+</ul>
+</li>
+<li><p><strong>Blacklist</strong></p>
+<ul>
+<li><p>Domains that will be blocked at all times</p></li>
+<li><p>The blacklist is applied to the domain and all of the subdomains, e.g.: blacklisted domain <code class="docutils literal notranslate"><span class="pre">malware.ninja</span></code> will also blacklist <code class="docutils literal notranslate"><span class="pre">super.malware.ninja</span></code>, but not vice versa</p></li>
+<li><p>The list can be configured on the <cite>Blacklist/ Whitelist</cite> tab.</p></li>
+</ul>
+</li>
+</ul>
+<img alt="_images/whitelist.gif" class="align-center" src="_images/whitelist.gif" />
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>After creating a blacklist or a whitelist, it should be assigned to the specific security policy, or else the changes will not take effect.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Changes will be applied to the resolvers in approx. 2-3 minutes. Saved configuration is used during preparation of the threat data package for the resolvers that download and apply those packages at regular intervals.</p>
+</div>
+<ul class="simple">
+<li><p><strong>Regulatory Restrictions</strong></p>
+<ul>
+<li><p>Integrated list of domains that must be applied in order to conform to Regulatory Restrictions of a country.</p></li>
+<li><p>Examples of these domains include cases of illegal gambling or child pornograpy.</p></li>
+</ul>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Each country has different Regulatory lists. In case of multi-country deployments different policies can be used in order to apply the proper Regulatory Restrictions.</p>
+</div>
+<ul>
+<li><p><strong>Content Filtering</strong></p>
+<p>Particular Content categories can be applied on a per-policy level. This is useful in case different segments of the networks come with different requirements. For example, in case of a School environment all the <strong>Adult</strong> categories can be enabled and access to relevant content can be restricted.</p>
+<p>A diverse set of content filtering categories are available:</p>
+</li>
+<li><p><strong>Porn</strong>: sexual and pornographic material</p></li>
+<li><p><strong>Gambling</strong>: games and activities involving betting money</p></li>
+<li><p><strong>Weapons</strong>: guns and weapon-related sites</p></li>
+<li><p><strong>Audio-video</strong>: audio and video streaming services</p></li>
+<li><p><strong>Games</strong>: online games and gaming websites</p></li>
+<li><p><strong>Chat</strong>: instant messaging and chatting applications</p></li>
+<li><p><strong>Social-networks</strong>: social networking sites and applications</p></li>
+<li><p><strong>Drugs</strong>: drug related websites including alcohol and tobacco</p></li>
+<li><p><strong>Racism</strong>: content linked to racism and xenophobia</p></li>
+<li><p><strong>Violence</strong>: explicit violence and gore</p></li>
+<li><p><strong>Terrorism</strong>: domains linked to terrorism support</p></li>
+<li><p><strong>Advertisement</strong>: banners, context advertisements and other advertisements systems</p></li>
+<li><p><strong>Tracking</strong>: web and email tracking systems</p></li>
+<li><p><strong>Fake news</strong>: domains hosting fake news</p></li>
+<li><p><strong>Coinminers</strong>: domains connected to crypto-currency mining activities</p></li>
+</ul>
+</section>
+<section id="dns-resolution-configuration">
+<h2>DNS resolution configuration<a class="headerlink" href="#dns-resolution-configuration" title="Permalink to this headline"></a></h2>
+<p>You can find the options to configure the resolver in the menu <strong>Configuration</strong> and tab <strong>DNS resolution</strong>. This page allows you to do the basic configuration without the knowledge of configuration syntax. Furthermore there is a text area allowing you to define any configuration to the underlying <a class="reference external" href="https://www.knot-resolver.cz/">Knot Resolver</a>.</p>
+<p>Available configuration options:</p>
+<ul>
+<li><p><strong>Enable IPv6</strong></p>
+<ul class="simple">
+<li><p>Should the system has the IPv6 properly configured and working, it is possible to enable it. Otherwise the activation of IPv6 could have negative effects on the performance and latency of the resolver.</p></li>
+</ul>
+</li>
+<li><p><strong>Forward queries to</strong></p>
+<ul class="simple">
+<li><p>This option allows to redirect all or chosen queries to upstream resolvers or authoritative DNS servers (suitable e.g. for forwarding to domain controllers of Active Directory)</p></li>
+<li><p><strong>Disable DNSSEC</strong></p>
+<ul>
+<li><p>If checked, the answers from the forwarded queries won’t be DNSSEC validated. We recommend to check this option should the upstream server have not DNSSEC configured properly.</p></li>
+</ul>
+</li>
+<li><p><strong>All queries to</strong></p>
+<ul>
+<li><p>Option to forward all queries to one or more resolver</p></li>
+</ul>
+</li>
+<li><p><strong>Following domains</strong></p>
+<ul>
+<li><p>Option to choose particular domains that should be forwarded to on more resolvers</p></li>
+<li><p>Different resolvers could be defined for different domains</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Static records</strong></p>
+<ul class="simple">
+<li><p>Predefined answers that should be returned for particular domains</p></li>
+<li><p>Could serve for special purposes such as monitoring or very simple substition of records on authoritative server</p></li>
+</ul>
+</li>
+<li><p><strong>Advanced DNS configuration</strong></p>
+<ul class="simple">
+<li><p>Text area for <a class="reference external" href="https://knot-resolver.readthedocs.io/en/stable/config-overview.html">complete Knot Resolver configuration</a></p></li>
+<li><p>Supports Lua scripting</p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Faulty configuration can impact stability, performance or security functions of the resolver</p>
+</div>
+</li>
+</ul>
+</section>
+<section id="blocking-pages">
+<h2>Blocking Pages<a class="headerlink" href="#blocking-pages" title="Permalink to this headline"></a></h2>
+<p>In the case of blocking access to a domain (due to security, content or regulatory reasons), the resolvers are answering to the clients with a specific IP address that leads to the Blocking pages. Should the clients initiate the HTTP(S) connections towards the blocked domain, they are presented with the custom Blocking page with different content based on the reason of the blocking.</p>
+<p>You can watch step-by-step video guide below:</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/K0p2l-qxHtk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Whalebone provides sample template pages for the Blocking Pages, however, they do not have to be followed and virtually every modification, branding and copywriting is possible. The template code is written to be compatible with the widest range of browsers to avoid problems with older versions.</p>
+<p>Different versions of the Blocking Pages can be assigned to different segments of the networks.</p>
+<figure class="align-center" id="id5">
+<img alt="Blocking Pages Overview" src="_images/blocking-pages-overview.png" />
+<figcaption>
+<p><span class="caption-text">Blocking Pages Overview</span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>For each version, based on the deployment details, there are four variants of the Blocking Pages that are available and can be configured:</p>
+<ul class="simple">
+<li><p><strong>Security</strong>: displayed when access is blocked due to security reasons</p></li>
+<li><p><strong>Blacklist</strong>: displayed when access is blocked by the Administrators</p></li>
+<li><p><strong>Regulatory</strong>: displayed when access is regulated due to law or court order</p></li>
+<li><p><strong>Content</strong>: displayed when access is blocked due to the content of the domain</p></li>
+</ul>
+<p>Furthermore, each version can have different localization options. The language that is going to be presented to the user is infered from the language of the browser that is visiting the Blocking Page. New locales can be seamlessly added as an option.</p>
+<figure class="align-center" id="id6">
+<img alt="Blocking Pages Menu" src="_images/blocking-pages.png" />
+<figcaption>
+<p><span class="caption-text">Blocking Pages Menu</span><a class="headerlink" href="#id6" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>For each Locale several options are available. In the example above, the English version has the following options:</p>
+<p><strong>1) Use Template</strong></p>
+<blockquote>
+<div><p>When using the template option, the information that are provided as input to the following form are injected in the template code. This is the fastest and easiest way to customize the blocking pages.</p>
+</div></blockquote>
+<figure class="align-center" id="id7">
+<img alt="Template Customization" src="_images/template.png" />
+<figcaption>
+<p><span class="caption-text">Template Customization</span><a class="headerlink" href="#id7" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p><strong>2) Set as default locale</strong></p>
+<blockquote>
+<div><p>This option can customize the default language of the Blocking Pages. In case some browser does not declare its preferred language, the “Default” language acts as a fallback mechanism.</p>
+</div></blockquote>
+<p><strong>3) Delete the locale</strong></p>
+<blockquote>
+<div><p>In case the locale is no longer needed, it can be deleted.</p>
+</div></blockquote>
+<p>Each of the Versions of the Blocking Page (Security, Blacklist, Regulatory, Content) can be customized in more detail by modifying the HTML code. Upon clicking on each version an editor is presented that allows for any required changes.</p>
+<p>The editor also exposes a “Verification” interface which parses the final HTML code and checks for the enabled functionalities. The check is based on the <code class="docutils literal notranslate"><span class="pre">id</span></code> of the specific elements. More information and requirements for each functionality can be found by clicking the respective labels.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Each Version of the Blocking Page has unique characteristics that can be selected. For example, the Security Blocking Page can include a “Bypass” button which is not available in the respective Regulatory and Blacklist versions.</p>
+</div>
+<p>After editing and saving the changes to the Blocking Pages it is important that they are applied to the individual resolvers. More information can be found at the <a class="reference internal" href="#configure-blocking-pages"><span class="std std-ref">Configure Blocking Pages Section</span></a></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The Redirection Pages are served from a web server directly on the Resolvers. The pages are expected to be a single file so any additional resources (CSS, images, scripts) must be either embedded directly in the HTML code or served from a publicly accessible web server. The resolver does not provide any option to serve other content.</p>
+</div>
+</section>
+<section id="resolver-management">
+<h2>Resolver management<a class="headerlink" href="#resolver-management" title="Permalink to this headline"></a></h2>
+<p>On the <strong>Resolvers</strong> page there is an overview of created resolvers. Administrator can adjust the configuration, deploy updates and install new resolvers.</p>
+<section id="resolvers-overview">
+<h3>Resolvers overview<a class="headerlink" href="#resolvers-overview" title="Permalink to this headline"></a></h3>
+<p>In the main resolver overview there are tiles with resolver details and configuration options. The overview includes information about operating system and resources as CPU, Memory and HDD usage. Therre is also the state of services running on the resolvers (should state “Running” if everything is OK) and the status of the communication channel between the resolver and the cloud (it is expected to be “Active”).</p>
+</section>
+<section id="deploy-configuration">
+<h3>Deploy configuration<a class="headerlink" href="#deploy-configuration" title="Permalink to this headline"></a></h3>
+<p>Should you change any configuration related to the DNS resolution, you have to deploy the configuration afterwards. If there are any configuration changes available to be deployed, there will be a red icon with down right arrow visible on the resolver card. Once clicked, the webpage will ask for confirmation and the successful deployment will be notified in the top right corner.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the result is an deployment error, try to repeat the action. The reason for the error could be a short term communication outage between the cloud and the resolver.</p>
+</div>
+<img alt="_images/lrv2-deployconfig.gif" class="align-center" src="_images/lrv2-deployconfig.gif" />
+</section>
+<section id="configure-policy-per-network-segment">
+<h3>Configure Policy per Network Segment<a class="headerlink" href="#configure-policy-per-network-segment" title="Permalink to this headline"></a></h3>
+<p>Security and content polices can be asssigned in a granular manner to different segments of the network.</p>
+<p>The setting applies per resolver and can be configured under <strong>Resolvers</strong> &gt; <code class="docutils literal notranslate"><span class="pre">&lt;Name</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">resolver&gt;</span></code> &gt; <strong>Policy Assignment</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The configuration is <strong>per resolver</strong>. In case you want to apply the configuration to more than one resolvers, please modify all the necessary resolvers.</p>
+</div>
+<p>The policies can be applied by adding IP ranges in the available input form:</p>
+<img alt="_images/add-policy.PNG" class="align-center" src="_images/add-policy.PNG" />
+<p>In order to provide a better understanding let’s consider an example with the network range <code class="docutils literal notranslate"><span class="pre">10.10.0.0/16</span></code>.
+We have created 3 different policies:</p>
+<ul class="simple">
+<li><p><strong>Default</strong>: the policy that we want to apply to the whole network, this is the most generic policy</p></li>
+<li><p><strong>Exception</strong>: a policy that must be applied to a specific segment in the network which will have all security and content filtering disabled.</p></li>
+<li><p><strong>School</strong>: a policy that we want to apply to 2 different subnets that have been assigned to school environments. In this case we have chosen to be more strict in the blocking.</p></li>
+</ul>
+<img alt="_images/policies-example.png" class="align-center" src="_images/policies-example.png" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The first policy that is defined acts as a <strong>default</strong> policy and is applied in cases where a more granular policy for a network range is not available. This policy is always on the top of the list, is marked with a special icon and cannot be deleted.</p>
+</div>
+<p>Let’s summarize the requirements in the following matrix:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 24%" />
+<col style="width: 76%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Policy</strong></p></th>
+<th class="head"><p><strong>Network</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Default</p></td>
+<td><p>10.10.0.0/16</p></td>
+</tr>
+<tr class="row-odd"><td><p>Exception</p></td>
+<td><p>10.10.10.0/24</p></td>
+</tr>
+<tr class="row-even"><td><p>School</p></td>
+<td><p>10.10.20.0/24 and 10.10.40.0/24</p></td>
+</tr>
+</tbody>
+</table>
+<p>In the following capture the process of assigning the policies is described:</p>
+<img alt="_images/policy-assignment.gif" class="align-center" src="_images/policy-assignment.gif" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>After adding the networks, and in order to take effect, you must click on <cite>Save to resolver</cite>. The changes will be then validated and a pop-up message will provide additional information.</p>
+</div>
+<p>In order to assign additional entries to an existing assignment, a new network range can be appended using <cite>newline</cite> as a separator.
+Building on the previous example, in case we wanted to add the subnet 10.10.30.0/24 to the Exception Policy:</p>
+<img alt="_images/add-range.gif" class="align-center" src="_images/add-range.gif" />
+</section>
+<section id="configure-blocking-pages">
+<h3>Configure Blocking Pages<a class="headerlink" href="#configure-blocking-pages" title="Permalink to this headline"></a></h3>
+<p>In a similar manner to the Security Policies, the Blocking Pages can be also assigned to particular network ranges.</p>
+<p>The first step is to select <code class="docutils literal notranslate"><span class="pre">On-premise</span> <span class="pre">local</span> <span class="pre">resolver</span></code> for the <code class="docutils literal notranslate"><span class="pre">Blocking</span> <span class="pre">Page</span> <span class="pre">Location</span></code> option. Two new fields are enabled where the IPv4 and IPv6 addresses of the Blocking Pages must be completed.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The Blocking Pages are being hosted <strong>directly</strong> on the Resolvers so the IP addresses that are advertised to the clients must be used. The clients will then be redirected to the IP address of the resolver upon blocking. Please ensure that ports 80 and 443 are accessible on the firewall.</p>
+</div>
+<p>For each IP range that is added, there is a drop-down menu for the Blocking Page that should be assigned.</p>
+<figure class="align-center" id="id8">
+<img alt="Assign Blocking Page to IP range" src="_images/blocking-page-assign.png" />
+<figcaption>
+<p><span class="caption-text">Assign Blocking Page to IP range</span><a class="headerlink" href="#id8" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The first entry in the <code class="docutils literal notranslate"><span class="pre">Policy</span> <span class="pre">Assignment</span></code> is considered the Default/Fallback. In case a client accesses the resolver from an undefined IP range, the respective options will apply.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>After making the necessary changes to the Blocking Page settings, please check whether the resolvers need to be re-deployed.</p>
+</div>
+</section>
+<section id="upgrade-rollback-resolver">
+<h3>Upgrade/Rollback Resolver<a class="headerlink" href="#upgrade-rollback-resolver" title="Permalink to this headline"></a></h3>
+<p>When a new version of the Resolver is released, a red <code class="docutils literal notranslate"><span class="pre">Upgrade</span></code> icon appears on the resolvers’ management interface.</p>
+<img alt="_images/upgrade.png" class="align-center" src="_images/upgrade.png" />
+<p>Upon clicking on the <code class="docutils literal notranslate"><span class="pre">Upgrade</span></code> icon, the respective menu is selected and important information about the new release are provided.</p>
+<img alt="_images/upgrade-2.png" class="align-center" src="_images/upgrade-2.png" />
+<p>From this menu, the upgrade of the resolver can be initiated.</p>
+<p>In case the installation of the new version does not yield the expected outcome, a Rollback to the previous version is possible anytime:</p>
+<img alt="_images/rollback.png" class="align-center" src="_images/rollback.png" />
+</section>
+</section>
+<section id="resolver-agent">
+<h2>Resolver agent<a class="headerlink" href="#resolver-agent" title="Permalink to this headline"></a></h2>
+<section id="command-line-interface">
+<h3>Command line interface<a class="headerlink" href="#command-line-interface" title="Permalink to this headline"></a></h3>
+<p>Agent’s actions can be invoked using a proxy bash script present at path <strong>/var/whalebone/cli</strong>. This script calls a python script which handles the execution of the following agent actions:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><strong>sysinfo</strong> - returns the system status data in JSON format.</dt><dd><ul>
+<li><p>Parameters: None</p></li>
+<li><p>Output: tested categories on tested key can have two values ‘ok’ and ‘fail’</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+   <span class="s2">&quot;hostname&quot;</span><span class="o">:</span><span class="s2">&quot;hostname&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;system&quot;</span><span class="o">:</span><span class="s2">&quot;Linux&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;platform&quot;</span><span class="o">:</span><span class="s2">&quot;CentOS Linux 7 (Core)&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;cpu&quot;</span><span class="o">:</span><span class="p">{</span>
+      <span class="s2">&quot;count&quot;</span><span class="o">:</span><span class="mf">4</span><span class="p">,</span>
+      <span class="s2">&quot;usage&quot;</span><span class="o">:</span><span class="mf">28.6</span>
+   <span class="p">},</span>
+   <span class="s2">&quot;memory&quot;</span><span class="o">:</span><span class="p">{</span>
+      <span class="s2">&quot;total&quot;</span><span class="o">:</span><span class="mf">7.6</span><span class="p">,</span>
+      <span class="s2">&quot;available&quot;</span><span class="o">:</span><span class="mf">3.9</span><span class="p">,</span>
+      <span class="s2">&quot;usage&quot;</span><span class="o">:</span><span class="mf">49.2</span>
+   <span class="p">},</span>
+   <span class="s2">&quot;hdd&quot;</span><span class="o">:</span><span class="p">{</span>
+      <span class="s2">&quot;total&quot;</span><span class="o">:</span><span class="mf">50.0</span><span class="p">,</span>
+      <span class="s2">&quot;free&quot;</span><span class="o">:</span><span class="mf">14.4</span><span class="p">,</span>
+      <span class="s2">&quot;usage&quot;</span><span class="o">:</span><span class="mf">71.1</span>
+   <span class="p">},</span>
+   <span class="s2">&quot;swap&quot;</span><span class="o">:</span><span class="p">{</span>
+      <span class="s2">&quot;total&quot;</span><span class="o">:</span><span class="mf">0.0</span><span class="p">,</span>
+      <span class="s2">&quot;free&quot;</span><span class="o">:</span><span class="mf">0.0</span><span class="p">,</span>
+      <span class="s2">&quot;usage&quot;</span><span class="o">:</span><span class="mf">0</span>
+   <span class="p">},</span>
+   <span class="s2">&quot;resolver&quot;</span><span class="o">:</span><span class="p">{</span>
+      <span class="s2">&quot;answer.nxdomain&quot;</span><span class="o">:</span><span class="mf">3284</span><span class="p">,</span>
+      <span class="s2">&quot;answer.tc&quot;</span><span class="o">:</span><span class="mf">35</span><span class="p">,</span>
+      <span class="s2">&quot;answer.ad&quot;</span><span class="o">:</span><span class="mf">849</span><span class="p">,</span>
+      <span class="s2">&quot;answer.100ms&quot;</span><span class="o">:</span><span class="mf">3983</span><span class="p">,</span>
+      <span class="s2">&quot;answer.cd&quot;</span><span class="o">:</span><span class="mf">6</span><span class="p">,</span>
+      <span class="s2">&quot;answer.1500ms&quot;</span><span class="o">:</span><span class="mf">74</span><span class="p">,</span>
+      <span class="s2">&quot;answer.slow&quot;</span><span class="o">:</span><span class="mf">215</span><span class="p">,</span>
+      <span class="s2">&quot;answer.rd&quot;</span><span class="o">:</span><span class="mf">224337</span><span class="p">,</span>
+      <span class="s2">&quot;answer.1ms&quot;</span><span class="o">:</span><span class="mf">104683</span><span class="p">,</span>
+      <span class="s2">&quot;answer.servfail&quot;</span><span class="o">:</span><span class="mf">215</span><span class="p">,</span>
+      <span class="s2">&quot;predict.epoch&quot;</span><span class="o">:</span><span class="mf">24</span><span class="p">,</span>
+      <span class="s2">&quot;query.dnssec&quot;</span><span class="o">:</span><span class="mf">6</span><span class="p">,</span>
+      <span class="s2">&quot;answer.250ms&quot;</span><span class="o">:</span><span class="mf">14941</span><span class="p">,</span>
+      <span class="s2">&quot;query.edns&quot;</span><span class="o">:</span><span class="mf">35498</span><span class="p">,</span>
+      <span class="s2">&quot;answer.cached&quot;</span><span class="o">:</span><span class="mf">86713</span><span class="p">,</span>
+      <span class="s2">&quot;answer.nodata&quot;</span><span class="o">:</span><span class="mf">3622</span><span class="p">,</span>
+      <span class="s2">&quot;answer.aa&quot;</span><span class="o">:</span><span class="mf">2362</span><span class="p">,</span>
+      <span class="s2">&quot;answer.do&quot;</span><span class="o">:</span><span class="mf">6</span><span class="p">,</span>
+      <span class="s2">&quot;answer.edns0&quot;</span><span class="o">:</span><span class="mf">35498</span><span class="p">,</span>
+      <span class="s2">&quot;answer.ra&quot;</span><span class="o">:</span><span class="mf">224337</span><span class="p">,</span>
+      <span class="s2">&quot;predict.queue&quot;</span><span class="o">:</span><span class="mf">0</span><span class="p">,</span>
+      <span class="s2">&quot;answer.total&quot;</span><span class="o">:</span><span class="mf">224337</span><span class="p">,</span>
+      <span class="s2">&quot;answer.10ms&quot;</span><span class="o">:</span><span class="mf">35351</span><span class="p">,</span>
+      <span class="s2">&quot;answer.noerror&quot;</span><span class="o">:</span><span class="mf">217216</span><span class="p">,</span>
+      <span class="s2">&quot;answer.50ms&quot;</span><span class="o">:</span><span class="mf">59766</span><span class="p">,</span>
+      <span class="s2">&quot;answer.500ms&quot;</span><span class="o">:</span><span class="mf">4642</span><span class="p">,</span>
+      <span class="s2">&quot;answer.1000ms&quot;</span><span class="o">:</span><span class="mf">653</span><span class="p">,</span>
+      <span class="s2">&quot;predict.learned&quot;</span><span class="o">:</span><span class="mf">80</span>
+   <span class="p">},</span>
+   <span class="s2">&quot;docker&quot;</span><span class="o">:</span><span class="p">{</span>
+      <span class="s2">&quot;Platform&quot;</span><span class="o">:</span><span class="p">{</span>
+         <span class="s2">&quot;Name&quot;</span><span class="o">:</span><span class="s2">&quot;&quot;</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;Components&quot;</span><span class="o">:</span><span class="p">[</span>
+         <span class="p">{</span>
+            <span class="s2">&quot;Name&quot;</span><span class="o">:</span><span class="s2">&quot;Engine&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Version&quot;</span><span class="o">:</span><span class="s2">&quot;17.12.1-ce&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Details&quot;</span><span class="o">:</span><span class="p">{</span>
+               <span class="s2">&quot;ApiVersion&quot;</span><span class="o">:</span><span class="s2">&quot;1.35&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;Arch&quot;</span><span class="o">:</span><span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;BuildTime&quot;</span><span class="o">:</span><span class="s2">&quot;2022-02-27T22:17:54.000000000+00:00&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;Experimental&quot;</span><span class="o">:</span><span class="s2">&quot;false&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;GitCommit&quot;</span><span class="o">:</span><span class="s2">&quot;88888fc6&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;GoVersion&quot;</span><span class="o">:</span><span class="s2">&quot;go1.999.999&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;KernelVersion&quot;</span><span class="o">:</span><span class="s2">&quot;3.22.66-693.21.1.el7.x86_64&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;MinAPIVersion&quot;</span><span class="o">:</span><span class="s2">&quot;1.99&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;Os&quot;</span><span class="o">:</span><span class="s2">&quot;linux&quot;</span>
+            <span class="p">}</span>
+         <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="s2">&quot;Version&quot;</span><span class="o">:</span><span class="s2">&quot;19.32.1-ce&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;ApiVersion&quot;</span><span class="o">:</span><span class="s2">&quot;1.98&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;MinAPIVersion&quot;</span><span class="o">:</span><span class="s2">&quot;1.12&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;GitCommit&quot;</span><span class="o">:</span><span class="s2">&quot;7390fc6&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;GoVersion&quot;</span><span class="o">:</span><span class="s2">&quot;go1.9.4&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;Os&quot;</span><span class="o">:</span><span class="s2">&quot;linux&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;Arch&quot;</span><span class="o">:</span><span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;KernelVersion&quot;</span><span class="o">:</span><span class="s2">&quot;3.10.0-693.21.1.el7.x86_64&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;BuildTime&quot;</span><span class="o">:</span><span class="s2">&quot;2018-02-27T22:17:54.000000000+00:00&quot;</span>
+   <span class="p">},</span>
+   <span class="s2">&quot;check&quot;</span><span class="o">:</span><span class="p">{</span>
+      <span class="s2">&quot;resolve&quot;</span><span class="o">:</span><span class="s2">&quot;ok&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;port&quot;</span><span class="o">:</span><span class="s2">&quot;ok&quot;</span>
+   <span class="p">},</span>
+   <span class="s2">&quot;containers&quot;</span><span class="o">:</span><span class="p">{</span>
+      <span class="s2">&quot;lr-agent&quot;</span><span class="o">:</span><span class="s2">&quot;running&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;passivedns&quot;</span><span class="o">:</span><span class="s2">&quot;running&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;resolver&quot;</span><span class="o">:</span><span class="s2">&quot;running&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;kresman&quot;</span><span class="o">:</span><span class="s2">&quot;running&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;pcpy&quot;</span><span class="o">:</span><span class="s2">&quot;running&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;logrotate&quot;</span><span class="o">:</span><span class="s2">&quot;running&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;logstream&quot;</span><span class="o">:</span><span class="s2">&quot;running&quot;</span>
+   <span class="p">},</span>
+   <span class="s2">&quot;images&quot;</span><span class="o">:</span><span class="p">{</span>
+      <span class="s2">&quot;lr-agent&quot;</span><span class="o">:</span><span class="s2">&quot;whalebone/agent:1.1.1&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;passivedns&quot;</span><span class="o">:</span><span class="s2">&quot;whalebone/passivedns:1.1.1&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;resolver&quot;</span><span class="o">:</span><span class="s2">&quot;whalebone/kres:1.1.1&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;kresman&quot;</span><span class="o">:</span><span class="s2">&quot;whalebone/kresman:1.1.1&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;logrotate&quot;</span><span class="o">:</span><span class="s2">&quot;whalebone/logrotate:1.1.1&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;logstream&quot;</span><span class="o">:</span><span class="s2">&quot;whalebone/logstream:1.1.1&quot;</span>
+   <span class="p">},</span>
+   <span class="s2">&quot;error_messages&quot;</span><span class="o">:</span><span class="p">{</span>
+   <span class="p">},</span>
+   <span class="s2">&quot;interfaces&quot;</span><span class="o">:</span><span class="p">[</span>
+      <span class="p">{</span>
+         <span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="s2">&quot;lo&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;addresses&quot;</span><span class="o">:</span><span class="p">[</span>
+            <span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;::1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;00:00:00:00:00:00&quot;</span>
+         <span class="p">]</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+         <span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="s2">&quot;eth0&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;addresses&quot;</span><span class="o">:</span><span class="p">[</span>
+            <span class="s2">&quot;1.1.1.1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;::c8&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;fe80::&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;00:00:00:00:00:00&quot;</span>
+         <span class="p">]</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+         <span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="s2">&quot;docker0&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;addresses&quot;</span><span class="o">:</span><span class="p">[</span>
+            <span class="s2">&quot;198.1.1.1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;00:00:00:00:00:00&quot;</span>
+         <span class="p">]</span>
+      <span class="p">}</span>
+   <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><dl class="simple">
+<dt><strong>stop</strong> - stops up to three containers</dt><dd><ul>
+<li><p>Parameters: containers to stop (up to 3), Example: ./cli.sh stop resolver lr-agent kresman</p></li>
+<li><p>Output:</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+        <span class="s1">&#39;resolver&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;status&#39;</span><span class="o">:</span> <span class="s1">&#39;success&#39;</span><span class="p">},</span>
+        <span class="s1">&#39;lr-agent&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;status&#39;</span><span class="o">:</span> <span class="s1">&#39;success&#39;</span><span class="p">},</span>
+        <span class="s1">&#39;kresman&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;status&#39;</span><span class="o">:</span> <span class="s1">&#39;success&#39;</span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><dl class="simple">
+<dt><strong>remove</strong> - removes up to three containers</dt><dd><ul>
+<li><p>Parameters: containers to remove (up to 3), Example: ./cli.sh remove resolver lr-agent kresman</p></li>
+<li><p>Output:</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+        <span class="s1">&#39;resolver&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;status&#39;</span><span class="o">:</span> <span class="s1">&#39;success&#39;</span><span class="p">},</span>
+        <span class="s1">&#39;lr-agent&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;status&#39;</span><span class="o">:</span> <span class="s1">&#39;success&#39;</span><span class="p">},</span>
+        <span class="s1">&#39;kresman&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;status&#39;</span><span class="o">:</span> <span class="s1">&#39;success&#39;</span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><dl class="simple">
+<dt><strong>upgrade</strong> - upgrades up to three containers, the container’s configuration is specified by a docker-compose in agent container (can also be found in a volume <strong>/etc/whalebone/agent</strong>)</dt><dd><ul>
+<li><p>Parameters: containers to upgrade (up to 3), Example: ./cli.sh upgrade resolver lr-agent kresman</p></li>
+<li><p>Output:</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+        <span class="s1">&#39;resolver&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;status&#39;</span><span class="o">:</span> <span class="s1">&#39;success&#39;</span><span class="p">},</span>
+        <span class="s1">&#39;lr-agent&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;status&#39;</span><span class="o">:</span> <span class="s1">&#39;success&#39;</span><span class="p">},</span>
+        <span class="s1">&#39;kresman&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;status&#39;</span><span class="o">:</span> <span class="s1">&#39;success&#39;</span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><dl class="simple">
+<dt><strong>create</strong> - creates containers, the containers are specified by a docker-compose in agent container (can also be found in <strong>/etc/whalebone/agent</strong>)</dt><dd><ul>
+<li><p>Parameters: None, Example: ./cli.sh create</p></li>
+<li><p>Output:</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;resolver&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;status&#39;</span><span class="o">:</span> <span class="s1">&#39;success&#39;</span><span class="p">}</span>
+
+
+<span class="nx">Pending</span> <span class="nx">configuration</span> <span class="nx">request</span> <span class="nx">deleted</span><span class="p">.</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><dl class="simple">
+<dt><strong>updatecache</strong> - forces the update of resolver’s IoC cache (which is used for blocking), this action should be done to manually force the update and refresh of the domains present in the malicous domain cache</dt><dd><ul>
+<li><p>Parameters: None</p></li>
+<li><p>Output:</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;status&#39;</span><span class="o">:</span> <span class="s1">&#39;success&#39;</span><span class="p">,</span> <span class="s1">&#39;message&#39;</span><span class="o">:</span> <span class="s1">&#39;Cache update successful&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><dl class="simple">
+<dt><strong>containers</strong> - lists the containers and their information which include: labels, image, name and status.</dt><dd><ul>
+<li><p>Parameters: None</p></li>
+<li><p>Output:</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+   <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;b8f4489379&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;image&quot;</span><span class="o">:</span><span class="p">{</span>
+         <span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;c893b4df5ca3&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;tags&quot;</span><span class="o">:</span><span class="p">[</span>
+            <span class="s2">&quot;whalebone/agent:1.1.1&quot;</span>
+         <span class="p">]</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;labels&quot;</span><span class="o">:</span><span class="p">{</span>
+         <span class="s2">&quot;lr-agent&quot;</span><span class="o">:</span><span class="s2">&quot;1.1.1&quot;</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="s2">&quot;lr-agent&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;status&quot;</span><span class="o">:</span><span class="s2">&quot;running&quot;</span>
+   <span class="p">},</span>
+   <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;e433d58f13&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;image&quot;</span><span class="o">:</span><span class="p">{</span>
+         <span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;2c4b84a7daee&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;tags&quot;</span><span class="o">:</span><span class="p">[</span>
+            <span class="s2">&quot;whalebone/passivedns:1.1.1&quot;</span>
+         <span class="p">]</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;labels&quot;</span><span class="o">:</span><span class="p">{</span>
+         <span class="s2">&quot;passivedns&quot;</span><span class="o">:</span><span class="s2">&quot;1.1.1&quot;</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="s2">&quot;passivedns&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;status&quot;</span><span class="o">:</span><span class="s2">&quot;running&quot;</span>
+   <span class="p">},</span>
+   <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;2aeec00121&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;image&quot;</span><span class="o">:</span><span class="p">{</span>
+         <span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;fc442e625539&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;tags&quot;</span><span class="o">:</span><span class="p">[</span>
+            <span class="s2">&quot;whalebone/kres:1.1.1&quot;</span>
+         <span class="p">]</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;labels&quot;</span><span class="o">:</span><span class="p">{</span>
+         <span class="s2">&quot;resolver&quot;</span><span class="o">:</span><span class="s2">&quot;1.1.1&quot;</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="s2">&quot;resolver&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;status&quot;</span><span class="o">:</span><span class="s2">&quot;running&quot;</span>
+   <span class="p">},</span>
+   <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;662dac2e6c&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;image&quot;</span><span class="o">:</span><span class="p">{</span>
+         <span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;b37d0d1bd10b&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;tags&quot;</span><span class="o">:</span><span class="p">[</span>
+            <span class="s2">&quot;whalebone/kresman:1.1.1&quot;</span>
+         <span class="p">]</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;labels&quot;</span><span class="o">:</span><span class="p">{</span>
+         <span class="s2">&quot;kresman&quot;</span><span class="o">:</span><span class="s2">&quot;1.1.1&quot;</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="s2">&quot;kresman&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;status&quot;</span><span class="o">:</span><span class="s2">&quot;running&quot;</span>
+   <span class="p">},</span>
+   <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;05188ac1df&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;image&quot;</span><span class="o">:</span><span class="p">{</span>
+         <span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;5b50cdc924fc&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;tags&quot;</span><span class="o">:</span><span class="p">[</span>
+            <span class="s2">&quot;whalebone/logrotate:1.1.1&quot;</span>
+         <span class="p">]</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;labels&quot;</span><span class="o">:</span><span class="p">{</span>
+         <span class="s2">&quot;logrotate&quot;</span><span class="o">:</span><span class="s2">&quot;1.1.1&quot;</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="s2">&quot;logrotate&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;status&quot;</span><span class="o">:</span><span class="s2">&quot;running&quot;</span>
+   <span class="p">},</span>
+   <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;01e64dd697&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;image&quot;</span><span class="o">:</span><span class="p">{</span>
+         <span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;fffb52c2dadd&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;tags&quot;</span><span class="o">:</span><span class="p">[</span>
+            <span class="s2">&quot;whalebone/logstream:1.1.1&quot;</span>
+         <span class="p">]</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;labels&quot;</span><span class="o">:</span><span class="p">{</span>
+         <span class="s2">&quot;logstream&quot;</span><span class="o">:</span><span class="s2">&quot;1.1.1&quot;</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="s2">&quot;logstream&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;status&quot;</span><span class="o">:</span><span class="s2">&quot;running&quot;</span>
+   <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>Each of those actions execute similarly named actions and the status of that action, or output of that action, is printed. The <strong>list</strong> and <strong>run</strong> actions are intended for the scenario when a confirmation of a certain action is required. The action list shows the action that should be executed and the changes that would be done by that action for containers specified in that action. This serves as an example of what would happen if the awaiting action would have been executed. The run action then executes the awaiting action cleans up afterwards.</p>
+<p>The actions of upgrade and create use the docker-compose template present in the agent container to create/upgrade the desired container. This template is mounted in the volume <strong>/etc/whalebone/agent</strong> if the user decides to change it. However this change needs to be done also to the template present at <strong>portal.whalebone.io</strong>, if not than the local changes will be overwritten from the cloud during next upgrade.</p>
+<p>The bash script should be invoked like this: <strong>./cli.sh action param1 param2 param3</strong>. Action is the action name and parameters are the action parameters. Only actions for container stop, remove and upgrade use these and specify what containers should be affected by the respective action.</p>
+</section>
+<section id="strict-mode">
+<h3>Strict mode<a class="headerlink" href="#strict-mode" title="Permalink to this headline"></a></h3>
+<p>The agent’s default option is to execute actions from the cloud management immediately. It is however possible to enable manual confirmation of requests. This gives the administrator control over when and what gets executed. To enable the resolver Strict mode, please create a ticket to Whalebone support.</p>
+<p>To list changes the request introduces the cli option <strong>list</strong> option should be used. To execute the request use cli option <strong>run</strong>. There can only be one  request pending in the queue. New request from the cloud will ovewrite the previous one, but the new one holds the full desired state anyway. To delete waiting request use cli option <strong>delete_request</strong>. The actions that can be persisted are: <strong>upgrade</strong>, <strong>create</strong> and <strong>suicide</strong>. Please see examples of the CLI command usage.</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><strong>list</strong> - lists the awaiting command and the changes that would be made to the containers specified in the awaiting action, this action is intended for human check hence it’s format</dt><dd><ul>
+<li><p>Parameters: None, Example: ./cli.sh list</p></li>
+<li><p>Output:</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-------------------------------</span>
+<span class="n">Changes</span> <span class="kr">for</span> <span class="n">resolver</span>
+<span class="n">New</span> <span class="n">value</span> <span class="kr">for</span> <span class="n">label</span><span class="p">:</span> <span class="n">resolver</span><span class="o">-</span><span class="mf">1.1.1</span>
+
+        <span class="n">Old</span> <span class="n">value</span> <span class="kr">for</span> <span class="n">label</span><span class="p">:</span> <span class="n">resolver</span><span class="o">-</span><span class="mf">1.0.0</span>
+<span class="c1">-------------------------------</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><dl class="simple">
+<dt><strong>run</strong> - executes the awaiting command</dt><dd><ul>
+<li><p>Parameters: none, Example: ./cli.sh run</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;resolver&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;status&#39;</span><span class="o">:</span> <span class="s1">&#39;success&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><dl class="simple">
+<dt><strong>delete_request</strong> - deletes the awaiting request</dt><dd><ul>
+<li><p>Parameters: none, Example: ./cli.sh delete_request</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+</section>
+<section id="knot-resolver-tips-tricks">
+<h2>Knot Resolver - Tips &amp; Tricks<a class="headerlink" href="#knot-resolver-tips-tricks" title="Permalink to this headline"></a></h2>
+<p>Advanced configuration of Whalebone resolver allows to apply any Knot Resolver configuration. In this section we are going to describe the most frequent use cases and examples of such configuration snippets.
+Views, policies and their actions are evaluated in the sequence as they are defined (except special chain actions that are described in the official Knot Resolver documentation). First match will execute the action, the rest of the policy rules is not evaluated. If you are going to combine different configuration snnippets, you can load the same module just once at the beginning of the configuration.</p>
+<section id="allow-particular-ip-ranges">
+<h3>Allow particular IP ranges<a class="headerlink" href="#allow-particular-ip-ranges" title="Permalink to this headline"></a></h3>
+<p>Define a list of IP ranges that will be allowed to use this DNS resolver. Queries from all other ranges will be refused.</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- load modules</span>
+<span class="n">modules</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;policy&#39;</span><span class="p">,</span> <span class="s1">&#39;view&#39;</span><span class="p">}</span>
+
+<span class="c1">--define list of ranges to allow</span>
+<span class="c1">--127.0.0.1 should always be allowed</span>
+<span class="n">allowed</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">&#39;127.0.0.1/32&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;10.10.20.5/32&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;10.30.10.0/24&#39;</span>
+<span class="p">}</span>
+
+<span class="c1">-- allow list of ranges</span>
+<span class="kr">for</span> <span class="n">i</span><span class="p">,</span><span class="n">subnet</span> <span class="kr">in</span> <span class="nb">ipairs</span><span class="p">(</span><span class="n">allowed</span><span class="p">)</span> <span class="kr">do</span>
+  <span class="n">view</span><span class="p">:</span><span class="n">addr</span><span class="p">(</span><span class="n">subnet</span><span class="p">,</span> <span class="n">policy</span><span class="p">.</span><span class="n">all</span><span class="p">(</span><span class="n">policy</span><span class="p">.</span><span class="n">PASS</span><span class="p">))</span>
+<span class="kr">end</span>
+
+<span class="c1">-- block all other ranges</span>
+<span class="n">view</span><span class="p">:</span><span class="n">addr</span><span class="p">(</span><span class="s1">&#39;0.0.0.0/0&#39;</span><span class="p">,</span> <span class="n">policy</span><span class="p">.</span><span class="n">all</span><span class="p">(</span><span class="n">policy</span><span class="p">.</span><span class="n">DENY</span><span class="p">))</span>
+</pre></div>
+</div>
+</section>
+<section id="refuse-particular-ip-ranges">
+<h3>Refuse particular IP ranges<a class="headerlink" href="#refuse-particular-ip-ranges" title="Permalink to this headline"></a></h3>
+<p>Define a list of IP ranges that will be blocked to use this DNS resolver. Queries from all other ranges will be allowed.</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- load modules</span>
+<span class="n">modules</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;policy&#39;</span><span class="p">,</span> <span class="s1">&#39;view&#39;</span><span class="p">}</span>
+
+<span class="c1">--define list of ranges to block</span>
+<span class="n">blocked</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">&#39;10.10.20.5/32&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;10.30.10.0/24&#39;</span>
+<span class="p">}</span>
+
+<span class="c1">-- block list of ranges</span>
+<span class="kr">for</span> <span class="n">i</span><span class="p">,</span><span class="n">subnet</span> <span class="kr">in</span> <span class="nb">ipairs</span><span class="p">(</span><span class="n">blocked</span><span class="p">)</span> <span class="kr">do</span>
+  <span class="n">view</span><span class="p">:</span><span class="n">addr</span><span class="p">(</span><span class="n">subnet</span><span class="p">,</span> <span class="n">policy</span><span class="p">.</span><span class="n">all</span><span class="p">(</span><span class="n">policy</span><span class="p">.</span><span class="n">REFUSE</span><span class="p">))</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+</section>
+<section id="allow-list-of-domains">
+<h3>Allow list of domains<a class="headerlink" href="#allow-list-of-domains" title="Permalink to this headline"></a></h3>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- load modules</span>
+<span class="n">modules</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;policy&#39;</span><span class="p">}</span>
+
+<span class="c1">--define list of allowed domains</span>
+<span class="n">domains</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">&#39;example.com&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;anotherexample.org&#39;</span>
+<span class="p">}</span>
+
+<span class="c1">-- allow list of domains</span>
+<span class="kr">for</span> <span class="n">i</span><span class="p">,</span><span class="n">domain</span> <span class="kr">in</span> <span class="nb">ipairs</span><span class="p">(</span><span class="n">domains</span><span class="p">)</span> <span class="kr">do</span>
+  <span class="n">policy</span><span class="p">.</span><span class="n">suffix</span><span class="p">(</span><span class="n">policy</span><span class="p">.</span><span class="n">PASS</span><span class="p">,</span> <span class="p">{</span><span class="n">todname</span><span class="p">(</span><span class="n">domain</span><span class="p">)})</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+</section>
+<section id="disable-dnssec-globally">
+<h3>Disable DNSSEC globally<a class="headerlink" href="#disable-dnssec-globally" title="Permalink to this headline"></a></h3>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">trust_anchors</span><span class="p">.</span><span class="n">negative</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">&#39;.&#39;</span> <span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="disable-dnssec-validation-for-a-domain">
+<h3>Disable DNSSEC validation for a domain<a class="headerlink" href="#disable-dnssec-validation-for-a-domain" title="Permalink to this headline"></a></h3>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">trust_anchors</span><span class="p">.</span><span class="n">set_insecure</span><span class="p">({</span> <span class="s1">&#39;domain.com&#39;</span> <span class="p">})</span>
+</pre></div>
+</div>
+</section>
+<section id="disable-query-case-randomization">
+<h3>Disable Query Case Randomization<a class="headerlink" href="#disable-query-case-randomization" title="Permalink to this headline"></a></h3>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">policy</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">policy</span><span class="p">.</span><span class="n">suffix</span><span class="p">(</span><span class="n">policy</span><span class="p">.</span><span class="n">FLAGS</span><span class="p">(</span><span class="s1">&#39;NO_0X20&#39;</span><span class="p">),</span> <span class="p">{</span><span class="n">todname</span><span class="p">(</span><span class="s1">&#39;domain.com&#39;</span><span class="p">)}))</span>
+</pre></div>
+</div>
+</section>
+<section id="disable-qname-minimization">
+<h3>Disable QNAME Minimization<a class="headerlink" href="#disable-qname-minimization" title="Permalink to this headline"></a></h3>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">policy</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">policy</span><span class="p">.</span><span class="n">suffix</span><span class="p">(</span><span class="n">policy</span><span class="p">.</span><span class="n">FLAGS</span><span class="p">(</span><span class="s1">&#39;NO_MINIMIZE&#39;</span><span class="p">),</span> <span class="p">{</span><span class="n">todname</span><span class="p">(</span><span class="s1">&#39;domain.com&#39;</span><span class="p">)}))</span>
+</pre></div>
+</div>
+</section>
+<section id="disable-domain-caching">
+<h3>Disable Domain caching<a class="headerlink" href="#disable-domain-caching" title="Permalink to this headline"></a></h3>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">policy</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">policy</span><span class="p">.</span><span class="n">suffix</span><span class="p">(</span><span class="n">policy</span><span class="p">.</span><span class="n">FLAGS</span><span class="p">(</span><span class="s1">&#39;NO_CACHE&#39;</span><span class="p">),</span> <span class="p">{</span><span class="n">todname</span><span class="p">(</span><span class="s1">&#39;domain.com&#39;</span><span class="p">)}))</span>
+</pre></div>
+</div>
+</section>
+<section id="enable-prometheus-metrics">
+<h3>Enable Prometheus Metrics<a class="headerlink" href="#enable-prometheus-metrics" title="Permalink to this headline"></a></h3>
+<p>The resolver can expose its metrics in Prometheus text format.
+The following script enables the HTTP module and the respective <code class="docutils literal notranslate"><span class="pre">/metrics</span></code> endpoint is made available.</p>
+<p>More information and configuration options can be found on <a class="reference external" href="https://knot-resolver.readthedocs.io/en/stable/modules-stats.html#prometheus-metrics-endpoint">Knot Resolver Documentation</a></p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">modules</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">)</span>
+<span class="kr">function</span> <span class="nf">startHttp</span> <span class="p">()</span>
+<span class="n">net</span><span class="p">.</span><span class="n">listen</span><span class="p">(</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="mi">8453</span><span class="p">,</span> <span class="p">{</span> <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;webmgmt&#39;</span> <span class="p">})</span>
+<span class="kr">end</span>
+<span class="nb">pcall</span><span class="p">(</span><span class="n">startHttp</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="uninstalling-a-local-resolver">
+<h2>Uninstalling a local resolver<a class="headerlink" href="#uninstalling-a-local-resolver" title="Permalink to this headline"></a></h2>
+</section>
+<section id="snmp-network-monitoring">
+<h2>SNMP Network Monitoring<a class="headerlink" href="#snmp-network-monitoring" title="Permalink to this headline"></a></h2>
+<section id="high-level-network-diagram">
+<h3>High Level Network Diagram<a class="headerlink" href="#high-level-network-diagram" title="Permalink to this headline"></a></h3>
+<blockquote>
+<div><figure class="align-default">
+<img alt="_images/highlevelnetworkdiagram.png" src="_images/highlevelnetworkdiagram.png" />
+</figure>
+</div></blockquote>
+<p>Whalebone SNMP agent is enabled in the resolvers to actively monitor the local resources, quires and statistics.</p>
+</section>
+<section id="snmp-oid">
+<h3>SNMP OID<a class="headerlink" href="#snmp-oid" title="Permalink to this headline"></a></h3>
+<p>SNMP OID stands for Object Identifiers for creating an SNMP Template for Network Monitoring tool. Below table is the Whalebone SNMP OID’s.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 5%" />
+<col style="width: 74%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Property</p></th>
+<th class="head"><p>ID</p></th>
+<th class="head"><p>SNMP OID</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Hostname</p></td>
+<td><p>1</p></td>
+<td><p>.1.3.6.1.4.1.8072.1.3.2.4.1.2.9.119.104.97.108.101.98.111.110.101.1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Check Port</p></td>
+<td><p>2</p></td>
+<td><p>.1.3.6.1.4.1.8072.1.3.2.4.1.2.9.119.104.97.108.101.98.111.110.101.2</p></td>
+</tr>
+<tr class="row-even"><td><p>Check Resolve</p></td>
+<td><p>4</p></td>
+<td><p>.1.3.6.1.4.1.8072.1.3.2.4.1.2.9.119.104.97.108.101.98.111.110.101.3</p></td>
+</tr>
+<tr class="row-odd"><td><p>CPU Count</p></td>
+<td><p>6</p></td>
+<td><p>.1.3.6.1.4.1.8072.1.3.2.4.1.2.9.119.104.97.108.101.98.111.110.101.4</p></td>
+</tr>
+<tr class="row-even"><td><p>Memory Available</p></td>
+<td><p>7</p></td>
+<td><p>.1.3.6.1.4.1.8072.1.3.2.4.1.2.9.119.104.97.108.101.98.111.110.101.6</p></td>
+</tr>
+<tr class="row-odd"><td><p>Memory Total</p></td>
+<td><p>8</p></td>
+<td><p>.1.3.6.1.4.1.8072.1.3.2.4.1.2.9.119.104.97.108.101.98.111.110.101.7</p></td>
+</tr>
+<tr class="row-even"><td><p>Memory Usage</p></td>
+<td><p>9</p></td>
+<td><p>.1.3.6.1.4.1.8072.1.3.2.4.1.2.9.119.104.97.108.101.98.111.110.101.8</p></td>
+</tr>
+<tr class="row-odd"><td><p>HDD Free</p></td>
+<td><p>10</p></td>
+<td><p>.1.3.6.1.4.1.8072.1.3.2.4.1.2.9.119.104.97.108.101.98.111.110.101.9</p></td>
+</tr>
+<tr class="row-even"><td><p>HDD Total</p></td>
+<td><p>11</p></td>
+<td><p>.1.3.6.1.4.1.8072.1.3.2.4.1.2.9.119.104.97.108.101.98.111.110.101.10</p></td>
+</tr>
+<tr class="row-odd"><td><p>HDD Usage</p></td>
+<td><p>12</p></td>
+<td><p>.1.3.6.1.4.1.8072.1.3.2.4.1.2.9.119.104.97.108.101.98.111.110.101.11</p></td>
+</tr>
+<tr class="row-even"><td><p>Swap Free</p></td>
+<td><p>13</p></td>
+<td><p>.1.3.6.1.4.1.8072.1.3.2.4.1.2.9.119.104.97.108.101.98.111.110.101.12</p></td>
+</tr>
+<tr class="row-odd"><td><p>Swap Total</p></td>
+<td><p>14</p></td>
+<td><p>.1.3.6.1.4.1.8072.1.3.2.4.1.2.9.119.104.97.108.101.98.111.110.101.13</p></td>
+</tr>
+<tr class="row-even"><td><p>Swap Usage</p></td>
+<td><p>15</p></td>
+<td><p>.1.3.6.1.4.1.8072.1.3.2.4.1.2.9.119.104.97.108.101.98.111.110.101.14</p></td>
+</tr>
+<tr class="row-odd"><td><p>Timestamp</p></td>
+<td><p>16</p></td>
+<td><p>.1.3.6.1.4.1.8072.1.3.2.4.1.2.9.119.104.97.108.101.98.111.110.101.15</p></td>
+</tr>
+<tr class="row-even"><td><p>Requests Total</p></td>
+<td><p>17</p></td>
+<td><p>.1.3.6.1.4.1.8072.1.3.2.4.1.2.9.119.104.97.108.101.98.111.110.101.16</p></td>
+</tr>
+<tr class="row-odd"><td><p>equests Internal</p></td>
+<td><p>18</p></td>
+<td><p>.1.3.6.1.4.1.8072.1.3.2.4.1.2.9.119.104.97.108.101.98.111.110.101.17</p></td>
+</tr>
+<tr class="row-even"><td><p>Requests UDP</p></td>
+<td><p>19</p></td>
+<td><p>.1.3.6.1.4.1.8072.1.3.2.4.1.2.9.119.104.97.108.101.98.111.110.101.18</p></td>
+</tr>
+<tr class="row-odd"><td><p>Requests TCP</p></td>
+<td><p>20</p></td>
+<td><p>.1.3.6.1.4.1.8072.1.3.2.4.1.2.9.119.104.97.108.101.98.111.110.101.19</p></td>
+</tr>
+<tr class="row-even"><td><p>Requests DoT</p></td>
+<td><p>21</p></td>
+<td><p>.1.3.6.1.4.1.8072.1.3.2.4.1.2.9.119.104.97.108.101.98.111.110.101.20</p></td>
+</tr>
+<tr class="row-odd"><td><p>Requests DoH</p></td>
+<td><p>22</p></td>
+<td><p>.1.3.6.1.4.1.8072.1.3.2.4.1.2.9.119.104.97.108.101.98.111.110.101.21</p></td>
+</tr>
+<tr class="row-even"><td><p>Requests XDP</p></td>
+<td><p>23</p></td>
+<td><p>.1.3.6.1.4.1.8072.1.3.2.4.1.2.9.119.104.97.108.101.98.111.110.101.22</p></td>
+</tr>
+<tr class="row-odd"><td><p>Answers Total</p></td>
+<td><p>24</p></td>
+<td><p>.1.3.6.1.4.1.8072.1.3.2.4.1.2.9.119.104.97.108.101.98.111.110.101.23</p></td>
+</tr>
+<tr class="row-even"><td><p>Answers cached</p></td>
+<td><p>25</p></td>
+<td><p>.1.3.6.1.4.1.8072.1.3.2.4.1.2.9.119.104.97.108.101.98.111.110.101.24</p></td>
+</tr>
+<tr class="row-odd"><td><p>Answers No error</p></td>
+<td><p>26</p></td>
+<td><p>.1.3.6.1.4.1.8072.1.3.2.4.1.2.9.119.104.97.108.101.98.111.110.101.25</p></td>
+</tr>
+<tr class="row-even"><td><p>Answers No data</p></td>
+<td><p>27</p></td>
+<td><p>.1.3.6.1.4.1.8072.1.3.2.4.1.2.9.119.104.97.108.101.98.111.110.101.26</p></td>
+</tr>
+<tr class="row-odd"><td><p>Answers NX-Domain</p></td>
+<td><p>28</p></td>
+<td><p>.1.3.6.1.4.1.8072.1.3.2.4.1.2.9.119.104.97.108.101.98.111.110.101.27</p></td>
+</tr>
+<tr class="row-even"><td><p>Answers SERVFAIL</p></td>
+<td><p>29</p></td>
+<td><p>.1.3.6.1.4.1.8072.1.3.2.4.1.2.9.119.104.97.108.101.98.111.110.101.28</p></td>
+</tr>
+<tr class="row-odd"><td><p>Answers 1ms</p></td>
+<td><p>30</p></td>
+<td><p>.1.3.6.1.4.1.8072.1.3.2.4.1.2.9.119.104.97.108.101.98.111.110.101.29</p></td>
+</tr>
+<tr class="row-even"><td><p>Answers 10ms</p></td>
+<td><p>31</p></td>
+<td><p>.1.3.6.1.4.1.8072.1.3.2.4.1.2.9.119.104.97.108.101.98.111.110.101.30</p></td>
+</tr>
+<tr class="row-odd"><td><p>Answers 50ms</p></td>
+<td><p>32</p></td>
+<td><p>.1.3.6.1.4.1.8072.1.3.2.4.1.2.9.119.104.97.108.101.98.111.110.101.31</p></td>
+</tr>
+<tr class="row-even"><td><p>Answers 100ms</p></td>
+<td><p>33</p></td>
+<td><p>.1.3.6.1.4.1.8072.1.3.2.4.1.2.9.119.104.97.108.101.98.111.110.101.32</p></td>
+</tr>
+<tr class="row-odd"><td><p>Answers 250ms</p></td>
+<td><p>34</p></td>
+<td><p>.1.3.6.1.4.1.8072.1.3.2.4.1.2.9.119.104.97.108.101.98.111.110.101.33</p></td>
+</tr>
+<tr class="row-even"><td><p>Answers 500ms</p></td>
+<td><p>35</p></td>
+<td><p>.1.3.6.1.4.1.8072.1.3.2.4.1.2.9.119.104.97.108.101.98.111.110.101.34</p></td>
+</tr>
+<tr class="row-odd"><td><p>Answers 1000ms</p></td>
+<td><p>36</p></td>
+<td><p>.1.3.6.1.4.1.8072.1.3.2.4.1.2.9.119.104.97.108.101.98.111.110.101.35</p></td>
+</tr>
+<tr class="row-even"><td><p>Answers 1500ms</p></td>
+<td><p>37</p></td>
+<td><p>.1.3.6.1.4.1.8072.1.3.2.4.1.2.9.119.104.97.108.101.98.111.110.101.36</p></td>
+</tr>
+<tr class="row-odd"><td><p>Answers slow</p></td>
+<td><p>38</p></td>
+<td><p>.1.3.6.1.4.1.8072.1.3.2.4.1.2.9.119.104.97.108.101.98.111.110.101.37</p></td>
+</tr>
+<tr class="row-even"><td><p>Answers AA</p></td>
+<td><p>39</p></td>
+<td><p>.1.3.6.1.4.1.8072.1.3.2.4.1.2.9.119.104.97.108.101.98.111.110.101.38</p></td>
+</tr>
+<tr class="row-odd"><td><p>Answers TC</p></td>
+<td><p>39</p></td>
+<td><p>.1.3.6.1.4.1.8072.1.3.2.4.1.2.9.119.104.97.108.101.98.111.110.101.39</p></td>
+</tr>
+<tr class="row-even"><td><p>Answers RA</p></td>
+<td><p>40</p></td>
+<td><p>.1.3.6.1.4.1.8072.1.3.2.4.1.2.9.119.104.97.108.101.98.111.110.101.40</p></td>
+</tr>
+<tr class="row-odd"><td><p>Answers RD</p></td>
+<td><p>41</p></td>
+<td><p>.1.3.6.1.4.1.8072.1.3.2.4.1.2.9.119.104.97.108.101.98.111.110.101.41</p></td>
+</tr>
+<tr class="row-even"><td><p>Answers AD</p></td>
+<td><p>42</p></td>
+<td><p>.1.3.6.1.4.1.8072.1.3.2.4.1.2.9.119.104.97.108.101.98.111.110.101.42</p></td>
+</tr>
+<tr class="row-odd"><td><p>Answers CD</p></td>
+<td><p>43</p></td>
+<td><p>.1.3.6.1.4.1.8072.1.3.2.4.1.2.9.119.104.97.108.101.98.111.110.101.43</p></td>
+</tr>
+<tr class="row-even"><td><p>Answers DO</p></td>
+<td><p>44</p></td>
+<td><p>.1.3.6.1.4.1.8072.1.3.2.4.1.2.9.119.104.97.108.101.98.111.110.101.44</p></td>
+</tr>
+<tr class="row-odd"><td><p>Answers ENDS0</p></td>
+<td><p>45</p></td>
+<td><p>.1.3.6.1.4.1.8072.1.3.2.4.1.2.9.119.104.97.108.101.98.111.110.101.45</p></td>
+</tr>
+<tr class="row-even"><td><p>Queries EDNS</p></td>
+<td><p>46</p></td>
+<td><p>.1.3.6.1.4.1.8072.1.3.2.4.1.2.9.119.104.97.108.101.98.111.110.101.46</p></td>
+</tr>
+<tr class="row-odd"><td><p>Queries DNSSEC</p></td>
+<td><p>47</p></td>
+<td><p>.1.3.6.1.4.1.8072.1.3.2.4.1.2.9.119.104.97.108.101.98.111.110.101.47</p></td>
+</tr>
+<tr class="row-even"><td><p>Predict Epoch</p></td>
+<td><p>48</p></td>
+<td><p>.1.3.6.1.4.1.8072.1.3.2.4.1.2.9.119.104.97.108.101.98.111.110.101.48</p></td>
+</tr>
+<tr class="row-odd"><td><p>Predict learned</p></td>
+<td><p>49</p></td>
+<td><p>.1.3.6.1.4.1.8072.1.3.2.4.1.2.9.119.104.97.108.101.98.111.110.101.49</p></td>
+</tr>
+<tr class="row-even"><td><p>Predict Queue</p></td>
+<td><p>50</p></td>
+<td><p>.1.3.6.1.4.1.8072.1.3.2.4.1.2.9.119.104.97.108.101.98.111.110.101.50</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="zabbix-integration">
+<h2>Zabbix Integration<a class="headerlink" href="#zabbix-integration" title="Permalink to this headline"></a></h2>
+<p>The agent gathers operational information locally and reports data to Zabbix server for processing. Moreover, Zabbix
+offers excellent reporting and data visualization features based on the stored data from the resolver.</p>
+<p>Zabbix is a monitoring tool that provides performance metrics such as network utilization, CPU and memory utilization. It also monitors network
+disconnection and server unavailability.</p>
+<section id="how-to-import-the-whalebone-template">
+<h3>How to import the Whalebone Template<a class="headerlink" href="#how-to-import-the-whalebone-template" title="Permalink to this headline"></a></h3>
+<ul>
+<li><p>To import the Whalebone template, go to Zabbix Configuration. Under the configuration go to templates.</p>
+<blockquote>
+<div><figure class="align-default">
+<a class="reference internal image-reference" href="_images/importemplate.png"><img alt="_images/importemplate.png" src="_images/importemplate.png" style="width: 350pt;" /></a>
+</figure>
+</div></blockquote>
+</li>
+<li><p>To import the Whalebone template, go to Zabbix Configuration. Under the configuration go to templates.</p>
+<blockquote>
+<div><figure class="align-default">
+<a class="reference internal image-reference" href="_images/importtemplate2.png"><img alt="_images/importtemplate2.png" src="_images/importtemplate2.png" style="width: 350pt;" /></a>
+</figure>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<section id="how-to-add-the-resolver-in-zabbix-monitoring">
+<h3>How to add the resolver in Zabbix Monitoring<a class="headerlink" href="#how-to-add-the-resolver-in-zabbix-monitoring" title="Permalink to this headline"></a></h3>
+<ul>
+<li><p>To add the host, go to Configuration then click hosts. Click create host then provide the hostname, groups. After that add the resolver ip address.</p>
+<blockquote>
+<div><figure class="align-default">
+<a class="reference internal image-reference" href="_images/addhost.png"><img alt="_images/addhost.png" src="_images/addhost.png" style="width: 350pt;" /></a>
+</figure>
+</div></blockquote>
+</li>
+<li><p>Under the interface select the SNMP&gt; Provide the SNMP Ip address &gt; Port 161 &gt; SNMP version SNMPv2 then add the SNMP Community.</p>
+<blockquote>
+<div><figure class="align-default">
+<img alt="_images/addhost1.png" src="_images/addhost1.png" />
+</figure>
+</div></blockquote>
+</li>
+<li><p>After adding the host go to templates tab &gt; Select the whalebone template. Click select and add.</p>
+<blockquote>
+<div><figure class="align-default">
+<a class="reference internal image-reference" href="_images/addhost3.png"><img alt="_images/addhost3.png" src="_images/addhost3.png" style="width: 350pt;" /></a>
+</figure>
+</div></blockquote>
+</li>
+<li><p>After selecting the Whalebone template go back to host and click add. On the hosts tab we can see that the resolver has been added on the Zabbix.</p>
+<blockquote>
+<div><figure class="align-default">
+<img alt="_images/addhost4.png" src="_images/addhost4.png" />
+</figure>
+</div></blockquote>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>SNMP data from the resolver to Zabbix will take time to initialized. Wait the Zabbix to gather data from the server. Always observ the availability on the right corner to see if its gree. Green means its already connected to the whalebone resolver.</p>
+</div>
+</section>
+<section id="how-to-add-the-whalebone-widget-on-zabbix-dashboard">
+<h3>How to add the Whalebone widget on Zabbix dashboard<a class="headerlink" href="#how-to-add-the-whalebone-widget-on-zabbix-dashboard" title="Permalink to this headline"></a></h3>
+<ul>
+<li><p>3.1 To add the dashboard, go to Monitoring then Dashboard. On the dashboard Global view, we can see the edit dashboard. Click the edit dashboard to add new graphs.</p>
+<blockquote>
+<div><figure class="align-default">
+<img alt="_images/dashboard.png" src="_images/dashboard.png" />
+</figure>
+</div></blockquote>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Before adding graphs on the dashboard make sure that the host already detected the graphs. You can find the grapns on the configuration &gt; hosts &gt; graphs.</p>
+</div>
+<ul>
+<li><p>3.2 Click the dashboard and add widget &gt; Select type &gt; Graph. Provide a name of the widget.</p>
+<blockquote>
+<div><figure class="align-default">
+<a class="reference internal image-reference" href="_images/dashboard2.png"><img alt="_images/dashboard2.png" src="_images/dashboard2.png" style="width: 350pt;" /></a>
+</figure>
+</div></blockquote>
+</li>
+<li><p>3.3 Select a data set which is the hostname and select the item pattern where we can find the whalebone template.</p>
+<blockquote>
+<div><figure class="align-default">
+<img alt="_images/dashboard4.png" src="_images/dashboard4.png" />
+</figure>
+</div></blockquote>
+</li>
+<li><p>3.4 Select the items you want to add on the widget for graphical visualization. After the adding item patern. Select base color for graphs then you can adjust the width, point size, transparency, and fill.</p>
+<blockquote>
+<div><figure class="align-default">
+<a class="reference internal image-reference" href="_images/dashboard5.png"><img alt="_images/dashboard5.png" src="_images/dashboard5.png" style="width: 350pt;" /></a>
+</figure>
+</div></blockquote>
+</li>
+<li><p>3.5 On here we successfully added a widget on the dashboard. To edit or change the widget, click the gear icon.</p>
+<blockquote>
+<div><figure class="align-default">
+<a class="reference internal image-reference" href="_images/dashboard6.png"><img alt="_images/dashboard6.png" src="_images/dashboard6.png" style="width: 350pt;" /></a>
+</figure>
+</div></blockquote>
+</li>
+<li><p>3.6 Dont forget to click the save button on the upper right  to save the widget on the dashboard.</p>
+<blockquote>
+<div><figure class="align-default">
+<img alt="_images/dashboard7.png" src="_images/dashboard7.png" />
+</figure>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<section id="how-to-add-triggers-on-the-zabbix">
+<h3>How to add triggers on the Zabbix<a class="headerlink" href="#how-to-add-triggers-on-the-zabbix" title="Permalink to this headline"></a></h3>
+<p>Triggers are logical expression that “evaluate” data gathered by items and represent the current system state. Triggers expression allow to define a threshold of what state of data is acceptable.
+Therefore, if the incoming data surpass the acceptable state, a trigger is “fired” - or changes status to PROBLEM. Example if the whalebone resolver encountered 1,000 NXDOMAIN the trigger will be
+intialized to notify us that the data has exceeded from the set threshold.</p>
+<ul>
+<li><p>To configure the trigger, go to Configuration - Hosts. Click the triggers tab.</p>
+<blockquote>
+<div><figure class="align-default">
+<a class="reference internal image-reference" href="_images/trigger.png"><img alt="_images/trigger.png" src="_images/trigger.png" style="width: 350pt;" /></a>
+</figure>
+</div></blockquote>
+</li>
+<li><p>Create trigger &gt; Provide name then add an expression. Let say we want to trigger if the resolver NXDOMAIN exceeds more than 60. Select severity for this trigger.</p>
+<blockquote>
+<div><figure class="align-default">
+<a class="reference internal image-reference" href="_images/trigger2.png"><img alt="_images/trigger2.png" src="_images/trigger2.png" style="width: 350pt;" /></a>
+</figure>
+</div></blockquote>
+</li>
+<li><p>Click add &gt; On the condition tab &gt; Select the item. On here let’s select the NXDOMAIN.</p>
+<blockquote>
+<div><figure class="align-default">
+<img alt="_images/trigger3.png" src="_images/trigger3.png" />
+</figure>
+</div></blockquote>
+</li>
+<li><p>On the condition tab, set the count &gt; time shift now &gt; result. On the result select an operand then set the value &gt; 60. This condition will trigger if the NXDOMAIN exceed to 60.</p>
+<blockquote>
+<div><figure class="align-default">
+<img alt="_images/trigger4.png" src="_images/trigger4.png" />
+</figure>
+</div></blockquote>
+</li>
+<li><p>Click insert and save the triggers. Make sure the trigger is enabled on the template.</p>
+<blockquote>
+<div><figure class="align-default">
+<img alt="_images/trigger5.png" src="_images/trigger5.png" />
+</figure>
+</div></blockquote>
+</li>
+<li><p>On the problems tab, check the NXDOMAIN that exceeds the threshold.</p>
+<blockquote>
+<div><figure class="align-default">
+<img alt="_images/trigger6.png" src="_images/trigger6.png" />
+</figure>
+</div></blockquote>
+</li>
+<li><p>On the dashboard, the NXDOMAIN that exceeds the threshold is identifiable.</p>
+<blockquote>
+<div><figure class="align-default">
+<img alt="_images/trigger8.png" src="_images/trigger8.png" />
+</figure>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<section id="how-to-configure-the-trigger-actions">
+<h3>How to configure the trigger actions<a class="headerlink" href="#how-to-configure-the-trigger-actions" title="Permalink to this headline"></a></h3>
+<p>Triggers action are logical expression that “evaluate” data gathered by items and represent the current system state. Trigger expression allow to define a threshold of what the data is “acceptable”. Therefore,
+if the incoming data surpass the acceptable state, a trigger is “fired” or changes status to PROBLEM. For this example, lets say the NXDOMAIN exceeds to 60. The trigger will initialize an email for the admin
+reporting or notification.</p>
+<ul>
+<li><p>First step to set up a trigger action by using an email. Go to Administration and Media types. Create media type and provide Name &gt; SMTP server &gt; port &gt; SMPTP email &gt; user and pass.</p>
+<blockquote>
+<div><figure class="align-default">
+<a class="reference internal image-reference" href="_images/triggeraction.png"><img alt="_images/triggeraction.png" src="_images/triggeraction.png" style="width: 350pt;" /></a>
+</figure>
+</div></blockquote>
+</li>
+<li><p>After you setup the email &gt; Go to Configuration &gt; Actions &gt; Action triggers. On the trigger Actions &gt; Create Action &gt; Provide a name &gt; Add a condition.</p>
+<blockquote>
+<div><figure class="align-default">
+<a class="reference internal image-reference" href="_images/triggeraction2.png"><img alt="_images/triggeraction2.png" src="_images/triggeraction2.png" style="width: 350pt;" /></a>
+</figure>
+</div></blockquote>
+</li>
+<li><p>On the new condition window, select the ff: Type: Trigger Operator : equals triggers: Select the NXDOMAIN.</p>
+<blockquote>
+<div><figure class="align-default">
+<a class="reference internal image-reference" href="_images/triggeraction3.png"><img alt="_images/triggeraction3.png" src="_images/triggeraction3.png" style="width: 350pt;" /></a>
+</figure>
+</div></blockquote>
+</li>
+<li><p>Select the NXDOMAIN for Action Triggers. Click Add.</p>
+<blockquote>
+<div><figure class="align-default">
+<a class="reference internal image-reference" href="_images/triggeraction4.png"><img alt="_images/triggeraction4.png" src="_images/triggeraction4.png" style="width: 350pt;" /></a>
+</figure>
+</div></blockquote>
+</li>
+<li><p>On the Actions &gt; Click the Operation &gt; Select the default operation to 1 min. On the operations click add.</p>
+<blockquote>
+<div><figure class="align-default">
+<a class="reference internal image-reference" href="_images/triggeraction5.png"><img alt="_images/triggeraction5.png" src="_images/triggeraction5.png" style="width: 350pt;" /></a>
+</figure>
+</div></blockquote>
+</li>
+<li><p>Select the step duration to 1 minute. On the operation click add &gt; Send to users &gt; Add the Zabbix admin &gt; Send only to &gt; Email.</p>
+<blockquote>
+<div><figure class="align-default">
+<a class="reference internal image-reference" href="_images/triggeraction6.png"><img alt="_images/triggeraction6.png" src="_images/triggeraction6.png" style="width: 350pt;" /></a>
+</figure>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<section id="how-to-view-the-pre-defined-whalebone-dashboard">
+<h3>How to view the pre-defined Whalebone dashboard<a class="headerlink" href="#how-to-view-the-pre-defined-whalebone-dashboard" title="Permalink to this headline"></a></h3>
+<p>For reference, the Whalebone template ha a sample dashboard that overviews the data from the resolver.</p>
+<ul>
+<li><p>To access the dashboard, go to monitoring &gt; hosts. Then in the host click the dasboard.</p>
+<blockquote>
+<div><figure class="align-default">
+<a class="reference internal image-reference" href="_images/templatedashboard.png"><img alt="_images/templatedashboard.png" src="_images/templatedashboard.png" style="width: 250pt;" /></a>
+</figure>
+</div></blockquote>
+</li>
+<li><p>This is the overview of the pre-define Whalebone dashboard.</p>
+<blockquote>
+<div><figure class="align-default">
+<img alt="_images/templatedashboard2.png" src="_images/templatedashboard2.png" />
+</figure>
+</div></blockquote>
+</li>
+</ul>
+</section>
+</section>
+<section id="id2">
+<h2>Uninstalling a local resolver<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
+<p>In order to uninstall a resolver and remove all Whalebone configuration files the following steps should be followed:</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Before starting the process it should be noted that all the individual components that support the resolver functionality are being executed as docker containers. Steps 1 and 2 apply only in case the host server is <strong>dedicated</strong> and <strong>no other services</strong> are running as containers. Should the situation be different, please contact us and we will provide an up to date list of the containers that should be removed.</p>
+</div>
+<ol class="arabic">
+<li><p><strong>Stop and remove all the running docker containers</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>docker rm -f lr-agent &amp;&amp; docker rm -f $(docker ps -q)
+</pre></div>
+</div>
+</li>
+<li><p><strong>Uninstall Docker</strong>:</p>
+<p>Please follow the instructions for the applicable operating system:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.docker.com/install/linux/docker-ce/centos/#uninstall-docker-engine---community">CentOS</a></p></li>
+<li><p><a class="reference external" href="https://docs.docker.com/install/linux/docker-ce/centos/#uninstall-docker-engine---community">Red Hat</a></p></li>
+<li><p><a class="reference external" href="https://docs.docker.com/install/linux/docker-ce/debian/#uninstall-docker-engine---community">Debian</a></p></li>
+<li><p><a class="reference external" href="https://docs.docker.com/install/linux/docker-ce/ubuntu/#uninstall-docker-engine---community">Ubuntu</a></p></li>
+</ul>
+</li>
+<li><p><strong>Remove all resolver configuration files, log files and related data</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">whalebone</span>
+<span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">whalebone</span>
+<span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">whalebone</span>
+<span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">kres</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="license-disclaimers">
+<h2>License Disclaimers<a class="headerlink" href="#license-disclaimers" title="Permalink to this headline"></a></h2>
+<p>The Local Resolver uses the CRC64 variant with Jones coefficient:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Copyright</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="mi">2012</span><span class="p">,</span> <span class="n">Salvatore</span> <span class="n">Sanfilippo</span> <span class="o">&lt;</span><span class="n">antirez</span> <span class="n">at</span> <span class="n">gmail</span> <span class="n">dot</span> <span class="n">com</span><span class="o">&gt;</span>
+<span class="n">All</span> <span class="n">rights</span> <span class="n">reserved</span><span class="o">.</span>
+
+<span class="n">Redistribution</span> <span class="ow">and</span> <span class="n">use</span> <span class="ow">in</span> <span class="n">source</span> <span class="ow">and</span> <span class="n">binary</span> <span class="n">forms</span><span class="p">,</span> <span class="k">with</span> <span class="ow">or</span> <span class="n">without</span>
+<span class="n">modification</span><span class="p">,</span> <span class="n">are</span> <span class="n">permitted</span> <span class="n">provided</span> <span class="n">that</span> <span class="n">the</span> <span class="n">following</span> <span class="n">conditions</span> <span class="n">are</span> <span class="n">met</span><span class="p">:</span>
+
+<span class="o">*</span> <span class="n">Redistributions</span> <span class="n">of</span> <span class="n">source</span> <span class="n">code</span> <span class="n">must</span> <span class="n">retain</span> <span class="n">the</span> <span class="n">above</span> <span class="n">copyright</span> <span class="n">notice</span><span class="p">,</span>
+  <span class="n">this</span> <span class="nb">list</span> <span class="n">of</span> <span class="n">conditions</span> <span class="ow">and</span> <span class="n">the</span> <span class="n">following</span> <span class="n">disclaimer</span><span class="o">.</span>
+<span class="o">*</span> <span class="n">Redistributions</span> <span class="ow">in</span> <span class="n">binary</span> <span class="n">form</span> <span class="n">must</span> <span class="n">reproduce</span> <span class="n">the</span> <span class="n">above</span> <span class="n">copyright</span>
+  <span class="n">notice</span><span class="p">,</span> <span class="n">this</span> <span class="nb">list</span> <span class="n">of</span> <span class="n">conditions</span> <span class="ow">and</span> <span class="n">the</span> <span class="n">following</span> <span class="n">disclaimer</span> <span class="ow">in</span> <span class="n">the</span>
+  <span class="n">documentation</span> <span class="ow">and</span><span class="o">/</span><span class="ow">or</span> <span class="n">other</span> <span class="n">materials</span> <span class="n">provided</span> <span class="k">with</span> <span class="n">the</span> <span class="n">distribution</span><span class="o">.</span>
+<span class="o">*</span> <span class="n">Neither</span> <span class="n">the</span> <span class="n">name</span> <span class="n">of</span> <span class="n">Redis</span> <span class="n">nor</span> <span class="n">the</span> <span class="n">names</span> <span class="n">of</span> <span class="n">its</span> <span class="n">contributors</span> <span class="n">may</span> <span class="n">be</span> <span class="n">used</span>
+  <span class="n">to</span> <span class="n">endorse</span> <span class="ow">or</span> <span class="n">promote</span> <span class="n">products</span> <span class="n">derived</span> <span class="kn">from</span> <span class="nn">this</span> <span class="n">software</span> <span class="n">without</span>
+  <span class="n">specific</span> <span class="n">prior</span> <span class="n">written</span> <span class="n">permission</span><span class="o">.</span>
+
+<span class="n">THIS</span> <span class="n">SOFTWARE</span> <span class="n">IS</span> <span class="n">PROVIDED</span> <span class="n">BY</span> <span class="n">THE</span> <span class="n">COPYRIGHT</span> <span class="n">HOLDERS</span> <span class="n">AND</span> <span class="n">CONTRIBUTORS</span> <span class="s2">&quot;AS IS&quot;</span>
+<span class="n">AND</span> <span class="n">ANY</span> <span class="n">EXPRESS</span> <span class="n">OR</span> <span class="n">IMPLIED</span> <span class="n">WARRANTIES</span><span class="p">,</span> <span class="n">INCLUDING</span><span class="p">,</span> <span class="n">BUT</span> <span class="n">NOT</span> <span class="n">LIMITED</span> <span class="n">TO</span><span class="p">,</span> <span class="n">THE</span>
+<span class="n">IMPLIED</span> <span class="n">WARRANTIES</span> <span class="n">OF</span> <span class="n">MERCHANTABILITY</span> <span class="n">AND</span> <span class="n">FITNESS</span> <span class="n">FOR</span> <span class="n">A</span> <span class="n">PARTICULAR</span> <span class="n">PURPOSE</span>
+<span class="n">ARE</span> <span class="n">DISCLAIMED</span><span class="o">.</span> <span class="n">IN</span> <span class="n">NO</span> <span class="n">EVENT</span> <span class="n">SHALL</span> <span class="n">THE</span> <span class="n">COPYRIGHT</span> <span class="n">OWNER</span> <span class="n">OR</span> <span class="n">CONTRIBUTORS</span> <span class="n">BE</span>
+<span class="n">LIABLE</span> <span class="n">FOR</span> <span class="n">ANY</span> <span class="n">DIRECT</span><span class="p">,</span> <span class="n">INDIRECT</span><span class="p">,</span> <span class="n">INCIDENTAL</span><span class="p">,</span> <span class="n">SPECIAL</span><span class="p">,</span> <span class="n">EXEMPLARY</span><span class="p">,</span> <span class="n">OR</span>
+<span class="n">CONSEQUENTIAL</span> <span class="n">DAMAGES</span> <span class="p">(</span><span class="n">INCLUDING</span><span class="p">,</span> <span class="n">BUT</span> <span class="n">NOT</span> <span class="n">LIMITED</span> <span class="n">TO</span><span class="p">,</span> <span class="n">PROCUREMENT</span> <span class="n">OF</span>
+<span class="n">SUBSTITUTE</span> <span class="n">GOODS</span> <span class="n">OR</span> <span class="n">SERVICES</span><span class="p">;</span> <span class="n">LOSS</span> <span class="n">OF</span> <span class="n">USE</span><span class="p">,</span> <span class="n">DATA</span><span class="p">,</span> <span class="n">OR</span> <span class="n">PROFITS</span><span class="p">;</span> <span class="n">OR</span> <span class="n">BUSINESS</span>
+<span class="n">INTERRUPTION</span><span class="p">)</span> <span class="n">HOWEVER</span> <span class="n">CAUSED</span> <span class="n">AND</span> <span class="n">ON</span> <span class="n">ANY</span> <span class="n">THEORY</span> <span class="n">OF</span> <span class="n">LIABILITY</span><span class="p">,</span> <span class="n">WHETHER</span> <span class="n">IN</span>
+<span class="n">CONTRACT</span><span class="p">,</span> <span class="n">STRICT</span> <span class="n">LIABILITY</span><span class="p">,</span> <span class="n">OR</span> <span class="n">TORT</span> <span class="p">(</span><span class="n">INCLUDING</span> <span class="n">NEGLIGENCE</span> <span class="n">OR</span> <span class="n">OTHERWISE</span><span class="p">)</span>
+<span class="n">ARISING</span> <span class="n">IN</span> <span class="n">ANY</span> <span class="n">WAY</span> <span class="n">OUT</span> <span class="n">OF</span> <span class="n">THE</span> <span class="n">USE</span> <span class="n">OF</span> <span class="n">THIS</span> <span class="n">SOFTWARE</span><span class="p">,</span> <span class="n">EVEN</span> <span class="n">IF</span> <span class="n">ADVISED</span> <span class="n">OF</span> <span class="n">THE</span>
+<span class="n">POSSIBILITY</span> <span class="n">OF</span> <span class="n">SUCH</span> <span class="n">DAMAGE</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>The Local Resolver utilizes the Lightning.NET Library:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>The OpenLDAP Public License
+Version 2.8, 17 August 2003
+
+Redistribution and use of this software and associated documentation
+(&quot;Software&quot;), with or without modification, are permitted provided
+that the following conditions are met:
+
+1. Redistributions in source form must retain copyright statements
+and notices,
+
+2. Redistributions in binary form must reproduce applicable copyright
+statements and notices, this list of conditions, and the following
+disclaimer in the documentation and/or other materials provided
+with the distribution, and
+
+3. Redistributions must contain a verbatim copy of this document.
+
+The OpenLDAP Foundation may revise this license from time to time.
+Each revision is distinguished by a version number.  You may use
+this Software under terms of this license revision or under the
+terms of any subsequent revision of the license.
+
+THIS SOFTWARE IS PROVIDED BY THE OPENLDAP FOUNDATION AND ITS
+CONTRIBUTORS ``AS IS&#39;&#39; AND ANY EXPRESSED OR IMPLIED WARRANTIES,
+INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT
+SHALL THE OPENLDAP FOUNDATION, ITS CONTRIBUTORS, OR THE AUTHOR(S)
+OR OWNER(S) OF THE SOFTWARE BE LIABLE FOR ANY DIRECT, INDIRECT,
+INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+POSSIBILITY OF SUCH DAMAGE.
+
+The names of the authors and copyright holders must not be used in
+advertising or otherwise to promote the sale, use or other dealing
+in this Software without specific, written prior permission.  Title
+to copyright in this Software shall at all times remain with copyright
+holders.
+
+OpenLDAP is a registered trademark of the OpenLDAP Foundation.
+
+Copyright 1999-2003 The OpenLDAP Foundation, Redwood City,
+California, USA.  All Rights Reserved.  Permission to copy and
+distribute verbatim copies of this document is granted.
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="quickstart.html" class="btn btn-neutral float-left" title="Quickstart" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="cloud_resolver.html" class="btn btn-neutral float-right" title="Cloud DNS resolvers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Whalebone, s.r.o..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

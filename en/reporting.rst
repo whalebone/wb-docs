@@ -30,7 +30,5 @@ You can watch step-by-step video guide below:
 
    <iframe width="560" height="315" src="https://www.youtube.com/embed/GXUkPICav-o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-
-
-
+.. note:: When the alerting channel is syslog, by default TCP or TLS is supported as the transport layer protocol.
 

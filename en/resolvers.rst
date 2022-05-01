@@ -9,10 +9,10 @@ Resolvers overview
 In the main resolver overview there are tiles with resolver details and configuration options. The overview includes information about operating system and resources as CPU, Memory and HDD usage. There is also the status of the communication channel between the resolver and the cloud indicated by the color-coded dot.
 
 The resolver can be in one of these states:
+
 * **Active** - This is the expected status in production environments and signalizes that everything is running correctly. 
-* **Minor Issue** - Represents a synchronization issue or an issue with component version mismatch. Minor issue does not affect DNS resolution at all. Incoming DNS request are being processed and/or blocked as they should. 
 * **Resolution problem** - The resolver is unable to translate DNS requests.
-* **Unavailable** - The resolver 
+* **Unavailable** - The resolver has lost connection with Whalebone Cloud. This state does not affect the DNS translation.
 * **Upgrading** - An upgrade command has been issued to the resolver. This state should not persist for more than a few minutes.
 * **Not installed** - The resolver was not yet installed. 
 

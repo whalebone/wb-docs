@@ -35,10 +35,11 @@ Available configuration options:
 
   * Text area for `complete Knot Resolver configuration <https://knot-resolver.readthedocs.io/en/stable/config-overview.html>`_
   * Supports Lua scripting
+
   .. warning:: Faulty configuration can impact stability, performance or security functions of the resolver
 
 .. image:: ./img/lrv2-resolution.gif
    :align: center
 
-   .. note:: Once the **Save** button is pressed changes in DNS resolution are saved and prepared to be deployed to target resolvers. The deployment itself has to be done from the **Resolvers** page. It is possible to do multiple changes and apply all of them at once to minimize the number of deployments to the resolver.
+.. note:: Once the **Save** button is pressed changes in DNS resolution are saved and prepared to be deployed to target resolvers. The deployment itself has to be done from the **Resolvers** page. It is possible to do multiple changes and apply all of them at once to minimize the number of deployments to the resolver.
 

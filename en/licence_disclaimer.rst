@@ -1,4 +1,4 @@
-Copyright notices
+License Disclaimers
 ====================
 
 The Whalebone resolver utilizes the following technology in its solution:

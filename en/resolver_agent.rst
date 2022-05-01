@@ -8,6 +8,7 @@ Agent's actions can be invoked using a proxy bash script present at path **/var/
 * **sysinfo** - returns the system status data in JSON format.
 	* Parameters: None
 	* Output: tested categories on tested key can have two values 'ok' and 'fail'
+
 .. sourcecode:: js
 
 	{
@@ -149,6 +150,7 @@ Agent's actions can be invoked using a proxy bash script present at path **/var/
 * **stop** - stops up to three containers 
 	* Parameters: containers to stop (up to 3), Example: ./cli.sh stop resolver lr-agent kresman
 	* Output: 
+
 .. sourcecode:: js
 
 	{
@@ -160,6 +162,7 @@ Agent's actions can be invoked using a proxy bash script present at path **/var/
 * **remove** - removes up to three containers
 	* Parameters: containers to remove (up to 3), Example: ./cli.sh remove resolver lr-agent kresman
 	* Output: 
+
 .. sourcecode:: js
 
 	{
@@ -171,6 +174,7 @@ Agent's actions can be invoked using a proxy bash script present at path **/var/
 * **upgrade** - upgrades up to three containers, the container's configuration is specified by a docker-compose in agent container (can also be found in a volume **/etc/whalebone/agent**)
 	* Parameters: containers to upgrade (up to 3), Example: ./cli.sh upgrade resolver lr-agent kresman
 	* Output: 
+
 .. sourcecode:: js 
 
 	{
@@ -182,6 +186,7 @@ Agent's actions can be invoked using a proxy bash script present at path **/var/
 * **create** - creates containers, the containers are specified by a docker-compose in agent container (can also be found in **/etc/whalebone/agent**)
 	* Parameters: None, Example: ./cli.sh create
 	* Output: 
+
 .. sourcecode:: js
 
 	{'resolver': {'status': 'success'}
@@ -192,6 +197,7 @@ Agent's actions can be invoked using a proxy bash script present at path **/var/
 * **updatecache** - forces the update of resolver's IoC cache (which is used for blocking), this action should be done to manually force the update and refresh of the domains present in the malicous domain cache
 	* Parameters: None
 	* Output: 
+
 .. sourcecode:: js
 
 	{'status': 'success', 'message': 'Cache update successful'}
@@ -199,6 +205,7 @@ Agent's actions can be invoked using a proxy bash script present at path **/var/
 * **containers** - lists the containers and their information which include: labels, image, name and status. 
 	* Parameters: None
 	* Output: 
+
 .. sourcecode:: js
 
 	[
@@ -304,6 +311,7 @@ To list changes the request introduces the cli option **list** option should be 
 * **list** - lists the awaiting command and the changes that would be made to the containers specified in the awaiting action, this action is intended for human check hence it's format 
 	* Parameters: None, Example: ./cli.sh list
 	* Output: 
+
 .. code-block:: lua
 
 	-------------------------------
@@ -315,12 +323,15 @@ To list changes the request introduces the cli option **list** option should be 
 	
 * **run** - executes the awaiting command
 	* Parameters: none, Example: ./cli.sh run
+
 .. sourcecode:: js
 
 	{'resolver': {'status': 'success'}
 
 * **delete_request** - deletes the awaiting request
 	* Parameters: none, Example: ./cli.sh delete_request
+
 .. code-block:: lua
+
 	Pending configuration request deleted.
 

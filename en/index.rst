@@ -17,16 +17,14 @@ More information about the product and company is available on the official `Wha
 .. toctree::
    :caption: Configuration
 
-   installation
+   local_resolver
    resolvers
    security_policies
    dns_resolution
    knot_tips_tricks
    blocking_pages
-   local_resolver
    resolver_agent
    cloud_resolver
-   user
    uninstalling
 
 .. toctree::
@@ -37,11 +35,15 @@ More information about the product and company is available on the official `Wha
    reporting
    integration
 
+
+.. toctree::
+   :caption: Organization Settings
+   
+   user
+
 .. toctree::
    :caption: Step-by-Step Video Guides
 
-   configuration
-   analysis
    video_guides
 
 .. toctree::
@@ -52,7 +54,7 @@ More information about the product and company is available on the official `Wha
 
 .. toctree::
    :caption: Home Office Security
-   user
+
    hos
 
 

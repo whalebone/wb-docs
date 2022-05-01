@@ -4,7 +4,7 @@ Quickstart
 Creating the portal account
 ---------------------------
 
-After accessing the URL from your activation email, you will be asked to setup the password for your account. We don't enforce any password complexity, but we recommend using unique and non-trivial password. An unauthorized access would be a threat to users privacy and could misuse the configuration to harm your network.
+After accessing the URL from your activation email, you will be asked to setup the password for your account. We don't enforce any password complexity but we recommend using unique and non-trivial password. An unauthorized access would be a threat to users privacy and could misuse the configuration to harm your network.
 
 .. image:: ./img/password_setup.png
    :align: center
@@ -15,8 +15,9 @@ After the password setup you will be asked to login using your username and newl
    :align: center
 
 
-DNS traffic
------------
+
+DNS traffic view
+----------------
 
 Should the traffic be properly forwarded on Whalebone DNS resolvers (cloud or local) the DNS traffic will be visible under the menu option ``DNS traffic``, where the individual request and responses are available for further investigation.
 The traffic should be visible in several minutes after everything has been properly setup. If there is no traffic recorded even in several hours don't hesitate to contact Whalebone support to help you doublecheck the configuration or any sort of network issues.

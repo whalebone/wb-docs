@@ -1,5 +1,3 @@
-.. _header-n233:
-
 Domain resolution analysis
 ==========================
 

@@ -31,10 +31,10 @@ Below are described the different roles and the actions that they are able to pe
 
 .. csv-table:: 
    :align: left
-   :header: "Action", "Read threats","Read Traffic", "List Editor", "Security policy Admin", "API Credentials", "Read only", "Operations Read Only", "DNS Admin", "Admin"
+   :header: "Action", "Read Traffic", "Read Threats", "List Editor", "Security policy Admin", "API Credentials", "Read only", "Operations Read Only", "DNS Admin", "Admin"
 
    "**View Threat Data**", "☑", "☑", " ", " ", " ", "☑", " ", " ", "☑"
-   "**View DNS Traffic**", " ", "☑", " ", " ", " ", "☑", " ", " ", "☑"
+   "**View DNS Traffic**", "☑", " ", " ", " ", " ", "☑", " ", " ", "☑"
    "**View Whitelists/Blacklists**", " ", " ", "☑", "☑", " ", "☑", " ", " ", "☑"
    "**Edit Whitelists/Blacklists**", " ", " ", "☑", "☑", " ", " ", " ", " ", "☑"
    "**View Security Policies**", " ", " ", " ", "☑",  " ", "☑", " ", " ", "☑"

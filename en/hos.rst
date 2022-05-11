@@ -1,25 +1,64 @@
 ====================
 Home Office Security
 ====================
+Whalebone Home Office Security (HOS) provides an off-network DNS filtering functionality for desktop and mobile devices. It intercepts DNS traffic and inspects it before sending network packets to the wild. 
+It protects the device from network threat by scanning every DNS packet. At the moment, Windows, Android and iOS devices are supported. For detailed OS version support, see below.
+
+.. image:: ./img/hos-overview.png
+    :align: center
+
+HOS comes with Windows Installer for the deployment. No user interaction is required to perform the installation, however the installer requires a ``token``. The default target directory is:
+``C:\Program Files (x86)\Whalebone\Home Office Security\``
+For Android the default install location is:
+``/storage/emulated/0/Android/io.whalebone.securedns.corp/``
+
+Supported OS
+====================
+
+=================== ================================= ========================== ================ =============== =============
+Windows Desktop     Windows Server                    Android                    iOS and iPadOS   MacOS           Linux
+=================== ================================= ========================== ================ =============== =============
+☐ Windows XP        ☐ Windows 2000                   ☑ Android 5 and higher     ☑ all versions  Not supported   Not supported
+☐ Windows Vista     ☐ Windows 2003, Windows 2003 R2  ☐ Android 4.4 and lower    
+☑ Windows 7         ☐ Windows 2008, Windows 2008 R2  
+☑ Windows 8         ☑ Windows 2012, Windows 2012 R2  
+☑ Windows 8.1       ☑ Windows 2016                   
+☑ Windows 10        ☑ Windows 2019                   
+☑ Windows 11
+=================== ================================= ========================== =================== ============== ==============
+
+Windows 7 systems must be up-to-date or at least have KB3033929 installed.
+
+Windows Server 2016 systems must have secure boot disabled.
+
+
 
 *************************
 Step by step installation
 *************************
 
-To install HOS on device you need to configure it first. Please open `Whalebone Portal` web page and use (1) `User menu` to navigate to (2) `Home Office Security`.
+
+To install HOS on device you need to configure it first. Open `Whalebone Portal <https://latest.whalebone.io>` web page and use (1) `User menu` to navigate to (2) `Home Office Security`.
 
 .. image:: ./img/hos-sbs-1.png
     :align: center
 
 
-Create (3) a Device group.
+A Default Device group should already exist. If not, create one by clicking the (3) a `+ Add device group` button.
 
 .. image:: ./img/hos-sbs-2.png
     :align: center
 
 
-Fill the form to suit your organization needs. 
-ID states group identifer. It's value could be a Active Directory group or you can define a unique custom identifer on your own. `Name` field makes the human friendly description. Select policy and a blocking page and then click (4) `Add` button to create this group.
+* **Name**: This should clearly identify the device group to differentiate it from others. If you only use one, you may leave its name as Default Group. 
+* **Policy**: corresponds to the policies you create in the Configuration menu. It is a set of rules that instructs how to operate. Based on policy the device or the local/cloud resolver decides what to during DNS resolution. This set of rules persist on the device and is updated initially and later synchronized. Because of this Portal provides monitoring of these devices.
+* **Blocking page**: corresponds to the blocking pages you create in the Configuration menu. 
+* **Domain exceptions**: HOS service will not divert any DNS queries that contain question for domain on the exception list. E.g. when ``example.com`` is specified, the DNS request will be resolved as usual on the resolver configured by operating system. A same rule applies for question ``subdomain.example.com``.
+* **Automatic upgrade**: When this configuration option is checked, HOS application on Windows will update to latest production version when a newer version is available to download. This option takes effect on Windows only, on mobile upgrades are performed by the vendor ecosystem.
+
+.. warning:: Please note that two settings mentioned above (Automatic upgrade and Domain exception) are featured in version 2.10.0 for Windows only. If you are running earlier version, please update to 2.10.0 manually.
+
+When you're done, click (4) `Add` button to create this group.
 
 HOS may become inactive when it detects that device is connected to secure network. 
 
@@ -34,6 +73,12 @@ Click (5)  `Install to group` button to see installation instructions and/or get
 
 
 If you haven't already download the installer (6). While the installer is being downloaded please copy the installation command to clipboard (7). 
+To install or Update:
+.. code-block:: shell
+    msiexec /i "Whalebone.Home.Office.Security.Installer.msi" TOKEN="60d5806e-07fe-432a-a4ad-7797d82782b3"
+Uninstall:
+.. code-block:: shell
+    msiexec /x "Whalebone.Home.Office.Security.Installer.msi
 
 .. image:: ./img/hos-sbs-5.png
     :align: center
@@ -48,7 +93,7 @@ Installer will end prematurely with error when executed without token argument.
 .. image:: ./img/hos-sbs-6.png
     :align: center
 
-Installer has minimal UI, if there was no error message installation succeeded.
+.. Tip:: The installer has very minimal UI. If there was no error message, consider the installation successful.
 
 .. image:: ./img/hos-sbs-7.png
     :align: center
@@ -60,11 +105,6 @@ Device is now visible in the Whalebone Portal web page.
 Operation
 ************************
 
-Whalebone Home Office Security (HOS) provides a DNS filtering functionality for your desktop and mobile devices. It intercepts DNS traffic and inspects it before sending network packets to the wild. It protects the device from network threat by scanning every DNS packet.
-
-Policies 
-========================
-Policy is a set of rules that instructs how to operate. Based on policy the device or the local/cloud resolver decides what to during DNS resolution. This set of rules persist on the device and is updated initially and later synchronized. Because of that Portal provides monitoring of these devices.
 
 Devices
 ========================
@@ -90,59 +130,12 @@ In the background HOS uses ``DNS-over-HTTPs`` or ``DoH``. The ``Hostname`` of th
 ******************************
 Service details and specifics
 ******************************
-HOS comes with Windows Installer for the deployment. No user interaction is required to perform the installation, installer requires ``token`` though. Default target directory:
-
-``C:\Program Files (x86)\Whalebone\Home Office Security\``
-
-
-Supported desktop OS
-====================
-
-=================== =================================
-Desktop             Server                          
-=================== =================================
-☐ Windows XP        ☐ Windows 2000                  
-☐ Windows Vista     ☐ Windows 2003, Windows 2003 R2 
-☑ Windows 7         ☐ Windows 2008, Windows 2008 R2 
-☑ Windows 8         ☑ Windows 2012, Windows 2012 R2 
-☑ Windows 8.1       ☑ Windows 2016                  
-☑ Windows 10        ☑ Windows 2019                  
-=================== =================================
-
-Windows 7 systems must be up-to-date or at least have KB3033929 installed.
-
-Windows Server 2016 systems must have secure boot disabled.
-
-Portal 
-====================
-
-First, check that your organization have `policies <https://docs.whalebone.io/en/hos/local_resolver.html#security-policies>`__ and device groups prepared. If you haven't set any `policies <https://docs.whalebone.io/en/hos/local_resolver.html#security-policies>`__ or device groups, please configure them before you proceed further.
-
-Device Group Configuration 
-===========================
-
-Automatic upgrade: When this configuration option is checked, HOS application on Windows will update to latest production version when a newer version is available to download. This option takes effect on Windows only, on mobile upgrades are performed by the vendor ecosystem.
-Domain exception: HOS service will not divert any DNS queries that contain question for domain on the exception list. E.g. when ``example.com`` is specified, the DNS request will be resolved as usual on the resolver configured by operating system. A same rule applies for question ``subdomain.example.com``.
-
-Please note that two settings mentioned above (Automatic upgrade and Domain exception) are featured in version 2.10.0 for Windows only. If you are running earlier version, please update to 2.10.0 manually.
-
-Install Instructions
-=====================
-
-Install or Update:
-
-.. code-block:: shell
-
-    msiexec /i "Whalebone.Home.Office.Security.Installer.msi" TOKEN="60d5806e-07fe-432a-a4ad-7797d82782b3"
-
-Uninstall:
-
-.. code-block:: shell
-
-    msiexec /x "Whalebone.Home.Office.Security.Installer.msi
 
 Service requirements
 ====================
+
+Windows
+-------
 
 Because HOS must intecept network traffic it requres to run as SYSTEM account. You can query the service by name ``hos`` to see if it started properly. When none or invalid installation token is supplied the service it will stop.
 
@@ -176,6 +169,22 @@ On first run HOS also installs ``windivert`` system driver.
             WAIT_HINT          : 0x0
 
 Service is configured to recover after crash three times and then stay stopped.
+
+Android
+-------
+
+The Android app has access to:
+* Location
+    * precise location (GPS and network-based)
+* Camera
+    * take pictures and videos (to scan QR code of the Device group from the portal)
+* Wi-Fi connection information
+    * view Wi-Fi connections
+* Other 
+    * view network connections
+    * connect and disconnect from Wi-Fi
+    * full network access (to create a VPN tunnel to Whalebone Cloud resolvers) 
+    * run at startup
 
 Application Firewall Settings
 =============================

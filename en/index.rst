@@ -33,13 +33,18 @@ More information about the product and company is available on the official `Wha
    data_analysis
    domain_resolution_analysis
    reporting
-   integration
+   api_integration
 
 
 .. toctree::
    :caption: Organization Settings
    
    user
+
+.. toctree::
+   :caption: Home Office Security
+
+   hos
 
 .. toctree::
    :caption: Step-by-Step Video Guides
@@ -50,12 +55,10 @@ More information about the product and company is available on the official `Wha
    :caption: About
    
    licence_disclaimer
+   changelog
 
 
-.. toctree::
-   :caption: Home Office Security
 
-   hos
 
 
 

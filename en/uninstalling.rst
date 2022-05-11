@@ -17,7 +17,7 @@ In order to uninstall a resolver and remove all Whalebone configuration files th
 
    -  `CentOS <https://docs.docker.com/install/linux/docker-ce/centos/#uninstall-docker-engine---community>`__
 
-   -  `Red Hat <https://docs.docker.com/install/linux/docker-ce/centos/#uninstall-docker-engine---community>`__
+   -  `Red Hat <https://docs.docker.com/install/linux/docker-ce/fedora/#uninstall-docker-engine---community>`__
 
    -  `Debian <https://docs.docker.com/install/linux/docker-ce/debian/#uninstall-docker-engine---community>`__
 
@@ -33,10 +33,10 @@ In order to uninstall a resolver and remove all Whalebone configuration files th
 
 
 4. **Remove DNS traffic and incidents logs**:
-    If you want to fully uninstall the resolver including the logs from DNS traffic and incidents, delete also the log folder.
-    If your intention is just to re-install the resolver but keep the logs, you can skip this step.
-    
+
+   If you want to fully uninstall the resolver including the logs from DNS traffic and incidents, delete also the log folder.
+   If your intention is just to re-install the resolver but keep the logs, you can skip this step.
+
     .. code::     
       rm -rf /var/log/whalebone
-
     

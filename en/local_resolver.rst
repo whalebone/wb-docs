@@ -78,14 +78,7 @@ Local resolver is supported on dedicated (hardware or virtual) machine running a
 Installation of a new local resolver
 ====================================
 
-You can watch step-by-step video guide about installation procedure below:
-
-.. raw:: html
-
-	<iframe width="560" height="315" src="https://www.youtube.com/embed/W_sWor-Wg-U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-	</iframe>
-
-|
+You can watch step-by-step video guide about the installation procedure `here. <https://docs.whalebone.io/en/latest/video_guides.html#on-premise-resolver-deployment>`
 
 In menu **Resolvers** press the button **Create new**. Choose a name (identifier) for your new resolver. The input is purely informative and won't affect the functionality.
 Once you've entered the name, click **Add resolver** button

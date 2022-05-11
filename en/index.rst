@@ -43,6 +43,7 @@ More information about the product and company is available on the official `Wha
 
 .. toctree::
    :caption: Home Office Security
+   
    hos_overview
    hos_installation
    hos_operation

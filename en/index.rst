@@ -43,8 +43,9 @@ More information about the product and company is available on the official `Wha
 
 .. toctree::
    :caption: Home Office Security
-
-   hos
+   hos_overview
+   hos_installation
+   hos_operation
 
 .. toctree::
    :caption: Step-by-Step Video Guides

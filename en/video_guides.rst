@@ -93,6 +93,7 @@ Afterward, fill in all the necessary data including the name of the company, its
 
 Once you have saved the modified blocking page, go to "Resolvers" and select the resolver to which you would like to apply the blocking page. Go to "Policy assignment" and apply the blocking page to a given resolver.
 Alternatively, you can assign it to a specific IP address or range. While you're at it, you can also activate a "bypass", which will alow the user to access the blocked domain nonetheless.
+
 .. raw:: html
 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/K0p2l-qxHtk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -112,6 +113,7 @@ You can also monitor failures in communication between the resolver and the Whal
 
 You can even create advanced alerts for DNS traffic and security incidents. We will gladly give you a hand with setting advanced alerts, no matter if it's during the introductory technical consultation,
 at the end of the trial or any time you decide to contact Whalebone support.
+
 .. raw:: html
 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/GXUkPICav-o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -225,6 +227,7 @@ It turns out there have been attempts to access the domain. In that case, we hav
 
 We recommend using the DNS Viz tool. DNS Viz is designed to fully inspect the DNS resolution behavior. A direct click-through leads to the DNSSEC validation results. It turns out that the problem of this particular domain is that it has issues with expired cryptographic signatures.
 If you feel like you still don't really know what's going on with the domain, feel free to contact us via E-mail at support@whalebone.io. We will gladly look into your issue.
+
 .. raw:: html
 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/sV2Ql8erWwY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -241,6 +244,7 @@ All you need to do is choose the corresponding local resolver, open the context 
 Choose one of the query types, for example, "A" and trace the domain. You can see the outcome of the resolution here. The upper part shows the result of the query. The green color tells you there's nothing wrong with the DNS resolution. 
 If there's an issue, there will be some information about the particular problem in orange or red. For example, if the domain doesn't exist, the result will be NXDOMAIN. In case there's an issue with the resolution, you will see the "SERVFAIL" response.
 If you encounter any issues, send the log to support@whalebone.io and we'll look into it.
+
 .. raw:: html
 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/WD6RawjWGqo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

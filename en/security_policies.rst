@@ -2,7 +2,9 @@ Security policies
 =================
 
 You can watch step-by-step video guide of basic security policy configuration `here. <https://docs.whalebone.io/en/latest/video_guides.html#basic-configuration>`__
+|
 The step-by-step video guide with deeper explanation of security policy tuning `here. <https://docs.whalebone.io/en/latest/video_guides.html#security-policies>`__
+|
 To control Whalebone's security filtering you need to configure it's security policies. When you install Whalebone, it comes with a Default policy which is set to include all threat types and sets the tresholds to the value of 80/50. This policy will also be automatically applied to every newly installed resolver. 
 In any policy there are several options to be configured:
 

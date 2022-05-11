@@ -19,12 +19,14 @@ Available configuration options:
 
   * **All queries to**
 
-    * Option to forward all queries to one or more resolver
+    * Option to forward all queries to one or more resolver.
+    * This option keeps caching all responses!
 
   * **Following domains**
 
     * Option to choose particular domains that should be forwarded to on more resolvers
     * Different resolvers could be defined for different domains
+    * Caching for the selected domains will be turned off!
 
 * **Static records**
 

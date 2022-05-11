@@ -12,7 +12,7 @@ The resolver can be in one of these states:
 
 * **Active** - This is the expected status in production environments and signalizes that everything is running correctly. 
 * **Resolution problem** - The resolver is unable to translate DNS requests.
-* **Unavailable** - The resolver has lost connection with Whalebone Cloud. This state does not affect the DNS translation.
+* **Unavailable** - The resolver has lost connection with Whalebone Cloud. This state does not affect the DNS translation however the resolver cannot get threat database updates and might not respond to policy or configuration changes initiated from the portal.
 * **Upgrading** - An upgrade command has been issued to the resolver. This state should not persist for more than a few minutes.
 * **Not installed** - The resolver was not yet installed. 
 

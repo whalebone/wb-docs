@@ -16,8 +16,7 @@ the second is to block it.
 
 The action that is to be implemented depends on the policies that are
 assigned to the specific resolver. For more on that please refer to
-`Security
-Policies <http://docs.whalebone.io/cs/latest/local_resolver.html#bezpecnostni-politiky>`__.
+`Security Policies <http://docs.whalebone.io/cs/latest/local_resolver.html#security-policies>`__.
 
 There are some pre-configured filters that can be applied on the data on
 the portal. Some sample queries can be found below. These queries depict
@@ -25,13 +24,8 @@ the majority of the use cases but there is no hard limit as the
 available search engine is **full-text** and *any* query can be compiled
 impromptu.
 
-You can watch step-by-step video guide below:
+You can watch step-by-step video guide `here. <https://docs.whalebone.io/en/latest/video_guides.html#threats>`
 
-.. raw:: html
-
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/GVZoMOEUWzM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-|
 
 How to search for audit/block events.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -124,13 +118,8 @@ How to analyze a domain
 In case to know further information about domain, especially what score 
 Whalebone assigns to particular domain, when was first seen and categorized 
 as malicious, if it falls under regulatory category or what external sources 
-know about it, then watch step-by-step video below:
+know about it, then watch step-by-step video `here. <https://docs.whalebone.io/en/latest/video_guides.html#domain-analysis>`
 
-.. raw:: html
-
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/WJzsGvBiF80" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-|
 
 DNS Traffic
 -----------
@@ -145,16 +134,9 @@ live) of the answer.
    hour time frame. For this reason, a query might not be available on
    the portal even though it has been resolved.
 
-You can watch step-by-step video guide below:
+You can watch step-by-step video guide `here. <https://docs.whalebone.io/en/latest/video_guides.html#dns-traffic>``
 
-.. raw:: html
-
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/Qgj-fUHS5qg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-|
-
-Below are some of the most useful filtering options of the available data
-will be described.
+Below are some of the most useful filtering options of the available data will be described.
 
 
 How to view all queries of a specific type

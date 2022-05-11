@@ -1,6 +1,6 @@
 Blocking Pages
 ============================
-You can watch step-by-step video guide `here <https://docs.whalebone.io/en/latest/video_guides.html#blocking-page-configuration>`
+You can watch step-by-step video guide `here <https://docs.whalebone.io/en/latest/video_guides.html#blocking-page-configuration>`__
 In case of blocking access to a domain (due to security, content or regulatory reasons), the resolvers are answering to the clients with a specific IP address that leads to one of the Blocking pages. Should the clients initiate the HTTP(S) connections towards the blocked domain, they are presented with a custom Blocking page with different content based on the reason of the blocking. 
 Whalebone provides sample template pages for the Blocking Pages, however, they do not have to be followed and virtually every modification, branding and copywriting is possible. The template code is written to be compatible with the widest range of browsers to avoid problems with older versions.
 

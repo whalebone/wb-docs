@@ -17,11 +17,9 @@ Before long, the status of the resolver changes. As soon as the resolver becomes
 .. raw:: html
 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/W_sWor-Wg-U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-
-
-
-
+|
+|
+|
 
 Cloud resolvers
 ---------------------------
@@ -35,9 +33,9 @@ which don't necessarily get their connectivity from you, but you administer thei
 .. raw:: html
 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/kdpjCenhTVg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-
-
+|
+|
+|
 
 Configuration
 =============
@@ -60,7 +58,9 @@ and assign a policy to a particular IP address or range. Make sure to save the s
 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/sUqVXKaPuIc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-
+|
+|
+|
 
 Security policies
 -----------------
@@ -81,7 +81,9 @@ and assign a policy to a particular IP address or rangeMake sure to save the set
 .. raw:: html
 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/vjzOeHAYi4A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
+|
+|
+|
 
 Blocking page configuration
 ---------------------------
@@ -95,7 +97,9 @@ Alternatively, you can assign it to a specific IP address or range. While you're
 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/K0p2l-qxHtk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-
+|
+|
+|
 
 Alerts
 ------
@@ -111,7 +115,9 @@ at the end of the trial or any time you decide to contact Whalebone support.
 .. raw:: html
 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/GXUkPICav-o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
+|
+|
+|
 
 Analysis
 ========
@@ -129,7 +135,10 @@ there's quite some traffic going on and Whalebone categorizes it as a social net
 .. raw:: html
 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/WJzsGvBiF80" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
- 
+
+|
+|
+|
 
 DNS traffic
 ------------
@@ -147,6 +156,9 @@ Similarly, you can choose for example A queries. We specialize in the detection 
 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/Qgj-fUHS5qg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+|
+|
+|
 
 Threats
 ---------
@@ -164,7 +176,9 @@ feel free to report such a domain to us. We will examine the case and get back t
 .. raw:: html
 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/GVZoMOEUWzM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
+|
+|
+|
 
 Data Analysis
 ---------------
@@ -176,6 +190,9 @@ all the parameters are to be type directly into the URL address. This way, you c
 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/TVhyQP_AG-Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+|
+|
+|
 
 API
 ----
@@ -193,7 +210,9 @@ Before you start modeling API calls in the documentation, we recommend authorizi
     <iframe width="560" height="315" src="https://www.youtube.com/embed/9SsxMVR6ino" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
-
+|
+|
+|
 
 Domain resolution troubleshooting
 ----------------------------------
@@ -210,6 +229,9 @@ If you feel like you still don't really know what's going on with the domain, fe
 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/sV2Ql8erWwY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+|
+|
+|
 
 Domain Tracing
 -----------------

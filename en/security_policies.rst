@@ -1,25 +1,26 @@
 Security policies
 =================
 
-You can watch step-by-step video guide of basic security policy configuration `here. <https://docs.whalebone.io/en/latest/video_guides.html#basic-configuration>`
-The step-by-step video guide with deeper explanation of security policy tuning `here. <https://docs.whalebone.io/en/latest/video_guides.html#security-policies>`
+You can watch step-by-step video guide of basic security policy configuration `here. <https://docs.whalebone.io/en/latest/video_guides.html#basic-configuration>`__
+The step-by-step video guide with deeper explanation of security policy tuning `here. <https://docs.whalebone.io/en/latest/video_guides.html#security-policies>`__
 To control Whalebone's security filtering you need to configure it's security policies. When you install Whalebone, it comes with a Default policy which is set to include all threat types and sets the tresholds to the value of 80/50. This policy will also be automatically applied to every newly installed resolver. 
 In any policy there are several options to be configured:
 
-* **Malicious filtering tresholds**
-
+Malicious filtering tresholds
+-----------------------------
 Every domain in our threat intelligence database has certain value of the score. The score represents how malicious we believe that particular domain to be. In the policy you adjust two values related to the score:
-  * The blocking threshold - Domains with a score higher or equal to this value will be blocked by Whalebone and the client request will be answered with and IP address of the blocking page. 
-  * The audit treshold - Domains with a score higher or equal to this value, but lower than the blocking treshold will be monitored. The request will be allowed and the answer will be served either from cache or by performing the full DNS recursion. Requests will however be monitored in the Threats dashboard for later investigation, if needed.
-  * Individual actions could be turned off - e.g. turn off the blocking for testing purposes
-  * The slider values define the probability that the particular domain is malicious on the scale from 0 to 100 (0 is a safe domain, 100 is malicious)
+
+* ``The blocking threshold`` - Domains with a score higher or equal to this value will be blocked by Whalebone and the client request will be answered with and IP address of the blocking page. 
+* ``The audit treshold`` - Domains with a score higher or equal to this value, but lower than the blocking treshold will be monitored. The request will be allowed and the answer will be served either from cache or by performing the full DNS recursion. Requests will however be monitored in the Threats dashboard for later investigation, if needed.
+Individual actions could be turned off - e.g. turn off the blocking for testing purposes
+The slider values define the probability that the particular domain is malicious on the scale from 0 to 100 (0 is a safe domain, 100 is malicious)
 
 .. tip:: The default threshold for blocking is set to ``80`` which is safe even for larger network with liberal policy towards the users. For more restrictive policy we suggest setting threshold for blocking to ``70-75``, in very restrictive networks even down to ``60``. Audit is purely informative, however setting the threshold too low can result in too many logged incidents.
 
-There are available preconfigured policies that cover the most usual cases. These cases are: `Don't Block`, `Block carefully` and `Block strictly`.
-* "Block carefully" This setting prioritizes a low false positive rate and is suitable for ISPs.
-* "Block strictly" maximizes the detection rate and is suitable for most corporate deployments. 
-* "Don't block" turns off the blocking entirely and causes Whalebone to operate in a transparent/permissive mode, where it will only log the incidents but it won't actively block them. 
+There are preconfigured policies available that cover the most usual cases. These cases are: `Don't Block`, `Block carefully` and `Block strictly`.
+* ``Block carefully`` This setting prioritizes a low false positive rate and is suitable for ISPs.
+* ``Block strictly`` maximizes the detection rate and is suitable for most corporate deployments. 
+* ``Don't block`` turns off the blocking entirely and causes Whalebone to operate in a transparent/permissive mode, where it will only log the incidents but it won't actively block them. 
 
 .. image:: ./img/score.png
    :align: center
@@ -30,10 +31,11 @@ You can then modify the blocking and auditing sensitivity, add deny lists or set
   
 
 
-* **Types of threats**
+Types of threats
+----------------
 
-  * The default behavior is to include all types of threats
-  * The drop-down menu allows the user to choose a more granular category of the threats they would like to audit or block. The available categories are: `blacklist`, `c&c`, `coinminer`, `compromised`, `malware`, `phishing` and `spam`.
+* The default behavior is to include all types of threats
+* The drop-down menu allows the user to choose a more granular category of the threats they would like to audit or block. The available categories are: `blacklist`, `c&c`, `coinminer`, `compromised`, `malware`, `phishing` and `spam`.
 
 A full list of what each category includes can be found below: 
 
@@ -106,8 +108,9 @@ Content Filtering
   The content filter can also be applied for specific times of the day. When a particular category is ticked, a clock icon will appear next to it. If you click the clock icon, you can add a new schedule for this category.
   Multiple schedules may be active for the same category. This way, you may only allow access to social networks during the lunch break and after working hours. Finish the settings by clicking **"Apply"** and **"Save"** the security policy.
 
-  .. note:: By applying the schedule, you are **allowing** access to domains from that content category during that specific time period. 
-
   .. image:: ./img/schedules.png
     :align: center
+
+  .. note:: By applying the schedule, you are **allowing** access to domains from that content category during that specific time period. 
+
 

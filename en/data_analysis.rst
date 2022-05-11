@@ -24,7 +24,7 @@ the majority of the use cases but there is no hard limit as the
 available search engine is **full-text** and *any* query can be compiled
 impromptu.
 
-You can watch step-by-step video guide `here. <https://docs.whalebone.io/en/latest/video_guides.html#threats>`
+You can watch step-by-step video guide `here. <https://docs.whalebone.io/en/latest/video_guides.html#threats>`__
 
 
 How to search for audit/block events.
@@ -118,7 +118,7 @@ How to analyze a domain
 In case to know further information about domain, especially what score 
 Whalebone assigns to particular domain, when was first seen and categorized 
 as malicious, if it falls under regulatory category or what external sources 
-know about it, then watch step-by-step video `here. <https://docs.whalebone.io/en/latest/video_guides.html#domain-analysis>`
+know about it, then watch step-by-step video `here. <https://docs.whalebone.io/en/latest/video_guides.html#domain-analysis>`__
 
 
 DNS Traffic
@@ -134,7 +134,7 @@ live) of the answer.
    hour time frame. For this reason, a query might not be available on
    the portal even though it has been resolved.
 
-You can watch step-by-step video guide `here. <https://docs.whalebone.io/en/latest/video_guides.html#dns-traffic>``
+You can watch step-by-step video guide `here. <https://docs.whalebone.io/en/latest/video_guides.html#dns-traffic>`__
 
 Below are some of the most useful filtering options of the available data will be described.
 

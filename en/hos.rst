@@ -1,6 +1,7 @@
-====================
-Home Office Security
-====================
+******************************
+Home Office Security Overview
+******************************
+
 Whalebone Home Office Security (HOS) provides an off-network DNS filtering functionality for desktop and mobile devices. It intercepts DNS traffic and inspects it before sending network packets to the wild. 
 It protects the device from network threat by scanning every DNS packet. At the moment, Windows, Android and iOS devices are supported. For detailed OS version support, see below.
 
@@ -9,6 +10,7 @@ It protects the device from network threat by scanning every DNS packet. At the 
 
 HOS comes with Windows Installer for the deployment. No user interaction is required to perform the installation, however the installer requires a ``token``. The default target directory is:
 ``C:\Program Files (x86)\Whalebone\Home Office Security\``
+
 For Android the default install location is:
 ``/storage/emulated/0/Android/io.whalebone.securedns.corp/``
 
@@ -24,8 +26,8 @@ Windows Desktop     Windows Server                    Android                   
 ☑ Windows 8         ☑ Windows 2012, Windows 2012 R2  
 ☑ Windows 8.1       ☑ Windows 2016                   
 ☑ Windows 10        ☑ Windows 2019                   
-☑ Windows 11
-=================== ================================= ========================== =================== ============== ==============
+☑ Windows 11                                                                                           
+=================== ================================= ========================== ================ ============== ==============
 
 Windows 7 systems must be up-to-date or at least have KB3033929 installed.
 
@@ -38,7 +40,7 @@ Step by step installation
 *************************
 
 
-To install HOS on device you need to configure it first. Open `Whalebone Portal <https://latest.whalebone.io>` web page and use (1) `User menu` to navigate to (2) `Home Office Security`.
+To install HOS on device you need to configure it first. Open `Whalebone Portal` web page and use (1) `User menu` to navigate to (2) `Home Office Security`.
 
 .. image:: ./img/hos-sbs-1.png
     :align: center
@@ -74,10 +76,15 @@ Click (5)  `Install to group` button to see installation instructions and/or get
 
 If you haven't already download the installer (6). While the installer is being downloaded please copy the installation command to clipboard (7). 
 To install or Update:
+
 .. code-block:: shell
+
     msiexec /i "Whalebone.Home.Office.Security.Installer.msi" TOKEN="60d5806e-07fe-432a-a4ad-7797d82782b3"
+
 Uninstall:
+
 .. code-block:: shell
+
     msiexec /x "Whalebone.Home.Office.Security.Installer.msi
 
 .. image:: ./img/hos-sbs-5.png
@@ -127,9 +134,7 @@ Security
 ========================
 In the background HOS uses ``DNS-over-HTTPs`` or ``DoH``. The ``Hostname`` of the ``Resolver`` is never diverted and is cached. The identification and authenticity is left to the TLS protocol. When device belongs to any ``Domain``, then all domain names and their subdomains are allowed to reach the DNS servers they route to. HOS uses `Win32_NetworkAdapterConfiguration` WMI table to get the information.
 
-******************************
-Service details and specifics
-******************************
+
 
 Service requirements
 ====================
@@ -154,7 +159,7 @@ Because HOS must intecept network traffic it requres to run as SYSTEM account. Y
 
 
 On first run HOS also installs ``windivert`` system driver. 
-
+score*
 .. code-block:: shell
 
     C:\Users\admin>sc query windivert type=kernel
@@ -174,17 +179,17 @@ Android
 -------
 
 The Android app has access to:
-* Location
-    * precise location (GPS and network-based)
-* Camera
-    * take pictures and videos (to scan QR code of the Device group from the portal)
-* Wi-Fi connection information
-    * view Wi-Fi connections
-* Other 
-    * view network connections
-    * connect and disconnect from Wi-Fi
-    * full network access (to create a VPN tunnel to Whalebone Cloud resolvers) 
-    * run at startup
+- Location
+    - precise location (GPS and network-based)
+- Camera
+    - take pictures and videos (to scan QR code of the Device group from the portal)
+- Wi-Fi connection information
+    - view Wi-Fi connections
+- Other 
+    - view network connections
+    - connect and disconnect from Wi-Fi
+    - full network access (to create a VPN tunnel to Whalebone Cloud resolvers) 
+    - run at startup
 
 Application Firewall Settings
 =============================

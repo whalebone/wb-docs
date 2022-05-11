@@ -17,17 +17,17 @@ For Android the default install location is:
 Supported OS
 ====================
 
-=================== ================================= ========================== ================ =============== ===============
-Windows Desktop     Windows Server                    Android                    iOS and iPadOS   MacOS           Linux
-=================== ================================= ========================== ================ =============== ===============
-☐ Windows XP        ☐ Windows 2000                    ☑ Android 5 and higher    ☑ all versions   Not supported   Not supported
-☐ Windows Vista     ☐ Windows 2003, Windows 2003 R2   ☐ Android 4.4 and lower    
-☑ Windows 7         ☐ Windows 2008, Windows 2008 R2  
-☑ Windows 8         ☑ Windows 2012, Windows 2012 R2  
-☑ Windows 8.1       ☑ Windows 2016                   
-☑ Windows 10        ☑ Windows 2019                   
+================ =================================== ========================== ================== =============== ===============
+Windows Desktop  Windows Server                      Android                    iOS and iPadOS     MacOS           Linux
+================ =================================== ========================== ================== =============== ===============
+☐ Windows XP     ☐ Windows 2000                      ☑ Android 5 and higher    ☑ all versions    Not supported   Not supported
+☐ Windows Vista  ☐ Windows 2003, Windows 2003 R2     ☐ Android 4.4 and lower    
+☑ Windows 7      ☐ Windows 2008, Windows 2008 R2  
+☑ Windows 8      ☑ Windows 2012, Windows 2012 R2  
+☑ Windows 8.1    ☑ Windows 2016                   
+☑ Windows 10     ☑ Windows 2019                   
 ☑ Windows 11                                                                                           
-=================== ================================= ========================== ================ =============== ===============
+================ ==================================== ========================== ================== =============== ===============
 
 Windows 7 systems must be up-to-date or at least have KB3033929 installed.
 

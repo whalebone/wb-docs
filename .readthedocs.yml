@@ -3,3 +3,8 @@ version: 2
 python:
   install:
   - requirements: en/requirements.txt
+  
+# Build PDF & ePub
+formats:
+  - epub
+  - pdf  

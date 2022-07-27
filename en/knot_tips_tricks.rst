@@ -66,10 +66,10 @@ Allow list of domains
     'anotherexample.org'
   }
 
--- allow list of domains
-for i,domain in ipairs(domains) do
-  policy.add(policy.suffix(policy.PASS, {todname(domain)}))
-end
+  -- allow list of domains
+  for i,domain in ipairs(domains) do
+    policy.add(policy.suffix(policy.PASS, {todname(domain)}))
+  end
 
 Deny list of domains
 ---------------------

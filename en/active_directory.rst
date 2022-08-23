@@ -16,12 +16,12 @@ On each of your Domain Controllers (DC) go to:
 Some settings may differ in name or be missing, based on your Windows version.
 
 .. image:: ./img/ad_integration_1.png
-    :align: center
+   :align: center
 
 Check both Success and Failure boxes.
 
 .. image:: ./img/ad_integration_2.png
-    :align: center
+   :align: center
 
 You may need to reload configured policy. To reload policy, please run following command:
 
@@ -30,9 +30,12 @@ You may need to reload configured policy. To reload policy, please run following
    gpupdate /force
 
 
-*************************
-DC Firewall Configuration
-*************************
+*******************************
+Domain Controller Configuration
+*******************************
+
+DC Firewall on Windows
+======================
 
 Ensure that Event Log can be accessed through your Firewall configuration using WMI.
 
@@ -69,9 +72,8 @@ DC     --->      local netwk      ICMP
 ====== ========= =========== ==== ========= ===========================
 
 
-*********************
-Service Configuration
-*********************
+Windows Service
+===============
 
 Please ensure that ``Windows Management Instrumentation`` service is running.
 
@@ -92,9 +94,8 @@ Please ensure that ``Windows Management Instrumentation`` service is running.
    :align: center
 
 
-*****************
-WMI Configuration
-*****************
+WMI Remote Configuration
+========================
 
 If you chose to install ELF on another Windows PC, ensure that it can use WMI remotely. To enable Remote WMI for the account which will be used to connect to Domain Controller, go to:
 ``Computer Management`` > ``Services and Applications`` > ``WMI Control```
@@ -114,14 +115,11 @@ Add user to the list or select a group it belongs to, check ``Remote Enable`` pe
    :align: center
 
 *******************
-Event Log Forwarder
+Event Log Forwarder 
 *******************
 
 You can install ELF locally on the DC or on another Windows PC. ELF uses following connections:
 
-**************************
-ELF Firewall Configuration
-**************************
 
 ELF Firewall Rules
 ==================

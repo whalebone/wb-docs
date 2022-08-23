@@ -30,9 +30,9 @@ You may need to reload configured policy. To reload policy, please run following
    gpupdate /force
 
 
-**********************
-Firewall Configuration
-**********************
+*************************
+DC Firewall Configuration
+*************************
 
 Ensure that Event Log can be accessed through your Firewall configuration using WMI.
 
@@ -118,6 +118,10 @@ Event Log Forwarder
 *******************
 
 You can install ELF locally on the DC or on another Windows PC. ELF uses following connections:
+
+**************************
+ELF Firewall Configuration
+**************************
 
 ELF Firewall Rules
 ==================

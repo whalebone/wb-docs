@@ -57,8 +57,8 @@ Or, alternatively you can use command line:
    netsh firewall set service RemoteAdmin enable
 
 
-Firewall Rules
-==============
+DC Firewall Rules
+=================
 
 ====== ========= =========== ==== ========= ===========================
 Source Direction Destination Port Protoocol Reason
@@ -119,8 +119,8 @@ Event Log Forwarder
 
 You can install ELF locally on the DC or on another Windows PC. ELF uses following connections:
 
-Firewall Rules
-==============
+ELF Firewall Rules
+==================
 
 ====== ========= =========== ==== ========= ===========================
 Source Direction Destination Port Protoocol Reason

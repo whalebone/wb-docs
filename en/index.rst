@@ -18,6 +18,7 @@ More information about the product and company is available on the official `Wha
    domain_resolution_analysis
    user
    hos
+   active_directory
 
 
 

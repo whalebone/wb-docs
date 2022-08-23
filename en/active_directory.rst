@@ -133,7 +133,7 @@ ELF    --->      resolver    4222 TCP	     NATS Message Queue
 
 
 Install Instructions
-=====================
+====================
 
 Install or Update:
 
@@ -146,3 +146,15 @@ Uninstall:
 .. code-block:: shell
 
    msiexec /x "Whalebone.Event.Log.Forwarder.Installer.msi
+
+Configuration Instructions
+==========================
+
+Installer shall open configuration Window automatically. You may access configuration from favourite web browser using command:
+
+.. code-block:: shell
+
+   start http://localhost:55225/Configure/AD
+
+.. image:: ./img/ad-integration-9.png
+   :align: center

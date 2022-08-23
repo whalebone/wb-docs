@@ -15,12 +15,12 @@ On each of your Domain Controllers (DC) go to:
 
 Some settings may differ in name or be missing, based on your Windows version.
 
-.. image:: ./img/ad_integration_1.png
+.. image:: ./img/ad-integration-1.png
    :align: center
 
 Check both Success and Failure boxes.
 
-.. image:: ./img/ad_integration_2.png
+.. image:: ./img/ad-integration-2.png
    :align: center
 
 You may need to reload configured policy. To reload policy, please run following command:
@@ -45,12 +45,12 @@ On each of your Domain Controllers go to:
 
 ensure the rule allows connections
 
-.. image:: ./img/ad_integration_3.png
+.. image:: ./img/ad-integration-3.png
    :align: center
 
 set up a scope of allowed addresses that may connect. In this example a remote address 192.168.1.0/24 is allowed.
 
-.. image:: ./img/ad_integration_4.png
+.. image:: ./img/ad-integration-4.png
    :align: center
 
 Or, alternatively you can use command line:
@@ -90,7 +90,7 @@ Please ensure that ``Windows Management Instrumentation`` service is running.
          CHECKPOINT         : 0x0
          WAIT_HINT          : 0x0
 
-.. image:: ./img/ad_integration_5.png
+.. image:: ./img/ad-integration-5.png
    :align: center
 
 
@@ -101,17 +101,17 @@ If you chose to install ELF on another Windows PC, ensure that it can use WMI re
 ``Computer Management`` > ``Services and Applications`` > ``WMI Control```
 Right click on it and selet ``Properties``
 
-.. image:: ./img/ad_integration_6.png
+.. image:: ./img/ad-integration-6.png
    :align: center
 
 Select ``Security`` tab, then choose the ``Root`` namespace and hit ``Security`` button.
 
-.. image:: ./img/ad_integration_7.png
+.. image:: ./img/ad-integration-7.png
    :align: center
 
 Add user to the list or select a group it belongs to, check ``Remote Enable`` permission.
 
-.. image:: ./img/ad_integration_8.png
+.. image:: ./img/ad-integration-8.png
    :align: center
 
 *******************

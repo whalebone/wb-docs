@@ -158,3 +158,8 @@ Installer shall open configuration Window automatically. You may access configur
 
 .. image:: ./img/ad-integration-9.png
    :align: center
+
+Service Logs
+============
+
+Service logs can be found at ``c:\ProgramData\Whalebone\Event Log Forwarder\``, which contain detailed information about service state. In case you encounther unexpected service behaviour please include this Log folder and/or Config folder along inside your support ticket. 

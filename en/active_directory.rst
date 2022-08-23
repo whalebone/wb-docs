@@ -16,12 +16,12 @@ On each of your Domain Controllers (DC) go to:
 Some settings may differ in name or be missing, based on your Windows version.
 
 .. image:: ./img/ad_integration_1.png
-   :align: center
+    :align: center
 
 Check both Success and Failure boxes.
 
 .. image:: ./img/ad_integration_2.png
-   :align: center
+    :align: center
 
 You may need to reload configured policy. To reload policy, please run following command:
 

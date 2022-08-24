@@ -162,4 +162,4 @@ Installer shall open configuration Window automatically. You may access configur
 Service Logs
 ============
 
-Service logs can be found at ``c:\ProgramData\Whalebone\Event Log Forwarder\``, which contain detailed information about service state. In case you encounther unexpected service behaviour please include this Log folder and/or Config folder along inside your support ticket. 
+Service logs can be found at ``c:\ProgramData\Whalebone\Event Log Forwarder\``, which contain detailed information about service state. In case you encounther unexpected service behaviour please include this folder along inside your support ticket. 

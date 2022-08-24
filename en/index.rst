@@ -25,6 +25,7 @@ More information about the product and company is available on the official `Wha
    blocking_pages
    resolver_agent
    cloud_resolver
+   active_directory
    uninstalling
 
 .. toctree::
@@ -57,7 +58,6 @@ More information about the product and company is available on the official `Wha
 .. toctree::
    :caption: About
    
-   active_directory
    licence_disclaimer
    changelog
 

@@ -40,7 +40,28 @@ More information about the product and company is available on the official `Wha
    :caption: Organization Settings
    
    user
-   hos
+
+
+.. toctree::
+   :caption: Home Office Security
+   
+   hos_overview
+   hos_installation
+   hos_operation
+
+.. toctree::
+   :caption: Step-by-Step Video Guides
+
+   video_guides
+
+.. toctree::
+   :caption: About
+   
+   active_directory
+   licence_disclaimer
+   changelog
+
+
 
 
 

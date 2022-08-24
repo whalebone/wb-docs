@@ -24,31 +24,33 @@ The two types of users that are supported are:
    organization but can be assigned a role under a different Whalebone
    Portal tenant. e.g. resellers
 
-.. tip:: Each user can be assigned one or more roles which can be combined to shape their final role.
+.. tip:: Each user can be assigned one or more roles which can be combined to shape their final role. The permissions are additive (stackable). 
 
 Below are described the different roles and the actions that they are able to perform.
 
 
 .. csv-table:: 
    :align: left
-   :header: "Action", "Read threats","Read Traffic", "List Editor", "Security policy Admin", "API Credentials", "Read only", "Operations Read Only", "DNS Admin", "Admin"
+   :header: "Action", "Read Traffic", "Read Threats", "List Editor", "Security policy Admin", "API Credentials", "Read only", "Operations Read Only", "DNS Admin", "HomeOffice Security admin", "Users admin", "Admin"
 
-   "**View Threat Data**", "☑", "☑", " ", " ", " ", "☑", " ", " ", "☑"
-   "**View DNS Traffic**", " ", "☑", " ", " ", " ", "☑", " ", " ", "☑"
-   "**View Whitelists/Blacklists**", " ", " ", "☑", "☑", " ", "☑", " ", " ", "☑"
-   "**Edit Whitelists/Blacklists**", " ", " ", "☑", "☑", " ", " ", " ", " ", "☑"
-   "**View Security Policies**", " ", " ", " ", "☑",  " ", "☑", " ", " ", "☑"
-   "**Edit Security Policies**", " ", " ", " ", "☑", " ", " ", " ", " ", "☑"
-   "**View Resolver Configuration**", " ", " ", " ", "☑", " ", "☑", "☑", "☑", "☑"
-   "**Edit Resolver Configuration**", " ", " ", " ", "☑", " ", " ", " ", "☑", "☑"
-   "**View API Tokens**", " ", " ", " ", " ", "☑", "☑", " ", " ", "☑"
-   "**Generate API Tokens**", " ", " ", " ", " ", "☑", " ", " ", " ", "☑"
-   "**View Network Configuration**", " ", " ", " ", "☑", " ", "☑", "☑", "☑", "☑"
-   "**Edit Network Configuration**", " ", " ", " ", "☑", " ", " ", " ", "☑", "☑"
-   "**View Alerts**", " ", " ", " ", " ", " ", "☑", " ", " ", "☑"
-   "**Edit Alerts**", " ", " ", " ", " ", " ", " ", " ", " ", "☑"
-   "**View Reports**", " ", " ", " ", " ", " ", "☑", " ", " ", "☑"
-   "**Edit Reports**", " ", " ", " ", " ", " ", " ", " ", " ", "☑"
+   "**View Threat Data**", "☑", "☑", " ", " ", " ", "☑", " ", " ", " ", " ", "☑"
+   "**View DNS Traffic**", "☑", " ", " ", " ", " ", "☑", " ", " ", " ", " ", "☑"
+   "**View Whitelists/Blacklists**", " ", " ", "☑", "☑", " ", "☑", " ", " ", " ", " ", "☑"
+   "**Edit Whitelists/Blacklists**", " ", " ", "☑", "☑", " ", " ", " ", " ", " ", " ", "☑"
+   "**View Security Policies**", " ", " ", " ", "☑",  " ", "☑", " ", " ", " ", " ", "☑"
+   "**Edit Security Policies**", " ", " ", " ", "☑", " ", " ", " ", " ", " ", " ", "☑"
+   "**View Resolver Configuration**", " ", " ", " ", "☑", " ", "☑", "☑", "☑", " ", " ", "☑"
+   "**Edit Resolver Configuration**", " ", " ", " ", "☑", " ", " ", " ", "☑", " ", " ", "☑"
+   "**View API Tokens**", " ", " ", " ", " ", "☑", "☑", " ", " ", " ", " ", "☑"
+   "**Generate API Tokens**", " ", " ", " ", " ", "☑", " ", " ", " ", " ", " ", "☑"
+   "**View Network Configuration**", " ", " ", " ", "☑", " ", "☑", "☑", "☑", " ", " ", "☑"
+   "**Edit Network Configuration**", " ", " ", " ", "☑", " ", " ", " ", "☑", " ", " ", "☑"
+   "**View Alerts**", " ", " ", " ", " ", " ", "☑", " ", " ", " ", " ", "☑"
+   "**Edit Alerts**", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "☑"
+   "**View Reports**", " ", " ", " ", " ", " ", "☑", " ", " ", " ", " ", "☑"
+   "**Edit Reports**", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "☑"
+   "**HOS device management and policy settings**", " ", " ", " ", " ", " ", " ", " ", " ", "☑", " ", "☑"
+   "**Manage user accounts**", " ", " ", " ", " ", " ", " ", " ", " ", " ", "☑", "☑"
 
 
 

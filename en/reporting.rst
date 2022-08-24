@@ -22,43 +22,73 @@ The properties that can be customized, include the frequency that the reports ar
 Alerts
 -------
 Whalebone alerting provides live updates about key information such as resolver's health, resolution status, hardware usage and it also informs about crucial security incidents and many more.
-All of these information can be passed through multiple channels e.g. email, slack, syslog or webhook. You can create new alert from predefined template and alerts can be then customized by threshold, time and many others.
+All of these information can be passed through multiple channels e.g. email, slack, syslog or webhook. You can create new alert from predefined templates and alerts can be then customized by editing their parameters.
+You can watch step-by-step video guide `here <https://docs.whalebone.io/en/latest/video_guides.html#alerts>`__
 
-You can watch step-by-step video guide below:
 
-.. raw:: html
+.. note:: In order to turn on an alert, you first need to assign a destination for it. Click the alert name to expand it in detail and select the destination from the box. Multiple destinations may be selected by shift-clicking the addresses.
 
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/GXUkPICav-o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+DNS traffic - count of unique requests from IP
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-|
-
-API
--------
-Whalebone API is a practical way to access all the data that are gathered by Whalebone's resolvers and integrate them to external systems. The API documentation can be accessed at https://apidocs.whalebone.io/public/
-
-In order to authenticate to the API, every user needs a set of `Access Key` and `Secret Key`. These can be managed from the option `API keys` on the dropdown menu, under the user's account.
-
-You can watch step-by-step video guide below:
-
-.. raw:: html
-
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/9SsxMVR6ino" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-|
+This alert is triggered when a single source IP reaches the limit of unique requests with defined attributes.
+Parameters:
+* MINUTES: time window in minutes (Default=15)
+* TRESHOLD: number of events in timeframe to trigger alert (Default=100)
+* QUERY_TYPE: Filter by DNS query type (Default=*)
+* RESPONSE_TYPE: Filter by DNS response (Default=*)
+* IP_WILDCARD: Include only these these comma-separated IP addresses in the alert (Default=*)
+* IP_WILDCARD_IGNORE: Ignore these comma separated domains in the alert (Default=none)
+* DOMAIN_WILDCARD: Include only these comma separated domains in the alert(Default=*)
+* DOMAIN_WILDCARD_IGNORE: Ignore these comma separated domains in the alert (Default=none)
+* DGA: Filter by domain generation algorithm - Only DGA, Without DGA or both (Default=*)
    
-* **API Key Generation**
 
-The generation of the API key can be achieved by clicking the `Generate new key` button.
+DNS traffic - increased percentage of queries
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+This Alert will be sent when number of DNS traffic logs is percentually greater over configured time period.
+Parameters:
+* MINUTES: Timeframe - time window (Default=15)
+* PERCENT: Percentage increase (e.g. 200%) - difference between two intervals (Default=50)
+* QUERY_TYPE: Filter by DNS query type (Default=*)
+* RESPONSE_TYPE: Filter by DNS response (Default=*)
 
-.. image:: ./img/key-generation.gif
-   :align: center
 
-.. note:: Make sure to copy the `Key secret` as it cannot be retrieved again.
+DNS traffic - possible homograph attack
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+This Alert is sent when a possible homograph attack for a specified domain is detected
+Parameters:
+* DOMAIN: Domain to monitor for possible homograph attacks (One alert can monitor only one domain)
+* DISTANCE: Number of characters that can differ in the phishing domain (Default=1)
+* DOMAIN_WILDCARD_IGNORE: Ignore this list of comma separated domains in the alert.  In case DISTANCE is larger than 1, there will be a detection on domains that support both a global and regional top level formats. It is recommended to add the legitimate domains in the whitelists in order to avoid unnecessary alarms. (Default=none)
 
-* **API Key Revocation**
 
-In case an API key gets lost or compromised, its revocation can be achieved  by the same menu.
+DNS traffic - treshold for unique queries
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+This Alert is sent when threshold for filtered unique DNS logs is reached
+Parameters:
+* MINUTES: Timeframe - time window (Default=15)
+* TRESHOLD: Threshold - number of events in timeframe to trigger alert (Default=100)
+* QUERY_TYPE: Filter by DNS query type (Default=*)
+* RESPONSE_TYPE: Filter by DNS response (Default=*)
 
-.. image:: ./img/key-revocation.gif
-   :align: center
 
+Resolver - Cloud communication failure
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Resolver - Insufficient hardware resources
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Resolver - Resolution service failure
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Threats - count during intervals
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Threats - event detection
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Threats - newly blocked domain
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. note:: When the alerting channel is syslog, by default TCP or TLS is supported as the transport layer protocol.

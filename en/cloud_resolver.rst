@@ -1,25 +1,20 @@
 Cloud DNS resolvers
 --------------------
 
-You can watch step-by-step video guide below:
+You can watch step-by-step video guide `here <https://docs.whalebone.io/en/latest/video_guides.html#cloud-resolvers>`__
 
-.. raw:: html
-
-	<iframe width="560" height="315" src="https://www.youtube.com/embed/kdpjCenhTVg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-	</iframe>
-
-|
-
-Whalebone Cloud DNS resolvers is a service aimed mainly for small or medium customers which can use cloud resolvers for a backup. Typically it is aimed to ISPs that have only one 
-on-premise resolver and to ensure high availability, they use cloud DNS resolvers as secondary recursive for their customers. One of the prerequisite is to define public IP address 
+Whalebone Cloud DNS resolver is a service aimed mainly for small or medium customers who can use cloud resolvers for a backup. Typically it is aimed at ISPs that have only one 
+on-premise resolver and to ensure high availability, they use cloud DNS resolvers as a secondary recursive for their customers. One of the prerequisites is to define a public IP address 
 or ranges to Cloud DNS resolver policy assignment so cloud resolver can differentiate and deliver the right filtering policy which you have setup for your network. 
 
 
-Public network range definition serves to distinguish individual customers and their users. It is necessary to include all the public network ranges that will be used by DNS resolver as well as the users browsing the internet. The definition is used to customize the block page appearance (described later).
-Single customer can manage more network ranges, such ranges can be assigned to localities to easily distinguish between logical network zones in DNS traffic audit and incidents.
+Public network range definition serves to distinguish individual customers and their users. It is necessary to include all the public network ranges that will be used by DNS resolver 
+as well as the users browsing the internet. The definition is used to customize the block page appearance (described later). Single customer can manage more network ranges, 
+such ranges can be assigned to localities to easily distinguish between logical network zones in DNS traffic audit and incidents.
 
 .. image:: ./img/client_networks.png
    :align: center
+
 
 .. warning:: If you do not fill in your public network ranges, cloud resolvers will serve as a simple DNS resolvers **without any filtering**. If you use local resolvers, you still have to input your network ranges to display fully customized blocking page (sinkhole) to the blocked users.
 

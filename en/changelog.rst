@@ -96,6 +96,7 @@ sudo systemctl start systemd-resolved
 - Based on DNS Flag Day 2020 recommendation that EDNS buffer size is adjusted to 1232 bytes
 
 **New features**
+
 * Blocking page is reworked from the scratch (originally referred to as "Sinkhole")
   - You can find the configuration in Configuration -> Blocking pages and the activation can be done in the resolver details in Policy assignment
   - It is hosted directly on the resolver (ports TCP/80,443 has to be reachable from clients)

@@ -5,6 +5,39 @@ Changelog
 Steady
 ==========
 
+2022.09.23
+----------
+**Improvements**
+* Update to Knot Resolver version 5.5.3
+	- Fix for CVE-2022-40188. A malicious attacker could perform Denial of Service attack by performing CPU-expensive requests towards specially crafted DNS zones. https://www.knot-resolver.cz/2022-09-21-knot-resolver-5.5.3.html
+
+2022.08.25
+----------
+**Improvements**
+* DNS Resolver update to Knot Resolver version 5.5.0
+    - One of the most significant changes is an improved algorithm of nameserver selection for recursive resolution. The updated algorithm ensures a faster and more reliable process.
+    - Fixed issue with QName minimization affecting resolution of console.aws.amazon.com subdomains
+* Real-time Threat Intelligence synchronization. 
+    - Whenever Whalebone finds a new threat, the resolver immediately receives the information and starts behaving accordingly.
+For this purpose, the resolver stays connected to the service stream.whalebone.io on TCP/433.
+* Blocking of a new type of DNS requests (TYPE65/HTTPS)
+    - At this point, this type of request is most commonly used by Apple devices accessing services hosted on Cloudflare.
+* New categories of content filtering
+    - Peer To Peer (P2P)
+    - DNS over HTTPS (DoH)
+    - Child abuse
+* New categories of legal blocking requirements in different countries: 
+    - United Kingdom, Serbia and Philippines
+    - Observability: new network and disk operations metrics are available from the portal
+    
+**Bugfixes**
+* Higher precision of reporting of the available memory on the resolver machine 
+* Optimization of memory usage of the service which manages the threat database and the local blocking page
+* Fixed minor issues during update process in the local orchestration agent (will be put to work after the update is finished) 
+* Adjusted DNSSEC log gathering format to comply with changes in Knot Resolver
+* Fixed memory leak causing occasional swap issues on some of the resolvers
+* Improvements in specific scenarios for threat evaluation of specific subdomains, which are included in content categories and at the same time under legal requirements of countries
+
 2021.07.21
 ------
 **Bugfixes**
@@ -57,7 +90,7 @@ sudo systemctl start systemd-resolved
 - Based on DNS Flag Day 2020 recommendation that EDNS buffer size is adjusted to 1232 bytes
 
 **New features**
-- Blocking page is reworked from the scratch (originally referred to as "Sinkhole")
+* Blocking page is reworked from the scratch (originally referred to as "Sinkhole")
   - You can find the configuration in Configuration -> Blocking pages and the activation can be done in the resolver details in Policy assignment
   - It is hosted directly on the resolver (ports TCP/80,443 has to be reachable from clients)
   - Full access to html code editor
@@ -65,7 +98,7 @@ sudo systemctl start systemd-resolved
   - Different blocking pages per IP or subnet - could be used to customize the blocking page for a specific customer (school, government office, etc.)
   - Definition of supported languages and a default language (for browsers that do not tell which language they prefer if any)
   - Knot resolver updated to version 5.1.3 (from version 5.1.1)
-- Management Agent for cloud communication is now independently monitored and if there are any issues, it is automatically restarted (no impact on DNS resolution)
+* Management Agent for cloud communication is now independently monitored and if there are any issues, it is automatically restarted (no impact on DNS resolution)
 
 2021.08.10
 ----------

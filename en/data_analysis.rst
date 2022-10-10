@@ -39,18 +39,6 @@ How to search for audit/block events.
 .. figure:: ./img/block_graph.gif
    :alt: 
 
-For more advanced usage a query can be issued:
-
--  ``action: block`` in order to filter the blocked events
-
--  ``action: audit`` in order to filter the audited events
-
--  ``action: allow`` in order to view the Block page bypasses
-
-This query updates the content of the whole dashboard.
-
-
-
 How to search for a domain
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -63,20 +51,15 @@ How to search for events based on specific IP address.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 A filtering of an IP address is possible by clicking on the specific
-``Source IP`` bar and in this way filtering the content of the whole
+Source IP bar and in this way filtering the content of the whole
 portal.
 
 A more advanced use case could be to directly search for IP address in
 the search field and use the operator ``client_ip`` such as: ``client_ip:<IP address>``.
 
-.. tip:: In the following example the data are anonymized so a reader could
-         consider that instead of the previewed hash value, an IP address is
-         used.
-
-.. figure:: ./img/request_ip.gif
+.. figure:: ./img/requestip.gif
    :alt: 
-
-
+   
 How to search for events based on specific threat category.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -111,6 +94,25 @@ How to change the date range of the available data
 .. figure:: ./img/date_range.gif
    :alt: 
 
+
+For more advanced usage a a fulltext filter can be applied to send a composite query. You can filter for the following fields:
+
+- ``action`` - The action the resolver took with regards to the query. Possible values are "audit", "block" or "allow".
+- ``accu`` -   The score of the queried domain at the time of the event. 
+- ``client_ip``- The source IP of the DNS request.
+- ``device_id`` - The internal identifier of the device (the Offnet app or the HOS agent)
+- ``domain``    - The domain in the DNS query
+- ``timestamp`` - The time of the event. The format is: 2022-10-07T18:14:39.000Z
+- ``matched_iocs.classification.type`` - The type of the treat.
+- ``geoip.continent_code``- The continent code of the IP in the DNS response. Fot example "AS" for Asia.
+- ``geoip.country_code3`` - The country code of the IP in the DNS response. For example "CZ" for the Czech Republic.
+- ``geoip.country_name``  - The name of the country of the IP in the DNS response. For example "United States".
+- ``ip``                  - The IP in the DNS response that would be returned if the action was not "block".
+- ``resolver_id``         - The id of the resolver which registered that event.
+
+These fields can be concatenated using logical operators. ``AND, OR, NOT, <, >`` and the wildcard character ``*`` are supported. Strings do not have to be wrapped with quotes. An example of the syntax is as follows:
+``action: block AND accu:>70 AND (client_ip: 10.20.30.41 OR 10.20.30.40 OR 192.168.*) AND NOT geoip.country_name: Germany AND matched_iocs.classification.type: malware AND NOT phishing`` 
+When you run a fulltext query, it updates the content of the entire dashboard.
 
 How to analyze a domain
 ~~~~~~~~~~~~~~~~~~~~~~~

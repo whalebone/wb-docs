@@ -11,7 +11,7 @@ Steady
 **Improvements**
 
 * Update to Knot Resolver version 5.5.3
-	 * Fix for CVE-2022-40188. A malicious attacker could perform Denial of Service attack by performing CPU-expensive requests towards specially crafted DNS zones. https://www.knot-resolver.cz/2022-09-21-knot-resolver-5.5.3.html
+  * Fix for CVE-2022-40188. A malicious attacker could perform Denial of Service attack by performing CPU-expensive requests towards specially crafted DNS zones. https://www.knot-resolver.cz/2022-09-21-knot-resolver-5.5.3.html
 
 2022.08.25
 ----------
@@ -19,20 +19,20 @@ Steady
 **Improvements**
 
 * DNS Resolver update to Knot Resolver version 5.5.0
-    * One of the most significant changes is an improved algorithm of nameserver selection for recursive resolution. The updated algorithm ensures a faster and more reliable process.
-    * Fixed issue with QName minimization affecting resolution of console.aws.amazon.com subdomains
+  * One of the most significant changes is an improved algorithm of nameserver selection for recursive resolution. The updated algorithm ensures a faster and more reliable process.
+  * Fixed issue with QName minimization affecting resolution of console.aws.amazon.com subdomains
 * Real-time Threat Intelligence synchronization
-    * Whenever Whalebone finds a new threat, the resolver immediately receives the information and starts behaving accordingly.
-    * For this purpose, the resolver stays connected to the service stream.whalebone.io on TCP/433.
+  * Whenever Whalebone finds a new threat, the resolver immediately receives the information and starts behaving accordingly.
+  * For this purpose, the resolver stays connected to the service stream.whalebone.io on TCP/433.
 * Blocking of a new type of DNS requests (TYPE65/HTTPS)
-    * At this point, this type of request is most commonly used by Apple devices accessing services hosted on Cloudflare.
+  * At this point, this type of request is most commonly used by Apple devices accessing services hosted on Cloudflare.
 * New categories of content filtering
-    * Peer To Peer (P2P)
-    * DNS over HTTPS (DoH)
-    * Child abuse
+  * Peer To Peer (P2P)
+  * DNS over HTTPS (DoH)
+  * Child abuse
 * New categories of legal blocking requirements in different countries: 
-    * United Kingdom, Serbia and Philippines
-    * Observability: new network and disk operations metrics are available from the portal
+  * United Kingdom, Serbia and Philippines
+  * Observability: new network and disk operations metrics are available from the portal
     
 **Bugfixes**
 

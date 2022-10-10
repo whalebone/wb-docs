@@ -11,7 +11,7 @@ Steady
 **Improvements**
 
 - Update to Knot Resolver version 5.5.3
-	- Fix for CVE-2022-40188. A malicious attacker could perform Denial of Service attack by performing CPU-expensive requests towards specially crafted DNS zones. https://www.knot-resolver.cz/2022-09-21-knot-resolver-5.5.3.html
+	 - Fix for CVE-2022-40188. A malicious attacker could perform Denial of Service attack by performing CPU-expensive requests towards specially crafted DNS zones. https://www.knot-resolver.cz/2022-09-21-knot-resolver-5.5.3.html
 
 2022.08.25
 ----------

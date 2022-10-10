@@ -8,18 +8,20 @@ Steady
 2022.09.23
 ----------
 **Improvements**
+
 * Update to Knot Resolver version 5.5.3
 	- Fix for CVE-2022-40188. A malicious attacker could perform Denial of Service attack by performing CPU-expensive requests towards specially crafted DNS zones. https://www.knot-resolver.cz/2022-09-21-knot-resolver-5.5.3.html
 
 2022.08.25
 ----------
 **Improvements**
+
 * DNS Resolver update to Knot Resolver version 5.5.0
     - One of the most significant changes is an improved algorithm of nameserver selection for recursive resolution. The updated algorithm ensures a faster and more reliable process.
     - Fixed issue with QName minimization affecting resolution of console.aws.amazon.com subdomains
-* Real-time Threat Intelligence synchronization. 
+* Real-time Threat Intelligence synchronization
     - Whenever Whalebone finds a new threat, the resolver immediately receives the information and starts behaving accordingly.
-For this purpose, the resolver stays connected to the service stream.whalebone.io on TCP/433.
+    - For this purpose, the resolver stays connected to the service stream.whalebone.io on TCP/433.
 * Blocking of a new type of DNS requests (TYPE65/HTTPS)
     - At this point, this type of request is most commonly used by Apple devices accessing services hosted on Cloudflare.
 * New categories of content filtering
@@ -31,6 +33,7 @@ For this purpose, the resolver stays connected to the service stream.whalebone.i
     - Observability: new network and disk operations metrics are available from the portal
     
 **Bugfixes**
+
 * Higher precision of reporting of the available memory on the resolver machine 
 * Optimization of memory usage of the service which manages the threat database and the local blocking page
 * Fixed minor issues during update process in the local orchestration agent (will be put to work after the update is finished) 
@@ -41,6 +44,7 @@ For this purpose, the resolver stays connected to the service stream.whalebone.i
 2021.07.21
 ------
 **Bugfixes**
+
 * Fixed Knot resolver version to 5.2.1 (fixed ocassional slow resolution issue and issues with particular domains)
 
 
@@ -74,6 +78,7 @@ Latest
 ----------
 
 **Bugfixes**
+
 * fixed issue with QName minization affecting resolution of `console.aws.amazon.com` subdomains
 * small fixes on real time threat intelligence updates
 
@@ -86,6 +91,7 @@ sudo systemctl enable systemd-resolved
 sudo systemctl start systemd-resolved
 
 **Changes**
+
 - Software update source for Whalebone resolver is now https://harbor.whalebone.io (please check your firewall rules)
 - Based on DNS Flag Day 2020 recommendation that EDNS buffer size is adjusted to 1232 bytes
 
@@ -104,6 +110,7 @@ sudo systemctl start systemd-resolved
 ----------
 
 **New features**
+
 - Knot Resolver update from version 5.2.1 to version 5.3.2
   - Various new features and fixed issues
   - One of the most significant changes is an improved algorithm of nameserver selection for recursive resolution. The updated algorithm ensures a faster and more reliable process.
@@ -122,5 +129,6 @@ sudo systemctl start systemd-resolved
   - Philippines
 
 **Fixed issues**
+
 - Improvements in specific scenarios for threat evaluation of specific subdomains, which are included in content categories and at the same time under legal requirements of countries
 - Optimization of memory usage of the service which manages the threat database and the local blocking page

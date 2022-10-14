@@ -54,16 +54,18 @@ A full list of what each category includes can be found below:
 Allow lists
 -----------
 
-  * Domains that won't be blocked at any time unless they are also listed on a **Deny List**
+  * Domains that will never be blocked (unless they are also present in a regulatory compliance feed). The allow list has the second highest priority when evaluating how to resolve a domain.
   * The allow list is applied to the domain and all of the subdomains, e.g.: allowed domain ``whalebone.io`` will also allow ``docs.whalebone.io``, but not vice versa
-  * The list can be configured on the `Allow / Deny List` tab
+  * The list can be configured on the `Allow / Deny List` tab on the left side
+  * One list can hold up to 10 000 domains.
 
 Deny Lists
 ----------
 
-  * Domains that will be blocked at all times 
+  * Domains that will be blocked at all times (unless the same domain is also present on an allow list)
   * The deny list is applied to the domain and all of the subdomains, e.g.: denied domain ``malware.ninja`` will also deny ``super.malware.ninja``, but not vice versa 
-  * The list can be configured on the `Allow / Deny List` tab.
+  * The list can be configured on the `Allow / Deny List` tab on the right side
+  * One list can hold up to 10 000 domains.
 
 The custom lists support a `Lex specialis derogat legi generali` principle, in which a more specific domain listing overrides a more general domain listing. This way, you can have the whole domain ``malware.ninja`` on a Deny list 
 but if you have ``friendly.malware.ninja`` on an Allow list, this will take precedence and communication to this site will act as an exception and will be allowed by the resolver.
@@ -79,11 +81,13 @@ Regulatory Restrictions
 
   * Integrated list of domains that must be applied in order to conform to Regulatory Restrictions of a country.
   * Examples of these domains include cases of illegal gambling or child pornograpy. 
+  * Domains on the regulatory restrictions list will be always blocked, if the list is applied to the security policy. They have the highest priority and their filtering cannot be overriden. Not even adding a domain to an allow list will cause the resolver to stop blocking it.
+     
 
 .. warning:: Each country has different Regulatory lists. In case of multi-country deployments different policies can be used in order to apply the proper Regulatory Restrictions. 
 
 Content Filtering
---------------------- 
+-----------------
 
   Particular Content categories can be applied on a per-policy level. This is useful in case different segments of the networks come with different requirements. For example, in case of a School environment all the **Adult** categories can be enabled and access to relevant content can be restricted.
 

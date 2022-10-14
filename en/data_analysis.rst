@@ -94,26 +94,6 @@ How to change the date range of the available data
 .. figure:: ./img/date_range.gif
    :alt: 
 
-
-For more advanced usage a a fulltext filter can be applied to send a composite query. You can filter for the following fields:
-
-- ``action`` - The action the resolver took with regards to the query. Possible values are "audit", "block" or "allow".
-- ``accu`` -   The score of the queried domain at the time of the event. 
-- ``client_ip``- The source IP of the DNS request.
-- ``device_id`` - The internal identifier of the device (the Offnet app or the HOS agent)
-- ``domain``    - The domain in the DNS query
-- ``timestamp`` - The time of the event. The format is: 2022-10-07T18:14:39.000Z
-- ``matched_iocs.classification.type`` - The type of the treat.
-- ``geoip.continent_code``- The continent code of the IP in the DNS response. Fot example "AS" for Asia.
-- ``geoip.country_code3`` - The country code of the IP in the DNS response. For example "CZ" for the Czech Republic.
-- ``geoip.country_name``  - The name of the country of the IP in the DNS response. For example "United States".
-- ``ip``                  - The IP in the DNS response that would be returned if the action was not "block".
-- ``resolver_id``         - The id of the resolver which registered that event.
-
-These fields can be concatenated using logical operators. ``AND, OR, NOT, <, >`` and the wildcard character ``*`` are supported. Strings do not have to be wrapped with quotes. An example of the syntax is as follows:
-``action: block AND accu:>70 AND (client_ip: 10.20.30.41 OR 10.20.30.40 OR 192.168.*) AND NOT geoip.country_name: Germany AND matched_iocs.classification.type: malware AND NOT phishing`` 
-When you run a fulltext query, it updates the content of the entire dashboard.
-
 How to analyze a domain
 ~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -200,38 +180,75 @@ as can be seen below. Alternatively the query ``dga.class:1`` can be issued.
 .. figure:: ./img/dga.gif
    :alt:
 
-Other Tips and Tricks
+Fulltext filtering
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Search operators (wildcard (*), logical AND, logical OR) can also be used to improve the search result precision.
 It should be noted that some requested fields in ``DNS traffic`` and ``Threats`` are slightly different.
 
 
-Example queries are:
++==================================================+===================================================+==============================================+=========================================================+
+| DNS Traffic                                      | Threats                                           | Content                                      | Example value                                           |
++==================================================+===================================================+==============================================+=========================================================+
+| ``timestamp``                                    | ``timestamp``                                     | ``timestamp``                                |``2022-10-14T12:28:01.000Z``                             |
++--------------------------------------------------+---------------------------------------------------+----------------------------------------------+---------------------------------------------------------+
+| ``client``                                       | ``client_ip``                                     | ````                                         |``192.168.2.3``                                          |
++--------------------------------------------------+---------------------------------------------------+----------------------------------------------+---------------------------------------------------------+
+| ``domain``                                       | ``client_ip``                                     | ``request_ip``                               |``whalebone.io`` OR ``whale*one.io``                     |
++--------------------------------------------------+---------------------------------------------------+----------------------------------------------+---------------------------------------------------------+ 
+| ``resolver_id``                                  | ``resolver_id``                                   | ``resolver_id``                              |``2404``                                                 |
++--------------------------------------------------+---------------------------------------------------+----------------------------------------------+---------------------------------------------------------+ 
+| ``device_id``                                    | ``device_id``                                     | ``device_id``                                |``MB2A1b4OTDin3Xz6DgftAip72v57e``                        |
++--------------------------------------------------+---------------------------------------------------+----------------------------------------------+---------------------------------------------------------+ 
+| ``geoip.continent_code``                         | ``geoip.continent_code``                          | ````                                         |``EU``                                                   |
++--------------------------------------------------+---------------------------------------------------+----------------------------------------------+---------------------------------------------------------+ 
+| ``geoip.country_code3``                          | ``geoip.country_code3``                           | ````                                         |``RU``                                                   |   
++--------------------------------------------------+---------------------------------------------------+----------------------------------------------+---------------------------------------------------------+ 
+| ``geoip.country_name``                           | ``geoip.country_name``                            | ````                                         |``Russia``                                               |      
++--------------------------------------------------+---------------------------------------------------+----------------------------------------------+---------------------------------------------------------+ 
+| ``query_type``                                   | \-\-                                              | \-\-                                         |``A\|AAAA\|CNAME\|MX\|NS\|PTR\|RRSIG\|SPF\|SRV\|TXT``    |      
++--------------------------------------------------+---------------------------------------------------+----------------------------------------------+---------------------------------------------------------+ 
+| ``answer_ip``                                    | ``ip``                                            | \-\-                                         |``174.85.249.36`` OR ``SERVFAIL`` OR ``NXDOMAIN``        |      
++--------------------------------------------------+---------------------------------------------------+----------------------------------------------+---------------------------------------------------------+ 
+| ``dga.class``                                    | \-\-                                              | \-\-                                         |``1\|0``                                                 |
++--------------------------------------------------+---------------------------------------------------+----------------------------------------------+---------------------------------------------------------+ 
+| ``tunnel.class``                                 | \-\-                                              | \-\-                                         |``1\|0``                                                 |
++--------------------------------------------------+---------------------------------------------------+----------------------------------------------+---------------------------------------------------------+ 
+| \-\-                                             | ``action``                                        | \-\-                                         |``block`` OR ``allow`` OR ``audit``                      |
++--------------------------------------------------+---------------------------------------------------+----------------------------------------------+---------------------------------------------------------+ 
+| \-\-                                             | ``accu``                                          | \-\-                                         | from ``0`` to ``100``. < and > operators can be used too|
++--------------------------------------------------+---------------------------------------------------+----------------------------------------------+---------------------------------------------------------+ 
+| \-\-                                             | ``matched_iocs.classification.type``              | \-\-                                         |``malware\|c&c\|phishing\|coinminer\|spam\|compromised\|blacklist``|
++--------------------------------------------------+---------------------------------------------------+----------------------------------------------+---------------------------------------------------------+ 
+| ````                                             | ``ip``                                            | \-\-                                         |````                                                     |
++--------------------------------------------------+---------------------------------------------------+----------------------------------------------+---------------------------------------------------------+ 
+| ````                                             | ````                                              | ``category``                                 |``porn``                                                 |
++--------------------------------------------------+---------------------------------------------------+----------------------------------------------+---------------------------------------------------------+ 
+| ````                                             | ````                                              | ````                                         |````                                                     |
++--------------------------------------------------+---------------------------------------------------+----------------------------------------------+---------------------------------------------------------+ 
+| ````                                             | ````                                              | ````                                         |````                                                     |
++--------------------------------------------------+---------------------------------------------------+----------------------------------------------+---------------------------------------------------------+ 
+| ````                                             | ````                                              | ````                                         |````                                                     |
++--------------------------------------------------+---------------------------------------------------+----------------------------------------------+---------------------------------------------------------+ 
 
-- All queries from IP addresses that start with 10:
+For more advanced usage a a fulltext filter can be applied to send a composite query. You can filter for the following fields:
 
-+-----------------------------+-----------------------------+
-|DNS Traffic                  |   Threats                   |
-+=============================+=============================+
-| ``client: 10.*``            |   ``client_ip: 10.*``       |
-+-----------------------------+-----------------------------+ 
- 
-- All queries for domain whalebone.io:
+- ``action`` - The action the resolver took with regards to the query. Possible values are "audit", "block" or "allow".
+- ``accu`` -   The score of the queried domain at the time of the event. 
+- ``client_ip``- The source IP of the DNS request.
+- ``device_id`` - The internal identifier of the device (the Offnet app or the HOS agent)
+- ``domain``    - The domain in the DNS query
+- ``timestamp`` - The time of the event. The format is: 2022-10-07T18:14:39.000Z
+- ``matched_iocs.classification.type`` - The type of the treat.
+- ``geoip.continent_code``- The continent code of the IP in the DNS response. Fot example "AS" for Asia.
+- ``geoip.country_code3`` - The country code of the IP in the DNS response. For example "CZ" for the Czech Republic.
+- ``geoip.country_name``  - The name of the country of the IP in the DNS response. For example "United States".
+- ``ip``                  - The IP in the DNS response that would be returned if the action was not "block".
+- ``resolver_id``         - The id of the resolver which registered that event.
 
-+----------------------------------------------------------------------+----------------------------------------+
-|DNS Traffic                                                           |   Threats                              |
-+======================================================================+========================================+
-| ``query: whalebone.io.``  (please also include the dot at the end)   |   ``domain: whalebone.io``             |
-+----------------------------------------------------------------------+----------------------------------------+ 
-
-- Queries from IP address 1.2.3.4 for whalebone.io:
-
-+--------------------------------------------------+---------------------------------------------------+
-|DNS Traffic                                       |   Threats                                         |
-+==================================================+===================================================+
-| ``client: 1.2.3.4 AND query: whalebone.io.``     |   ``client_ip: 1.2.3.4 AND domain: whalebone.io`` |
-+--------------------------------------------------+---------------------------------------------------+ 
+These fields can be concatenated using logical operators. ``AND, OR, NOT, <, >`` and the wildcard character ``*`` are supported. Strings do not have to be wrapped with quotes. An example of the syntax is as follows:
+``action: block AND accu:>70 AND (client_ip: 10.20.30.41 OR 10.20.30.40 OR 192.168.*) AND NOT geoip.country_name: Germany AND matched_iocs.classification.type: malware AND NOT phishing`` 
+When you run a fulltext query, it updates the content of the entire dashboard.
 
 
 .. tip:: Filtering operators are placed statically to the URL address. Therefore, you can create your set of

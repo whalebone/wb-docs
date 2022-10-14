@@ -104,7 +104,7 @@ sudo systemctl start systemd-resolved
   * You can find the configuration in Configuration -> Blocking pages and the activation can be done in the resolver details in Policy assignment
   * It is hosted directly on the resolver (ports TCP/80,443 has to be reachable from clients)
   * Full access to html code editor
-  * Feature "Continue anyway" * user can decide to continue to the destination malicious website on his own
+  * Feature "Continue anyway" *  user can decide to continue to the destination malicious website on his own
   * Different blocking pages per IP or subnet * could be used to customize the blocking page for a specific customer (school, government office, etc.)
   * Definition of supported languages and a default language (for browsers that do not tell which language they prefer if any)
   * Knot resolver updated to version 5.1.3 (from version 5.1.1)

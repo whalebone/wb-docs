@@ -36,8 +36,6 @@ How to search for audit/block events.
   a user clicks is disabled from the graph. This can aid the process of
   having a basic overview of the traffic's qualities.
 
-.. figure:: ./img/block_graph.gif
-   :alt: 
 
 How to search for a domain
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -57,9 +55,7 @@ portal.
 A more advanced use case could be to directly search for IP address in
 the search field and use the operator ``client_ip`` such as: ``client_ip:<IP address>``.
 
-.. figure:: ./img/requestip.gif
-   :alt: 
-   
+
 How to search for events based on specific threat category.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -71,14 +67,8 @@ To name a few: ``malware``, ``c&c``, ``blacklist``,
 A *simple* alternative could be to click on the bar that matches the
 detected threat and filter only the specific type.
 
-.. figure:: ./img/phising.gif
-   :alt: 
-
 Another approach could be to click on the filter icon and in this way
-specify the desired category, as can be seen in the next image.
 
-.. figure:: ./img/cc.gif
-   :alt: 
 
 How to change the date range of the available data
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -90,9 +80,6 @@ How to change the date range of the available data
   automatically transcribes to the current time, by inserting the date
   in text in the ``YYYY.MM.DD HH:mm:ss`` format or by using the builtin
   tool that provides quick suggestions.
-
-.. figure:: ./img/date_range.gif
-   :alt: 
 
 How to analyze a domain
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -127,9 +114,6 @@ How to view all queries of a specific type
 In order to view all queries of a specific type the most straight
 forward way is to click on the filter icon and select the desired value.
 
-.. figure:: ./img/query_type.gif
-   :alt: 
-
 Another option is to insert a query in the search field. This query
 could be in the form ``query_type:<type>.`` The possible types are:
 ``A``,\ ``AAAA``, ``CNAME``, ``MX``, ``NS``, ``PTR``, ``RRSIG``,
@@ -143,10 +127,6 @@ The answers can be filtered by selecting the specific bar in the
 respective ``Answers`` field. Additionally, the answers can be viewed by
 issuing a query in the form ``answer:<answer_type>``.
 Useful answer types are ``NXDOMAIN`` or ``SERVFAIL``.
-
-.. figure:: ./img/answer.gif
-   :alt: 
-
 
 How to search for a domain
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -177,77 +157,58 @@ Whalebone provides a view of indicators of DGA instances. These
 indications can be accessed by using the filter icon and selecting DGA
 as can be seen below. Alternatively the query ``dga.class:1`` can be issued.
 
-.. figure:: ./img/dga.gif
-   :alt:
 
 Fulltext filtering
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-For more advanced usage, a fulltext filter can be applied to construct a composite query. You can filter for many fields however not all of them are searchable in all dashboards. 
+For more advanced usage, a fulltext filter can be applied to construct a composite query. You can filter for many fields however not all of them are searchable in all dashboards.
 Below you can find an overview of fields that are applicable for each dashboard:
 
-- ``action`` - The action the resolver took with regards to the query. Possible values are "audit", "block" or "allow".
-- ``accu`` -   The score of the queried domain at the time of the event. 
-- ``client_ip``- The source IP of the DNS request.
-- ``device_id`` - The internal identifier of the device (the Offnet app or the HOS agent)
-- ``domain``    - The domain in the DNS query
-- ``timestamp`` - The time of the event. The format is: 2022-10-07T18:14:39.000Z
-- ``matched_iocs.classification.type`` - The type of the treat.
-- ``geoip.continent_code``- The continent code of the IP in the DNS response. Fot example "AS" for Asia.
-- ``geoip.country_code3`` - The country code of the IP in the DNS response. For example "CZ" for the Czech Republic.
-- ``geoip.country_name``  - The name of the country of the IP in the DNS response. For example "United States".
-- ``ip``                  - The IP in the DNS response that would be returned if the action was not "block".
-- ``resolver_id``         - The id of the resolver which registered that event.
+.. warning::
+   The content dashboard does not support fulltext filtering at the moment. Only the clickable elements will result in filtering the data in the content dashboard.
 
 These fields can be concatenated using logical operators. ``AND, OR, NOT, <, >`` and the wildcard character ``*`` are supported. Strings do not have to be wrapped with quotes. An example of the syntax is as follows:
-``action: block AND accu:>70 AND (client_ip: 10.20.30.41 OR 10.20.30.40 OR 192.168.*) AND NOT geoip.country_name: Germany AND matched_iocs.classification.type: malware AND NOT phishing`` 
+``action: block AND accu:>70 AND (client_ip: 10.20.30.41 OR 10.20.30.40 OR 192.168.*)``
+``AND NOT geoip.country_name: Germany AND matched_iocs.classification.type: malware AND NOT phishing`` 
 When you run a fulltext query, it updates the content of the entire dashboard.
 
-+--------------------------------------------------+---------------------------------------------------+----------------------------------------------+-------------------------------------------------------------------+
-| DNS Traffic                                      | Threats                                           | Content                                      | Example value                                                     |
-+==================================================+===================================================+==============================================+===================================================================+
-| ``timestamp``                                    | ``timestamp``                                     | ``timestamp``                                |``2022-10-14T12:28:01.000Z``                                       |
-+--------------------------------------------------+---------------------------------------------------+----------------------------------------------+-------------------------------------------------------------------+
-| ``client``                                       | ``client_ip``                                     | ````                                         |``192.168.2.3``                                                    |
-+--------------------------------------------------+---------------------------------------------------+----------------------------------------------+-------------------------------------------------------------------+
-| ``domain``                                       | ``client_ip``                                     | ``request_ip``                               |``whalebone.io`` OR ``whale*one.io``                               |
-+--------------------------------------------------+---------------------------------------------------+----------------------------------------------+-------------------------------------------------------------------+ 
-| ``resolver_id``                                  | ``resolver_id``                                   | ``resolver_id``                              |``2404``                                                           |
-+--------------------------------------------------+---------------------------------------------------+----------------------------------------------+-------------------------------------------------------------------+ 
-| ``device_id``                                    | ``device_id``                                     | ``device_id``                                |``MB2A1b4OTDin3Xz6DgftAip72v57e``                                  |
-+--------------------------------------------------+---------------------------------------------------+----------------------------------------------+-------------------------------------------------------------------+ 
-| ``geoip.continent_code``                         | ``geoip.continent_code``                          | ````                                         |``EU``                                                             |
-+--------------------------------------------------+---------------------------------------------------+----------------------------------------------+-------------------------------------------------------------------+ 
-| ``geoip.country_code3``                          | ``geoip.country_code3``                           | ````                                         |``RU``                                                             |   
-+--------------------------------------------------+---------------------------------------------------+----------------------------------------------+-------------------------------------------------------------------+ 
-| ``geoip.country_name``                           | ``geoip.country_name``                            | ````                                         |``Russia``                                                         |      
-+--------------------------------------------------+---------------------------------------------------+----------------------------------------------+-------------------------------------------------------------------+ 
-| ``query_type``                                   | \-\-                                              | \-\-                                         |``A\|AAAA\|CNAME\|MX\|NS\|PTR\|RRSIG\|SPF\|SRV\|TXT``              |      
-+--------------------------------------------------+---------------------------------------------------+----------------------------------------------+-------------------------------------------------------------------+ 
-| ``answer_ip``                                    | ``ip``                                            | \-\-                                         |``174.85.249.36`` OR ``SERVFAIL`` OR ``NXDOMAIN``                  |      
-+--------------------------------------------------+---------------------------------------------------+----------------------------------------------+-------------------------------------------------------------------+ 
-| ``dga.class``                                    | \-\-                                              | \-\-                                         |``1\|0``                                                           |
-+--------------------------------------------------+---------------------------------------------------+----------------------------------------------+-------------------------------------------------------------------+ 
-| ``tunnel.class``                                 | \-\-                                              | \-\-                                         |``1\|0``                                                           |
-+--------------------------------------------------+---------------------------------------------------+----------------------------------------------+-------------------------------------------------------------------+ 
-| \-\-                                             | ``action``                                        | \-\-                                         |``block`` OR ``allow`` OR ``audit``                                |
-+--------------------------------------------------+---------------------------------------------------+----------------------------------------------+-------------------------------------------------------------------+ 
-| \-\-                                             | ``accu``                                          | \-\-                                         | from ``0`` to ``100``. < and > operators can be used too          |
-+--------------------------------------------------+---------------------------------------------------+----------------------------------------------+-------------------------------------------------------------------+ 
-| \-\-                                             | ``matched_iocs.classification.type``              | \-\-                                         |``malware\|c&c\|phishing\|coinminer\|spam\|compromised\|blacklist``|
-+--------------------------------------------------+---------------------------------------------------+----------------------------------------------+-------------------------------------------------------------------+ 
-| \-\-                                             | \-\-                                              | ``category``                                 |``porn``                                                           |
-+--------------------------------------------------+---------------------------------------------------+----------------------------------------------+-------------------------------------------------------------------+ 
-| \-\-                                             | \-\-                                              | ````                                         |````                                                               |
-+--------------------------------------------------+---------------------------------------------------+----------------------------------------------+-------------------------------------------------------------------+ 
-| \-\-                                             | \-\-                                              | ````                                         |````                                                               |
-+--------------------------------------------------+---------------------------------------------------+----------------------------------------------+-------------------------------------------------------------------+ 
-| \-\-                                             | \-\-                                              | ````                                         |````                                                               |
-+--------------------------------------------------+---------------------------------------------------+----------------------------------------------+-------------------------------------------------------------------+ 
++-------------------------+--------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+
+| DNS Traffic             | Threats                              | Description                                                                               |  Example value                                                           |
++=========================+======================================+===========================================================================================+==========================================================================+
+| ``timestamp``           | ``timestamp``                        | The exact time when the resolver registered the DNS request / incident                    | ``2022-10-14T12:28:01.000Z``                                             |
++-------------------------+--------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+
+| ``client``              | ``client_ip``                        | The source IP address which made the DNS request / incident                               | ``192.168.2.3``                                                          |
++-------------------------+--------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+
+| ``domain``              | ``domain``                           | The domain in the DNS query                                                               | ``whalebone.io`` OR ``whale*one.io``                                     |
++-------------------------+--------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+ 
+| ``resolver_id``         | ``resolver_id``                      | The id of ther resolver which handled the event                                           | ``2404``                                                                 |
++-------------------------+--------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+ 
+| ``device_id``           | ``device_id``                        | The device_id of the HOS agent                                                            | ``MB2A1b4OTDin3Xz6DgftAip72v57e``                                        |
++-------------------------+--------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+ 
+| ``geoip.continent_code``| ``geoip.continent_code``             | The code of the continent from the php geoIP library                                      | ``AF | AN | AS | EU | NA | OC | SA``                                                                   |
++-------------------------+--------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+ 
+| ``geoip.country_code3`` | ``geoip.country_code3``              | The code of the country from the php geoIP library                                        | ``RU | CZ | US | CN | DE | ...``                                                                  |   
++-------------------------+--------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+ 
+| ``geoip.country_name``  | ``geoip.country_name``               | The name of the country from the php geoIP library                                        | ``Russia``                                                               |      
++-------------------------+--------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+ 
+| ``answer_ip``           | ``ip``                               | The IP in the DNS answer or the IP that would the resolver answer if it didn't block      | ``174.85.249.36`` OR ``SERVFAIL`` OR ``NXDOMAIN``                        |      
++-------------------------+--------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+ 
+| ``query_type``          | \-\-                                 | The type of the DNS query                                                                 | ``A | AAAA | CNAME | MX | NS | PTR | RRSIG | SPF | SRV | TXT``           |  
++-------------------------+--------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+ 
+| ``dga.class``           | \-\-                                 | An indication whether the domain might be generated by a DGA.                             | ``1 | 0``                                                                |
++-------------------------+--------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+ 
+| ``tunnel.class``        | \-\-                                 | An indication whether the domain might be generated by a DGA.                             | ``1 | 0``                                                                |
++-------------------------+--------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+ 
+| \-\-                    | ``action``                           | The action that the resolver took with that specific query                                | ``block | allow | audit``                                                |
++-------------------------+--------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+ 
+| \-\-                    | ``accu``                             | The socre of the domainat the time of the event                                           |  ``0..100`` < and > operators can be used too                            |
++-------------------------+--------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+ 
+| \-\-                    | ``matched_iocs.classification.type`` | The type of threat                                                                        | ``malware | c&c | phishing | coinminer | spam | compromised | blacklist``|
++-------------------------+--------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+ 
 
 
 .. tip:: Filtering operators are placed statically to the URL address. Therefore, you can create your set of
-	filters in advance (such as view on individual IPs) and to use them when necessary. Afterwards, you
+	Filters in advance (such as view on individual IPs) and to use them when necessary. Afterwards, you
 	can place them to your CRM for the specific user’s account and to access the filtered view immediately. It
 	will help saving your time when customer asks for the support as you can immediately open their
 	details.

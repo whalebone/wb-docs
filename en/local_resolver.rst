@@ -55,6 +55,7 @@ Local resolver is supported on dedicated (hardware or virtual) machine running a
 
   
   The main function of the resolver to get queries from the customers and answer back to them the answer requires certain ports to be opened on the resolver for the traffic originating from the client subnet or coming to the customer interface.
+  
   ============ ========= ======= =========================== =========================
   Direction    Protocol  Port    Source IP/Domain            Description              
   ============ ========= ======= =========================== =========================

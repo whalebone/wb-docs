@@ -34,7 +34,7 @@ Local resolver is supported on dedicated (hardware or virtual) machine running a
 
 .. warning:: Please note that Whalebone only supports deloyments without desktop environments such as GNOME, KDE or Xfce as those can impact available memory and DNS processing on the server.
 
-* **Network setup requirements** (local resolver needs the following ports opened):
+* **Network setup requirements** (local resolver needs the following egress ports opened):
   
   =========== =========== ======= ======================== ======================
   Direction   Protocol(s)  Port    Destination IP/Domain    Description         
@@ -53,6 +53,15 @@ Local resolver is supported on dedicated (hardware or virtual) machine running a
   
   .. warning:: Without communication on port 443 to the domains listed above the resolver won't be installed at all (the installation script will abort).
 
+  
+  The main function of the resolver to get queries from the customers and answer back to them the answer requires certain ports to be opened on the resolver for the traffic originating from the client subnet or coming to the customer interface.
+  ============ ========= ======= =========================== =========================
+  Direction    Protocol  Port    Source IP/Domain            Description              
+  ============ ========= ======= =========================== =========================
+  Inbound      TCP+UDP   53      Customer's subnet range(s)  DNS
+  Inbound      TCP       853     Customer's subnet range(s)  DNS over TLS (if used)
+  Inbound      TCP       443     Customer's subnet range(s)  DNS over HTTPS (if used)
+  ============ ========= ======= =========================== =========================
   
   The Blocking Pages are being hosted **directly** on the Resolvers so the IP addresses that are advertised to the clients must be used. The clients will then be redirected to the IP address of the resolver upon blocking. It is advised to allow only subnet(s) assigned to customers or trusted networks, otherwise it can be misused for various attacks or unauthorized users.
   

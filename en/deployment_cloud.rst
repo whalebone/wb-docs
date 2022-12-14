@@ -7,7 +7,7 @@ Whalebone could be deployed in several scenarios which can be even combined to s
 
 .. tip:: Should you believe none of the scenarios below is applicable to your use case, please contact Whalebone Support and we will help you with architecture that will suit your needs.
 
-Cloud DNS
+Use existing DNS to forward to Whalebone Cloud DNS
 ---------
 
 This is the simplest method o deployment. To use Whalebone filtering, just change the configuration of your recent DNS resolvers and point them to Whalebone cloud resolvers.

@@ -12,7 +12,7 @@ More information about the product and company is available on the official `Wha
    :caption: Deployment Options
 
    deployment_peacemaker
-   deployment_immunity
+   deployment immunity
    deployment_cloud
 
 

@@ -15,9 +15,12 @@ More information about the product and company is available on the official `Wha
    deployment_immunity
    deployment_cloud
 
+
 .. toctree::
    :caption: Quickstart
+
    quickstart
+
 
 .. toctree::
    :caption: Configuration
@@ -57,6 +60,7 @@ More information about the product and company is available on the official `Wha
    :caption: Step-by-Step Video Guides
 
    video_guides
+
 
 .. toctree::
    :caption: About

@@ -1,4 +1,4 @@
-Deployment options
+Cloud deployment
 ==================
 
 Whalebone could be deployed in several scenarios which can be even combined to satisfy requirements of particular networks. Combination of cloud and local DNS resolver with single management console will satisfy even complex and distributed networks.

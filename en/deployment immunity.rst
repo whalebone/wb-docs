@@ -1,7 +1,7 @@
-Deployment options
+Whalebone Immunity
 ==================
 
-Local DNS forwarder (Whalebone Immunity)
+Local DNS forwarder
 -------------------
 
 Very similar deployment scenario as the local resolver, however Whalebone just forwards the requests to preconfigured resolvers. This scenario is very useful in case there are local DNS zones that has to be available for the clients (e.g. Active Directory) or cases when the recent resolver configuration is very specific and has to be preserved.

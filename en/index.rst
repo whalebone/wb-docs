@@ -9,9 +9,14 @@ More information about the product and company is available on the official `Wha
 
 .. toctree::
    :maxdepth: 3
-   :caption: Getting started
+   :caption: Deployment Options
 
-   deployment
+   deployment_peacemaker
+   deployment_immunity
+   deployment_cloud
+
+.. toctree::
+   :caption: Quickstart
    quickstart
 
 .. toctree::

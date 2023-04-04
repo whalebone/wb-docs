@@ -9,6 +9,6 @@ This deployment has also lower hardware requirements, roughly half of the CPU an
 
 .. warning:: We don't recommend to forward the requests from the local resolver to Whalebone cloud resolvers. Such configuration would result in duplicit incident detection, no added security and unnecesary latency for the clients.
 
-.. image:: ./img/deployment_forwardeer.png
+.. image:: ./img/deployment_forwarder.png
    :align: center
 

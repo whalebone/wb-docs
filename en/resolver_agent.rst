@@ -3,7 +3,7 @@ Resolver agent
 
 Command line interface
 -----------------------
-Agent's actions can be invoked using a proxy bash script present at path **/var/whalebone/cli/cli.sh**. This script calls a python script which handles the execution of the following agent actions: 
+Agent's actions can be invoked using a proxy bash script present at path **/etc/whalebone/cli/cli.sh**. This script calls a python script which handles the execution of the following agent actions: 
 
 * **sysinfo** - returns the system status data in JSON format.
 	* Parameters: None

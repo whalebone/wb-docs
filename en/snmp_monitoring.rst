@@ -5,7 +5,7 @@ SNMP Monitoring
 High Level Network Diagram
 ---------------------------
 
-  .. figure:: ./img/highlevelnetworkdiagram.png
+  .. figure:: ./img/highlevelnetworkdiagram.PNG
 
 
 Whalebone SNMP agent is enabled in the resolvers to actively monitor the local resources, quires and statistics.
@@ -134,14 +134,14 @@ How to import the Whalebone Template
 
 - To import the Whalebone template, go to Zabbix Configuration. Under the configuration go to templates. 
   
-	.. figure:: ./img/importemplate.png
+	.. figure:: ./img/importemplate.PNG
 		:width: 350pt
 
 	
 
 - To import the Whalebone template, go to Zabbix Configuration. Under the configuration go to templates. 
 
-	.. figure:: ./img/importtemplate2.png
+	.. figure:: ./img/importtemplate2.PNG
 		:width: 350pt
 
 
@@ -150,23 +150,23 @@ How to add the resolver in Zabbix Monitoring
 
 - To add the host, go to Configuration then click hosts. Click create host then provide the hostname, groups. After that add the resolver ip address. 
   
-  	.. figure:: ./img/addhost.png 
+  	.. figure:: ./img/addhost.PNG 
 	 	:width: 350pt
 
 
 - Under the interface select the SNMP> Provide the SNMP Ip address > Port 161 > SNMP version SNMPv2 then add the SNMP Community.
 
-	.. figure:: ./img/addhost1.png
+	.. figure:: ./img/addhost1.PNG
 
 - After adding the host go to templates tab > Select the whalebone template. Click select and add. 
 
-	.. figure:: ./img/addhost3.png
+	.. figure:: ./img/addhost3.PNG
 		:width: 350pt
 
 
 - After selecting the Whalebone template go back to host and click add. On the hosts tab we can see that the resolver has been added on the Zabbix. 
 
-	.. figure:: ./img/addhost4.png
+	.. figure:: ./img/addhost4.PNG
 
 
 .. note:: SNMP data from the resolver to Zabbix will take time to initialized. Wait the Zabbix to gather data from the server. Always observ the availability on the right corner to see if its gree. Green means its already connected to the whalebone resolver.
@@ -177,37 +177,37 @@ How to add the Whalebone widget on Zabbix dashboard
 
 - 3.1 To add the dashboard, go to Monitoring then Dashboard. On the dashboard Global view, we can see the edit dashboard. Click the edit dashboard to add new graphs. 
 
-	.. figure:: ./img/dashboard.png
+	.. figure:: ./img/dashboard.PNG
 
 
 .. note:: Before adding graphs on the dashboard make sure that the host already detected the graphs. You can find the grapns on the configuration > hosts > graphs.
 
 - 3.2 Click the dashboard and add widget > Select type > Graph. Provide a name of the widget. 
 
-	.. figure:: ./img/dashboard2.png
+	.. figure:: ./img/dashboard2.PNG
 		:width: 350pt
 
 
 - 3.3 Select a data set which is the hostname and select the item pattern where we can find the whalebone template.
 
-	.. figure:: ./img/dashboard4.png 
+	.. figure:: ./img/dashboard4.PNG 
 
 
 - 3.4 Select the items you want to add on the widget for graphical visualization. After the adding item patern. Select base color for graphs then you can adjust the width, point size, transparency, and fill.
 
-	.. figure:: ./img/dashboard5.png
+	.. figure:: ./img/dashboard5.PNG
 		:width: 350pt
 
 
 - 3.5 On here we successfully added a widget on the dashboard. To edit or change the widget, click the gear icon. 
 
-	.. figure:: ./img/dashboard6.png
+	.. figure:: ./img/dashboard6.PNG
 		:width: 350pt
 
 
 - 3.6 Dont forget to click the save button on the upper right  to save the widget on the dashboard. 
 
-	.. figure:: ./img/dashboard7.png
+	.. figure:: ./img/dashboard7.PNG
 
 
 How to add triggers on the Zabbix
@@ -219,39 +219,39 @@ intialized to notify us that the data has exceeded from the set threshold.
 
 - To configure the trigger, go to Configuration - Hosts. Click the triggers tab. 
 
-	.. figure:: ./img/trigger.png
+	.. figure:: ./img/trigger.PNG
 		:width: 350pt
 
 
 - Create trigger > Provide name then add an expression. Let say we want to trigger if the resolver NXDOMAIN exceeds more than 60. Select severity for this trigger. 
 
-	.. figure:: ./img/trigger2.png
+	.. figure:: ./img/trigger2.PNG
 		:width: 350pt
 
 
 - Click add > On the condition tab > Select the item. On here let's select the NXDOMAIN. 
 
-	.. figure:: ./img/trigger3.png
+	.. figure:: ./img/trigger3.PNG
 
 
 - On the condition tab, set the count > time shift now > result. On the result select an operand then set the value > 60. This condition will trigger if the NXDOMAIN exceed to 60. 
 
-	.. figure:: ./img/trigger4.png
+	.. figure:: ./img/trigger4.PNG
 
 
 - Click insert and save the triggers. Make sure the trigger is enabled on the template. 
 
-	.. figure:: ./img/trigger5.png
+	.. figure:: ./img/trigger5.PNG
 
 
 - On the problems tab, check the NXDOMAIN that exceeds the threshold.  
 
-	.. figure:: ./img/trigger6.png
+	.. figure:: ./img/trigger6.PNG
 
 
 - On the dashboard, the NXDOMAIN that exceeds the threshold is identifiable. 
 
-	.. figure:: ./img/trigger8.png
+	.. figure:: ./img/trigger8.PNG
 
 
 How to configure the trigger actions
@@ -263,37 +263,37 @@ reporting or notification.
 
 - First step to set up a trigger action by using an email. Go to Administration and Media types. Create media type and provide Name > SMTP server > port > SMPTP email > user and pass. 
 
-	.. figure:: ./img/triggeraction.png
+	.. figure:: ./img/triggeraction.PNG
 		:width: 350pt
 		
 
 - After you setup the email > Go to Configuration > Actions > Action triggers. On the trigger Actions > Create Action > Provide a name > Add a condition. 
 
-	.. figure:: ./img/triggeraction2.png
+	.. figure:: ./img/triggeraction2.PNG
 		:width: 350pt
 		
 
 - On the new condition window, select the ff: Type: Trigger Operator : equals triggers: Select the NXDOMAIN.
 
-	.. figure:: ./img/triggeraction3.png
+	.. figure:: ./img/triggeraction3.PNG
 		:width: 350pt
  
 
 - Select the NXDOMAIN for Action Triggers. Click Add.
 
-	.. figure:: ./img/triggeraction4.png
+	.. figure:: ./img/triggeraction4.PNG
 		:width: 350pt
 		 
 
 - On the Actions > Click the Operation > Select the default operation to 1 min. On the operations click add. 
 
-	.. figure:: ./img/triggeraction5.png
+	.. figure:: ./img/triggeraction5.PNG
 		:width: 350pt
 		
 
 - Select the step duration to 1 minute. On the operation click add > Send to users > Add the Zabbix admin > Send only to > Email.
 
-	.. figure:: ./img/triggeraction6.png
+	.. figure:: ./img/triggeraction6.PNG
 		:width: 350pt
 		
 
@@ -304,11 +304,11 @@ For reference, the Whalebone template ha a sample dashboard that overviews the d
 
 - To access the dashboard, go to monitoring > hosts. Then in the host click the dasboard. 
 
-	.. figure:: ./img/templatedashboard.png
+	.. figure:: ./img/templatedashboard.PNG
 		:width: 250pt
 	
 
 - This is the overview of the pre-define Whalebone dashboard. 
 
-	.. figure:: ./img/templatedashboard2.png
+	.. figure:: ./img/templatedashboard2.PNG
 

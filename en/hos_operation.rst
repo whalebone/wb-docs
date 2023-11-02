@@ -116,3 +116,9 @@ Application Logs
 ================
 
 Service logs can be found at ``c:\ProgramData\Whalebone\Home Office Security\Logs\``, which contain detailed information about application states and operation. In case you encounther unexpected service behaviour please include this Log folder and/or Config folder along inside your support ticket. Application provides additional information for operation trace, in AdminUI.exe app, Events tab may give you better insight in HOS operation.
+
+
+Uninstalling the app
+================
+
+To completely remove the app, uninstall the service and delete all contents from ``c:\ProgramData\Whalebone\Home Office Security\``

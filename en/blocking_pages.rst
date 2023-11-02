@@ -68,7 +68,9 @@ Signing blocking pages with a CA
 For deployments, where you have control over the endpoints (typically enterprise environment with Group Policy) and you're able to push self-signed SSL certificates to their trust stores, you can sign the blocking pages on the fly. This results in the browsers going directly to the blocking page without displaying the security warning, which is usually there. The resolver essentially performs a MITM any time it redirects to the blocking pages so the browser warning is expected.
 
 Step 1 - create "v3_cfg" file with the following contents:
+
 .. code-block:: shell
+
    [req]
    req_extensions = v3_ca_extensions
    distinguished_name = req_dn
@@ -92,16 +94,26 @@ Step 1 - create "v3_cfg" file with the following contents:
    commonName = Common Name (eg, your name or your server's hostname)
    commonName_max = 64
 
+
 Step 2 - generate a key 
+
 .. code-block:: shell
+
    openssl genpkey -algorithm RSA -out /certs/ca.key
 
+
 Step 3 create and sign the certificate
+
 .. code-block:: shell
+
    openssl req -x509 -new -nodes -key /certs/ca.key -sha256 -days 1024 -out /certs/ca.crt -config /certs/v3_cfg
 
+
 Step 4 - export the .pfx file and make sure it is placed in the /certs/ folder
+
 .. code-block:: shell
+
    openssl pkcs12 -export -in ca.crt -inkey ca.key -out ca.pfx -certpbe PBE-SHA1-3DES -keypbe PBE-SHA1-3DES -macal   
+
 
 Step 5 - send the filename and password to Whalebone support to store the configuration persistently on the back-end to ensure that it survives the VM or container restart.

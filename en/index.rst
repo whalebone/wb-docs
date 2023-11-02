@@ -43,6 +43,7 @@ More information about the product and company is available on the official `Wha
    reporting
    api_integration
    active_directory
+   snmp_monitoring
 
 
 .. toctree::

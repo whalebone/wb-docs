@@ -33,7 +33,6 @@ More information about the product and company is available on the official `Wha
    blocking_pages
    resolver_agent
    cloud_resolver
-   active_directory
    uninstalling
 
 .. toctree::
@@ -43,6 +42,7 @@ More information about the product and company is available on the official `Wha
    domain_resolution_analysis
    reporting
    api_integration
+   active_directory
 
 
 .. toctree::

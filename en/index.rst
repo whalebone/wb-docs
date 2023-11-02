@@ -33,6 +33,7 @@ More information about the product and company is available on the official `Wha
    blocking_pages
    resolver_agent
    cloud_resolver
+   active_directory
    uninstalling
 
 .. toctree::
@@ -48,6 +49,7 @@ More information about the product and company is available on the official `Wha
    :caption: Organization Settings
    
    user
+
 
 .. toctree::
    :caption: Home Office Security
@@ -67,7 +69,6 @@ More information about the product and company is available on the official `Wha
    
    licence_disclaimer
    changelog
-
 
 
 

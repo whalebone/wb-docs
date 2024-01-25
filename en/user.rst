@@ -6,7 +6,7 @@ User/Organization Management
 User Management
 ---------------
 
-The users can be managed under the respective tab on the User Menu.
+The users can be managed under the respective tab on the **User Menu**.
 
 Under this menu, an Administrator is able manage user accounts by
 adding, removing or disabling them. Additionally they are presented with
@@ -17,10 +17,10 @@ an overview of last login and last password change details per account.
 
 The two types of users that are supported are:
 
--  **Users**: users that have their primary account registered under the
+**Users**: users that have their primary account registered under the
    specific organization.
 
--  **External Users:** **(If available)** users that belong to another
+**External Users:** **(If available)** users that belong to another
    organization but can be assigned a role under a different Whalebone
    Portal tenant. e.g. resellers
 
@@ -64,7 +64,7 @@ Below are described the different roles and the actions that they are able to pe
 Organization Settings
 ---------------------
 
-The Organization Setting can be found under the User Menu.
+The Organization Setting can be found under the **User Menu**.
 
 .. _header-n750:
 
@@ -74,10 +74,10 @@ Portal Access Policy
 Portal Access Policy defines security mechanism for users accessing
 Whalebone's Portal. The following settings can be configured:
 
--  **Allowed IP Ranges**: IPv4 or IPv6 ranges in CIDR notation, e.g.
+**Allowed IP Ranges**: IPv4 or IPv6 ranges in CIDR notation, e.g.
    10.0.0.0/24 that are allowed to access Whalebone Portal.
 
--  **Account Lockout**: If enabled, it can limit the number of failed
+**Account Lockout**: If enabled, it can limit the number of failed
    login attempts. The available options are:
 
    -  **Failed Login Limit**: Number of unsuccessful login attempts
@@ -92,7 +92,7 @@ Whalebone's Portal. The following settings can be configured:
    -  **CAPTCHA Threshold**: Number of unsuccessful login attempts
       before enabling the CAPTCHA verification.
 
-- **Multi Factor Authentication**: Require users to use a two factor authentication (2FA) application and enter additional tokens upon logging to the portal.
+**Multi Factor Authentication**: Require users to use a two factor authentication (2FA) application and enter additional tokens upon logging to the portal.
 
 .. _header-n766:
 
@@ -101,13 +101,13 @@ Password Policy
 
 The following password settings can be configured:
 
--  **Expiration Time**: Number of days before a password needs to be
+**Expiration Time**: Number of days before a password needs to be
    changed.
 
--  **Password history**: Number of old passwords that cannot be reused
+**Password history**: Number of old passwords that cannot be reused
    when setting up a new passwords.
 
--  **Password Attributes**: The attributes that a new password should
+**Password Attributes**: The attributes that a new password should
    have. The attributes that a new password can have are the following:
 
    -  Minimum Length

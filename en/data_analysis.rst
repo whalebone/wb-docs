@@ -11,8 +11,8 @@ Threats
 
 Threats are special events where there is a DNS request for a domain
 that is present within the reputation database. There are two types of
-actions when a threat is detected. The first is to audit the event while
-the second is to block it.
+actions when a threat is detected. The first is to **audit** the event while
+the second is to **block** it. **Audit** option only logs the domain but acces is possible.
 
 The action that is to be implemented depends on the policies that are
 assigned to the specific resolver. For more on that please refer to
@@ -27,25 +27,20 @@ impromptu.
 You can watch step-by-step video guide `here. <https://docs.whalebone.io/en/latest/video_guides.html#threats>`__
 
 
-How to search for audit/block events.
+How to search for audit/block events:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-| There are two options in order to filter the different types of
-  events. 
-| In the first option a visual filter can be applied where the type that
-  a user clicks is disabled from the graph. This can aid the process of
-  having a basic overview of the traffic's qualities.
+There are two options for filtering different types of events. The first option, a visual filter can be used. Within the graph, you can click one of the actions (audit, block, allow) to filter it and display only the cases in which the event occurred. Second one is to click next to the **Result's filter** field on the **Filter button** and choose desired filtering option.
 
-
-How to search for a domain
+How to search for a domain:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In order to search for a domain's instances in the events, the easiest way
 is to click on it in the provided log history. Alternatively a query
-could be issued in the search engine with the term: ``domain:<domain>``
+could be issued in the search engine with the term: ``domain:`<domain>``
 
 
-How to search for events based on specific IP address.
+How to search for events based on specific IP address:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 A filtering of an IP address is possible by clicking on the specific
@@ -56,13 +51,13 @@ A more advanced use case could be to directly search for IP address in
 the search field and use the operator ``client_ip`` such as: ``client_ip:<IP address>``.
 
 
-How to search for events based on specific threat category.
+How to search for events based on specific threat category:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 There are multiple threat categories available.
 
-To name a few: ``malware``, ``c&c``, ``blacklist``,
-``phishing``, ``coinminer``, ``spam``, and ``compromised``.
+To name a few: *malware*, *c&c*, *blacklist*,
+*phishing*, *coinminer*, *spam*, and *compromised*.
 
 A *simple* alternative could be to click on the bar that matches the
 detected threat and filter only the specific type.
@@ -70,8 +65,8 @@ detected threat and filter only the specific type.
 Another approach could be to click on the filter icon and in this way
 
 
-How to change the date range of the available data
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+How to change the date range of the available data:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 | The date range of the data that can be previewed in the portal can
   change in multiple ways.
@@ -81,13 +76,13 @@ How to change the date range of the available data
   in text in the ``YYYY.MM.DD HH:mm:ss`` format or by using the builtin
   tool that provides quick suggestions.
 
-How to analyze a domain
-~~~~~~~~~~~~~~~~~~~~~~~
+How to analyze a domain:
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 In case to know further information about domain, especially what score 
 Whalebone assigns to particular domain, when was first seen and categorized 
 as malicious, if it falls under regulatory category or what external sources 
-know about it, then watch step-by-step video `here. <https://docs.whalebone.io/en/latest/video_guides.html#domain-analysis>`__
+know about it, then watch step-by-step video `here <https://docs.whalebone.io/en/latest/video_guides.html#domain-analysis>`__.
 
 
 DNS Traffic
@@ -103,24 +98,24 @@ live) of the answer.
    hour time frame. For this reason, a query might not be available on
    the portal even though it has been resolved.
 
-You can watch step-by-step video guide `here. <https://docs.whalebone.io/en/latest/video_guides.html#dns-traffic>`__
+You can watch step-by-step video guide `here <https://docs.whalebone.io/en/latest/video_guides.html#dns-traffic>`__.
 
 Below are some of the most useful filtering options of the available data will be described.
 
 
-How to view all queries of a specific type
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+How to view all queries of a specific type:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In order to view all queries of a specific type the most straight
 forward way is to click on the filter icon and select the desired value.
 
 Another option is to insert a query in the search field. This query
-could be in the form ``query_type:<type>.`` The possible types are:
-``A``,\ ``AAAA``, ``CNAME``, ``MX``, ``NS``, ``PTR``, ``RRSIG``,
+could be in the form *query_type:* ``<type>.`` The possible types are:
+``A``, ``AAAA``, ``CNAME``, ``MX``, ``NS``, ``PTR``, ``RRSIG``,
 ``SPF``, ``SRV`` and\ ``TXT``.
 
 
-How to view all answers of a specific type 
+How to view all answers of a specific type:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The answers can be filtered by selecting the specific bar in the
@@ -128,8 +123,8 @@ respective ``Answers`` field. Additionally, the answers can be viewed by
 issuing a query in the form ``answer:<answer_type>``.
 Useful answer types are ``NXDOMAIN`` or ``SERVFAIL``.
 
-How to search for a domain
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+How to search for a domain:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In order to search for a domain's instances in the logs, the easiest way
 is to click on it in the provided l  og history. Alternatively a query
@@ -142,24 +137,31 @@ search fields are ``domain_l1:<domain_l1>`` and
 ``domain_l2:<domain_l2>``.
 
 
-How to change the date range of the available data
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+How to change the date range of the available data:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Please refer to `How to change the date range of the available
 data <http://docs.whalebone.io/en/latest/data_analysis.html#how-to-change-the-date-range-of-the-available-data>`__
 of the Threats section.
 
 
-How to view DGA (Domain Generation Algorithm) indications
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+How to view DGA (Domain Generation Algorithm) indications:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Whalebone provides a view of indicators of DGA instances. These
 indications can be accessed by using the filter icon and selecting DGA
 as can be seen below. Alternatively the query ``dga.class:1`` can be issued.
 
 
+How to view DNS tunneling indications:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Whalebone provides a view of indicators of DNS tunneling instances. These
+indications can be accessed by using the query ``tunnel.class:1``.
+
+
 Fulltext filtering
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~
 
 For more advanced usage, a fulltext filter can be applied to construct a composite query. You can filter for many fields however not all of them are searchable in all dashboards.
 Below you can find an overview of fields that are applicable for each dashboard:
@@ -209,6 +211,6 @@ When you run a fulltext query, it updates the content of the entire dashboard.
 
 .. tip:: Filtering operators are placed statically to the URL address. Therefore, you can create your set of
 	Filters in advance (such as view on individual IPs) and to use them when necessary. Afterwards, you
-	can place them to your CRM for the specific user’s account and to access the filtered view immediately. It
+	can place them to your CRM for the specific user's account and to access the filtered view immediately. It
 	will help saving your time when customer asks for the support as you can immediately open their
 	details.

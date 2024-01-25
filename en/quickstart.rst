@@ -18,7 +18,7 @@ After the password setup you will be asked to login using your username and newl
 DNS traffic view
 ----------------
 
-Should the traffic be properly forwarded on Whalebone DNS resolvers (cloud or local) the DNS traffic will be visible under the menu option ``DNS traffic``, where the individual requests and responses are available for further investigation.
+If the traffic is correctly forwarded to Whalebone DNS resolvers (cloud or local), the DNS traffic will be visible under the menu option **DNS traffic**, where the individual requests and responses are available for further investigation.
 The traffic should be visible in several minutes after everything has been properly setup. If there is no traffic recorded even in several hours don't hesitate to contact Whalebone support to help you doublecheck the configuration or any sort of network issues.
 
 .. image:: ./img/dns_traffic.png
@@ -26,7 +26,7 @@ The traffic should be visible in several minutes after everything has been prope
 
 The DNS resolution check could be also done manually on Windows or Linux machines through ``nslookup`` tool. Set the Whalebone resolver IP and try to resolve an existing domain name.
 
-.. code-block:: bash
+```
    localhost:~$ nslookup whalebone.io
    Server:         193.32.92.32
    Address:        193.32.92.32#53
@@ -36,4 +36,4 @@ The DNS resolution check could be also done manually on Windows or Linux machine
    Address: 75.2.70.75
    Name:   whalebone.io
    Address: 99.83.190.102
-
+```

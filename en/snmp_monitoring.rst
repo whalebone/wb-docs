@@ -169,43 +169,43 @@ How to add the resolver in Zabbix Monitoring
 	.. figure:: ./img/addhost4.PNG
 
 
-.. note:: SNMP data from the resolver to Zabbix will take time to initialized. Wait the Zabbix to gather data from the server. Always observ the availability on the right corner to see if its gree. Green means its already connected to the whalebone resolver.
+.. note:: SNMP data from the resolver to Zabbix will take time to initialized. Wait the Zabbix to gather data from the server. Always observe the availability on the right corner to see if it's green. Green means its already connected to the whalebone resolver.
 
 
 How to add the Whalebone widget on Zabbix dashboard
 ---------------------------------------------------
 
-- 3.1 To add the dashboard, go to Monitoring then Dashboard. On the dashboard Global view, we can see the edit dashboard. Click the edit dashboard to add new graphs. 
+- To add the dashboard, go to Monitoring then Dashboard. On the dashboard Global view, we can see the edit dashboard. Click the edit dashboard to add new graphs. 
 
 	.. figure:: ./img/dashboard.PNG
 
 
 .. note:: Before adding graphs on the dashboard make sure that the host already detected the graphs. You can find the grapns on the configuration > hosts > graphs.
 
-- 3.2 Click the dashboard and add widget > Select type > Graph. Provide a name of the widget. 
+- Click the dashboard and add widget > Select type > Graph. Provide a name of the widget. 
 
 	.. figure:: ./img/dashboard2.PNG
 		:width: 350pt
 
 
-- 3.3 Select a data set which is the hostname and select the item pattern where we can find the whalebone template.
+- Select a data set which is the hostname and select the item pattern where we can find the whalebone template.
 
 	.. figure:: ./img/dashboard4.PNG 
 
 
-- 3.4 Select the items you want to add on the widget for graphical visualization. After the adding item patern. Select base color for graphs then you can adjust the width, point size, transparency, and fill.
+- Select the items you want to add on the widget for graphical visualization. After the adding item patern. Select base color for graphs then you can adjust the width, point size, transparency, and fill.
 
 	.. figure:: ./img/dashboard5.PNG
 		:width: 350pt
 
 
-- 3.5 On here we successfully added a widget on the dashboard. To edit or change the widget, click the gear icon. 
+- On here we successfully added a widget on the dashboard. To edit or change the widget, click the gear icon. 
 
 	.. figure:: ./img/dashboard6.PNG
 		:width: 350pt
 
 
-- 3.6 Dont forget to click the save button on the upper right  to save the widget on the dashboard. 
+- Dont forget to click the save button on the upper right  to save the widget on the dashboard. 
 
 	.. figure:: ./img/dashboard7.PNG
 
@@ -261,7 +261,7 @@ Triggers action are logical expression that "evaluate" data gathered by items an
 if the incoming data surpass the acceptable state, a trigger is "fired" or changes status to PROBLEM. For this example, lets say the NXDOMAIN exceeds to 60. The trigger will initialize an email for the admin 
 reporting or notification.
 
-- First step to set up a trigger action by using an email. Go to Administration and Media types. Create media type and provide Name > SMTP server > port > SMPTP email > user and pass. 
+- First step to set up a trigger action by using an email. Go to Administration and Media types. Create media type and provide Name > SMTP server > port > SMTP email > user and pass. 
 
 	.. figure:: ./img/triggeraction.PNG
 		:width: 350pt

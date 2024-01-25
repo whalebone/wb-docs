@@ -7,15 +7,15 @@ Available configuration options:
 
 * **Enable IPv6**
 
-  * Should the system have the IPv6 properly configured and working, it is possible to enable it. Otherwise the activation of IPv6 could have negative effects on the performance and latency of the resolver.
+  * If the system has IPv6 configured properly its is possible to enable IPv6.
+  * Otherwise the activation of IPv6 could have negative effects on the performance and latency of the resolver.
 
 * **Forward queries to**
 
-  * This option allows to redirect all or chosen queries to upstream resolvers or authoritative DNS servers (suitable e.g. for forwarding to domain controllers of Active Directory)
-
+  * This option allows to redirect all or chosen queries to upstream resolvers or authoritative DNS servers (suitable e.g. for forwarding to domain controllers of Active Directory).
   * **Disable DNSSEC**
-
-    * If checked, the answers from the forwarded queries won't be DNSSEC validated. We recommend to check this option should the upstream server have not DNSSEC configured properly.
+    * If checked, the answers from the forwarded queries won't be DNSSEC validated. 
+    * We recommend to check this option in case the upstream server don't have DNSSEC configured properly.
 
   * **All queries to**
 
@@ -23,22 +23,22 @@ Available configuration options:
     * This option keeps caching all responses!
 
   * **Following domains**
-
-    * Option to choose particular domains that should be forwarded to on more resolvers
-    * Different resolvers could be defined for different domains
-    * Caching for the selected domains will be turned off!
+    * Option to choose particular domains that should be forwarded to on more resolvers.
+    * Different resolvers could be defined for different domains.
+    * Caching for the selected domains will be turned off!.
 
 * **Static records**
 
-  * Predefined answers that should be returned for particular domains
-  * Could serve for special purposes such as monitoring or very simple substition of records on authoritative server
+  * Predefined answers that should be returned for particular domains.
+  * Could serve for special purposes such as monitoring or very simple substition of records on authoritative server.
 
 * **Advanced DNS configuration**
+  * Text area for advanced configuration.
+  * Used for direct configuration of Knot Resolver.
+  * `Complete Knot Resolver configuration <https://knot-resolver.readthedocs.io/en/stable/config-overview.html>`_
+  * Supports Lua scripting.
 
-  * Text area for `complete Knot Resolver configuration <https://knot-resolver.readthedocs.io/en/stable/config-overview.html>`_
-  * Supports Lua scripting
-
-  .. warning:: Faulty configuration can impact stability, performance or security functions of the resolver
+  .. warning:: Faulty configuration can impact stability, performance or security functions of the resolver. In case of wrong syntax the **Deploy Configuration** will result in error code.
 
 .. image:: ./img/lrv2-resolution.gif
    :align: center

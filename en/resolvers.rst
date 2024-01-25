@@ -19,9 +19,9 @@ The resolver can be in one of these states:
 Deploy configuration
 --------------------
 
-Should you change any configuration related to the DNS resolution, you have to deploy the configuration afterwards. Otherwise the changes will not take effect. If there are any configuration changes available to be deployed, there will be a red icon with down right arrow visible on the resolver card. Once clicked, the webpage will ask for confirmation and the successful deployment will be notified in the top right corner.
+If there been are any configuration changes which affect the DNS resolution, you have to deploy the configuration afterwards. Otherwise the changes will not take effect. In case there are any configuration changes available to be deployed, there will be a red icon with down right arrow visible on the resolver card. Once clicked, the webpage will ask for confirmation and the successful deployment will be notified in the top right corner.
 
-.. note:: If the result is an deployment error, try to repeat the action. The reason for the error could be a short term communication outage between the cloud and the resolver.
+.. note:: If the deployment resulted in error, try to repeat the action. The reason for the error could be a short term communication outage between the cloud and the resolver.
 
 .. image:: ./img/lrv2-deployconfig.gif
    :align: center
@@ -64,13 +64,13 @@ Exception  10.10.10.0/24
 School     10.10.20.0/24 and 10.10.40.0/24
 ========== ===============================
 
-In the following capture the process of assigning the policies is described:
+The following caption shows the process of assigning the policies:
 
 .. image:: ./img/policy-assignment.gif
    :align: center
 
 
-.. note::  After adding the networks, and in order to take effect, you must click on `Save to resolver`. The changes will be then validated and a pop-up message will provide additional information.
+.. note::  After adding the networks you must click on **Save to resolver** in order to to take effect. The changes will be then validated and a pop-up message will provide additional information.
 
 In order to assign additional entries to an existing assignment, a new network range can be appended using `newline` as a separator.
 Building on the previous example, in case we wanted to add the subnet ``10.10.30.0/24`` to the Exception Policy:
@@ -103,7 +103,7 @@ For each IP range that is added, there is a drop-down menu for the Blocking Page
 Upgrade/Rollback Resolver
 ------------------------------------
 
-When a new version of the Resolver is released, a red ``Upgrade`` icon appears on the resolvers' management interface.
+When a new version of the Resolver is released, a **red upgrade icon** appears on the resolver's management interface.
 
 .. image:: ./img/upgrade.png
    :align: center

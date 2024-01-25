@@ -2,7 +2,7 @@
 Local resolver
 ******************
 
-Deploying the Whalebone solution deployed as a **local** resolver brings the advantage of visibility of local IP addresses that send the actual requests. If deploying locally is not a suitable option for you, 
+Deploying the Whalebone solution deployed as a **local resolver** brings the advantage of visibility of local IP addresses that send the actual requests. If deploying locally is not a suitable option for you, 
 check out the other :ref:`Deployment Options.<Deployment Options>`
 
 Whalebone resolver is based on the implementation of `Knot Resolver <https://www.knot-resolver.cz/>`_ developed in the CZ.NIC labs.
@@ -81,17 +81,17 @@ Local resolver is supported on dedicated (hardware or virtual) machine running a
   Inbound      TCP       ANY     127.0.0.1                   Resolver's processes communication 
   ============ ========= ======= =========================== ===================================
 
-.. note:: Should you need sizing estimation for large ISP or Enterprise network contact Whalebone. Whalebone local resolver will need approx. twice the RAM and CPU than usual resolver (BIND, Unbound). 
+.. note:: For hardware sizing estimation of large ISP or Enterprise networks feel free to contact Whalebone. Whalebone local resolver will need approx. twice the RAM and CPU than usual resolver (BIND, Unbound). 
 
 
 
 Installation of a new local resolver
 ====================================
 
-You can watch step-by-step video guide about the installation procedure `here. <https://docs.whalebone.io/en/latest/video_guides.html#on-premise-resolver-deployment>`
+You can watch step-by-step video guide about the installation procedure :ref:`here.<Deployment>`.
 
 In menu **Resolvers** press the button **Create new**. Choose a name (identifier) for your new resolver. The input is purely informative and won't affect the functionality.
-Once you've entered the name, click **Add resolver** button
+Once you've entered the name, click **Add resolver** button.
 After clicking the button an informative window will pop up with list of supported platforms and the one-line command for the installation. Copy the command and run on the machine dedicated for the local resolver.
 The command will run the installation script and will pass the one time token used for the resolver activation (the same command can not be used repeatedly).
 

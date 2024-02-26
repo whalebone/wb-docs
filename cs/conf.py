@@ -30,7 +30,7 @@
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = []
+extensions = ['sphinx.ext.autosectionlabel']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -46,7 +46,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Whalebone'
-copyright = u'2020, Whalebone, s.r.o.'
+copyright = u'2024, Whalebone, s.r.o.'
 author = u'Whalebone'
 
 # The version info for the project you're documenting, acts as replacement for

@@ -5,7 +5,7 @@ Whalebone could be deployed in several scenarios which can be even combined to f
 
 .. tip:: All of the options below could be combined together. Various network segments and zones could have different requirements and possibilities.
 
-.. tip:: if neither configuration scenarios below is suitable to your use case, please contact Whalebone Support and we will help you with architecture that will suit your needs.
+.. tip:: If neither configuration scenarios below is suitable to your use case, please contact Whalebone Support and we will help you with architecture that will suit your needs.
 
 Use existing DNS to forward to Whalebone Cloud DNS
 ---------

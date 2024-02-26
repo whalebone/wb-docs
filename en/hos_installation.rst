@@ -4,13 +4,13 @@ Step by step installation
 *************************
 
 
-To install HOS on device you need to configure it first. Open `Whalebone Portal` web page and use (1) `User menu` to navigate to (2) `Home Office Security`.
+To install HOS on device you need to configure it first. Open **Whalebone Portal** web page and use (1) **User menu** to navigate to (2) **Home Office Security**.
 
 .. image:: ./img/hos-sbs-1.png
     :align: center
 
 
-A Default Device group should already exist. If not, create one by clicking the (3) a `+ Add device group` button.
+A Default Device group should already exist. If not, create one by clicking the (3) a **+ Add device group** button.
 
 .. image:: ./img/hos-sbs-2.png
     :align: center
@@ -21,18 +21,21 @@ A Default Device group should already exist. If not, create one by clicking the 
 * **Blocking page**: corresponds to the blocking pages you create in the Configuration menu. 
 * **Domain exceptions**: HOS service will not divert any DNS queries that contain question for domain on the exception list. E.g. when ``example.com`` is specified, the DNS request will be resolved as usual on the resolver configured by operating system. A same rule applies for question ``subdomain.example.com``.
 * **Automatic upgrade**: When this configuration option is checked, HOS application on Windows will update to latest production version when a newer version is available to download. This option takes effect on Windows only, on mobile upgrades are performed by the vendor ecosystem.
+* **Disable HOS inside the corporate network**: When this option is checked, 3 more text boxes will appear. The configuration allows the HOS to be disabled within the corporate network based on a query-response process. 
+    * **Internal Domain**: Specifies which internal domain HOS will periodically query.
+    * **Internal Response**: HOS expects the response specified in this field after sending a query to the internal domain.
+    * **Query Type**: According to the selected query type (A, AAAA and MX), the record on the internal domain controller must be configured correctly.
 
 .. warning:: Please note that two settings mentioned above (Automatic upgrade and Domain exception) are featured in version 2.10.0 for Windows only. If you are running earlier version, please update to 2.10.0 manually.
 
-When you're done, click (4) `Add` button to create this group.
+When you're done, click **Add** button to create this group.
 
-HOS may become inactive when it detects that device is connected to secure network. 
 
 .. image:: ./img/hos-sbs-3.png
     :align: center
 
 
-Click (5)  `Install to group` button to see installation instructions and/or get download link to the HOS installer.
+Click (5) **Install to group** button to see installation instructions and/or get download link to the HOS installer.
 
 .. image:: ./img/hos-sbs-4.png
     :align: center
@@ -55,7 +58,7 @@ Uninstall:
     :align: center
 
 
-Find the folder where the installer is located. It should be file named `Whalebone.Home.Office.Security.Installer.msi`.
+Find the folder where the installer is located. It should be file named **Whalebone.Home.Office.Security.Installer.msi**.
 
 Open up a command prompt, change directory to the folder where is the installer and paste (8) the command with your mouse (right click). Execute the command. This requires admin priviledges.
 

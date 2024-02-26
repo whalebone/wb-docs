@@ -121,14 +121,33 @@ Parameters:
 * MINUTES: timeframe in minutes (Default=10)
 
 
-
 Threats - count during intervals
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+This alert is sent if the percentage of threat records is higher than the set time period.
+Parameters:
+
+* MINUTES: time window in minutes (default=15)
+
+* TRESHOLD: number of events in the time window for triggering the alert, this is a percentage change (default=100).
+
+* LOG_TYPE: (default=*): filters by event type (audit/block)
 
 Threats - event detection
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+This alert is sent in the case of a new entry in the threats page according to the specified threat type and action performed.
+Parameters:
+
+* LOG_TYPE: (Default=*): filters by action type (audit/block)
+
+* THREAT_TYPE: (Default=*): filters by type of threat detected
 
 Threats - newly blocked domain
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+This alert is sent if the resolver detects a newly blocked threat within the specified time frame.
+Parameters:
+
+* DAYS: Number of days on which newly blocked domains will be searched (default=30)
+
+* DOMAIN_WILDCARD: Include only the following comma-separated domains in the alert(Default=*)
 
 

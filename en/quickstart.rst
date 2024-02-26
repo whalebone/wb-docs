@@ -26,7 +26,8 @@ The traffic should be visible in several minutes after everything has been prope
 
 The DNS resolution check could be also done manually on Windows or Linux machines through ``nslookup`` tool. Set the Whalebone resolver IP and try to resolve an existing domain name.
 
-```
+.. sourcecode:: bash
+   
    localhost:~$ nslookup whalebone.io
    Server:         193.32.92.32
    Address:        193.32.92.32#53
@@ -36,4 +37,3 @@ The DNS resolution check could be also done manually on Windows or Linux machine
    Address: 75.2.70.75
    Name:   whalebone.io
    Address: 99.83.190.102
-```

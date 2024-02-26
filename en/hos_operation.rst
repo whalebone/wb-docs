@@ -49,7 +49,6 @@ Because HOS must intecept network traffic it requres to run as SYSTEM account. Y
 
 
 On first run HOS also installs ``windivert`` system driver. 
-score*
 
 .. code-block:: shell
 

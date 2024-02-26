@@ -120,4 +120,4 @@ For deployments, where you have control over the endpoints (typically enterprise
    openssl pkcs12 -export -in ca.crt -inkey ca.key -out ca.pfx -certpbe PBE-SHA1-3DES -keypbe PBE-SHA1-3DES -macal   
 
 
-**Step 5.í** – Send the filename and password to Whalebone support to store the configuration persistently on the back-end to ensure that it survives the VM or container restart.
+**Step 5.** – Send the filename and password to Whalebone support to store the configuration persistently on the back-end to ensure that it survives the VM or container restart.

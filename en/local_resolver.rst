@@ -18,7 +18,7 @@ Local resolver is supported on dedicated (hardware or virtual) machine running a
   * Red Hat Enterprise Linux 7, 8, 9
   * CentOS Linux 7, 8 
   * CentOS Stream 8, 9
-  * Debian 9, 10, 11
+  * Debian 9, 10, 11, 12
   * Ubuntu 16.04, 18.04, 20.04, 22.04
 
 * **Supported filesystems** 
@@ -88,21 +88,24 @@ Local resolver is supported on dedicated (hardware or virtual) machine running a
 Installation of a new local resolver
 ====================================
 
-You can watch step-by-step video guide about the installation procedure :ref:`here.<Deployment>`.
+You can watch step-by-step video guide about the installation procedure :ref:`here.<Deployment>`
 
 In menu **Resolvers** press the button **Create new**. Choose a name (identifier) for your new resolver. The input is purely informative and won't affect the functionality.
 Once you've entered the name, click **Add resolver** button.
 After clicking the button an informative window will pop up with list of supported platforms and the one-line command for the installation. Copy the command and run on the machine dedicated for the local resolver.
-The command will run the installation script and will pass the one time token used for the resolver activation (the same command can not be used repeatedly).
+The command will run the installation script and will pass the one time token used for the resolver activation (the same command can't be used repeatedly).
 
 .. image:: ./img/lrv2-create.gif
 	:align: center
+  Local resolver creation.
 
 Once the command is run the operating system is being checked and requirements installed. Script will inform you about the progress and it creates a detailed log named ``wb_install.log`` in current directory.
 Successful run of the installation script is ended with the notification ```Final tuning of the OS``` with value ``[ OK ]``. Right after the installation also the initialization takes place and it could take several minutes before the resolver starts the services.
 
 .. image:: ./img/lrv2-install.gif
    :align: center
+
+   Local resolver installation.
 
 .. warning:: Local resolver is configured as an open resolver. It will respond to any request sent. This is quite comfortable in terms of availability of the services, but also could be a risk if the service is available from the outside networks. Please make sure you limit the access to the local resolver on port 53 (UDP and TCP) from the trusted networks only, otherwise it can be misused for various DoS attacks.
 
@@ -126,7 +129,7 @@ Upon visiting these domains a blocking page similar to the following should be p
    :alt: Blocking Pages (Default)
    :align: center
    
-   Blocking Page - Whalebone Resolver is being used
+   Blocking Page - Whalebone Resolver is being used.
 
 In case you come across the page below, it means that the request was not blocked and thus a Whalebone resolver is not being used. 
 Please review your settings and if the issue persists, please contact support.
@@ -135,7 +138,7 @@ Please review your settings and if the issue persists, please contact support.
    :alt: Blocking Pages (Target)
    :align: center
    
-   Blocking Page - Whalebone Resolver is not being used
+   Blocking Page - Whalebone Resolver is not being used.
 
 
 

@@ -16,7 +16,7 @@ the second is to **block** it. **Audit** option only logs the domain but acces i
 
 The action that is to be implemented depends on the policies that are
 assigned to the specific resolver. For more on that please refer to
-`Security Policies <http://docs.whalebone.io/cs/latest/local_resolver.html#security-policies>`__.
+`Security Policies <http://docs.whalebone.io/en/latest/security_policies.html>`__.
 
 There are some pre-configured filters that can be applied on the data on
 the portal. Some sample queries can be found below. These queries depict
@@ -153,13 +153,6 @@ indications can be accessed by using the filter icon and selecting DGA
 as can be seen below. Alternatively the query ``dga.class:1`` can be issued.
 
 
-How to view DNS tunneling indications:
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Whalebone provides a view of indicators of DNS tunneling instances. These
-indications can be accessed by using the query ``tunnel.class:1``.
-
-
 Fulltext filtering
 ~~~~~~~~~~~~~~~~~~
 
@@ -167,47 +160,40 @@ For more advanced usage, a fulltext filter can be applied to construct a composi
 Below you can find an overview of fields that are applicable for each dashboard:
 
 .. warning::
-   The content dashboard does not support fulltext filtering at the moment. Only the clickable elements will result in filtering the data in the content dashboard.
+   The **content** and **DNS trafic** dashboards does not support fulltext filtering at the moment. Only the clickable elements will result in filtering the data in the content dashboard.
 
 These fields can be concatenated using logical operators. ``AND, OR, NOT, <, >`` and the wildcard character ``*`` are supported. Strings do not have to be wrapped with quotes. An example of the syntax is as follows:
 ``action: block AND accu:>70 AND (client_ip: 10.20.30.41 OR 10.20.30.40 OR 192.168.*)``
 ``AND NOT geoip.country_name: Germany AND matched_iocs.classification.type: malware AND NOT phishing`` 
 When you run a fulltext query, it updates the content of the entire dashboard.
 
-+-------------------------+--------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+
-| DNS Traffic             | Threats                              | Description                                                                               |  Example value                                                           |
-+=========================+======================================+===========================================================================================+==========================================================================+
-| ``timestamp``           | ``timestamp``                        | The exact time when the resolver registered the DNS request / incident                    | ``2022-10-14T12:28:01.000Z``                                             |
-+-------------------------+--------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+
-| ``client``              | ``client_ip``                        | The source IP address which made the DNS request / incident                               | ``192.168.2.3``                                                          |
-+-------------------------+--------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+
-| ``domain``              | ``domain``                           | The domain in the DNS query                                                               | ``whalebone.io`` OR ``whale*one.io``                                     |
-+-------------------------+--------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+ 
-| ``resolver_id``         | ``resolver_id``                      | The id of ther resolver which handled the event                                           | ``2404``                                                                 |
-+-------------------------+--------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+ 
-| ``device_id``           | ``device_id``                        | The device_id of the HOS agent                                                            | ``MB2A1b4OTDin3Xz6DgftAip72v57e``                                        |
-+-------------------------+--------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+ 
-| ``geoip.continent_code``| ``geoip.continent_code``             | The code of the continent from the php geoIP library                                      | ``AF | AN | AS | EU | NA | OC | SA``                                     |
-+-------------------------+--------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+ 
-| ``geoip.country_code3`` | ``geoip.country_code3``              | The code of the country from the php geoIP library                                        | ``RU | CZ | US | CN | DE | ...``                                         |   
-+-------------------------+--------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+ 
-| ``geoip.country_name``  | ``geoip.country_name``               | The name of the country from the php geoIP library                                        | ``Russia``                                                               |      
-+-------------------------+--------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+ 
-| ``answer_ip``           | ``ip``                               | The IP in the DNS answer or the IP that would the resolver answer if it didn't block      | ``174.85.249.36`` OR ``SERVFAIL`` OR ``NXDOMAIN``                        |      
-+-------------------------+--------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+ 
-| ``query_type``          | \-\-                                 | The type of the DNS query                                                                 | ``A | AAAA | CNAME | MX | NS | PTR | RRSIG | SPF | SRV | TXT``           |  
-+-------------------------+--------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+ 
-| ``dga.class``           | \-\-                                 | An indication whether the domain might be generated by a DGA.                             | ``1 | 0``                                                                |
-+-------------------------+--------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+ 
-| ``tunnel.class``        | \-\-                                 | An indication whether the domain might be generated by a DGA.                             | ``1 | 0``                                                                |
-+-------------------------+--------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+ 
-| \-\-                    | ``action``                           | The action that the resolver took with that specific query                                | ``block | allow | audit``                                                |
-+-------------------------+--------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+ 
-| \-\-                    | ``accu``                             | The socre of the domainat the time of the event                                           |  ``0..100`` < and > operators can be used too                            |
-+-------------------------+--------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+ 
-| \-\-                    | ``matched_iocs.classification.type`` | The type of threat                                                                        | ``malware | c&c | phishing | coinminer | spam | compromised | blacklist``|
-+-------------------------+--------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+ 
-
++--------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+
+| Threats                              | Description                                                                               |  Example value                                                           |
++======================================+===========================================================================================+==========================================================================+
+| ``timestamp``                        | The exact time when the resolver registered the DNS request / incident                    | ``2022-10-14T12:28:01.000Z``                                             |
++--------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+
+| ``client_ip``                        | The source IP address which made the DNS request / incident                               | ``192.168.2.3``                                                          |
++--------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+
+| ``domain``                           | The domain in the DNS query                                                               | ``whalebone.io`` OR ``whale*one.io``                                     |
++--------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+
+| ``resolver_id``                      | The id of ther resolver which handled the event                                           | ``2404``                                                                 |
++--------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+
+| ``device_id``                        | The device_id of the HOS agent                                                            | ``MB2A1b4OTDin3Xz6DgftAip72v57e``                                        |
++--------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+
+| ``geoip.continent_code``             | The code of the continent from the php geoIP library                                      | ``AF | AN | AS | EU | NA | OC | SA``                                     |
++--------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+
+| ``geoip.country_code3``              | The code of the country from the php geoIP library                                        | ``RU | CZ | US | CN | DE | ...``                                         |
++--------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+
+| ``geoip.country_name``               | The name of the country from the php geoIP library                                        | ``Russia``                                                               |
++--------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+
+| ``ip``                               | The IP in the DNS answer or the IP that would the resolver answer if it didn't block      | ``174.85.249.36`` OR ``SERVFAIL`` OR ``NXDOMAIN``                        |
++--------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+
+| ``action``                           | The action that the resolver took with that specific query                                | ``block | allow | audit``                                                |
++--------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+
+| ``accu``                             | The score of the domainat the time of the event                                           |  ``0..100`` < and > operators can be used too                            |
++--------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+
+| ``matched_iocs.classification.type`` | The type of threat                                                                        | ``malware | c&c | phishing | coinminer | spam | compromised | blacklist``|
++--------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+
 
 .. tip:: Filtering operators are placed statically to the URL address. Therefore, you can create your set of
 	Filters in advance (such as view on individual IPs) and to use them when necessary. Afterwards, you

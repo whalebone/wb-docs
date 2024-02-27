@@ -8,6 +8,8 @@ build:
 python:
   install:
   - requirements: en/requirements.txt
+  - requirements: cs/requirements.txt
+
 
 # Build PDF & ePub
 formats:

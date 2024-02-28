@@ -14,12 +14,13 @@ V této nabídce může správce spravovat uživatelské účty. Může přidáv
 
 Podporovány jsou dva typy uživatelů:
 
-**Uživatelé**: uživatelé, kteří mají svůj primární účet zaregistrovaný pod číslem
-   konkrétní organizaci.
+**Uživatelé**: 
+   * uživatelé, kteří mají svůj primární účet zaregistrovaný pod identifikátorem konkrétní organizace.
 
-**Externí uživatelé:** **(pokud jsou k dispozici)** uživatelé, kteří patří pod jinou organizaci.
-   organizaci, ale mohou mít přiřazenou roli pod jinou organizací Whalebone.
-   Portal tenant. např. prodejci
+**Externí uživatelé:** **(pokud jsou k dispozici)** 
+   * uživatelé, kteří patří pod jinou organizaci.
+   * mohou mít přiřazenou roli pod jinou organizací Whalebone.
+   * např. prodejci
 
 .. tip:: Každému uživateli lze přiřadit jednu nebo více rolí, které lze kombinovat a vytvořit tak jeho konečnou roli. Oprávnění jsou aditivní (stohovatelná).¨
 
@@ -56,7 +57,7 @@ Nastavení organizace
 ---------------------
 
 Nastavení organizace najdete v nabídce **Nastavení organizace**.
-.. _header-n750:
+
 
 Politika přístupu
 ~~~~~~~~~~~~~~~~~~~~
@@ -64,37 +65,45 @@ Politika přístupu
 Zásady přístupu k portálu definují bezpečnostní mechanismus pro uživatele přistupující k portálu.
 Whalebone Portal. Lze nakonfigurovat následující nastavení:
 
-**Povolené rozsahy IP**: Rozsahy IPv4 nebo IPv6 v notaci CIDR, např.
-   10.0.0.0/24, které mají povolen přístup k portálu Whalebone.
+**Povolené rozsahy IP**: 
+Rozsahy IPv4 nebo IPv6 v notaci CIDR, např. 10.0.0.0/24, které mají povolen přístup k portálu Whalebone.
 
-**Zamykání účtu**: Pokud je povoleno, může omezit počet neúspěšných pokusů o přihlášení.
-   pokusů o přihlášení. K dispozici jsou tyto možnosti:
+**Zamykání účtu**: 
+Pokud je povoleno, může omezit počet neúspěšných pokusů o přihlášení.
 
-   - **Limit nesprávných pokusů**: Počet neúspěšných pokusů o přihlášení.
-      před zablokováním účtu. Výchozí hodnota je 5.
+   K dispozici jsou tyto možnosti:
 
-   - **Doba trvání uzamčení (minuty)**: Doba v minutách, po kterou je zákázán další pokus o přihlášení.
+   - **Limit nesprávných pokusů**: 
+   Počet neúspěšných pokusů o přihlášení před zablokováním účtu. Výchozí hodnota je 5.
 
-   - **Reset počítadla (minuty)**: Doba trvání v minutách před resetováním počítadla neúspěšných pokusů.
+   - **Doba trvání uzamčení (minuty)**: 
+   Doba v minutách, po kterou je zákázán další pokus o přihlášení.
 
-   - **Limit CAPTCHA**: Počet neúspěšných pokusů o přihlášení před zapnutím ověření CAPTCHA.
+   - **Reset počítadla (minuty)**:
+   Doba trvání v minutách před resetováním počítadla neúspěšných pokusů.
 
-**Vyžadovat vícefaktorovou autentizaci**: Vyžadujte, aby uživatelé používali aplikaci dvoufaktorového ověřování (2FA) a při přihlášení k portálu zadávali další tokeny.
-.. _header-n766:
+   - **Limit CAPTCHA**:
+   Počet neúspěšných pokusů o přihlášení před zapnutím ověření CAPTCHA.
+
+**Vyžadovat vícefaktorovou autentizaci**:
+Vyžadujte, aby uživatelé používali aplikaci dvoufaktorového ověřování (2FA) a při přihlášení k portálu zadávali další tokeny.
+
 
 Politika hesel
 ~~~~~~~~~~~~~~~
 
 Lze nakonfigurovat následující nastavení hesla:
 
-**Expirace hesla (ve dnech)**: Doba platnosti hesla: Počet dní, než je třeba heslo
-   změnit.
+**Expirace hesla (ve dnech)**:
+Doba platnosti hesla: Počet dní, než je třeba heslo změnit.
 
-**Historie hesla**: Počet starých hesel, která nelze znovu použít.
-   při nastavování nových hesel.
+**Historie hesla**:
+Počet starých hesel, která nelze znovu použít při nastavování nových hesel.
 
-**Atributy hesla**: Heslo, které se má změnit: Atributy, které by mělo nové heslo
-   mít. Atributy, které může mít nové heslo, jsou následující:
+**Atributy hesla**:
+Heslo, které se má změnit: Atributy, které by mělo nové heslo mít.
+
+Atributy, které může mít nové heslo, jsou následující:
 
    - Minimální délka
 

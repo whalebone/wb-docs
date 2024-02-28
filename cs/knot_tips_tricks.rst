@@ -1,14 +1,14 @@
 Knot Resolver - Tipy a Triky
 ============================
 
-Pokročilá konfigurace Whalebone resolveru umožňuje použít využít přímou konfiguraci Knot Resolveru. V této části popíšeme nejčastější případy použití a příklady takových konfigurací.
+Pokročilá konfigurace Whalebone resolveru umožňuje přímou konfiguraci Knot Resolveru. V této části popíšeme nejčastější případy použití a příklady takových konfigurací.
 Zásady a akce se vyhodnocují v pořadí, v jakém jsou definovány (s výjimkou speciálních řetězových akcí, které jsou popsány v oficiální dokumentaci Knot Resolveru). První shoda provede akci, zbytek pravidel zásad se nevyhodnocuje. Pokud budete kombinovat různé fragmenty konfigurace, můžete stejný modul načíst jen jednou na začátku konfigurace.
 
 
 Povolení konkrétních rozsahů IP adres
 -------------------------------------
 
-Definujte seznam rozsahů IP, které budou mít povoleno používat tento DNS resolver. Dotazy ze všech ostatních rozsahů budou odmítnuty.
+Nastaví seznam rozsahů IP, které budou mít povoleno používat tento DNS resolver. Dotazy ze všech ostatních rozsahů budou odmítnuty.
 
 .. code-block:: lua
 
@@ -35,7 +35,7 @@ Definujte seznam rozsahů IP, které budou mít povoleno používat tento DNS re
 Odmítnutí určitých rozsahů IP
 -----------------------------
 
-Definujte seznam rozsahů IP, které budou blokovány pro použití tohoto DNS resolveru. Dotazy ze všech ostatních rozsahů budou povoleny.
+Nastaví seznam rozsahů IP, které budou blokovány pro použití tohoto DNS resolveru. Dotazy ze všech ostatních rozsahů budou povoleny.
 
 .. code-block:: lua
 
@@ -72,7 +72,7 @@ Povolit seznam domén
     policy.add(policy.suffix(policy.PASS, {todname(domain)}))
   end
 
-Deny list of domains
+Zamítnout seznam domén
 ---------------------
 
 .. code-block:: lua

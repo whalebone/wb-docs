@@ -9,8 +9,8 @@ Installation prerequisites
 Before you install and Event Log Forwarer (ELF) on one or more of your devices, please ensure that you have enabled audit of events. 
 
 On each of your Domain Controllers (DC) go to:
-``Windows Administrative Tools`` > ``Local Security Policy``, and then
-``Security Settings`` > ``Local Policies`` > ``Audit Policy``, and there find
+``Windows Administrative Tools`` → ``Local Security Policy``, and then
+``Security Settings`` → ``Local Policies`` → ``Audit Policy``, and there find
 ``Audit account logon events``, ``Audit account sign-in events`` and  ``Audit logon events``. 
 
 Some settings may differ in name or be missing, based on your Windows version.
@@ -40,8 +40,8 @@ DC Firewall on Windows
 Ensure that Event Log can be accessed through your Firewall configuration using WMI.
 
 On each of your Domain Controllers go to:
-``Windows Defender Firewall`` > ``Windows Defender Firewall with Advanced Security on Local Computer`` 
-``Inbound Rules`` > ``Windows Management Instrumentation (WMI-In)``
+``Windows Defender Firewall`` → ``Windows Defender Firewall with Advanced Security on Local Computer`` 
+``Inbound Rules`` → ``Windows Management Instrumentation (WMI-In)``
 
 ensure the rule allows connections
 
@@ -98,7 +98,7 @@ WMI Remote Configuration
 ========================
 
 If you chose to install ELF on another Windows PC, ensure that it can use WMI remotely. To enable Remote WMI for the account which will be used to connect to Domain Controller, go to:
-``Computer Management`` > ``Services and Applications`` > ``WMI Control```
+``Computer Management`` → ``Services and Applications`` → ``WMI Control``
 Right click on it and selet ``Properties``
 
 .. image:: ./img/ad-integration-6.png

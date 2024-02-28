@@ -35,46 +35,30 @@ There are two options for filtering different types of events. The first option,
 How to search for a domain:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In order to search for a domain's instances in the events, the easiest way
-is to click on it in the provided log history. Alternatively a query
-could be issued in the search engine with the term: ``domain:`<domain>``
+The easiest way to search for a domain is by clicking on a specific domain in the log hostory. The second way is by typing the domain name into the **Result Filter** field.
 
 
 How to search for events based on specific IP address:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A filtering of an IP address is possible by clicking on the specific
-Source IP bar and in this way filtering the content of the whole
-portal.
-
-A more advanced use case could be to directly search for IP address in
-the search field and use the operator ``client_ip`` such as: ``client_ip:<IP address>``.
-
+Filtering logs from a specific IP address is possible by selecting a specific source IP address in the log history. The second option is by entering the domain name in the **Result Filter** field.
 
 How to search for events based on specific threat category:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-There are multiple threat categories available.
+There is a large number of threat categories.
 
-To name a few: *malware*, *c&c*, *blacklist*,
+Some of them are: *malware*, *c&c*, *blacklist*,
 *phishing*, *coinminer*, *spam*, and *compromised*.
 
-A *simple* alternative could be to click on the bar that matches the
-detected threat and filter only the specific type.
-
-Another approach could be to click on the filter icon and in this way
+A simple way to find attacks is by selecting a specific category from the pie charts or in the log list under the **Threat Categories** column. Another option is to click the **Filter result** button next to the **Filter** field and select the desired filtering option.
 
 
 How to change the date range of the available data:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-| The date range of the data that can be previewed in the portal can
-  change in multiple ways.
-| The following image shows three of the available ways. These can be
-  summarized as simply by clicking on the current date that
-  automatically transcribes to the current time, by inserting the date
-  in text in the ``YYYY.MM.DD HH:mm:ss`` format or by using the builtin
-  tool that provides quick suggestions.
+The range of data that can be displayed in the portal preview can be changed in several ways.
+The basic selection method includes choosing predefined time windows (1,7, 14 or 30 days) in the drop-down list next to the **results filter**. If necessary, a specific time range can be specified using the **Start Date and Time** and **End Date and Time** windows.
 
 How to analyze a domain:
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -106,59 +90,34 @@ Below are some of the most useful filtering options of the available data will b
 How to view all queries of a specific type:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In order to view all queries of a specific type the most straight
-forward way is to click on the filter icon and select the desired value.
-
-Another option is to insert a query in the search field. This query
-could be in the form *query_type:* ``<type>.`` The possible types are:
-``A``, ``AAAA``, ``CNAME``, ``MX``, ``NS``, ``PTR``, ``RRSIG``,
-``SPF``, ``SRV`` and\ ``TXT``.
+The easiest way to select queries of a certain type is by clicking the **filter** icon and selecting the desired query type. There are several options to choose from, including ``A``, ``AAA``, ``CNAME``, ``MX``, ``NS``, ``PTR``, ``RRSIG``,
+``SPF``, ``SRV`` and ``TXT``.
 
 
 How to view all answers of a specific type:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The answers can be filtered by selecting the specific bar in the
-respective ``Answers`` field. Additionally, the answers can be viewed by
-issuing a query in the form ``answer:<answer_type>``.
-Useful answer types are ``NXDOMAIN`` or ``SERVFAIL``.
+In the **Answers** window, you can select the desired answer, or in the log list in the **Answer** column, or click the desired answer.
 
 How to search for a domain:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In order to search for a domain's instances in the logs, the easiest way
-is to click on it in the provided l  og history. Alternatively a query
-could be issued in the search engine with a fully qualified domain: ``query:<domain>.``
-Please note the ``.`` at the end of the query.
-
-A more fine-grained search can b e performed by searching for more
-specific domain based on the available domain levels. The acceptable
-search fields are ``domain_l1:<domain_l1>`` and
-``domain_l2:<domain_l2>``.
-
+To search for domains, you can use the **Result Filter** text box to enter the name of the domain you are looking for. Other ways to search for a domain is by clicking the domain in the **Tier 2 Domains** section or directly in the log list in the same column.
 
 How to change the date range of the available data:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Please refer to `How to change the date range of the available
-data <http://docs.whalebone.io/en/latest/data_analysis.html#how-to-change-the-date-range-of-the-available-data>`__
-of the Threats section.
-
+The range of data that can be displayed in the portal preview can be changed in several ways. The basic selection method includes selecting predefined time windows (1,7, 14 or 30 days) from the drop-down list located next to the **results filter**. If desired, a specific time range can be specified using the **Start Date and Time** and **End Date and Time** windows.
 
 How to view DGA (Domain Generation Algorithm) indications:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Whalebone provides a view of indicators of DGA instances. These
-indications can be accessed by using the filter icon and selecting DGA
-as can be seen below. Alternatively the query ``dga.class:1`` can be issued.
-
+DGA indications can be filtered in a similar way as in the case of displaying queries of a certain type, in this case just select the last record in the list - **DGA**
 
 Fulltext filtering
 ~~~~~~~~~~~~~~~~~~
 
-For more advanced usage, a fulltext filter can be applied to construct a composite query. You can filter for many fields however not all of them are searchable in all dashboards.
-Below you can find an overview of fields that are applicable for each dashboard:
-
+For more advanced use, you can use the full-text filter and build a compound query. Fulltext filtering only works in the **Threats** panel.
 .. warning::
    The **content** and **DNS trafic** dashboards does not support fulltext filtering at the moment. Only the clickable elements will result in filtering the data in the content dashboard.
 

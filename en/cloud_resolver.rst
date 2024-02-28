@@ -25,10 +25,10 @@ such ranges can be assigned to localities to easily distinguish between logical 
 
 
 You should forward your DNS traffic towards Whalebone cloud resolvers if this is your preferred deployment option. Cloud resolvers are available on an Anycasted IP address
-**193.32.92.32**.
+**193.32.92.32** and **193.32.92.33**.
 
 .. image:: ./img/resolver_ip.png
-The IP addresses of the resolvers are accessible under **Cloud resolvers** and under the menu **Help** → **DNS resolvers**.
-
    :align: center
+
+The IP addresses of the resolvers are accessible under **Cloud resolvers** and under the menu **Help** → **DNS resolvers**.
 

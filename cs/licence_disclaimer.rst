@@ -1,12 +1,12 @@
 Odmítnutí odpovědnosti za licenci
 ====================
 
-Řešitel Whalebone využívá ve svém řešení následující technologie:
+Resolver Whalebone využívá ve svém řešení následující technologie:
 
 variantu CRC64 s Jonesovým koeficientem
 -----------------------------------------
 
-... kód::
+.. kód::
 
 	Copyright (c) 2012, Salvatore Sanfilippo <antirez at gmail dot com>.
 	Všechna práva vyhrazena.

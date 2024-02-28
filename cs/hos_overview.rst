@@ -21,9 +21,19 @@ Pro Android, výchozí cílový adresář je:
 Porporované operační systémy
 ============================
 
-| Windows Desktop      | Windows Server                 | Android              | iOS           | MacOS           | Linux           |
-|----------------------|--------------------------------|----------------------|---------------|-----------------|-----------------|
-| Windows 7 nebo vyšší | Windows Server 2012 nebo vyšší | Android 5 nebo vyšší | Všechny verze | Není podporován | Není podporován |
++-----------------+--------------------------------+
+| Windows Desktop | Windows 7 nebo vyšší           |
++=================+================================+
+| Windows Server  | Windows Server 2012 nebo vyšší |
++-----------------+--------------------------------+
+| Android         | Android 5 nebo vyšší           |
++-----------------+--------------------------------+
+| iOS             | Všechny verze                  |
++-----------------+--------------------------------+
+| MacOS           | Není podporován                |
++-----------------+--------------------------------+
+| Linux           | Není podporován                |
++-----------------+--------------------------------+
 
 Systémy se operačním systémem Windows 7 musí být aktuální nebo musí mít nainstalovanou alespoň verzi KB3033929.
 

@@ -7,7 +7,7 @@ Akce agenta lze vyvolat pomocí proxy bash skriptu, který se nachází v **/etc
 
 * **sysinfo** - vrací údaje o stavu systému ve formátu JSON.
 	* Parametry: Žádné
-	* Výstup: testované kategorie na testovaném klíči mohou mít dvě hodnoty 'ok' a 'fail'.
+	* Výstup: testované kategorie na testovaném klíči mohou mít dvě hodnoty **OK** a **FAIL**.
 .. sourcecode:: js
 
 	{
@@ -148,7 +148,6 @@ Akce agenta lze vyvolat pomocí proxy bash skriptu, který se nachází v **/etc
 
 * **stop** - zastaví až tři kontejnery 
 	* Parametry: kontejnery k zastavení (až 3), Příklad: ./cli.sh stop resolver lr-agent kresman
-	* Výstup:
 
 .. sourcecode:: js
 
@@ -160,7 +159,7 @@ Akce agenta lze vyvolat pomocí proxy bash skriptu, který se nachází v **/etc
 	
 * **remove** - odstraní až tři kontejnery
 	* Parametry: kontejnery k odstranění (až 3), Příklad: ./cli.sh remove resolver lr-agent kresman
-	* Výstup:
+	
 
 .. sourcecode:: js
 
@@ -172,7 +171,7 @@ Akce agenta lze vyvolat pomocí proxy bash skriptu, který se nachází v **/etc
 	
 * **upgrade** - aktualizuje až tři kontejnery, konfigurace kontejneru je určena pomocí docker-compose v kontejneru agenta (lze také nalézt ve adresáři **/etc/whalebone/agent**).
 	* Parametry: kontejnery k upgradu (až 3), Příklad: ./cli.sh upgrade resolver lr-agent kresman
-	* Výstup:
+	
 
 .. sourcecode:: js 
 
@@ -184,18 +183,18 @@ Akce agenta lze vyvolat pomocí proxy bash skriptu, který se nachází v **/etc
 	
 * **create** - vytvoří kontejnery, kontejnery jsou zadány pomocí docker-compose v kontejneru agenta (lze také nalézt v adresáři **/etc/whalebone/agent**).
 	* Parametry: Žádné, Příklad: ./cli.sh create
-	* Výstup:
+	
 
 .. sourcecode:: js
 
 	{'resolver': {'status': 'success'}
 	
 
-	Pending configuration request deleted.
+
 	
 * **updatecache** - vynutí aktualizaci mezipaměti IoC resolveru (která se používá pro blokování), tato akce by měla být provedena, aby se ručně vynutila aktualizace a obnovení domén přítomných v mezipaměti škodlivých domén.
 	* Parametry: Žádné
-	* Výstup:
+	
 	
 .. sourcecode:: js
 
@@ -203,8 +202,7 @@ Akce agenta lze vyvolat pomocí proxy bash skriptu, který se nachází v **/etc
 	
 * **containers** - seznam kontejnerů a jejich informací, které zahrnují: štítky, obrázek, název a stav. 
 	* Parametry: Žádné
-	* Výstup:
-
+	
 .. sourcecode:: js
 
 	[
@@ -295,21 +293,22 @@ Akce agenta lze vyvolat pomocí proxy bash skriptu, který se nachází v **/etc
 	]
 
 
-Každá z těchto akcí provede podobně pojmenovanou akci a vypíše stav, nebo výstup této akce. Akce **list** a **run** jsou určeny pro scénář, kdy je vyžadováno potvrzení určité akce. Seznam akcí zobrazuje akci, která má být provedena, a změny, které by tato akce provedla u kontejnerů uvedených v této akci. Slouží jako příklad toho, co by se stalo, kdyby byla čekající akce provedena. Spuštěná akce pak provede čekající akci a poté provede úklid. 
+Každá z těchto akcí provede podobně pojmenovanou akci a vypíše stav, nebo výstup této akce. Akce **list** a **run** jsou určeny pro stav, kdy je vyžadováno potvrzení určité akce. Seznam akcí zobrazuje akci, která má být provedena, a změny, které by tato akce provedla u kontejnerů uvedených v této akci. Slouží jako příklad toho, co by se stalo, kdyby byla čekající akce provedena. Spuštěná akce pak provede akci čekající na spuštění.
 
-Akce upgrade a create využívají šablonu docker-compose přítomnou v kontejneru agenta k vytvoření/upgradu požadovaného kontejneru. Tato šablona je přítomna v **/etc/whalebone/agent**, pokud se ji uživatel rozhodne změnit. Tuto změnu je však třeba provést i v šabloně přítomné na **portal.whalebone.io**, pokud se tak nestane, budou lokální změny při příští aktualizaci přepsány z cloudu. 
+Akce **upgrade** a **create** využívají šablonu docker-compose přítomnou v kontejneru agenta k vytvoření/upgradu požadovaného kontejneru. Tato šablona se nachází v **/etc/whalebone/agent**, pokud se ji uživatel rozhodne změnit. Tuto změnu je však třeba provést i v šabloně přítomné na **portal.whalebone.io**, pokud se tak nestane, budou lokální změny při příští aktualizaci přepsány z cloudu. 
 
-Bash skript by měl být vyvolán takto: ``./cli.sh action param1 param2 param3```. Action je název akce a parameters jsou parametry akce. Používají je pouze akce pro zastavení, odebrání a upgrade kontejneru a určují, kterých kontejnerů se má příslušná akce týkat.
+Bash skript by měl být vyvolán takto: ``./cli.sh action param1 param2 param3```. **Action** je název akce a **parameters** jsou parametry akce. Používají je pouze akce pro zastavení, odebrání a upgrade kontejneru a určují, kterých kontejnerů se má příslušná akce týkat.
 
 Přísný režim
 ------------------
-Výchozí volbou agenta je okamžité provedení akcí ze správy cloudu. Je však možné povolit ruční potvrzování požadavků. To dává správci kontrolu nad tím, kdy a co bude provedeno. Chcete-li povolit režim Strict resolveru, vytvořte prosím ticket na podporu Whalebone.
+Výchozí volbou agenta je okamžité provedení akcí ze správy cloudu. Je však možné povolit ruční potvrzování požadavků. To dává správci kontrolu nad tím, kdy a co bude provedeno. Chcete-li povolit Přísný režim resolveru, vytvořte prosím ticket na podporu Whalebone.
 
 Pro vypsání změn, které požadavek zavádí, je třeba použít volbu cli **list**. Pro spuštění požadavku použijte volbu cli **run**. Ve frontě může být pouze jeden čekající požadavek. Nový požadavek z cloudu přepíše předchozí, ale nový požadavek stejně obsahuje celý požadovaný stav. Pro odstranění čekajícího požadavku použijte volbu cli **delete_request**. Akce, které mohou přetrvávat, jsou následující: **upgrade**, **create** a **suicide**. Viz příklady použití příkazů CLI.
 
 * **list** - vypíše čekající příkaz a změny, které by byly provedeny v kontejnerech zadaných v čekající akci, tato akce je určena pro lidskou kontrolu, proto je její formát 
-	* Parametry: Žádné, Příklad: ./cli.sh list
-	* Výstup: 
+	* Parametry: Žádné
+	* Příklad: ./cli.sh list
+
 
 .. code-block:: lua
 
@@ -321,14 +320,16 @@ Pro vypsání změn, které požadavek zavádí, je třeba použít volbu cli **
 	-------------------------------
 	
 * **run** - provede čekající příkaz
-	* Parametry: žádné, Příklad: ./cli.sh run
+	* Parametry: žádné
+	* Příklad: ./cli.sh run
 	
 .. sourcecode:: js
 
 	{'resolver': {'status': 'success'}
 
 * **delete_request** - odstraní čekající požadavek.
-	* Parametry: žádné, Příklad: ./cli.sh delete_request
+	* Parametry: žádné
+	* Příklad: ./cli.sh delete_request
 	
 .. code-block:: lua
 

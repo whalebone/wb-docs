@@ -1,10 +1,10 @@
 Blokační stránky
 ================
  `Zde <https://docs.whalebone.io/cs/latest/video_guides.html#blocking-page-configuration>`__ si můžete prohlédnout videonávod.
-V případě blokování přístupu k doméně (z důvodů bezpečnosti, obsahu nebo regulace) odpovídají resolvery klientům konkrétní IP adresou, která vede na jednu z blokovacích stránek. Zatímco klienti iniciují HTTP(S) spojení směrem k blokované doméně, jsou jim prezentovány vlastní blokovací stránky s různým obsahem na základě důvodu blokování. 
-Pro Blokovací Stránky Whalebone poskytuje vzorovou šablonu, avšak není nutné ji dodržovat a prakticky každá úprava, branding a copywriting je možný. Kód šablony je napsán tak, aby byl kompatibilní s co nejširším rozsahem prohlížečů, aby se předešlo problémům se staršími verzemi.
+V případě blokování přístupu k doméně (z důvodů bezpečnosti, obsahu nebo regulace) odpovídají resolvery klientům konkrétní IP adresou, která vede na jednu z blokovacích stránek. Zatímco klienti iniciují HTTP(S) spojení směrem k blokované doméně, jsou jim zobrazeny vlastní blokační stránky s různým obsahem na základě důvodu blokování. 
+Pro blokační Stránky Whalebone poskytuje vzorovou šablonu, avšak není nutné ji dodržovat a prakticky každá úprava, branding a copywriting je možný. Kód šablony je napsán tak, aby byl kompatibilní s co nejširším rozsahem prohlížečů, aby se předešlo problémům se staršími verzemi.
 
-Různé verze Blokovacích Stránek mohou být přiřazeny různým segmentům sítí v **Resolvery** → **Přiřazení politiky**.
+Různé verze **Blokačních Stránek** mohou být přiřazeny různým segmentům sítí v **Resolvery** → **Přiřazení politiky**.
 
 .. figure:: ./img/blocking-pages-overview.png
    :alt: Přehled blokačních stránek
@@ -29,7 +29,7 @@ Navíc, každá verze může mít různé možnosti lokalizace. Jazyk blokační
 
 Pro každou lokalizaci je dostupné několik možností. V příkladu výše má anglická verze následující možnosti:
 
-**Option 1.** – Use Template:
+**1. Možnost** – Použití šablony:
 
   Při použití šablony jsou zadané informace vloženy přímo do kódu šablony. To je nejrychlejší a nejjednodušší způsob, jak přizpůsobit blokační stránku.
 
@@ -37,17 +37,16 @@ Pro každou lokalizaci je dostupné několik možností. V příkladu výše má
    :alt: Použití šablony
    :align: center
    
-   Použití šablony
 
 
 .. note:: Nastavení blokovací stránky lze provést kliknutím na tlačítko **Kouzelná hůlka**. Při použití šablony dojde k přemázání předešlé konfigurace.
    
 
-**Option 2.** – Výchozí lokalizace blokační stránky:
+**2. Možnost** – Výchozí lokalizace blokační stránky:
 
   Tato možnost umožňuje přizpůsobit výchozí jazyk blokační stránky. V případě, že některý prohlížeč neuvádí svůj preferovaný jazyk, funguje "Výchozí" jazyk jako záložní mechanismus. Výchozí lokalita je označena pomocí symbolu hvězdičky (*) vedle typu jazyka.
 
-**Option 3.** – Odstranění lokalizace blokační stránky:
+**3. Možnost** – Odstranění lokalizace blokační stránky:
 
 Lokalitu lze smazat kliknutím na ikonu **Koše**.
 
@@ -64,8 +63,8 @@ Po editaci a uložení změn na blokačních stránkách je důležité, aby byl
 .. tip:: Blokovací Stránky jsou zobrazovány přímo z webového serveru na Resolveru. Stránky se očekávají jako jediný soubor, takže veškeré další zdroje (CSS, obrázky, skripty) musí být buď přímo vloženy do HTML kódu, nebo dostupné z veřejně přístupného webového serveru. Resolver neneposkytuje žádnou možnost vkládat jiný obsah.
 
 
-Podpis blokačních stránek s CA
---------------------------------
+Podpis blokačních stránek pomocí Certifikační Autority
+------------------------------------------------------
 
 Pro nasazení, kde máte kontrolu nad koncovými body (typicky firemní prostředí s Group Policy) a můžete do jejich úložišť vložit podepsané SSL certifikáty a díky tomu lze podepsat blokační stránku přímo za provozu. To vede k tomu, že prohlížeče přímo přecházejí na blokovací stránku bez zobrazení bezpečnostního varování, které je obvykle přítomno. Resolver v podstatě provádí MITM pokaždé, když provádí přesměrování na blokační stránku, takže je očekáváno varování prohlížeče.
 
@@ -104,21 +103,21 @@ Pro nasazení, kde máte kontrolu nad koncovými body (typicky firemní prostře
    openssl genpkey -algorithm RSA -out /certs/ca.key
 
 
-**Step 3.** – Vytvořte a podepište certifikát:
+**Krok 3.** – Vytvořte a podepište certifikát:
 
 .. code-block:: shell
 
    openssl req -x509 -new -nodes -key /certs/ca.key -sha256 -days 1024 -out /certs/ca.crt -config /certs/v3_cfg
 
 
-**Step 4.** – Exportujte .pfx soubor a uložte ho do /certs/ folder:
+**Krok 4.** – Exportujte .pfx soubor a uložte ho do /certs/ folder:
 
 .. code-block:: shell
 
    openssl pkcs12 -export -in ca.crt -inkey ca.key -out ca.pfx -certpbe PBE-SHA1-3DES -keypbe PBE-SHA1-3DES -macal   
 
 
-**Step 5.** – Pošlete název souboru a heslo na podporu Whalebone, aby byla konfigurace trvale uložena na backendu a zajistilo se, že nebude smazána při restartu VM nebo kontejneru.
+**Krok 5.** – Pošlete název souboru a heslo na podporu Whalebone, aby byla konfigurace trvale uložena na backendu a zajistilo se, že nebude smazána při restartu VM nebo kontejneru.
 
 
 

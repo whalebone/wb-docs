@@ -1,19 +1,19 @@
 Bezpečnostní politiky
 =====================
 
-Videoprůvodce základní konfigurací bezpečnostních politiky krok za krokem si můžete prohlédnout `zde. <https://docs.whalebone.io/en/latest/video_guides.html#basic-configuration>`_
+Videoprůvodce základní konfigurací bezpečnostních politiky krok za krokem si můžete prohlédnout `zde. <https://docs.whalebone.io/cs/latest/video_guides.html#basic-configuration>`_
 
-Videoprůvodce krok za krokem s hlubším vysvětlením jak nastavovat bezpečnostní politiky naleznete `zde. <https://docs.whalebone.io/en/latest/video_guides.html#security-policies>`_
+Videoprůvodce krok za krokem s hlubším vysvětlením jak nastavovat bezpečnostní politiky naleznete `zde. <https://docs.whalebone.io/cs/latest/video_guides.html#security-policies>`_
 
-Chcete-li pomocí Whalebone provádět filtraci provozu, musíte nakonfigurovat bezpečnostní politiku. Při instalaci je Whalebone dodáván s **výchozí** bezpečnostní politikou, která je nastavena tak, aby zahrnovala všechny typy hrozeb a nastavuje prahové hodnoty na hodnotu 80/50. Tato politika se také automaticky aplikuje na každý nově nainstalovaný resolver. 
+Chcete-li pomocí Whalebone provádět filtraci provozu, musíte nakonfigurovat bezpečnostní politiku. Při instalaci je Whalebone dodáván s **výchozí** bezpečnostní politikou, která je nastavena tak, aby zahrnovala všechny typy hrozeb a nastavuje prahové hodnoty na hodnotu **80/50**. Tato politika se také automaticky aplikuje na každý nově nainstalovaný resolver. 
 V každé politice lze nakonfigurovat několik možností:
 
 Prahové hodnoty pro filtrování škodlivých domén
 ----------------------------------------------
 Každá doména v naší databázi hrozeb má určitou hodnotu skóre. Skóre vyjadřuje, jak škodlivá je podle nás daná doména. V zásadách upravujete dvě hodnoty související se skóre:
 
-* **Blokace** - Domény se skóre vyšším nebo rovným této hodnotě budou systémem Whalebone blokovány a na požadavek klienta bude odpovězeno IP adresou blokující stránky. 
-* **Audit** - Domény se skóre vyšším nebo rovným této hodnotě, ale nižším, než je prahová hodnota pro blokování, budou monitorovány. Požadavek bude povolen a odpověď bude doručena buď z mezipaměti, nebo provedením úplné rekurze DNS. Požadavky však budou sledovány v panelu hrozeb pro případné pozdější prošetření.
+* **Blokace** - Domény se skóre vyšším nebo rovným této hodnotě budou Whalebone resolverem blokovány a na požadavek klienta bude odpovězeno IP adresou blokující stránky. 
+* **Audit** - Domény se skóre vyšším nebo rovným této hodnotě, ale nižším, než je prahová hodnota pro blokování, budou monitorovány. Požadavek na překlad bude povolen a odpověď bude doručena buď z mezipaměti, nebo provedením úplné rekurze DNS. Požadavky však budou logovány v panelu hrozeb pro případné pozdější prošetření.
 Jednotlivé akce lze vypnout - např. vypnout blokování pro účely testování.
 
 Hodnoty posuvníku definují pravděpodobnost, že daná doména je škodlivá, na stupnici od **0** do **100**, přičemž **100** je nejškodlivější.
@@ -116,9 +116,10 @@ Obshahová filtrace
 * **P2P**: domény spojené s peer to peer sítěmi, kde uživatelé sdílejí multimediální obsah,
 * **Sledování**: webové a e-mailové sledovací systémy.
 
-  Filtr obsahu lze použít i pro konkrétní denní dobu. Po zaškrtnutí určité kategorie se vedle ní zobrazí ikona hodin. Pokud na ikonu hodin kliknete, můžete pro tuto kategorii přidat nový plán. Pro stejnou kategorii může být aktivních více rozvrhů. Takto můžete povolit přístup k sociálním sítím pouze během polední přestávky a po skončení pracovní doby. Nastavení dokončete kliknutím na tlačítko **Použít** a **Uložit** zásady zabezpečení.
-   .. image:: ./img/schedules.png
-    :align: center
+Filtr obsahu lze použít i pro konkrétní denní dobu. Po zaškrtnutí určité kategorie se vedle ní zobrazí ikona hodin. Pokud na ikonu hodin kliknete, můžete pro tuto kategorii přidat nový plán. Pro stejnou kategorii může být aktivních více rozvrhů. Takto můžete povolit přístup k sociálním sítím pouze během polední přestávky a po skončení pracovní doby. Nastavení dokončete kliknutím na tlačítko **Použít** a **Uložit** zásady zabezpečení.
+   
+.. image:: ./img/schedules.png
+  :align: center
 
 
-    .. note:: Použitím plánu **povolíte** přístup k doménám z dané kategorie obsahu v daném časovém období.
+.. note:: Použitím plánu **povolíte** přístup k doménám z dané kategorie obsahu v daném časovém období.

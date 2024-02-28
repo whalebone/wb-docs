@@ -77,7 +77,7 @@ V případě potřeby si můžete snadno vytvořit vlastní seznam blokování n
 Pokud v našem seznamu nenajdete svou zemi, dejte nám vědět a my se postaráme o nápravu.
 
 Pokud jste si aktivovali doplněk pro filtrování obsahu, můžete jej nakonfigurovat také zde. Vytvořte si libovolný počet jedinečných zásad zabezpečení.
-Poté můžete přejít do konfigurace daného řešení a přiřadit tyto zásady různým IP adresám nebo rozsahům. Stačí, když v detailu resolveru přejdete do části "Přiřazení zásad".
+Poté můžete přejít do konfigurace daného řešení a přiřadit tyto zásady různým IP adresám nebo rozsahům. Stačí, když v detailu resolveru přejdete do části **Přiřazení zásad**.
 a přiřadit zásady konkrétní IP adrese nebo rozsahu. Nezapomeňte nastavení uložit.
 
 .. raw:: html
@@ -127,8 +127,8 @@ Analýza
 
 Analýza domény
 ----------------
-Existují dva způsoby, jak ručně provést analýzu domény v databázi Whalebone. Jedním ze způsobů je pomocí nástroje "Analýza domény" z uživatelské nabídky.
-Druhou možností je zkontrolovat konkrétní doménu přímo z kontextové nabídky v přehledech "Hrozby" nebo "DNS provoz". Poté se zobrazí všechny informace 
+Existují dva způsoby, jak ručně provést analýzu domény v databázi Whalebone. Jedním ze způsobů je pomocí nástroje **Analýza domény** z uživatelské nabídky.
+Druhou možností je zkontrolovat konkrétní doménu přímo z kontextové nabídky v přehledech **Hrozby** nebo **DNS provoz**. Poté se zobrazí všechny informace 
 které společnost Whalebone o dané doméně shromáždila. Jako příklad jsme použili stránku **kidos-bank.ru**. Vidíme, že s doménou jsou spojeny různé typy hrozeb.
 Její skóre je 80-100 a v březnu 2021 byla označena jako nebezpečná. V následujících grafech můžete vidět vývoj detekcí, respektive DNS 
 požadavků na překlad domény v síti. Výsledek analýzy také ukazuje, že doméně není přiřazena kategorie obsahu a její blokování nebylo provedeno 

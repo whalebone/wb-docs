@@ -1,11 +1,11 @@
 Coudové nasazení
 ================
 
-Whalebone lze nasadit v několika scénářích, které lze dokonce kombinovat tak, aby splňovaly požadavky konkrétních sítí. Kombinace cloudového a místního DNS resolveru s jediným portátálem pro správu je vhodná i pro složité a distribuované sítě.
+Whalebone lze nasadit v několika scénářích, které lze dokonce kombinovat tak, aby splňovaly požadavky konkrétních sítí. Kombinace cloudového a lokálního DNS resolveru s jediným portátálem pro správu je vhodná i v případě složitých, distribuovaných sítí.
 
 .. tip:: Všechny níže uvedené možnosti lze kombinovat dohromady. Různé síťové segmenty a zóny mohou mít různé požadavky a možnosti.
 
-.. tip:: Pokud ani jeden z níže uvedených scénářů konfigurace nevyhovuje vašemu případu použití, obraťte se na podporu společnosti Whalebone a my vám pomůžeme s návrhem architektury, která bude vyhovovat vašim potřebám a požadavkům.
+.. tip:: Pokud ani jeden z níže uvedených scénářů konfigurace nevyhovuje Vašemu preferovanému případu použití, obraťte se na podporu společnosti Whalebone a my vám pomůžeme s návrhem architektury, která bude vyhovovat vašim potřebám a požadavkům.
 
 
 Použití stávající DNS pro přesměrování na Whalebone Cloud DNS

@@ -38,7 +38,7 @@ Po dokončení klikněte na tlačítko **Přidat** a vytvořte tuto skupinu.
     :align: center
 
 
-Kliknutím na tlačítko (5) **Install to group** zobrazíte pokyny k instalaci a/nebo získáte odkaz ke stažení instalačního programu HOS.
+Kliknutím na tlačítko (5) **Install to group** se zobrazí pokyny k instalaci a/nebo můžete použít odkaz ke stažení instalačního programu HOS.
 
 .. image:: ./img/hos-sbs-4.png
     :align: center
@@ -67,7 +67,7 @@ Najděte složku, ve které je instalátor umístěn. Měl by to být soubor s n
 Otevřete příkazový řádek, změňte adresář na složku, kde je instalátor, a vložte (8) příkaz myší (klikněte pravým tlačítkem myši). Spusťte příkaz. To vyžaduje oprávnění správce.
 
 
-Instalační program má minimální uživatelské rozhraní. Pokud se neobjevila žádná chybová zpráva, považujte instalaci za úspěšnou.
+Instalační program má minimální uživatelské rozhraní.
 
 .. image:: ./img/hos-sbs-6.png
     :align: center
@@ -77,5 +77,5 @@ Instalační program má minimální uživatelské rozhraní. Pokud se neobjevil
 .. image:: ./img/hos-sbs-7.png
     :align: center
 
-Zařízení je nyní viditelné na webové stránce Whalebone Portal.
+Zařízení je nyní viditelné na Whalebone Portálu.
 

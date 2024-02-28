@@ -47,10 +47,11 @@ Bezpečnostní politiky lze aplikovat přidáním rozsahů IP ve vstupních okne
 
    Přiřazení bezpečnostní politiky.
    
-In order to provide a better understanding let's consider an example with the network range ``10.10.0.0/16``. 
-We have created 3 different policies: 
+Pro lepší pochopení uvažujme příklad s rozsahem sítě ``10.10.0.0/16``. 
+Vytvořili jsme 3 různé politiky:
 
 Pro lepší pochopení uvažujme příklad s rozsahem sítě ``10.10.0.0/16``. 
+
 Vytvořili jsme 3 různé zásady: 
 
 * **Default**: zásada, kterou chceme použít pro celou síť, jedná se o nejobecnější zásadu.
@@ -59,7 +60,6 @@ Vytvořili jsme 3 různé zásady:
 .. image:: ./img/policies-example.png
    :align: center
 
-Příklad nastavení bezpečnostních politik.
 
 .. note:: První možnost nastavení zásad je pro všechny nedefinované rozsahy. V případě různých zásad ovlivňujících stejný rozsah se použije ta, která je více granulární.
 
@@ -80,10 +80,9 @@ Následující obrázek ukazuje proces přiřazování bezpečnostních politik 
 .. image:: ./img/policy_task.png
    :align: center
 
-   Požadované přiřazení politik k rozsahům.
 .. note::  Po přidání politik k rozsahům je nutné kliknout na **Uložit do resolveru**, aby se přidání projevilo. Poté budou změny ověřeny a vyskakovací zpráva poskytne další informace.
 
-Pro přiřazení dalších položek ke stávajícímu přiřazení lze přidat nový rozsah sítí pomocí `nového řádku` jako oddělovače.
+Pro přiřazení dalších položek ke stávajícímu přiřazení lze přidat nový rozsah sítí pomocí **enteru** jako oddělovače.
 V návaznosti na předchozí příklad bychom v případě, že bychom chtěli přidat podsíť ``10.10.30.0/24`` do bezpečnostní politiky **Exception**:
 
 .. image:: ./img/add-range.gif
@@ -95,7 +94,7 @@ Konfigurace blokačních stránek
 
 Podobně jako zásady zabezpečení lze k určitým rozsahům přiřadit i různé blokační stránky.
 
-Prvním krokem je v detailu **Lokálního resolveru** v záložce **Přiřazení politik** v části **Nastavení blokační stránky**. Jsou dostupná dvě pole, do kterých je třeba vyplnit adresy IPv4 a IPv6 blokovacích stránek.
+Prvním krokem je v detailu **Lokálního resolveru** v záložce **Přiřazení politik** v části **Nastavení blokační stránky**. Jsou dostupná dvě pole, do kterých je třeba vyplnit adresy IPv4 a IPv6 blokačních stránek.
 
 .. tip:: Blokační stránky jsou umístěny **přímo** na resolverech, takže je třeba použít IP adresy, které jsou inzerovány klientům. Klienti pak budou při blokování přesměrováni na IP adresu resolveru. Zajistěte, aby byly na firewallu přístupné porty 80 a 443.
 

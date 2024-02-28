@@ -22,9 +22,10 @@ tyto rozsahy lze přiřadit lokalitám, aby bylo možné snadno rozlišit jednot
 .. tip:: Při testování Whalebone (např. přidáním testovací domény na blacklist) nezapomeňte, že mnoho DNS záznamů může být uloženo v cache kdekoli mezi resolverem a uživatelem (včetně prohlížeče, operačního systému nebo forwarderů). Testování ihned po změně konfigurace by proto mohlo selhat a doba, než se ochrana stane aktivní, by se mohla lišit v závislosti na TTL konkrétního záznamu DNS (pokud by všechny mezipaměti po cestě skutečně dodržovaly hodnotu TTL).
 
 Pokud je tato možnost nasazení preferována, měli byste provoz DNS přesměrovat na cloudové resolvery Whalebone. Cloudové resolvery jsou k dispozici anycast IP adrese
-**193.32.92.32**.
+**193.32.92.32** a **193.32.92.33**.
 
 .. image:: ./img/resolver_ip.png
-IP adresy resolverů jsou dostupné v části **Cloudové resolvery** a v nabídce **Nápověda** → **DNS překladače**.
    :align: center
+
+IP adresy resolverů jsou dostupné v části **Cloudové resolvery** a v nabídce **Nápověda** → **DNS překladače**.
 

@@ -132,14 +132,14 @@ disconnection and server unavailability.
 How to import the Whalebone Template 
 ------------------------------------
 
-- To import the Whalebone template, go to Zabbix Configuration. Under the configuration go to templates. 
+- To import the Whalebone template, go to Zabbix **Configuration**. Under the configuration go to **templates**. 
   
 	.. figure:: ./img/importemplate.PNG
 		:width: 350pt
 
 	
 
-- To import the Whalebone template, go to Zabbix Configuration. Under the configuration go to templates. 
+- On the **Templates** tab, select **Import** and select the template file.
 
 	.. figure:: ./img/importtemplate2.PNG
 		:width: 350pt
@@ -148,23 +148,23 @@ How to import the Whalebone Template
 How to add the resolver in Zabbix Monitoring
 --------------------------------------------
 
-- To add the host, go to Configuration then click hosts. Click create host then provide the hostname, groups. After that add the resolver ip address. 
+- To add the host, go to Configuration then click **hosts**. Click **create host** then provide the hostname, groups. After that add the resolver ip address. 
   
   	.. figure:: ./img/addhost.PNG 
 	 	:width: 350pt
 
 
-- Under the interface select the SNMP> Provide the SNMP Ip address > Port 161 > SNMP version SNMPv2 then add the SNMP Community.
+- Under the interface select the **SNMP** → Provide the SNMP **Ip address** → Port **161** → SNMP version SNMPv2 then add the **SNMP Community**.
 
 	.. figure:: ./img/addhost1.PNG
 
-- After adding the host go to templates tab > Select the whalebone template. Click select and add. 
+- After adding the host go to **templates** tab → Select the whalebone template. Click **select** and **add**. 
 
 	.. figure:: ./img/addhost3.PNG
 		:width: 350pt
 
 
-- After selecting the Whalebone template go back to host and click add. On the hosts tab we can see that the resolver has been added on the Zabbix. 
+- After selecting the Whalebone template go back to **host** and click **add**. On the hosts tab we can see that the resolver has been added on the Zabbix. 
 
 	.. figure:: ./img/addhost4.PNG
 
@@ -175,25 +175,25 @@ How to add the resolver in Zabbix Monitoring
 How to add the Whalebone widget on Zabbix dashboard
 ---------------------------------------------------
 
-- To add the dashboard, go to Monitoring then Dashboard. On the dashboard Global view, we can see the edit dashboard. Click the edit dashboard to add new graphs. 
+- To add the dashboard, go to **Monitoring** then **Dashboard**. On the dashboard Global view, we can see the **edit dashboard**. Click the edit dashboard to add new graphs. 
 
 	.. figure:: ./img/dashboard.PNG
 
 
 .. note:: Before adding graphs on the dashboard make sure that the host already detected the graphs. You can find the grapns on the configuration > hosts > graphs.
 
-- Click the dashboard and add widget > Select type > Graph. Provide a name of the widget. 
+- Click the **edit dashboard** and **add widget** → Select **type** → **Graph**. Provide a name of the widget. 
 
 	.. figure:: ./img/dashboard2.PNG
 		:width: 350pt
 
 
-- Select a data set which is the hostname and select the item pattern where we can find the whalebone template.
+- Select a **data set** which is the hostname and select the **item pattern** where we can find the whalebone template.
 
 	.. figure:: ./img/dashboard4.PNG 
 
 
-- Select the items you want to add on the widget for graphical visualization. After the adding item patern. Select base color for graphs then you can adjust the width, point size, transparency, and fill.
+- Select the items you want to add on the widget for graphical visualization. After the adding **item** patern. Select base color for graphs then you can adjust the width, point size, transparency, and fill.
 
 	.. figure:: ./img/dashboard5.PNG
 		:width: 350pt
@@ -217,34 +217,34 @@ Triggers are logical expression that "evaluate" data gathered by items and repre
 Therefore, if the incoming data surpass the acceptable state, a trigger is "fired" - or changes status to PROBLEM. Example if the whalebone resolver encountered 1,000 NXDOMAIN the trigger will be
 intialized to notify us that the data has exceeded from the set threshold. 
 
-- To configure the trigger, go to Configuration - Hosts. Click the triggers tab. 
+- To configure the trigger, go to **Configuration** - **Hosts**. Click the **triggers** tab. 
 
 	.. figure:: ./img/trigger.PNG
 		:width: 350pt
 
 
-- Create trigger > Provide name then add an expression. Let say we want to trigger if the resolver NXDOMAIN exceeds more than 60. Select severity for this trigger. 
+- Create **trigger** → Provide **name** then add an expression. Let say we want to trigger if the resolver **NXDOMAIN** exceeds more than **60**. Select severity for this trigger. 
 
 	.. figure:: ./img/trigger2.PNG
 		:width: 350pt
 
 
-- Click add > On the condition tab > Select the item. On here let's select the NXDOMAIN. 
+- Click **add** → On the **condition** tab → **Select the item**. On here let's select the **NXDOMAIN**. 
 
 	.. figure:: ./img/trigger3.PNG
 
 
-- On the condition tab, set the count > time shift now > result. On the result select an operand then set the value > 60. This condition will trigger if the NXDOMAIN exceed to 60. 
+- On the **condition** tab, set the **count** → **time shift - now-h** → **result**. On the **result** select an operand then set the value to **60**. This condition will trigger if the NXDOMAIN exceed to 60. 
 
 	.. figure:: ./img/trigger4.PNG
 
 
-- Click insert and save the triggers. Make sure the trigger is enabled on the template. 
+- Click **insert** and save the triggers. Make sure the trigger is enabled on the template. 
 
 	.. figure:: ./img/trigger5.PNG
 
 
-- On the problems tab, check the NXDOMAIN that exceeds the threshold.  
+- On the **problems** tab, check the **NXDOMAIN** that exceeds the threshold.  
 
 	.. figure:: ./img/trigger6.PNG
 
@@ -261,19 +261,19 @@ Triggers action are logical expression that "evaluate" data gathered by items an
 if the incoming data surpass the acceptable state, a trigger is "fired" or changes status to PROBLEM. For this example, lets say the NXDOMAIN exceeds to 60. The trigger will initialize an email for the admin 
 reporting or notification.
 
-- First step to set up a trigger action by using an email. Go to Administration and Media types. Create media type and provide Name > SMTP server > port > SMTP email > user and pass. 
+- First step to set up a trigger action by using an email. Go to **Administration** and **Media types**. Create media type and provide Name → SMTP server → port → SMTP email > user and pass. 
 
 	.. figure:: ./img/triggeraction.PNG
 		:width: 350pt
 		
 
-- After you setup the email > Go to Configuration > Actions > Action triggers. On the trigger Actions > Create Action > Provide a name > Add a condition. 
+- After you setup the email → Go to **Configuration** → **Actions** → **Action triggers**. On the trigger **Actions** → **Create Action** → Provide a name → **Add a condition**. 
 
 	.. figure:: ./img/triggeraction2.PNG
 		:width: 350pt
 		
 
-- On the new condition window, select the ff: Type: Trigger Operator : equals triggers: Select the NXDOMAIN.
+- On the **new condition** window, select the Type: **Trigger Operator**: **equals** triggers: Select the **NXDOMAIN**.
 
 	.. figure:: ./img/triggeraction3.PNG
 		:width: 350pt
@@ -285,13 +285,13 @@ reporting or notification.
 		:width: 350pt
 		 
 
-- On the Actions > Click the Operation > Select the default operation to 1 min. On the operations click add. 
+- On the **Actions** → Click the **Operation** → Select the default operation to 1 min. On the operations click **add**. 
 
 	.. figure:: ./img/triggeraction5.PNG
 		:width: 350pt
 		
 
-- Select the step duration to 1 minute. On the operation click add > Send to users > Add the Zabbix admin > Send only to > Email.
+- Select the step duration to 1 minute. On the operation click **add** → **Send to users** → **Add the Zabbix admin** → Send only to → **Email**.
 
 	.. figure:: ./img/triggeraction6.PNG
 		:width: 350pt
@@ -302,7 +302,7 @@ How to view the pre-defined Whalebone dashboard
 
 For reference, the Whalebone template ha a sample dashboard that overviews the data from the resolver.
 
-- To access the dashboard, go to monitoring > hosts. Then in the host click the dasboard. 
+- To access the dashboard, go to **monitoring** → **hosts**. Then in the **host** click the dasboard. 
 
 	.. figure:: ./img/templatedashboard.PNG
 		:width: 250pt

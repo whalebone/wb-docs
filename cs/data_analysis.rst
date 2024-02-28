@@ -10,14 +10,14 @@ Hrozby jsou zvláštní události, při kterých dochází k požadavku DNS na d
 druhým je její **Block**. Možnost **Audit** pouze zaznamená doménu, ale přístup je uživateli umožňěn. 
 
 Akce, která má být provedena, závisí na nastavení bezpečnostních politik, které jsou
-přiřazeny konkrétnímu resolveru. Více informací naleznete v
+přiřazeny konkrétnímu resolveru. Více informací naleznete v sekci
 `Bezpečnostní politiky <http://docs.whalebone.io/cs/latest/security_policies.html>`__.
 
 Existují některé předkonfigurované filtry, které lze aplikovat na data. Ukázky některých dotazů jsou zobrazeny níže. Tyto dotazy zobrazují
 většinu případů použití, ale není zde žádné pevné omezení, protože
-dostupný vyhledávač je **full-textový** a lze sestavit *jakýkoli* dotaz.
+dostupný vyhledávač je **full-textový** a lze sestavit **jakýkoli** dotaz.
 
-Videoprůvodce krok za krokem si můžete prohlédnout `zde. <https://docs.whalebone.io/en/latest/video_guides.html#threats>`__
+Videoprůvodce krok za krokem si můžete prohlédnout `zde. <https://docs.whalebone.io/cs/latest/video_guides.html#threats>`__
 
 
 Vyhledání událostí typu audit/block:
@@ -28,12 +28,12 @@ Existují dvě možnosti filtrování různých typů událostí. První možnos
 Vyhledání domény:
 ~~~~~~~~~~~~~~~~~~~~
 
-Nejjednodušším způsobem vyhledání domény lze pomocí kliknutí na konkrétní doménu v hostorii logů. Druhou možností je pomocí zadání názvu domény do pole **Filtr výsledků**
+Nejjednodušším způsobem vyhledání domény lze pomocí kliknutí na konkrétní doménu v hostorii logů. Druhou možností je pomocí zadání názvu domény do pole **Filtr výsledků**.
 
 Vyhledání konkrétní IP adresy:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Vyfiltrování logů od konkrétní IP adresy je možné po vybrání konkrétní zdrojové IP adresy v historii logů. Druhou možností je pomocí zadání názvu domény do pole **Filtr výsledků**
+Vyfiltrování logů od konkrétní IP adresy je možné po vybrání konkrétní zdrojové IP adresy v historii logů. Druhou možností je pomocí zadání názvu domény do pole **Filtr výsledků**.
 
 
 Vyhledání události na základě konkrétní kategorie hrozeb:
@@ -50,9 +50,8 @@ Jednoduchým způsobem vyhledání útoků je možné vybráním konkrétní kat
 Jak změnit časový rozsah událostí:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-| Rozsah data údajů, které lze zobrazit v náhledu na portálu, lze
-  měnit několika způsoby.
-| Mezi základní způsob výběru se řadí volba předdefinovaných časových oken (1,7, 14 nebo 30 dní) v rozbalovacím seznamu umístěném vedle **filtru výsledků**. V případě potřeby je možné specifikovat konkrétní časové rozmezí pomocí oken **Datum a čas začátku** a **Datum a čas konce**.
+Rozsah data údajů, které lze zobrazit v náhledu na portálu, lze měnit několika způsoby.
+Mezi základní způsob výběru se řadí volba předdefinovaných časových oken (1,7, 14 nebo 30 dní) v rozbalovacím seznamu umístěném vedle **filtru výsledků**. V případě potřeby je možné specifikovat konkrétní časové rozmezí pomocí oken **Datum a čas začátku** a **Datum a čas konce**.
 
 
 Analýza domény:
@@ -101,13 +100,10 @@ Vyhledání domény:
 K vyhledání domén lze využít textové pole **Filtr výsledků** do kterého lze zadat název hledané domény. Mezi další možnosti, jak vyhledat doménu je zakliknutí domény v části **Domény 2. řádu** popř. přímo v seznamu logů ve stejnojmenném sloupci.
 
 
-
 Jak změnit časový rozsah událostí:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-| Rozsah data údajů, které lze zobrazit v náhledu na portálu, lze
-  měnit několika způsoby.
-| Mezi základní způsob výběru se řadí volba předdefinovaných časových oken (1,7, 14 nebo 30 dní) v rozbalovacím seznamu umístěném vedle **filtru výsledků**. V případě potřeby je možné specifikovat konkrétní časové rozmezí pomocí oken **Datum a čas začátku** a **Datum a čas konce**.
+Rozsah data údajů, které lze zobrazit v náhledu na portálu, lze měnit několika způsoby. Mezi základní způsob výběru se řadí volba předdefinovaných časových oken (1,7, 14 nebo 30 dní) v rozbalovacím seznamu umístěném vedle **filtru výsledků**. V případě potřeby je možné specifikovat konkrétní časové rozmezí pomocí oken **Datum a čas začátku** a **Datum a čas konce**.
 
 
 How to view DGA (Domain Generation Algorithm) indications:

@@ -1,6 +1,6 @@
 Blocking Pages
 ============================
-You can watch step-by-step video guide `here <https://docs.whalebone.io/en/latest/video_guides.html#blocking-page-configuration>`__. 
+  You can watch step-by-step video guide `here <https://docs.whalebone.io/en/latest/video_guides.html#blocking-page-configuration>`__. 
 In case of blocking access to a domain (due to security, content or regulatory reasons), the resolvers are answering to the clients with a specific IP address that leads to one of the Blocking pages. While the clients initiate the HTTP(S) connections towards the blocked domain, they are presented with a custom Blocking page with different content based on the reason of the blocking. 
 For the Blocking Pages Whalebone provides sample template, however, they do not have to be followed and virtually every modification, branding and copywriting is possible. The template code is written to be compatible with the widest range of browsers to avoid problems with older versions.
 
@@ -38,7 +38,6 @@ For each Locale several options are available. In the example above, the English
    :alt: Template Customization
    :align: center
    
-   Template Customization
 
 
 .. note:: Setting the blocking page could be done clicking on the **Magic wand** button. Note that it will override the previous version of blocking page.
@@ -60,7 +59,7 @@ The editor also exposes a "Verification" interface which parses the final HTML c
 .. note:: Each Version of the Blocking Page has unique characteristics that can be selected. For example, the Security Blocking Page can include a "Bypass" button which is not available in the respective Regulatory and Blacklist versions.
 
 
-After editing and saving the changes to the Blocking Pages it is important that they are applied to the individual resolvers. More information can be found at the :ref:`Configure Blocking Pages Section<Configure Blocking Pages>`
+After editing and saving the changes to the Blocking Pages it is important that they are applied to the individual resolvers.
 
 
 .. tip:: The Blocking Pages are served from a web server directly on the Resolver. The pages are expected to be a single file so any additional resources (CSS, images, scripts) must be either embedded directly in the HTML code or served from a publicly accessible web server. The resolver does not provide any option to serve other content.

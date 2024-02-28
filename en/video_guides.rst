@@ -68,14 +68,14 @@ One of the key components that need to be configured when implementing Whalebone
 which leaves you with the audit mode. In this mode, Whalebone monitors the incidents without preventing them from happening. The core of the configuration of audit and blocking is a so-called "score"
 which is assigned to individual domains by our algorithm. The higher the score, the more dangerous the domain. It's up to you to choose from the preset levels of sensitivity or decide to adjust the threshold manually.
 
-We advise ISP networks to "block carefully" The lower the threshold, the more sensitive the blocking. Keep in mind, though, that setting a low threshold increases the risk of false positives. 
+We advise ISP networks to **block carefully** The lower the threshold, the more sensitive the blocking. Keep in mind, though, that setting a low threshold increases the risk of false positives. 
 You can also choose different types of threats to be blocked.
 
 If needed, you can easily create your own blocking list or define domains that should always be accessible.  Our customers love that Whalebone can meet the legal blocking requirement of their government for them.
 If you don't find your country our list, let us know and we'll make sure it gets there.
 
 If you activated the content filtering add-on, you can configure it here as well. Create as many unique security policies as you want.
-Afterward, you can go into the configuration of a given resolve and assign these policies to different IP addresses or ranges. All you need to do is to go to the "Policy Assignment" section in the resolver detail
+Afterward, you can go into the configuration of a given resolve and assign these policies to different IP addresses or ranges. All you need to do is to go to the **Policy Assignment** section in the resolver detail
 and assign a policy to a particular IP address or rangeMake sure to save the settings.
 
 .. raw:: html
@@ -88,11 +88,11 @@ and assign a policy to a particular IP address or rangeMake sure to save the set
 Blocking page configuration
 ---------------------------
 With Whalebone, you can fully customize blocking pages, which appear in case someone attempts to access a dangerous website in their browser. This tool needs a local resolver, where you can switch the blocking page from cloud to on-premise. 
-In order to configure blocking pages, go to "Configuration" and then "Blocking pages". You can adjust the existing ones or create a brand-new one. When creating a new blocking page, you can define its name, the domain, and the language of the page.
+In order to configure blocking pages, go to **Configuration** and then **Blocking pages**. You can adjust the existing ones or create a brand-new one. When creating a new blocking page, you can define its name, the domain, and the language of the page.
 Afterward, fill in all the necessary data including the name of the company, its logo and contact information. Naturally, you can change the information later on. If you want to do so, use the magic stick or edit directly in the HTML code. You can modify the design as well as the content of the blocking page as you choose. All you need to do is to preserve the necessary variables shown over the blocking field.
 
-Once you have saved the modified blocking page, go to "Resolvers" and select the resolver to which you would like to apply the blocking page. Go to "Policy assignment" and apply the blocking page to a given resolver.
-Alternatively, you can assign it to a specific IP address or range. While you're at it, you can also activate a "bypass", which will alow the user to access the blocked domain nonetheless.
+Once you have saved the modified blocking page, go to **Resolvers** and select the resolver to which you would like to apply the blocking page. Go to "Policy assignment" and apply the blocking page to a given resolver.
+Alternatively, you can assign it to a specific IP address or range. While you're at it, you can also activate a **bypass**, which will alow the user to access the blocked domain nonetheless.
 
 .. raw:: html
 
@@ -126,13 +126,13 @@ Analysis
 
 Domain analysis
 ----------------
-There are two ways to manually perform an analysis of a domain against the Whalebone database. One way to open the "Domain Analysis" tool is from the user's menu.
-The other option is to check a specific domain from the context menu in "Threats" or "DNS traffic" overviews directly. Afterward, you will see all the information 
-that Whalebone has collected about the domain. We used kidos-bank.ru as an example. We can see that there are different types of threats associated with the domain.
+There are two ways to manually perform an analysis of a domain against the Whalebone database. One way to open the **Domain Analysis** tool is from the user's menu.
+The other option is to check a specific domain from the context menu in **Threats** or **DNS traffic** overviews directly. Afterward, you will see all the information 
+that Whalebone has collected about the domain. We used **kidos-bank.ru** as an example. We can see that there are different types of threats associated with the domain.
 Its score is 95-100 and it was labeled as dangerous in November 2019. In the following graphs, you can see the development of the detections, or rather the DNS 
 resolution requests of the domain in your network. The outcome of the analysis also shows that the domain is not assigned a content category and its blocking wasn't 
-ordered by law. You can inquire into any domain like that. Just enter it into the top field. We can see that facebook.com is not considered a security threat, 
-there's quite some traffic going on and Whalebone categorizes it as a social network. If we type in porn.com, we can see that the category has changed into "Sexual content".
+ordered by law. You can inquire into any domain like that. Just enter it into the **top field**. We can see that **facebook.com** is not considered a security threat, 
+there's quite some traffic going on and Whalebone categorizes it as a **social network**. If we type in **porn.com**, we can see that the category has changed into **Sexual content**.
 
 .. raw:: html
 
@@ -144,7 +144,7 @@ there's quite some traffic going on and Whalebone categorizes it as a social net
 
 DNS traffic
 ------------
-You can see the timeline of the DNS requests and answers of the last 14 days in the "DNS traffic" log. The log shows the first resolution of the domain by a given IP address in the last 24 hours,
+You can see the timeline of the DNS requests and answers of the last 1,7 or 14 days in the "DNS traffic" log. The log shows the first resolution of the domain by a given IP address in the last 24 hours,
 the type of query, the outcome of the resolution, the source and destination IP address. It also enables you to do a full-text filtration using wild card operators.
 
 The summarizing logarithmic graphs under the main timeline display an overview of the most common answers, second-level domains, and IP addresses with the heaviest traffic. All the data is accessible in a table format, too, and you can even export them to a CSV file

@@ -59,14 +59,11 @@ Below are described the different roles and the actions that they are able to pe
                                                                                  
   
 
-.. _header-n748:
 
 Organization Settings
 ---------------------
 
 The Organization Setting can be found under the **User Menu**.
-
-.. _header-n750:
 
 Portal Access Policy
 ~~~~~~~~~~~~~~~~~~~~
@@ -74,27 +71,28 @@ Portal Access Policy
 Portal Access Policy defines security mechanism for users accessing
 Whalebone's Portal. The following settings can be configured:
 
-**Allowed IP Ranges**: IPv4 or IPv6 ranges in CIDR notation, e.g.
-   10.0.0.0/24 that are allowed to access Whalebone Portal.
+**Allowed IP Ranges**:
+IPv4 or IPv6 ranges in CIDR notation, e.g. 10.0.0.0/24 that are allowed to access Whalebone Portal.
 
-**Account Lockout**: If enabled, it can limit the number of failed
-   login attempts. The available options are:
+**Account Lockout**:
+If enabled, it can limit the number of failed login attempts.
 
-   -  **Failed Login Limit**: Number of unsuccessful login attempts
-      before locking the account. Default is 5.
+   The available options are:
 
-   -  **Lockout Duration**: Time duration in minutes for disallowing
-      login requests.
+   -  **Failed Login Limit**:
+   Number of unsuccessful login attempts before locking the account. Default is 5.
 
-   -  **Lockout Reset Time**: Time duration in minutes before resetting
-      the number of failed attempts.
+   -  **Lockout Duration**:
+   Time duration in minutes for disallowing login requests.
 
-   -  **CAPTCHA Threshold**: Number of unsuccessful login attempts
-      before enabling the CAPTCHA verification.
+   -  **Lockout Reset Time**:
+   Time duration in minutes before resetting the number of failed attempts.
 
-**Multi Factor Authentication**: Require users to use a two factor authentication (2FA) application and enter additional tokens upon logging to the portal.
+   -  **CAPTCHA Threshold**:
+   Number of unsuccessful login attempts before enabling the CAPTCHA verification.
 
-.. _header-n766:
+**Multi Factor Authentication**:
+Require users to use a two factor authentication (2FA) application and enter additional tokens upon logging to the portal.
 
 Password Policy
 ~~~~~~~~~~~~~~~
@@ -107,8 +105,10 @@ The following password settings can be configured:
 **Password history**: Number of old passwords that cannot be reused
    when setting up a new passwords.
 
-**Password Attributes**: The attributes that a new password should
-   have. The attributes that a new password can have are the following:
+**Password Attributes**:
+The attributes that a new password should have.
+
+The attributes that a new password can have are the following:
 
    -  Minimum Length
 

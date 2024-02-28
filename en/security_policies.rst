@@ -5,7 +5,7 @@ You can watch step-by-step video guide of basic security policy configuration `h
 
 The step-by-step video guide with deeper explanation of security policy tuning is `here. <https://docs.whalebone.io/en/latest/video_guides.html#security-policies>`_
 
-To control Whalebone's security filtering you need to configure it's security policies. When you install Whalebone, it comes with a Default policy which is set to include all threat types and sets the tresholds to the value of 80/50. This policy will also be automatically applied to every newly installed resolver. 
+To control Whalebone's security filtering you need to configure it's security policies. When you install Whalebone, it comes with a **Default** policy which is set to include all threat types and sets the tresholds to the value of **80/50**. This policy will also be automatically applied to every newly installed resolver. 
 In any policy there are several options to be configured:
 
 Malicious filtering tresholds
@@ -115,10 +115,10 @@ Content Filtering
 *	**P2P**: domains linked to peer to peer networks where multimedia content is shared by the users,
 *	**Tracking**: web and email tracking systems.
 
-  The content filter can also be applied for specific times of the day. When a particular category is ticked, a clock icon will appear next to it. If you click the clock icon, you can add a new schedule for this category. Multiple schedules may be active for the same category. This way, you may only allow access to social networks during the lunch break and after working hours. Finish the settings by clicking **Apply** and **Save** the security policy.
+The content filter can also be applied for specific times of the day. When a particular category is ticked, a clock icon will appear next to it. If you click the clock icon, you can add a new schedule for this category. Multiple schedules may be active for the same category. This way, you may only allow access to social networks during the lunch break and after working hours. Finish the settings by clicking **Apply** and **Save** the security policy.
 
-   .. image:: ./img/schedules.png
-    :align: center
+.. image:: ./img/schedules.png
+  :align: center
 
 
-    .. note:: By applying the schedule, you are **allowing** access to domains from that content category during that specific time period. 
+.. note:: By applying the schedule, you are **allowing** access to domains from that content category during that specific time period. 

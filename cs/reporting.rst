@@ -17,7 +17,7 @@ Alerty
 
 Alerting Whalebone poskytuje upozorňovat v reálném čase na klíčové informace, jako je stav resolveru, stav řešení, využití hardwaru, a také informuje o zásadních bezpečnostních incidentech a mnoha dalších.
 Všechny tyto informace lze předávat prostřednictvím několika kanálů, např. e-mailu, slacku, syslogu nebo webhooku. Nová upozornění lze vytvářet z předdefinovaných šablon a upozornění lze následně přizpůsobit úpravou jejich parametrů.
-Videoprůvodce krok za krokem si můžete prohlédnout `zde. <https://docs.whalebone.io/en/latest/video_guides.html#alerts>`__
+Videoprůvodce krok za krokem si můžete prohlédnout `zde. <https://docs.whalebone.io/cs/latest/video_guides.html#alerts>`__
 
 .. note:: Chcete-li zapnout upozornění, musíte mu nejprve přiřadit cíl. Kliknutím na název výstrahy ji podrobně rozbalíte a v rámečku vyberete cíl. Kliknutím na adresy lze vybrat více cílů.
 
@@ -34,11 +34,11 @@ DNS provoz - Phishing na základě podobné domény (Homografický útok)
 Toto upozornění je odesláno, když je zjištěn možný homografický útok pro zadanou doménu.
 Parametry:
 
-* DOMAIN: Doména, která se má sledovat z hlediska možných útoků homografů (jedno upozornění může sledovat pouze jednu doménu).
+* **DOMAIN**: Doména, která se má sledovat z hlediska možných útoků homografů (jedno upozornění může sledovat pouze jednu doménu).
 
-* DISTANCE: Počet znaků, které se mohou lišit v doméně phishingu (výchozí=1)
+* **DISTANCE**: Počet znaků, které se mohou lišit v doméně phishingu (výchozí=1)
 
-* DOMAIN_WILDCARD_IGNORE: Tento seznam domén oddělených čárkou ve výstraze ignorujte.  V případě, že je DISTANCE větší než 1, bude detekce probíhat u domén, které podporují globální i regionální formáty nejvyšší úrovně. Doporučujeme přidávat legitimní domény na bílé seznamy, abyste se vyhnuli zbytečným poplachům. (Výchozí hodnota=žádná)
+* **DOMAIN_WILDCARD_IGNORE**: Tento seznam domén oddělených čárkou ve výstraze ignorujte.  V případě, že je DISTANCE větší než 1, bude detekce probíhat u domén, které podporují globální i regionální formáty nejvyšší úrovně. Doporučujeme přidávat legitimní domény na bílé seznamy, abyste se vyhnuli zbytečným poplachům. (Výchozí hodnota=žádná)
 
 
 
@@ -47,13 +47,13 @@ DNS provoz - počet unikátních dotazů
 Toto upozornění se odešle, když je dosaženo prahové hodnoty pro filtrované jedinečné protokoly DNS.
 Parametry:
 
-* MINUTES: Časový rámec - časové okno (Výchozí=15)
+* **MINUTES**: Časový rámec - časové okno (Výchozí=15)
 
-* TRESHOLD: Prahová hodnota - počet událostí v časovém rámci pro spuštění výstrahy, jedná se o percentuální změnu (Výchozí=100).
+* **TRESHOLD**: Prahová hodnota - počet událostí v časovém rámci pro spuštění výstrahy, jedná se o percentuální změnu (Výchozí=100).
 
-* QUERY_TYPE: Filtrovat podle typu dotazu DNS (Výchozí=*)
+* **QUERY_TYPE**: Filtrovat podle typu dotazu DNS (Výchozí=*)
 
-* RESPONSE_TYPE: Filtrovat podle odpovědi DNS (Výchozí=*)
+* **RESPONSE_TYPE**: Filtrovat podle odpovědi DNS (Výchozí=*)
 
 
 DNS provoz - počet unikátních požadavků z IP
@@ -62,23 +62,23 @@ DNS provoz - počet unikátních požadavků z IP
 Toto upozornění se spustí, když jedna zdrojová IP adresa dosáhne limitu jedinečných požadavků s definovanými atributy.
 Parametry:
 
-* MINUTES: časové okno v minutách (výchozí=15)
+* **MINUTES**: časové okno v minutách (výchozí=15)
 
-* TRESHOLD: počet událostí v časovém rozmezí pro spuštění výstrahy, jedná se o percentuální změnu (výchozí=100).
+* **TRESHOLD**: počet událostí v časovém rozmezí pro spuštění výstrahy, jedná se o percentuální změnu (výchozí=100).
 
-* QUERY_TYPE: (Výchozí=*): filtruje podle typu dotazu DNS.
+* **QUERY_TYPE**: (Výchozí=*): filtruje podle typu dotazu DNS.
 
-* RESPONSE_TYPE: Filtrovat podle odpovědi DNS (Výchozí=*)
+* **RESPONSE_TYPE**: Filtrovat podle odpovědi DNS (Výchozí=*)
 
-* IP_WILDCARD: Zahrnout do výstrahy pouze tyto IP adresy oddělené čárkou (Výchozí=*)
+* **IP_WILDCARD**: Zahrnout do výstrahy pouze tyto IP adresy oddělené čárkou (Výchozí=*)
 
-* IP_WILDCARD_IGNORE: Ignorovat tyto domény oddělené čárkou ve výstraze (Výchozí=žádná)
+* **IP_WILDCARD_IGNORE**: Ignorovat tyto domény oddělené čárkou ve výstraze (Výchozí=žádná)
 
-* DOMAIN_WILDCARD: Do upozornění zahrne pouze tyto domény oddělené čárkou(Výchozí=*)
+* **DOMAIN_WILDCARD**: Do upozornění zahrne pouze tyto domény oddělené čárkou(Výchozí=*)
 
-* DOMAIN_WILDCARD_IGNORE: Ignorovat tyto domény oddělené čárkou v upozornění (Výchozí=žádná)
+* **DOMAIN_WILDCARD_IGNORE**: Ignorovat tyto domény oddělené čárkou v upozornění (Výchozí=žádná)
 
-* DGA: Filtrování podle algoritmu generování domén - pouze s DGA, pouze bez DGA nebo obojí (Výchozí=*)
+* **DGA**: Filtrování podle algoritmu generování domén - pouze s DGA, pouze bez DGA nebo obojí (Výchozí=*)
    
 
 DNS provoz - procentuální nárůst dotazů
@@ -86,22 +86,22 @@ DNS provoz - procentuální nárůst dotazů
 Toto upozornění se odešle, pokud je počet záznamů o provozu DNS procentuálně vyšší za nastavené časové období.
 Parametry:
 
-* MINUTES: Časový rámec - časové okno (výchozí=15)
+* **MINUTES**: Časový rámec - časové okno (výchozí=15)
 
-* PERCENT: Procentuální nárůst (např. 200 %) - rozdíl mezi dvěma intervaly (Výchozí=50)
+* **PERCENT**: Procentuální nárůst (např. 200 %) - rozdíl mezi dvěma intervaly (Výchozí=50)
 
-* QUERY_TYPE: (Výchozí=*): Filtruje podle typu dotazu DNS.
+* **QUERY_TYPE**: (Výchozí=*): Filtruje podle typu dotazu DNS.
 
-* RESPONSE_TYPE: Filtrovat podle odpovědi DNS (Výchozí=*)
+* **RESPONSE_TYPE**: Filtrovat podle odpovědi DNS (Výchozí=*)
 
 Hrozby - nově blokovaná doména
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Toto upozornění se odešle, pokud resolver v zadaném časovém období zjistí nově zablokovanou hrozbu.
 Parametry:
 
-* DAYS: Počet dní ve kterých budou vyhledávány nově blokované domény (výchozí=30)
+* **DAYS**: Počet dní ve kterých budou vyhledávány nově blokované domény (výchozí=30)
 
-* DOMAIN_WILDCARD: Do upozornění zahrne pouze tyto domény oddělené čárkou(Výchozí=*)
+* **DOMAIN_WILDCARD**: Do upozornění zahrne pouze tyto domény oddělené čárkou(Výchozí=*)
 
 
 
@@ -109,20 +109,20 @@ Hrozby - počet za časový interval
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Toto upozornění se odešle, pokud je procento záznamů o hrozbě vyšší za nastavené časové období.
 Parametry:
-* MINUTES: časové okno v minutách (výchozí=15)
+* **MINUTES**: časové okno v minutách (výchozí=15)
 
-* TRESHOLD: počet událostí v časovém rozmezí pro spuštění výstrahy, jedná se o percentuální změnu (výchozí=100).
+* **TRESHOLD**: počet událostí v časovém rozmezí pro spuštění výstrahy, jedná se o percentuální změnu (výchozí=100).
 
-* LOG_TYPE: (Výchozí=*): filtruje podle typu akce (audit/block)
+* **LOG_TYPE**: (Výchozí=*): filtruje podle typu akce (audit/block)
 
 Hrozby - událost detekce
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Toto upozornění je odesláno v případě nové položky na stránce hrozeb podle zadaného typu hrozby a provedené akce.
 Parametry:
 
-* LOG_TYPE: (Výchozí=*): filtruje podle typu akce (audit/block)
+* **LOG_TYPE**: (Výchozí=*): filtruje podle typu akce (audit/block)
 
-* THREAT_TYPE: (Výchozí=*): filtruje podle typu detekované hrozby
+* **THREAT_TYPE**: (Výchozí=*): filtruje podle typu detekované hrozby
 
 
 Resolver - Nedostatek systémových požadavků
@@ -132,11 +132,11 @@ Parametry jsou vyjádřeny v procentech využití v porovnání s celkovými pro
 nastavte hodnotu THRESHOLD_HDD na 80.  
 Parameters:
 
-* THRESHOLD_CPU: (Výchozí hodnota=80): Využití procesoru.
+* **THRESHOLD_CPU**: (Výchozí hodnota=80): Využití procesoru.
 
-* THRESHOLD_MEMORY: Využití paměti RAM (výchozí=90)
+* **THRESHOLD_MEMORY**: Využití paměti RAM (výchozí=90)
 
-* THRESHOLD_HDD: Využití pevného disku (výchozí=80)
+* **THRESHOLD_HDD**: Využití pevného disku (výchozí=80)
 
 
 
@@ -154,8 +154,8 @@ Resolver pravidelně provádí kontroly, aby otestoval funkčnost překladu zná
 Výchozí nastavení parametrů je velmi přísné, takže i když se rozlišení jedné ze čtyř domén během desetiminutového intervalu nezdaří, je odesláno upozornění. 
 Parametry:
 
-* TRESHOLD: počet událostí, které musí nastat během časového intervalu, aby se výstraha spustila (výchozí=1)
+* **TRESHOLD**: počet událostí, které musí nastat během časového intervalu, aby se výstraha spustila (výchozí=1)
 
-* MINUTY: časový rámec v minutách (Výchozí=10)
+* **MINUTY**: časový rámec v minutách (Výchozí=10)
 
 

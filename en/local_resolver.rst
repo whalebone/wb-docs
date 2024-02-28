@@ -97,7 +97,7 @@ The command will run the installation script and will pass the one time token us
 
 .. image:: ./img/lrv2-create.gif
 	:align: center
-  Local resolver creation.
+  
 
 Once the command is run the operating system is being checked and requirements installed. Script will inform you about the progress and it creates a detailed log named ``wb_install.log`` in current directory.
 Successful run of the installation script is ended with the notification ```Final tuning of the OS``` with value ``[ OK ]``. Right after the installation also the initialization takes place and it could take several minutes before the resolver starts the services.

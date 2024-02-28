@@ -3,7 +3,7 @@ Lokální resolver
 ******************
 
 Nasazení řešení Whalebone nasazeného jako **lokální resolver** přináší výhodu viditelnosti místních IP adres, které odesílají skutečné požadavky. Pokud pro vás nasazení lokálního řešení není vhodnou volbou, 
-podívejte se na další :ref:`Možnosti nasazení.<Možnosti nasazení>`.
+podívejte se na další :ref:`Možnosti nasazení.<Možnosti nasazení>`
 
 Whalebone resolver je založen na implementaci `Knot Resolveru <https://www.knot-resolver.cz/>`_ vyvinutého CZ.NIC.
 
@@ -12,7 +12,7 @@ Whalebone resolver je založen na implementaci `Knot Resolveru <https://www.knot
 Systémové požadavky na lokální resolver
 =======================================
 
-Lokální resolver je podporován na vyhrazeném (hardwarovém nebo virtuálním) stroji s podporovaným operačním systémem.
+Instalace lokálního resolveru je podporována na vyhrazeném (hardwarovém nebo virtuálním) stroji s jedním z níže uvedených operačních systémů.
 
 * **Podporovaný operační systém** (64bitový, serverové edice následujících distribucí):
 
@@ -27,7 +27,7 @@ Lokální resolver je podporován na vyhrazeném (hardwarovém nebo virtuálním
   * ext4
   * xfs pouze s podporou d_type (ftype=1)
 
-* **Minimální velikost hardwaru** (fyzického nebo virtuálního):
+* **Minimální požadavky na hardware** (fyzického nebo virtuálního):
 
   * 2 jádra procesoru
   * 4 GB RAM
@@ -36,6 +36,7 @@ Lokální resolver je podporován na vyhrazeném (hardwarovém nebo virtuálním
 .. warning:: Pozor, Whalebone podporuje pouze nasazení bez desktopových prostředí, jako je GNOME, KDE nebo Xfce, protože ty mohou ovlivnit dostupnou paměť a zpracování DNS na serveru.
 
 * **Požadavky na nastavení sítě** (místní resolver potřebuje otevřené následující výstupní porty):
+
   =========== =========== ======= ========================== ================================
   Směr        Protokol(y) Port    Cílová IP/Doména           Popis         
   =========== =========== ======= ========================== ================================
@@ -54,7 +55,7 @@ Lokální resolver je podporován na vyhrazeném (hardwarovém nebo virtuálním
   .. warning:: Bez povolené komunikace na portu 443 s výše uvedenými doménami nebude resolver vůbec nainstalován (instalační skript se přeruší).
 
   
- Hlavní funkcí resolveru je přijímat dotazy od uživatelů a odpovídat jim na ně, což vyžaduje, aby byly na resolveru otevřeny určité porty pro provoz pocházející z klientské podsítě nebo přicházející do zákaznického rozhraní.
+  Hlavní funkcí resolveru je přijímat dotazy od uživatelů a odpovídat jim na ně, což vyžaduje, aby byly na resolveru otevřeny určité porty pro provoz pocházející z klientské podsítě nebo přicházející do zákaznického rozhraní.
  
  
  
@@ -66,7 +67,7 @@ Lokální resolver je podporován na vyhrazeném (hardwarovém nebo virtuálním
   Příchozí    TCP         443     Rozsah(y) podsítě zákazníka  DNS přes HTTPS (pokud se používá)
   =========== =========== ======= ============================ ==========================================
 
- Blokační stránky jsou hostovány **přímo** na resolverech, takže musí být použity IP adresy, které jsou přístupné klientům. Klienti pak budou při blokování přesměrováni na IP adresu resolveru. Doporučujeme povolit pouze podsítě(e) přidělené zákazníkům nebo důvěryhodným sítím, jinak by mohly být zneužity k různým útokům nebo neoprávněným uživatelům.
+  Blokační stránky jsou hostovány **přímo** na resolverech, takže musí být použity IP adresy, které jsou přístupné klientům. Klienti pak budou při blokování přesměrováni na IP adresu resolveru. Doporučujeme povolit pouze podsítě přidělené zákazníkům nebo důvěryhodným sítím, jinak by mohly být zneužity k různým útokům nebo neoprávněným uživatelům.
 
   =========== =========== ======= ============================ ==========================================
   Směr        Protokol(y) Port    Cílová IP/Doména             Popis         
@@ -77,11 +78,11 @@ Lokální resolver je podporován na vyhrazeném (hardwarovém nebo virtuálním
   
   Procesy resolveru musí komunikovat na localhostu. V případě, že je v provozu nějaký firewall, ujistěte se, že je provoz povolen, tj. ``iptables -A INPUT -s 127.0.0.1 -j ACCEPT``
 
-   =========== =========== ======= ============================ ==========================================
+  =========== =========== ======= ============================ ==========================================
   Směr        Protokol(y) Port    Cílová IP/Doména             Popis         
   =========== =========== ======= ============================ ===========================================
   Příchozí    TCP         ANY     127.0.0.1                    Procesy řešitele
-  =========== =========== ======= ============================ ===========================================
+    =========== =========== ======= ============================ ===========================================
 
 .. note:: Pro odhad HW požadavků u nasazení vr velkých sítích ISP nebo podnikových sítích se neváhejte obrátit na společnost Whalebone. Lokální resolver Whalebone bude potřebovat přibližně dvojnásobek paměti RAM a procesoru než běžný resolver (BIND, Unbound).
 
@@ -97,7 +98,7 @@ Příkaz spustí instalační skript a předá jednorázový token použitý pro
 
 .. image:: ./img/lrv2-create.gif
 	:align: center
-  Local resolver creation.
+
 
 Po spuštění příkazu probíhá kontrola operačního systému a instalace požadavků. Skript vás bude informovat o průběhu a vytvoří podrobný protokol s názvem ``wb_install.log`` v aktuálním adresáři.
 Úspěšné spuštění instalačního skriptu je ukončeno oznámením ```Finální ladění operačního systému```` s hodnotou ``[ OK ]```. Hned po instalaci proběhne také inicializace a může trvat několik minut, než resolver spustí služby.

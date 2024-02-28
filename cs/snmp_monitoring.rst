@@ -224,7 +224,7 @@ inicializován, aby upozornil, že data překročila nastavené prahové hodnoty
 		:width: 350pt
 
 
-- Vytvořit spouštěč → Zadejte název a přidejte výraz. Řekněme, že chceme spouštět, pokud hodnota NXDOMAIN resolveru překročí hodnotu 60. Pro tento spouštěč vyberte závažnost - **Severity**.
+- Vytvořit **spouštěč** → Zadejte **název** a přidejte výraz. Řekněme, že chceme spouštět, pokud hodnota NXDOMAIN resolveru překročí hodnotu 60. Pro tento spouštěč vyberte závažnost - **Severity**.
 
 	.. figure:: ./img/trigger2.PNG
 		:width: 350pt
@@ -239,7 +239,7 @@ inicializován, aby upozornil, že data překročila nastavené prahové hodnoty
 	.. figure:: ./img/trigger4.PNG
 
 
-- Klikněte na tlačítko **Inser** a uložte spouštěče. Ujistěte se, že je spouštěč v šabloně povolen.
+- Klikněte na tlačítko **Insert** a uložte spouštěče. Ujistěte se, že je spouštěč v šabloně povolen.
 
 	.. figure:: ./img/trigger5.PNG
 
@@ -266,7 +266,7 @@ pokud příchozí data překročí přijatelný stav, je spouštěč "spuštěn"
 		:width: 350pt
 		
 
-- Po nastavení e-mailu → Přejděte do **Configuration** → **Actions** → Spouštěče akcí. Na spouštěči Akce → Vytvořit akci → Zadejte název → Přidejte podmínku **New condition**.
+- Po nastavení e-mailu → Přejděte do **Configuration** → **Actions** → **Spouštěče akcí**. Na spouštěči **Akce** → **Vytvořit akci** → Zadejte název → Přidejte podmínku **New condition**.
 
 	.. figure:: ./img/triggeraction2.PNG
 		:width: 350pt

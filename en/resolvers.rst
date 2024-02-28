@@ -7,7 +7,8 @@ Resolvers overview
 ------------------
 
 In the main resolver overview there are tiles with resolver details. The overview includes information about operating system and resources as CPU, Memory and HDD usage. There is also the status of the communication channel between the resolver and the cloud indicated by the color-coded dot.
-### The resolver can be in one of these states:
+
+The resolver can be in one of these states:
 
 * **Active** - This is the expected status in production environments and signalizes that everything is running correctly. 
 * **Resolution problem** - The resolver is unable to translate DNS requests.
@@ -43,6 +44,7 @@ The policies can be applied by adding IP ranges in the available input form:
    Policy assignment.
    
 In order to provide a better understanding let's consider an example with the network range ``10.10.0.0/16``. 
+
 We have created 3 different policies: 
 
 * **Default**: the policy that we want to apply to the whole network, this is the most generic policy
@@ -72,7 +74,7 @@ The following image shows the process of assigning the policies:
 .. image:: ./img/policy_task.png
    :align: center
 
-   Required policy assignment.
+
 .. note::  After adding the networks you must click on **Save to resolver** in order to to take effect. The changes will be then validated and a pop-up message will provide additional information.
 
 In order to assign additional entries to an existing assignment, a new network range can be appended using `newline` as a separator.

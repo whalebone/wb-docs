@@ -20,7 +20,7 @@ HOS neustále sleduje změny na síťových rozhraních a na základě podmínek
 
 Bezpečnost
 ==========
-Na pozadí HOS používá **DNS-over-HTTPs** neboli **DoH**. Název **Hostname** z **Resolveru** není nikdy přesměrován a je uložen v mezipaměti. Identifikace a autentizace je ponechána na protokolu TLS. Pokud zařízení patří k libovolné **Doméně**, pak je všem doménovým jménům a jejich subdoménám umožněno přistoupit k serverům DNS, na které jsou směrovány. HOS používá k získání informací tabulku `Win32_NetworkAdapterConfiguration` WMI.
+Na pozadí HOS používá **DNS-over-HTTPs** neboli **DoH**. Název **Hostname** z **Resolveru** není nikdy přesměrován a je uložen v mezipaměti. Identifikace a autentizace je ponechána na protokolu TLS. Pokud zařízení patří k libovolné **Doméně**, pak je všem doménovým jménům a jejich subdoménám umožněno přistoupit k serverům DNS, na které jsou směrovány. HOS používá k získání informací tabulku ``Win32_NetworkAdapterConfiguration`` WMI.
 
 
 Systémové požadavky

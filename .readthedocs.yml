@@ -12,7 +12,7 @@ python:
 
 sphinx:
   configuration: en/conf.py
-  configuration: cs/conf.py
+
   
 
 # Build PDF & ePub

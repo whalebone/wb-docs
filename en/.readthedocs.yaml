@@ -7,10 +7,10 @@ build:
 
 python:
   install:
-  - requirements: requirements.txt
+  - requirements: en/requirements.txt
 
 sphinx:
-  configuration: conf.py
+  configuration: en/conf.py
 
   
 

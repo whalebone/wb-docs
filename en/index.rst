@@ -69,7 +69,7 @@ More information about the product and company is available on the official `Wha
    :caption: About
    
    licence_disclaimer
-   changelog
+   
 
 
 

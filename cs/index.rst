@@ -69,7 +69,7 @@ Další informace o produktu a společnosti jsou k dispozici na oficiálních st
    :caption: Další informace
    
    licence_disclaimer
-   changelog
+   
 
 
 

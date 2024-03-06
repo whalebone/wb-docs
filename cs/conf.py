@@ -90,10 +90,11 @@ html_theme = "furo"
 #
 html_theme_options = {
     "light_css_variables": {
-        "color-brand-primary": "FCFCFC",
+        "color-brand-primary": "2C2662",
         "color-sidebar-background": "2C2662",
         "color-brand-content": "#D9D9D9",
         "color-admonition-background": "2BB8BC",
+        "sidebar_hide_name": True,
     },
 }
 # Add any paths that contain custom static files (such as style sheets) here,

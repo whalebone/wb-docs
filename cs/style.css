@@ -1,0 +1,15 @@
+:root {
+    --sidebar-background: #2C2662; /* Change #yourColor to your desired sidebar background color */
+    --sidebar-navigation-link-color: #FCFCFC; /* Change #yourColor to your desired link color in the sidebar */
+    /* Add any other variables you want to override */
+    --furo-primary: #FCFCFC; /* Primary color */
+    --furo-secondary: #2C2662; /* Secondary color */
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+        /* Override dark mode colors with light mode colors */
+        --furo-primary: #FCFCFC; /* Primary color for dark mode, same as light mode */
+        --furo-secondary: #2C2662; /* Secondary color for dark mode, same as light mode */
+        /* Define other variables as needed */
+    }
+}

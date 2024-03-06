@@ -88,22 +88,15 @@ html_theme = "furo"
 # further.  For a list of options available for each theme, see the
 # documentation.
 #
-html_theme_options = {
-    "light_css_variables": {
-        "color-sidebar-background": "2C2662",
-        "color-sidebar-brand-text": "2BB8BC",
-        "color-sidebar-link-text": "FCFCFC",
-        "font-stack": "PT Sans",
-        "sidebar_hide_name": False,
-    },
-}
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 
-
+html_css_files = [
+    'style.css',
+]
 
 
 html_logo = "whalebone.png"

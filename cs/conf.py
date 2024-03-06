@@ -90,8 +90,14 @@ html_theme = "furo"
 #
 html_theme_options = {
     "light_css_variables": {
+        "color-background-primary": "2C2662",
         "color-background-secondary": "2C2662",
-        "color-sidebar-background": "2C2662",
+        "color-background-hover": "2C2662",
+        "color-background-border": "2C2662",
+        "color-background-secondary": "2C2662",
+        "color-background-secondary": "2C2662",
+        "color-toc-background": "2C2662",
+        "color-background-item": "2C2662",
         "color-sidebar-background-border": "2C2662",
         "color-sidebar-brand-text": "#D9D9D9",
         "color-sidebar-caption-text": "#D9D9D9",

@@ -96,6 +96,11 @@ html_theme_options = {
         "color-sidebar-caption-text": "#2BB8BC",
         "color-sidebar-link-text": "#2BB8BC",
         "color-sidebar-link-text": "#2BB8BC",
+        "color-header-text": "#2BB8BC",
+        "color-foreground-primary": "#2BB8BC",
+        "color-foreground-secondary": "#2BB8BC",
+        "color-sidebar-item-background": "#2C2662",
+        "color-sidebar-item-background--current": "#2C2662",
         "sidebar_hide_name": False,
     },
 }

@@ -90,6 +90,7 @@ html_theme = "furo"
 #
 html_sidebars = {
     "**": [
+        "sidebar/brand.html",
         "sidebar/search.html",
         "sidebar/scroll-start.html",
         "sidebar/navigation.html",
@@ -135,9 +136,7 @@ html_theme_options = {
 
 
 
-        "sidebar_hide_name": False,
-        "logo_only": True,
-        "display_version": False,
+        "sidebar_hide_name": True,
     },
 }
 # Add any paths that contain custom static files (such as style sheets) here,

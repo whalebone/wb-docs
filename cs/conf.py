@@ -90,19 +90,13 @@ html_theme = "furo"
 #
 html_theme_options = {
     "light_css_variables": {
-        "color-background-primary": "2C2662",
-        "color-background-secondary": "2C2662",
-        "color-background-hover": "2C2662",
-        "color-background-border": "2C2662",
-        "color-background-secondary": "2C2662",
-        "color-background-secondary": "2C2662",
-        "color-toc-background": "2C2662",
-        "color-background-item": "2C2662",
-        "color-sidebar-background-border": "2C2662",
-        "color-sidebar-brand-text": "#D9D9D9",
-        "color-sidebar-caption-text": "#D9D9D9",
-        "color-admonition-background": "2BB8BC",
-        "sidebar_hide_name": True,
+        "color-sidebar-background": "#2C2662",
+        "color-sidebar-background-border": "#2C2662",
+        "color-sidebar-brand-text": "#2BB8BC",
+        "color-sidebar-caption-text": "#2BB8BC",
+        "color-sidebar-link-text": "#2BB8BC",
+        "color-sidebar-link-text": "#2BB8BC",
+        "sidebar_hide_name": False,
     },
 }
 # Add any paths that contain custom static files (such as style sheets) here,

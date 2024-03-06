@@ -90,8 +90,9 @@ html_theme = "furo"
 #
 html_theme_options = {
     "light_css_variables": {
-        "color-brand-primary": "#7C4DFF",
-        "color-brand-content": "#7C4DFF",
+        "color-brand-primary": "red",
+        "color-brand-content": "#CC3333",
+        "color-admonition-background": "orange",
     },
 }
 # Add any paths that contain custom static files (such as style sheets) here,
@@ -102,10 +103,7 @@ html_static_path = ['_static']
 
 
 html_logo = "whalebone.png"
-html_theme_options = {
-    'logo_only': True,
-    'display_version': False,
-}
+
 
 # -- Options for HTMLHelp output ------------------------------------------
 

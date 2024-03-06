@@ -89,14 +89,9 @@ html_theme = "furo"
 # documentation.
 #
 html_theme_options = {
-    "sidebar_hide_name": True,
-    "dark_css_variables": {
-        "color-foreground-primary": "black",
-        "color-foreground-secondary": "#5a5c63",
-        "color-foreground-muted": "#6b6f76",
-        "color-foreground-border": "#878787",
-        "color-background-primary": "white",
-        "color-background-secondary": "#f8f9fb",
+    "light_css_variables": {
+        "color-brand-primary": "#7C4DFF",
+        "color-brand-content": "#7C4DFF",
     },
 }
 # Add any paths that contain custom static files (such as style sheets) here,

@@ -114,16 +114,19 @@ html_theme_options = {
         "color-sidebar-caption-text": "#2BB8BC",
         "color-sidebar-link-text": "#2BB8BC",
         "color-sidebar-link-text--top-level": "#2BB8BC",
+        "color-card-background": "#FCFCFC",
+        "color-card-border": "#FCFCFC",
+        "color-card-marginals-background": "#FCFCFC",
 
-        "sidebar-caption-font-size": "120%",
+        "sidebar-caption-font-size": "110%",
         "sidebar-item-font-size": "100%",
         "sidebar-search-input-font-size": "100%",
 
 
 
         "sidebar_hide_name": False,
-        'logo_only': True,
-        'display_version': False,
+        "logo_only": True,
+        "display_version": False,
     },
 }
 # Add any paths that contain custom static files (such as style sheets) here,

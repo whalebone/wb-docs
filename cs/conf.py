@@ -91,7 +91,7 @@ html_theme = "furo"
 html_theme_options = {
     "light_css_variables": {
         "color-sidebar-background": "#2C2662",
-        "color-sidebar-background-border": "#2C2662",
+        "color-sidebar-background-border": "#FCFCFC",
         "color-sidebar-brand-text": "#2BB8BC",
         "color-sidebar-caption-text": "#2BB8BC",
         "color-sidebar-link-text": "#2BB8BC",
@@ -107,13 +107,20 @@ html_theme_options = {
         "color-brand-content": "#2BB8BC",
         "color-brand-visited": "#2BB8BC",
         "color-sidebar-search-text": "#2BB8BC",
-        "color-sidebar-search-background": "#2C2662",
-        "color-sidebar-search-background--focus": "#2C2662",
+        "color-sidebar-search-background": "#FCFCFC",
+        "color-sidebar-search-background--focus": "#FCFCFC",
         "color-sidebar-search-border": "#2C2662",
         "color-sidebar-search-icon": "#2BB8BC",
         "color-sidebar-caption-text": "#2BB8BC",
         "color-sidebar-link-text": "#2BB8BC",
         "color-sidebar-link-text--top-level": "#2BB8BC",
+
+        "sidebar-caption-font-size": "120%",
+        "sidebar-item-font-size": "100%",
+        "sidebar-search-input-font-size": "100%",
+
+
+
         "sidebar_hide_name": False,
         'logo_only': True,
         'display_version': False,

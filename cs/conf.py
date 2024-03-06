@@ -88,6 +88,17 @@ html_theme = "furo"
 # further.  For a list of options available for each theme, see the
 # documentation.
 #
+html_sidebars = {
+    "**": [
+        "sidebar/search.html",
+        "sidebar/scroll-start.html",
+        "sidebar/navigation.html",
+        "sidebar/scroll-end.html",
+        "sidebar/variant-selector.html",
+    ]
+}
+
+
 html_theme_options = {
     "light_css_variables": {
         "color-sidebar-background": "#2C2662",

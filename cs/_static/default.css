@@ -24,3 +24,10 @@
 .rst-versions .rst-current-version {
     color: #2BB8BC;
 }
+
+.sidebar-search-container {
+    width: 200px;
+    height: 36;
+    justify-self: center;
+    border-radius: 4px;
+}

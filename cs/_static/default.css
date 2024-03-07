@@ -29,5 +29,10 @@
     width: 200px;
     height: 36;
     justify-content: center;
-    border-radius: 8px;
+    border-radius: 20px;
+    position: relative;
+    left: 9px;
+}
+.sidebar-scroll, .toc-scroll, article[role=main] * {
+    scrollbar-color: #363636;
 }

@@ -2,11 +2,11 @@
     box-sizing: border-box;
     display: flex;
     justify-content: center;
-    max-width: 7cm;
+    max-width: 6cm;
 }
 
 #furo-readthedocs-versions {
-    background: #fcfcfc;
+    background: #363636;
     display: block;
     position: static;
     width: 100%;

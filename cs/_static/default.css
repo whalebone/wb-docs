@@ -26,14 +26,19 @@
     color: #2BB8BC;
 }
 
+html {
+    font-size: 100%;
+}
+
 .sidebar-search-container {
     width: 210px;
     height: 30px;
     justify-content: center;
     border-radius: 15px;
     position: relative;
-    left: 18px;
+    left: 9px;
+    top: -20px;
 }
-.sidebar-scroll, .toc-scroll, article[role=main] * {
-    scrollbar-color: #363636;
+.sidebar-scroll {
+    scrollbar-color: #2BB8BC;
 }

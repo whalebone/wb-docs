@@ -98,13 +98,14 @@ html_sidebars = {
         "sidebar/variant-selector.html",
     ]
 }
-html_title = "Documentation"
+html_title = "Whalebone Documentation"
 
 html_theme_options = {
     "light_css_variables": {
         "color-sidebar-background": "#2C2662",
         "color-sidebar-background-border": "#FCFCFC",
         "color-background-secondary": "#FCFCFC",
+        "color-background-primary": "#FCFCFC",
         "color-sidebar-brand-text": "#2BB8BC",
         "color-sidebar-caption-text": "#2BB8BC",
         "color-sidebar-link-text": "#2BB8BC",
@@ -133,7 +134,6 @@ html_theme_options = {
         "sidebar-caption-font-size": "110%",
         "sidebar-item-font-size": "100%",
         "sidebar-search-input-font-size": "100%",
-        "font-stack--headings": "Times New Roman",
         "font-stack": "Trebuchet MS",
         "sidebar_hide_name": True,
         "sidebar-width": "6cm",

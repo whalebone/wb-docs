@@ -136,8 +136,6 @@ html_theme_options = {
         "sidebar-search-input-font-size": "100%",
         "font-stack": "Trebuchet MS",
         "sidebar_hide_name": True,
-        "sidebar-width": "6cm",
-
     },
 }
 # Add any paths that contain custom static files (such as style sheets) here,

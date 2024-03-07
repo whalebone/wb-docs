@@ -1,9 +1,8 @@
 .sidebar-drawer {
     box-sizing: border-box;
     display: flex;
-    position: fixed;
     justify-content: center;
-    width: 300px;
+    width: 240px;
 }
 
 #furo-readthedocs-versions {

@@ -98,7 +98,7 @@ html_sidebars = {
         "sidebar/variant-selector.html",
     ]
 }
-
+html_title = ""
 
 html_theme_options = {
     "light_css_variables": {
@@ -130,13 +130,11 @@ html_theme_options = {
         "color-card-background": "#FCFCFC",
         "color-card-border": "#FCFCFC",
         "color-card-marginals-background": "#FCFCFC",
-
         "sidebar-caption-font-size": "110%",
         "sidebar-item-font-size": "100%",
         "sidebar-search-input-font-size": "100%",
-
-
-
+        "font-stack--headings": "Times New Roman",
+        "font-stack": "100%",
         "sidebar_hide_name": True,
     },
 }
@@ -146,7 +144,7 @@ html_theme_options = {
 html_static_path = ['_static']
 
 html_css_files = [
-    'style.css',
+    'default.css',
 ]
 
 html_logo = "whalebone.png"

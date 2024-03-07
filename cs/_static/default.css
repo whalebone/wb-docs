@@ -10,3 +10,14 @@
     position: static;
     width: 100%;
 }
+.sidebar-brand-text {
+    font-size: 0;
+}
+.rst-versions {
+    color: #2BB8BC;
+    background: #fcfcfc;
+    font-family: "Trebuchet MS";
+}
+.rst-versions .rst-current-version {
+    color: #2BB8BC;
+}

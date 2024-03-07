@@ -113,7 +113,6 @@ html_theme_options = {
         "color-foreground-primary": "#2C2662",
         "color-foreground-secondary": "#FCFCFC",
         "color-sidebar-brand-text": "#2C2662",
-        "color-foreground-secondary": "#2C2662",
         "color-sidebar-item-background": "transparent",
         "color-sidebar-item-background--current": "transparent",
         "color-sidebar-item-background--hover": "transparent",
@@ -136,6 +135,11 @@ html_theme_options = {
         "font-stack": "Trebuchet MS",
         "sidebar_hide_name": True,
     },
+    "dark_css_variables": {
+        "color-background-primary": "#363636",
+        "color-foreground-primary": "#D9D9D9",
+        "color-foreground-secondary": "#D9D9D9",
+    }    
 }
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,

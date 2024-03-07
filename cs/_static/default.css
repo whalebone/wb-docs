@@ -39,6 +39,7 @@ html {
     left: 9px;
     top: -20px;
 }
-.sidebar-scroll {
-    scrollbar-color: #2BB8BC;
+.sidebar-scroll, .toc-scroll, article[role=main] * {
+    scrollbar-color: #2BB8BC #ffffff00;
+    scrollbar-width: thin;
 }

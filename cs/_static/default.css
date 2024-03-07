@@ -4,7 +4,7 @@
     justify-content: center;
     max-width: 7cm;
 }
-#furo-readthedocs-versions {
+.furo-readthedocs-versions {
     background: #fcfcfc;
     display: block;
     position: static;

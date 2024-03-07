@@ -98,7 +98,7 @@ html_sidebars = {
         "sidebar/variant-selector.html",
     ]
 }
-html_title = ""
+html_title = "Documentation"
 
 html_theme_options = {
     "light_css_variables": {
@@ -134,8 +134,10 @@ html_theme_options = {
         "sidebar-item-font-size": "100%",
         "sidebar-search-input-font-size": "100%",
         "font-stack--headings": "Times New Roman",
-        "font-stack": "100%",
+        "font-stack": "Trebuchet MS",
         "sidebar_hide_name": True,
+        "sidebar-width": "6cm",
+
     },
 }
 # Add any paths that contain custom static files (such as style sheets) here,

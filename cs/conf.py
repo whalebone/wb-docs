@@ -96,6 +96,7 @@ html_sidebars = {
         "sidebar/navigation.html",
         "sidebar/scroll-end.html",
         "sidebar/variant-selector.html",
+        "sidebar/brand.html",
     ]
 }
 html_title = "Whalebone Documentation"

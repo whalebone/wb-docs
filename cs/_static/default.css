@@ -4,20 +4,23 @@
     justify-content: center;
     max-width: 7cm;
 }
-.furo-readthedocs-versions {
+
+#furo-readthedocs-versions {
     background: #fcfcfc;
     display: block;
     position: static;
     width: 100%;
 }
 .sidebar-brand-text {
+    color: #ffffff00;
     font-size: 0;
+    overflow-wrap: break-word;
 }
-.rst-versions {
+
+#furo-readthedocs-versions .rst-current-version .fa-book {
     color: #2BB8BC;
-    background: #fcfcfc;
-    font-family: "Trebuchet MS";
 }
+
 .rst-versions .rst-current-version {
     color: #2BB8BC;
 }

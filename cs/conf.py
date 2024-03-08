@@ -124,7 +124,7 @@ html_theme_options = {
         "color-sidebar-search-background--focus": "#FCFCFC",
         "color-sidebar-search-border": "transparent",
         "color-sidebar-search-icon": "#2C2662",
-        "color-sidebar-caption-text": "#2C2662",
+        "color-sidebar-caption-text": "#FCFCFC",
         "color-sidebar-link-text--top-level": "#2C2662",
         "color-card-background": "#FCFCFC",
         "color-card-border": "#FCFCFC",

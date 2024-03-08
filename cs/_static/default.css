@@ -43,3 +43,7 @@ html {
     scrollbar-color: #FCFCFC #ffffff00;
     scrollbar-width: thin;
 }
+
+.nav-overlay-icon .icon, .toc-overlay-icon .icon {
+    color: #2C2662;
+}

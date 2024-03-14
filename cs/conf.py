@@ -132,14 +132,14 @@ html_theme_options = {
         "sidebar-search-input-font-size": "100%",
         "font-stack": "Trebuchet MS",
         "sidebar_hide_name": True,
-        "color-admonition-background": "#FCFCFC",
+        "color-admonition-background": "#D9D9D9",
     },
     "dark_css_variables": {
         "color-background-primary": "#363636",
         "color-background-secondary": "#363636",
         "color-foreground-primary": "#D9D9D9",
         "color-foreground-secondary": "#D9D9D9",
-        "color-admonition-background": "#363636",
+        "color-admonition-background": "#AFAFAF",
     }    
 }
 # Add any paths that contain custom static files (such as style sheets) here,

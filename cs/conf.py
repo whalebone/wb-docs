@@ -101,6 +101,8 @@ html_sidebars = {
 html_title = "Whalebone Documentation"
 
 html_theme_options = {
+    "light_logo": "whalebone.png",
+    "dark_logo": "whalebone_logo_white.png",
     "light_css_variables": {
         "color-sidebar-background": "#2C2662",
         "color-sidebar-background-border": "transparent",
@@ -140,7 +142,7 @@ html_theme_options = {
         "color-foreground-primary": "#D9D9D9",
         "color-foreground-secondary": "#D9D9D9",
         "color-admonition-background": "#363636",
-        "color-sidebar-background": "#AFAFAF",
+        "color-sidebar-background": "#363636",
         "color-sidebar-background-border": "transparent",
     }    
 }
@@ -153,7 +155,6 @@ html_css_files = [
     'default.css',
 ]
 
-html_logo = "whalebone.png"
 
 
 # -- Options for HTMLHelp output ------------------------------------------

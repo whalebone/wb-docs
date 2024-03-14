@@ -140,6 +140,8 @@ html_theme_options = {
         "color-foreground-primary": "#D9D9D9",
         "color-foreground-secondary": "#D9D9D9",
         "color-admonition-background": "#363636",
+        "color-sidebar-background": "#AFAFAF",
+        "color-sidebar-background-border": "transparent",
     }    
 }
 # Add any paths that contain custom static files (such as style sheets) here,

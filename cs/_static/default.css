@@ -40,10 +40,10 @@ html {
     top: -20px;
 }
 .sidebar-scroll, .toc-scroll, article[role=main] * {
-    scrollbar-color: #FCFCFC #ffffff00;
+    scrollbar-color: #2BB8BC #ffffff00;
     scrollbar-width: thin;
 }
 
 .nav-overlay-icon .icon, .toc-overlay-icon .icon {
-    color: #2C2662;
+    color: #2BB8BC;
 }

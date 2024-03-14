@@ -101,8 +101,8 @@ html_sidebars = {
 html_title = "Whalebone Documentation"
 
 html_theme_options = {
-    "light_logo": "whalebone.png",
-    "dark_logo": "whalebone_logo_white.png",
+    "light_logo": "img/whalebone.png",
+    "dark_logo": "img/whalebone_logo_white.png",
     "light_css_variables": {
         "color-sidebar-background": "#2C2662",
         "color-sidebar-background-border": "transparent",

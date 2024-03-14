@@ -132,17 +132,14 @@ html_theme_options = {
         "sidebar-search-input-font-size": "100%",
         "font-stack": "Trebuchet MS",
         "sidebar_hide_name": True,
+        "color-admonition-background": "#FCFCFC",
     },
     "dark_css_variables": {
         "color-background-primary": "#363636",
         "color-background-secondary": "#363636",
         "color-foreground-primary": "#D9D9D9",
         "color-foreground-secondary": "#D9D9D9",
-        "color-sidebar-background": "#007086",
-        "color-sidebar-background-border": "transparent",
-        "color-sidebar-caption-text": "#D9D9D9",
-        "color-sidebar-link-text--top-level": "#D9D9D9",
-        "color-sidebar-link-text": "#D9D9D9",
+        "color-admonition-background": "#363636",
     }    
 }
 # Add any paths that contain custom static files (such as style sheets) here,

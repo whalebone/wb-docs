@@ -40,7 +40,7 @@ html {
     top: -20px;
 }
 .sidebar-scroll, .toc-scroll, article[role=main] * {
-    scrollbar-color: #2BB8BC #ffffff00;
+    scrollbar-color: #D9D9D9 #ffffff00;
     scrollbar-width: thin;
 }
 

@@ -82,27 +82,72 @@ todo_include_todos = False
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = "furo"
+html_sidebars = {
+    "**": [
+        "sidebar/brand.html",
+        "sidebar/search.html",
+        "sidebar/scroll-start.html",
+        "sidebar/navigation.html",
+        "sidebar/scroll-end.html",
+        "sidebar/variant-selector.html",
+    ]
+}
+html_title = "Whalebone Documentation"
 
-# Theme options are theme-specific and customize the look and feel of a theme
-# further.  For a list of options available for each theme, see the
-# documentation.
-#
-
+html_theme_options = {
+    "light_logo": "whalebone.png",
+    "dark_logo": "whalebone_logo_white.png",
+    "light_css_variables": {
+        "color-sidebar-background": "#2C2662",
+        "color-sidebar-background-border": "transparent",
+        "color-background-secondary": "#FCFCFC",
+        "color-background-primary": "#FCFCFC",
+        "color-sidebar-brand-text": "#D9D9D9",
+        "color-sidebar-link-text": "#D9D9D9",
+        "color-header-text": "#2BB8BC",
+        "color-foreground-primary": "#2C2662",
+        "color-foreground-secondary": "#FCFCFC",
+        "color-sidebar-item-background": "transparent",
+        "color-sidebar-item-background--current": "transparent",
+        "color-sidebar-item-background--hover": "transparent",
+        "color-brand-primary": "#2BB8BC",
+        "color-brand-content": "#2BB8BC",
+        "color-brand-visited": "#2BB8BC",
+        "color-sidebar-search-text": "#2BB8BC",
+        "color-sidebar-search-background": "#FCFCFC",
+        "color-sidebar-search-background--focus": "#FCFCFC",
+        "color-sidebar-search-border": "transparent",
+        "color-sidebar-search-icon": "#2C2662",
+        "color-sidebar-caption-text": "#FCFCFC",
+        "color-sidebar-link-text--top-level": "#D9D9D9",
+        "color-card-background": "#FCFCFC",
+        "color-card-border": "#FCFCFC",
+        "color-card-marginals-background": "#FCFCFC",
+        "sidebar-caption-font-size": "100%",
+        "sidebar-item-font-size": "90%",
+        "sidebar-search-input-font-size": "100%",
+        "font-stack": "Trebuchet MS",
+        "sidebar_hide_name": True,
+        "color-admonition-background": "#FCFCFC",
+    },
+    "dark_css_variables": {
+        "color-background-primary": "#363636",
+        "color-background-secondary": "#363636",
+        "color-foreground-primary": "#D9D9D9",
+        "color-foreground-secondary": "#D9D9D9",
+        "color-admonition-background": "#363636",
+        "color-sidebar-background": "#363636",
+        "color-sidebar-background-border": "transparent",
+    }    
+}
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 
-
-html_logo = "whalebone.png"
-html_theme_options = {
-    'logo_only': True,
-    'display_version': False,
-}
-
-
-# -- Options for HTMLHelp output ------------------------------------------
+html_css_files = [
+    'default.css',
+]
 
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'Whalebonedoc'

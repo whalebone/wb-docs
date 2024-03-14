@@ -1,0 +1,49 @@
+.sidebar-drawer {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    max-width: 6cm;
+    min-width: 6cm;
+}
+
+#furo-readthedocs-versions {
+    background: #363636;
+    display: block;
+    position: static;
+    width: 100%;
+}
+.sidebar-brand-text {
+    color: #ffffff00;
+    font-size: 0;
+    overflow-wrap: break-word;
+}
+
+#furo-readthedocs-versions .rst-current-version .fa-book {
+    color: #2BB8BC;
+}
+
+.rst-versions .rst-current-version {
+    color: #2BB8BC;
+}
+
+html {
+    font-size: 100%;
+}
+
+.sidebar-search-container {
+    width: 210px;
+    height: 30px;
+    justify-content: center;
+    border-radius: 15px;
+    position: relative;
+    left: 9px;
+    top: -20px;
+}
+.sidebar-scroll, .toc-scroll, article[role=main] * {
+    scrollbar-color: #D9D9D9 #ffffff00;
+    scrollbar-width: thin;
+}
+
+.nav-overlay-icon .icon, .toc-overlay-icon .icon {
+    color: #2BB8BC;
+}

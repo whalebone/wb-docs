@@ -141,8 +141,8 @@ html_theme_options = {
         "color-highlight-on-target": "transparent",
     },
     "dark_css_variables": {
-        "color-background-primary": "#181421",
-        "color-background-secondary": "#181421",
+        "color-background-primary": "#16141a",
+        "color-background-secondary": "#16141a",
         "color-foreground-primary": "#D9D9D9",
         "color-foreground-secondary": "#D9D9D9",
         "color-admonition-background": "#363636",

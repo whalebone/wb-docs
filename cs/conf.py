@@ -161,6 +161,9 @@ html_theme_options = {
         "color-sidebar-search-icon": "#16141a",
          "color-sidebar-brand-text": "#FCFCFC",
         "color-sidebar-link-text": "#FCFCFC",
+        "color-toc-item-text--hover": "#FCFCFC",
+        "color-toc-item-text": "#FCFCFC",
+        "color-toc-item-text--active": "#D9D9D9",
     }    
 }
 # Add any paths that contain custom static files (such as style sheets) here,

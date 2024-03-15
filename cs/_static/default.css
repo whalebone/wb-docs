@@ -47,3 +47,7 @@ html {
 .nav-overlay-icon .icon, .toc-overlay-icon .icon {
     color: #2BB8BC;
 }
+
+.mobile-header {
+    color: var(--color-header-text);
+}

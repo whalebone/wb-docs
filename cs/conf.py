@@ -140,7 +140,7 @@ html_theme_options = {
         "color-toc-item-text--active": "#2BB8BC",
         "color-highlight-on-target": "transparent",
         "text-decoration-color": "transparent",
-        
+        "color-header-text": "2C2662",  
     },
     "dark_css_variables": {
         "color-background-primary": "#16141a",
@@ -164,6 +164,7 @@ html_theme_options = {
         "color-toc-item-text--hover": "#FCFCFC",
         "color-toc-item-text": "#FCFCFC",
         "color-toc-item-text--active": "#D9D9D9",
+        "color-header-text": "FCFCFC", 
     }    
 }
 # Add any paths that contain custom static files (such as style sheets) here,

@@ -145,8 +145,8 @@ html_theme_options = {
     "dark_css_variables": {
         "color-background-primary": "#16141a",
         "color-background-secondary": "#16141a",
-        "color-foreground-primary": "#AFAFAF",
-        "color-foreground-secondary": "#AFAFAF",
+        "color-foreground-primary": "#FCFCFC",
+        "color-foreground-secondary": "#FCFCFC",
         "color-admonition-background": "#363636",
         "color-sidebar-background": "#121212",
         "color-sidebar-background-border": "transparent",
@@ -155,12 +155,12 @@ html_theme_options = {
         "color-brand-primary": "#D9D9D9",
         "color-brand-content": "#D9D9D9",
         "color-brand-visited": "#D9D9D9",
-        "color-sidebar-search-text": "#AFAFAF",
+        "color-sidebar-search-text": "#16141a",
         "color-sidebar-search-background": "#FCFCFC",
         "color-sidebar-search-background--focus": "#FCFCFC",
-        "color-sidebar-search-icon": "#AFAFAF",
-         "color-sidebar-brand-text": "#AFAFAF",
-        "color-sidebar-link-text": "#AFAFAF",
+        "color-sidebar-search-icon": "#16141a",
+         "color-sidebar-brand-text": "#FCFCFC",
+        "color-sidebar-link-text": "#FCFCFC",
     }    
 }
 # Add any paths that contain custom static files (such as style sheets) here,

@@ -135,15 +135,20 @@ html_theme_options = {
         "font-stack": "Trebuchet MS",
         "sidebar_hide_name": True,
         "color-admonition-background": "#FCFCFC",
+        "color-toc-item-text--hover": "#2C2662",
+        "color-toc-item-text": "#2C2662",
+        "color-toc-item-text--active": "#2BB8BC",
+        "color-highlight-on-target": "transparent",
     },
     "dark_css_variables": {
-        "color-background-primary": "#363636",
-        "color-background-secondary": "#363636",
+        "color-background-primary": "#181421",
+        "color-background-secondary": "#181421",
         "color-foreground-primary": "#D9D9D9",
         "color-foreground-secondary": "#D9D9D9",
         "color-admonition-background": "#363636",
-        "color-sidebar-background": "#363636",
+        "color-sidebar-background": "#121212",
         "color-sidebar-background-border": "transparent",
+        "color-highlight-on-target": "transparent",
     }    
 }
 # Add any paths that contain custom static files (such as style sheets) here,

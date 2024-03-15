@@ -5,6 +5,78 @@ Whalebone Portal (graphical user interface) gives the user number of
 possibilities how to analyze what is happening on the DNS resolvers and
 the network.
 
+Content
+-------
+
+The **content** tab shows an overview of logged traffic subject to content filtering settings. If you do not have the content filter enabled or are not using it, nothing will be logged in this tab.
+
+How to view all queries of a specific type:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The easiest way to select queries of a certain type is by clicking the **filter** icon and selecting the desired query type. There are several options to choose from, including ``Sexual Content``, ``Gambling``, ``Audio/video``, ``Games`` and other 13 categories out of 17 total. Alternatively you can click on of categories displayed on the pie graph under the **Category** section or directly in the plot showing all the data.
+
+
+ow to search for a domain:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To search for domains, you can use the **Result Filter** text box to enter the name of the domain you are looking for. Other ways to search for a domain is by clicking the domain in the **Domain** section or directly in the log list in the same column.
+
+How to change the date range of the available data:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The range of data that can be displayed in the portal preview can be changed in several ways. The basic selection method includes selecting predefined time windows (1,7, 14 or 30 days) from the drop-down list located next to the **results filter**. If desired, a specific time range can be specified using the **Start Date and Time** and **End Date and Time** windows.
+
+
+By clicking on the pie graphs you can also filter out the **Client IP** and **Resolver**.
+
+
+
+
+DNS Traffic
+-----------
+
+The ``DNS Traffic`` tab contains an overview of the traffic that has
+been logged on the resolver. It contains all the queries along with some
+additional information such as the type, the answer and the TTL (time to
+live) of the answer.
+
+.. tip:: The data are subject to de-duplication. This means that the resolver
+   logs only unique combinations of query, query type and answer per 24
+   hour time frame. For this reason, a query might not be available on
+   the portal even though it has been resolved.
+
+You can watch step-by-step video guide `here <https://docs.whalebone.io/en/latest/video_guides.html#dns-traffic>`__.
+
+Below are some of the most useful filtering options of the available data will be described.
+
+
+How to view all queries of a specific type:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The easiest way to select queries of a certain type is by clicking the **filter** icon and selecting the desired query type. There are several options to choose from, including ``A``, ``AAA``, ``CNAME``, ``MX``, ``NS``, ``PTR``, ``RRSIG``,
+``SPF``, ``SRV`` and ``TXT``.
+
+
+How to view all answers of a specific type:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In the **Answers** window, you can select the desired answer, or in the log list in the **Answer** column, or click the desired answer.
+
+How to search for a domain:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To search for domains, you can use the **Result Filter** text box to enter the name of the domain you are looking for. Other ways to search for a domain is by clicking the domain in the **Tier 2 Domains** section or directly in the log list in the same column.
+
+How to change the date range of the available data:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The range of data that can be displayed in the portal preview can be changed in several ways. The basic selection method includes selecting predefined time windows (1,7, 14 or 30 days) from the drop-down list located next to the **results filter**. If desired, a specific time range can be specified using the **Start Date and Time** and **End Date and Time** windows.
+
+How to view DGA (Domain Generation Algorithm) indications:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+DGA indications can be filtered in a similar way as in the case of displaying queries of a certain type, in this case just select the last record in the list - **DGA**
+
 
 Threats
 -------
@@ -69,58 +141,10 @@ as malicious, if it falls under regulatory category or what external sources
 know about it, then watch step-by-step video `here <https://docs.whalebone.io/en/latest/video_guides.html#domain-analysis>`__.
 
 
-DNS Traffic
------------
-
-The ``DNS Traffic`` tab contains an overview of the traffic that has
-been logged on the resolver. It contains all the queries along with some
-additional information such as the type, the answer and the TTL (time to
-live) of the answer.
-
-.. tip:: The data are subject to de-duplication. This means that the resolver
-   logs only unique combinations of query, query type and answer per 24
-   hour time frame. For this reason, a query might not be available on
-   the portal even though it has been resolved.
-
-You can watch step-by-step video guide `here <https://docs.whalebone.io/en/latest/video_guides.html#dns-traffic>`__.
-
-Below are some of the most useful filtering options of the available data will be described.
-
-
-How to view all queries of a specific type:
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The easiest way to select queries of a certain type is by clicking the **filter** icon and selecting the desired query type. There are several options to choose from, including ``A``, ``AAA``, ``CNAME``, ``MX``, ``NS``, ``PTR``, ``RRSIG``,
-``SPF``, ``SRV`` and ``TXT``.
-
-
-How to view all answers of a specific type:
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-In the **Answers** window, you can select the desired answer, or in the log list in the **Answer** column, or click the desired answer.
-
-How to search for a domain:
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-To search for domains, you can use the **Result Filter** text box to enter the name of the domain you are looking for. Other ways to search for a domain is by clicking the domain in the **Tier 2 Domains** section or directly in the log list in the same column.
-
-How to change the date range of the available data:
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The range of data that can be displayed in the portal preview can be changed in several ways. The basic selection method includes selecting predefined time windows (1,7, 14 or 30 days) from the drop-down list located next to the **results filter**. If desired, a specific time range can be specified using the **Start Date and Time** and **End Date and Time** windows.
-
-How to view DGA (Domain Generation Algorithm) indications:
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-DGA indications can be filtered in a similar way as in the case of displaying queries of a certain type, in this case just select the last record in the list - **DGA**
-
 Fulltext filtering
 ~~~~~~~~~~~~~~~~~~
 
-For more advanced use, you can use the full-text filter and build a compound query. Fulltext filtering only works in the **Threats** panel.
-.. warning::
-   The **content** and **DNS trafic** dashboards does not support fulltext filtering at the moment. Only the clickable elements will result in filtering the data in the content dashboard.
-
+For more advanced use, you can use the full-text filter and build a compound query.
 These fields can be concatenated using logical operators. ``AND, OR, NOT, <, >`` and the wildcard character ``*`` are supported. Strings do not have to be wrapped with quotes. An example of the syntax is as follows:
 ``action: block AND accu:>70 AND (client_ip: 10.20.30.41 OR 10.20.30.40 OR 192.168.*)``
 ``AND NOT geoip.country_name: Germany AND matched_iocs.classification.type: malware AND NOT phishing`` 

@@ -64,3 +64,7 @@ body:is([data-theme="light"]) .nav-overlay-icon .icon, .toc-overlay-icon .icon {
     height: 1rem;
     width: 1rem;
 }
+
+.content {
+    width: 48em;
+}

@@ -36,20 +36,24 @@ Local resolver is supported on dedicated (hardware or virtual) machine running a
 
 * **Network setup requirements** (local resolver needs the following egress ports opened):
   
-  =========== =========== ======= ======================== ======================
-  Direction   Protocol(s)  Port    Destination IP/Domain    Description         
-  =========== =========== ======= ======================== ======================
-  Outbound    TCP+UDP     53      Any                      DNS resolution        
-  Outbound    TCP         443     resolverapi.whalebone.io Threat Database updates
-  Outbound    TCP         443     stream.whalebone.io      Threat Database updates     
-  Outbound    TCP         443     logger.whalebone.io      Logging stream   
-  Outbound    TCP         443     agentapi.whalebone.io    Resolver management
-  Outbound    TCP         443     transfer.whalebone.io    Support Log collection
-  Outbound    TCP         443     portal.whalebone.io      Admin portal
-  Outbound    TCP         443     harbor.whalebone.io      Resolver updates
-  Outbound    TCP         443     download.docker.com      Installation Process
-  Outbound    TCP         443     data.iana.org            DNSSEC keys       
-  =========== =========== ======= ======================== ======================
+  =========== =========== ======= =================================== ======================
+  Direction   Protocol(s)  Port    Destination IP/Domain              Description         
+  =========== =========== ======= =================================== ======================
+  Outbound    TCP+UDP     53      Any                                 DNS resolution        
+  Outbound    TCP         443     resolverapi.whalebone.io            Threat Database updates
+  Outbound    TCP         443     resolverapi.eu-01.whalebone.io      Database updates
+  Outbound    TCP         443     stream.whalebone.io                 Threat Database updates     
+  Outbound    TCP         443     logger.whalebone.io                 Logging stream
+  Outbound    TCP         443     logger.eu-01.whalebone.io           Logging stream   
+  Outbound    TCP         443     agentapi.whalebone.io               Resolver management
+  Outbound    TCP         443     agentapi.eu-01.whalebone.io         Resolver management
+  Outbound    TCP         443     transfer.whalebone.io               Support Log collection
+  Outbound    TCP         443     portal.whalebone.io                 Admin portal
+  Outbound    TCP         443     portal.eu-01.whalebone.io           Admin portal
+  Outbound    TCP         443     harbor.whalebone.io                 Resolver updates
+  Outbound    TCP         443     download.docker.com                 Installation Process
+  Outbound    TCP         443     data.iana.org                       DNSSEC keys       
+  =========== =========== ======= =================================== ======================
   
   .. warning:: Without communication on port 443 to the domains listed above the resolver won't be installed at all (the installation script will abort).
 

@@ -37,20 +37,24 @@ Instalace lokálního resolveru je podporována na vyhrazeném (hardwarovém neb
 
 * **Požadavky na nastavení sítě** (místní resolver potřebuje otevřené následující výstupní porty):
 
-  =========== =========== ======= ========================== ================================
-  Směr        Protokol(y) Port    Cílová IP/Doména           Popis         
-  =========== =========== ======= ========================== ================================
-  Odchozí     TCP+UDP     53      Jakákoli                   DNS rekurze        
-  Odchozí     TCP         443     resolverapi.whalebone.io   Aktualizace databáze hrozeb
-  Odchozí     TCP         443     stream.whalebone.io        Aktualizace databáze hrozeb     
-  Odchozí     TCP         443     logger.whalebone.io        Logovací stream   
-  Odchozí     TCP         443     agentapi.whalebone.io      Správa resolveru
-  Odchozí     TCP         443     transfer.whalebone.io      Sběr podpůrných protokolů
-  Odchozí     TCP         443     portal.whalebone.io        Portál správce
-  Odchozí     TCP         443     harbor.whalebone.io        Aktualizace resolveru
-  Odchozí     TCP         443     download.docker.com        Instalační proces
-  Odchozí     TCP         443     data.iana.org              DNSSEC klíče   
-  =========== =========== ======= ========================== ================================
+  =========== =========== ======= ==================================== ================================
+  Směr        Protokol(y) Port    Cílová IP/Doména                     Popis         
+  =========== =========== ======= ==================================== ================================
+  Odchozí     TCP+UDP     53      Jakákoli                             DNS rekurze        
+  Odchozí     TCP         443     resolverapi.eu-01.whalebone.io       Aktualizace databáze hrozeb
+  Odchozí     TCP         443     resolverapi.whalebone.io             Aktualizace databáze hrozeb
+  Odchozí     TCP         443     stream.whalebone.io                  Aktualizace databáze hrozeb     
+  Odchozí     TCP         443     logger.whalebone.io                  Logovací stream 
+  Odchozí     TCP         443     logger.eu-01.whalebone.io            Logovací stream     
+  Odchozí     TCP         443     agentapi.whalebone.io                Správa resolveru
+  Odchozí     TCP         443     agentapi.eu-01.whalebone.io          Správa resolveru
+  Odchozí     TCP         443     transfer.whalebone.io                Sběr podpůrných protokolů
+  Odchozí     TCP         443     portal.whalebone.io                  Portál správce
+  Odchozí     TCP         443     portal.eu-01.whalebone.io            Portál správce
+  Odchozí     TCP         443     harbor.whalebone.io                  Aktualizace resolveru
+  Odchozí     TCP         443     download.docker.com                  Instalační proces
+  Odchozí     TCP         443     data.iana.org                        DNSSEC klíče   
+  =========== =========== ======= ==================================== ================================
   
   .. warning:: Bez povolené komunikace na portu 443 s výše uvedenými doménami nebude resolver vůbec nainstalován (instalační skript se přeruší).
 

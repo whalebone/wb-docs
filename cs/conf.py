@@ -82,7 +82,7 @@ todo_include_todos = False
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = "sphinx_rtd_theme"
+html_theme = "furo"
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -105,6 +105,11 @@ html_title = "Whalebone Documentation"
 html_theme_options = {
     "light_logo": "whalebone.png",
     "dark_logo": "whalebone_logo_white.png",
+    'collapse_navigation': False,
+    'sticky_navigation': True,
+    'navigation_depth': 4,
+    'includehidden': True,
+    'titles_only': False,
     "light_css_variables": {
         "color-sidebar-background": "#2C2662",
         "color-sidebar-background-border": "transparent",

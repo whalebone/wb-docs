@@ -13,7 +13,7 @@ Další informace o produktu a společnosti jsou k dispozici na oficiálních st
 
    deployment_peacemaker
    deployment immunity
-   deployment_cloud
+   deployment_cloud/index
 
 
 .. toctree::

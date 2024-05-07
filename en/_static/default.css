@@ -19,11 +19,11 @@
 }
 
 #furo-readthedocs-versions .rst-current-version .fa-book {
-    color: #2BB8BC;
+    color: #FCFCFC;
 }
 
 .rst-versions .rst-current-version {
-    color: #2BB8BC;
+    color: #FCFCFC;
 }
 
 html {
@@ -44,6 +44,23 @@ html {
     scrollbar-width: thin;
 }
 
-.nav-overlay-icon .icon, .toc-overlay-icon .icon {
-    color: #2BB8BC;
+
+body:not([data-theme="light"]) .highlight {
+    background: #363636;
+    color: #D9D9D9;
+}
+
+.highlight {
+    background: #D9D9D9;
+    color: #2C2662;
+}
+
+.mobile-header {
+    color: var(--color-header-text);
+}
+
+body:is([data-theme="light"]) .nav-overlay-icon .icon, .toc-overlay-icon .icon {
+    color: #2C2662;
+    height: 1rem;
+    width: 1rem;
 }

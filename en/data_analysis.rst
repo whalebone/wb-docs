@@ -16,7 +16,7 @@ How to view all queries of a specific type:
 The easiest way to select queries of a certain type is by clicking the **filter** icon and selecting the desired query type. There are several options to choose from, including ``Sexual Content``, ``Gambling``, ``Audio/video``, ``Games`` and other 13 categories out of 17 total. Alternatively you can click on of categories displayed on the pie graph under the **Category** section or directly in the plot showing all the data.
 
 
-ow to search for a domain:
+How to search for a domain:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To search for domains, you can use the **Result Filter** text box to enter the name of the domain you are looking for. Other ways to search for a domain is by clicking the domain in the **Domain** section or directly in the log list in the same column.
@@ -24,7 +24,7 @@ To search for domains, you can use the **Result Filter** text box to enter the n
 How to change the date range of the available data:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The range of data that can be displayed in the portal preview can be changed in several ways. The basic selection method includes selecting predefined time windows (1,7, 14 or 30 days) from the drop-down list located next to the **results filter**. If desired, a specific time range can be specified using the **Start Date and Time** and **End Date and Time** windows.
+The range of data that can be displayed in the portal preview can be changed in several ways. The basic selection method includes selecting predefined time windows (1 or 7) from the drop-down list located next to the **results filter**. If desired, a specific time range can be specified using the **Start Date and Time** and **End Date and Time** windows.
 
 
 By clicking on the pie graphs you can also filter out the **Client IP** and **Resolver**.
@@ -70,7 +70,7 @@ To search for domains, you can use the **Result Filter** text box to enter the n
 How to change the date range of the available data:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The range of data that can be displayed in the portal preview can be changed in several ways. The basic selection method includes selecting predefined time windows (1,7, 14 or 30 days) from the drop-down list located next to the **results filter**. If desired, a specific time range can be specified using the **Start Date and Time** and **End Date and Time** windows.
+The range of data that can be displayed in the portal preview can be changed in several ways. The basic selection method includes selecting predefined time windows (1,7 or 14) from the drop-down list located next to the **results filter**. If desired, a specific time range can be specified using the **Start Date and Time** and **End Date and Time** windows.
 
 How to view DGA (Domain Generation Algorithm) indications:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -107,13 +107,13 @@ There are two options for filtering different types of events. The first option,
 How to search for a domain:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The easiest way to search for a domain is by clicking on a specific domain in the log hostory. The second way is by typing the domain name into the **Result Filter** field.
+The easiest way to search for a domain is by clicking on a specific domain in the log history. The second way is by typing the domain name into the **Result Filter** field.
 
 
 How to search for events based on specific IP address:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Filtering logs from a specific IP address is possible by selecting a specific source IP address in the log history. The second option is by entering the domain name in the **Result Filter** field.
+Filtering logs from a specific IP address is possible by selecting a specific source IP address in the log history. The second option is by entering the domain name in the **Result Filter** field. Note that it will create field named "request_ip:" but fulltext filter is created using field "client_ip:"
 
 How to search for events based on specific threat category:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

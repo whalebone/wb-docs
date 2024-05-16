@@ -69,7 +69,7 @@ K vyhledání domén lze využít textové pole **Filtr výsledků** do kterého
 Jak změnit časový rozsah událostí:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Rozsah data údajů, které lze zobrazit v náhledu na portálu, lze měnit několika způsoby. Mezi základní způsob výběru se řadí volba předdefinovaných časových oken (1,7, 14 nebo 30 dní) v rozbalovacím seznamu umístěném vedle **filtru výsledků**. V případě potřeby je možné specifikovat konkrétní časové rozmezí pomocí oken **Datum a čas začátku** a **Datum a čas konce**.
+Rozsah data údajů, které lze zobrazit v náhledu na portálu, lze měnit několika způsoby. Mezi základní způsob výběru se řadí volba předdefinovaných časových oken (1,7 nebo 14) v rozbalovacím seznamu umístěném vedle **filtru výsledků**. V případě potřeby je možné specifikovat konkrétní časové rozmezí pomocí oken **Datum a čas začátku** a **Datum a čas konce**.
 
 
 How to view DGA (Domain Generation Algorithm) indications:

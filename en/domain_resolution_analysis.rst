@@ -8,11 +8,11 @@ ISPs often face complaints that users cannot access the domain, in many cases it
 
 **Steps to be done:**
 
-**Step 1.** – Examine domain in the **Threats** page.
+**Step 1.: Examine domain in the Threats page**
 
   * Check whether domain was blocked by a security feature.
 
-**Step 2.** – Examine domain in the **DNS traffic**.
+**Step 2.: Examine domain in the DNS traffic**
 
   * If it was not blocked because of **threats**, go to **DNS Traffic** and check whether it reached the resolver.
   * Users often rewrites resolver with public ones and if that resolver faces a issue ISP is blamed to as source of problem, which is not true 
@@ -22,7 +22,7 @@ ISPs often face complaints that users cannot access the domain, in many cases it
     * NXDOMAIN was returned - it means that the authoritative server responded, but the domain or subdomain does not exist.
     * SERVFAIL - no response came from the configured authoritative server. This can mean an outage of server or link issue.
 
-**Step 3.** – Examine domain using DNSVIZ tool.
+**Step 3.: Examine domain using DNSVIZ tool**
   * Under each domain there is an arrow where you can be redirected to DNSVIZ of a particular domain. 
   * It shows full resolution process in a human readable way.
   * It can show that the DNSSEC validation process was unsuccessful or the authoritative DNS server was not reachable.

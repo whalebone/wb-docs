@@ -12,7 +12,6 @@ Další informace o produktu a společnosti jsou k dispozici na oficiálních st
    :caption: Možnosti nasazení
 
    deployment_peacemaker
-   deployment immunity
    deployment_cloud
 
 
@@ -50,14 +49,6 @@ Další informace o produktu a společnosti jsou k dispozici na oficiálních st
    :caption: Nastavení ogranizace
    
    user
-
-
-.. toctree::
-   :caption: Home Office Security
-   
-   hos_overview
-   hos_installation
-   hos_operation
 
 .. toctree::
    :caption: Videonávody krok za krokem

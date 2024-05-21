@@ -76,7 +76,7 @@ ale pokud máte doménu ``friendly.malware.ninja`` v seznamu Allow, bude mít ta
 .. warning:: Po vytvoření seznamu povolených nebo zakázaných položek je třeba jej přiřadit ke konkrétní zásadě zabezpečení, jinak se změny neprojeví.
 
 
-.. image:: ./img/whitelist.gif
+.. image:: ./img/denylist_cs.gif
    :align: center
 
 

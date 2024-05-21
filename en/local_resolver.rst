@@ -2,7 +2,7 @@
 Local resolver
 ******************
 
-Deploying the Whalebone solution deployed as a **local resolver** brings the advantage of visibility of local IP addresses that send the actual requests. If deploying locally is not a suitable option for you, 
+Deploying the Whalebone Immunity as a **local resolver** brings the advantage of visibility of local IP addresses that send the actual requests. If deploying locally is not a suitable option for you, 
 check out the other :ref:`Deployment Options.<Deployment Options>`
 
 Whalebone resolver is based on the implementation of `Knot Resolver <https://www.knot-resolver.cz/>`_ developed in the CZ.NIC labs.
@@ -109,7 +109,6 @@ Successful run of the installation script is ended with the notification ```Fina
 .. image:: ./img/lrv2-install.gif
    :align: center
 
-   Local resolver installation.
 
 .. warning:: Local resolver is configured as an open resolver. It will respond to any request sent. This is quite comfortable in terms of availability of the services, but also could be a risk if the service is available from the outside networks. Please make sure you limit the access to the local resolver on port 53 (UDP and TCP) from the trusted networks only, otherwise it can be misused for various DoS attacks.
 

@@ -40,7 +40,7 @@ Available configuration options:
   * `Complete Knot Resolver configuration <https://knot-resolver.readthedocs.io/en/stable/config-overview.html>`_
   * Supports Lua scripting.
 
-.. image:: ./img/lrv2-resolution.gif
+.. image:: ./img/resolution_en.gif
    :align: center
 
 .. warning:: Faulty configuration can impact stability, performance or security functions of the resolver. In case of wrong syntax the **Deploy Configuration** will result in error code.

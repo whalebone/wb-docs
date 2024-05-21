@@ -247,3 +247,4 @@ latex_elements = {
   'classoptions': ',openany,oneside',
   'babel': '\\usepackage[english]{babel}'
 }
+

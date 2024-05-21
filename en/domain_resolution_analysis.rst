@@ -4,7 +4,7 @@ Domain resolution analysis
 There is always chance that every administrator will encounter a situation, when DNS resolution is not successful. Most of the time it is not related to Whalebone's resolver but there is probably an issue with an authoritative server. 
 
 
-ISPs often face complaints that users cannot access the domain, in many cases it is not the ISP's fault. Whalebone solution provides you with information so you can identify the issue. 
+ISPs often face complaints that users cannot access the domain, in many cases it is not the ISP's fault. Whalebone Immunity provides you with information so you can identify the issue. 
 
 **Steps to be done:**
 

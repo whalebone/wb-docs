@@ -1,7 +1,7 @@
 License Disclaimers
 ====================
 
-The Whalebone resolver utilizes the following technology in its solution:
+The Whalebone resolver utilizes the following technology:
 
 the CRC64 variant with Jones coefficient
 -----------------------------------------

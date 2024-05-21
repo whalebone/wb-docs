@@ -75,7 +75,7 @@ but if you have ``friendly.malware.ninja`` on an Allow list, this will take prec
 
 .. warning:: After creating an allow or deny list, it needs to be assigned to the specific security policy, or else the changes will not take effect.
 
-.. image:: ./img/whitelist.gif
+.. image:: ./img/denylist_en.gif
    :align: center
 
 

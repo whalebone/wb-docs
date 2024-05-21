@@ -64,3 +64,11 @@ body:is([data-theme="light"]) .nav-overlay-icon .icon, .toc-overlay-icon .icon {
     height: 1rem;
     width: 1rem;
 }
+
+a {
+    color: #b6c2cf;
+}
+
+.toc-tree:is([data-theme="light"]) {
+    border-left: 1px solid #2C2662;
+}

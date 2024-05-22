@@ -58,7 +58,7 @@ Další informace o produktu a společnosti jsou k dispozici na oficiálních st
    hos_installation
    hos_operation
 
-   .. toctree::
+.. toctree::
    :caption: Identity protection
    
    idp_overview

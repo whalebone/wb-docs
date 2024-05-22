@@ -11,7 +11,6 @@ Další informace o produktu a společnosti jsou k dispozici na oficiálních st
    :maxdepth: 3
    :caption: Možnosti nasazení
 
-   deployment_peacemaker
    deployment immunity
    deployment_cloud
 
@@ -58,6 +57,11 @@ Další informace o produktu a společnosti jsou k dispozici na oficiálních st
    hos_overview
    hos_installation
    hos_operation
+
+   .. toctree::
+   :caption: Identity protection
+   
+   idp_overview
 
 .. toctree::
    :caption: Videonávody krok za krokem

@@ -8,7 +8,7 @@ Při prevenci hrozeb se Whalebone spoléhá na externí zpravodajské zdroje i n
 Další informace o produktu a společnosti jsou k dispozici na oficiálních stránkách `Whalebone. <https://whalebone.io>`_
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 2
    :caption: Možnosti nasazení
 
    deployment immunity

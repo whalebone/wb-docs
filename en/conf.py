@@ -98,6 +98,11 @@ html_title = "Whalebone Documentation"
 html_theme_options = {
     "light_logo": "whalebone.png",
     "dark_logo": "whalebone_logo_white.png",
+    'collapse_navigation': False,
+    'sticky_navigation': True,
+    'navigation_depth': 4,
+    'includehidden': True,
+    'titles_only': False,
     "light_css_variables": {
         "color-sidebar-background": "#2C2662",
         "color-sidebar-background-border": "transparent",
@@ -130,6 +135,12 @@ html_theme_options = {
         "font-stack": "Trebuchet MS",
         "sidebar_hide_name": True,
         "color-admonition-background": "#FCFCFC",
+         "color-toc-item-text--hover": "#2C2662",
+        "color-toc-item-text": "#2C2662",
+        "color-toc-item-text--active": "#2C2662",
+        "color-highlight-on-target": "transparent",
+        "text-decoration-color": "transparent",
+        "color-header-text": "2C2662",  
     },
     "dark_css_variables": {
         "color-background-primary": "#1d2125",

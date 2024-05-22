@@ -46,7 +46,7 @@ You will be redirected to **Report settings** where you need to toggle **Identit
 
 After adding the addresses you should see them displayed in section **E-mails for notifications:**.
 
-.. image:: ./img/idp_7.png
+.. image:: ./img/idp_8.png
     :align: center
 
 More information

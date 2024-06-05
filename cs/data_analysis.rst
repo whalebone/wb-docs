@@ -78,6 +78,12 @@ How to view DGA (Domain Generation Algorithm) indications:
 Indikace DGA lze vyfiltrovat podobným způsobem, jako v případě zobrazení dotazů určitého typu, v tomto případě stačí zvolit poslední záznam v seznamu - **DGA**
 
 
+Nahlášení "False negative"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+V některých případech je možné, že nedojde ke správné klasifikaci nebezpečnosti domény. V případě, že budete mít pocit, že by měla být doména blokována a není, je možné ji pomocí tlačítka **Nahlásit jako škodlivou** nahlásit, jako škodlivou doménu a tím dojde k vyvoření požadavku na přezkoumání domény. Tato volba se nacházív tabulce logů pod ikonou šipky u jednotlivých dotazů.
+
+
 
 
 Hrozby
@@ -138,6 +144,12 @@ V případě, že se chcete dozvědět další informace o doméně, zejména ja
 Whalebone přiřazuje konkrétní doméně, kdy byla poprvé spatřena a zařazena do kategorie 
 jako škodlivá, zda spadá do regulační kategorie nebo z jakých externích zdrojů. 
 o ní víte, podívejte se na video `zde <https://docs.whalebone.io/cs/latest/video_guides.html#domain-analysis>`__.
+
+Nahlášení "False positive"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+V některých případech je možné, že nedojde ke správné klasifikaci nebezpečnosti domény. V případě, že budete mít pocit, že by neměla být doména blokována a není, je možné ji pomocí tlačítka **Nahlásit falešnou detekci** nahlásit, jako špatně klasifikovanou doménu a tím dojde k vyvoření požadavku na přezkoumání domény. Tato volba se nacházív tabulce logů pod ikonou šipky u jednotlivých dotazů.
+
 
 
 Fulltextové vyhledávání 

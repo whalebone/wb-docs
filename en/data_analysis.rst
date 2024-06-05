@@ -78,6 +78,11 @@ How to view DGA (Domain Generation Algorithm) indications:
 DGA indications can be filtered in a similar way as in the case of displaying queries of a certain type, in this case just select the last record in the list - **DGA**
 
 
+How to report "False negative"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In some cases, it is possible that the score classification of a domain may not be correct. In the case that you feel that a domain should be blocked and is not, it is possible to report it as a malicious domain using the **Report as Malicious** button to trigger a domain review request. This option is located in the log table under the arrow icon for each query.
+ 
 Threats
 -------
 
@@ -140,6 +145,10 @@ Whalebone assigns to particular domain, when was first seen and categorized
 as malicious, if it falls under regulatory category or what external sources 
 know about it, then watch step-by-step video `here <https://docs.whalebone.io/en/latest/video_guides.html#domain-analysis>`__.
 
+
+How to report "False positive"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In some cases, it is possible that the score of a domain may be wrong. In the case that you feel a domain should not be blocked and it is blocked, it can be reported as a misclassified domain using the **Report False Positive** button to trigger a domain review request.
 
 Fulltext filtering
 ~~~~~~~~~~~~~~~~~~

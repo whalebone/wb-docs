@@ -28,6 +28,10 @@ Rozsah dat, která lze zobrazit v náhledu portálu, lze změnit několika způs
 
 Kliknutím na koláčové grafy můžete také vyfiltrovat **IP klienta** a **Resolvery**.
 
+Návrh na změnu kategorie
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Může se stát, že bude některá z domén špatně kategorizována. Ověřit do jakých kategorií doména spadá můžete pomocí nástroje **Analýza domény** nacházejícím se v uživatelském menu. Po zadání domény se objeví sekce **Kategorizace obsahu**, kde se zobrazí jednotlivé kategorie, do kterých doména spadá a zároveň se nabízí tlačítko **Navrhnout změnu kategorie** přes které je možné navrhnout změnu kategorizace. Zároveň pomocí tlačítka **Nahlásit jako škodlivou** je možné nahlásit doménu, jako false positive.
 
 DNS Provoz:
 -----------

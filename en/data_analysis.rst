@@ -29,9 +29,11 @@ The range of data that can be displayed in the portal preview can be changed in 
 
 By clicking on the pie graphs you can also filter out the **Client IP** and **Resolver**.
 
+Domain categorization change
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-
-
+It may happen that some of the domains are categorized incorrectly. You can check which categories a domain falls into by using the **Domain Analysis** tool located in the user menu. After entering a domain, the **Content Categorization** section will appear, showing the categories the domain falls into and also offering a **Suggest Category Change** button to suggest a change in categorization. It is also possible to report a domain as a false positive using the **Report as malicious** button.
+ 
 DNS Traffic
 -----------
 

@@ -8,10 +8,9 @@ For threat prevention Whalebone relies on external intelligence sources as well 
 More information about the product and company is available on the official `Whalebone website. <https://whalebone.io>`_
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 2
    :caption: Deployment Options
 
-   deployment_peacemaker
    deployment immunity
    deployment_cloud
 
@@ -58,6 +57,11 @@ More information about the product and company is available on the official `Wha
    hos_overview
    hos_installation
    hos_operation
+
+.. toctree::
+   :caption: Identity protection
+   
+   idp_overview
 
 .. toctree::
    :caption: Step-by-Step Video Guides

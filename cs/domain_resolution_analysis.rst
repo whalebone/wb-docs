@@ -10,11 +10,12 @@ Jednotlivé kroky k provedení analýzy
 ------------------------------------
 
 
-**1. Krok ** : Prozkoumejte doménu v záložce **Hrozby**.
+**1. Krok: Prozkoumejte doménu v záložce Hrozby**
 
   * Zkontrolujte, zda doména nebyla zablokována z důvodu bezpečnosti.
+  * K analáze můžete vyzužít nástroj **Debug překladu domény**, který se nachází přímo v nabídce resolveru pod ikonkou tří teček. Výsledek testu oznámí, jestli je doména blokována, či nikoliv. 
 
-**2. Krok ** : Prozkoumejte doménu v záložce **DNS provoz**.
+**2. Krok: Prozkoumejte doménu v záložce DNS provoz**
 
   * Pokud nebyla zablokována kvůli **hrozbám**, přejděte na stránku **DNS provoz** a zkontrolujte, zda se dotaz dostal až k resolveru.
   * Uživatelé často mění nastavení DNS serveru na veřejné a z nefunkčnosti viní poskytovatele připojení. 
@@ -23,12 +24,12 @@ Jednotlivé kroky k provedení analýzy
     * NXDOMAIN odpověď - autoritativní server odpověděl, ale subdoména neexistuje.
     * SERVFAIL odpověď - žádná odpověď ze strany serveru. Může se jednat o výpadek serveru nebo spojení.
 
-**3. Krok ** – Prozkoumejte doménu pomocí **DNSVIZ**.
+**3. Krok: Prozkoumejte doménu pomocí DNSVIZ**
   * V seznamu domén lze pomocí šipky otevřít seznam nástrojů pro investigaci.
   * Nástroj **DNSVIZ** může v grafické podobně nastínit jestli byla DNSSEC validace úspěšná, nebo, že autoritativní server nebyl dosažitelný
 
-Videoprůvodce krok za krokem si můžete prohlédnout `zde <https://docs.whalebone.io/cs/latest/video_guides.html#domain-resolution-troubleshooting>`__.
+Videoprůvodce krok za krokem si můžete prohlédnout `zde <https://docs.whalebone.io/cs/immunity/video_guides.html#domain-resolution-troubleshooting>`__.
 
 Portál Whalebone poskytuje možnost trasovat doménu. Tato funkce je k dispozici v části **Resolvery** pod třemi tečkami každého resolveru. Tato funkce ukazuje, jaké informace jsou předávány resolveru při překladu konkrétní domény.
 
-Videoprůvodce krok za krokem si můžete prohlédnout `zde <https://docs.whalebone.io/cs/latest/video_guides.html#domain-tracing>`__.
+Videoprůvodce krok za krokem si můžete prohlédnout `zde <https://docs.whalebone.io/cs/immunity/video_guides.html#domain-tracing>`__.

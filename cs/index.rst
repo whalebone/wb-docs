@@ -8,10 +8,9 @@ Při prevenci hrozeb se Whalebone spoléhá na externí zpravodajské zdroje i n
 Další informace o produktu a společnosti jsou k dispozici na oficiálních stránkách `Whalebone. <https://whalebone.io>`_
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 2
    :caption: Možnosti nasazení
 
-   deployment_peacemaker
    deployment immunity
    deployment_cloud
 
@@ -58,6 +57,11 @@ Další informace o produktu a společnosti jsou k dispozici na oficiálních st
    hos_overview
    hos_installation
    hos_operation
+
+.. toctree::
+   :caption: Identity protection
+   
+   idp_overview
 
 .. toctree::
    :caption: Videonávody krok za krokem

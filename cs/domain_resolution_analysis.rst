@@ -13,6 +13,7 @@ Jednotlivé kroky k provedení analýzy
 **1. Krok: Prozkoumejte doménu v záložce Hrozby**
 
   * Zkontrolujte, zda doména nebyla zablokována z důvodu bezpečnosti.
+  * K analáze můžete vyzužít nástroj **Debug překladu domény**, který se nachází přímo v nabídce resolveru pod ikonkou tří teček. Výsledek testu oznámí, jestli je doména blokována, či nikoliv. 
 
 **2. Krok: Prozkoumejte doménu v záložce DNS provoz**
 

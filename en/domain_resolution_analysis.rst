@@ -11,6 +11,7 @@ ISPs often face complaints that users cannot access the domain, in many cases it
 **Step 1.: Examine domain in the Threats page**
 
   * Check whether domain was blocked by a security feature.
+  * For analysis you can use the **Is this domain blocked?**, which is located directly in the resolver menu under the three dots icon. The result of the test will tell you if the domain is blocked or not. 
 
 **Step 2.: Examine domain in the DNS traffic**
 

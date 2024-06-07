@@ -24,7 +24,7 @@ tyto rozsahy lze přiřadit lokalitám, aby bylo možné snadno rozlišit jednot
 Pokud je tato možnost nasazení preferována, měli byste provoz DNS přesměrovat na cloudové resolvery Whalebone. Cloudové resolvery jsou k dispozici anycast IP adrese
 **193.32.92.32** a **193.32.92.33**.
 
-.. image:: ./img/resolver_ip.png
+.. image:: ./img/resolver_ip_cs.png
    :align: center
 
 IP adresy resolverů jsou dostupné v části **Cloudové resolvery** a v nabídce **Nápověda** → **DNS překladače**.

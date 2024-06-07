@@ -45,7 +45,7 @@ Dostupné možnosti konfigurace:
 
 
  
-.. image:: ./img/lrv2-resolution.gif
+.. image:: ./img/resolution_cs.gif
    :align: center
 
 .. note:: Po stisknutí tlačítka **Uložit** jsou změny v nastavení překladu DNS uloženy a připraveny k nasazení na resolvery. Samotné nasazení je třeba provést v záložce **Resolvery**. Je možné provést více změn a použít je všechny najednou, aby se minimalizoval počet nasazení na resolver.

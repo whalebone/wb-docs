@@ -3,6 +3,7 @@
 Instalace krok za krokem
 ************************
 
+TEST
 
 Chcete-li nainstalovat HOS do zařízení, musíte jej nejprve nakonfigurovat. Přejděte do **Whalebone Portalu**, přejděte do  (1) **Uživatelského menu** a zde na (2) **Home Office Security**.
 

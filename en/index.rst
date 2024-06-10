@@ -11,8 +11,7 @@ More information about the product and company is available on the official `Wha
    :maxdepth: 3
    :caption: Deployment Options
 
-   deployment_peacemaker
-   deployment immunity
+   deployment_aura
    deployment_cloud
 
 
@@ -50,14 +49,6 @@ More information about the product and company is available on the official `Wha
    :caption: Organization Settings
    
    user
-
-
-.. toctree::
-   :caption: Home Office Security
-   
-   hos_overview
-   hos_installation
-   hos_operation
 
 .. toctree::
    :caption: Step-by-Step Video Guides

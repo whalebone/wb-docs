@@ -1,7 +1,7 @@
-Whalebone Peacemaker
+Whalebone Aura
 ===================
 
-Local DNS resolver for ISP
+Local DNS resolver for Telcos
 --------------------------
 
 This deployment scenario uses local Whalebone resolver, that communicates with Whalebone cloud through API. The DNS resolution takes place directly on the resolver and is completely independent on the cloud availability. In the case of resolver not being able to reach the cloud service, it won't be able to update the threat intelligence and to reports any incidents.

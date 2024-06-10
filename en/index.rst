@@ -11,7 +11,7 @@ More information about the product and company is available on the official `Wha
    :maxdepth: 3
    :caption: Deployment Options
 
-   deployment_peacemaker
+   deployment_aura
    deployment_cloud
 
 

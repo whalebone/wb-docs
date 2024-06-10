@@ -1,7 +1,7 @@
-Whalebone Peacemaker
+Whalebone Aura
 ===================
 
-Místní překladač DNS pro poskytovatele internetových služeb (ISP)
+Místní překladač DNS Telco operátory
 -----------------------------------------------------------------
 
 Tento scénář nasazení využívá lokální resolver Whalebone, který komunikuje s cloudem Whalebone prostřednictvím rozhraní API. Překlad DNS probíhá přímo na resolveru a je zcela nezávislý na dostupnosti cloudu. V případě, že resolver nebude schopen dosáhnout cloudové služby, nebude schopen aktualizovat informace o hrozbách a hlásit případné incidenty.

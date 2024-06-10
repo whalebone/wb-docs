@@ -11,7 +11,7 @@ Další informace o produktu a společnosti jsou k dispozici na oficiálních st
    :maxdepth: 3
    :caption: Možnosti nasazení
 
-   deployment_peacemaker
+   deployment_aura
    deployment_cloud
 
 

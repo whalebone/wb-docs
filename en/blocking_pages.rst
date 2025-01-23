@@ -1,122 +1,97 @@
 Blocking Pages
-============================
-  You can watch step-by-step video guide `here <https://docs.whalebone.io/en/latest/video_guides.html#blocking-page-configuration>`__. 
-In case of blocking access to a domain (due to security, content or regulatory reasons), the resolvers are answering to the clients with a specific IP address that leads to one of the Blocking pages. While the clients initiate the HTTP(S) connections towards the blocked domain, they are presented with a custom Blocking page with different content based on the reason of the blocking. 
-For the Blocking Pages Whalebone provides sample template, however, they do not have to be followed and virtually every modification, branding and copywriting is possible. The template code is written to be compatible with the widest range of browsers to avoid problems with older versions.
+==============
 
-Different versions of the Blocking Pages can be assigned to different segments of the networks in **Resolvers** → **Policy assignment**.
+This section provides a detailed guide for configuring and customizing DNS blocking pages within the Whalebone system. Blocking pages inform users when access to a specific domain has been denied based on security or content filtering policies.
 
+Tutorial: Setting Up Blocking Pages
+-----------------------------------
 
-.. figure:: ./img/blocking-pages-overview.png
-   :alt: Blocking Pages Overview
-   :align: center
-   
-   Blocking Pages Overview
+1. **Access the Blocking Pages Section:**
+   - Log in to the Whalebone portal.
+   - Navigate to the **Blocking Pages** tab under the **Configuration** menu.
 
-For each version, based on the deployment details, there are four variants of the Blocking Pages that are available and can be configured:
+   .. image:: ./img/blocking_pages_access.png
+      :align: center
 
-* **Security**: displayed when access is blocked due to security reasons
-* **Blacklist**: displayed when access is blocked by the Administrators
-* **Regulatory**: displayed when access is regulated due to law or court order
-* **Content**: displayed when access is blocked due to the content of the domain
+2. **Choose a Default Template:**
+   - Select one of the pre-defined templates for blocking pages.
+   - Preview the template to ensure it matches your organizational branding and message.
 
-Furthermore, each version can have different localization options. The language that is going to be presented to the user is infered from the language of the browser that is visiting the Blocking Page. New locales can be seamlessly added as an option.
+   .. image:: ./img/blocking_page_templates.png
+      :align: center
 
-.. figure:: ./img/blocking-pages.png
-   :alt: Blocking Pages Menu
-   :align: center
-   
-   Blocking Pages Menu
+3. **Customize the Page Content:**
+   - Edit the title, description, and contact details.
+   - Add a company logo or other branding elements.
 
-For each Locale several options are available. In the example above, the English version has the following options:
+   .. image:: ./img/blocking_page_customization.png
+      :align: center
 
-**Option 1.** – Use Template:
+4. **Test the Blocking Page:**
+   - Use a test domain that triggers a blocking page to verify that the configuration works as expected.
 
-  When using the template option, the information that is provided as input to the following form are injected in the template code. This is the fastest and easiest way to customize the blocking pages.
+   .. image:: ./img/blocking_page_test.png
+      :align: center
 
-.. figure:: ./img/template.png
-   :alt: Template Customization
-   :align: center
-   
+How-To Guide: Advanced Blocking Page Configurations
+---------------------------------------------------
 
+### Multi-Language Support
 
-.. note:: Setting the blocking page could be done clicking on the **Magic wand** button. Note that it will override the previous version of blocking page.
-   
+1. Enable multi-language options in the blocking page settings.
+2. Add translations for all text fields, including title and description.
 
-**Option 2.** – Set as default locale:
+   .. image:: ./img/multi_language_blocking_pages.png
+      :align: center
 
-  This option can customize the default language of the Blocking Pages. In case some browser does not declare its preferred language, the "Default" language acts as a fallback mechanism. Default locale is indicated via wildcard symbol (*) next to the langue type.
+### Redirect Options
 
-**Option 3.** – Delete the locale:
+1. Set up custom redirect URLs for users attempting to access blocked domains.
+2. Use this option to provide more detailed explanations or company policies.
 
-Locale could be deleted clicking on **Bin** icon.
+   .. image:: ./img/redirect_options.png
+      :align: center
 
+### Signed Blocking Pages with a CA
 
-Each of the Versions of the Blocking Page (Security, Blacklist, Regulatory, Content) can be customized in more detail by modifying the HTML code. Upon clicking on each version an editor is presented that allows for any required changes.
+1. **Generate a Key and Certificate:**
+   - Use OpenSSL to create a private key and self-signed certificate:
 
-The editor also exposes a "Verification" interface which parses the final HTML code and checks for the enabled functionalities. The check is based on the ``id`` of the specific elements. More information and requirements for each functionality can be found by clicking the respective labels.
+     ```bash
+     openssl req -new -newkey rsa:2048 -days 365 -nodes -x509 \
+     -keyout blocking_page.key -out blocking_page.crt
+     ```
 
-.. note:: Each Version of the Blocking Page has unique characteristics that can be selected. For example, the Security Blocking Page can include a "Bypass" button which is not available in the respective Regulatory and Blacklist versions.
+2. **Place the Key and Certificate:**
+   - Upload the generated `blocking_page.key` and `blocking_page.crt` files to the designated folder on the server (e.g., `/etc/whalebone/certs/`).
 
+3. **Configure the Blocking Page to Use the Certificate:**
+   - Update the blocking page configuration in the Whalebone portal to reference the uploaded certificate.
 
-After editing and saving the changes to the Blocking Pages it is important that they are applied to the individual resolvers.
+   .. image:: ./img/signed_blocking_page_config.png
+      :align: center
 
+4. **Verify the Signed Blocking Page:**
+   - Test the configuration by accessing a blocked domain. Ensure that the page loads with a valid certificate.
 
-.. tip:: The Blocking Pages are served from a web server directly on the Resolver. The pages are expected to be a single file so any additional resources (CSS, images, scripts) must be either embedded directly in the HTML code or served from a publicly accessible web server. The resolver does not provide any option to serve other content.
+   .. image:: ./img/signed_blocking_page_test.png
+      :align: center
 
+Reference: Blocking Page Configuration Options
+----------------------------------------------
 
-Signing blocking pages with a CA
---------------------------------
+- **Templates:** Pre-designed layouts for ease of setup.
+- **Custom Branding:** Upload logos and modify colors to align with corporate identity.
+- **Multi-Language Support:** Ensure accessibility for users in different regions.
+- **Redirect Options:** Guide users to alternate pages or resources.
+- **Signed Pages:** Enhance security by using a signed certificate for blocking pages.
 
-For deployments, where you have control over the endpoints (typically enterprise environment with Group Policy) and you're able to push self-signed SSL certificates to their trust stores, you can sign the blocking pages on the fly. This results in the browsers going directly to the blocking page without displaying the security warning, which is usually there. The resolver essentially performs a MITM any time it redirects to the blocking pages so the browser warning is expected.
+Explanation: The Importance of Blocking Pages
+---------------------------------------------
 
-**Step 1.** – Create "v3_cfg" file with the following contents:
+- **Transparency:** Provides clear communication to users about why access to a domain was denied.
+- **Branding:** Reinforces organizational identity through customized messaging.
+- **Compliance:** Ensures adherence to regulatory and internal policy requirements.
+- **Security:** Enhances user trust with signed blocking pages that ensure authenticity.
 
-.. code-block:: shell
-
-   [req]
-   req_extensions = v3_ca_extensions
-   distinguished_name = req_dn
-   [v3_ca_extensions]
-   basicConstraints = CA:TRUE
-   subjectKeyIdentifier = hash
-   authorityKeyIdentifier = keyid:always,issuer:always
-   keyUsage = cRLSign, keyCertSign
-   subjectAltName = @alt_names
-   [alt_names]
-   DNS.1 = localhost
-   [req_dn]
-   countryName = Country Name (2 letter code)
-   countryName_default = US
-   stateOrProvinceName = State or Province Name (full name)
-   stateOrProvinceName_default = New York
-   localityName = Locality Name (eg, city)
-   localityName_default = New York City
-   organizationName = Organization Name (eg, company)
-   organizationName_default = My Organization
-   commonName = Common Name (eg, your name or your server's hostname)
-   commonName_max = 64
-
-
-**Step 2.** – Generate a key:
-
-.. code-block:: shell
-
-   openssl genpkey -algorithm RSA -out /certs/ca.key
-
-
-**Step 3.** – Create and sign the certificate:
-
-.. code-block:: shell
-
-   openssl req -x509 -new -nodes -key /certs/ca.key -sha256 -days 1024 -out /certs/ca.crt -config /certs/v3_cfg
-
-
-**Step 4.** – Export the .pfx file and make sure it is placed in the /certs/ folder:
-
-.. code-block:: shell
-
-   openssl pkcs12 -export -in ca.crt -inkey ca.key -out ca.pfx -certpbe PBE-SHA1-3DES -keypbe PBE-SHA1-3DES -macal   
-
-
-**Step 5.** – Send the filename and password to Whalebone support to store the configuration persistently on the back-end to ensure that it survives the VM or container restart.
+Blocking pages are a critical component of a secure and user-friendly DNS filtering system, offering both transparency and functionality.

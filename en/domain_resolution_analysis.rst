@@ -1,34 +1,81 @@
-Domain resolution analysis
-==========================
+Domain Resolution Analysis
+===========================
 
-There is always chance that every administrator will encounter a situation, when DNS resolution is not successful. Most of the time it is not related to Whalebone's resolver but there is probably an issue with an authoritative server. 
+This section provides guidance on analyzing domain resolution patterns and troubleshooting issues within the Whalebone platform. By understanding domain resolution behavior, administrators can optimize DNS configurations and identify anomalies.
 
+Tutorial: Analyzing Domain Resolution
+-------------------------------------
 
-ISPs often face complaints that users cannot access the domain, in many cases it is not the ISP's fault. Whalebone solution provides you with information so you can identify the issue. 
+1. **Access Domain Analytics:**
+   - Log in to the Whalebone portal.
+   - Navigate to the **Domain Analytics** section under the **Analytics** menu.
 
-**Steps to be done:**
+   .. image:: ./img/domain_analytics_access.png
+      :align: center
 
-**Step 1.** – Examine domain in the **Threats** page.
+2. **Search for a Specific Domain:**
+   - Use the search bar to locate resolution data for a specific domain.
+   - View detailed metrics such as query volume, resolver activity, and policy actions.
 
-  * Check whether domain was blocked by a security feature.
+   .. image:: ./img/domain_search.png
+      :align: center
 
-**Step 2.** – Examine domain in the **DNS traffic**.
+3. **Export Data for Offline Analysis:**
+   - Select the time range and export domain-specific resolution data in supported formats (e.g., CSV).
 
-  * If it was not blocked because of **threats**, go to **DNS Traffic** and check whether it reached the resolver.
-  * Users often rewrites resolver with public ones and if that resolver faces a issue ISP is blamed to as source of problem, which is not true 
+   .. image:: ./img/domain_data_export.png
+      :align: center
 
-  **You can face three cases:**
-    * Domain was translated correctly.
-    * NXDOMAIN was returned - it means that the authoritative server responded, but the domain or subdomain does not exist.
-    * SERVFAIL - no response came from the configured authoritative server. This can mean an outage of server or link issue.
+4. **Utilize DNSViz for Detailed Insights:**
+   - Use the DNSViz tool to visualize DNS resolution paths.
+   - DNSViz helps identify misconfigurations or issues in the DNS chain of trust.
+   - Upload DNS query data or analyze live queries directly.
 
-**Step 3.** – Examine domain using DNSVIZ tool.
-  * Under each domain there is an arrow where you can be redirected to DNSVIZ of a particular domain. 
-  * It shows full resolution process in a human readable way.
-  * It can show that the DNSSEC validation process was unsuccessful or the authoritative DNS server was not reachable.
+   .. image:: ./img/dnsviz_tool.png
+      :align: center
 
-You can watch step-by-step video guide `here <https://docs.whalebone.io/en/latest/video_guides.html#domain-resolution-troubleshooting>`__.
+How-To Guide: Troubleshooting Resolution Issues
+-----------------------------------------------
 
-Whalebone administration portal provides ability to trace the domain. This feature is available in **Resolvers** under each resolver's three dots. This feature shows what information is passed to resolver when resolving particular domain.
+### Identifying Resolution Failures
 
-You can watch step-by-step video guide `here <https://docs.whalebone.io/en/latest/video_guides.html#domain-tracing>`__.
+1. Access the **Resolution Logs** for the domain in question.
+2. Review query details to identify patterns such as high latency or timeouts.
+
+   .. image:: ./img/resolution_logs.png
+      :align: center
+
+### Analyzing Policy Actions
+
+1. Check the **Policy Logs** to determine if a blocking policy or allowlist rule affected the domain.
+2. Adjust the policy configuration if necessary to resolve conflicts.
+
+   .. image:: ./img/policy_logs.png
+      :align: center
+
+### Cross-Referencing Threat Data
+
+1. Use the **Threat Analysis** section to verify if the domain is associated with any malicious activity.
+2. Reassess blocking thresholds or allowlisting decisions based on threat intelligence.
+
+   .. image:: ./img/threat_data_check.png
+      :align: center
+
+Reference: Domain Analytics Features
+-------------------------------------
+
+- **Query Metrics:** Provides insights into query volume and resolution times.
+- **Policy Impact:** Highlights how policies influence domain resolution.
+- **Threat Correlation:** Links domain resolution data with threat intelligence.
+- **Export Options:** Enables offline analysis of resolution trends.
+- **DNSViz Tool:** Visualizes DNS resolution paths and identifies chain-of-trust issues.
+
+Explanation: Importance of Domain Resolution Analysis
+------------------------------------------------------
+
+- **Performance Optimization:** Identifies areas where DNS performance can be improved.
+- **Threat Detection:** Correlates resolution patterns with potential security risks.
+- **Policy Refinement:** Ensures policies are correctly configured to support business needs.
+- **Chain-of-Trust Verification:** Validates DNS resolution paths using DNSViz for enhanced reliability.
+
+Domain resolution analysis is essential for maintaining a secure, efficient, and optimized DNS infrastructure within your organization.

@@ -1,56 +1,78 @@
-Deployment options
+Deployment Options
 ==================
 
-Whalebone could be deployed in several scenarios which can be even combined to satisfy requirements of particular networks. Combination of cloud and local DNS resolver with single management console will satisfy even complex and distributed networks.
+Whalebone offers a variety of deployment options tailored to different environments and use cases. This section will help you understand the available deployment methods and choose the best one for your needs.
 
-.. tip:: All of the options below could be combined together. Various network segments and zones could have different requirements and possibilities.
+Tutorial: Choosing a Deployment Method
+--------------------------------------
 
-.. tip:: Should you believe none of the scenarios below is applicable to your use case, please contact Whalebone Support and we will help you with architecture that will suit your needs.
+1. **Evaluate Your Environment:**
+   - Determine whether your infrastructure is on-premises, cloud-based, or hybrid.
+   - Identify your network size and specific DNS filtering needs.
 
-Cloud DNS
----------
+2. **Review Deployment Options:**
+   - On-Premises Deployment: Install Whalebone DNS resolvers locally on your infrastructure.
+   - Cloud Deployment: Use Whalebone’s managed cloud resolvers for minimal setup and maintenance.
+   - Hybrid Deployment: Combine on-premises and cloud-based resolvers for flexibility.
 
-This is the simplest method o deployment. To use Whalebone filtering, just change the configuration of your recent DNS resolvers and point them to Whalebone cloud resolvers.
-The downside of this deployment is that all of the incidents will be visible with source IP of the DNS forwarder instead of the original source IP. Still this deployment could come in handy if the priority is to prevent the threats with as low effort and infrastructure changes as possible.
+   .. image:: ./img/deployment_options.png
+      :align: center
 
-.. image:: ./img/deployment_cloud.png
-   :align: center
+3. **Select the Best Option:**
+   - Based on your environment, select the appropriate deployment option.
+   - For guidance, refer to the corresponding sections in this documentation.
 
-Cloud DNS (direct connection)
------------------------------
+How-To Guide: Deploying Whalebone
+---------------------------------
 
-This deployment is similar to forwarding the requests to Whalebone cloud resolvers, but the requests are sent directly to the cloud without local DNS cache. This could be usually set for all endpoints through DHCP. However not using local DNS cache means increased latency introduced by the network communication between the client and cloud resolver.
-If the individual machines are not hidden behind a NAT, their IP addresses will be directly visible in the Whalebone reporting and the clients can be easilly distinguished.
+### On-Premises Deployment
 
-.. image:: ./img/deployment_cloud_direct.png
-   :align: center
+1. Install the Whalebone Resolver package on a supported Linux distribution.
+   ```bash
+   sudo apt update && sudo apt install whalebone-resolver
+   ```
+2. Configure the resolver using the provided configuration file.
+3. Test the setup to ensure proper DNS resolution.
 
-Local DNS resolver
-------------------
+   .. image:: ./img/on_premises_setup.png
+      :align: center
 
-This deployment scenario uses local Whalebone resolver, that communicates with Whalebone cloud through API. The DNS resolution takes place directly on the resolver and is completely independent on the cloud availability. Should the resolver not be able to reach the cloud service, it won't be able to update the threat intelligence and to reports any incidents.
-The main advantage of this deployment is visibility into local network and individual IP addresses and native DNS resolver latency.
+### Cloud Deployment
 
-.. image:: ./img/deployment_lr.png
-   :align: center
+1. Access the Whalebone cloud portal.
+2. Configure your network to forward DNS traffic to the provided cloud resolver IPs.
+3. Verify traffic visibility in the portal.
 
-Local DNS resolver for ISP (Whalebone Peacemaker)
-------------------
+   .. image:: ./img/cloud_deployment.png
+      :align: center
 
-This deployment scenario uses local Whalebone resolver, that communicates with Whalebone cloud through API. The DNS resolution takes place directly on the resolver and is completely independent on the cloud availability. Should the resolver not be able to reach the cloud service, it won't be able to update the threat intelligence and to reports any incidents.
-The main advantage of this deployment is visibility into local network and individual IP addresses and native DNS resolver latency.
+### Hybrid Deployment
 
-.. image:: ./img/deployment_isp.png
-   :align: center
+1. Deploy on-premises resolvers for internal network traffic.
+2. Configure fallback or primary forwarding to Whalebone’s cloud resolvers.
+3. Test traffic resolution in both environments.
 
-Local DNS forwarder (Whalebone Immunity)
--------------------
+   .. image:: ./img/hybrid_deployment.png
+      :align: center
 
-Very similar deployment scenario as the local resolver, however Whalebone just forwards the requests to preconfigured resolvers. This scenario is very useful in case there are local DNS zones that has to be available for the clients (e.g. Active Directory) or cases when the recent resolver configuration is very specific and has to be preserved.
-This deployment has also lower hardware requirements, roughly half of the CPU and RAM recommended.
+Reference: Supported Platforms and Requirements
+-----------------------------------------------
 
-.. warning:: We don't recommend to forward the requests from the local resolver to Whalebone cloud resolvers. Such configuration would result in duplicit incident detection, no added security and unnecesary latency for the clients.
+- **On-Premises:**
+  - Supported OS: Ubuntu 20.04+, CentOS 8+, Debian 10+.
+  - Hardware: Minimum 2 CPU cores, 4GB RAM, and 20GB storage.
 
-.. image:: ./img/deployment_lr_fw.png
-   :align: center
+- **Cloud:**
+  - Whalebone cloud resolvers are pre-configured and do not require hardware or software installation.
 
+- **Hybrid:**
+  - Combine the requirements for on-premises and cloud setups.
+
+Explanation: Why Deployment Method Matters
+-------------------------------------------
+
+- **On-Premises Benefits:** Full control over DNS resolution and internal traffic privacy.
+- **Cloud Benefits:** Minimal maintenance, automatic updates, and scalability.
+- **Hybrid Benefits:** Balances control and flexibility, ideal for diverse environments.
+
+Choosing the right deployment option ensures optimal performance, security, and adaptability for your network.

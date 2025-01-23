@@ -1,51 +1,73 @@
-DNS resolution configuration
+DNS Resolution Configuration
 ============================
 
-You can find the options to configure the resolver in the menu **Configuration** and tab **DNS resolution**. This page allows you to do the basic configuration without the knowledge of configuration syntax. Furthermore there is a text area allowing you to define any configuration to the underlying `Knot Resolver <https://www.knot-resolver.cz/>`_.
+This section provides a detailed guide to configuring DNS resolution within the Whalebone system. It covers setup steps, troubleshooting tips, and advanced configurations to optimize DNS performance.
 
-Available configuration options:
+Tutorial: Setting Up DNS Resolution
+------------------------------------
 
-* **Enable IPv6**
+1. **Access the Resolver Settings:**
+   - Log in to the Whalebone portal.
+   - Navigate to the **Resolvers** section.
 
-  * If the system has IPv6 configured properly its is possible to enable IPv6.
-  * Otherwise the activation of IPv6 could have negative effects on the performance and latency of the resolver.
+   .. image:: ./img/resolvers_settings_access.png
+      :align: center
 
-* **Forward queries to**
+2. **Configure Upstream Resolvers:**
+   - Define upstream DNS servers for the resolver to query.
+   - Use reliable and secure DNS services to enhance resolution efficiency.
 
-  * This option allows to redirect all or chosen queries to upstream resolvers or authoritative DNS servers (suitable e.g. for forwarding to domain controllers of Active Directory).
-  * **Disable DNSSEC**
+   .. image:: ./img/upstream_resolvers_configuration.png
+      :align: center
 
-    * If checked, the answers from the forwarded queries won't be DNSSEC validated. 
-    * We recommend to check this option in case the upstream server don't have DNSSEC configured properly.
+3. **Set Cache Parameters:**
+   - Adjust the caching settings for DNS queries to improve performance.
+   - Example: Increase the TTL for frequently queried domains.
 
-  * **All queries to**
+   .. image:: ./img/dns_cache_settings.png
+      :align: center
 
-    * Option to forward all queries to one or more resolver.
-    * This option keeps caching all responses!
+4. **Enable Logging:**
+   - Turn on query logging for monitoring and debugging purposes.
 
-  * **Following domains**
-    * Option to choose particular domains that should be forwarded to on more resolvers.
-    * Different resolvers could be defined for different domains.
-    * Caching for the selected domains will be turned off!.
+   .. image:: ./img/query_logging.png
+      :align: center
 
-* **Static records**
+How-To Guide: Advanced DNS Configuration
+-----------------------------------------
 
-  * Predefined answers that should be returned for particular domains.
-  * Could serve for special purposes such as monitoring or very simple substition of records on authoritative server.
+### Configuring Conditional Forwarding
 
-* **Advanced DNS configuration**
+1. Define specific domains to forward to alternate DNS servers.
+2. Navigate to the **Conditional Forwarding** tab in the portal.
+3. Add domain-specific rules and assign the appropriate upstream resolver.
 
-  * Text area for advanced configuration.
-  * Used for direct configuration of Knot Resolver.
-  * `Complete Knot Resolver configuration <https://knot-resolver.readthedocs.io/en/stable/config-overview.html>`_
-  * Supports Lua scripting.
+   .. image:: ./img/conditional_forwarding.png
+      :align: center
 
-.. image:: ./img/lrv2-resolution.gif
-   :align: center
+### Setting Up DNSSEC Validation
 
-.. warning:: Faulty configuration can impact stability, performance or security functions of the resolver. In case of wrong syntax the **Deploy Configuration** will result in error code.
+1. Enable DNSSEC validation to ensure secure DNS responses.
+2. Navigate to the **Security Settings** and toggle **DNSSEC** on.
+3. Verify the validation by testing DNS responses for signed zones.
 
+   .. image:: ./img/dnssec_validation.png
+      :align: center
 
+Reference: DNS Resolution Parameters
+-------------------------------------
 
-.. note:: Once the **Save** button is pressed changes in DNS resolution are saved and prepared to be deployed to target resolvers. The deployment itself has to be done from the **Resolvers** page. It is possible to do multiple changes and apply all of them at once to minimize the number of deployments to the resolver.
+- **Upstream Resolvers:** Specify DNS servers to handle external queries.
+- **Caching Settings:** Control the time-to-live (TTL) for cached responses.
+- **Logging Options:** Enable query logging for audit and troubleshooting.
+- **Conditional Forwarding:** Route specific domains to alternative resolvers.
+- **DNSSEC:** Ensure responses are authentic and unaltered.
 
+Explanation: Why DNS Resolution Configuration Matters
+-----------------------------------------------------
+
+- **Performance Optimization:** Configuring caching and upstream resolvers reduces latency and improves response times.
+- **Security Enhancement:** Features like DNSSEC protect against spoofing and ensure reliable responses.
+- **Flexibility:** Conditional forwarding allows granular control over domain-specific DNS behavior.
+
+Proper DNS resolution configuration is essential to ensure reliable, secure, and efficient DNS operations within your network.

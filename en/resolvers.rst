@@ -1,126 +1,111 @@
-Resolver management
+Resolver Management
 ===================
 
-On the **Resolvers** page there is an overview of created resolvers. Administrator can adjust the configuration, deploy updates and install new resolvers.
+This section provides guidance on managing DNS resolvers using the Whalebone portal, focusing on resolver states, deploying configurations, managing network segments, customizing blocking pages, and upgrading or rolling back resolvers.
 
-Resolvers overview
-------------------
+Overview of Resolver States
+----------------------------
 
-In the main resolver overview there are tiles with resolver details. The overview includes information about operating system and resources as CPU, Memory and HDD usage. There is also the status of the communication channel between the resolver and the cloud indicated by the color-coded dot.
+The **Resolvers** section in the Whalebone portal provides a comprehensive overview of all configured resolvers, including:
 
-The resolver can be in one of these states:
+- **Active Resolvers:** Displayed with real-time status and query volume.
+- **Offline Resolvers:** Highlighted for immediate attention.
+- **Resolver Details:** Including type (cloud or local), location, and configured settings.
 
-* **Active** - This is the expected status in production environments and signalizes that everything is running correctly. 
-* **Resolution problem** - The resolver is unable to translate DNS requests.
-* **Unavailable** - The resolver has lost connection with Whalebone Cloud. This state does not affect the DNS translation however the resolver cannot get threat database updates and might not respond to policy or configuration changes initiated from the portal.
-* **Upgrading** - An upgrade command has been issued to the resolver. This state should not persist for more than a few minutes.
-* **Not installed** - The resolver was not yet installed. 
+   .. image:: ./img/resolver_overview.png
+      :align: center
 
-Deploy configuration
---------------------
-
-If there been are any configuration changes which affect the DNS resolution, you have to **deploy** the configuration afterwards. Otherwise the changes will not take effect. In case there are any configuration changes available to be deployed, there will be a **red icon** with down right arrow visible on the resolver card. Once clicked, the webpage will ask for confirmation and the successful deployment will be notified in the top right corner.
-
-.. note:: If the deployment resulted in error, try to repeat the action. The reason for the error could be a short term communication outage between the cloud and the resolver.
-
-.. image:: ./img/lrv2-deployconfig.gif
-   :align: center
-
-   Configuration deployment.
-
-Configure Policy per Network Segment
-------------------------------------
-Security and content polices can be asssigned in a granular manner to different segments of the network. 
-
-The setting applies per resolver and can be configured under **Resolvers** → ``Name of the resolver`` → **Policy Assignment** 
-
-.. note:: The configuration is **per resolver**. In case you want to apply the configuration to more than one resolvers, please modify all the necessary resolvers. 
-
-The policies can be applied by adding IP ranges in the available input form:
-
-.. image:: ./img/add-policy.PNG
-   :align: center
-
-   Policy assignment.
-   
-In order to provide a better understanding let's consider an example with the network range ``10.10.0.0/16``. 
-
-We have created 3 different policies: 
-
-* **Default**: the policy that we want to apply to the whole network, this is the most generic policy
-* **Exception**: a policy that must be applied to a specific segment in the network which will have all security and content filtering disabled.
-* **School**: a policy that we want to apply to 2 different subnets that have been assigned to school environments. In this case we have chosen to be more strict in the blocking.
-
-.. image:: ./img/policies-example.png
-   :align: center
-
-Example policy settings.
-.. note:: The first setting option for policies is for all the undefined ranges. In case different policies affecting same range the more granular is applied.
-
-
-
-Let's summarize the requirements in the following matrix:
-
-========== ===============================
-**Policy** **Network**
-========== ===============================
-Default    10.10.0.0/16
-Exception  10.10.10.0/24
-School     10.10.20.0/24 and 10.10.40.0/24
-========== ===============================
-
-The following image shows the process of assigning the policies:
-
-.. image:: ./img/policy_task.png
-   :align: center
-
-
-.. note::  After adding the networks you must click on **Save to resolver** in order to to take effect. The changes will be then validated and a pop-up message will provide additional information.
-
-In order to assign additional entries to an existing assignment, a new network range can be appended using `newline` as a separator.
-Building on the previous example, in case we wanted to add the subnet ``10.10.30.0/24`` to the Exception Policy:
-
-.. image:: ./img/add-range.gif
-   :align: center
-
-
-Configure Blocking Pages
+Deploying Configurations
 -------------------------
 
-In a similar manner to the Security Policies, the Blocking Pages can also be assigned to particular network ranges.
+1. **Access Resolver Settings:**
+   - Navigate to the **Resolvers** tab in the Whalebone portal.
+   - Select a resolver to view or modify its configuration.
 
-The first step is to select **On-premise local resolver** for the **Blocking Page Location** option. Two new fields are enabled where the IPv4 and IPv6 addresses of the Blocking Pages must be filled in.
+   .. image:: ./img/resolver_settings.png
+      :align: center
 
-.. tip:: The Blocking Pages are being hosted **directly** on the Resolvers so the IP addresses that are advertised to the clients must be used. The clients will then be redirected to the IP address of the resolver upon blocking. Please ensure that ports 80 and 443 are accessible on the firewall.
+2. **Apply Configuration Changes:**
+   - Update parameters such as upstream DNS servers, caching policies, or logging preferences.
+   - Save the changes to automatically deploy the updated configuration.
 
-For each IP range that is added, there is a drop-down menu for the Blocking Page that should be assigned. 
+3. **Verify Deployment:**
+   - Use the **Activity** tab to confirm that the resolver is functioning as expected.
 
-.. figure:: ./img/blocking-page-assign.png
-   :alt: Assign Blocking Page to IP range
-   :align: center
-   
-   Assign Blocking Page to IP range
+   .. image:: ./img/config_verification.png
+      :align: center
 
-.. important:: The first entry in the **Policy Assignment** is considered the Default/Fallback. In case a client accesses the resolver from an undefined IP range, the respective options will apply.
+Managing Configurations Per Network Segment
+-------------------------------------------
 
-.. note:: After making the necessary changes to the Blocking Page settings, please check whether the resolvers need to be re-deployed.  
+1. **Define Network Segments:**
+   - Use the **Network Segments** feature in the portal to divide your network into logical sections based on IP ranges.
 
-Upgrade/Rollback Resolver
+   .. image:: ./img/network_segments.png
+      :align: center
+
+2. **Assign Resolver Configurations:**
+   - Apply specific resolver settings or policies to individual network segments.
+   - This ensures granular control over DNS resolution and filtering for different parts of your network.
+
+   .. image:: ./img/segment_config.png
+      :align: center
+
+3. **Monitor Segment-Specific Traffic:**
+   - Use traffic analytics to review query volume and trends per network segment.
+
+Customizing Blocking Pages
+--------------------------
+
+1. **Access Blocking Page Settings:**
+   - In the portal, navigate to the **Blocking Pages** section under resolver settings.
+
+   .. image:: ./img/blocking_pages_settings.png
+      :align: center
+
+2. **Customize Appearance and Messaging:**
+   - Modify the layout, branding, and message displayed on DNS blocking pages.
+
+   .. image:: ./img/blocking_page_customization.png
+      :align: center
+
+3. **Test Blocking Pages:**
+   - Simulate a DNS query that triggers a blocking page to ensure the customization appears as intended.
+
+   .. image:: ./img/blocking_page_test.png
+      :align: center
+
+Upgrading or Rolling Back Resolvers
 ------------------------------------
 
-When a new version of the Resolver is released, a **red upgrade icon** appears on the resolver's management interface.
+1. **Access Upgrade Options:**
+   - Navigate to the **Resolvers** tab in the Whalebone portal.
+   - Select the resolver you want to upgrade or rollback.
 
-.. image:: ./img/upgrade.png
-   :align: center
+   .. image:: ./img/resolver_upgrade_access.png
+      :align: center
 
-Upon clicking on the **Upgrade** icon, the respective menu is selected and important information about the new release is provided. 
+2. **Perform an Upgrade:**
+   - In the **Upgrade** section, select the desired version and click **Upgrade**.
+   - Monitor the progress in the portal to ensure a successful update.
 
-.. image:: ./img/upgrade-2.png
-   :align: center
+   .. image:: ./img/resolver_upgrade_progress.png
+      :align: center
 
-From this menu, the upgrade of the resolver can be initiated.
+3. **Rollback to a Previous Version:**
+   - If issues occur after an upgrade, use the **Rollback** option to revert to the previous stable version.
+   - Confirm the rollback and verify resolver functionality.
 
-In case the installation of the new version does not yield the expected outcome, a rollback to the previous version is possible anytime in the **Rollback** tab:
+   .. image:: ./img/resolver_rollback.png
+      :align: center
 
-.. image:: ./img/rollback.png
-   :align: center
+Why Resolver Management is Essential
+-------------------------------------
+
+- **Reliability:** Real-time visibility ensures prompt issue detection and resolution.
+- **Customization:** Tailor configurations to meet network-specific needs.
+- **Control:** Manage DNS behavior for each network segment with precision.
+- **Scalability:** Easily upgrade or rollback resolvers to adapt to evolving requirements.
+- **User Experience:** Provide informative and branded blocking pages for end users.
+
+Using the Whalebone portal for resolver management simplifies DNS configuration, enhances visibility, and provides granular control over your network.

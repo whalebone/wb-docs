@@ -6,9 +6,9 @@ This section provides guidance on analyzing DNS traffic and leveraging insights 
 Tutorial: Accessing Data Analysis Tools
 ----------------------------------------
 
-1. **Navigate to the Data Analysis Section:**
+1. **Navigate to the DNS traffic section of the portal:**
    - Log in to the Whalebone portal.
-   - Click on the **Analytics** tab under the main menu.
+   - Click on the **DNS traffic** tab under the main menu.
 
    .. image:: ./img/data_analysis_access.png
       :align: center
@@ -35,14 +35,6 @@ How-To Guide: Advanced Data Analysis
 3. Review trends over time to detect potential anomalies or targeted attacks.
 
    .. image:: ./img/threat_analysis.png
-      :align: center
-
-### Performance Metrics
-
-1. Access the **Performance Metrics** tab to review resolution times and cache efficiency.
-2. Compare historical data to identify patterns or performance bottlenecks.
-
-   .. image:: ./img/performance_metrics.png
       :align: center
 
 Reference: Data Analysis Features

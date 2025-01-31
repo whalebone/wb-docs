@@ -53,30 +53,42 @@ How-To Guide: Advanced Blocking Page Configurations
       :align: center
 
 ### Signed Blocking Pages with a CA
+Step 1 - create a "v3_cfg" file with the following contents
 
-1. **Generate a Key and Certificate:**
-   - Use OpenSSL to create a private key and self-signed certificate:
+[req]
+req_extensions = v3_ca_extensions
+distinguished_name = req_dn
+[v3_ca_extensions]
+basicConstraints = CA:TRUE
+subjectKeyIdentifier = hash
+authorityKeyIdentifier = keyid:always,issuer:always
+keyUsage = cRLSign, keyCertSign
+subjectAltName = @alt_names
+[alt_names]
+DNS.1 = localhost
+[req_dn]
+countryName = Country Name (2 letter code)
+countryName_default = US
+stateOrProvinceName = State or Province Name (full name)
+stateOrProvinceName_default = New York
+localityName = Locality Name (eg, city)
+localityName_default = New York City
+organizationName = Organization Name (eg, company)
+organizationName_default = My Organization
+commonName = Common Name (eg, your name or your server's hostname)
+commonName_max = 64
+Generic
+Step 2 - Generate the key
 
-     ```bash
-     openssl req -new -newkey rsa:2048 -days 365 -nodes -x509 \
-     -keyout blocking_page.key -out blocking_page.crt
-     ```
+openssl genpkey -algorithm RSA -out /certs/ca.key
+Generic
+Step 3 create and sign the certificate
 
-2. **Place the Key and Certificate:**
-   - Upload the generated `blocking_page.key` and `blocking_page.crt` files to the designated folder on the server (e.g., `/etc/whalebone/certs/`).
+openssl req -x509 -new -nodes -key /certs/ca.key -sha256 -days 1024 -out /certs/ca.crt -config /certs/v3_cfg
+Generic
+Step 4 - export .pfx file and make sure it is placed in the /certs/ folder on the resolver.
 
-3. **Configure the Blocking Page to Use the Certificate:**
-   - Update the blocking page configuration in the Whalebone portal to reference the uploaded certificate.
-
-   .. image:: ./img/signed_blocking_page_config.png
-      :align: center
-
-4. **Verify the Signed Blocking Page:**
-   - Test the configuration by accessing a blocked domain. Ensure that the page loads with a valid certificate.
-
-   .. image:: ./img/signed_blocking_page_test.png
-      :align: center
-
+openssl pkcs12 -export -in ca.crt -inkey ca.key -out ca.pfx -certpbe PBE-SHA1-3DES -keypbe PBE-SHA1-3DES -macalg sha1
 Reference: Blocking Page Configuration Options
 ----------------------------------------------
 

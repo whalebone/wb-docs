@@ -13,44 +13,10 @@ Tutorial: Setting Up a Cloud Resolver
    .. image:: ./img/cloud_resolver_access.png
       :align: center
 
-2. **Add a New Cloud Resolver:**
-   - Click on **Add Resolver** and specify a name and description.
-   - Select the region closest to your network for optimal performance.
+2. **Add a New IP range:**
+   - Click on **Add IP range** and specify a Public IP range and Policy.
 
-   .. image:: ./img/add_cloud_resolver.png
-      :align: center
-
-3. **Configure DNS Forwarding:**
-   - Update your network’s DNS settings to forward queries to the Whalebone cloud resolver IP addresses.
-   - Ensure that firewalls or security systems allow communication with these IPs.
-
-   .. image:: ./img/cloud_dns_forwarding.png
-      :align: center
-
-4. **Verify Resolver Activity:**
-   - Monitor the **Activity Logs** in the portal to confirm that queries are being forwarded and resolved correctly.
-
-   .. image:: ./img/cloud_resolver_activity.png
-      :align: center
-
-How-To Guide: Managing Cloud Resolvers
---------------------------------------
-
-### Monitoring Resolver Performance
-
-1. Navigate to the **Analytics** tab under the Cloud Resolvers section.
-2. Review metrics such as query volume, resolution times, and blocked threats.
-
-   .. image:: ./img/cloud_resolver_analytics.png
-      :align: center
-
-### Updating Cloud Resolver Settings
-
-1. Access the **Settings** tab for the specific resolver.
-2. Modify configuration options such as logging preferences, response policies, or custom DNS rules.
-3. Save changes and monitor activity to ensure proper functionality.
-
-   .. image:: ./img/cloud_resolver_settings.png
+   .. image:: ./img/add_cloud_IP.png
       :align: center
 
 Reference: Cloud Resolver Features

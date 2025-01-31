@@ -1,68 +1,37 @@
-Deployment: Cloud
-=================
+Cloud Resolver Configuration
+============================
 
-Whalebone’s cloud deployment option offers a scalable and maintenance-free solution for DNS protection. This section guides you through setting up and managing a cloud-based deployment.
+This section provides guidance on configuring and managing cloud resolvers within the Whalebone platform. Cloud resolvers offer scalability and simplicity for DNS management.
 
-Tutorial: Setting Up Cloud Deployment
+Tutorial: Setting Up a Cloud Resolver
 -------------------------------------
 
-1. **Access the Cloud Portal:**
-   - Log in to the Whalebone cloud portal using your credentials.
-   - Navigate to the **Deployment** section.
+1. **Access the Cloud Resolver Section:**
+   - Log in to the Whalebone portal.
+   - Navigate to the **Cloud Resolvers** tab in the main menu.
 
-   .. image:: ./img/cloud_portal_access.png
+   .. image:: ./img/cloud_resolver_access.png
       :align: center
 
-2. **Configure Your Network:**
-   - Obtain the IP addresses of the Whalebone cloud resolvers.
-   - Update your network’s DNS settings to forward traffic to these resolvers.
+2. **Add a New IP range:**
+   - Click on **Add IP range** and specify a Public IP range and Policy.
 
-   .. image:: ./img/cloud_resolver_settings.png
+   .. image:: ./img/add_cloud_IP.png
       :align: center
 
-3. **Verify DNS Traffic:**
-   - Check the **DNS Traffic** section in the portal to confirm traffic is being forwarded correctly.
+Reference: Cloud Resolver Features
+----------------------------------
 
-   .. image:: ./img/cloud_traffic_verification.png
-      :align: center
+- **Scalability:** Automatically adjusts to handle increased query volume.
+- **Redundancy:** Built-in failover to ensure continuous availability.
+- **Security:** Protects against DNS-based threats with real-time filtering.
+- **Customization:** Allows tailored DNS rules and policies.
 
-4. **Enable Advanced Features:**
-   - Use the portal to configure policies, filtering rules, and advanced security features.
-
-   .. image:: ./img/cloud_advanced_settings.png
-      :align: center
-
-How-To Guide: Managing Cloud Deployment
+Explanation: Benefits of Cloud Resolvers
 ----------------------------------------
 
-### Monitoring DNS Traffic
+- **Ease of Use:** Simplifies DNS management with minimal configuration.
+- **High Availability:** Ensures reliable DNS resolution with redundant infrastructure.
+- **Real-Time Analytics:** Provides insights into DNS traffic and threat activity.
 
-1. Navigate to the **Traffic Analytics** section in the portal.
-2. Review real-time and historical DNS traffic logs.
-
-   .. image:: ./img/cloud_traffic_analytics.png
-      :align: center
-
-### Updating Policies and Rules
-
-1. Go to the **Policies** tab in the cloud portal.
-2. Add, edit, or remove DNS filtering rules as needed.
-
-   .. image:: ./img/cloud_policy_update.png
-      :align: center
-
-Reference: Cloud Deployment Details
-------------------------------------
-
-- **Resolver IPs:** IP addresses are provided during setup and must be configured in your network.
-- **Supported Features:** Advanced DNS filtering, threat detection, and traffic analytics.
-- **Accessibility:** Managed entirely through the Whalebone cloud portal.
-
-Explanation: Why Choose Cloud Deployment
-----------------------------------------
-
-- **Scalability:** Automatically handles increasing traffic with no hardware limitations.
-- **Maintenance-Free:** Updates and patches are managed by Whalebone.
-- **Accessibility:** Manage and monitor DNS traffic from anywhere via the cloud portal.
-
-Cloud deployment is an ideal solution for organizations seeking a hassle-free and scalable approach to DNS protection.
+Cloud resolvers are ideal for organizations looking for a scalable and low-maintenance DNS solution that offers robust performance and security.

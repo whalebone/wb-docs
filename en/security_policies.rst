@@ -15,17 +15,11 @@ Tutorial: Creating and Deploying a Security Policy
 
 2. **Create a New Policy:**
    - Click on **Add Policy** and provide a name and description for the policy.
-   - Define the scope, specifying whether the policy applies to all resolvers or specific network segments.
-
-   .. image:: ./img/add_security_policy.png
-      :align: center
-
+   
 3. **Configure Policy Rules:**
    - Add rules to block, allow, or log specific domains or categories (e.g., malware, phishing).
-   - Customize response messages and define blocking behavior (e.g., blocking pages or redirects).
-
-   .. image:: ./img/configure_policy_rules.png
-      :align: center
+   - Customize the content filtering options.
+   - Select the Regulatory restrictions for your location.
 
 4. **Set Malicious Filtering Thresholds:**
    - Define thresholds for identifying malicious domains based on threat scores.
@@ -34,79 +28,9 @@ Tutorial: Creating and Deploying a Security Policy
    .. image:: ./img/malicious_thresholds.png
       :align: center
 
-5. **Deploy the Policy:**
-   - Save the policy and assign it to resolvers or network segments.
-   - Confirm that the policy is active in the **Policies Overview** section.
+5. **Save the Policy:**
+   - Save the policy.
 
-   .. image:: ./img/policies_overview.png
-      :align: center
-
-How-To Guide: Managing Security Policies
------------------------------------------
-
-### Editing an Existing Policy
-
-1. Navigate to the **Security Policies** tab in the portal.
-2. Select the policy to be edited and adjust its rules, scope, or other settings.
-3. Save the changes to update the active policy.
-
-   .. image:: ./img/edit_security_policy.png
-      :align: center
-
-### Monitoring Policy Effectiveness
-
-1. Open the **Analytics** tab to review the impact of the policy.
-2. Analyze metrics such as the number of blocked, allowed, or logged queries.
-
-   .. image:: ./img/policy_analytics.png
-      :align: center
-
-3. Identify patterns or anomalies that may require policy adjustments.
-
-### Configuring Allow and Deny Lists
-
-1. **Allow Lists:**
-   - Add domains to the allow list to bypass all filtering.
-   - Useful for business-critical services.
-
-   .. image:: ./img/allow_list.png
-      :align: center
-
-2. **Deny Lists:**
-   - Add domains to the deny list to block them regardless of category filtering.
-
-   .. image:: ./img/deny_list.png
-      :align: center
-
-### Regulatory Restrictions
-
-1. Enable country-specific restrictions to comply with local regulations.
-2. Restrict access to content based on geographic location or legal requirements.
-
-   .. image:: ./img/regulatory_restrictions.png
-      :align: center
-
-### Applying Policy Changes Globally
-
-1. Use the **Bulk Apply** feature to deploy updates across multiple resolvers or network segments.
-2. Verify changes using the **Activity Logs** section.
-
-Content Filtering
-------------------
-
-1. **Enable Content Categories:**
-   - Activate predefined content categories such as adult content, gambling, or social media.
-   - Customize filtering levels for each category based on organizational requirements.
-
-   .. image:: ./img/content_filtering.png
-      :align: center
-
-2. **Refine Content Filtering:**
-   - Use analytics to evaluate blocked content and optimize filtering.
-   - Apply exceptions or adjust categories as necessary to balance user experience and security.
-
-   .. image:: ./img/content_filtering_analytics.png
-      :align: center
 
 Threat Types and Categories
 ---------------------------

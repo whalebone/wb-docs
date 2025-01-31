@@ -56,8 +56,6 @@ Whalebone security policies address a variety of threats by categorizing them in
 6. **Cryptojacking:**
    - Domains that hijack computational resources for cryptocurrency mining without user consent.
 
-   .. image:: ./img/threat_categories.png
-      :align: center
 
 Reference: Comprehensive Policy Options
 ----------------------------------------

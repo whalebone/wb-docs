@@ -15,8 +15,8 @@ You can watch step-by-step video guide `here. <https://docs.whalebone.io/en/late
 
 The generation of the API key can be achieved by clicking the **Create new key** button.
 
-.. comment :: .. image:: ./img/key-generation.png
-.. comment ::    :align: center
+ .. image:: ./img/key-generation.png
+   :align: center
 
 .. note:: Make sure to copy the `Key secret` as it cannot be retrieved again.
 
@@ -25,5 +25,5 @@ The generation of the API key can be achieved by clicking the **Create new key**
 In case an API key gets lost or compromised, its revocation can be achieved  by the same menu by clicking the red trash bin icon.
 Every key is tightly-coupled with the user ID and there is no central key management. In order to invalidate a key that you do not have access to, the respective user needs to delete the key himself or the entire user must be deleted.
 
-.. comment :: image:: ./img/key-revocation.png
-.. comment ::   :align: center
+.. image:: ./img/key-revocation.png
+   :align: center

@@ -15,9 +15,6 @@ Tutorial: Choosing a Deployment Method
    - Cloud Deployment: Use Whalebone’s managed cloud resolvers for minimal setup and maintenance.
    - Hybrid Deployment: Combine on-premises and cloud-based resolvers for flexibility.
 
-   .. image:: ./img/deployment_options.png
-      :align: center
-
 3. **Select the Best Option:**
    - Based on your environment, select the appropriate deployment option.
    - For guidance, refer to the corresponding sections in this documentation.
@@ -28,23 +25,16 @@ How-To Guide: Deploying Whalebone
 ### On-Premises Deployment
 
 1. Install the Whalebone Resolver package on a supported Linux distribution.
-   ```bash
-   sudo apt update && sudo apt install whalebone-resolver
-   ```
-2. Configure the resolver using the provided configuration file.
+   
+2. Configure the resolver from the Whalebone portal.
 3. Test the setup to ensure proper DNS resolution.
-
-   .. image:: ./img/on_premises_setup.png
-      :align: center
 
 ### Cloud Deployment
 
 1. Access the Whalebone cloud portal.
-2. Configure your network to forward DNS traffic to the provided cloud resolver IPs.
-3. Verify traffic visibility in the portal.
-
-   .. image:: ./img/cloud_deployment.png
-      :align: center
+2. Claim your public IP ranges and select the policies for them.
+3. Configure your network to forward DNS traffic to the provided cloud resolver IPs.
+4. Verify traffic visibility in the portal.
 
 ### Hybrid Deployment
 
@@ -52,15 +42,12 @@ How-To Guide: Deploying Whalebone
 2. Configure fallback or primary forwarding to Whalebone’s cloud resolvers.
 3. Test traffic resolution in both environments.
 
-   .. image:: ./img/hybrid_deployment.png
-      :align: center
-
 Reference: Supported Platforms and Requirements
 -----------------------------------------------
 
 - **On-Premises:**
-  - Supported OS: Ubuntu 20.04+, CentOS 8+, Debian 10+.
-  - Hardware: Minimum 2 CPU cores, 4GB RAM, and 20GB storage.
+  - Supported OS: Ubuntu 20.04+, Debian 10+.
+  - Hardware: Minimum 2 CPU cores, 4GB RAM, and 40GB storage.
 
 - **Cloud:**
   - Whalebone cloud resolvers are pre-configured and do not require hardware or software installation.

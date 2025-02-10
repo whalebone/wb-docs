@@ -104,20 +104,39 @@ Head back to the Resolvers page and apply the configuration on the resolver by p
 
 
 
-What is a PTR record?
-A PTR (Pointer) record is a type of DNS record used to map an IP address to a domain name, essentially performing a reverse DNS lookup. Unlike A or AAAA records, which resolve domain names to IP addresses, a PTR record provides the human-readable domain name associated with a given IP address.
+What is a PTR Record?
+=====================
+
+A **PTR (Pointer) record** is a type of DNS record used to map an IP address to a domain name, essentially performing a **reverse DNS lookup**. Unlike A or AAAA records, which resolve domain names to IP addresses, a PTR record provides the human-readable domain name associated with a given IP address.
+
+Common Uses of PTR Records
+--------------------------
+
 PTR records are commonly used for:
-Email servers: Ensuring proper reverse DNS resolution for spam filtering.
-Network troubleshooting: Identifying hosts by domain names instead of just IP addresses.
-Logging and monitoring: Making logs more readable by showing domain names instead of raw IP addresses.
+
+- **Email servers**: Ensuring proper reverse DNS resolution for spam filtering.
+- **Network troubleshooting**: Identifying hosts by domain names instead of just IP addresses.
+- **Logging and monitoring**: Making logs more readable by showing domain names instead of raw IP addresses.
+
 How the DNS Resolver Enriches Logs
-DNS resolvers can enrich log data by performing reverse DNS lookups on queried IP addresses. This means that if an IP address appears in a DNS query or response, the resolver may try to resolve its PTR record to display a domain name in the logs.
-This enrichment helps by:
-Providing better context in logs (e.g., showing example.com instead of 192.168.1.10).
-Enhancing security monitoring by making it easier to recognize malicious domains.
-Simplifying troubleshooting when analyzing traffic patterns.
-Important Note:
-PTR records are not visible in the DNS traffic logs. The resolver performs reverse lookups separately from the actual DNS queries made by clients. This means that while the logs may display domain names for certain IP addresses, those lookups are not part of the original DNS transaction.
+----------------------------------
+
+DNS resolvers can enhance log data by performing **reverse DNS lookups** on queried IP addresses. If an IP address appears in a DNS query or response, the resolver may try to resolve its PTR record to display a domain name in the logs.
+
+This enrichment provides several benefits:
+
+- **Better context in logs**: For example, displaying `example.com` instead of `192.168.1.10`.
+- **Enhanced security monitoring**: Makes it easier to recognize malicious domains.
+- **Simplified troubleshooting**: Helps when analyzing traffic patterns.
+
+Important Note
+--------------
+
+PTR records are **not visible** in DNS traffic logs. The resolver performs reverse lookups **separately** from the actual DNS queries made by clients. This means:
+
+- Logs may display domain names for certain IP addresses.
+- These lookups are **not part of the original DNS transaction**.
+
 
 .. toctree::
    :maxdepth: 1

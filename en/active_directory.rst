@@ -118,3 +118,8 @@ Enhancing security monitoring by making it easier to recognize malicious domains
 Simplifying troubleshooting when analyzing traffic patterns.
 Important Note:
 PTR records are not visible in the DNS traffic logs. The resolver performs reverse lookups separately from the actual DNS queries made by clients. This means that while the logs may display domain names for certain IP addresses, those lookups are not part of the original DNS transaction.
+
+.. toctree::
+   :maxdepth: 1
+
+   active_directory_secondary

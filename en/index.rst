@@ -37,13 +37,13 @@ More information about the product and company is available on the official `Wha
 
 .. toctree::
    :caption: Analysis and reporting
-   
+   :maxdepth: 2
+
    data_analysis
    domain_resolution_analysis
    reporting
    api_integration
-   Active Directory Integration <active_directory>
-       active_directory_secondary
+   active_directory
    snmp_monitoring
 
 

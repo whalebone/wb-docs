@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Knot Resolver - Tips &amp; Tricks &mdash; Whalebone 3.2.1-12 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Blocking Pages" href="blocking_pages.html" />
+    <link rel="prev" title="DNS resolution configuration" href="dns_resolution.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/whalebone.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Deployment Options</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="deployment_peacemaker.html">Whalebone Peacemaker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deployment%20immunity.html">Whalebone Immunity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deployment_cloud.html">Cloud deployment</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Quickstart</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Configuration</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="local_resolver.html">Local resolver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resolvers.html">Resolver management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security_policies.html">Security policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dns_resolution.html">DNS resolution configuration</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Knot Resolver - Tips &amp; Tricks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#allow-particular-ip-ranges">Allow particular IP ranges</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#refuse-particular-ip-ranges">Refuse particular IP ranges</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#allow-list-of-domains">Allow list of domains</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#deny-list-of-domains">Deny list of domains</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#disable-dnssec-globally">Disable DNSSEC globally</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#disable-dnssec-validation-for-a-domain">Disable DNSSEC validation for a domain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#disable-query-case-randomization">Disable Query Case Randomization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#disable-qname-minimization">Disable QNAME Minimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#disable-domain-caching">Disable Domain caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#enable-prometheus-metrics">Enable Prometheus Metrics</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="blocking_pages.html">Blocking Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resolver_agent.html">Resolver agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cloud_resolver.html">Cloud DNS resolvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uninstalling.html">Uninstalling a local resolver</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Analysis and reporting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="data_analysis.html">Data Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="domain_resolution_analysis.html">Domain resolution analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reporting.html">Reports</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reporting.html#alerts">Alerts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_integration.html">API Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="active_directory.html">Active Directory Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="snmp_monitoring.html">SNMP Monitoring</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Organization Settings</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="user.html">User/Organization Management</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Home Office Security</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="hos_overview.html">Home Office Security Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hos_installation.html">Step by step installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hos_operation.html">Operation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Step-by-Step Video Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="video_guides.html">Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="video_guides.html#configuration">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="video_guides.html#analysis">Analysis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="licence_disclaimer.html">License Disclaimers</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Whalebone</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Knot Resolver - Tips &amp; Tricks</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/knot_tips_tricks.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="knot-resolver-tips-tricks">
+<h1>Knot Resolver - Tips &amp; Tricks<a class="headerlink" href="#knot-resolver-tips-tricks" title="Permalink to this heading"></a></h1>
+<p>Advanced configuration of Whalebone resolver allows to apply any Knot Resolver configuration. In this section we are going to describe the most frequent use cases and examples of such configuration snippets.
+Views, policies and their actions are evaluated in the sequence as they are defined (except special chain actions that are described in the official Knot Resolver documentation). First match will execute the action, the rest of the policy rules is not evaluated. If you are going to combine different configuration snippets, you can load the same module just once at the beginning of the configuration.</p>
+<div class="section" id="allow-particular-ip-ranges">
+<h2>Allow particular IP ranges<a class="headerlink" href="#allow-particular-ip-ranges" title="Permalink to this heading"></a></h2>
+<p>Define a list of IP ranges that will be allowed to use this DNS resolver. Queries from all other ranges will be refused.</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- load modules</span>
+<span class="n">modules</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;policy&#39;</span><span class="p">,</span> <span class="s1">&#39;view&#39;</span><span class="p">}</span>
+
+<span class="c1">--define list of ranges to allow</span>
+<span class="c1">--127.0.0.1 should always be allowed</span>
+<span class="n">allowed</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">&#39;127.0.0.1/32&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;10.10.20.5/32&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;10.30.10.0/24&#39;</span>
+<span class="p">}</span>
+
+<span class="c1">-- allow list of ranges</span>
+<span class="kr">for</span> <span class="n">i</span><span class="p">,</span><span class="n">subnet</span> <span class="kr">in</span> <span class="nb">ipairs</span><span class="p">(</span><span class="n">allowed</span><span class="p">)</span> <span class="kr">do</span>
+  <span class="n">view</span><span class="p">:</span><span class="n">addr</span><span class="p">(</span><span class="n">subnet</span><span class="p">,</span> <span class="n">policy</span><span class="p">.</span><span class="n">all</span><span class="p">(</span><span class="n">policy</span><span class="p">.</span><span class="n">PASS</span><span class="p">))</span>
+<span class="kr">end</span>
+
+<span class="c1">-- block all other ranges</span>
+<span class="n">view</span><span class="p">:</span><span class="n">addr</span><span class="p">(</span><span class="s1">&#39;0.0.0.0/0&#39;</span><span class="p">,</span> <span class="n">policy</span><span class="p">.</span><span class="n">all</span><span class="p">(</span><span class="n">policy</span><span class="p">.</span><span class="n">DENY</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="refuse-particular-ip-ranges">
+<h2>Refuse particular IP ranges<a class="headerlink" href="#refuse-particular-ip-ranges" title="Permalink to this heading"></a></h2>
+<p>Define a list of IP ranges that will be blocked to use this DNS resolver. Queries from all other ranges will be allowed.</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- load modules</span>
+<span class="n">modules</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;policy&#39;</span><span class="p">,</span> <span class="s1">&#39;view&#39;</span><span class="p">}</span>
+
+<span class="c1">--define list of ranges to block</span>
+<span class="n">blocked</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">&#39;10.10.20.5/32&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;10.30.10.0/24&#39;</span>
+<span class="p">}</span>
+
+<span class="c1">-- block list of ranges</span>
+<span class="kr">for</span> <span class="n">i</span><span class="p">,</span><span class="n">subnet</span> <span class="kr">in</span> <span class="nb">ipairs</span><span class="p">(</span><span class="n">blocked</span><span class="p">)</span> <span class="kr">do</span>
+  <span class="n">view</span><span class="p">:</span><span class="n">addr</span><span class="p">(</span><span class="n">subnet</span><span class="p">,</span> <span class="n">policy</span><span class="p">.</span><span class="n">all</span><span class="p">(</span><span class="n">policy</span><span class="p">.</span><span class="n">REFUSE</span><span class="p">))</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="allow-list-of-domains">
+<h2>Allow list of domains<a class="headerlink" href="#allow-list-of-domains" title="Permalink to this heading"></a></h2>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- load modules</span>
+<span class="n">modules</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;policy&#39;</span><span class="p">}</span>
+
+<span class="c1">--define list of allowed domains</span>
+<span class="n">domains</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">&#39;example.com&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;anotherexample.org&#39;</span>
+<span class="p">}</span>
+
+<span class="c1">-- allow list of domains</span>
+<span class="kr">for</span> <span class="n">i</span><span class="p">,</span><span class="n">domain</span> <span class="kr">in</span> <span class="nb">ipairs</span><span class="p">(</span><span class="n">domains</span><span class="p">)</span> <span class="kr">do</span>
+  <span class="n">policy</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">policy</span><span class="p">.</span><span class="n">suffix</span><span class="p">(</span><span class="n">policy</span><span class="p">.</span><span class="n">PASS</span><span class="p">,</span> <span class="p">{</span><span class="n">todname</span><span class="p">(</span><span class="n">domain</span><span class="p">)}))</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="deny-list-of-domains">
+<h2>Deny list of domains<a class="headerlink" href="#deny-list-of-domains" title="Permalink to this heading"></a></h2>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- load modules</span>
+<span class="n">modules</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;policy&#39;</span><span class="p">}</span>
+
+<span class="c1">--define list of denied domains</span>
+<span class="n">domains</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">&#39;example.com&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;anotherexample.org&#39;</span>
+<span class="p">}</span>
+
+<span class="c1">-- deny list of domains, while returning NXDOMAIN</span>
+<span class="kr">for</span> <span class="n">i</span><span class="p">,</span><span class="n">domain</span> <span class="kr">in</span> <span class="nb">ipairs</span><span class="p">(</span><span class="n">domains</span><span class="p">)</span> <span class="kr">do</span>
+  <span class="n">policy</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">policy</span><span class="p">.</span><span class="n">suffix</span><span class="p">(</span><span class="n">policy</span><span class="p">.</span><span class="n">DENY</span><span class="p">,</span> <span class="p">{</span><span class="n">todname</span><span class="p">(</span><span class="n">domain</span><span class="p">)}))</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="disable-dnssec-globally">
+<h2>Disable DNSSEC globally<a class="headerlink" href="#disable-dnssec-globally" title="Permalink to this heading"></a></h2>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">trust_anchors</span><span class="p">.</span><span class="n">negative</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">&#39;.&#39;</span> <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="disable-dnssec-validation-for-a-domain">
+<h2>Disable DNSSEC validation for a domain<a class="headerlink" href="#disable-dnssec-validation-for-a-domain" title="Permalink to this heading"></a></h2>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">trust_anchors</span><span class="p">.</span><span class="n">set_insecure</span><span class="p">({</span> <span class="s1">&#39;domain.com&#39;</span> <span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="disable-query-case-randomization">
+<h2>Disable Query Case Randomization<a class="headerlink" href="#disable-query-case-randomization" title="Permalink to this heading"></a></h2>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">policy</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">policy</span><span class="p">.</span><span class="n">suffix</span><span class="p">(</span><span class="n">policy</span><span class="p">.</span><span class="n">FLAGS</span><span class="p">(</span><span class="s1">&#39;NO_0X20&#39;</span><span class="p">),</span> <span class="p">{</span><span class="n">todname</span><span class="p">(</span><span class="s1">&#39;domain.com&#39;</span><span class="p">)}))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="disable-qname-minimization">
+<h2>Disable QNAME Minimization<a class="headerlink" href="#disable-qname-minimization" title="Permalink to this heading"></a></h2>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">policy</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">policy</span><span class="p">.</span><span class="n">suffix</span><span class="p">(</span><span class="n">policy</span><span class="p">.</span><span class="n">FLAGS</span><span class="p">(</span><span class="s1">&#39;NO_MINIMIZE&#39;</span><span class="p">),</span> <span class="p">{</span><span class="n">todname</span><span class="p">(</span><span class="s1">&#39;domain.com&#39;</span><span class="p">)}))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="disable-domain-caching">
+<h2>Disable Domain caching<a class="headerlink" href="#disable-domain-caching" title="Permalink to this heading"></a></h2>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">policy</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">policy</span><span class="p">.</span><span class="n">suffix</span><span class="p">(</span><span class="n">policy</span><span class="p">.</span><span class="n">FLAGS</span><span class="p">(</span><span class="s1">&#39;NO_CACHE&#39;</span><span class="p">),</span> <span class="p">{</span><span class="n">todname</span><span class="p">(</span><span class="s1">&#39;domain.com&#39;</span><span class="p">)}))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="enable-prometheus-metrics">
+<h2>Enable Prometheus Metrics<a class="headerlink" href="#enable-prometheus-metrics" title="Permalink to this heading"></a></h2>
+<p>The resolver can expose its metrics in Prometheus text format.
+The following script enables the HTTP module and the respective <code class="docutils literal notranslate"><span class="pre">/metrics</span></code> endpoint is made available.</p>
+<p>More information and configuration options can be found on <a class="reference external" href="https://knot-resolver.readthedocs.io/en/stable/modules-stats.html#prometheus-metrics-endpoint">Knot Resolver Documentation</a></p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">modules</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">)</span>
+<span class="kr">function</span> <span class="nf">startHttp</span> <span class="p">()</span>
+<span class="n">net</span><span class="p">.</span><span class="n">listen</span><span class="p">(</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="mi">8453</span><span class="p">,</span> <span class="p">{</span> <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;webmgmt&#39;</span> <span class="p">})</span>
+<span class="kr">end</span>
+<span class="nb">pcall</span><span class="p">(</span><span class="n">startHttp</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="dns_resolution.html" class="btn btn-neutral float-left" title="DNS resolution configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="blocking_pages.html" class="btn btn-neutral float-right" title="Blocking Pages" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Whalebone, s.r.o..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Security policies &mdash; Whalebone 3.2.1-12 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="DNS resolution configuration" href="dns_resolution.html" />
+    <link rel="prev" title="Resolver management" href="resolvers.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/whalebone.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Deployment Options</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="deployment_peacemaker.html">Whalebone Peacemaker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deployment%20immunity.html">Whalebone Immunity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deployment_cloud.html">Cloud deployment</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Quickstart</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Configuration</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="local_resolver.html">Local resolver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resolvers.html">Resolver management</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Security policies</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#malicious-filtering-tresholds">Malicious filtering tresholds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#types-of-threats">Types of threats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#allow-lists">Allow lists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#deny-lists">Deny Lists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#regulatory-restrictions">Regulatory Restrictions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#content-filtering">Content Filtering</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dns_resolution.html">DNS resolution configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="knot_tips_tricks.html">Knot Resolver - Tips &amp; Tricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blocking_pages.html">Blocking Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resolver_agent.html">Resolver agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cloud_resolver.html">Cloud DNS resolvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uninstalling.html">Uninstalling a local resolver</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Analysis and reporting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="data_analysis.html">Data Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="domain_resolution_analysis.html">Domain resolution analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reporting.html">Reports</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reporting.html#alerts">Alerts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_integration.html">API Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="active_directory.html">Active Directory Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="snmp_monitoring.html">SNMP Monitoring</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Organization Settings</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="user.html">User/Organization Management</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Home Office Security</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="hos_overview.html">Home Office Security Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hos_installation.html">Step by step installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hos_operation.html">Operation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Step-by-Step Video Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="video_guides.html">Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="video_guides.html#configuration">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="video_guides.html#analysis">Analysis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="licence_disclaimer.html">License Disclaimers</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Whalebone</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Security policies</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/security_policies.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="security-policies">
+<h1>Security policies<a class="headerlink" href="#security-policies" title="Permalink to this heading"></a></h1>
+<p>You can watch step-by-step video guide of basic security policy configuration <a class="reference external" href="https://docs.whalebone.io/en/latest/video_guides.html#basic-configuration">here.</a></p>
+<p>The step-by-step video guide with deeper explanation of security policy tuning is <a class="reference external" href="https://docs.whalebone.io/en/latest/video_guides.html#security-policies">here.</a></p>
+<p>To control Whalebone’s security filtering you need to configure it’s security policies. When you install Whalebone, it comes with a <strong>Default</strong> policy which is set to include all threat types and sets the tresholds to the value of <strong>80/50</strong>. This policy will also be automatically applied to every newly installed resolver.
+In any policy there are several options to be configured:</p>
+<div class="section" id="malicious-filtering-tresholds">
+<h2>Malicious filtering tresholds<a class="headerlink" href="#malicious-filtering-tresholds" title="Permalink to this heading"></a></h2>
+<p>Every domain in our threat intelligence database has certain value of the score. The score represents how malicious we believe that particular domain to be. In the policy you adjust two values related to the score:</p>
+<ul class="simple">
+<li><p><strong>The blocking threshold</strong> - Domains with a score higher or equal to this value will be blocked by Whalebone and the client request will be answered with and IP address of the blocking page.</p></li>
+<li><p><strong>The audit treshold</strong> - Domains with a score higher or equal to this value, but lower than the blocking treshold will be monitored. The request will be allowed and the answer will be served either from cache or by performing the full DNS recursion. Requests will however be monitored in the Threats dashboard for later investigation, if needed.</p></li>
+</ul>
+<p>Individual actions could be turned off - e.g. turn off the blocking for testing purposes
+The slider values define the probability that the particular domain is malicious on the scale from <strong>0</strong> to <strong>100</strong> with <strong>100</strong> beeing the most malicious.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The default threshold for blocking is set to <strong>80</strong> which is safe even for larger network with liberal policy towards the users. For more restrictive policy we suggest setting threshold for blocking to <strong>70-75</strong>, in very restrictive networks even down to <strong>60</strong>. Audit is purely informative, however setting the threshold too low can result in too many logged incidents.</p>
+</div>
+<p>There are preconfigured policies available that cover the most usual cases. These cases are: <strong>Don’t Block</strong>, <strong>Block carefully</strong> and <strong>Block strictly</strong>.</p>
+<ul class="simple">
+<li><p><strong>Block carefully</strong> setting prioritizes a low false positive rate and is suitable for ISPs.</p></li>
+<li><p><strong>Block strictly</strong> maximizes the detection rate and is suitable for most corporate deployments.</p></li>
+<li><p><strong>Don’t block</strong> turns off the blocking entirely and causes Whalebone to operate in a transparent/permissive mode, where it will only log (audit) the incidents but it won’t actively block them.</p></li>
+</ul>
+<img alt="_images/score.png" class="align-center" src="_images/score.png" />
+<p>You can configure additional policies by clicking the <strong>Add Policy</strong> tab. First you select which of the existing policies you want the new policy to be based upon. Then click the pencil button under the <strong>Name of the Policy</strong> to clearly differentiate it from the others.
+You can then modify the blocking and auditing sensitivity, add deny lists or set up regulatory filtering. The new policy is not saved until you click the <strong>Save</strong> button.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The policy is not active unless it is assigned to some resolvers (local or cloud ones). To start enforcing the policy, navigate to <strong>Resolvers</strong> →  <strong>Policy Assignment</strong> and assign it to a specific <strong>subnet</strong> or <strong>resolver</strong>.</p>
+</div>
+</div>
+<div class="section" id="types-of-threats">
+<h2>Types of threats<a class="headerlink" href="#types-of-threats" title="Permalink to this heading"></a></h2>
+<p>The default settings is to include all types of threats. If you want to exclude some you can do so by unchecking the box <strong>Include all types of threats</strong>. From the drop-down menu you can now choose the specific categories of audited/blocked threats. The available categories are: <strong>blacklist</strong>, <strong>c&amp;c</strong>, <strong>coinminer</strong>, <strong>compromised</strong>, <strong>malware</strong>, <strong>phishing</strong> and <strong>spam</strong>.</p>
+<p>A full list of what each category includes can be found below:</p>
+<ul class="simple">
+<li><p><strong>C&amp;C (Command and Control)</strong>:  domains that facilitate botnet communication to coordinate its activity. A botnet is a network of infected computers, which are controlled as a group.</p></li>
+<li><p><strong>Malware</strong>: domains that host and distribute any kind of malicious code.</p></li>
+<li><p><strong>Phishing</strong>: domains aiming to trick users and extract sensitive information such as credit card details, login credentials, etc.</p></li>
+<li><p><strong>Blacklist</strong>: domains that are known to serve multiple nefarious purposes at the same time or over a period of time.</p></li>
+<li><p><strong>Spam</strong>: domains that are linked to spreading spam emails and scam schemes.</p></li>
+<li><p><strong>Compromised</strong>: otherwise legitimate domains that have been hacked and are temporarily used for malicious purposes.</p></li>
+<li><p><strong>Coinminer</strong>: domains that hijack processing and energy resources for unsolicited cryptocurrency mining.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Any changes in the Security Policies will be applied to the resolvers in approx. 2-3 minutes. Saved configuration is used during preparation of the threat data package for the resolvers that download and apply those packages at regular intervals.</p>
+</div>
+</div>
+<div class="section" id="allow-lists">
+<h2>Allow lists<a class="headerlink" href="#allow-lists" title="Permalink to this heading"></a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p>Domains that will never be blocked (unless they are also present in a regulatory compliance feed).</p></li>
+<li><p>The allow list has the second highest priority when evaluating how to resolve a domain.</p></li>
+<li><p>The allow list is applied to the domain and all of the subdomains, e.g.: allowed domain <code class="docutils literal notranslate"><span class="pre">whalebone.io</span></code> will also allow <code class="docutils literal notranslate"><span class="pre">docs.whalebone.io</span></code>, but not vice versa.</p></li>
+<li><p>The list can be configured on the <strong>Allow / Deny List</strong> tab on the left side of <strong>Configuration</strong> page.</p></li>
+<li><p>One list can hold up to 10 000 domains.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="deny-lists">
+<h2>Deny Lists<a class="headerlink" href="#deny-lists" title="Permalink to this heading"></a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p>Domains that will be blocked at all times (unless the same domain is also present on an allow list).</p></li>
+<li><p>The deny list is applied to the domain and all of the subdomains, e.g.: denied domain <code class="docutils literal notranslate"><span class="pre">malware.ninja</span></code> will also deny <code class="docutils literal notranslate"><span class="pre">super.malware.ninja</span></code>, but not vice versa.</p></li>
+<li><p>The list can be configured on the <strong>Allow / Deny List</strong> tab on the right side of <strong>Configuration</strong> page.</p></li>
+<li><p>One list can hold up to 10 000 domains.</p></li>
+</ul>
+</div></blockquote>
+<p>The custom lists support a <cite>Lex specialis derogat legi generali</cite> principle, in which a more specific domain listing overrides a more general domain listing. This way, you can have the whole domain <code class="docutils literal notranslate"><span class="pre">malware.ninja</span></code> on a Deny list
+but if you have <code class="docutils literal notranslate"><span class="pre">friendly.malware.ninja</span></code> on an Allow list, this will take precedence and communication to this site will act as an exception and will be allowed by the resolver.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>After creating an allow or deny list, it needs to be assigned to the specific security policy, or else the changes will not take effect.</p>
+</div>
+<img alt="_images/whitelist.gif" class="align-center" src="_images/whitelist.gif" />
+</div>
+<div class="section" id="regulatory-restrictions">
+<h2>Regulatory Restrictions<a class="headerlink" href="#regulatory-restrictions" title="Permalink to this heading"></a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p>Integrated list of domains that must be applied in order to conform to Regulatory Restrictions of a country.</p></li>
+<li><p>Examples of these domains include cases of illegal gambling or child pornograpy.</p></li>
+<li><p>Domains on the regulatory restrictions list will be always blocked, if the list is applied to the security policy.</p></li>
+<li><p>They have the highest priority and their filtering cannot be overriden. Not even adding a domain to an allow list will cause the resolver to stop blocking it.</p></li>
+</ul>
+</div></blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Each country has different Regulatory lists. In case of multi-country deployments different policies can be used in order to apply the proper Regulatory Restrictions.</p>
+</div>
+</div>
+<div class="section" id="content-filtering">
+<h2>Content Filtering<a class="headerlink" href="#content-filtering" title="Permalink to this heading"></a></h2>
+<blockquote>
+<div><p>Particular Content categories can be applied on a per-policy level. This is useful in case different segments of the networks come with different requirements. For example, in case of a School environment all the <strong>Adult</strong> categories can be enabled and access to relevant content can be restricted.</p>
+<p>A diverse set of content filtering categories are available:</p>
+</div></blockquote>
+<ul class="simple">
+<li><p><strong>Sexual content</strong>: Sexual and pornographic material,</p></li>
+<li><p><strong>Gambling</strong>: games and activities involving betting money,</p></li>
+<li><p><strong>Weapons</strong>: guns and weapon-related sites,</p></li>
+<li><p><strong>Audio-video</strong>: audio and video streaming services,</p></li>
+<li><p><strong>Games</strong>: online games and gaming websites,</p></li>
+<li><p><strong>Chat</strong>: instant messaging and chatting applications,</p></li>
+<li><p><strong>Social-networks</strong>: social networking sites and applications,</p></li>
+<li><p><strong>Child abuse</strong>: websites related to child abuse dissemination of child pornography,</p></li>
+<li><p><strong>Drugs</strong>: drug related websites including alcohol and tobacco,</p></li>
+<li><p><strong>Racism</strong>: content linked to racism and xenophobia,</p></li>
+<li><p><strong>Violence</strong>: explicit violence and gore,</p></li>
+<li><p><strong>Terrorism</strong>: domains linked to terrorism support,</p></li>
+<li><p><strong>Advertisement</strong>: banners, context advertisements and other advertisements systems,</p></li>
+<li><p><strong>Crypto-mining</strong>: domains connected to crypto-currency mining activities,</p></li>
+<li><p><strong>DoH</strong>: DNS over HTTPS. These are domains that provide obfuscation of the DNS requests in HTTP traffic,</p></li>
+<li><p><strong>P2P</strong>: domains linked to peer to peer networks where multimedia content is shared by the users,</p></li>
+<li><p><strong>Tracking</strong>: web and email tracking systems.</p></li>
+</ul>
+<p>The content filter can also be applied for specific times of the day. When a particular category is ticked, a clock icon will appear next to it. If you click the clock icon, you can add a new schedule for this category. Multiple schedules may be active for the same category. This way, you may only allow access to social networks during the lunch break and after working hours. Finish the settings by clicking <strong>Apply</strong> and <strong>Save</strong> the security policy.</p>
+<img alt="_images/schedules.png" class="align-center" src="_images/schedules.png" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>By applying the schedule, you are <strong>allowing</strong> access to domains from that content category during that specific time period.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="resolvers.html" class="btn btn-neutral float-left" title="Resolver management" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="dns_resolution.html" class="btn btn-neutral float-right" title="DNS resolution configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Whalebone, s.r.o..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

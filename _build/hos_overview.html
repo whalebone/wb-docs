@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home Office Security Overview &mdash; Whalebone 3.2.1-12 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Step by step installation" href="hos_installation.html" />
+    <link rel="prev" title="User/Organization Management" href="user.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/whalebone.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Deployment Options</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="deployment_peacemaker.html">Whalebone Peacemaker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deployment%20immunity.html">Whalebone Immunity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deployment_cloud.html">Cloud deployment</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Quickstart</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Configuration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="local_resolver.html">Local resolver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resolvers.html">Resolver management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security_policies.html">Security policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dns_resolution.html">DNS resolution configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="knot_tips_tricks.html">Knot Resolver - Tips &amp; Tricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blocking_pages.html">Blocking Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resolver_agent.html">Resolver agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cloud_resolver.html">Cloud DNS resolvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uninstalling.html">Uninstalling a local resolver</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Analysis and reporting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="data_analysis.html">Data Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="domain_resolution_analysis.html">Domain resolution analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reporting.html">Reports</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reporting.html#alerts">Alerts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_integration.html">API Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="active_directory.html">Active Directory Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="snmp_monitoring.html">SNMP Monitoring</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Organization Settings</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="user.html">User/Organization Management</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Home Office Security</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Home Office Security Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#supported-os">Supported OS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="hos_installation.html">Step by step installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hos_operation.html">Operation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Step-by-Step Video Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="video_guides.html">Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="video_guides.html#configuration">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="video_guides.html#analysis">Analysis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="licence_disclaimer.html">License Disclaimers</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Whalebone</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Home Office Security Overview</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/hos_overview.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="home-office-security-overview">
+<h1>Home Office Security Overview<a class="headerlink" href="#home-office-security-overview" title="Permalink to this heading"></a></h1>
+<p>Whalebone Home Office Security (HOS) provides an off-network DNS filtering functionality for desktop and mobile devices. It intercepts DNS traffic and inspects it before sending network packets to the wild.
+It protects the device from network threat by scanning every DNS packet. At the moment, Windows, Android and iOS devices are supported. For detailed OS version support, see below.</p>
+<img alt="_images/hos-overview.png" class="align-center" src="_images/hos-overview.png" />
+<p>HOS comes with Windows Installer for the deployment. No user interaction is required to perform the installation, however the installer requires a <code class="docutils literal notranslate"><span class="pre">token</span></code>.</p>
+<p>The default target directory is:</p>
+<p><code class="docutils literal notranslate"><span class="pre">C:\Program</span> <span class="pre">Files</span> <span class="pre">(x86)\Whalebone\Home</span> <span class="pre">Office</span> <span class="pre">Security\</span></code></p>
+<p>For Android the default install location is:</p>
+<p><code class="docutils literal notranslate"><span class="pre">/storage/emulated/0/Android/io.whalebone.securedns.corp/</span></code></p>
+<div class="section" id="supported-os">
+<h2>Supported OS<a class="headerlink" href="#supported-os" title="Permalink to this heading"></a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 35%" />
+<col style="width: 65%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Windows Desktop</p></th>
+<th class="head"><p>Windows 7 or higher</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Android</p></td>
+<td><p>Android 5 or higher</p></td>
+</tr>
+<tr class="row-odd"><td><p>iOS</p></td>
+<td><p>All versions</p></td>
+</tr>
+<tr class="row-even"><td><p>MacOS</p></td>
+<td><p>MacOS 13.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>Linux</p></td>
+<td><p>Not supported</p></td>
+</tr>
+</tbody>
+</table>
+<p>Windows 7 systems must be up-to-date or at least have KB3033929 installed.</p>
+<p>Windows Server 2016 systems must have secure boot disabled.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="user.html" class="btn btn-neutral float-left" title="User/Organization Management" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="hos_installation.html" class="btn btn-neutral float-right" title="Step by step installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Whalebone, s.r.o..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

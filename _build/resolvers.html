@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resolver management &mdash; Whalebone 3.2.1-12 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Security policies" href="security_policies.html" />
+    <link rel="prev" title="Local resolver" href="local_resolver.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/whalebone.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Deployment Options</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="deployment_peacemaker.html">Whalebone Peacemaker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deployment%20immunity.html">Whalebone Immunity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deployment_cloud.html">Cloud deployment</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Quickstart</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Configuration</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="local_resolver.html">Local resolver</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Resolver management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#resolvers-overview">Resolvers overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#deploy-configuration">Deploy configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configure-policy-per-network-segment">Configure Policy per Network Segment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configure-blocking-pages">Configure Blocking Pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#upgrade-rollback-resolver">Upgrade/Rollback Resolver</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="security_policies.html">Security policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dns_resolution.html">DNS resolution configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="knot_tips_tricks.html">Knot Resolver - Tips &amp; Tricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blocking_pages.html">Blocking Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resolver_agent.html">Resolver agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cloud_resolver.html">Cloud DNS resolvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uninstalling.html">Uninstalling a local resolver</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Analysis and reporting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="data_analysis.html">Data Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="domain_resolution_analysis.html">Domain resolution analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reporting.html">Reports</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reporting.html#alerts">Alerts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_integration.html">API Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="active_directory.html">Active Directory Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="snmp_monitoring.html">SNMP Monitoring</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Organization Settings</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="user.html">User/Organization Management</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Home Office Security</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="hos_overview.html">Home Office Security Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hos_installation.html">Step by step installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hos_operation.html">Operation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Step-by-Step Video Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="video_guides.html">Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="video_guides.html#configuration">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="video_guides.html#analysis">Analysis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="licence_disclaimer.html">License Disclaimers</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Whalebone</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Resolver management</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/resolvers.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="resolver-management">
+<h1>Resolver management<a class="headerlink" href="#resolver-management" title="Permalink to this heading"></a></h1>
+<p>On the <strong>Resolvers</strong> page there is an overview of created resolvers. Administrator can adjust the configuration, deploy updates and install new resolvers.</p>
+<div class="section" id="resolvers-overview">
+<h2>Resolvers overview<a class="headerlink" href="#resolvers-overview" title="Permalink to this heading"></a></h2>
+<p>In the main resolver overview there are tiles with resolver details. The overview includes information about operating system and resources as CPU, Memory and HDD usage. There is also the status of the communication channel between the resolver and the cloud indicated by the color-coded dot.</p>
+<p>The resolver can be in one of these states:</p>
+<ul class="simple">
+<li><p><strong>Active</strong> - This is the expected status in production environments and signalizes that everything is running correctly.</p></li>
+<li><p><strong>Resolution problem</strong> - The resolver is unable to translate DNS requests.</p></li>
+<li><p><strong>Unavailable</strong> - The resolver has lost connection with Whalebone Cloud. This state does not affect the DNS translation however the resolver cannot get threat database updates and might not respond to policy or configuration changes initiated from the portal.</p></li>
+<li><p><strong>Upgrading</strong> - An upgrade command has been issued to the resolver. This state should not persist for more than a few minutes.</p></li>
+<li><p><strong>Not installed</strong> - The resolver was not yet installed.</p></li>
+</ul>
+</div>
+<div class="section" id="deploy-configuration">
+<h2>Deploy configuration<a class="headerlink" href="#deploy-configuration" title="Permalink to this heading"></a></h2>
+<p>If there been are any configuration changes which affect the DNS resolution, you have to <strong>deploy</strong> the configuration afterwards. Otherwise the changes will not take effect. In case there are any configuration changes available to be deployed, there will be a <strong>red icon</strong> with down right arrow visible on the resolver card. Once clicked, the webpage will ask for confirmation and the successful deployment will be notified in the top right corner.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the deployment resulted in error, try to repeat the action. The reason for the error could be a short term communication outage between the cloud and the resolver.</p>
+</div>
+</div>
+<div class="section" id="configure-policy-per-network-segment">
+<h2>Configure Policy per Network Segment<a class="headerlink" href="#configure-policy-per-network-segment" title="Permalink to this heading"></a></h2>
+<p>Security and content polices can be asssigned in a granular manner to different segments of the network.</p>
+<p>The setting applies per resolver and can be configured under <strong>Resolvers</strong> → <code class="docutils literal notranslate"><span class="pre">Name</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">resolver</span></code> → <strong>Policy Assignment</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The configuration is <strong>per resolver</strong>. In case you want to apply the configuration to more than one resolvers, please modify all the necessary resolvers.</p>
+</div>
+<p>The policies can be applied by adding IP ranges in the available input form:</p>
+<p>In order to provide a better understanding let’s consider an example with the network range <code class="docutils literal notranslate"><span class="pre">10.10.0.0/16</span></code>.</p>
+<p>We have created 3 different policies:</p>
+<ul class="simple">
+<li><p><strong>Default</strong>: the policy that we want to apply to the whole network, this is the most generic policy</p></li>
+<li><p><strong>Exception</strong>: a policy that must be applied to a specific segment in the network which will have all security and content filtering disabled.</p></li>
+<li><p><strong>School</strong>: a policy that we want to apply to 2 different subnets that have been assigned to school environments. In this case we have chosen to be more strict in the blocking.</p></li>
+</ul>
+<img alt="_images/policies-example.png" class="align-center" src="_images/policies-example.png" />
+<p>Example policy settings.
+.. note:: The first setting option for policies is for all the undefined ranges. In case different policies affecting same range the more granular is applied.</p>
+<p>Let’s summarize the requirements in the following matrix:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 24%" />
+<col style="width: 76%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Policy</strong></p></th>
+<th class="head"><p><strong>Network</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Default</p></td>
+<td><p>10.10.0.0/16</p></td>
+</tr>
+<tr class="row-odd"><td><p>Exception</p></td>
+<td><p>10.10.10.0/24</p></td>
+</tr>
+<tr class="row-even"><td><p>School</p></td>
+<td><p>10.10.20.0/24 and 10.10.40.0/24</p></td>
+</tr>
+</tbody>
+</table>
+<p>The following image shows the process of assigning the policies:</p>
+<img alt="_images/policy_task.png" class="align-center" src="_images/policy_task.png" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>After adding the networks you must click on <strong>Save to resolver</strong> in order to to take effect. The changes will be then validated and a pop-up message will provide additional information.</p>
+</div>
+<p>In order to assign additional entries to an existing assignment, a new network range can be appended using <cite>newline</cite> as a separator.
+Building on the previous example, in case we wanted to add the subnet <code class="docutils literal notranslate"><span class="pre">10.10.30.0/24</span></code> to the Exception Policy:</p>
+<img alt="_images/add-range.gif" class="align-center" src="_images/add-range.gif" />
+</div>
+<div class="section" id="configure-blocking-pages">
+<h2>Configure Blocking Pages<a class="headerlink" href="#configure-blocking-pages" title="Permalink to this heading"></a></h2>
+<p>In a similar manner to the Security Policies, the Blocking Pages can also be assigned to particular network ranges.</p>
+<p>The first step is to select <strong>On-premise local resolver</strong> for the <strong>Blocking Page Location</strong> option. Two new fields are enabled where the IPv4 and IPv6 addresses of the Blocking Pages must be filled in.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The Blocking Pages are being hosted <strong>directly</strong> on the Resolvers so the IP addresses that are advertised to the clients must be used. The clients will then be redirected to the IP address of the resolver upon blocking. Please ensure that ports 80 and 443 are accessible on the firewall.</p>
+</div>
+<p>For each IP range that is added, there is a drop-down menu for the Blocking Page that should be assigned.</p>
+<div class="figure align-center" id="id1">
+<img alt="Assign Blocking Page to IP range" src="_images/blocking-page-assign.png" />
+<p class="caption"><span class="caption-text">Assign Blocking Page to IP range</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The first entry in the <strong>Policy Assignment</strong> is considered the Default/Fallback. In case a client accesses the resolver from an undefined IP range, the respective options will apply.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>After making the necessary changes to the Blocking Page settings, please check whether the resolvers need to be re-deployed.</p>
+</div>
+</div>
+<div class="section" id="upgrade-rollback-resolver">
+<h2>Upgrade/Rollback Resolver<a class="headerlink" href="#upgrade-rollback-resolver" title="Permalink to this heading"></a></h2>
+<p>When a new version of the Resolver is released, a <strong>red upgrade icon</strong> appears on the resolver’s management interface.</p>
+<img alt="_images/upgrade.png" class="align-center" src="_images/upgrade.png" />
+<p>Upon clicking on the <strong>Upgrade</strong> icon, the respective menu is selected and important information about the new release is provided.</p>
+<img alt="_images/upgrade-2.png" class="align-center" src="_images/upgrade-2.png" />
+<p>From this menu, the upgrade of the resolver can be initiated.</p>
+<p>In case the installation of the new version does not yield the expected outcome, a rollback to the previous version is possible anytime in the <strong>Rollback</strong> tab:</p>
+<img alt="_images/rollback.png" class="align-center" src="_images/rollback.png" />
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="local_resolver.html" class="btn btn-neutral float-left" title="Local resolver" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="security_policies.html" class="btn btn-neutral float-right" title="Security policies" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Whalebone, s.r.o..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

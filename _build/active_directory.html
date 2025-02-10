@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Active Directory Integration &mdash; Whalebone 3.2.1-12 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="SNMP Monitoring" href="snmp_monitoring.html" />
+    <link rel="prev" title="API Integration" href="api_integration.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/whalebone.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Deployment Options</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="deployment_peacemaker.html">Whalebone Peacemaker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deployment%20immunity.html">Whalebone Immunity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deployment_cloud.html">Cloud deployment</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Quickstart</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Configuration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="local_resolver.html">Local resolver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resolvers.html">Resolver management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security_policies.html">Security policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dns_resolution.html">DNS resolution configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="knot_tips_tricks.html">Knot Resolver - Tips &amp; Tricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blocking_pages.html">Blocking Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resolver_agent.html">Resolver agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cloud_resolver.html">Cloud DNS resolvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uninstalling.html">Uninstalling a local resolver</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Analysis and reporting</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="data_analysis.html">Data Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="domain_resolution_analysis.html">Domain resolution analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reporting.html">Reports</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reporting.html#alerts">Alerts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_integration.html">API Integration</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Active Directory Integration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#secondary-method">Secondary method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#domain-controller-configuration">Domain Controller Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#dc-firewall-on-windows">DC Firewall on Windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dc-firewall-rules">DC Firewall Rules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#windows-service">Windows Service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wmi-remote-configuration">WMI Remote Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#event-log-forwarder">Event Log Forwarder</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#elf-firewall-rules">ELF Firewall Rules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-instructions">Install Instructions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuration-instructions">Configuration Instructions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#service-logs">Service Logs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="snmp_monitoring.html">SNMP Monitoring</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Organization Settings</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="user.html">User/Organization Management</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Home Office Security</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="hos_overview.html">Home Office Security Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hos_installation.html">Step by step installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hos_operation.html">Operation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Step-by-Step Video Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="video_guides.html">Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="video_guides.html#configuration">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="video_guides.html#analysis">Analysis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="licence_disclaimer.html">License Disclaimers</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Whalebone</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Active Directory Integration</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/active_directory.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="active-directory-integration">
+<h1>Active Directory Integration<a class="headerlink" href="#active-directory-integration" title="Permalink to this heading"></a></h1>
+<p>DNS lookup integration can be simply done in a few steps.
+Head to the Whalebone portal -&gt; Resolvers</p>
+<img alt="_images/ad-integration-1.png" class="align-center" src="_images/ad-integration-1.png" />
+<p>Click on the resolver you would like to integrate and then head to the Integrations tab on the left of the page.</p>
+<img alt="_images/ad-integration-2.png" class="align-center" src="_images/ad-integration-2.png" />
+<p>Turn the Log device names in your network slider to the On position.</p>
+<img alt="_images/ad-integration-3.png" class="align-center" src="_images/ad-integration-3.png" />
+<p>Add  your Authoritative nameservers</p>
+<img alt="_images/ad-integration-4.png" class="align-center" src="_images/ad-integration-4.png" />
+<p>If you have multiple controllers you can press on the + sign and add a secondary.</p>
+<img alt="_images/ad-integration-5.png" class="align-center" src="_images/ad-integration-5.png" />
+<p>If your network is segmented and each IP range or network segment is associated with a different name server, you can leverage the Network segmentation feature.</p>
+<img alt="_images/ad-integration-6.png" class="align-center" src="_images/ad-integration-6.png" />
+<p>By enabling this option, resolver starts to query itself for the PTR records (in order to enrich the logs for the device hostname).</p>
+<p>Association of IP ranges with the particular name server is then set up in the DNS resolution settings.</p>
+<p>Note: Do not forget that PTR records are entered in the reverse way. See the screenshots below for examples.</p>
+<p>This will require you to define specific Name servers for specific domain requests.
+You can set these up under DNS resolution settings.</p>
+<p>Click on the Go to the DNS resolution settings and set up your desired forwarding rules.</p>
+<img alt="_images/ad-integration-6.png" class="align-center" src="_images/ad-integration-6.png" />
+<img alt="_images/ad-integration-7.png" class="align-center" src="_images/ad-integration-7.png" />
+<p>In the Advanced setup you can configure specific behaviors.</p>
+<img alt="_images/ad-integration-8.png" class="align-center" src="_images/ad-integration-8.png" />
+<p>Defaults are the recommended values, but they can be adjusted to your specific needs.
+Once satisfied with the settings you can click on the Save button on the bottom of the page to save the configuration.
+The settings will still need to be applied on the resolver as indicated by the message that will pop up at the top of the page.</p>
+<img alt="_images/ad-integration-9.png" class="align-center" src="_images/ad-integration-9.png" />
+<p>Head back to the Resolvers page and apply the configuration on the resolver by pressing the apply configuration button next to your resolver.</p>
+<img alt="_images/ad-integration-10.png" class="align-center" src="_images/ad-integration-10.png" />
+<p>What is a PTR record?
+A PTR (Pointer) record is a type of DNS record used to map an IP address to a domain name, essentially performing a reverse DNS lookup. Unlike A or AAAA records, which resolve domain names to IP addresses, a PTR record provides the human-readable domain name associated with a given IP address.
+PTR records are commonly used for:
+Email servers: Ensuring proper reverse DNS resolution for spam filtering.
+Network troubleshooting: Identifying hosts by domain names instead of just IP addresses.
+Logging and monitoring: Making logs more readable by showing domain names instead of raw IP addresses.
+How the DNS Resolver Enriches Logs
+DNS resolvers can enrich log data by performing reverse DNS lookups on queried IP addresses. This means that if an IP address appears in a DNS query or response, the resolver may try to resolve its PTR record to display a domain name in the logs.
+This enrichment helps by:
+Providing better context in logs (e.g., showing example.com instead of 192.168.1.10).
+Enhancing security monitoring by making it easier to recognize malicious domains.
+Simplifying troubleshooting when analyzing traffic patterns.
+Important Note:
+PTR records are not visible in the DNS traffic logs. The resolver performs reverse lookups separately from the actual DNS queries made by clients. This means that while the logs may display domain names for certain IP addresses, those lookups are not part of the original DNS transaction.</p>
+<div class="section" id="secondary-method">
+<h2>Secondary method<a class="headerlink" href="#secondary-method" title="Permalink to this heading"></a></h2>
+<p>Before you install and Event Log Forwarer (ELF) on one or more of your devices, please ensure that you have enabled audit of events.</p>
+<p>On each of your Domain Controllers (DC) go to:
+<code class="docutils literal notranslate"><span class="pre">Windows</span> <span class="pre">Administrative</span> <span class="pre">Tools</span></code> → <code class="docutils literal notranslate"><span class="pre">Local</span> <span class="pre">Security</span> <span class="pre">Policy</span></code>, and then
+<code class="docutils literal notranslate"><span class="pre">Security</span> <span class="pre">Settings</span></code> → <code class="docutils literal notranslate"><span class="pre">Local</span> <span class="pre">Policies</span></code> → <code class="docutils literal notranslate"><span class="pre">Audit</span> <span class="pre">Policy</span></code>, and there find
+<code class="docutils literal notranslate"><span class="pre">Audit</span> <span class="pre">account</span> <span class="pre">logon</span> <span class="pre">events</span></code>, <code class="docutils literal notranslate"><span class="pre">Audit</span> <span class="pre">account</span> <span class="pre">sign-in</span> <span class="pre">events</span></code> and  <code class="docutils literal notranslate"><span class="pre">Audit</span> <span class="pre">logon</span> <span class="pre">events</span></code>.</p>
+<p>Some settings may differ in name or be missing, based on your Windows version.</p>
+<img alt="_images/ad2-integration-1.png" class="align-center" src="_images/ad2-integration-1.png" />
+<p>Check both Success and Failure boxes.</p>
+<img alt="_images/ad2-integration-2.png" class="align-center" src="_images/ad2-integration-2.png" />
+<p>You may need to reload configured policy. To reload policy, please run following command:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>gpupdate<span class="w"> </span>/force
+</pre></div>
+</div>
+</div>
+<div class="section" id="domain-controller-configuration">
+<h2>Domain Controller Configuration<a class="headerlink" href="#domain-controller-configuration" title="Permalink to this heading"></a></h2>
+<div class="section" id="dc-firewall-on-windows">
+<h3>DC Firewall on Windows<a class="headerlink" href="#dc-firewall-on-windows" title="Permalink to this heading"></a></h3>
+<p>Ensure that Event Log can be accessed through your Firewall configuration using WMI.</p>
+<p>On each of your Domain Controllers go to:
+<code class="docutils literal notranslate"><span class="pre">Windows</span> <span class="pre">Defender</span> <span class="pre">Firewall</span></code> → <code class="docutils literal notranslate"><span class="pre">Windows</span> <span class="pre">Defender</span> <span class="pre">Firewall</span> <span class="pre">with</span> <span class="pre">Advanced</span> <span class="pre">Security</span> <span class="pre">on</span> <span class="pre">Local</span> <span class="pre">Computer</span></code>
+<code class="docutils literal notranslate"><span class="pre">Inbound</span> <span class="pre">Rules</span></code> → <code class="docutils literal notranslate"><span class="pre">Windows</span> <span class="pre">Management</span> <span class="pre">Instrumentation</span> <span class="pre">(WMI-In)</span></code></p>
+<p>ensure the rule allows connections</p>
+<img alt="_images/ad2-integration-3.png" class="align-center" src="_images/ad2-integration-3.png" />
+<p>set up a scope of allowed addresses that may connect. In this example a remote address 192.168.1.0/24 is allowed.</p>
+<img alt="_images/ad2-integration-4.png" class="align-center" src="_images/ad2-integration-4.png" />
+<p>Or, alternatively you can use command line:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>netsh<span class="w"> </span>firewall<span class="w"> </span><span class="nb">set</span><span class="w"> </span>service<span class="w"> </span>RemoteAdmin<span class="w"> </span><span class="nb">enable</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="dc-firewall-rules">
+<h3>DC Firewall Rules<a class="headerlink" href="#dc-firewall-rules" title="Permalink to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 14%" />
+<col style="width: 17%" />
+<col style="width: 6%" />
+<col style="width: 14%" />
+<col style="width: 41%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Source</p></th>
+<th class="head"><p>Direction</p></th>
+<th class="head"><p>Destination</p></th>
+<th class="head"><p>Port</p></th>
+<th class="head"><p>Protoocol</p></th>
+<th class="head"><p>Reason</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>DC</p></td>
+<td><p>—&gt;</p></td>
+<td><p>local netwk</p></td>
+<td><p>135</p></td>
+<td><p>TCP/UDP</p></td>
+<td><p>Microsoft RPC</p></td>
+</tr>
+<tr class="row-odd"><td><p>DC</p></td>
+<td><p>—&gt;</p></td>
+<td><p>local netwk</p></td>
+<td><p>445</p></td>
+<td><p>TCP</p></td>
+<td><p>Microsoft MQ</p></td>
+</tr>
+<tr class="row-even"><td><p>DC</p></td>
+<td><p>—&gt;</p></td>
+<td><p>local netwk</p></td>
+<td></td>
+<td><p>ICMP</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="windows-service">
+<h3>Windows Service<a class="headerlink" href="#windows-service" title="Permalink to this heading"></a></h3>
+<p>Please ensure that <code class="docutils literal notranslate"><span class="pre">Windows</span> <span class="pre">Management</span> <span class="pre">Instrumentation</span></code> service is running.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>C:<span class="se">\U</span>sers<span class="se">\A</span>dministrator&gt;sc<span class="w"> </span>query<span class="w"> </span>Winmgmt
+
+SERVICE_NAME:<span class="w"> </span>Winmgmt
+<span class="w">      </span>TYPE<span class="w">               </span>:<span class="w"> </span><span class="m">30</span><span class="w">  </span>WIN32
+<span class="w">      </span>STATE<span class="w">              </span>:<span class="w"> </span><span class="m">4</span><span class="w">  </span>RUNNING
+<span class="w">                              </span><span class="o">(</span>STOPPABLE,<span class="w"> </span>PAUSABLE,<span class="w"> </span>ACCEPTS_SHUTDOWN<span class="o">)</span>
+<span class="w">      </span>WIN32_EXIT_CODE<span class="w">    </span>:<span class="w"> </span><span class="m">0</span><span class="w">  </span><span class="o">(</span>0x0<span class="o">)</span>
+<span class="w">      </span>SERVICE_EXIT_CODE<span class="w">  </span>:<span class="w"> </span><span class="m">0</span><span class="w">  </span><span class="o">(</span>0x0<span class="o">)</span>
+<span class="w">      </span>CHECKPOINT<span class="w">         </span>:<span class="w"> </span>0x0
+<span class="w">      </span>WAIT_HINT<span class="w">          </span>:<span class="w"> </span>0x0
+</pre></div>
+</div>
+<img alt="_images/ad2-integration-5.png" class="align-center" src="_images/ad2-integration-5.png" />
+</div>
+<div class="section" id="wmi-remote-configuration">
+<h3>WMI Remote Configuration<a class="headerlink" href="#wmi-remote-configuration" title="Permalink to this heading"></a></h3>
+<p>If you chose to install ELF on another Windows PC, ensure that it can use WMI remotely. To enable Remote WMI for the account which will be used to connect to Domain Controller, go to:
+<code class="docutils literal notranslate"><span class="pre">Computer</span> <span class="pre">Management</span></code> → <code class="docutils literal notranslate"><span class="pre">Services</span> <span class="pre">and</span> <span class="pre">Applications</span></code> → <code class="docutils literal notranslate"><span class="pre">WMI</span> <span class="pre">Control</span></code>
+Right click on it and selet <code class="docutils literal notranslate"><span class="pre">Properties</span></code></p>
+<img alt="_images/ad2-integration-6.png" class="align-center" src="_images/ad2-integration-6.png" />
+<p>Select <code class="docutils literal notranslate"><span class="pre">Security</span></code> tab, then choose the <code class="docutils literal notranslate"><span class="pre">Root</span></code> namespace and hit <code class="docutils literal notranslate"><span class="pre">Security</span></code> button.</p>
+<img alt="_images/ad2-integration-7.png" class="align-center" src="_images/ad2-integration-7.png" />
+<p>Add user to the list or select a group it belongs to, check <code class="docutils literal notranslate"><span class="pre">Remote</span> <span class="pre">Enable</span></code> permission.</p>
+<img alt="_images/ad2-integration-8.png" class="align-center" src="_images/ad2-integration-8.png" />
+</div>
+</div>
+<div class="section" id="event-log-forwarder">
+<h2>Event Log Forwarder<a class="headerlink" href="#event-log-forwarder" title="Permalink to this heading"></a></h2>
+<p>You can install ELF locally on the DC or on another Windows PC. ELF uses following connections:</p>
+<div class="section" id="elf-firewall-rules">
+<h3>ELF Firewall Rules<a class="headerlink" href="#elf-firewall-rules" title="Permalink to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 14%" />
+<col style="width: 17%" />
+<col style="width: 6%" />
+<col style="width: 14%" />
+<col style="width: 41%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Source</p></th>
+<th class="head"><p>Direction</p></th>
+<th class="head"><p>Destination</p></th>
+<th class="head"><p>Port</p></th>
+<th class="head"><p>Protoocol</p></th>
+<th class="head"><p>Reason</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ELF</p></td>
+<td><p>—&gt;</p></td>
+<td><p>DC</p></td>
+<td><p>135</p></td>
+<td><p>TCP/UDP</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>ELF</p></td>
+<td><p>—&gt;</p></td>
+<td><p>resolver</p></td>
+<td><p>4222</p></td>
+<td><p>TCP</p></td>
+<td><p>NATS Message Queue</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="install-instructions">
+<h3>Install Instructions<a class="headerlink" href="#install-instructions" title="Permalink to this heading"></a></h3>
+<p>Install or Update:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>msiexec<span class="w"> </span>/i<span class="w"> </span><span class="s2">&quot;Whalebone.Event.Log.Forwarder.Installer.msi&quot;</span><span class="w"> </span><span class="nv">ui</span><span class="o">=</span><span class="s2">&quot;true&quot;</span>
+</pre></div>
+</div>
+<p>Uninstall:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>msiexec<span class="w"> </span>/x<span class="w"> </span><span class="s2">&quot;Whalebone.Event.Log.Forwarder.Installer.msi</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="configuration-instructions">
+<h3>Configuration Instructions<a class="headerlink" href="#configuration-instructions" title="Permalink to this heading"></a></h3>
+<p>Installer shall open configuration Window automatically. You may access configuration from favourite web browser using command:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>start<span class="w"> </span>http://localhost:55225/Configure/AD
+</pre></div>
+</div>
+<img alt="_images/ad2-integration-9.png" class="align-center" src="_images/ad2-integration-9.png" />
+</div>
+<div class="section" id="service-logs">
+<h3>Service Logs<a class="headerlink" href="#service-logs" title="Permalink to this heading"></a></h3>
+<p>Service logs can be found at <code class="docutils literal notranslate"><span class="pre">c:\ProgramData\Whalebone\Event</span> <span class="pre">Log</span> <span class="pre">Forwarder\</span></code>, which contain detailed information about service state. In case you encounther unexpected service behaviour please include this folder along inside your support ticket.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="api_integration.html" class="btn btn-neutral float-left" title="API Integration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="snmp_monitoring.html" class="btn btn-neutral float-right" title="SNMP Monitoring" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Whalebone, s.r.o..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -42,8 +42,8 @@ More information about the product and company is available on the official `Wha
    domain_resolution_analysis
    reporting
    api_integration
-   active_directory
-   active_directory_secondary
+   Active Directory Integration <active_directory>
+      active_directory_secondary
    snmp_monitoring
 
 

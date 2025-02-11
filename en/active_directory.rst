@@ -4,7 +4,8 @@ Active Directory Integration
 
 In order to get the **device name visibility** in the logs Whalebone Immunity can be easily integrated with Active Directory. Visibility to device name speeds up the analysis and troubleshooting since the administrator does not have to look up for the device name in the DHCP logs.
 
-### How it works?
+How it works?
+-------------
 Once configured, Whalebone resolver asks the authoritative name server for the device name using PTR record. A **PTR (Pointer) record** is a type of DNS record used to map an IP address to a domain name, essentially performing a reverse DNS lookup. Unlike A or AAAA records, which resolve domain names to IP addresses, a PTR record provides the human-readable domain name associated with a given IP address.
 
 

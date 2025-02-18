@@ -2,32 +2,16 @@
 Active Directory Integration
 ============================
 
-Why Active Directory Integration with Whalebone DNS is Beneficial
-DNS Lookup Integration, also known as AD Integration, offers customers a powerful way to enhance their network management and security by seamlessly connecting their Active Directory infrastructure with Whalebone DNS. This integration provides key benefits that streamline operations, enhance visibility, and improve troubleshooting capabilities.
+DNS lookup integration
+======================
 
-What It Does
-Device-Level Visibility:
-By associating device names with their respective IP addresses, the integration allows you to identify individual devices performing DNS queries. Instead of seeing just an IP address in logs and analytics, you’ll see human-readable device names, making it easier to track activity.
+In order to get the device name visibility in the logs Whalebone Immunity can be easily integrated with Active Directory.
+Visibility to device name speeds up the analysis and troubleshooting since the administrator does not have to look up for the device name in the DHCP logs.
 
-Simplified Troubleshooting:
-When an issue arises, you can pinpoint the exact device (e.g., a laptop or a server) responsible for the query. This speeds up the troubleshooting process and minimizes downtime.
+How it works?
+=============
 
-Enhanced Reporting:
-With DNS lookup integration, Whalebone DNS provides reports that are tied directly to devices, not just generic IP addresses. This makes your analysis more actionable and meaningful.
-
-Granular Policy Application:
-Policies can be applied based on specific devices or users rather than just IP addresses. This gives you finer control over your network security and allows for tailored access rules.
-
-Why Turn It On
-Improved Network Monitoring:
-Gain detailed insights into network activity with device names, which is especially valuable in large environments where managing IP addresses alone is challenging.
-
-Better Security Management:
-Identify specific devices involved in malicious or suspicious activity, helping you mitigate threats more effectively.
-
-Streamlined Administration:
-By linking Active Directory with Whalebone DNS, IT administrators can manage DNS queries and security policies with device-level precision.
-
+Once configured, Whalebone resolver asks the authoritative name server for the device name using PTR record. A PTR (Pointer) record is a type of DNS record used to map an IP address to a domain name, essentially performing a reverse DNS lookup. Unlike A or AAAA records, which resolve domain names to IP addresses, a PTR record provides the human-readable domain name associated with a given IP address.
 
 DNS lookup integration can be simply done in a few steps.
 Head to the Whalebone portal -> Resolvers

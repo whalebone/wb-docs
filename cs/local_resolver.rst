@@ -15,15 +15,19 @@ Whalebone resolver je založen na implementaci `Knot Resolveru <https://www.knot
 Systémové požadavky na lokální resolver
 =======================================
 
-Instalace lokálního resolveru je podporována na vyhrazeném (hardwarovém nebo virtuálním) stroji s jedním z níže uvedených operačních systémů.
+Lokální nasazení resolveru je podporováno pouze na **výhradně dedikovaném** (fyzickém nebo virtuálním) stroji, který běží na podporovaném operačním systému a Docker enginu. Spuštění resolveru na nepodporovaných verzích operačního systému a/nebo Dockeru, nebo spolu s jinými službami, může vést k nesprávnému chování nebo problémům se službou/překladem. Mějte na paměti, že neplnění těchto požadavků ztěžuje diagnostiku v případě problémů s produktem.
+
+Pravidelně kontrolujte a udržujte verze operačního systému a Docker engine aktuální, abyste zajistili stabilitu služby.
 
 * **Podporovaný operační systém** (64bitový, serverové edice následujících distribucí):
 
-  * Red Hat Enterprise Linux 7, 8, 9
-  * CentOS Linux 7, 8 
-  * CentOS Stream 8, 9
-  * Debian 9, 10, 11, 12
-  * Ubuntu 16.04, 18.04, 20.04, 22.04
+  * `Red Hat Enterprise Linux (Full support) <https://access.redhat.com/product-life-cycles?product=Red%20Hat%20Enterprise%20Linux>`_
+  * `CentOS Stream (Active support) <https://endoflife.date/centos-stream>`_
+  * `Debian (Supported by LTS team) <https://wiki.debian.org/LTS/`_
+  * `Ubuntu (Standard support) <https://ubuntu.com/about/release-cycle>`_
+
+* **Podporovaná verze Dockeru**
+Whalebone podporuje a testuje na verzích Dockeru, které jsou podporovány komunitou. Podporované verze najdete `zde. <https://endoflife.date/docker-engine>`_
 
 * **Podporované souborové systémy** 
 
@@ -34,9 +38,7 @@ Instalace lokálního resolveru je podporována na vyhrazeném (hardwarovém neb
 
   * 2 jádra procesoru
   * 4 GB RAM
-  * 40 GB HDD (alespoň 30 GB v oddílu /var)
-
-.. warning:: Pozor, Whalebone podporuje pouze nasazení bez desktopových prostředí, jako je GNOME, KDE nebo Xfce, protože ty mohou ovlivnit dostupnou paměť a zpracování DNS na serveru.
+  * 80 GB HDD (alespoň 70 GB v oddílu /var)
 
 * **Požadavky na nastavení sítě** (místní resolver potřebuje otevřené následující výstupní porty):
 

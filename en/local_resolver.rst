@@ -2,6 +2,11 @@
 Local resolver
 ******************
 
+Deploying the Whalebone Peacemaker deployed as a **local resolver** brings the advantage of visibility of local IP addresses that send the actual requests. If deploying locally is not a suitable option for you, 
+check out the other :ref:`Deployment Options.<Deployment Options>`
+
+Whalebone resolver is based on the implementation of `Knot Resolver <https://www.knot-resolver.cz/>`_ developed in the CZ.NIC labs.
+
 Local resolver system requirements
 ==================================
 

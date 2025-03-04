@@ -27,6 +27,7 @@ Pravidelně kontrolujte a udržujte verze operačního systému a Docker engine 
   * `Ubuntu (Standard support) <https://ubuntu.com/about/release-cycle>`_
 
 * **Podporovaná verze Dockeru**
+
 Whalebone podporuje a testuje na verzích Dockeru, které jsou podporovány komunitou. Podporované verze najdete `zde. <https://endoflife.date/docker-engine>`_
 
 * **Podporované souborové systémy** 

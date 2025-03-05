@@ -50,7 +50,8 @@ Whalebone podporuje a testuje na verzích Dockeru, které jsou podporovány komu
   Odchozí     TCP+UDP     53      Jakákoli                             DNS rekurze        
   Odchozí     TCP         443     resolverapi.eu-01.whalebone.io       Aktualizace databáze hrozeb
   Odchozí     TCP         443     resolverapi.whalebone.io             Aktualizace databáze hrozeb
-  Odchozí     TCP         443     stream.whalebone.io                  Aktualizace databáze hrozeb     
+  Odchozí     TCP         443     stream.whalebone.io                  Aktualizace databáze hrozeb 
+  Odchozí     TCP         443     stream.eu-01.whalebone.io            Aktualizace databáze hrozeb 
   Odchozí     TCP         443     logger.whalebone.io                  Logovací stream 
   Odchozí     TCP         443     logger.eu-01.whalebone.io            Logovací stream     
   Odchozí     TCP         443     agentapi.whalebone.io                Správa resolveru

@@ -50,7 +50,11 @@ Whalebone supports and is tested on versions of Docker that are supported by the
   Outbound    TCP         443     resolverapi.apac-01.whalebone.io    Database updates
   Outbound    TCP         443     resolverapi.am-01.whalebone.io      Database updates
   Outbound    TCP         443     resolverapi.uae-01.whalebone.io     Database updates
-  Outbound    TCP         443     stream.whalebone.io                 Realtime Database updates     
+  Outbound    TCP         443     stream.whalebone.io                 Realtime Database updates
+  Outbound    TCP         443     stream.eu-01.whalebone.io           Realtime Database updates
+  Outbound    TCP         443     stream.apac-01.whalebone.io         Realtime Database updates
+  Outbound    TCP         443     stream.am-01.whalebone.io           Realtime Database updates
+  Outbound    TCP         443     stream.uae-01.whalebone.io          Realtime Database updates     
   Outbound    TCP         443     logger.whalebone.io                 Logging stream
   Outbound    TCP         443     logger.eu-01.whalebone.io           Logging stream
   Outbound    TCP         443     logger.apac-01.whalebone.io         Logging stream

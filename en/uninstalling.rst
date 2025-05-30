@@ -37,6 +37,7 @@ In order to uninstall a resolver and remove all Whalebone configuration files th
    If you want to fully uninstall the resolver including the logs from DNS traffic and incidents, delete also the log folder.
    If your intention is just to re-install the resolver but keep the logs, you can skip this step.
 
-    .. code::     
-      rm -rf /var/log/whalebone
+    .. code::
+
+        rm -rf /var/log/whalebone
     

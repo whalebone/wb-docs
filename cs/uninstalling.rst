@@ -38,6 +38,7 @@ Pro odinstalování resolveru a odstranění všech konfiguračních souborů Wh
    Pokud chcete resolver zcela odinstalovat včetně záznamů z přenosů a incidentů DNS, odstraňte také složku s záznamy.
    Pokud je vaším záměrem pouze přeinstalovat resolver, ale protokoly ponechat, můžete tento krok přeskočit.
 
-    .. code::     
-      rm -rf /var/log/whalebone
+    .. code::
+
+        rm -rf /var/log/whalebone
     

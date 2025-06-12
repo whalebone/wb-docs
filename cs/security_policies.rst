@@ -123,3 +123,17 @@ Filtr obsahu lze použít i pro konkrétní denní dobu. Po zaškrtnutí určit�
 
 
 .. note:: Použitím plánu **povolíte** přístup k doménám z dané kategorie obsahu v daném časovém období.
+
+Pořadí vykonávání filtrů
+------------------------
+
+  Všechny dříve zmíněné filtry jsou aplikovány jeden po druhém. Níže najdete seznam filtrů seřazený podle priority od nejvyšší po nejnižší, tj. jak jimi postupně prochází DNS dotazy:
+
+#. Právní omezení
+#. Blokované
+#. Povolené
+#. Obsahová filtrace
+#. Blokování domény podle prahové hodnoty
+#. Audit domény podle prahové hodnoty
+
+.. note:: As mentioned in the **Allow lists** and **Deny lists** chapters, a more specific domain, e.g., ``friendly.malware.ninja``, can be allowed even when the more generic domain, e.g., ``malware.ninja``, is denied.

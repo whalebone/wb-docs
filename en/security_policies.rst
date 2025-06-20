@@ -62,7 +62,7 @@ Allow lists
   * The list can be configured on the **Allow / Deny List** tab on the left side of **Configuration** page.
   * One list can hold up to 10 000 domains.
 
-Deny Lists
+Deny lists
 ----------
 
   * Domains that will be blocked at all times (unless the same domain is also present on an allow list).
@@ -79,7 +79,7 @@ but if you have ``friendly.malware.ninja`` on an Allow list, this will take prec
    :align: center
 
 
-Regulatory Restrictions
+Regulatory restrictions
 -----------------------
 
   * Integrated list of domains that must be applied in order to conform to Regulatory Restrictions of a country.
@@ -90,7 +90,7 @@ Regulatory Restrictions
 
 .. warning:: Each country has different Regulatory lists. In case of multi-country deployments different policies can be used in order to apply the proper Regulatory Restrictions. 
 
-Content Filtering
+Content filtering
 -----------------
 
   Particular Content categories can be applied on a per-policy level. This is useful in case different segments of the networks come with different requirements. For example, in case of a School environment all the **Adult** categories can be enabled and access to relevant content can be restricted.
@@ -121,4 +121,18 @@ The content filter can also be applied for specific times of the day. When a par
   :align: center
 
 
-.. note:: By applying the schedule, you are **allowing** access to domains from that content category during that specific time period. 
+.. note:: By applying the schedule, you are **allowing** access to domains from that content category during that specific time period.
+
+Filter priorities
+-----------------
+
+  All filters mentioned above are executed in a particular order according to their priority. The order of filter priorities, sorted from highest to lowest, is as follows:
+
+#. Regulatory restrictions
+#. Deny lists
+#. Allow lists
+#. Content filtering
+#. Blocking threshold evaluation
+#. Audit threshold evaluation
+
+.. note:: As mentioned in the **Allow lists** and **Deny lists** chapters, a more specific domain, e.g., ``friendly.malware.ninja``, can be allowed even when the more generic domain, e.g., ``malware.ninja``, is denied.

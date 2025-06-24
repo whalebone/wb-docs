@@ -14,7 +14,6 @@ sphinx:
 
 python:
   install:
-    - path: content
     - requirements: content/en/requirements.txt
 
 # Build PDF & ePub

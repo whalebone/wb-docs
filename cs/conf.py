@@ -20,8 +20,18 @@
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
 
+import os
+import importlib.util
 
 # -- General configuration ------------------------------------------------
+
+brand_var_path = os.environ.get("BRAND_VAR_PATH", "../brand_variables.py")
+
+spec = importlib.util.spec_from_file_location("brand_variables", brand_var_path)
+brand_variables = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(brand_variables)
+
+rst_prolog = f".. |product| replace:: {brand_variables.BRAND['name']}"
 
 # If your documentation needs a minimal Sphinx version, state it here.
 #

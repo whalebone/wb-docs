@@ -5,7 +5,7 @@ Active Directory Integration
 DNS lookup integration
 ======================
 
-In order to get the device name visibility in the logs Whalebone Immunity can be easily integrated with Active Directory.
+In order to get the device name visibility in the logs Whalebone |product| can be easily integrated with Active Directory.
 Visibility to device name speeds up the analysis and troubleshooting since the administrator does not have to look up for the device name in the DHCP logs.
 
 How it works?

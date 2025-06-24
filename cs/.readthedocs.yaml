@@ -10,12 +10,12 @@ submodules:
   recursive: true
 
 sphinx:
-  configuration: ../content/cs/conf.py
+  configuration: content/cs/conf.py
 
 python:
   install:
-    - path: ../content
-    - requirements: ../content/cs/requirements.txt
+    - path: content
+    - requirements: content/cs/requirements.txt
 
 # Build PDF & ePub
 formats:

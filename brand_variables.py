@@ -1,0 +1,3 @@
+BRAND = {
+    'name': 'Whalebone Immunity'
+}

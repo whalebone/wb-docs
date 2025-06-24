@@ -20,3 +20,6 @@ python:
 formats:
   - epub
   - pdf  
+
+environment:
+  BRANCH_VAR_PATH: brand_variables.py

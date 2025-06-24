@@ -22,4 +22,4 @@ formats:
   - pdf  
 
 environment:
-  BRANCH_VAR_PATH: brand_variables.py
+  BRAND_VAR_PATH: brand_variables.py

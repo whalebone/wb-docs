@@ -1,3 +1,3 @@
 BRAND = {
-    'name': 'Whalebone Immunity'
+    'name': 'Immunity'
 }

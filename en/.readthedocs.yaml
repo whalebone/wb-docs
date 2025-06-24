@@ -5,14 +5,17 @@ build:
   tools:
     python: "3.12"
 
-python:
-  install:
-  - requirements: en/requirements.txt
+submodules:
+  include: true
+  recursive: true
 
 sphinx:
-  configuration: en/conf.py
+  configuration: ../content/en/conf.py
 
-  
+python:
+  install:
+    - path: ../content
+    - requirements: ../content/en/requirements.txt
 
 # Build PDF & ePub
 formats:

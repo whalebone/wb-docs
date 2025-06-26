@@ -11,7 +11,10 @@ More information about the product and company is available on the official `Wha
    :maxdepth: 2
    :caption: Deployment Options
 
-   deployment immunity
+   .. only:: Immunity
+      deployment_immunity
+   .. only:: Peacemaker
+      deployment_peacemaker
    deployment_cloud
 
 
@@ -51,12 +54,13 @@ More information about the product and company is available on the official `Wha
    user
 
 
-.. toctree::
-   :caption: Home Office Security
-   
-   hos_overview
-   hos_installation
-   hos_operation
+.. only:: Immunity
+   .. toctree::
+      :caption: Home Office Security
+      
+      hos_overview
+      hos_installation
+      hos_operation
 
 .. toctree::
    :caption: Identity protection

@@ -25,13 +25,18 @@ import importlib.util
 
 # -- General configuration ------------------------------------------------
 
-brand_var_path = os.environ.get("BRAND_VAR_PATH", "../../brand_variables.py")
+def get_brand():
+    brand_var_path = os.environ.get("BRAND_VAR_PATH", "../../brand_variables.py")
 
-spec = importlib.util.spec_from_file_location("brand_variables", brand_var_path)
-brand_variables = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(brand_variables)
+    spec = importlib.util.spec_from_file_location("brand_variables", brand_var_path)
+    brand_variables = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(brand_variables)
+    return brand_variables.BRAND['name']
 
-rst_prolog = f".. |product| replace:: {brand_variables.BRAND['name']}"
+def setup(app):
+    app.tags.add(get_brand())
+
+rst_prolog = f".. |product| replace:: {get_brand()}"
 
 # If your documentation needs a minimal Sphinx version, state it here.
 #

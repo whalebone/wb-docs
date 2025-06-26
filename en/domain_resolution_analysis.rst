@@ -4,7 +4,7 @@ Domain resolution analysis
 There is always chance that every administrator will encounter a situation, when DNS resolution is not successful. Most of the time it is not related to Whalebone's resolver but there is probably an issue with an authoritative server. 
 
 
-ISPs often face complaints that users cannot access the domain, in many cases it is not the ISP's fault. Whalebone Immunity provides you with information so you can identify the issue. 
+ISPs often face complaints that users cannot access the domain, in many cases it is not the ISP's fault. Whalebone |product| provides you with information so you can identify the issue. 
 
 **Steps to be done:**
 
@@ -28,8 +28,8 @@ ISPs often face complaints that users cannot access the domain, in many cases it
   * It shows full resolution process in a human readable way.
   * It can show that the DNSSEC validation process was unsuccessful or the authoritative DNS server was not reachable.
 
-You can watch step-by-step video guide `here <https://docs.whalebone.io/en/immunity/video_guides.html#domain-resolution-troubleshooting>`__.
+You can watch step-by-step video guide `here <https://docs.whalebone.io/en/|product|/video_guides.html#domain-resolution-troubleshooting>`__.
 
 Whalebone administration portal provides ability to trace the domain. This feature is available in **Resolvers** under each resolver's three dots. This feature shows what information is passed to resolver when resolving particular domain.
 
-You can watch step-by-step video guide `here <https://docs.whalebone.io/en/immunity/video_guides.html#domain-tracing>`__.
+You can watch step-by-step video guide `here <https://docs.whalebone.io/en/|product|/video_guides.html#domain-tracing>`__.

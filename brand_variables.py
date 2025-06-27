@@ -1,3 +1,0 @@
-BRAND = {
-    'name': 'Immunity'
-}

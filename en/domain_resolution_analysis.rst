@@ -30,10 +30,16 @@ ISPs often face complaints that users cannot access the domain, in many cases it
 
 You can watch step-by-step video guide `here`__.
 
-__ https://docs.whalebone.io/en/|product|/video_guides.html#domain-resolution-troubleshooting
+.. only:: Immunity
+  __ https://docs.whalebone.io/en/immunity/video_guides.html#domain-resolution-troubleshooting
+.. only:: Peacemaker
+  __ https://docs.whalebone.io/en/master/video_guides.html#domain-resolution-troubleshooting
 
 Whalebone administration portal provides ability to trace the domain. This feature is available in **Resolvers** under each resolver's three dots. This feature shows what information is passed to resolver when resolving particular domain.
 
 You can watch step-by-step video guide `here`__.
 
-__ https://docs.whalebone.io/en/|product|/video_guides.html#domain-tracing
+.. only:: Immunity
+  __ https://docs.whalebone.io/en/immunity/video_guides.html#domain-tracing
+.. only:: Peacemaker
+  __ https://docs.whalebone.io/en/master/video_guides.html#domain-tracing

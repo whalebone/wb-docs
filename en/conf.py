@@ -33,20 +33,8 @@ def get_brand():
     spec.loader.exec_module(brand_variables)
     return brand_variables.BRAND['name']
 
-def ultimate_replace(app, docname, source):
-    result = source[0]
-    for key in app.config.ultimate_replacements:
-        result = result.replace(key, app.config.ultimate_replacements[key])
-    source[0] = result
-
-ultimate_replacements = {
-    "|product|" : get_brand()
-}
-
 def setup(app):
     app.tags.add(get_brand())
-    app.add_config_value('ultimate_replacements', {}, True)
-    app.connect('source-read', ultimate_replace)
 
 rst_prolog = f".. |product| replace:: {get_brand()}"
 

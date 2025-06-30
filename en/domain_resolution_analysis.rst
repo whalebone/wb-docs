@@ -43,3 +43,8 @@ Whalebone administration portal provides ability to trace the domain. This featu
 .. only:: Peacemaker
   You can watch step-by-step video guide `here`__.
   __ https://docs.whalebone.io/en/master/video_guides.html#domain-tracing
+
+.. only:: Immunity
+  `Immunity Support Page <https://Immunity.example.com/support>`_
+.. only:: Peacemaker
+  `Peacemaker Support Page <https://Peacemaker.example.com/support>`_

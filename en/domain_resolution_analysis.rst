@@ -44,7 +44,15 @@ Whalebone administration portal provides ability to trace the domain. This featu
   You can watch step-by-step video guide `here`__.
   __ https://docs.whalebone.io/en/master/video_guides.html#domain-tracing
 
-.. only:: Immunity
+.. ifconfig:: product == 'Immunity'
   `Immunity Support Page <https://Immunity.example.com/support>`_
-.. only:: Peacemaker
+
+.. ifconfig:: product == 'Peacemaker'
   `Peacemaker Support Page <https://Peacemaker.example.com/support>`_
+
+.. ifconfig:: xxx == 'alpha'
+  `Alpha Support Page <https://alpha.example.com/support>`_
+
+.. only:: alpha
+  You can watch step-by-step video guide `here`__.
+  __ https://docs.whalebone.io/en/immunity/video_guides.html#domain-resolution-troubleshooting

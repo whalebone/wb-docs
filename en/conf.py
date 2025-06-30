@@ -25,6 +25,9 @@ import importlib.util
 
 # -- General configuration ------------------------------------------------
 
+VIDEO_TROUBLESHOOTING = "`here <https://docs.whalebone.io/en/{product}/video_guides.html#domain-resolution-troubleshooting>`_"
+VIDEO_TRACING = "`here <https://docs.whalebone.io/en/{product}/video_guides.html#domain-tracing>`_"
+
 def get_product():
     product_var_path = os.environ.get("PRODUCT_VAR_PATH", "../../product_variables.py")
     spec = importlib.util.spec_from_file_location("product_variables", product_var_path)
@@ -36,9 +39,22 @@ def setup(app):
     app.tags.add(get_product())
     app.tags.add('alpha')
 
-rst_prolog = f".. |product| replace:: {get_product()}"
-product = get_product()
-xxx = 'alpha'
+def get_link(link, product):
+    if product == "Immunity":
+        return link.replace("{product}", product)
+    return link.replace("{product}", "master")
+
+def get_troubleshooting_video_link():
+    product = get_product()
+    return get_link(VIDEO_TROUBLESHOOTING, product)
+
+def get_tracing_video_link():
+    product = get_product()
+    return get_link(VIDEO_TRACING, product)
+
+rst_prolog = f""".. |product| replace:: {get_product()}
+.. |troubleshooting_video_link| replace:: {get_troubleshooting_video_link()}
+.. |tracing_video_link| replace:: {get_tracing_video_link()}"""
 
 # If your documentation needs a minimal Sphinx version, state it here.
 #
@@ -47,7 +63,7 @@ xxx = 'alpha'
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ['sphinx.ext.autosectionlabel', 'sphinx.ext.ifconfig']
+extensions = ['sphinx.ext.autosectionlabel']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']

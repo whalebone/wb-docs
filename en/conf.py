@@ -54,15 +54,6 @@ def get_tracing_video_link():
 
 rst_prolog = f""".. |product| replace:: {get_product()}"""
 
-extlinks = {
-    'troubleshooting_video_link': (get_troubleshooting_video_link(), ''),
-    'tracing_video_link': (get_tracing_video_link(), '')
-}
-
-xref_links = {
-    "troubleshooting_video_link" : ("here", get_troubleshooting_video_link()),
-    "tracing_video_link" : ("here", get_tracing_video_link())
-}
 # If your documentation needs a minimal Sphinx version, state it here.
 #
 # needs_sphinx = '1.0'
@@ -70,7 +61,13 @@ xref_links = {
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ['sphinx.ext.autosectionlabel', 'sphinx.ext.extlinks']
+extensions = ['sphinx.ext.autosectionlabel', 'sphinx.ext.intersphinx']
+
+intersphinx_mapping = {
+    "troubleshooting_video_link": (get_troubleshooting_video_link(), None),
+    "tracing_video_link": (get_tracing_video_link(), None)
+}
+intersphinx_disabled_reftypes = ["*"]
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']

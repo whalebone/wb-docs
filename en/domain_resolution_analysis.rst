@@ -28,8 +28,8 @@ ISPs often face complaints that users cannot access the domain, in many cases it
   * It shows full resolution process in a human readable way.
   * It can show that the DNSSEC validation process was unsuccessful or the authoritative DNS server was not reachable.
 
-You can watch step-by-step video guide :troubleshooting_video_link:`here`.
+You can watch step-by-step video guide :xref:`troubleshooting_video_link`.
 
 Whalebone administration portal provides ability to trace the domain. This feature is available in **Resolvers** under each resolver's three dots. This feature shows what information is passed to resolver when resolving particular domain.
 
-You can watch step-by-step video guide :tracing_video_link:`here`.
+You can watch step-by-step video guide :xref:`tracing_video_link`.

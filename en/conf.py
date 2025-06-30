@@ -58,6 +58,11 @@ extlinks = {
     'troubleshooting_video_link': (get_troubleshooting_video_link(), ''),
     'tracing_video_link': (get_tracing_video_link(), '')
 }
+
+xref_links = {
+    "troubleshooting_video_link" : ("here", get_troubleshooting_video_link()),
+    "tracing_video_link" : ("here", get_tracing_video_link())
+}
 # If your documentation needs a minimal Sphinx version, state it here.
 #
 # needs_sphinx = '1.0'

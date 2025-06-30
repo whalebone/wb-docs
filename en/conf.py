@@ -25,8 +25,8 @@ import importlib.util
 
 # -- General configuration ------------------------------------------------
 
-VIDEO_TROUBLESHOOTING = "`here <https://docs.whalebone.io/en/{product}/video_guides.html#domain-resolution-troubleshooting>`_"
-VIDEO_TRACING = "`here <https://docs.whalebone.io/en/{product}/video_guides.html#domain-tracing>`_"
+VIDEO_TROUBLESHOOTING = "https://docs.whalebone.io/en/{product}/video_guides.html#domain-resolution-troubleshooting"
+VIDEO_TRACING = "https://docs.whalebone.io/en/{product}/video_guides.html#domain-tracing"
 
 def get_product():
     product_var_path = os.environ.get("PRODUCT_VAR_PATH", "../../product_variables.py")

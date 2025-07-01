@@ -25,22 +25,17 @@ import importlib.util
 
 # -- General configuration ------------------------------------------------
 
-brand_var_path = os.environ.get("BRAND_VAR_PATH", "../../brand_variables.py")
+def get_product():
+    product_var_path = os.environ.get("PRODUCT_VAR_PATH", "../../product_variables.py")
+    spec = importlib.util.spec_from_file_location("product_variables", product_var_path)
+    product_variables = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(product_variables)
+    return product_variables.PRODUCT['product']
 
-spec = importlib.util.spec_from_file_location("brand_variables", brand_var_path)
-brand_variables = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(brand_variables)
+def setup(app):
+    app.tags.add(get_product())
 
-rst_prolog = f".. |product| replace:: {brand_variables.BRAND['name']}"
-
-# If your documentation needs a minimal Sphinx version, state it here.
-#
-# needs_sphinx = '1.0'
-
-# Add any Sphinx extension module names here, as strings. They can be
-# extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
-# ones.
-extensions = ['sphinx.ext.autosectionlabel']
+rst_prolog = f""".. |product| replace:: {get_product()}"""
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']

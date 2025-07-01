@@ -28,8 +28,8 @@ Jednotlivé kroky k provedení analýzy
   * V seznamu domén lze pomocí šipky otevřít seznam nástrojů pro investigaci.
   * Nástroj **DNSVIZ** může v grafické podobně nastínit jestli byla DNSSEC validace úspěšná, nebo, že autoritativní server nebyl dosažitelný
 
-Videoprůvodce krok za krokem si můžete prohlédnout `zde <https://docs.whalebone.io/cs/immunity/video_guides.html#domain-resolution-troubleshooting>`__.
+Videoprůvodce krok za krokem si můžete prohlédnout :ref:`zde <domain-resolution-troubleshooting>`.
 
 Portál Whalebone poskytuje možnost trasovat doménu. Tato funkce je k dispozici v části **Resolvery** pod třemi tečkami každého resolveru. Tato funkce ukazuje, jaké informace jsou předávány resolveru při překladu konkrétní domény.
 
-Videoprůvodce krok za krokem si můžete prohlédnout `zde <https://docs.whalebone.io/cs/immunity/video_guides.html#domain-tracing>`__.
+Videoprůvodce krok za krokem si můžete prohlédnout :ref:`zde <domain-tracing>`.

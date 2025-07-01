@@ -217,6 +217,8 @@ Než začnete modelovat volání API v dokumentaci, doporučujeme ji autorizovat
 |
 |
 
+.. _domain-resolution-troubleshooting:
+
 Řešení problémů s překladem domény
 ----------------------------------
 Když uživatelé internetu nemají přístup k doméně, často si myslí, že je to chyba poskytovatele internetu. Nejčastěji se však nejedná o problém poskytovatele, ale samotné domény.
@@ -236,6 +238,9 @@ Pokud máte pocit, že stále nevíte, co se s doménou děje, neváhejte nás k
 |
 |
 |
+
+
+.. _domain-tracing:
 
 Sledování domén
 -----------------

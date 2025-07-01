@@ -216,6 +216,8 @@ Before you start modeling API calls in the documentation, we recommend authorizi
 |
 |
 
+.. _domain-resolution-troubleshooting:
+
 Domain resolution troubleshooting
 ----------------------------------
 When internet users can't access a domain, they often think it's the ISP's fault. More often than not, you're not the one to blame, it's the domain itself.
@@ -235,6 +237,8 @@ If you feel like you still don't really know what's going on with the domain, fe
 |
 |
 |
+
+.. _domain-tracing:
 
 Domain Tracing
 -----------------

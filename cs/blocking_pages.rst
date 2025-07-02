@@ -70,7 +70,7 @@ Pro nasazení, kde máte kontrolu nad koncovými body (typicky firemní prostře
 
 **Krok 1.** – Vytvořte soubor "v3_cfg" s následujícím obsahem:
 
-.. code-block:: shell
+.. code-block:: INI
 
    [req]
    req_extensions = v3_ca_extensions

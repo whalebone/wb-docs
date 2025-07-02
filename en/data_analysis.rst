@@ -69,6 +69,8 @@ How to search for a domain:
 
 To search for domains, you can use the **Result Filter** text box to enter the name of the domain you are looking for. Other ways to search for a domain is by clicking the domain in the **Tier 2 Domains** section or directly in the log list in the same column.
 
+.. _How to change the date range of the available data traffic:
+
 How to change the date range of the available data:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -112,7 +114,7 @@ How to search for audit/block events:
 There are two options for filtering different types of events. The first option, a visual filter can be used. Within the graph, you can click one of the actions (audit, block, allow) to filter it and display only the cases in which the event occurred. Second one is to click next to the **Result's filter** field on the **Filter button** and choose desired filtering option.
 
 How to search for a domain:
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The easiest way to search for a domain is by clicking on a specific domain in the log history. The second way is by typing the domain name into the **Result Filter** field.
 
@@ -132,6 +134,7 @@ Some of them are: *malware*, *c&c*, *blacklist*,
 
 A simple way to find attacks is by selecting a specific category from the pie charts or in the log list under the **Threat Categories** column. Another option is to click the **Filter result** button next to the **Filter** field and select the desired filtering option.
 
+.. _How to change the date range of the available data threats:
 
 How to change the date range of the available data:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

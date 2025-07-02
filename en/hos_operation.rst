@@ -118,6 +118,6 @@ Service logs can be found at ``c:\ProgramData\Whalebone\Home Office Security\Log
 
 
 Uninstalling the app
-================
+====================
 
 To completely remove the app, uninstall the service and delete all contents from ``c:\ProgramData\Whalebone\Home Office Security\``

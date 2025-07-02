@@ -1,5 +1,5 @@
 API Integration
-------------
+---------------
 Whalebone API is a practical way to access all the data that are gathered by Whalebone's resolvers and integrate them to external systems. 
 The API documentation has two separate schemas. One for getting the events from Whalebone and one for getting and configuring the settings. 
 

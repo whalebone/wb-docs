@@ -1,3 +1,5 @@
+.. _Deployment options:
+
 Deployment options
 ==================
 
@@ -35,7 +37,7 @@ The main advantage of this deployment is visibility into local network and indiv
    :align: center
 
 Local DNS resolver for ISP (Whalebone Peacemaker)
-------------------
+-------------------------------------------------
 
 This deployment scenario uses local Whalebone resolver, that communicates with Whalebone cloud through API. The DNS resolution takes place directly on the resolver and is completely independent on the cloud availability. Should the resolver not be able to reach the cloud service, it won't be able to update the threat intelligence and to reports any incidents.
 The main advantage of this deployment is visibility into local network and individual IP addresses and native DNS resolver latency.
@@ -44,7 +46,7 @@ The main advantage of this deployment is visibility into local network and indiv
    :align: center
 
 Local DNS forwarder (Whalebone Immunity)
--------------------
+----------------------------------------
 
 Very similar deployment scenario as the local resolver, however Whalebone just forwards the requests to preconfigured resolvers. This scenario is very useful in case there are local DNS zones that has to be available for the clients (e.g. Active Directory) or cases when the recent resolver configuration is very specific and has to be preserved.
 This deployment has also lower hardware requirements, roughly half of the CPU and RAM recommended.

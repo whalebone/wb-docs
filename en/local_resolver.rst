@@ -25,7 +25,7 @@ Please see following links to see which versions are supported. Whalebone suppor
   * `Ubuntu (Standard support) <https://ubuntu.com/about/release-cycle>`_
 
 * **Supported docker version**
-Whalebone supports and is tested on versions of Docker that are supported by the community. See the supported versions `here <https://endoflife.date/docker-engine>`_
+  * Whalebone supports and is tested on versions of Docker that are supported by the community. See the supported versions `here <https://endoflife.date/docker-engine>`_.
 
 * **Supported filesystems** 
 
@@ -114,7 +114,7 @@ Whalebone supports and is tested on versions of Docker that are supported by the
 Installation of a new local resolver
 ====================================
 
-You can watch step-by-step video guide about the installation procedure :ref:`here.<Deployment>`
+You can watch step-by-step video guide about the installation procedure :ref:`here.<Deployment video>`
 
 In menu **Resolvers** press the button **Create new**. Choose a name (identifier) for your new resolver. The input is purely informative and won't affect the functionality.
 Once you've entered the name, click **Add resolver** button.

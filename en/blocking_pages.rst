@@ -72,7 +72,7 @@ For deployments, where you have control over the endpoints (typically enterprise
 
 **Step 1.** – Create "v3_cfg" file with the following contents:
 
-.. code-block:: shell
+.. code-block:: INI
 
    [req]
    req_extensions = v3_ca_extensions

@@ -1,3 +1,5 @@
+.. _Možnosti nasazení:
+
 Možnosti nasazení
 =================
 

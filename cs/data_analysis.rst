@@ -45,7 +45,7 @@ dalšími informacemi, jako je typ, odpověď a TTL (time to live) odpovědi.
    hodin. Z tohoto důvodu se může stát, že dotaz nebude viditelný na
    portálu, i když byl vyřešen.
 
-Videoprůvodce krok za krokem si můžete prohlédnout `zde. <https://docs.whalebone.io/cs/latest/video_guides.html#dns-traffic>`__
+Videoprůvodce krok za krokem si můžete prohlédnout :ref:`zde<Provoz DNS video>`.
 
 
 Níže budou popsány některé užitečné možnosti filtrace dostupných dat.
@@ -94,14 +94,13 @@ Hrozby jsou zvláštní události, při kterých dochází k požadavku DNS na d
 druhým je její **Block**. Možnost **Audit** pouze zaznamená doménu, ale přístup je uživateli umožňěn. 
 
 Akce, která má být provedena, závisí na nastavení bezpečnostních politik, které jsou
-přiřazeny konkrétnímu resolveru. Více informací naleznete v sekci
-`Bezpečnostní politiky <http://docs.whalebone.io/cs/latest/security_policies.html>`__.
+přiřazeny konkrétnímu resolveru. Více informací naleznete v sekci :ref:`Bezpečnostní politiky<Bezpecnostni politiky>`.
 
 Existují některé předkonfigurované filtry, které lze aplikovat na data. Ukázky některých dotazů jsou zobrazeny níže. Tyto dotazy zobrazují
 většinu případů použití, ale není zde žádné pevné omezení, protože
 dostupný vyhledávač je **full-textový** a lze sestavit **jakýkoli** dotaz.
 
-Videoprůvodce krok za krokem si můžete prohlédnout `zde. <https://docs.whalebone.io/cs/latest/video_guides.html#threats>`__
+Videoprůvodce krok za krokem si můžete prohlédnout `zde<Typy hrozeb video>`.
 
 
 Vyhledání událostí typu audit/block:
@@ -144,16 +143,16 @@ Analýza domény:
 V případě, že se chcete dozvědět další informace o doméně, zejména jaké skóre 
 Whalebone přiřazuje konkrétní doméně, kdy byla poprvé spatřena a zařazena do kategorie 
 jako škodlivá, zda spadá do regulační kategorie nebo z jakých externích zdrojů. 
-o ní víte, podívejte se na video `zde <https://docs.whalebone.io/cs/latest/video_guides.html#domain-analysis>`__.
+o ní víte, podívejte se na video :ref:`zde<Analyza domeny video>`.
 
 Nahlášení "False positive"
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 V některých případech je možné, že nedojde ke správné klasifikaci nebezpečnosti domény. V případě, že budete mít pocit, že by neměla být doména blokována a není, je možné ji pomocí tlačítka **Nahlásit falešnou detekci** nahlásit, jako špatně klasifikovanou doménu a tím dojde k vyvoření požadavku na přezkoumání domény. Tato volba se nacházív tabulce logů pod ikonou šipky u jednotlivých dotazů.
 
 
 Fulltextové vyhledávání 
-~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
 
 Pro pokročilejší použití lze použít fulltextový filtr a sestavit složený dotaz.
 Tato pole lze spojovat pomocí logických operátorů. Podporovány jsou ``AND, OR, NOT, <, >`` a zástupný znak ``*``. Řetězce nemusí být obaleny uvozovkami. Příklad syntaxe je následující:

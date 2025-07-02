@@ -73,7 +73,7 @@ Povolit seznam domén
   end
 
 Zamítnout seznam domén
----------------------
+----------------------
 
 .. code-block:: lua
 

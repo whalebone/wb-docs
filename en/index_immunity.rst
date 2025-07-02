@@ -12,7 +12,7 @@ More information about the product and company is available on the official `Wha
    :caption: Deployment Options
 
    deployment
-   deployment_peacemaker
+   deployment_immunity
    deployment_cloud
 
 .. toctree::
@@ -49,6 +49,18 @@ More information about the product and company is available on the official `Wha
    :caption: Organization Settings
    
    user
+
+.. toctree::
+   :caption: Home Office Security
+   
+   hos_overview
+   hos_installation
+   hos_operation
+
+.. toctree::
+   :caption: Identity protection
+   
+   idp_overview
 
 .. toctree::
    :caption: Step-by-Step Video Guides

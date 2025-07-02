@@ -1,5 +1,5 @@
 Odmítnutí odpovědnosti za licenci
-====================
+=================================
 
 Resolver Whalebone využívá ve svém řešení následující technologie:
 

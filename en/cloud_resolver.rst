@@ -1,7 +1,7 @@
 Cloud DNS resolvers
 --------------------
 
-You can watch step-by-step video guide `here <https://docs.whalebone.io/en/latest/video_guides.html#cloud-resolvers>`__.
+You can watch step-by-step video guide :ref:`here<Cloud resolvers video>`.
 Whalebone Cloud DNS resolver is a service aimed mainly for small or medium customers who can use cloud resolvers for a backup. Typically it is aimed at ISPs that have only one 
 on-premise resolver and to ensure high availability, they use cloud DNS resolvers as a secondary recursive for their customers. One of the prerequisites is to define a public IP address 
 or ranges to Cloud DNS resolver policy assignment so cloud resolver can differentiate and deliver the right filtering policy which you have setup for your network. 

@@ -24,6 +24,8 @@ Before long, the status of the resolver changes. As soon as the resolver becomes
 |
 |
 
+.. _Cloud resolvers video:
+
 Cloud resolvers
 ---------------------------
 Whalebone also offers cloud resolvers with malware protection and content blocking. Their addresses are to be found in the Whalebone Portal in the Cloud resolver tab.
@@ -43,6 +45,8 @@ which don't necessarily get their connectivity from you, but you administer thei
 
 Configuration
 =============
+
+.. _Basic configuration video:
 
 Basic configuration
 -------------------
@@ -92,6 +96,8 @@ and assign a policy to a particular IP address or rangeMake sure to save the set
 |
 |
 
+.. _Blocking page configuration video:
+
 Blocking page configuration
 ---------------------------
 With Whalebone, you can fully customize blocking pages, which appear in case someone attempts to access a dangerous website in their browser. This tool needs a local resolver, where you can switch the blocking page from cloud to on-premise. 
@@ -133,6 +139,8 @@ at the end of the trial or any time you decide to contact Whalebone support.
 
 Analysis
 ========
+
+.. _Domain analysis video:
 
 Domain analysis
 ----------------
@@ -212,6 +220,8 @@ all the parameters are to be type directly into the URL address. This way, you c
 |
 |
 |
+
+.. _API video:
 
 API
 ----

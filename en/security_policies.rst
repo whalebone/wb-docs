@@ -1,9 +1,11 @@
+.. _Security policies:
+
 Security policies
 =================
 
-You can watch step-by-step video guide of basic security policy configuration `here. <https://docs.whalebone.io/en/latest/video_guides.html#basic-configuration>`_
+You can watch a step-by-step video guide of basic security policy configuration here: :ref:`Basic Configuration<Basic configuration video>`.
 
-The step-by-step video guide with deeper explanation of security policy tuning is `here. <https://docs.whalebone.io/en/latest/video_guides.html#security-policies>`_
+The step-by-step video guide with deeper explanation of security policy tuning is here: :ref:`Security Policies<Security policies video>`.
 
 To control Whalebone's security filtering you need to configure it's security policies. When you install Whalebone, it comes with a **Default** policy which is set to include all threat types and sets the tresholds to the value of **80/50**. This policy will also be automatically applied to every newly installed resolver. 
 In any policy there are several options to be configured:
@@ -14,6 +16,7 @@ Every domain in our threat intelligence database has certain value of the score.
 
 * **The blocking threshold** - Domains with a score higher or equal to this value will be blocked by Whalebone and the client request will be answered with and IP address of the blocking page. 
 * **The audit treshold** - Domains with a score higher or equal to this value, but lower than the blocking treshold will be monitored. The request will be allowed and the answer will be served either from cache or by performing the full DNS recursion. Requests will however be monitored in the Threats dashboard for later investigation, if needed.
+
 Individual actions could be turned off - e.g. turn off the blocking for testing purposes
 The slider values define the probability that the particular domain is malicious on the scale from **0** to **100** with **100** beeing the most malicious.
 

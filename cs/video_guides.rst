@@ -20,9 +20,12 @@ Zanedlouho se stav resolveru změní. Jakmile se resolver stane aktivním, můž
 .. raw:: html
 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/W_sWor-Wg-U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 |
 |
 |
+
+.. _Cloudove resolvery video:
 
 Cloudové resolvery
 ---------------------------
@@ -36,6 +39,7 @@ které nutně nezískávají konektivitu od vás, ale vy spravujete jejich síť
 .. raw:: html
 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/kdpjCenhTVg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 |
 |
 |
@@ -43,8 +47,10 @@ které nutně nezískávají konektivitu od vás, ale vy spravujete jejich síť
 Konfigurace
 =============
 
+.. _Zakladni konfigurace video:
+
 Základní konfigurace
--------------------
+--------------------
 Každá síť má své specifické potřeby. Whalebone se dokáže přizpůsobit každé z nich a přizpůsobí se jí. Jednou z klíčových součástí, které je třeba při implementaci systému Whalebone nakonfigurovat, je nastavení "bezpečnostních politik".
 Tato část konfigurace umožňuje upravit výchozí nastavení. Můžete například snížit práh blokování nebo blokování zcela deaktivovat, čímž vám zůstane režim auditu.
 V tomto režimu Whalebone sleduje incidenty, aniž by jim bránil. Základem konfigurace auditu a blokování je takzvané "skóre", které jednotlivým doménám přiřazuje náš algoritmus. 
@@ -64,6 +70,8 @@ a přiřadit zásady konkrétní IP adrese nebo rozsahu. Nezapomeňte nastavení
 |
 |
 |
+
+.. _Bezpecnostni politiky video:
 
 Bezpečnostní politiky
 ---------------------
@@ -85,9 +93,12 @@ a přiřadit zásady konkrétní IP adrese nebo rozsahu. Nezapomeňte nastavení
 .. raw:: html
 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/vjzOeHAYi4A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 |
 |
 |
+
+.. _Konfigurace bokacni stranky video:
 
 Konfigurace bokační stránky
 ---------------------------
@@ -105,6 +116,9 @@ Případně ji můžete přiřadit konkrétní IP adrese nebo rozsahu. Když už
 |
 |
 
+
+.. _Alerty video:
+
 Alerty
 ------
 Nastavte si alerty a získávejte živě aktualizace o tom, co se děje s Vašimi resolvery, jak je vaše síť zabezpečená a jak dobře funguje překlad DNS. 
@@ -120,6 +134,7 @@ na konci zkušební verze nebo kdykoli se rozhodnete kontaktovat podporu společ
 .. raw:: html
 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/GXUkPICav-o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 |
 |
 |
@@ -127,8 +142,11 @@ na konci zkušební verze nebo kdykoli se rozhodnete kontaktovat podporu společ
 Analýza
 ========
 
+.. _Analyza domeny video:
+
 Analýza domény
-----------------
+--------------
+
 Existují dva způsoby, jak ručně provést analýzu domény v databázi Whalebone. Jedním ze způsobů je pomocí nástroje **Analýza domény** z uživatelské nabídky.
 Druhou možností je zkontrolovat konkrétní doménu přímo z kontextové nabídky v přehledech **Hrozby** nebo **DNS provoz**. Poté se zobrazí všechny informace 
 které společnost Whalebone o dané doméně shromáždila. Jako příklad jsme použili stránku **kidos-bank.ru**. Vidíme, že s doménou jsou spojeny různé typy hrozeb.
@@ -144,6 +162,8 @@ probíhá na ní poměrně velký provoz a Whalebone ji kategorizuje jako **soci
 |
 |
 |
+
+.. _Provoz DNS video:
 
 Provoz DNS
 ------------
@@ -181,6 +201,7 @@ neváhejte nám takovou doménu **nahlásit**. Případ prověříme a ozveme se
 .. raw:: html
 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/GVZoMOEUWzM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 |
 |
 |
@@ -198,6 +219,8 @@ je třeba všechny parametry zadat přímo do adresy URL. Tímto způsobem můž
 |
 |
 |
+
+.. _API video:
 
 API
 ----

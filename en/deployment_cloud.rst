@@ -16,7 +16,7 @@ The downside of this deployment is that all of the incidents will be visible wit
 .. image:: ./img/deployment_cloud.png
    :align: center
 
-.. _Cloud DNS (direct connection) cloud
+.. _Cloud DNS (direct connection) cloud:
 
 Cloud DNS (direct connection)
 -----------------------------

@@ -8,7 +8,7 @@ Whalebone Identity Protection je komplexní řešení určené k ochraně vašic
     :align: center
 
 Nastavení domény
-===============
+================
 
 Chcete-li nastavit ochranu identity pro doménu, kterou vlastníte, klikněte na **Přidat doménu**. Registrovanou doménu můžete také odebrat pomocí tlačítka **Odebrat doménu**.
 
@@ -51,7 +51,7 @@ Po přidání adres byste je měli vidět zobrazené v části **Emaily pro noti
     :align: center
 
 Další informace
-==============
+===============
 
 Ochrana identity nabízí vícevrstvý přístup k ochraně vaší online identity. Poskytuje proaktivní bezpečnostní opatření.
 

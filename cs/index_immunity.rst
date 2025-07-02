@@ -7,13 +7,12 @@ Tyto resolvery mohou být buď cloudové, které jsou pod správou Whalebone, ne
 Při prevenci hrozeb se Whalebone spoléhá na externí zpravodajské zdroje i na vlastní metody.
 Další informace o produktu a společnosti jsou k dispozici na oficiálních stránkách `Whalebone. <https://whalebone.io>`_
 
-
 .. toctree::
    :maxdepth: 2
    :caption: Možnosti nasazení
 
    deployment
-   deployment_peacemaker
+   deployment_immunity
    deployment_cloud
 
 .. toctree::
@@ -49,6 +48,18 @@ Další informace o produktu a společnosti jsou k dispozici na oficiálních st
    :caption: Nastavení ogranizace
    
    user
+
+.. toctree::
+   :caption: Home Office Security
+   
+   hos_overview
+   hos_installation
+   hos_operation
+
+.. toctree::
+   :caption: Identity protection
+
+   idp_overview
 
 .. toctree::
    :caption: Videonávody krok za krokem

@@ -30,12 +30,12 @@ Možná bude potřeba znovu načíst nakonfigurovanou politiku. Pro znovunačten
    gpupdate /force
 
 
-*******************************
-Konfigurace řadiče domény (Domain Controleru)
-*******************************
+*********************************************
+Konfigurace řadiče domény (Domain Controller)
+*********************************************
 
 DC Firewall pro Windows
-======================
+=======================
 
 Ujistěte se, že Event Log lze přistupovat skrze konfiguraci Firewallu pomocí WMI.
 

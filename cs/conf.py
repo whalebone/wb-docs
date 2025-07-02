@@ -22,6 +22,7 @@
 
 import os
 import importlib.util
+import shutil
 
 # -- General configuration ------------------------------------------------
 
@@ -36,6 +37,12 @@ def setup(app):
     app.tags.add(get_product())
 
 rst_prolog = f""".. |product| replace:: {get_product()}"""
+
+try:
+    os.remove("index.rst")
+except Exception:
+    pass
+shutil.copyfile(f"index_{get_product()}.rst", "index.rst")
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -73,7 +80,7 @@ language = 'cs'
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This patterns also effect to html_static_path and html_extra_path
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
+exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', 'index_immunity.rst', 'index_peacemaker.rst']
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'

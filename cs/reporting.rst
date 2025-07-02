@@ -17,7 +17,7 @@ Alerty
 
 Alerting Whalebone poskytuje upozorňovat v reálném čase na klíčové informace, jako je stav resolveru, stav řešení, využití hardwaru, a také informuje o zásadních bezpečnostních incidentech a mnoha dalších.
 Všechny tyto informace lze předávat prostřednictvím několika kanálů, např. e-mailu, slacku, syslogu nebo webhooku. Nová upozornění lze vytvářet z předdefinovaných šablon a upozornění lze následně přizpůsobit úpravou jejich parametrů.
-Videoprůvodce krok za krokem si můžete prohlédnout `zde. <https://docs.whalebone.io/cs/latest/video_guides.html#alerts>`__
+Videoprůvodce krok za krokem si můžete prohlédnout :ref:`zde<Alerty video>`.
 
 .. note:: Chcete-li zapnout upozornění, musíte mu nejprve přiřadit cíl. Kliknutím na název výstrahy ji podrobně rozbalíte a v rámečku vyberete cíl. Kliknutím na adresy lze vybrat více cílů.
 

@@ -4,7 +4,7 @@ Správa uživatelů/organizací
 ============================
 
 Správa uživatelů
----------------
+----------------
 
 Uživatele lze spravovat na příslušné kartě v nabídce **Uživatelé** nacházejícím se pod ikonou panáčka.
 
@@ -74,16 +74,20 @@ Pokud je povoleno, může omezit počet neúspěšných pokusů o přihlášení
    K dispozici jsou tyto možnosti:
 
    - **Limit nesprávných pokusů**: 
-   Počet neúspěšných pokusů o přihlášení před zablokováním účtu. Výchozí hodnota je 5.
+   
+     - Počet neúspěšných pokusů o přihlášení před zablokováním účtu. Výchozí hodnota je 5.
 
    - **Doba trvání uzamčení (minuty)**: 
-   Doba v minutách, po kterou je zákázán další pokus o přihlášení.
+   
+     - Doba v minutách, po kterou je zákázán další pokus o přihlášení.
 
    - **Reset počítadla (minuty)**:
-   Doba trvání v minutách před resetováním počítadla neúspěšných pokusů.
+   
+     - Doba trvání v minutách před resetováním počítadla neúspěšných pokusů.
 
    - **Limit CAPTCHA**:
-   Počet neúspěšných pokusů o přihlášení před zapnutím ověření CAPTCHA.
+   
+     - Počet neúspěšných pokusů o přihlášení před zapnutím ověření CAPTCHA.
 
 **Vyžadovat vícefaktorovou autentizaci**:
 Vyžadujte, aby uživatelé používali aplikaci dvoufaktorového ověřování (2FA) a při přihlášení k portálu zadávali další tokeny.

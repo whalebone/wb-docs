@@ -19,12 +19,14 @@ Jednotlivé kroky k provedení analýzy
 
   * Pokud nebyla zablokována kvůli **hrozbám**, přejděte na stránku **DNS provoz** a zkontrolujte, zda se dotaz dostal až k resolveru.
   * Uživatelé často mění nastavení DNS serveru na veřejné a z nefunkčnosti viní poskytovatele připojení. 
-  **Můžete se setkat s třemi možnostmi:**
+  * **Můžete se setkat s třemi možnostmi:**
+
     * Překlad byl správny.
     * NXDOMAIN odpověď - autoritativní server odpověděl, ale subdoména neexistuje.
     * SERVFAIL odpověď - žádná odpověď ze strany serveru. Může se jednat o výpadek serveru nebo spojení.
 
 **3. Krok: Prozkoumejte doménu pomocí DNSVIZ**
+
   * V seznamu domén lze pomocí šipky otevřít seznam nástrojů pro investigaci.
   * Nástroj **DNSVIZ** může v grafické podobně nastínit jestli byla DNSSEC validace úspěšná, nebo, že autoritativní server nebyl dosažitelný
 

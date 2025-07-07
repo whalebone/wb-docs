@@ -115,6 +115,7 @@ html_sidebars = {
 html_title = "Whalebone Documentation"
 
 html_theme_options = {
+    'logo_only': True,
     'collapse_navigation': False,
     'sticky_navigation': True,
     'navigation_depth': 4,
@@ -130,7 +131,7 @@ html_css_files = [
     'default.css',
 ]
 
-
+html_logo = os.path.join('_static', 'whalebone_logo_white.png')
 
 # -- Options for HTMLHelp output ------------------------------------------
 

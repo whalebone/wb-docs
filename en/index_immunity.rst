@@ -11,7 +11,6 @@ More information about the product and company is available on the official `Wha
    :maxdepth: 2
    :caption: Deployment Options
 
-   deployment
    deployment_immunity
    deployment_cloud
 

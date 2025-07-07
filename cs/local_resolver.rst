@@ -6,7 +6,7 @@ Lokální resolver
 ******************
 
 Nasazení řešení Whalebone nasazeného jako **lokální resolver** přináší výhodu viditelnosti místních IP adres, které odesílají skutečné požadavky. Pokud pro vás nasazení lokálního řešení není vhodnou volbou, 
-podívejte se na další :ref:`Možnosti nasazení.<Možnosti nasazení>`
+podívejte se na :ref:`Cloudové nasazení.<Cloudové nasazení>`
 
 Whalebone resolver je založen na implementaci `Knot Resolveru <https://www.knot-resolver.cz/>`_ vyvinutého CZ.NIC.
 

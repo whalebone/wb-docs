@@ -11,7 +11,6 @@ Další informace o produktu a společnosti jsou k dispozici na oficiálních st
    :maxdepth: 2
    :caption: Možnosti nasazení
 
-   deployment
    deployment_immunity
    deployment_cloud
 

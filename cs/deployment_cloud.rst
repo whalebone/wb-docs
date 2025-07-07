@@ -1,3 +1,5 @@
+.. _Cloudové nasazení:
+
 Cloudové nasazení
 =================
 

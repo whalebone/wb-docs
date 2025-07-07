@@ -41,7 +41,7 @@ try:
     os.remove("index.rst")
 except Exception:
     pass
-shutil.copyfile(f"index_{get_product()}.rst", "index.rst")
+shutil.copyfile(f"index_{get_product()}.rst".lower(), "index.rst")
 
 # If your documentation needs a minimal Sphinx version, state it here.
 #

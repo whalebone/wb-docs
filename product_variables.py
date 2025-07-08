@@ -1,3 +1,3 @@
 PRODUCT = {
-    'product': 'Peacemaker'
+    'product': 'AUPDNS'
 }

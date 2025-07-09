@@ -8,18 +8,20 @@ Při prevenci hrozeb se Whalebone spoléhá na externí zpravodajské zdroje i n
 Další informace o produktu a společnosti jsou k dispozici na oficiálních stránkách `Whalebone. <https://whalebone.io>`_
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Možnosti nasazení
 
    deployment_immunity
    deployment_cloud
 
 .. toctree::
+   :maxdepth: 1
    :caption: Quickstart
 
    quickstart
 
 .. toctree::
+   :maxdepth: 1
    :caption: Konfigurace
 
    local_resolver
@@ -33,6 +35,7 @@ Další informace o produktu a společnosti jsou k dispozici na oficiálních st
    uninstalling
 
 .. toctree::
+   :maxdepth: 1
    :caption: Analýza a reporting
    
    data_analysis
@@ -42,13 +45,14 @@ Další informace o produktu a společnosti jsou k dispozici na oficiálních st
    active_directory
    snmp_monitoring
 
-
 .. toctree::
+   :maxdepth: 1
    :caption: Nastavení ogranizace
    
    user
 
 .. toctree::
+   :maxdepth: 1
    :caption: Home Office Security
    
    hos_overview
@@ -56,26 +60,19 @@ Další informace o produktu a společnosti jsou k dispozici na oficiálních st
    hos_operation
 
 .. toctree::
+   :maxdepth: 1
    :caption: Identity protection
 
    idp_overview
 
 .. toctree::
+   :maxdepth: 1
    :caption: Videonávody krok za krokem
 
    video_guides
 
-
 .. toctree::
+   :maxdepth: 1
    :caption: Další informace
    
    licence_disclaimer
-   
-
-
-
-
-
-
-
-

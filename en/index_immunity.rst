@@ -8,19 +8,20 @@ For threat prevention Whalebone relies on external intelligence sources as well 
 More information about the product and company is available on the official `Whalebone website. <https://whalebone.io>`_
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Deployment Options
 
    deployment_immunity
    deployment_cloud
 
 .. toctree::
+   :maxdepth: 1
    :caption: Quickstart
 
    quickstart
 
-
 .. toctree::
+   :maxdepth: 1
    :caption: Configuration
 
    local_resolver
@@ -34,6 +35,7 @@ More information about the product and company is available on the official `Wha
    uninstalling
 
 .. toctree::
+   :maxdepth: 1
    :caption: Analysis and reporting
    
    data_analysis
@@ -43,13 +45,14 @@ More information about the product and company is available on the official `Wha
    active_directory
    snmp_monitoring
 
-
 .. toctree::
+   :maxdepth: 1
    :caption: Organization Settings
    
    user
 
 .. toctree::
+   :maxdepth: 1
    :caption: Home Office Security
    
    hos_overview
@@ -57,26 +60,19 @@ More information about the product and company is available on the official `Wha
    hos_operation
 
 .. toctree::
+   :maxdepth: 1
    :caption: Identity protection
    
    idp_overview
 
 .. toctree::
+   :maxdepth: 1
    :caption: Step-by-Step Video Guides
 
    video_guides
 
-
 .. toctree::
+   :maxdepth: 1
    :caption: About
    
    licence_disclaimer
-   
-
-
-
-
-
-
-
-

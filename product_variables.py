@@ -1,3 +1,3 @@
 PRODUCT = {
-    'product': 'Immunity'
+    'product': 'DNS4GOV'
 }

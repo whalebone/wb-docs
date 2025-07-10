@@ -11,7 +11,7 @@ Další informace o produktu a společnosti jsou k dispozici na oficiálních st
    :maxdepth: 1
    :caption: Možnosti nasazení
 
-   deployment_aura
+   deployment_dns4gov
    deployment_cloud
 
 .. toctree::
@@ -50,6 +50,14 @@ Další informace o produktu a společnosti jsou k dispozici na oficiálních st
    :caption: Nastavení ogranizace
    
    user
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Home Office Security
+   
+   hos_overview
+   hos_installation
+   hos_operation
 
 .. toctree::
    :maxdepth: 1

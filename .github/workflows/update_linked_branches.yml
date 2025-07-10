@@ -11,7 +11,7 @@ jobs:
 
     strategy:
       matrix:
-        target_branch: [immunity_product, peacemaker_product]  # Add your branches here
+        target_branch: [immunity_product, peacemaker_product, aura_product, aupdns_product]  # Add your branches here
 
     steps:
       - name: Checkout target branch ${{ matrix.target_branch }}

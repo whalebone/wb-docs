@@ -1,0 +1,3 @@
+PRODUCT = {
+    'product': 'Peacemaker'
+}

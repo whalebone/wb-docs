@@ -1,5 +1,5 @@
 Whalebone Peacemaker
-===================
+====================
 
 Místní překladač DNS pro poskytovatele internetových služeb (ISP)
 -----------------------------------------------------------------

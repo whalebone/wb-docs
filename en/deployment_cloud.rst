@@ -1,5 +1,7 @@
+.. _Cloud deployment:
+
 Cloud deployment
-==================
+================
 
 Whalebone could be deployed in several scenarios which can be even combined to fullfill requirements of particular networks. Combination of cloud and local DNS resolver with single management console will serve even complex and distributed networks.
 
@@ -8,13 +10,15 @@ Whalebone could be deployed in several scenarios which can be even combined to f
 .. tip:: If neither configuration scenarios below is suitable to your use case, please contact Whalebone Support and we will help you with architecture that will suit your needs.
 
 Use existing DNS to forward to Whalebone Cloud DNS
----------
+--------------------------------------------------
 
 This is the simplest method o deployment. To use Whalebone filtering, just change the configuration of your recent DNS resolvers and point them to Whalebone cloud resolvers.
 The downside of this deployment is that all of the incidents will be visible with source IP of the DNS forwarder instead of the original source IP. Still this deployment could come in handy if the priority is to prevent the threats with as low effort and infrastructure changes as possible.
 
 .. image:: ./img/deployment_cloud.png
    :align: center
+
+.. _Cloud DNS (direct connection) cloud:
 
 Cloud DNS (direct connection)
 -----------------------------

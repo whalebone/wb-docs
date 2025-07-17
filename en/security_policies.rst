@@ -1,9 +1,11 @@
+.. _Security policies:
+
 Security policies
 =================
 
-You can watch step-by-step video guide of basic security policy configuration `here. <https://docs.whalebone.io/en/latest/video_guides.html#basic-configuration>`_
+You can watch a step-by-step video guide of basic security policy configuration here: :ref:`Basic Configuration<Basic configuration video>`.
 
-The step-by-step video guide with deeper explanation of security policy tuning is `here. <https://docs.whalebone.io/en/latest/video_guides.html#security-policies>`_
+The step-by-step video guide with deeper explanation of security policy tuning is here: :ref:`Security Policies<Security policies video>`.
 
 To control Whalebone's security filtering you need to configure it's security policies. When you install Whalebone, it comes with a **Default** policy which is set to include all threat types and sets the tresholds to the value of **80/50**. This policy will also be automatically applied to every newly installed resolver. 
 In any policy there are several options to be configured:
@@ -14,6 +16,7 @@ Every domain in our threat intelligence database has certain value of the score.
 
 * **The blocking threshold** - Domains with a score higher or equal to this value will be blocked by Whalebone and the client request will be answered with and IP address of the blocking page. 
 * **The audit treshold** - Domains with a score higher or equal to this value, but lower than the blocking treshold will be monitored. The request will be allowed and the answer will be served either from cache or by performing the full DNS recursion. Requests will however be monitored in the Threats dashboard for later investigation, if needed.
+
 Individual actions could be turned off - e.g. turn off the blocking for testing purposes
 The slider values define the probability that the particular domain is malicious on the scale from **0** to **100** with **100** beeing the most malicious.
 
@@ -62,7 +65,7 @@ Allow lists
   * The list can be configured on the **Allow / Deny List** tab on the left side of **Configuration** page.
   * One list can hold up to 10 000 domains.
 
-Deny Lists
+Deny lists
 ----------
 
   * Domains that will be blocked at all times (unless the same domain is also present on an allow list).
@@ -75,11 +78,11 @@ but if you have ``friendly.malware.ninja`` on an Allow list, this will take prec
 
 .. warning:: After creating an allow or deny list, it needs to be assigned to the specific security policy, or else the changes will not take effect.
 
-.. image:: ./img/whitelist.gif
+.. image:: ./img/denylist_en.gif
    :align: center
 
 
-Regulatory Restrictions
+Regulatory restrictions
 -----------------------
 
   * Integrated list of domains that must be applied in order to conform to Regulatory Restrictions of a country.
@@ -90,7 +93,7 @@ Regulatory Restrictions
 
 .. warning:: Each country has different Regulatory lists. In case of multi-country deployments different policies can be used in order to apply the proper Regulatory Restrictions. 
 
-Content Filtering
+Content filtering
 -----------------
 
   Particular Content categories can be applied on a per-policy level. This is useful in case different segments of the networks come with different requirements. For example, in case of a School environment all the **Adult** categories can be enabled and access to relevant content can be restricted.
@@ -121,4 +124,18 @@ The content filter can also be applied for specific times of the day. When a par
   :align: center
 
 
-.. note:: By applying the schedule, you are **allowing** access to domains from that content category during that specific time period. 
+.. note:: By applying the schedule, you are **allowing** access to domains from that content category during that specific time period.
+
+Filter priorities
+-----------------
+
+  All filters mentioned above are executed in a particular order according to their priority. The order of filter priorities, sorted from highest to lowest, is as follows:
+
+#. Regulatory restrictions
+#. Deny lists
+#. Allow lists
+#. Content filtering
+#. Blocking threshold evaluation
+#. Audit threshold evaluation
+
+.. note:: As mentioned in the **Allow lists** and **Deny lists** chapters, a more specific domain, e.g., ``friendly.malware.ninja``, can be allowed even when the more generic domain, e.g., ``malware.ninja``, is denied.

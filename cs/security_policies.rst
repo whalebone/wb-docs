@@ -1,19 +1,22 @@
+.. _Bezpecnostni politiky:
+
 Bezpečnostní politiky
 =====================
 
-Videoprůvodce základní konfigurací bezpečnostních politiky krok za krokem si můžete prohlédnout `zde. <https://docs.whalebone.io/cs/latest/video_guides.html#basic-configuration>`_
+Videoprůvodce základní konfigurací bezpečnostních politiky krok za krokem si můžete prohlédnout zde: :ref:`zde<Zakladni konfigurace video>`.
 
-Videoprůvodce krok za krokem s hlubším vysvětlením jak nastavovat bezpečnostní politiky naleznete `zde. <https://docs.whalebone.io/cs/latest/video_guides.html#security-policies>`_
+Videoprůvodce krok za krokem s hlubším vysvětlením jak nastavovat bezpečnostní politiky naleznete :ref:`zde<Bezpecnostni politiky video>`.
 
 Chcete-li pomocí Whalebone provádět filtraci provozu, musíte nakonfigurovat bezpečnostní politiku. Při instalaci je Whalebone dodáván s **výchozí** bezpečnostní politikou, která je nastavena tak, aby zahrnovala všechny typy hrozeb a nastavuje prahové hodnoty na hodnotu **80/50**. Tato politika se také automaticky aplikuje na každý nově nainstalovaný resolver. 
 V každé politice lze nakonfigurovat několik možností:
 
 Prahové hodnoty pro filtrování škodlivých domén
-----------------------------------------------
+-----------------------------------------------
 Každá doména v naší databázi hrozeb má určitou hodnotu skóre. Skóre vyjadřuje, jak škodlivá je podle nás daná doména. V zásadách upravujete dvě hodnoty související se skóre:
 
 * **Blokace** - Domény se skóre vyšším nebo rovným této hodnotě budou Whalebone resolverem blokovány a na požadavek klienta bude odpovězeno IP adresou blokující stránky. 
 * **Audit** - Domény se skóre vyšším nebo rovným této hodnotě, ale nižším, než je prahová hodnota pro blokování, budou monitorovány. Požadavek na překlad bude povolen a odpověď bude doručena buď z mezipaměti, nebo provedením úplné rekurze DNS. Požadavky však budou logovány v panelu hrozeb pro případné pozdější prošetření.
+
 Jednotlivé akce lze vypnout - např. vypnout blokování pro účely testování.
 
 Hodnoty posuvníku definují pravděpodobnost, že daná doména je škodlivá, na stupnici od **0** do **100**, přičemž **100** je nejškodlivější.
@@ -35,6 +38,7 @@ Poté můžete upravit citlivost blokování a auditu, přidat seznamy odmítnut
 
 .. tip:: Zásada není aktivní, pokud není přiřazena některým resolverům (místním nebo cloudovým). Chcete-li zahájit vynucování zásad, přejděte do části **Resolvery** → **Přiřazení politik** a přiřaďte je konkrétní **podsíti** nebo **resolveru**.
 
+.. _Typy hrozeb video:
 
 Typy hrozeb
 -----------
@@ -76,7 +80,7 @@ ale pokud máte doménu ``friendly.malware.ninja`` v seznamu Allow, bude mít ta
 .. warning:: Po vytvoření seznamu povolených nebo zakázaných položek je třeba jej přiřadit ke konkrétní zásadě zabezpečení, jinak se změny neprojeví.
 
 
-.. image:: ./img/whitelist.gif
+.. image:: ./img/denylist_cs.gif
    :align: center
 
 
@@ -123,3 +127,17 @@ Filtr obsahu lze použít i pro konkrétní denní dobu. Po zaškrtnutí určit�
 
 
 .. note:: Použitím plánu **povolíte** přístup k doménám z dané kategorie obsahu v daném časovém období.
+
+Pořadí vykonávání filtrů
+------------------------
+
+  Všechny dříve zmíněné filtry jsou aplikovány jeden po druhém. Níže najdete seznam filtrů seřazený podle priority od nejvyšší po nejnižší, tj. jak jimi postupně prochází DNS dotazy:
+
+#. Právní omezení
+#. Blokované
+#. Povolené
+#. Obsahová filtrace
+#. Blokování domény podle prahové hodnoty
+#. Audit domény podle prahové hodnoty
+
+.. note:: As mentioned in the **Allow lists** and **Deny lists** chapters, a more specific domain, e.g., ``friendly.malware.ninja``, can be allowed even when the more generic domain, e.g., ``malware.ninja``, is denied.

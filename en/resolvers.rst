@@ -23,10 +23,10 @@ If there been are any configuration changes which affect the DNS resolution, you
 
 .. note:: If the deployment resulted in error, try to repeat the action. The reason for the error could be a short term communication outage between the cloud and the resolver.
 
+Configuration deployment.
+
 .. image:: ./img/lrv2-deployconfig.gif
    :align: center
-
-   Configuration deployment.
 
 Configure Policy per Network Segment
 ------------------------------------
@@ -38,10 +38,10 @@ The setting applies per resolver and can be configured under **Resolvers** → `
 
 The policies can be applied by adding IP ranges in the available input form:
 
+Policy assignment.
+
 .. image:: ./img/add-policy.PNG
    :align: center
-
-   Policy assignment.
    
 In order to provide a better understanding let's consider an example with the network range ``10.10.0.0/16``. 
 
@@ -51,10 +51,11 @@ We have created 3 different policies:
 * **Exception**: a policy that must be applied to a specific segment in the network which will have all security and content filtering disabled.
 * **School**: a policy that we want to apply to 2 different subnets that have been assigned to school environments. In this case we have chosen to be more strict in the blocking.
 
+Example policy settings.
+
 .. image:: ./img/policies-example.png
    :align: center
 
-Example policy settings.
 .. note:: The first setting option for policies is for all the undefined ranges. In case different policies affecting same range the more granular is applied.
 
 

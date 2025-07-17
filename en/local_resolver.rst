@@ -2,8 +2,8 @@
 Local resolver
 ******************
 
-Deploying the Whalebone solution deployed as a **local resolver** brings the advantage of visibility of local IP addresses that send the actual requests. If deploying locally is not a suitable option for you, 
-check out the other :ref:`Deployment Options.<Deployment Options>`
+Deploying the Whalebone |product| as a **local resolver** brings the advantage of visibility of local IP addresses that send the actual requests. If deploying locally is not a suitable option for you, 
+check out the :ref:`Cloud deployment.<Cloud deployment>`
 
 Whalebone resolver is based on the implementation of `Knot Resolver <https://www.knot-resolver.cz/>`_ developed in the CZ.NIC labs.
 
@@ -11,15 +11,21 @@ Whalebone resolver is based on the implementation of `Knot Resolver <https://www
 Local resolver system requirements
 ==================================
 
-Local resolver is supported on dedicated (hardware or virtual) machine running a supported operating system.
+Local resolver is supported on **solely dedicated** (physical or virtual) machine running a supported operating system and Docker engine. Running resolver on unsupported versions of OS and/or docker or with other services might lead to incorrect behavior or issues with service/resolution. Please be aware that not-compliance of these requirements makes troubleshooting more complicated in case of issues with the product.
+
+Please perform regular checks and maintain the resolver's OS and Docker engine versions up-to-date to ensure stability of the service.
 
 * **Supported operating system** (64-bit, server editions of following distributions):
 
-  * Red Hat Enterprise Linux 7, 8, 9
-  * CentOS Linux 7, 8 
-  * CentOS Stream 8, 9
-  * Debian 9, 10, 11, 12
-  * Ubuntu 16.04, 18.04, 20.04, 22.04
+Please see following links to see which versions are supported. Whalebone supports operating systems that are suported by the standard support periods of OS publishers.
+
+  * `Red Hat Enterprise Linux (Full support) <https://access.redhat.com/product-life-cycles?product=Red%20Hat%20Enterprise%20Linux>`_
+  * `CentOS Stream (Active support) <https://endoflife.date/centos-stream>`_
+  * `Debian (Supported by LTS team) <https://wiki.debian.org/LTS/>`_
+  * `Ubuntu (Standard support) <https://ubuntu.com/about/release-cycle>`_
+
+* **Supported docker version**
+  * Whalebone supports and is tested on versions of Docker that are supported by the community. See the supported versions `here <https://endoflife.date/docker-engine>`_.
 
 * **Supported filesystems** 
 
@@ -30,26 +36,46 @@ Local resolver is supported on dedicated (hardware or virtual) machine running a
 
   * 2 CPU cores
   * 4 GB RAM
-  * 40 GB HDD (at least 30 GB in /var partition)
+  * 80 GB HDD (at least 70 GB in /var partition)
 
 .. warning:: Please note that Whalebone only supports deloyments without desktop environments such as GNOME, KDE or Xfce as those can impact available memory and DNS processing on the server.
 
 * **Network setup requirements** (local resolver needs the following egress ports opened):
   
-  =========== =========== ======= ======================== ======================
-  Direction   Protocol(s)  Port    Destination IP/Domain    Description         
-  =========== =========== ======= ======================== ======================
-  Outbound    TCP+UDP     53      Any                      DNS resolution        
-  Outbound    TCP         443     resolverapi.whalebone.io Threat Database updates
-  Outbound    TCP         443     stream.whalebone.io      Threat Database updates     
-  Outbound    TCP         443     logger.whalebone.io      Logging stream   
-  Outbound    TCP         443     agentapi.whalebone.io    Resolver management
-  Outbound    TCP         443     transfer.whalebone.io    Support Log collection
-  Outbound    TCP         443     portal.whalebone.io      Admin portal
-  Outbound    TCP         443     harbor.whalebone.io      Resolver updates
-  Outbound    TCP         443     download.docker.com      Installation Process
-  Outbound    TCP         443     data.iana.org            DNSSEC keys       
-  =========== =========== ======= ======================== ======================
+  =========== =========== ======= =================================== ======================
+  Direction   Protocol(s)  Port    Destination IP/Domain              Description         
+  =========== =========== ======= =================================== ======================
+  Outbound    TCP+UDP     53      Any                                 DNS resolution        
+  Outbound    TCP         443     resolverapi.whalebone.io            Database updates
+  Outbound    TCP         443     resolverapi.eu-01.whalebone.io      Database updates
+  Outbound    TCP         443     resolverapi.apac-01.whalebone.io    Database updates
+  Outbound    TCP         443     resolverapi.am-01.whalebone.io      Database updates
+  Outbound    TCP         443     resolverapi.uae-01.whalebone.io     Database updates
+  Outbound    TCP         443     stream.whalebone.io                 Realtime Database updates
+  Outbound    TCP         443     stream.eu-01.whalebone.io           Realtime Database updates
+  Outbound    TCP         443     stream.apac-01.whalebone.io         Realtime Database updates
+  Outbound    TCP         443     stream.am-01.whalebone.io           Realtime Database updates
+  Outbound    TCP         443     stream.uae-01.whalebone.io          Realtime Database updates
+  Outbound    TCP         443     logger.whalebone.io                 Logging stream
+  Outbound    TCP         443     logger.eu-01.whalebone.io           Logging stream
+  Outbound    TCP         443     logger.apac-01.whalebone.io         Logging stream
+  Outbound    TCP         443     logger.am-01.whalebone.io           Logging stream
+  Outbound    TCP         443     logger.uae-01.whalebone.io          Logging stream
+  Outbound    TCP         443     agentapi.whalebone.io               Resolver management
+  Outbound    TCP         443     agentapi.eu-01.whalebone.io         Resolver management
+  Outbound    TCP         443     agentapi.apac-01.whalebone.io       Resolver management
+  Outbound    TCP         443     agentapi.am-01.whalebone.io         Resolver management
+  Outbound    TCP         443     agentapi.uae-01.whalebone.io        Resolver management
+  Outbound    TCP         443     transfer.whalebone.io               Support Log collection
+  Outbound    TCP         443     portal.whalebone.io                 Admin portal
+  Outbound    TCP         443     portal.eu-01.whalebone.io           Admin portal
+  Outbound    TCP         443     portal.apac-01.whalebone.io         Admin portal
+  Outbound    TCP         443     portal.am-01.whalebone.io           Admin portal
+  Outbound    TCP         443     portal.uae-01.whalebone.io          Admin portal
+  Outbound    TCP         443     harbor.whalebone.io                 Resolver updates
+  Outbound    TCP         443     download.docker.com                 Installation Process
+  Outbound    TCP         443     data.iana.org                       DNSSEC keys       
+  =========== =========== ======= =================================== ======================
   
   .. warning:: Without communication on port 443 to the domains listed above the resolver won't be installed at all (the installation script will abort).
 
@@ -88,7 +114,7 @@ Local resolver is supported on dedicated (hardware or virtual) machine running a
 Installation of a new local resolver
 ====================================
 
-You can watch step-by-step video guide about the installation procedure :ref:`here.<Deployment>`
+You can watch step-by-step video guide about the installation procedure :ref:`here.<Deployment video>`
 
 In menu **Resolvers** press the button **Create new**. Choose a name (identifier) for your new resolver. The input is purely informative and won't affect the functionality.
 Once you've entered the name, click **Add resolver** button.
@@ -105,7 +131,6 @@ Successful run of the installation script is ended with the notification ```Fina
 .. image:: ./img/lrv2-install.gif
    :align: center
 
-   Local resolver installation.
 
 .. warning:: Local resolver is configured as an open resolver. It will respond to any request sent. This is quite comfortable in terms of availability of the services, but also could be a risk if the service is available from the outside networks. Please make sure you limit the access to the local resolver on port 53 (UDP and TCP) from the trusted networks only, otherwise it can be misused for various DoS attacks.
 

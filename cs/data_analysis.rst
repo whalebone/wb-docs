@@ -3,6 +3,90 @@ Analýza dat
 
 Whalebone Portal (grafické uživatelské rozhraní) poskytuje uživateli řadu možností, jak analyzovat, co se děje na DNS resolverech a v síti.
 
+Obsah
+-------
+
+Karta **Obsah** zobrazuje přehled zaznamenaného provozu podléhajícího nastavení filtrování obsahu. Pokud nemáte filtr obsahu povolen nebo jej nepoužíváte, nebude na této kartě nic zaznamenáno.
+
+Jak zobrazit všechny dotazy určitého typu:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Nejjednodušší způsob, jak vybrat dotazy určitého typu, je kliknout na ikonu **filtr** a vybrat požadovaný typ dotazu. Na výběr je několik možností, včetně ``Sexuální obsah``, ``Hazardní hry``, ``Audio/video``, ``Reklama`` a dalších 13 kategorií z celkových 17. Případně můžete kliknout na některou z kategorií zobrazených v koláčovém grafu v části **Kategorie** nebo přímo v grafu zobrazujícím všechna data.
+
+
+ow pro vyhledávání domény:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Chcete-li vyhledat domény, můžete použít textové pole **Filtr výsledků** a zadat název hledané domény. Dalšími způsoby vyhledávání domény je kliknutí na doménu v sekci **Doména** nebo přímo v seznamu záznamů ve stejném sloupci.
+
+
+Jak změnit rozsah dat dostupných údajů:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Rozsah dat, která lze zobrazit v náhledu portálu, lze změnit několika způsoby. Základní způsob výběru zahrnuje výběr předdefinovaných časových oken (1,7, 14 nebo 30 dní) z rozevíracího seznamu umístěného vedle **filtru výsledků**. V případě potřeby lze určit konkrétní časový rozsah pomocí oken **Datum a čas zahájení** a **Datum a čas ukončení**.
+
+
+Kliknutím na koláčové grafy můžete také vyfiltrovat **IP klienta** a **Resolvery**.
+
+Návrh na změnu kategorie
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Může se stát, že bude některá z domén špatně kategorizována. Ověřit do jakých kategorií doména spadá můžete pomocí nástroje **Analýza domény** nacházejícím se v uživatelském menu. Po zadání domény se objeví sekce **Kategorizace obsahu**, kde se zobrazí jednotlivé kategorie, do kterých doména spadá a zároveň se nabízí tlačítko **Navrhnout změnu kategorie** přes které je možné navrhnout změnu kategorizace. Zároveň pomocí tlačítka **Nahlásit jako škodlivou** je možné nahlásit doménu, jako false positive.
+
+DNS Provoz:
+-----------
+
+Záložka **DNS Provoz** obsahuje přehled o provozu, který byl
+byl zaznamenán na resolveru. Obsahuje všechny dotazy spolu s některými
+dalšími informacemi, jako je typ, odpověď a TTL (time to live) odpovědi.
+
+.. tip:: Data podléhají de-duplikaci. To znamená, že resolver
+   zaznamenává pouze jedinečné kombinace dotazu, typu dotazu a odpovědi za 24 hodin.
+   hodin. Z tohoto důvodu se může stát, že dotaz nebude viditelný na
+   portálu, i když byl vyřešen.
+
+Videoprůvodce krok za krokem si můžete prohlédnout :ref:`zde<Provoz DNS video>`.
+
+
+Níže budou popsány některé užitečné možnosti filtrace dostupných dat.
+
+
+Zobrazení dotazů určitého typu:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Nejjednodušším způsobem, jak vybrat dotazy určitého typu je pomocí zakliknutí ikony **filtr** a zvolení požadovaného typu dotazu. Na výběr je několik možností, mezi které se řadí: ``A``, ``AAAA``, ``CNAME``, ``MX``, ``NS``, ``PTR``, ``RRSIG``,
+``SPF``, ``SRV`` a ``TXT``.
+
+
+
+Zobrazení odpovědí podle typu:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+V okně **Odpovědi** je možné zvolit požadovanou odpověď, nebo v seznamu logů ve sloupci **odpověď** nebo požadovanou odpověď zakliknout.
+
+Vyhledání domény:
+~~~~~~~~~~~~~~~~~
+
+K vyhledání domén lze využít textové pole **Filtr výsledků** do kterého lze zadat název hledané domény. Mezi další možnosti, jak vyhledat doménu je zakliknutí domény v části **Domény 2. řádu** popř. přímo v seznamu logů ve stejnojmenném sloupci.
+
+
+Jak změnit časový rozsah událostí:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Rozsah data údajů, které lze zobrazit v náhledu na portálu, lze měnit několika způsoby. Mezi základní způsob výběru se řadí volba předdefinovaných časových oken (1,7 nebo 14) v rozbalovacím seznamu umístěném vedle **filtru výsledků**. V případě potřeby je možné specifikovat konkrétní časové rozmezí pomocí oken **Datum a čas začátku** a **Datum a čas konce**.
+
+
+How to view DGA (Domain Generation Algorithm) indications:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Indikace DGA lze vyfiltrovat podobným způsobem, jako v případě zobrazení dotazů určitého typu, v tomto případě stačí zvolit poslední záznam v seznamu - **DGA**
+
+Nahlášení "False negative"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+V některých případech je možné, že nedojde ke správné klasifikaci nebezpečnosti domény. V případě, že budete mít pocit, že by měla být doména blokována a není, je možné ji pomocí tlačítka **Nahlásit jako škodlivou** nahlásit, jako škodlivou doménu a tím dojde k vyvoření požadavku na přezkoumání domény. Tato volba se nacházív tabulce logů pod ikonou šipky u jednotlivých dotazů.
+
+
 Hrozby
 ------
 
@@ -10,14 +94,13 @@ Hrozby jsou zvláštní události, při kterých dochází k požadavku DNS na d
 druhým je její **Block**. Možnost **Audit** pouze zaznamená doménu, ale přístup je uživateli umožňěn. 
 
 Akce, která má být provedena, závisí na nastavení bezpečnostních politik, které jsou
-přiřazeny konkrétnímu resolveru. Více informací naleznete v sekci
-`Bezpečnostní politiky <http://docs.whalebone.io/cs/latest/security_policies.html>`__.
+přiřazeny konkrétnímu resolveru. Více informací naleznete v sekci :ref:`Bezpečnostní politiky<Bezpecnostni politiky>`.
 
 Existují některé předkonfigurované filtry, které lze aplikovat na data. Ukázky některých dotazů jsou zobrazeny níže. Tyto dotazy zobrazují
 většinu případů použití, ale není zde žádné pevné omezení, protože
 dostupný vyhledávač je **full-textový** a lze sestavit **jakýkoli** dotaz.
 
-Videoprůvodce krok za krokem si můžete prohlédnout `zde. <https://docs.whalebone.io/cs/latest/video_guides.html#threats>`__
+Videoprůvodce krok za krokem si můžete prohlédnout `zde<Typy hrozeb video>`.
 
 
 Vyhledání událostí typu audit/block:
@@ -60,68 +143,18 @@ Analýza domény:
 V případě, že se chcete dozvědět další informace o doméně, zejména jaké skóre 
 Whalebone přiřazuje konkrétní doméně, kdy byla poprvé spatřena a zařazena do kategorie 
 jako škodlivá, zda spadá do regulační kategorie nebo z jakých externích zdrojů. 
-o ní víte, podívejte se na video `zde <https://docs.whalebone.io/cs/latest/video_guides.html#domain-analysis>`__.
+o ní víte, podívejte se na video :ref:`zde<Analyza domeny video>`.
+
+Nahlášení "False positive"
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+V některých případech je možné, že nedojde ke správné klasifikaci nebezpečnosti domény. V případě, že budete mít pocit, že by neměla být doména blokována a není, je možné ji pomocí tlačítka **Nahlásit falešnou detekci** nahlásit, jako špatně klasifikovanou doménu a tím dojde k vyvoření požadavku na přezkoumání domény. Tato volba se nacházív tabulce logů pod ikonou šipky u jednotlivých dotazů.
 
 
-DNS Provoz:
------------
+Fulltextové vyhledávání 
+~~~~~~~~~~~~~~~~~~~~~~~
 
-Záložka **DNS Provoz** obsahuje přehled o provozu, který byl
-byl zaznamenán na resolveru. Obsahuje všechny dotazy spolu s některými
-dalšími informacemi, jako je typ, odpověď a TTL (time to live) odpovědi.
-
-.. tip:: Data podléhají de-duplikaci. To znamená, že resolver
-   zaznamenává pouze jedinečné kombinace dotazu, typu dotazu a odpovědi za 24 hodin.
-   hodin. Z tohoto důvodu se může stát, že dotaz nebude viditelný na
-   portálu, i když byl vyřešen.
-
-Videoprůvodce krok za krokem si můžete prohlédnout `zde. <https://docs.whalebone.io/cs/latest/video_guides.html#dns-traffic>`__
-
-
-Níže budou popsány některé užitečné možnosti filtrace dostupných dat.
-
-
-Zobrazení dotazů určitého typu:
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Nejjednodušším způsobem, jak vybrat dotazy určitého typu je pomocí zakliknutí ikony **filtr** a zvolení požadovaného typu dotazu. Na výběr je několik možností, mezi které se řadí: ``A``, ``AAAA``, ``CNAME``, ``MX``, ``NS``, ``PTR``, ``RRSIG``,
-``SPF``, ``SRV`` a ``TXT``.
-
-
-
-Zobrazení odpovědí podle typu:
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-V okně **Odpovědi** je možné zvolit požadovanou odpověď, nebo v seznamu logů ve sloupci **odpověď** nebo požadovanou odpověď zakliknout.
-
-Vyhledání domény:
-~~~~~~~~~~~~~~~~~
-
-K vyhledání domén lze využít textové pole **Filtr výsledků** do kterého lze zadat název hledané domény. Mezi další možnosti, jak vyhledat doménu je zakliknutí domény v části **Domény 2. řádu** popř. přímo v seznamu logů ve stejnojmenném sloupci.
-
-
-Jak změnit časový rozsah událostí:
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Rozsah data údajů, které lze zobrazit v náhledu na portálu, lze měnit několika způsoby. Mezi základní způsob výběru se řadí volba předdefinovaných časových oken (1,7, 14 nebo 30 dní) v rozbalovacím seznamu umístěném vedle **filtru výsledků**. V případě potřeby je možné specifikovat konkrétní časové rozmezí pomocí oken **Datum a čas začátku** a **Datum a čas konce**.
-
-
-How to view DGA (Domain Generation Algorithm) indications:
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Indikace DGA lze vyfiltrovat podobným způsobem, jako v případě zobrazení dotazů určitého typu, v tomto případě stačí zvolit poslední záznam v seznamu - **DGA**
-
-
-
-Fulltext filtering
-~~~~~~~~~~~~~~~~~~
-
-Pro pokročilejší použití lze použít fulltextový filtr a sestavit složený dotaz. Fulltextové filtrování funguje pouze v panelu **Hrozby**.
-
-
-.. warning::
-   Panely **Obsah** a **DNS provoz**  v tuto chvíli nepodporují fulltextové filtrování.
-
+Pro pokročilejší použití lze použít fulltextový filtr a sestavit složený dotaz.
 Tato pole lze spojovat pomocí logických operátorů. Podporovány jsou ``AND, OR, NOT, <, >`` a zástupný znak ``*``. Řetězce nemusí být obaleny uvozovkami. Příklad syntaxe je následující:
 ``action: block AND accu:>70 AND (client_ip: 10.20.30.41 OR 10.20.30.40 OR 192.168.*)``
 ``a NOT geoip.country_name: Germany AND matched_iocs.classification.type: malware AND NOT phishing`` 

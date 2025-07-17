@@ -22,7 +22,7 @@ HOS is constantly monitoring changes on the network interfaces and based on the 
 
 Security
 ========================
-In the background HOS uses **DNS-over-HTTPs** or **DoH**. The **Hostname** of the **Resolveru** is never diverted and is cached. The identification and authenticity is left to the TLS protocol. When device belongs to any **Domain**, then all domain names and their subdomains are allowed to reach the DNS servers they route to. HOS uses ``Win32_NetworkAdapterConfiguration`` WMI table to get the information.
+In the background HOS uses **DNS-over-HTTPs** or **DoH**. The **Hostname** of the **Resolver** is never diverted and is cached. The identification and authenticity is left to the TLS protocol. When device belongs to any **Domain**, then all domain names and their subdomains are allowed to reach the DNS servers they route to. HOS uses ``Win32_NetworkAdapterConfiguration`` WMI table to get the information.
 
 
 
@@ -118,6 +118,6 @@ Service logs can be found at ``c:\ProgramData\Whalebone\Home Office Security\Log
 
 
 Uninstalling the app
-================
+====================
 
 To completely remove the app, uninstall the service and delete all contents from ``c:\ProgramData\Whalebone\Home Office Security\``

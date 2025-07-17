@@ -80,16 +80,20 @@ If enabled, it can limit the number of failed login attempts.
    The available options are:
 
    -  **Failed Login Limit**:
-   Number of unsuccessful login attempts before locking the account. Default is 5.
+
+     - Number of unsuccessful login attempts before locking the account. Default is 5.
 
    -  **Lockout Duration**:
-   Time duration in minutes for disallowing login requests.
+
+     - Time duration in minutes for disallowing login requests.
 
    -  **Lockout Reset Time**:
-   Time duration in minutes before resetting the number of failed attempts.
+
+     - Time duration in minutes before resetting the number of failed attempts.
 
    -  **CAPTCHA Threshold**:
-   Number of unsuccessful login attempts before enabling the CAPTCHA verification.
+
+     - Number of unsuccessful login attempts before enabling the CAPTCHA verification.
 
 **Multi Factor Authentication**:
 Require users to use a two factor authentication (2FA) application and enter additional tokens upon logging to the portal.

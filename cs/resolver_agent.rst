@@ -8,6 +8,7 @@ Akce agenta lze vyvolat pomocí proxy bash skriptu, který se nachází v **/etc
 * **sysinfo** - vrací údaje o stavu systému ve formátu JSON.
 	* Parametry: Žádné
 	* Výstup: testované kategorie na testovaném klíči mohou mít dvě hodnoty **OK** a **FAIL**.
+
 .. sourcecode:: js
 
 	{

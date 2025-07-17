@@ -1,166 +1,91 @@
 ============================
-Integrace s Active Directory
+Vyhledání názvu zařízení
 ============================
 
-**************************
-Požadavky pro instalaci
-**************************
+Whalebone Immunity lze snadno integrovat s Active Directory a zobrazit tak názvy zařízení (hostnames). Viditelnost názvů vám umožní urychlit následnou analýzu a řešení problémů, a není tak nutné korelovat název zařízení s IP adresou.
 
-Před instalací Event Log Forwarderu (ELF) na jedno nebo více vašich zařízení se ujistěte, že máte povolený audit událostí.
 
-Na každém vašem řadiči domény (DC) přejděte do:
-``Windows Administrative Tools`` → ``Local Security Policy``, poté do
-``Security Settings`` → ``Local Policies`` → ``Audit Policy``, a zde najdete
-``Audit account logon events``, ``Audit account sign-in events`` a  ``Audit logon events``. 
+Jak to funguje?
+===============
 
-Některá nastavení se mohou lišit názvem nebo mohou chybět, v závislosti na verzi Windows.
+Po konfiguraci se Whalebone resolver dotazuje autoritativního name serveru na název zařízení pomocí PTR dotazu. PTR (Pointer) záznam je typ DNS záznamu používaný k mapování IP adresy na doménové jméno, tedy k provádění reverzního DNS překladu. Na rozdíl od A nebo AAAA záznamů, které překládají doménová jména na IP adresy, PTR záznam poskytuje doménové jméno (hostname) přidělené určité IP adrese.
+Integraci DNS dotazů lze jednoduše provést v několika krocích. Přejděte do portálu Whalebone -> Resolvers
+
 
 .. image:: ./img/ad-integration-1.png
    :align: center
 
-Zaškrtněte **Úspěch** a **Selhání**.
+Klikněte na resolver, pro který chcete integraci nastavit. Poté přejděte na kartu "Integrace" na levé straně stránky.
 
 .. image:: ./img/ad-integration-2.png
    :align: center
+   
 
-Možná bude potřeba znovu načíst nakonfigurovanou politiku. Pro znovunačtení politiky, prosím, spusťte následující příkaz:
-
-.. code-block:: shell
-
-   gpupdate /force
-
-
-*******************************
-Konfigurace řadiče domény (Domain Controleru)
-*******************************
-
-DC Firewall pro Windows
-======================
-
-Ujistěte se, že Event Log lze přistupovat skrze konfiguraci Firewallu pomocí WMI.
-
-Na každém vašem řadiči domény přejděte do:
-``Windows Defender Firewall`` → ``Windows Defender Firewall with Advanced Security on Local Computer`` 
-``Inbound Rules`` → ``Windows Management Instrumentation (WMI-In)``
-
-
-Ujistěte se, že pravidlo umožňuje připojení.
+Povolte možnost "Zaznamenávat názvy zařízení v síti".
 
 .. image:: ./img/ad-integration-3.png
    :align: center
+   
 
-Nastavte rozsah povolených adres, které se mohou připojit. V tomto příkladu je povolena vzdálená adresa **192.168.1.0/24.**
+Přidejte svůj autoritativní name server.
+
 
 .. image:: ./img/ad-integration-4.png
    :align: center
-
-Nebo, alternativně, můžete použít příkazový řádek:
    
-.. code-block:: shell
 
-   netsh firewall set service RemoteAdmin enable
-
-
-DC Firewall Rules
-=================
-
-====== ========= =========== ==== ========= ===========================
-Zdroj  Směr      Cíl         Port Protokol  Důvod
-====== ========= =========== ==== ========= ===========================
-DC     --->      local netwk 135  TCP/UDP   Microsoft RPC	
-DC     --->      local netwk 445  TCP       Microsoft MQ	
-DC     --->      local netwk      ICMP      	
-====== ========= =========== ==== ========= ===========================
-
-
-Služba Windows
-===============
-
-Ujistěte se, že služba ``Windows Management Instrumentation`` běží.
-
-.. code-block:: shell
-
-   C:\Users\Administrator>sc query Winmgmt
-
-   SERVICE_NAME: Winmgmt
-         TYPE               : 30  WIN32
-         STATE              : 4  RUNNING
-                                 (STOPPABLE, PAUSABLE, ACCEPTS_SHUTDOWN)
-         WIN32_EXIT_CODE    : 0  (0x0)
-         SERVICE_EXIT_CODE  : 0  (0x0)
-         CHECKPOINT         : 0x0
-         WAIT_HINT          : 0x0
+Kliknutím na ikonu "+" přidáte sekundární server sloužící pro případ výpadku primárního.
 
 .. image:: ./img/ad-integration-5.png
    :align: center
+   
 
+s/ad-integration-5.png
+Pokud je vaše síť segmentovaná a name servery jsou přiřazeny k různým IP rozsahům ,či segmentům sítě, můžete využít funkci segmentace sítě.
 
-Vzdálená konfigurace WMI
-========================
-
-Pokud se rozhodnete nainstalovat ELF na jiném počítači s Windows, ujistěte se, že může používat WMI na dálku. Pro povolení vzdáleného WMI pro účet, který bude použit pro připojení k řadiči domény, přejděte do:
-``Computer Management`` → ``Services and Applications`` → ``WMI Control``
-Klikněte pravým tlačítkem a vyberte ``Properties``.
 
 .. image:: ./img/ad-integration-6.png
    :align: center
+   
 
-Vyberte kartu ``Security``, poté vyberte jmenný prostor ``Root`` a klikněte na tlačítko ``Security``.
+Po aktivaci této volby, resolver začne dotazovat sám sebe na PTR záznamy (za účelem obohacení log záznamů o název zařízení). Dotazy budou následně přesměrovaný na autoritativní name server dle konfigurace v DNS překladu.
+
+Poznámka: IP adresy či rozsahy v PTR záznamech se zapisují v obráceném pořadí, viz následující příklady.
+
+.. image:: ./img/ad-integration-6.png
+   :align: center
+   
 
 .. image:: ./img/ad-integration-7.png
    :align: center
+   
+Klikněte na "Přejít do konfigurace DNS překladu" a nastavte požadovaná pravidla pro přesměrování.
 
-Přidejte uživatele do seznamu nebo vyberte skupinu, ke které patří, zaškrtněte povolení ``Remote Enable``.
 
 .. image:: ./img/ad-integration-8.png
    :align: center
 
-*******************
-Event Log Forwarder 
-*******************
-
-ELF můžete nainstalovat lokálně na DC nebo na jiném počítači s Windows. ELF využívá následující spojení:
-
-
-ELF Firewall Rules
-==================
-
-====== ========= =========== ==== ========= ===========================
-Zdroj  Směr      Cíl         Port Protokol  Důvod
-====== ========= =========== ==== ========= ===========================
-ELF    --->      DC          135  TCP/UDP 
-ELF    --->      resolver    4222 TCP	     NATS Message Queue
-====== ========= =========== ==== ========= ===========================
-
-
-Instrukce pro instalaci
-=======================
-
-Instalace nebo aktualizace:
-
-.. code-block:: shell
-
-   msiexec /i "Whalebone.Event.Log.Forwarder.Installer.msi" ui="true"
-
-Odinstalace:
-
-.. code-block:: shell
-
-   msiexec /x "Whalebone.Event.Log.Forwarder.Installer.msi
-
-Konfigurace
-===========
-
-Instalátor by měl automaticky otevřít okno konfigurace. Konfiguraci můžete přistupovat z oblíbeného webového prohlížeče pomocí příkazu:
-
-.. code-block:: shell
-
-   start http://localhost:55225/Configure/AD
+V pokročilém nastavení můžete nakonfigurovat detailní parametry ohledně ukládání zpětných záznamů. Výchozí hodnoty jsou námi doporučené.
+Pokud chcete hodnoty upravit, po úpravě klikněte na tlačítko "Uložit" ve spodní části stránky.
+Nastavení je následně nutno aplikovat na resolver.
 
 .. image:: ./img/ad-integration-9.png
    :align: center
 
-Logy služby
-===========
 
-Protokoly služby lze najít v ``c:\ProgramData\Whalebone\Event Log Forwarder\``, které obsahují podrobné informace o stavu služby. V případě, že narazíte na neočekávané chování služby, prosím, zahrňte obsah této složky k požadavku na podporu.
+Přejděte zpět na stránku s resolvery a aplikujte konfiguraci na resolver stisknutím tlačítka "Nahrát konfiguraci" u vašeho resolveru.
+
+.. image:: ./img/ad-integration-10.png
+   :align: center
+
+
+
+Poznámka: PTR záznamy, které resolver provádí sám na sebe, nejsou viditelné v log záznamech o DNS provozu. Standardní DNS dotazy od klientů zůstávají logovány.
+
+
+
+
+.. toctree::
+   :maxdepth: 1
+
+   active_directory_secondary

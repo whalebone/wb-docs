@@ -5,70 +5,35 @@ Whalebone Portal (graphical user interface) gives the user number of
 possibilities how to analyze what is happening on the DNS resolvers and
 the network.
 
-
-Threats
+Content
 -------
 
-Threats are special events where there is a DNS request for a domain
-that is present within the reputation database. There are two types of
-actions when a threat is detected. The first is to **audit** the event while
-the second is to **block** it. **Audit** option only logs the domain but acces is possible.
+The **content** tab shows an overview of logged traffic subject to content filtering settings. If you do not have the content filter enabled or are not using it, nothing will be logged in this tab.
 
-The action that is to be implemented depends on the policies that are
-assigned to the specific resolver. For more on that please refer to
-`Security Policies <http://docs.whalebone.io/en/latest/security_policies.html>`__.
+How to view all queries of a specific type:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-There are some pre-configured filters that can be applied on the data on
-the portal. Some sample queries can be found below. These queries depict
-the majority of the use cases but there is no hard limit as the
-available search engine is **full-text** and *any* query can be compiled
-impromptu.
+The easiest way to select queries of a certain type is by clicking the **filter** icon and selecting the desired query type. There are several options to choose from, including ``Sexual Content``, ``Gambling``, ``Audio/video``, ``Games`` and other 13 categories out of 17 total. Alternatively you can click on of categories displayed on the pie graph under the **Category** section or directly in the plot showing all the data.
 
-You can watch step-by-step video guide `here. <https://docs.whalebone.io/en/latest/video_guides.html#threats>`__
-
-
-How to search for audit/block events:
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-There are two options for filtering different types of events. The first option, a visual filter can be used. Within the graph, you can click one of the actions (audit, block, allow) to filter it and display only the cases in which the event occurred. Second one is to click next to the **Result's filter** field on the **Filter button** and choose desired filtering option.
 
 How to search for a domain:
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The easiest way to search for a domain is by clicking on a specific domain in the log hostory. The second way is by typing the domain name into the **Result Filter** field.
-
-
-How to search for events based on specific IP address:
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Filtering logs from a specific IP address is possible by selecting a specific source IP address in the log history. The second option is by entering the domain name in the **Result Filter** field.
-
-How to search for events based on specific threat category:
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-There is a large number of threat categories.
-
-Some of them are: *malware*, *c&c*, *blacklist*,
-*phishing*, *coinminer*, *spam*, and *compromised*.
-
-A simple way to find attacks is by selecting a specific category from the pie charts or in the log list under the **Threat Categories** column. Another option is to click the **Filter result** button next to the **Filter** field and select the desired filtering option.
-
+To search for domains, you can use the **Result Filter** text box to enter the name of the domain you are looking for. Other ways to search for a domain is by clicking the domain in the **Domain** section or directly in the log list in the same column.
 
 How to change the date range of the available data:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The range of data that can be displayed in the portal preview can be changed in several ways.
-The basic selection method includes choosing predefined time windows (1,7, 14 or 30 days) in the drop-down list next to the **results filter**. If necessary, a specific time range can be specified using the **Start Date and Time** and **End Date and Time** windows.
-
-How to analyze a domain:
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-In case to know further information about domain, especially what score 
-Whalebone assigns to particular domain, when was first seen and categorized 
-as malicious, if it falls under regulatory category or what external sources 
-know about it, then watch step-by-step video `here <https://docs.whalebone.io/en/latest/video_guides.html#domain-analysis>`__.
+The range of data that can be displayed in the portal preview can be changed in several ways. The basic selection method includes selecting predefined time windows (1 or 7) from the drop-down list located next to the **results filter**. If desired, a specific time range can be specified using the **Start Date and Time** and **End Date and Time** windows.
 
 
+By clicking on the pie graphs you can also filter out the **Client IP** and **Resolver**.
+
+Domain categorization change
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+It may happen that some of the domains are categorized incorrectly. You can check which categories a domain falls into by using the **Domain Analysis** tool located in the user menu. After entering a domain, the **Content Categorization** section will appear, showing the categories the domain falls into and also offering a **Suggest Category Change** button to suggest a change in categorization. It is also possible to report a domain as a false positive using the **Report as malicious** button.
+ 
 DNS Traffic
 -----------
 
@@ -82,7 +47,7 @@ live) of the answer.
    hour time frame. For this reason, a query might not be available on
    the portal even though it has been resolved.
 
-You can watch step-by-step video guide `here <https://docs.whalebone.io/en/latest/video_guides.html#dns-traffic>`__.
+You can watch step-by-step video guide :ref:`here<DNS traffic video>`.
 
 Below are some of the most useful filtering options of the available data will be described.
 
@@ -104,23 +69,95 @@ How to search for a domain:
 
 To search for domains, you can use the **Result Filter** text box to enter the name of the domain you are looking for. Other ways to search for a domain is by clicking the domain in the **Tier 2 Domains** section or directly in the log list in the same column.
 
+.. _How to change the date range of the available data traffic:
+
 How to change the date range of the available data:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The range of data that can be displayed in the portal preview can be changed in several ways. The basic selection method includes selecting predefined time windows (1,7, 14 or 30 days) from the drop-down list located next to the **results filter**. If desired, a specific time range can be specified using the **Start Date and Time** and **End Date and Time** windows.
+The range of data that can be displayed in the portal preview can be changed in several ways. The basic selection method includes selecting predefined time windows (1,7 or 14) from the drop-down list located next to the **results filter**. If desired, a specific time range can be specified using the **Start Date and Time** and **End Date and Time** windows.
 
 How to view DGA (Domain Generation Algorithm) indications:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-DGA indications can be filtered in a similar way as in the case of displaying queries of a certain type, in this case just select the last record in the list - **DGA**
+DGA indications can be filtered in a similar way as in the case of displaying queries of a certain type, in this case just select the last record in the list - **DGA**.
+
+How to report "False negative"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In some cases, it is possible that the score classification of a domain may not be correct. In the case that you feel that a domain should be blocked and is not, it is possible to report it as a malicious domain using the **Report as Malicious** button to trigger a domain review request. This option is located in the log table under the arrow icon for each query.
+ 
+
+Threats
+-------
+
+Threats are special events where there is a DNS request for a domain
+that is present within the reputation database. There are two types of
+actions when a threat is detected. The first is to **audit** the event while
+the second is to **block** it. **Audit** option only logs the domain but acces is possible.
+
+The action that is to be implemented depends on the policies that are
+assigned to the specific resolver. For more on that please refer to
+:ref:`Security Policies<Security policies>`.
+
+There are some pre-configured filters that can be applied on the data on
+the portal. Some sample queries can be found below. These queries depict
+the majority of the use cases but there is no hard limit as the
+available search engine is **full-text** and *any* query can be compiled
+impromptu.
+
+You can watch step-by-step video guide :ref:`here<Threats video>`.
+
+
+How to search for audit/block events:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+There are two options for filtering different types of events. The first option, a visual filter can be used. Within the graph, you can click one of the actions (audit, block, allow) to filter it and display only the cases in which the event occurred. Second one is to click next to the **Result's filter** field on the **Filter button** and choose desired filtering option.
+
+How to search for a domain:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The easiest way to search for a domain is by clicking on a specific domain in the log history. The second way is by typing the domain name into the **Result Filter** field.
+
+
+How to search for events based on specific IP address:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Filtering logs from a specific IP address is possible by selecting a specific source IP address in the log history. The second option is by entering the domain name in the **Result Filter** field. Note that it will create field named "request_ip:" but fulltext filter is created using field "client_ip:"
+
+How to search for events based on specific threat category:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+There is a large number of threat categories.
+
+Some of them are: *malware*, *c&c*, *blacklist*,
+*phishing*, *coinminer*, *spam*, and *compromised*.
+
+A simple way to find attacks is by selecting a specific category from the pie charts or in the log list under the **Threat Categories** column. Another option is to click the **Filter result** button next to the **Filter** field and select the desired filtering option.
+
+.. _How to change the date range of the available data threats:
+
+How to change the date range of the available data:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The range of data that can be displayed in the portal preview can be changed in several ways.
+The basic selection method includes choosing predefined time windows (1,7, 14 or 30 days) in the drop-down list next to the **results filter**. If necessary, a specific time range can be specified using the **Start Date and Time** and **End Date and Time** windows.
+
+How to analyze a domain:
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+In case to know further information about domain, especially what score 
+Whalebone assigns to particular domain, when was first seen and categorized 
+as malicious, if it falls under regulatory category or what external sources 
+know about it, then watch step-by-step video :ref:`here<Domain analysis video>`.
+
+How to report "False positive"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In some cases, it is possible that the score of a domain may be wrong. In the case that you feel a domain should not be blocked and it is blocked, it can be reported as a misclassified domain using the **Report False Positive** button to trigger a domain review request.
 
 Fulltext filtering
 ~~~~~~~~~~~~~~~~~~
 
-For more advanced use, you can use the full-text filter and build a compound query. Fulltext filtering only works in the **Threats** panel.
-.. warning::
-   The **content** and **DNS trafic** dashboards does not support fulltext filtering at the moment. Only the clickable elements will result in filtering the data in the content dashboard.
-
+For more advanced use, you can use the full-text filter and build a compound query.
 These fields can be concatenated using logical operators. ``AND, OR, NOT, <, >`` and the wildcard character ``*`` are supported. Strings do not have to be wrapped with quotes. An example of the syntax is as follows:
 ``action: block AND accu:>70 AND (client_ip: 10.20.30.41 OR 10.20.30.40 OR 192.168.*)``
 ``AND NOT geoip.country_name: Germany AND matched_iocs.classification.type: malware AND NOT phishing`` 

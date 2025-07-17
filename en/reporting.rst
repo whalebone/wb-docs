@@ -17,7 +17,7 @@ Alerts
 
 Whalebone alerting provides live updates about key information such as resolver's health, resolution status, hardware usage and it also informs about crucial security incidents and many more.
 All of these information can be passed through multiple channels e.g. email, slack, syslog or webhook. You can create new alert from predefined templates and alerts can be then customized by editing their parameters.
-You can watch step-by-step video guide `here <https://docs.whalebone.io/en/latest/video_guides.html#alerts>`__
+You can watch step-by-step video guide :ref:`here<Alerts video>`.
 
 
 .. note:: In order to turn on an alert, you first need to assign a destination for it. Click the alert name to expand it in detail and select the destination from the box. Multiple destinations may be selected by shift-clicking the addresses.

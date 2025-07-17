@@ -1,3 +1,5 @@
+.. _Deployment video:
+
 Deployment
 ==========
 
@@ -17,9 +19,12 @@ Before long, the status of the resolver changes. As soon as the resolver becomes
 .. raw:: html
 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/W_sWor-Wg-U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 |
 |
 |
+
+.. _Cloud resolvers video:
 
 Cloud resolvers
 ---------------------------
@@ -33,12 +38,15 @@ which don't necessarily get their connectivity from you, but you administer thei
 .. raw:: html
 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/kdpjCenhTVg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 |
 |
 |
 
 Configuration
 =============
+
+.. _Basic configuration video:
 
 Basic configuration
 -------------------
@@ -62,6 +70,8 @@ and assign a policy to a particular IP address or range. Make sure to save the s
 |
 |
 
+.. _Security policies video:
+
 Security policies
 -----------------
 One of the key components that need to be configured when implementing Whalebone is setting up your “Security Policies. This part of the configuration allows you to adjust the default settings. You can for example lower the blocking threshold or deactivate blocking entirel
@@ -81,9 +91,12 @@ and assign a policy to a particular IP address or rangeMake sure to save the set
 .. raw:: html
 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/vjzOeHAYi4A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 |
 |
 |
+
+.. _Blocking page configuration video:
 
 Blocking page configuration
 ---------------------------
@@ -102,6 +115,8 @@ Alternatively, you can assign it to a specific IP address or range. While you're
 |
 |
 
+.. _Alerts video:
+
 Alerts
 ------
 Set up Whalebone alerts and get live updates about what's going on with your resolvers, how secure your network is, and how well your DNS resolution works. 
@@ -117,12 +132,15 @@ at the end of the trial or any time you decide to contact Whalebone support.
 .. raw:: html
 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/GXUkPICav-o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 |
 |
 |
 
 Analysis
 ========
+
+.. _Domain analysis video:
 
 Domain analysis
 ----------------
@@ -141,6 +159,8 @@ there's quite some traffic going on and Whalebone categorizes it as a **social n
 |
 |
 |
+
+.. _DNS traffic video:
 
 DNS traffic
 ------------
@@ -162,6 +182,8 @@ Similarly, you can choose for example A queries. We specialize in the detection 
 |
 |
 
+.. _Threats video:
+
 Threats
 ---------
 Whalebone is all about protecting your network. That's why you can access a complete overview of incidents that have happened in the last three months.
@@ -169,8 +191,8 @@ Not only does the overview offer information, but it also provides you with the 
 The audited domains represent domains, which are somewhat suspicious. Their score is high enough to be listed in the log but lower that the blocking threshold. When it comes to blocked domains, the resolver returns a fully-customized blocking page with an optional bypass button.
 
 You can also filter the data by the type of incident. Let's take a look at the example of communication with the command center of the malware. We can see specific blocked domains as well as local or public IPs that tried to access them.
-This is an example of active intensive traffic from a specific IP address and communication with malware called Necurs. Such an infected client would affect the quality of other client's connections as well. 
-For every single record, you can choose different types of domain checks in the context menu. It's very practical to start the analysis by googling the domain. More often than not, though, the results will only tell you that the domain is dangerous. 
+This is an example of active intensive traffic from a specific IP address and communication with malware called Necurs. Such an infected client would affect the quality of other client's connections as well.
+For every single record, you can choose different types of domain checks in the context menu. It's very practical to start the analysis by googling the domain. More often than not, though, the results will only tell you that the domain is dangerous.
 
 Another way of checking the domain is by using various security sources. An example of such a service is a very useful website Virustotal. If you aren't convinced that there was a good reason for the blocking even after the analysis,
 feel free to report such a domain to us. We will examine the case and get back to you. In case it truly turns out to be a false positive blocking, we will globally allow access to the domain for all Whalebone customers.
@@ -178,9 +200,12 @@ feel free to report such a domain to us. We will examine the case and get back t
 .. raw:: html
 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/GVZoMOEUWzM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 |
 |
 |
+
+.. _Data Analysis video:
 
 Data Analysis
 ---------------
@@ -195,6 +220,8 @@ all the parameters are to be type directly into the URL address. This way, you c
 |
 |
 |
+
+.. _API video:
 
 API
 ----
@@ -216,6 +243,8 @@ Before you start modeling API calls in the documentation, we recommend authorizi
 |
 |
 
+.. _domain-resolution-troubleshooting:
+
 Domain resolution troubleshooting
 ----------------------------------
 When internet users can't access a domain, they often think it's the ISP's fault. More often than not, you're not the one to blame, it's the domain itself.
@@ -235,6 +264,8 @@ If you feel like you still don't really know what's going on with the domain, fe
 |
 |
 |
+
+.. _domain-tracing:
 
 Domain Tracing
 -----------------

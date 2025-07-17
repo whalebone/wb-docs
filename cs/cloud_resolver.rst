@@ -1,7 +1,7 @@
 Cloudové DNS resolvery
 ----------------------
 
-Videonávod krok za krokem si můžete prohlédnout `zde <https://docs.whalebone.io/cs/latest/video_guides.html#cloud-resolvers>`__.
+Videonávod krok za krokem si můžete prohlédnout :ref:`zde<Cloudove resolvery video>`.
 Whalebone Cloud DNS resolver je služba určená především pro malé nebo střední zákazníky, kteří mohou cloudové resolvery používat jako záložní resolver. Typicky je zaměřena na poskytovatele internetových služeb, kteří mají pouze jeden 
 on-premise resolver a pro zajištění vysoké dostupnosti používají cloudové DNS resolvery jako sekundární rekurzivní resolver pro své zákazníky. Jedním z předpokladů je definování veřejné IP adresy 
 nebo rozsahy pro přiřazení bezpečnostní politiky coudovému resolveru, aby mohl rozlišovat a poskytovat správné zásady filtrování, které jste nastavili pro svou síť. 

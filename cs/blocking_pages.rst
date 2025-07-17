@@ -1,6 +1,7 @@
 Blokační stránky
 ================
- `Zde <https://docs.whalebone.io/cs/latest/video_guides.html#blocking-page-configuration>`__ si můžete prohlédnout videonávod.
+
+:ref:`Zde<Konfigurace bokacni stranky video>` si můžete prohlédnout videonávod.
 V případě blokování přístupu k doméně (z důvodů bezpečnosti, obsahu nebo regulace) odpovídají resolvery klientům konkrétní IP adresou, která vede na jednu z blokovacích stránek. Zatímco klienti iniciují HTTP(S) spojení směrem k blokované doméně, jsou jim zobrazeny vlastní blokační stránky s různým obsahem na základě důvodu blokování. 
 Pro blokační Stránky Whalebone poskytuje vzorovou šablonu, avšak není nutné ji dodržovat a prakticky každá úprava, branding a copywriting je možný. Kód šablony je napsán tak, aby byl kompatibilní s co nejširším rozsahem prohlížečů, aby se předešlo problémům se staršími verzemi.
 
@@ -70,7 +71,7 @@ Pro nasazení, kde máte kontrolu nad koncovými body (typicky firemní prostře
 
 **Krok 1.** – Vytvořte soubor "v3_cfg" s následujícím obsahem:
 
-.. code-block:: shell
+.. code-block:: INI
 
    [req]
    req_extensions = v3_ca_extensions

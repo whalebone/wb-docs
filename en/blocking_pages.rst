@@ -1,6 +1,7 @@
 Blocking Pages
 ============================
-  You can watch step-by-step video guide `here <https://docs.whalebone.io/en/latest/video_guides.html#blocking-page-configuration>`__. 
+
+You can watch step-by-step video guide :ref:`here<Blocking page configuration video>`. 
 In case of blocking access to a domain (due to security, content or regulatory reasons), the resolvers are answering to the clients with a specific IP address that leads to one of the Blocking pages. While the clients initiate the HTTP(S) connections towards the blocked domain, they are presented with a custom Blocking page with different content based on the reason of the blocking. 
 For the Blocking Pages Whalebone provides sample template, however, they do not have to be followed and virtually every modification, branding and copywriting is possible. The template code is written to be compatible with the widest range of browsers to avoid problems with older versions.
 
@@ -72,7 +73,7 @@ For deployments, where you have control over the endpoints (typically enterprise
 
 **Step 1.** – Create "v3_cfg" file with the following contents:
 
-.. code-block:: shell
+.. code-block:: INI
 
    [req]
    req_extensions = v3_ca_extensions

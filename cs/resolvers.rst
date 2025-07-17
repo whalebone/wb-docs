@@ -25,10 +25,10 @@ Pokud došlo ke změnám konfigurace, které mají vliv na překlad DNS, je tře
 
 .. note:: Pokud nasazení skončilo chybou, zkuste akci zopakovat. Důvodem chyby může být krátkodobý výpadek komunikace mezi cloudem a resolverem.
 
+Nahrání konfigrurace.
+
 .. image:: ./img/lrv2-deployconfig.gif
    :align: center
-
-   Nahrání konfigrurace.
 
 Nastevení bezpečnostní politky pro jednotlivé segmenty
 ------------------------------------------------------
@@ -41,11 +41,10 @@ Nastavení se vztahuje na jednotlivé resolvery a lze je nakonfigurovat v část
 
 Bezpečnostní politiky lze aplikovat přidáním rozsahů IP ve vstupních oknech:
 
+Přiřazení bezpečnostní politiky.
 
 .. image:: ./img/add-policy.PNG
    :align: center
-
-   Přiřazení bezpečnostní politiky.
    
 Pro lepší pochopení uvažujme příklad s rozsahem sítě ``10.10.0.0/16``. 
 Vytvořili jsme 3 různé politiky:
@@ -57,6 +56,7 @@ Vytvořili jsme 3 různé zásady:
 * **Default**: zásada, kterou chceme použít pro celou síť, jedná se o nejobecnější zásadu.
 * **Exception**: zásada, která musí být použita na konkrétní segment v síti, který bude mít zakázáno veškeré zabezpečení a filtrování obsahu.
 * **School**: zásada, kterou chceme použít na 2 různé podsítě, které byly přiřazeny školnímu prostředí. V tomto případě jsme zvolili přísnější blokování.
+
 .. image:: ./img/policies-example.png
    :align: center
 
@@ -90,7 +90,7 @@ V návaznosti na předchozí příklad bychom v případě, že bychom chtěli p
 
 
 Konfigurace blokačních stránek
--------------------------
+------------------------------
 
 Podobně jako zásady zabezpečení lze k určitým rozsahům přiřadit i různé blokační stránky.
 

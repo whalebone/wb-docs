@@ -1,0 +1,39 @@
+name: Update Submodule Consumers
+
+on:
+  push:
+    branches:
+      - content  # Trigger only on content updates
+
+jobs:
+  update-submodule:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        target_branch: [immunity_product, peacemaker_product]
+
+    steps:
+      - name: Checkout target branch ${{ matrix.target_branch }}
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ matrix.target_branch }}
+          submodules: recursive
+          token: ${{ secrets.GH_PAT }}
+
+      - name: Update submodule to latest commit
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+
+          # Fetch the latest submodule commit
+          git submodule update --remote shared-content
+
+          # Stage and commit if there are changes
+          if ! git diff --quiet; then
+            git add shared-content
+            git commit -m "chore: update submodule to latest content"
+            git push origin ${{ matrix.target_branch }}
+          else
+            echo "No changes to commit for ${{ matrix.target_branch }}"
+          fi

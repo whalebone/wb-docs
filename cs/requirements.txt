@@ -1,4 +1,0 @@
-Sphinx>=3
-docutils <0.17
-sphinx-rtd-theme
-furo

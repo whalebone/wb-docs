@@ -3,7 +3,7 @@ name: Update Submodules in Brand Branches
 on:
   push:
     branches:
-      - content  # Trigger when the content branch is updated
+      - master  # Trigger when the master branch is updated
 
 jobs:
   update-submodules:
@@ -35,7 +35,7 @@ jobs:
           # Stage and commit if there are changes
           if ! git diff --quiet; then
             git add content
-            git commit -m "Update submodule to latest content"
+            git commit -m "Update submodule to the latest commit version"
             git push origin ${{ matrix.target_branch }}
           else
             echo "No changes to commit for ${{ matrix.target_branch }}"

@@ -27,7 +27,7 @@ jobs:
           git config --global user.email "actions@github.com"
 
           # Fetch the latest submodule commit
-          #git submodule update --remote content
+          git submodule update --remote content
           cd content
           git fetch origin master
           git merge origin master

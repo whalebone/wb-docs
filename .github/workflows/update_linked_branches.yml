@@ -29,7 +29,8 @@ jobs:
           # Fetch the latest submodule commit
           #git submodule update --remote content
           cd content
-          git pull origin master
+          git fetch origin master
+          git merge origin master
           cd ..
 
           # Stage and commit if there are changes

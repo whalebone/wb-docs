@@ -118,6 +118,29 @@ Content filtering
 *	**P2P**: domains linked to peer to peer networks where multimedia content is shared by the users,
 *	**Tracking**: web and email tracking systems.
 
+Safe Search
+^^^^^^^^^^^
+
+The most known search engine offers the possibility of safe search - filtering the search results safe for minors. Safe Search is automatically enabled if the filtering for one of the following content categories is enabled:
+
+* Sexual content (Adult)
+* Weapons (Adult)
+* Child abuse (Crime)
+* Drugs (Crime)
+* Terrorism (Crime)
+* Violence (Crime)
+
+The following search engines are supported:
+
+* Google
+* YouTube
+* Bing
+* DuckDuckGo
+* Ecosia
+
+Filtering schedule
+^^^^^^^^^^^^^^^^^^
+
 The content filter can also be applied for specific times of the day. When a particular category is ticked, a clock icon will appear next to it. If you click the clock icon, you can add a new schedule for this category. Multiple schedules may be active for the same category. This way, you may only allow access to social networks during the lunch break and after working hours. Finish the settings by clicking **Apply** and **Save** the security policy.
 
 .. image:: ./img/schedules.png

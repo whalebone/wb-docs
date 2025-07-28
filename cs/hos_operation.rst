@@ -18,9 +18,17 @@ HOS neustále sleduje změny na síťových rozhraních a na základě podmínek
 ``Neaktivní`` 
     DNS trafic zůstává nedotčen. Tento stav se používá, když se zařízení nemůže připojit k internetu nebo když je připojeno přes vnitřní síť.
 
+• Klient se nyní automaticky pozastaví při detekci VPN či konfliktní služby.
+
 Bezpečnost
 ==========
 Na pozadí HOS používá **DNS-over-HTTPs** neboli **DoH**. Název **Hostname** z **Resolveru** není nikdy přesměrován a je uložen v mezipaměti. Identifikace a autentizace je ponechána na protokolu TLS. Pokud zařízení patří k libovolné **Doméně**, pak je všem doménovým jménům a jejich subdoménám umožněno přistoupit k serverům DNS, na které jsou směrovány. HOS používá k získání informací tabulku ``Win32_NetworkAdapterConfiguration`` WMI.
+
+.. important::
+   Od verze **2.20.4** validuje HOS **všechny** moderní DNS záznamy
+   (A, AAAA, CNAME, MX, TXT, HTTPS, SVCB aj.).  
+   Není třeba další konfigurace, ale firewall musí stále povolit
+   odchozí TCP 443 na *hos.whalebone.io*.
 
 
 Systémové požadavky
@@ -28,6 +36,9 @@ Systémové požadavky
 
 Windows
 -------
+
+• HOS rozpozná nejběžnější VPN klienty (Perimeter81, Cisco Secure Client/AnyConnect, FortiClient, Windows VPN) a dočasně pozastaví odchytávání paketů, dokud se VPN neodpojí.
+• Kontrola konektivity k Internetu nyní využívá nativní API Windows místo externích HTTP dotazů, což snižuje falešné stavy „Bez internetu“.
 
 Protože služba HOS musí zachytávat síťový provoz, musí být spuštěna jako **SYSTEM**. Můžete se dotázat na služby podle názvu **hos** a zjistit, zda se správně spustila. Pokud není zadán žádný nebo je zadán neplatný instalační token, služba se zastaví.
 
@@ -111,10 +122,13 @@ Není nutné, aby služba naslouchala na portu 53. Kromě toho služba naslouch�
 Aplikační Logy
 ==============
 
-Nacházejí se na adrese ``c:\ProgramData\Whalebone\Home Office Security\Logs\``, obsahují podrobné informace o stavech a provozu aplikace. V případě, že se setkáte s neočekávaným chováním služby, zašlete obsah složky Log a/nebo složly Config spolu se svým dotazem na podporu. Aplikace poskytuje další informace pro sledování provozu, v aplikaci AdminUI.exe, karta Události vám může poskytnout lepší přehled o provozu HOS.
+Nacházejí se na adrese ``c:\ProgramData\Whalebone\Home Office Security\Logs\``, obsahují podrobné informace o stavech a provozu aplikace. V případě, že se setkáte s neočekávaným chováním služby, zašlete obsah složky Log a/nebo složly Config spolu se svým dotazem na podporu. Aplikace poskytuje další informace pro sledování provozu, v aplikaci AdminUI.exe, karta Události vám může poskytnout lepší přehled o provozu HOS. Od v2.20.4 se navíc logují odpovědi DNS dotazů.
 
 
 Odinstalování aplikace
 ======================
 
-Chcete-li aplikaci zcela odstranit, odinstalujte službu a odstraňte veškerý obsah z ``c:\ProgramData\Whalebone\Home Office Security\``.
+Standardní odinstalace přes Windows „Přidat/Odebrat programy“
+nebo příkaz **msiexec /x** odstraní službu **a zároveň**
+vymaže složku ``C:\ProgramData\Whalebone\Home Office Security\``,
+čímž zabrání zůstatkovým datům předchozích instalací.

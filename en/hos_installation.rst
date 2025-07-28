@@ -20,13 +20,10 @@ A Default Device group should already exist. If not, create one by clicking the 
 * **Policy**: corresponds to the policies you create in the Configuration menu. It is a set of rules that instructs how to operate. Based on policy the device or the local/cloud resolver decides what to during DNS resolution. This set of rules persist on the device and is updated initially and later synchronized. Because of this Portal provides monitoring of these devices.
 * **Blocking page**: corresponds to the blocking pages you create in the Configuration menu. 
 * **Domain exceptions**: HOS service will not divert any DNS queries that contain question for domain on the exception list. E.g. when ``example.com`` is specified, the DNS request will be resolved as usual on the resolver configured by operating system. A same rule applies for question ``subdomain.example.com``.
-* **Automatic upgrade**: When this configuration option is checked, HOS application on Windows will update to latest production version when a newer version is available to download. This option takes effect on Windows only, on mobile upgrades are performed by the vendor ecosystem.
 * **Disable HOS inside the corporate network**: When this option is checked, 3 more text boxes will appear. The configuration allows the HOS to be disabled within the corporate network based on a query-response process. 
     * **Internal Domain**: Specifies which internal domain HOS will periodically query.
     * **Internal Response**: HOS expects the response specified in this field after sending a query to the internal domain.
     * **Query Type**: According to the selected query type (A, AAAA and MX), the record on the internal domain controller must be configured correctly.
-
-.. warning:: Please note that two settings mentioned above (Automatic upgrade and Domain exception) are featured in version 2.10.0 for Windows only. If you are running earlier version, please update to 2.10.0 manually.
 
 When you're done, click **Add** button to create this group.
 
@@ -45,17 +42,25 @@ If you haven't already download the installer (6). While the installer is being 
 To install or Update:
 
 .. code-block:: shell
-
-    msiexec /i "Whalebone.Home.Office.Security.Installer.msi" TOKEN="60d5806e-07fe-432a-a4ad-7797d82782b3"
+    :caption: Install or update (Windows 64‑bit)
+    msiexec /i "Whalebone.Home.Office.Security.Installer.msi" ^
+           TOKEN="60d5806e-07fe-432a-a4ad-7797d82782b3" ^
+           REGION="eu-01"
 
 Uninstall:
 
 .. code-block:: shell
+    :caption: Uninstall (removes program data automatically from v 2.20 ↑)
 
     msiexec /x "Whalebone.Home.Office.Security.Installer.msi
 
 .. image:: ./img/hos-sbs-5.png
     :align: center
+
+.. note::
+   • **REGION** is optional.  Accepted values are **eu-01**, **am-01**
+     and **apac-01**.  
+   • The installer is now **64‑bit only**; x86 Windows is no longer supported.
 
 
 Find the folder where the installer is located. It should be file named **Whalebone.Home.Office.Security.Installer.msi**.

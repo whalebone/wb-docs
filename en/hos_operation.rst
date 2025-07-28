@@ -115,6 +115,7 @@ If HOS service does not work please ensure that HOS service can connect to **hos
 
     netsh advfirewall firewall add rule name="Whalebone Home Office Security" dir=out action=allow program="C:\Program Files (x86)\Whalebone\Home Office Security\Whalebone Home Office Security.exe" enable=yes remoteip=185.150.10.71,LocalSubnet
 
+The local UI ports (55221 / 9000) now auto‑retry on higher ports when occupied, so create rules for **dynamic TCP ≥ 55000** if your hardening policy blocks localhost traffic.
 
 It is not necessary for the service to listen on port 53, thus there is no requirement for the application firewall to follow.
 

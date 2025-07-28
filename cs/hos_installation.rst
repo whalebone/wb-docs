@@ -73,7 +73,7 @@ Instalační program má minimální uživatelské rozhraní.
 .. image:: ./img/hos-sbs-6.png
     :align: center
 
-.. Tip:: The installer has very minimal UI. If there was no error message, consider the installation successful.
+.. Tip:: Instalátor skončí s *Error 1602*, pokud chybí nebo je neplatný parametr **TOKEN** či **REGION**.
 
 .. image:: ./img/hos-sbs-7.png
     :align: center

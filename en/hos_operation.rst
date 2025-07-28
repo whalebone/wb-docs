@@ -19,11 +19,18 @@ HOS is constantly monitoring changes on the network interfaces and based on the 
 ``Inactive`` 
     DNS trafic is left intact. This state is used when device can't connect to the Internet or when it is connected through internal network.
 
+• The agent now automatically pauses when a 3rd‑party VPN or conflicting Windows service is detected.
+
 
 Security
 ========================
 In the background HOS uses **DNS-over-HTTPs** or **DoH**. The **Hostname** of the **Resolver** is never diverted and is cached. The identification and authenticity is left to the TLS protocol. When device belongs to any **Domain**, then all domain names and their subdomains are allowed to reach the DNS servers they route to. HOS uses ``Win32_NetworkAdapterConfiguration`` WMI table to get the information.
 
+.. important::
+   From **v 2.20.0** HOS validates **all** modern DNS record types
+   (A, AAAA, CNAME, MX, TXT, HTTPS, SVCB, etc.).  
+   No extra setup is required, but firewall rules MUST still allow outbound
+   TCP 443 to *hos.whalebone.io*.
 
 
 Service requirements
@@ -33,6 +40,9 @@ Windows
 -------
 
 Because HOS must intecept network traffic it requres to run as **SYSTEM** account. You can query the service by name **hos** to see if it started properly. When none or invalid installation token is supplied the service it will stop.
+
+• HOS detects the most common VPN clients (Perimeter81, Cisco Secure Client/AnyConnect, FortiClient, Windows VPN) and suspends packet interception until the VPN disconnects.
+• Internet‑reachability checks now use a native Windows API instead of external HTTP probes, reducing false “No internet” states.
 
 .. code-block:: shell
 
@@ -114,10 +124,12 @@ Additionally, service is listening on **TCP endpoint localhost:9000** to provide
 Application Logs
 ================
 
-Service logs can be found at ``c:\ProgramData\Whalebone\Home Office Security\Logs\``, which contain detailed information about application states and operation. In case you encounther unexpected service behaviour please include this Log folder and/or Config folder along inside your support ticket. Application provides additional information for operation trace, in AdminUI.exe app, Events tab may give you better insight in HOS operation.
+Service logs can be found at ``c:\ProgramData\Whalebone\Home Office Security\Logs\``, which contain detailed information about application states and operation. In case you encounther unexpected service behaviour please include this Log folder and/or Config folder along inside your support ticket. Application provides additional information for operation trace, in AdminUI.exe app, Events tab may give you better insight in HOS operation. Since v 2.20.4 the service also logs resolved DNS answers.
 
 
 Uninstalling the app
 ====================
 
-To completely remove the app, uninstall the service and delete all contents from ``c:\ProgramData\Whalebone\Home Office Security\``
+Running the standard Windows uninstaller or the **msiexec /x** command
+removes the service **and** wipes ``C:\ProgramData\Whalebone\Home Office Security\``,
+eliminating stale state from previous installations.

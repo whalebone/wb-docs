@@ -36,21 +36,21 @@ Supported OS
 ====================
 
 
-+-----------------+-------------------------------+
-| Windows Desktop | Windows 7 SP1 (64‑bit)        |
-+=================+===============================+
-| Android         | Android 5 or higher           |
-+-----------------+-------------------------------+
-| iOS             | All versions                  |
-+-----------------+-------------------------------+
-| MacOS           | MacOS 13.0                    |
-+-----------------+-------------------------------+
-| Linux           | Not supported                 |
-+-----------------+-------------------------------+
++-----------------+----------------------------------+
+| Windows Desktop | Windows 10 (64‑bit) or higher    |
++=================+==================================+
+| Android         | Android 5 or higher              |
++-----------------+----------------------------------+
+| iOS             | iOS 15.0, for SDK it is 13.4     |
++-----------------+----------------------------------+
+| MacOS           | MacOS 13.0 or higher             |
++-----------------+----------------------------------+
+| Linux           | Not supported                    |
++-----------------+----------------------------------+
 
 .. note:: 32‑bit Windows builds (x86) are no longer supported from v 2.20.4.
 
-Windows 7 systems must be up-to-date or at least have KB3033929 installed.
+Windows 10 systems must be up-to-date.
 
 Windows Server 2016 systems must have secure boot disabled.
 

@@ -14,7 +14,7 @@ Multitenancy umožňuje MSP, ISP, CERT a velkým podnikům spravovat více záka
 
 Hlavní funkce:
 
-* **Vytváření hlavních tenantů a správa podřízených tenantů**: Označte libovolného zákazníka jako hlavního tenanta a vytvářejte podřízené tenanty ručně nebo pomocí API; vazby rodič/potomek lze přejmenovat, přesunout nebo bezpečně smazat díky vestavěným kontrolám resolveru, provozu a zařízení.
+* **Vytváření hlavních tenantů a správa podřízených tenantů**: Označte libovolného zákazníka jako hlavního tenanta a vytvářejte podřízené tenanty; vazby rodič/potomek lze přejmenovat, přesunout nebo bezpečně smazat díky vestavěným kontrolám resolveru, provozu a zařízení.
 
 * **Vnořená hierarchie tenantů**: Strom libovolné hloubky s přepínačem zákazníků pro okamžitou změnu kontextu.
 
@@ -23,8 +23,6 @@ Hlavní funkce:
 * **Pozvánky uživatelů napříč tenanty**: Pozvěte uživatele s plnými právy (Full-Admin) nebo pouze pro čtení (Read-Only), kteří automaticky zdědí práva napříč všemi podřízenými tenanty, nebo jim přiřaďte granulární role pro jednotlivé tenanty.
 
 * **Centrální konzole**: Vyhrazený dashboard, viditelný pro jakéhokoli uživatele s rolí tenanta, umožňuje jedním klikem vytvářet, přesouvat, mazat a exportovat statistiky dotazů na úrovni tenantů do CSV.
-
-* **Správa tenantů pomocí API**: Hromadné vytváření, čtení, aktualizace, mazání, přesuny v hierarchii a volitelné vynucené mazání pro externí provisioning nebo ticketovací systémy.
 
 * **Upozornění o ochraně soukromí**: Trvalé upozornění na stránce Users informuje, že administrátoři poskytovatele služeb mohou zobrazit seznam uživatelů pro správu prostředí.
 

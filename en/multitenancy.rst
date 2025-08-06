@@ -15,7 +15,7 @@ Multitenancy allows MSPs, ISPs, CERTs, and large enterprises to manage many cust
 
 Main features:
 
-* **Master-Tenant Creation & Sub-Tenant Management**: Flag any customer as a Master Tenant to spawn sub-tenants manually or via API; parent/child links can be renamed, moved, or safely deleted with built-in resolver, traffic, and device checks.
+* **Master-Tenant Creation & Sub-Tenant Management**: Flag any customer as a Master Tenant to spawn sub-tenants; parent/child links can be renamed, moved, or safely deleted with built-in resolver, traffic, and device checks.
 
 * **Nested Tenant Hierarchy**: Unlimited depth tree with an at-a-glance customer switcher for instant context changes.
 
@@ -24,8 +24,6 @@ Main features:
 * **Cross-Tenant User Invitation**: Invite Full-Admin or Read-Only users that automatically inherit rights across all sub-tenants, or assign granular per-tenant roles.
 
 * **Master Console**: Dedicated dashboard, visible to any tenant-role user, for one-click create, move, delete, and CSV export of per-tenant query stats.
-
-* **Manage Tenants API**: Batch create, read, update, delete, hierarchy moves, and optional force-delete for external provisioning or ticketing systems.
 
 * **Privacy Disclosure Banner**: A persistent notice on the Users page clarifies that service-provider admins may view the user list for environment management.
 

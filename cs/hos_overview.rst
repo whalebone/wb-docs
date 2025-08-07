@@ -3,7 +3,7 @@ Přehled Home Office Security
 ****************************
 
 Whalebone HOS • v 2.20.4 v kostce
---------------------------------
+---------------------------------
 
 * **Multi‑regionální podpora** – automatický výběr nejbližšího resolveru
   pomocí nového přepínače *REGION* v instalátoru.

@@ -52,6 +52,7 @@ Instalace / aktualizace (Windows 64‑bit):
 Odinstalace (od v2.20.4 vyčistí také ProgramData):
 
 .. code-block:: shell
+
     msiexec /x "Whalebone.Home.Office.Security.Installer.msi
 
 .. image:: ./img/hos-sbs-5.png

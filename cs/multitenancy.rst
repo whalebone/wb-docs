@@ -24,13 +24,16 @@ Hlavní funkce:
 
 * **Centrální konzole**: Vyhrazený dashboard, viditelný pro jakéhokoli uživatele s rolí tenanta, umožňuje jedním klikem vytvářet, přesouvat, mazat a exportovat statistiky dotazů na úrovni tenantů do CSV.
 
+* **Správa tenantů pomocí API**: Hromadné vytváření, čtení, aktualizace, mazání, přesuny v hierarchii a volitelné vynucené mazání pro externí provisioning nebo ticketovací systémy.
+
+* **Děděné politiky**: Rodičovští tenanté mohou publikovat blokovací prahové hodnoty, obsahové filtry, regulační seznamy a seznamy Deny/Allow, které se propagují k potomkům.
+
 * **Upozornění o ochraně soukromí**: Trvalé upozornění na stránce Users informuje, že administrátoři poskytovatele služeb mohou zobrazit seznam uživatelů pro správu prostředí.
 
 * **Statistiky tenantů a export do CSV**: Měsíční počty dotazů jsou zobrazeny v konzoli a ke stažení pro jakéhokoli uživatele s rolí tenanta.
 
 .. Povolte tyto funkce, jakmile bude funkce připravena a zveřejněna ve všech regionech:
-.. * Děděné politiky: Rodičovští tenanté mohou publikovat blokovací prahové hodnoty, obsahové filtry, regulační seznamy a seznamy Deny/Allow, které se propagují k potomkům.
-.. * Prosazení politik a jemné doladění: Označte jakoukoli politiku nebo jednotlivé pravidlo jako Enforced pro její uzamčení, nebo povolte podřízeným tenantům upravovat, sledovat rozdíly a „Obnovit výchozí“.
+.. * **Prosazení politik a jemné doladění**: Označte jakoukoli politiku nebo jednotlivé pravidlo jako Enforced pro její uzamčení, nebo povolte podřízeným tenantům upravovat, sledovat rozdíly a „Obnovit výchozí“.
 
 Administrace tenantů
 ====================
@@ -44,3 +47,12 @@ Tři tečky vedle každého tenanta v seznamu tenantů otevřou nabídku, kde mo
 
 .. image:: ./img/multitenancy-2.png
     :align: center
+
+Známé limitace
+==============
+
+* Děděné politiky nemohou být nastaveny pomocí API.
+
+* Blokovací stránky nepodporují dědičnost a děděné politiky.
+
+* Správa tenantů je ve výchozím nastavení vypnutá. Pokud chcete aktivovat tuto funkci, kontaktujte nás prosím prostřednictvím helpdesku.

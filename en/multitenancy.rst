@@ -25,12 +25,15 @@ Main features:
 
 * **Master Console**: Dedicated dashboard, visible to any tenant-role user, for one-click create, move, delete, and CSV export of per-tenant query stats.
 
+* **Manage Tenants API**: Batch create, read, update, delete, hierarchy moves, and optional force-delete for external provisioning or ticketing systems.
+
+* **Inherited Policies**: Parent tenants can publish Blocking Thresholds, Content Filters, Regulatory Lists, and Allow/Deny Lists that flow to descendants.
+
 * **Privacy Disclosure Banner**: A persistent notice on the Users page clarifies that service-provider admins may view the user list for environment management.
 
 * **Tenant Statistics & CSV Export**: Monthly query counts shown in the console and downloadable by any tenant-role user.
 
 .. Enable these when the feature is ready and published to all regions:
-.. * **Inherited Policies**: Parent tenants can publish Blocking Thresholds, Content Filters, Regulatory Lists, and Allow/Deny Lists that flow to descendants.
 .. * **Policy Enforcement & Fine-Tuning**: Mark any policy or an individual rule as Enforced to lock it, or allow sub-tenants to adjust, view deltas, and "Reset to Default."
 
 Tenant administration
@@ -45,3 +48,12 @@ When in the tenant list, the three dots next to each tenant open a menu where ad
 
 .. image:: ./img/multitenancy-2.png
    :align: center
+
+Known limitations
+=================
+
+* Inherited policies cannot be configured using the API.
+
+* Blocking pages cannot be inherited.
+
+* Multitenancy is disabled by default. If you want to enable it, please contact us using the Whalebone Helpdesk.

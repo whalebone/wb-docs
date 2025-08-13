@@ -2,6 +2,8 @@
 Multitenancy
 ************
 
+.. note:: Multitenancy is disabled by default. If you want to enable it, please contact us using the Whalebone Helpdesk.
+
 .. only:: Aura
 
     .. warning:: Multitenancy is available only to Aura Full and Aura Premium customers.
@@ -42,12 +44,57 @@ Tenant administration
 Tenant administration is accessible from the account settings in the upper right screen on the Whalebone portal.
 
 .. image:: ./img/multitenancy-1.png
-   :align: center
+    :align: center
 
 When in the tenant list, the three dots next to each tenant open a menu where administrators can access the tenant's dashboard, create a sub-tenant, edit it, move it to a different sub-tree, or delete it.
 
 .. image:: ./img/multitenancy-2.png
-   :align: center
+    :align: center
+
+Roles
+=====
+
+The following roles are available for tenant management:
+
+* **Tenant Owner**:
+
+    * Full control over the tenant (create, read, update, delete, and move), including creating sub-tenants, managing policies, and configuring settings.
+
+    * When a Tenant Owner switches to a customer he or she behave as a customer administrator.
+
+* **Tenant Administrator**:
+
+    * Can manage sub-tenants, policies, and settings but cannot delete.
+
+    * When a Tenant Administrator switches to a customer he or she behaves as a customer administrator.
+
+* **Tenant Viewer**:
+
+    * Can view all tenants, tenant information and statistics but cannot make changes.
+
+    * When a Tenant Viewer switches to a customer he or she behaves as a read only role.
+
+All users with the Tenant Owner or Tenant Administrator roles can invite other users to the tenant. Tenant Owners can invite users with the Tenant Owner, Tenant Administrator, or Tenant Viewer roles. Tenant Administrators can invite users with the Tenant Administrator or Tenant Viewer roles. There is a switch on ther invite form to allow the invited user to manage sub-tenants.
+
+.. image:: ./img/multitenancy-3.png
+    :align: center
+
+Inherited policies
+==================
+
+Inherited policies allow parent tenants to define and publish policies that are automatically offered to sub-tenants as default policies when creating a new resolver or registering a subnet on cloud resolvers. This ensures consistent policy enforcement across the tenant hierarchy. It also allows administrators on higher levels to manage policies centrally, reducing the need for repetitive configuration at each sub-tenant level. In addition, administrators always have the option to choose an inherited policy or create a new one with custom configuration.
+
+.. figure:: ./img/multitenancy-4.png
+    :alt: Inherited policies settings
+    :align: center
+
+    Policy inheritance can be enabled or disabled for each policy in its settings.
+
+.. figure:: ./img/multitenancy-5.png
+    :alt: Inherited policy cannot be modified at sub-tenant level
+    :align: center
+
+    When a policy is inherited, it cannot be modified at the sub-tenant level.
 
 Known limitations
 =================
@@ -55,5 +102,3 @@ Known limitations
 * Inherited policies cannot be configured using the API.
 
 * Blocking pages cannot be inherited.
-
-* Multitenancy is disabled by default. If you want to enable it, please contact us using the Whalebone Helpdesk.

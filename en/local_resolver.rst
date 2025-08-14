@@ -1,49 +1,69 @@
-******************
+**************
 Local resolver
-******************
+**************
 
 Deploying the Whalebone |product| as a **local resolver** brings the advantage of visibility of local IP addresses that send the actual requests. If deploying locally is not a suitable option for you, 
-check out the :ref:`Cloud deployment.<Cloud deployment>`
+check out the :ref:`Cloud deployment<Cloud deployment>`.
 
 Whalebone resolver is based on the implementation of `Knot Resolver <https://www.knot-resolver.cz/>`_ developed in the CZ.NIC labs.
-
 
 Local resolver system requirements
 ==================================
 
-Local resolver is supported on **solely dedicated** (physical or virtual) machine running a supported operating system and Docker engine. Running resolver on unsupported versions of OS and/or docker or with other services might lead to incorrect behavior or issues with service/resolution. Please be aware that not-compliance of these requirements makes troubleshooting more complicated in case of issues with the product.
+Hardware and software requirements
+----------------------------------
 
-Please perform regular checks and maintain the resolver's OS and Docker engine versions up-to-date to ensure stability of the service.
+Local resolver is supported on **solely dedicated** physical or virtual machine running a supported operating system and Docker engine. Running resolver on unsupported versions of operating system and/or Docker or with other services might lead to incorrect behavior or issues with service or resolution. Please be aware that not-compliance of these requirements makes troubleshooting more complicated in case of issues with the product.
 
-* **Supported operating system** (64-bit, server editions of following distributions):
+Please perform regular checks and maintain the resolver's operating system and Docker engine versions up-to-date to ensure stability of the service.
 
-Please see following links to see which versions are supported. Whalebone supports operating systems that are suported by the standard support periods of OS publishers.
+* **Operating system**
 
-  * `Red Hat Enterprise Linux (Full support) <https://access.redhat.com/product-life-cycles?product=Red%20Hat%20Enterprise%20Linux>`_
-  * `CentOS Stream (Active support) <https://endoflife.date/centos-stream>`_
-  * `Debian (Supported by LTS team) <https://wiki.debian.org/LTS/>`_
-  * `Ubuntu (Standard support) <https://ubuntu.com/about/release-cycle>`_
+  * The operating system must support the amd64-bit architecture.
+  * Whalebone requires an actively maintained operating system distributed by one of the following operating system publishers:
 
-* **Supported docker version**
+    * `Red Hat Enterprise Linux (Full support) <https://access.redhat.com/product-life-cycles?product=Red%20Hat%20Enterprise%20Linux>`_
+    * `CentOS Stream (Active support) <https://endoflife.date/centos-stream>`_
+    * `Debian (Supported by LTS team) <https://wiki.debian.org/LTS/>`_
+    * `Ubuntu (Standard support) <https://ubuntu.com/about/release-cycle>`_
+
+* **Docker**
+
   * Whalebone supports and is tested on versions of Docker that are supported by the community. See the supported versions `here <https://endoflife.date/docker-engine>`_.
 
-* **Supported filesystems** 
+* **File systems** 
 
   * ext4
   * xfs only with d_type support (ftype=1)
 
-* **Minimum hardware sizing** (physical or virtual):
+* **Minimum hardware sizing**
 
   * 2 CPU cores
+
+  * The CPU supports the amd64-bit architecture and the x86-64-v2 instruction set. See below for instructions on how to verify if x86-64-v2 is supported:
+
+    * Ubuntu, Debian:
+
+      * Execute ``/lib64/ld-linux-x86-64.so.2 --help``.
+      * Check if you see ``x86-64-v2 (supported, searched)`` in the terminal.
+
+    * Red Hat Enterprise Linux, CentOS Stream:
+
+      * Execute ``/lib/ld-linux-x86-64.so.2 --help``.
+      * Check if you see ``x86-64-v2 (supported, searched)`` in the terminal.
+
   * 4 GB RAM
-  * 80 GB HDD (at least 70 GB in /var partition)
+  * 80 GB HDD with at least 70 GB in /var partition
 
 .. warning:: Please note that Whalebone only supports deloyments without desktop environments such as GNOME, KDE or Xfce as those can impact available memory and DNS processing on the server.
 
-* **Network setup requirements** (local resolver needs the following egress ports opened):
+Network requirements
+--------------------
+
+  * Local resolver needs the following egress ports opened:
   
   =========== =========== ======= =================================== ======================
-  Direction   Protocol(s)  Port    Destination IP/Domain              Description         
+  Direction   Protocol(s) Port    Destination IP/Domain               Description         
   =========== =========== ======= =================================== ======================
   Outbound    TCP+UDP     53      Any                                 DNS resolution        
   Outbound    TCP         443     resolverapi.whalebone.io            Database updates
@@ -77,7 +97,7 @@ Please see following links to see which versions are supported. Whalebone suppor
   Outbound    TCP         443     data.iana.org                       DNSSEC keys       
   =========== =========== ======= =================================== ======================
   
-  .. warning:: Without communication on port 443 to the domains listed above the resolver won't be installed at all (the installation script will abort).
+  .. warning:: Without communication on port 443 to the domains listed above, the resolver won't be installed at all and the installation script will abort.
 
   
   The main function of the resolver to get queries from the customers and answer back to them the answer requires certain ports to be opened on the resolver for the traffic originating from the client subnet or coming to the customer interface.
@@ -107,19 +127,17 @@ Please see following links to see which versions are supported. Whalebone suppor
   Inbound      TCP       ANY     127.0.0.1                   Resolver's processes communication 
   ============ ========= ======= =========================== ===================================
 
-.. note:: For hardware sizing estimation of large ISP or Enterprise networks feel free to contact Whalebone. Whalebone local resolver will need approx. twice the RAM and CPU than usual resolver (BIND, Unbound). 
-
-
+.. note:: For hardware sizing estimation of large ISP or Enterprise networks feel free to contact Whalebone. Whalebone local resolver will need approx. twice the RAM and CPU than usual resolver BIND or Unbound. 
 
 Installation of a new local resolver
 ====================================
 
-You can watch step-by-step video guide about the installation procedure :ref:`here.<Deployment video>`
+You can watch step-by-step video guide about the installation procedure :ref:`here<Deployment video>`.
 
 In menu **Resolvers** press the button **Create new**. Choose a name (identifier) for your new resolver. The input is purely informative and won't affect the functionality.
 Once you've entered the name, click **Add resolver** button.
 After clicking the button an informative window will pop up with list of supported platforms and the one-line command for the installation. Copy the command and run on the machine dedicated for the local resolver.
-The command will run the installation script and will pass the one time token used for the resolver activation (the same command can't be used repeatedly).
+The command will run the installation script and will pass the one time token used for the resolver activation. The same command can't be used repeatedly.
 
 .. image:: ./img/lrv2-create.gif
 	:align: center
@@ -132,7 +150,7 @@ Successful run of the installation script is ended with the notification ```Fina
    :align: center
 
 
-.. warning:: Local resolver is configured as an open resolver. It will respond to any request sent. This is quite comfortable in terms of availability of the services, but also could be a risk if the service is available from the outside networks. Please make sure you limit the access to the local resolver on port 53 (UDP and TCP) from the trusted networks only, otherwise it can be misused for various DoS attacks.
+.. warning:: Local resolver is configured as an open resolver. It will respond to any request sent. This is quite comfortable in terms of availability of the services, but also could be a risk if the service is available from the outside networks. Please make sure you limit the access to the local resolver on port UDP/53 and TCP/53 from the trusted networks only, otherwise it can be misused for various DoS attacks.
 
 .. important:: The resolver's processes need to communicate on localhost. In case some firewall is in place please make sure that the traffic is allowed, i.e. ``iptables -A INPUT -s 127.0.0.1 -j ACCEPT``
 
@@ -168,9 +186,9 @@ Please review your settings and if the issue persists, please contact support.
 
 
 Securing your resolver
--------------------------
+----------------------
 
 Upon initial installation, the resolver is configured as an open resolver. It will respond to any request sent to it regardless of where the request originated from. This is quite 
 comfortable in terms of availability of the services, but could also be a risk if the service is available from the outside networks. Please make sure you limit the access 
-to the local resolver on port 53 (UDP and TCP) from the trusted networks only, otherwise it can be misused for various DoS attacks.
+to the local resolver on port UDP/53 and TCP/53 from the trusted networks only, otherwise it can be misused for various DoS attacks.
 

@@ -1,16 +1,18 @@
-************
-Multitenancy
-************
+**************
+Správa tenantů
+**************
+
+.. note:: Správa tenantů je ve výchozím nastavení vypnutá. Pokud ji chcete zapnout, kontaktujte nás prosím prostřednictvím Whalebone Helpdesku.
 
 .. only:: Aura
 
-    .. warning:: Multitenancy je dostupné pouze pro zákazníky Aura Full a Aura Premium.  
+    .. warning:: Správa tenantů je dostupná pouze pro zákazníky s Aura Full a Aura Premium.  
 
 .. only:: Peacemaker
 
-    .. warning:: Multitenancy je dostupné pouze pro zákazníky Peacemaker Profit.  
+    .. warning:: Správa tenantů je dostupná pouze pro zákazníky s Peacemaker Profit.  
 
-Multitenancy umožňuje MSP, ISP, CERT a velkým podnikům spravovat více zákaznických prostředí z jednoho místa, přičemž jejich data a konfigurace zůstávají izolované. To zvyšuje efektivitu využití prostředků, zjednodušuje údržbu a snižuje provozní náklady ve srovnání se samostatným provozem prostředí pro každou organizaci.
+Správa tenantů umožňuje MSP, ISP, CERT a velkým podnikům spravovat více zákaznických prostředí z jednoho místa, přičemž jejich data a konfigurace zůstávají izolované. To zvyšuje efektivitu využití prostředků, zjednodušuje údržbu a snižuje provozní náklady ve srovnání se samostatným provozem prostředí pro každou organizaci.
 
 Hlavní funkce:
 
@@ -48,11 +50,54 @@ Tři tečky vedle každého tenanta v seznamu tenantů otevřou nabídku, kde mo
 .. image:: ./img/multitenancy-2.png
     :align: center
 
+Role
+====
+
+Následující role jsou k dispozici pro správu tenantů:
+
+* **Tenant Owner**:
+
+    * Úplná kontrola nad tenantem (vytváření, čtení, úpravy, mazání a přesun), včetně vytváření sub-tenantů, správy politik a konfigurace nastavení.
+
+    * Pokud se uživatel s rolí Tenant Owner přepne na zákazníka, chová se jako administrátor zákazníka.
+
+* **Tenant Administrator**:
+
+    * Může spravovat sub-tenanty, politiky a nastavení, ale nemůže mazat.
+
+    * Pokud se uživatel s rolí Tenant Administrator přepne na zákazníka, chová se jako administrátor zákazníka.
+
+* **Tenant Viewer**:
+
+    * Může zobrazit všechny tenanty, informace o tenantech a statistiky, ale nemůže provádět změny.
+
+    * Pokud se uživatel s rolí Tenant Viewer přepne na zákazníka, chová se jako role pouze pro čtení.
+
+Všichni uživatelé s rolí Tenant Owner nebo Tenant Administrator mohou do tenantu zvát další uživatele. Tenant Owner může zvát uživatele s rolí Tenant Owner, Tenant Administrator nebo Tenant Viewer. Tenant Administrator může zvát uživatele s rolí Tenant Administrator nebo Tenant Viewer. Na formuláři pro pozvání je přepínač, který umožňuje pozvanému uživateli spravovat sub-tenanty.
+
+.. image:: ./img/multitenancy-3.png
+    :align: center
+
+Děděné politiky
+===============
+
+Děděné politiky umožňují rodičovským tenantům definovat a publikovat politiky, které jsou automaticky nabízeny sub-tenantům jako výchozí politiky při vytváření nového resolveru nebo registraci podsítě na cloudových resolverech. To zajišťuje jednotné prosazování politik napříč hierarchií tenantů. Zároveň to umožňuje administrátorům na vyšších úrovních spravovat politiky centrálně, čímž se snižuje potřeba opakované konfigurace na úrovni jednotlivých sub-tenantů. Navíc mají administrátoři vždy možnost zvolit zděděnou politiku nebo vytvořit novou s vlastní konfigurací.
+
+.. figure:: ./img/multitenancy-4.png
+    :alt: Nastavení děděných politik
+    :align: center
+
+    Dědění politik lze pro každou politiku v jejím nastavení povolit nebo zakázat.
+
+.. figure:: ./img/multitenancy-5.png
+    :alt: Děděná politika nemůže být upravena na úrovni sub-tenantů
+    :align: center
+
+    Pokud je politika zděděná, nelze ji na úrovni sub-tenanta upravovat.
+
 Známé limitace
 ==============
 
 * Děděné politiky nemohou být nastaveny pomocí API.
 
 * Blokovací stránky nepodporují dědičnost a děděné politiky.
-
-* Správa tenantů je ve výchozím nastavení vypnutá. Pokud chcete aktivovat tuto funkci, kontaktujte nás prosím prostřednictvím helpdesku.

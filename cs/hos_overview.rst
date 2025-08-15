@@ -2,7 +2,7 @@
 Přehled Home Office Security
 ****************************
 
-Whalebone HOS • v 2.20.4 v kostce
+Whalebone HOS • v2.20.4 v kostce
 ---------------------------------
 
 * **Multi‑regionální podpora** – automatický výběr nejbližšího resolveru
@@ -43,15 +43,11 @@ Porporované operační systémy
 +-----------------+-------------------------------------+
 | iOS             | Všechny verze                       |
 +-----------------+-------------------------------------+
-| MacOS           | MacOS 13.0                          |
-+-----------------+-------------------------------------+
 | Linux           | Není podporován                     |
 +-----------------+-------------------------------------+
 
-.. note:: 32bitové verze Windows (x86) nejsou od v 2.20.4 podporovány.
+.. note:: 32bitové verze Windows (x86) nejsou od v2.20.4 podporovány.
 
 Systémy se operačním systémem Windows 7 musí být aktuální nebo musí mít nainstalovanou alespoň verzi KB3033929.
 
 Systémy se operačním systémem Windows Server 2016 musí mít vypnuté zabezpečené spouštění (secure boot).
-
-

@@ -10,7 +10,7 @@ supported. For detailed OS versions, see *Supported OS* below.
 .. image:: ./img/hos-overview.png
    :align: center
 
-Whalebone HOS • v 2.20.4 at a glance
+Whalebone HOS • v2.20.4 at a glance
 ------------------------------------
 
 * **Multi‑region support** – automatic selection of the nearest resolver
@@ -40,12 +40,10 @@ Supported OS
 +-----------------+----------------------------------+
 | iOS             | iOS 15.0 (SDK ≥ 13.4)            |
 +-----------------+----------------------------------+
-| macOS           | macOS 13.0 or higher             |
-+-----------------+----------------------------------+
 | Linux           | Not supported                    |
 +-----------------+----------------------------------+
 
-.. note:: 32‑bit Windows builds (x86) are no longer supported from v 2.20.4.
+.. note:: 32‑bit Windows builds (x86) are no longer supported from v2.20.4.
 
 Windows 10 systems must be up‑to‑date.  
 Windows Server 2016 systems must have Secure Boot disabled.
@@ -73,5 +71,5 @@ We continue to enhance the Home Office Security agent, focusing on:
 * Real‑time policy updates.
 * Full DNS‑over‑TCP handling.
 * Complete IPv6 support.
-* Unified UI across Windows, macOS, iOS and Android.
+* Unified UI across Windows, iOS and Android.
 * Easier troubleshooting tools and performance optimisations.

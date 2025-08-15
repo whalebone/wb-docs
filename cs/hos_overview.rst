@@ -2,6 +2,21 @@
 Přehled Home Office Security
 ****************************
 
+Whalebone HOS • v2.20.4 v kostce
+---------------------------------
+
+* **Multi‑regionální podpora** – automatický výběr nejbližšího resolveru
+  pomocí nového přepínače *REGION* v instalátoru.
+* **Plné pokrytí DNS** – chrání HTTPS, SVCB a další typy záznamů
+  bez dodatečných úprav.
+* **Upřednostnění konektivity** – klient zachová přístup k Internetu
+  při hledání nejlepšího resolveru; při selhání automaticky přejde
+  na Anycast.
+* **Chytřejší ochrana** – služba se pozastaví při detekci VPN.
+* **Čistší UI** – hlavní okno startuje skryté; porty tray/UI se
+  při obsazení automaticky přepnou na vyšší.
+* **Pouze 64‑bit** – 32bitové Windows již nejsou podporovány.
+
 Whalebone Home Office Security (HOS) poskytuje funkci filtrování DNS mimo síť pro stolní počítače a mobilní zařízení. Zachycuje provoz DNS a mění adresu DNS serveru. 
 Chrání zařízení před síťovými hrozbami tím, že kontroluje každý paket DNS. V současné době jsou podporována zařízení se systémy Windows, Android a iOS. Podrobné informace o podpoře verzí operačních systémů naleznete níže.
 
@@ -21,18 +36,18 @@ Pro Android, výchozí cílový adresář je:
 Porporované operační systémy
 ============================
 
-+-----------------+--------------------------------+
-| Windows Desktop | Windows 7 nebo vyšší           |
-+=================+================================+
-| Android         | Android 5 nebo vyšší           |
-+-----------------+--------------------------------+
-| iOS             | Všechny verze                  |
-+-----------------+--------------------------------+
-| Linux           | Není podporován                |
-+-----------------+--------------------------------+
++-----------------+-------------------------------------+
+| Windows Desktop | Windows 7 SP1 (64‑bit) nebo novější |
++=================+=====================================+
+| Android         | Android 5 nebo vyšší                |
++-----------------+-------------------------------------+
+| iOS             | Všechny verze                       |
++-----------------+-------------------------------------+
+| Linux           | Není podporován                     |
++-----------------+-------------------------------------+
+
+.. note:: 32bitové verze Windows (x86) nejsou od v2.20.4 podporovány.
 
 Systémy se operačním systémem Windows 7 musí být aktuální nebo musí mít nainstalovanou alespoň verzi KB3033929.
 
 Systémy se operačním systémem Windows Server 2016 musí mít vypnuté zabezpečené spouštění (secure boot).
-
-

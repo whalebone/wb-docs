@@ -37,7 +37,6 @@ More information about the product and company is available on the official `Wha
 .. toctree::
    :maxdepth: 1
    :caption: Analysis and reporting
-   :maxdepth: 2
 
    data_analysis
    domain_resolution_analysis
@@ -51,6 +50,7 @@ More information about the product and company is available on the official `Wha
    :caption: Organization Settings
    
    user
+   multitenancy
 
 .. toctree::
    :maxdepth: 1

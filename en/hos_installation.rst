@@ -43,9 +43,8 @@ To install or Update:
 
 .. code-block:: shell
     :caption: Install or update (Windows 64‑bit)
-    msiexec /i "Whalebone.Home.Office.Security.Installer.msi" ^
-           TOKEN="60d5806e-07fe-432a-a4ad-7797d82782b3" ^
-           REGION="eu-01"
+
+    msiexec /i "Whalebone.Home.Office.Security.Installer.msi" TOKEN="60d5806e-07fe-432a-a4ad-7797d82782b3" REGION="eu-01"
 
 Uninstall:
 

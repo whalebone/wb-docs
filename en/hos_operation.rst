@@ -27,7 +27,7 @@ Security
 In the background HOS uses **DNS-over-HTTPs** or **DoH**. The **Hostname** of the **Resolver** is never diverted and is cached. The identification and authenticity is left to the TLS protocol. When device belongs to any **Domain**, then all domain names and their subdomains are allowed to reach the DNS servers they route to. HOS uses ``Win32_NetworkAdapterConfiguration`` WMI table to get the information.
 
 .. important::
-   From **v 2.20.0** HOS validates **all** modern DNS record types
+   From **v 2.20.4** HOS validates **all** modern DNS record types
    (A, AAAA, CNAME, MX, TXT, HTTPS, SVCB, etc.).  
    No extra setup is required, but firewall rules MUST still allow outbound
    TCP 443 to *hos.whalebone.io*.

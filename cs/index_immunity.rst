@@ -50,6 +50,7 @@ Další informace o produktu a společnosti jsou k dispozici na oficiálních st
    :caption: Nastavení ogranizace
    
    user
+   multitenancy
 
 .. toctree::
    :maxdepth: 1

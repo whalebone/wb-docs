@@ -1,12 +1,9 @@
-:hide-toc:
-
-
-******************
+****************
 Lokální resolver
-******************
+****************
 
 Nasazení řešení Whalebone nasazeného jako **lokální resolver** přináší výhodu viditelnosti místních IP adres, které odesílají skutečné požadavky. Pokud pro vás nasazení lokálního řešení není vhodnou volbou, 
-podívejte se na :ref:`Cloudové nasazení.<Cloudové nasazení>`
+podívejte se na :ref:`Cloudové nasazení<Cloudové nasazení>`.
 
 Whalebone resolver je založen na implementaci `Knot Resolveru <https://www.knot-resolver.cz/>`_ vyvinutého CZ.NIC.
 
@@ -15,35 +12,57 @@ Whalebone resolver je založen na implementaci `Knot Resolveru <https://www.knot
 Systémové požadavky na lokální resolver
 =======================================
 
-Lokální nasazení resolveru je podporováno pouze na **výhradně dedikovaném** (fyzickém nebo virtuálním) stroji, který běží na podporovaném operačním systému a Docker enginu. Spuštění resolveru na nepodporovaných verzích operačního systému a/nebo Dockeru, nebo spolu s jinými službami, může vést k nesprávnému chování nebo problémům se službou/překladem. Mějte na paměti, že neplnění těchto požadavků ztěžuje diagnostiku v případě problémů s produktem.
+Hardwarové a softwarové požadavky
+---------------------------------
+
+Lokální nasazení resolveru je podporováno pouze na **výhradně dedikovaném** fyzickém nebo virtuálním stroji, který běží na podporovaném operačním systému a podporuje Docker. Nesplnění těchto požadavků může vést k nesprávnému chování nebo problémům se službou, či překladem adres. Mějte na paměti, že neplnění těchto požadavků ztěžuje diagnostiku v případě problémů s produktem.
 
 Pravidelně kontrolujte a udržujte verze operačního systému a Docker engine aktuální, abyste zajistili stabilitu služby.
 
-* **Podporovaný operační systém** (64bitový, serverové edice následujících distribucí):
+* **Operační systém**
 
-  * `Red Hat Enterprise Linux (Full support) <https://access.redhat.com/product-life-cycles?product=Red%20Hat%20Enterprise%20Linux>`_
-  * `CentOS Stream (Active support) <https://endoflife.date/centos-stream>`_
-  * `Debian (Supported by LTS team) <https://wiki.debian.org/LTS/>`_
-  * `Ubuntu (Standard support) <https://ubuntu.com/about/release-cycle>`_
+  * Operační systém musí podporovat 64bitovou (amd64) architekturu.
+  * Lze si vybrat jednu z níže zmíněných distribucí operačního systému Linux. Tato distribuce musí mít aktivní podporu od svého vydavatele.
 
-* **Podporovaná verze Dockeru**
+    * `Red Hat Enterprise Linux (Full support) <https://access.redhat.com/product-life-cycles?product=Red%20Hat%20Enterprise%20Linux>`_
+    * `CentOS Stream (Active support) <https://endoflife.date/centos-stream>`_
+    * `Debian (Supported by LTS team) <https://wiki.debian.org/LTS/>`_
+    * `Ubuntu (Standard support) <https://ubuntu.com/about/release-cycle>`_
 
-  * Whalebone podporuje a testuje na verzích Dockeru, které jsou podporovány komunitou. Podporované verze najdete `zde. <https://endoflife.date/docker-engine>`_
+* **Docker**
 
-* **Podporované souborové systémy** 
+  * Whalebone podporuje a testuje na verzích Dockeru, které jsou podporovány komunitou. Podporované verze najdete `zde <https://endoflife.date/docker-engine>`_.
+
+* **Souborové systémy** 
 
   * ext4
   * xfs pouze s podporou d_type (ftype=1)
 
-* **Minimální požadavky na hardware** (fyzického nebo virtuálního):
+* **Minimální požadavky na hardware**
 
   * 2 jádra procesoru
+
+  * CPU s podporou architektury amd64 a instrukční sadou x86-64-v2. Níže najdete instrukce pro ověření, zda server podporuje x86-64-v2:
+
+    * Ubuntu, Debian:
+
+      * Spusťte příkaz ``/lib64/ld-linux-x86-64.so.2 --help``.
+      * Zkontrolujte, zda se v terminálu vypíše ``x86-64-v2 (supported, searched)``.
+
+    * Red Hat Enterprise Linux, CentOS Stream:
+
+      * Spusťte příkaz ``/lib/ld-linux-x86-64.so.2 --help``.
+      * Zkontrolujte, zda se v terminálu vypíše ``x86-64-v2 (supported, searched)``.
+
   * 4 GB RAM
-  * 80 GB HDD (alespoň 70 GB v oddílu /var)
+  * 80 GB HDD s alespoň 70 GB v oddílu /var
 
 .. warning:: Pozor, Whalebone podporuje pouze nasazení bez desktopových prostředí, jako je GNOME, KDE nebo Xfce, protože ty mohou ovlivnit dostupnou paměť a zpracování DNS na serveru.
 
-* **Požadavky na nastavení sítě** (místní resolver potřebuje otevřené následující výstupní porty):
+Požadavky na nastavení sítě
+---------------------------
+
+  * Místní resolver potřebuje otevřené následující výstupní porty:
 
   =========== =========== ======= ==================================== ================================
   Směr        Protokol(y) Port    Cílová IP/Doména                     Popis         
@@ -65,7 +84,7 @@ Pravidelně kontrolujte a udržujte verze operačního systému a Docker engine 
   Odchozí     TCP         443     data.iana.org                        DNSSEC klíče   
   =========== =========== ======= ==================================== ================================
   
-  .. warning:: Bez povolené komunikace na portu 443 s výše uvedenými doménami nebude resolver vůbec nainstalován (instalační skript se přeruší).
+  .. warning:: Bez povolené komunikace na portu 443 s výše uvedenými doménami nebude resolver vůbec nainstalován a instalační skript se přeruší.
 
   
   Hlavní funkcí resolveru je přijímat dotazy od uživatelů a odpovídat jim na ně, což vyžaduje, aby byly na resolveru otevřeny určité porty pro provoz pocházející z klientské podsítě nebo přicházející do zákaznického rozhraní.
@@ -89,7 +108,7 @@ Pravidelně kontrolujte a udržujte verze operačního systému a Docker engine 
   Příchozí    TCP         443     Rozsah(y) podsítě zákazníka  Stránka přesměrování/blokování
   =========== =========== ======= ============================ ==========================================
   
-  Procesy resolveru musí komunikovat na localhostu. V případě, že je v provozu nějaký firewall, ujistěte se, že je provoz povolen, tj. ``iptables -A INPUT -s 127.0.0.1 -j ACCEPT``
+  Procesy resolveru musí komunikovat na localhostu. V případě, že je v provozu nějaký firewall, ujistěte se, že je provoz povolen, tj. ``iptables -A INPUT -s 127.0.0.1 -j ACCEPT``.
 
   =========== =========== ======= ============================ ==========================================
   Směr        Protokol(y) Port    Cílová IP/Doména             Popis         
@@ -97,31 +116,31 @@ Pravidelně kontrolujte a udržujte verze operačního systému a Docker engine 
   Příchozí    TCP         ANY     127.0.0.1                    Procesy řešitele
   =========== =========== ======= ============================ ==========================================
 
-.. note:: Pro odhad HW požadavků u nasazení vr velkých sítích ISP nebo podnikových sítích se neváhejte obrátit na společnost Whalebone. Lokální resolver Whalebone bude potřebovat přibližně dvojnásobek paměti RAM a procesoru než běžný resolver (BIND, Unbound).
+.. note:: Pro odhad HW požadavků u nasazení vr velkých sítích ISP nebo podnikových sítích se neváhejte obrátit na společnost Whalebone. Lokální resolver Whalebone bude potřebovat přibližně dvojnásobek paměti RAM a procesoru než běžný resolver BIND nebo Unbound.
 
 Instalace nového lokálního resolveru
 ====================================
 
-Můžete se podívat na videonávod krok za krokem o postupu instalace :ref:`zde.<Deployment>`
+Můžete se podívat na videonávod krok za krokem o postupu instalace :ref:`zde<Deployment>`.
 
 V záložce **Resolvery** stiskněte tlačítko **Vytvořit nový**. Zvolte název (identifikátor) nového resolveru. Zadání je čistě informativní a nebude mít vliv na funkčnost.
 Po zadání názvu klikněte na tlačítko **Přidat resolver**.
-Po kliknutí na tlačítko se zobrazí informativní okno se seznamem podporovaných platforem a **jednořádkovým příkazem pro instalaci**. Příkaz zkopírujte a spusťte na stroji (VM) určeném pro místní resolver.
-Příkaz spustí instalační skript a předá jednorázový token použitý pro aktivaci resolveru (stejný příkaz nelze použít opakovaně).
+Po kliknutí na tlačítko se zobrazí informativní okno se seznamem podporovaných platforem a **jednořádkovým příkazem pro instalaci**. Příkaz zkopírujte a spusťte na stroji určeném pro místní resolver.
+Příkaz spustí instalační skript a předá jednorázový token použitý pro aktivaci resolveru. Stejný příkaz nelze použít opakovaně.
 
 .. image:: ./img/lrv2-create.gif
 	:align: center
 
 
 Po spuštění příkazu probíhá kontrola operačního systému a instalace požadavků. Skript vás bude informovat o průběhu a vytvoří podrobný protokol s názvem ``wb_install.log`` v aktuálním adresáři.
-Úspěšné spuštění instalačního skriptu je ukončeno oznámením ```Finální ladění operačního systému```` s hodnotou ``[ OK ]```. Hned po instalaci proběhne také inicializace a může trvat několik minut, než resolver spustí služby.
+Úspěšné spuštění instalačního skriptu je ukončeno oznámením ``Finální ladění operačního systému`` s hodnotou ``[ OK ]```. Hned po instalaci proběhne také inicializace a může trvat několik minut, než resolver spustí služby.
 
 
 .. image:: ./img/lrv2-install.gif
    :align: center
 
 
-.. warning:: Lokální resolver je nakonfigurován jako otevřený resolver. Odpoví na jakýkoli zaslaný požadavek. To je poměrně pohodlné z hlediska dostupnosti služeb, ale také to může představovat riziko, pokud je služba dostupná z vnějších sítí. Ujistěte se, že jste omezili přístup k místnímu resolveru na port 53 (UDP a TCP) pouze z důvěryhodných sítí, jinak může být zneužit k různým DoS útokům.
+.. warning:: Lokální resolver je nakonfigurován jako otevřený resolver. Odpoví na jakýkoli zaslaný požadavek. To je poměrně pohodlné z hlediska dostupnosti služeb, ale také to může představovat riziko, pokud je služba dostupná z vnějších sítí. Ujistěte se, že jste omezili přístup k místnímu resolveru na porty UDP/53 a TCP/53 pouze z důvěryhodných sítí, jinak může být zneužit k různým DoS útokům.
 .. important:: The resolver's processes need to communicate on localhost. In case some firewall is in place please make sure that the traffic is allowed, i.e. ``iptables -A INPUT -s 127.0.0.1 -j ACCEPT``
 
 Ověření správnosti instalace
@@ -160,4 +179,4 @@ Zabezpečení resolveru
 
 Při první instalaci je resolver nakonfigurován jako otevřený resolver. Odpoví na jakýkoli požadavek, který je mu zaslán, bez ohledu na to, odkud požadavek pochází. To je poměrně 
 pohodlné z hlediska dostupnosti služeb, ale může být také rizikem, pokud je služba dostupná z vnějších sítí. Ujistěte se, že jste omezili přístup 
-k místnímu resolveru na portu 53 (UDP a TCP) pouze z důvěryhodných sítí, jinak může být zneužit k různým DoS útokům.
+k místnímu resolveru na portech UDP/53 a TCP/53 pouze z důvěryhodných sítí, jinak může být zneužit k různým DoS útokům.

@@ -27,7 +27,7 @@ Administrators have the ability to specify which type of data they want to expor
 
 * **passivedns.log**: All DNS traffic.
 
-* **whalebone.log-<DATE>.ndjson**: All detected threats.
+* **whalebone.log**: All detected threats.
 
 * **agent/agent-docker-connector.log**: List of Docker removed containers. Docker containers are removed/replaced during updates or configuration changes.
 
@@ -37,7 +37,7 @@ Administrators have the ability to specify which type of data they want to expor
 
 * **agent/agent-status.log**: The status of the listener, which receives configuration updates from Whalebone cloud.
 
-.. note:: The most important log files are content.log, passivednslog, and whalebone.log-<DATE>.ndjson. The rest is mainly for troubleshooting or debugging purposes.
+.. note:: The most important log files are content.log, passivednslog, and whalebone.log. The rest is mainly for troubleshooting or debugging purposes.
 
 Examples
 --------
@@ -147,8 +147,8 @@ Important fields in the passivedns.log file:
 
 - **type**: The type of DNS record (e.g., "A", "AAAA", "CNAME").
 
-whalebone.log-<DATE>.ndjson
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+whalebone.log
+^^^^^^^^^^^^^
 
 .. code-block:: python
 
@@ -198,7 +198,7 @@ whalebone.log-<DATE>.ndjson
         }
     }
 
-Important fields in the whalebone.log-<DATE>.ndjson file:
+Important fields in the whalebone.log file:
 
 - **timestamp**: The date and time when the event occurred.
 

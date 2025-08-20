@@ -27,7 +27,7 @@ Administrátoři mají možnost určit, jaký typ dat chtějí exportovat. Popis
 
 * **passivedns.log**: Veškerý DNS provoz.
 
-* **whalebone.log-<DATUM>.ndjson**: Všechny detekované hrozby.
+* **whalebone.log**: Všechny detekované hrozby.
 
 * **agent/agent-docker-connector.log**: Seznam odstraněných Docker kontejnerů. Docker kontejnery jsou odstraňovány nebo nahrazovány během aktualizací nebo změn konfigurace.
 
@@ -37,7 +37,7 @@ Administrátoři mají možnost určit, jaký typ dat chtějí exportovat. Popis
 
 * **agent/agent-status.log**: Stav služby, která přijímá aktualizace konfigurace z Whalebone cloudu.
 
-.. note:: Nejvýznamnější logovací soubory jsou content.log, passivedns.log a whalebone.log-<DATUM>.ndjson. Ostatní slouží především k řešení potíží techniky Whalebone.
+.. note:: Nejvýznamnější logovací soubory jsou content.log, passivedns.log a whalebone.log. Ostatní slouží především k řešení potíží techniky Whalebone.
 
 Příklady
 --------
@@ -147,8 +147,8 @@ Důležité položky v souboru passivedns.log:
 
 - **type**: Typ DNS záznamu (např. "A", "AAAA", "CNAME").
 
-whalebone.log-<DATE>.ndjson
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+whalebone.log
+^^^^^^^^^^^^^
 
 .. code-block:: python
 
@@ -198,7 +198,7 @@ whalebone.log-<DATE>.ndjson
         }
     }
 
-Důležité položky v souboru whalebone.log-<DATUM>.ndjson:
+Důležité položky v souboru whalebone.log:
 
 - **timestamp**: Datum a čas, kdy byla odeslána odpověď.
 

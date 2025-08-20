@@ -42,6 +42,7 @@ Další informace o produktu a společnosti jsou k dispozici na oficiálních st
    domain_resolution_analysis
    reporting
    api_integration
+   syslog_integration
    active_directory
    snmp_monitoring
 

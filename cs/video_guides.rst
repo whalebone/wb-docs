@@ -108,6 +108,7 @@ Poté vyplňte všechny potřebné údaje včetně názvu společnosti, jejího 
 
 Jakmile uložíte upravenou blokační stránku, přejděte do části **Resolvery** a vyberte resolver, na kterého chcete blokační stránku použít. Přejděte na **Přiřazení politik** a přiřaďte blokační stránku na daný resolver.
 Případně ji můžete přiřadit konkrétní IP adrese nebo rozsahu. Když už jste u toho, můžete také aktivovat **bypass**, který uživateli přesto umožní přístup k blokované doméně.
+
 .. raw:: html
 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/K0p2l-qxHtk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

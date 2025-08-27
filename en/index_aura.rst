@@ -42,6 +42,7 @@ More information about the product and company is available on the official `Wha
    domain_resolution_analysis
    reporting
    api_integration
+   syslog_integration
    active_directory
    snmp_monitoring
 

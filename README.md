@@ -19,6 +19,7 @@ Next, you need to activate the pipenv virtual environmet by executing `pipenv sh
 1. Make the desired changes.
 1. Make a test build
     1. `pipenv shell`
+    1. `pipenv sync --dev`
     1. `cd en` or `cd cs`, depending on which language you want to build
     1. `sphinx-build -n -W -b html . ../doc`
     1. Important: Make sure there are no new warnings or errors in the output. There are some known warnings that can be ignored. They are related to deployment_XXX.rst, hos_XXX.rst, and idp_overview.rst.

@@ -1,10 +1,11 @@
 .. _Deployment:
 
 Nasazení
-==========
+========
 
 Nasazení lokálního resolveru
-------------------------------
+----------------------------
+
 Na rozdíl od jiných podobných služeb lze Whalebone nasadit jako plnohodnotný lokální resolver DNS. Tento typ nasazení doporučujeme.
 Instalace je poměrně jednoduchá. Potřebujete pouze přístup k portálu Whalebone Portal a virtuální nebo fyzický server, který je z hlediska hardwaru poměrně nenáročný.
 Z hlediska systémových požadavků Whalebone podporuje nejnovější verze nejpoužívanějších linuxových distribucí Debian, Ubuntu, CentOS a Red hat Enterprise Linux.
@@ -15,7 +16,6 @@ Vymyslete vhodný název, který můžete později změnit. Jakmile iniciujete p
 V tomto okamžiku přistupte k terminálu serveru vytvořeného pro tento resolver. Zbývá jen spustit instalační skript dříve zkopírovaný do schránky.
 Instalace by neměla trvat déle než několik minut. Skript vás bude informovat o jejím průběhu. Pokud instalace neproběhla úspěšně, zašlete nám protokol o instalaci a my se na to podíváme.
 Zanedlouho se stav resolveru změní. Jakmile se resolver stane aktivním, můžete na něj směrovat provoz a začít chránit svou síť.
-
 
 .. raw:: html
 
@@ -28,7 +28,8 @@ Zanedlouho se stav resolveru změní. Jakmile se resolver stane aktivním, můž
 .. _Cloudove resolvery video:
 
 Cloudové resolvery
----------------------------
+------------------
+
 Whalebone nabízí také cloudové resolvery s ochranou proti malwaru a blokováním obsahu. Jejich adresy najdete v portálu Whalebone na kartě Cloudový resolver.
 Můžete je používat přímo jako primární nebo sekundární resolvery nebo jako zálohu ke stávajícímu lokálnímu resolveru.
 
@@ -45,12 +46,13 @@ které nutně nezískávají konektivitu od vás, ale vy spravujete jejich síť
 |
 
 Konfigurace
-=============
+===========
 
 .. _Zakladni konfigurace video:
 
 Základní konfigurace
 --------------------
+
 Každá síť má své specifické potřeby. Whalebone se dokáže přizpůsobit každé z nich a přizpůsobí se jí. Jednou z klíčových součástí, které je třeba při implementaci systému Whalebone nakonfigurovat, je nastavení "bezpečnostních politik".
 Tato část konfigurace umožňuje upravit výchozí nastavení. Můžete například snížit práh blokování nebo blokování zcela deaktivovat, čímž vám zůstane režim auditu.
 V tomto režimu Whalebone sleduje incidenty, aniž by jim bránil. Základem konfigurace auditu a blokování je takzvané "skóre", které jednotlivým doménám přiřazuje náš algoritmus. 
@@ -75,10 +77,10 @@ a přiřadit zásady konkrétní IP adrese nebo rozsahu. Nezapomeňte nastavení
 
 Bezpečnostní politiky
 ---------------------
+
 Jednou z klíčových součástí, které je třeba při implementaci systému Whalebone nakonfigurovat, je nastavení bezpečnostních politik. Tato část konfigurace umožňuje upravit výchozí nastavení. Můžete například snížit práh blokování nebo blokování zcela deaktivovat.
 což vám ponechá režim jen auditu. V tomto režimu Whalebone sleduje incidenty, aniž by jim bránil. Jádrem konfigurace auditu a blokování je tzv. skóre.
 které je jednotlivým doménám přiřazeno naším algoritmem. Čím vyšší je skóre, tím je doména nebezpečnější. Je na vás, zda si vyberete z přednastavených úrovní citlivosti, nebo se rozhodnete nastavit práh ručně.
-
 
 Síti ISP doporučujeme **blokovat opatrně** Čím nižší je prahová hodnota, tím citlivější je blokování. Mějte však na paměti, že nastavení nízké prahové hodnoty zvyšuje riziko falešných pozitivních výsledků. 
 Můžete také zvolit různé typy hrozeb, které mají být blokovány.
@@ -102,6 +104,7 @@ a přiřadit zásady konkrétní IP adrese nebo rozsahu. Nezapomeňte nastavení
 
 Konfigurace bokační stránky
 ---------------------------
+
 Pomocí Whalebone portálu můžete plně přizpůsobit blokáční stránky, které se zobrazí v případě, že se někdo pokusí ve svém prohlížeči přistoupit na nebezpečnou webovou stránku. Tento nástroj potřebuje místní resolver, u kterého můžete blokovací stránku přepnout z cloudu na lokální. 
 Chcete-li nakonfigurovat blokační stránky, přejděte do části **Konfigurace** a poté do části **Blokační stránky**. Můžete upravit ty stávající nebo vytvořit zcela nové. Při vytváření nové blokující stránky můžete definovat její název, doménu a jazyk stránky.
 Poté vyplňte všechny potřebné údaje včetně názvu společnosti, jejího loga a kontaktních informací. Tyto informace můžete samozřejmě později změnit. Pokud tak chcete učinit, použijte kouzelnou hůlku nebo upravujte přímo v kódu HTML. Design i obsah blokační stránky můžete upravit podle svého uvážení. Stačí, když zachováte potřebné proměnné zobrazené nad blokovacím polem.
@@ -117,11 +120,11 @@ Případně ji můžete přiřadit konkrétní IP adrese nebo rozsahu. Když už
 |
 |
 
-
 .. _Alerty video:
 
 Alerty
 ------
+
 Nastavte si alerty a získávejte živě aktualizace o tom, co se děje s Vašimi resolvery, jak je vaše síť zabezpečená a jak dobře funguje překlad DNS. 
 Základní nastavení je jednoduché: stačí si vybrat, jaký typ informací chcete dostávat a jak často chcete být upozorňováni. Upozornění můžete dostávat prostřednictvím e-mailu, nebo služby Slack.
 Upozornění Whalebone můžete také integrovat do svých systémů prostřednictvím Webhooku nebo syslogu. Velmi doporučujeme alespoň základní nastavení alertů pro monitorování překladu a funkčnost serveru na kterém resolver běží.
@@ -167,7 +170,8 @@ probíhá na ní poměrně velký provoz a Whalebone ji kategorizuje jako **soci
 .. _Provoz DNS video:
 
 Provoz DNS
-------------
+----------
+
 V protokolu "DNS traffic" si můžete prohlédnout časovou osu požadavků a odpovědí DNS za posledních 1, 7 nebo 14 dní. V dashboardu je zobrazen první překlad domény danou IP adresou za posledních 24 hodin,
 typ dotazu, výsledek řešení, zdrojovou a cílovou IP adresu. Vyhledávání je možné pomocí zakliknutí konrkrétních hodnot a také pomocí fulltextu.
 
@@ -187,7 +191,8 @@ Podobně můžete zvolit například dotazy **A**. Specializujeme se na detekci 
 |
 
 Hrozby
----------
+------
+
 Whalebone se zaměřuje na ochranu vaší sítě. Proto máte přístup ke kompletnímu přehledu incidentů, které se staly za posledních 90 dní.
 Přehled nabízí nejen informace, ale také možnost filtrace a analýzy dat. Výsledky jsou rozděleny do tří kategorií: události, které byly zablokovány, auditovány a povoleny. 
 Auditované domény představují domény, které jsou poněkud podezřelé. Jejich skóre je dostatečně vysoké na to, aby byly uvedeny v protokolu, ale nižší, než je práh blokování. Pokud jde o blokované domény, resolver vrací plně přizpůsobenou stránku blokování s volitelným tlačítkem pro obejití.
@@ -208,7 +213,8 @@ neváhejte nám takovou doménu **nahlásit**. Případ prověříme a ozveme se
 |
 
 Analýza dat
----------------
+-----------
+
 Portál Whalebone umožňuje podrobnou fulltextovou filtraci a související analýzu dat. Důkladný manuál naleznete v technické dokumentaci dostupné na adrese docs.whalebone.io. v části Analýza dat.
 Najdete zde seznam různých operátorů, příklady jejich použití a odkazy na možné rozdíly mezi přehledem provozu DNS a hrozeb. Můžete používat zástupné nebo logické operátory. Při použití fulltextové filtrace,
 je třeba všechny parametry zadat přímo do adresy URL. Tímto způsobem můžete snadno vytvářet filtry pro budoucí použití.
@@ -224,7 +230,8 @@ je třeba všechny parametry zadat přímo do adresy URL. Tímto způsobem můž
 .. _API video:
 
 API
-----
+---
+
 Pomocí rozhraní Whalebone API můžete integrovat Whalebone do svých vlastních systémů. Nejprve je třeba vytvořit nový klíč.
 Přejděte do konfigurace klíčů API z kontextové nabídky kliknutím na ikonu panáčka. Po vytvoření nového klíče API se zobrazí všechny potřebné údaje. Secret API klče nebude nikdy 
 znovu zobrazen, proto se ujistěte, že jste si jej skutečně a správně zkopírovali. Klíč API můžete kdykoli zneplatnit. Stačí kliknout na příslušnou ikonu. K dispozici máme podrobnou interaktivní dokumentaci 
@@ -247,6 +254,7 @@ Než začnete modelovat volání API v dokumentaci, doporučujeme ji autorizovat
 
 Řešení problémů s překladem domény
 ----------------------------------
+
 Když uživatelé internetu nemají přístup k doméně, často si myslí, že je to chyba poskytovatele internetu. Nejčastěji se však nejedná o problém poskytovatele, ale samotné domény.
 Bez ohledu na to musíte zákazníkovi stejně odpovědět a vysvětlit mu situaci. Pojďme se podívat, jak Whalebone tento proces zjednoduší.
 
@@ -265,11 +273,11 @@ Pokud máte pocit, že stále nevíte, co se s doménou děje, neváhejte nás k
 |
 |
 
-
 .. _domain-tracing:
 
 Sledování domén
------------------
+---------------
+
 Pro funkční připojení k internetu je nezbytné dobře fungující DNS překlad. Proto se můžete v portálu pro správu ujistit, že jednotlivé resolvery fungují v pořádku.
 Stačí vybrat příslušný místní resolver, otevřít kontextovou nabídku a kliknout na tlačítko **Trace domény**. V tomto okamžiku zadejte doménu, kterou chcete zkoumat. Řekněme, že je to whalebone.io.
 
@@ -280,6 +288,3 @@ Pokud narazíte na nějaké problémy, pošlete protokol na adresu **support@wha
 .. raw:: html
 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/WD6RawjWGqo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-
-

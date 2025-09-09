@@ -27,7 +27,7 @@ Before long, the status of the resolver changes. As soon as the resolver becomes
 .. _Cloud resolvers video:
 
 Cloud resolvers
----------------------------
+---------------
 Whalebone also offers cloud resolvers with malware protection and content blocking. Their addresses are to be found in the Whalebone Portal in the Cloud resolver tab.
 You can use them directly as primary or secondary resolvers or as a backup to your existing local resolver. It's not rocket science to use them.
 
@@ -163,8 +163,8 @@ there's quite some traffic going on and Whalebone categorizes it as a **social n
 .. _DNS traffic video:
 
 DNS traffic
-------------
-You can see the timeline of the DNS requests and answers of the last 1,7 or 14 days in the "DNS traffic" log. The log shows the first resolution of the domain by a given IP address in the last 24 hours,
+-----------
+You can see the timeline of the DNS requests and answers of the last 1, 7, 14, or 30 days in the "DNS traffic" log. The log shows the first resolution of the domain by a given IP address in the last 24 hours,
 the type of query, the outcome of the resolution, the source and destination IP address. It also enables you to do a full-text filtration using wild card operators.
 
 The summarizing logarithmic graphs under the main timeline display an overview of the most common answers, second-level domains, and IP addresses with the heaviest traffic. All the data is accessible in a table format, too, and you can even export them to a CSV file
@@ -185,7 +185,7 @@ Similarly, you can choose for example A queries. We specialize in the detection 
 .. _Threats video:
 
 Threats
----------
+-------
 Whalebone is all about protecting your network. That's why you can access a complete overview of incidents that have happened in the last three months.
 Not only does the overview offer information, but it also provides you with the possibility of filtration and data analysis. The results are divided into three categories; events that have been blocked, audited, and allowed. 
 The audited domains represent domains, which are somewhat suspicious. Their score is high enough to be listed in the log but lower that the blocking threshold. When it comes to blocked domains, the resolver returns a fully-customized blocking page with an optional bypass button.
@@ -208,7 +208,7 @@ feel free to report such a domain to us. We will examine the case and get back t
 .. _Data Analysis video:
 
 Data Analysis
----------------
+-------------
 The Whalebone Portal allows detail full-text filtration and associated data analysis. The thorough manual is to be found in the technical documentation available at docs.whalebone.io.
 You will find a list of different operators, examples of their usage, and references to the potential difference between the DNS traffic and threats overview. You can use wildcard or logical operators. When using full-text filtration,
 all the parameters are to be type directly into the URL address. This way, you can easily create filters for future use.
@@ -224,7 +224,7 @@ all the parameters are to be type directly into the URL address. This way, you c
 .. _API video:
 
 API
-----
+---
 With Whalebone API, you can integrate Whalebone into your own systems. This allows you to make use of all the advantages of Whalebone. First of all, you need to create a new key.
 Go to the API keys configuration from the context menu. After a new API key is created, you will see all the necessary details. The secret for the API key will never be 
 displayed again, so make sure you really copied it. You can always invalidate the API key. Just click the corresponding icon. We have a detailed interactive documentation 
@@ -246,7 +246,7 @@ Before you start modeling API calls in the documentation, we recommend authorizi
 .. _domain-resolution-troubleshooting:
 
 Domain resolution troubleshooting
-----------------------------------
+---------------------------------
 When internet users can't access a domain, they often think it's the ISP's fault. More often than not, you're not the one to blame, it's the domain itself.
 No matter what, you still have to answer the customer and explain the situation. Let's take a look at how Whalebone improve this process.
 
@@ -268,7 +268,7 @@ If you feel like you still don't really know what's going on with the domain, fe
 .. _domain-tracing:
 
 Domain Tracing
------------------
+--------------
 A well-working DNS resolution is essential for a functional internet connection. That's why you can make sure that the individual resolvers are functioning all right in the administration portal.
 All you need to do is choose the corresponding local resolver, open the context menu and click "Trace domain". At this point, type in the domain you want to examine. Let's say it's whalebone.io.
 

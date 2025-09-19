@@ -60,72 +60,73 @@ Please perform regular checks and maintain the resolver's operating system and D
 Network requirements
 --------------------
 
-  * Local resolver needs the following egress ports opened:
-  
-  =========== =========== ======= =================================== ======================
-  Direction   Protocol(s) Port    Destination IP/Domain               Description         
-  =========== =========== ======= =================================== ======================
-  Outbound    TCP+UDP     53      Any                                 DNS resolution        
-  Outbound    TCP         443     resolverapi.whalebone.io            Database updates
-  Outbound    TCP         443     resolverapi.eu-01.whalebone.io      Database updates
-  Outbound    TCP         443     resolverapi.apac-01.whalebone.io    Database updates
-  Outbound    TCP         443     resolverapi.am-01.whalebone.io      Database updates
-  Outbound    TCP         443     resolverapi.uae-01.whalebone.io     Database updates
-  Outbound    TCP         443     stream.whalebone.io                 Realtime Database updates
-  Outbound    TCP         443     stream.eu-01.whalebone.io           Realtime Database updates
-  Outbound    TCP         443     stream.apac-01.whalebone.io         Realtime Database updates
-  Outbound    TCP         443     stream.am-01.whalebone.io           Realtime Database updates
-  Outbound    TCP         443     stream.uae-01.whalebone.io          Realtime Database updates
-  Outbound    TCP         443     logger.whalebone.io                 Logging stream
-  Outbound    TCP         443     logger.eu-01.whalebone.io           Logging stream
-  Outbound    TCP         443     logger.apac-01.whalebone.io         Logging stream
-  Outbound    TCP         443     logger.am-01.whalebone.io           Logging stream
-  Outbound    TCP         443     logger.uae-01.whalebone.io          Logging stream
-  Outbound    TCP         443     agentapi.whalebone.io               Resolver management
-  Outbound    TCP         443     agentapi.eu-01.whalebone.io         Resolver management
-  Outbound    TCP         443     agentapi.apac-01.whalebone.io       Resolver management
-  Outbound    TCP         443     agentapi.am-01.whalebone.io         Resolver management
-  Outbound    TCP         443     agentapi.uae-01.whalebone.io        Resolver management
-  Outbound    TCP         443     transfer.whalebone.io               Support Log collection
-  Outbound    TCP         443     portal.whalebone.io                 Admin portal
-  Outbound    TCP         443     portal.eu-01.whalebone.io           Admin portal
-  Outbound    TCP         443     portal.apac-01.whalebone.io         Admin portal
-  Outbound    TCP         443     portal.am-01.whalebone.io           Admin portal
-  Outbound    TCP         443     portal.uae-01.whalebone.io          Admin portal
-  Outbound    TCP         443     harbor.whalebone.io                 Resolver updates
-  Outbound    TCP         443     download.docker.com                 Installation Process
-  Outbound    TCP         443     data.iana.org                       DNSSEC keys       
-  =========== =========== ======= =================================== ======================
-  
-  .. warning:: Without communication on port 443 to the domains listed above, the resolver won't be installed at all and the installation script will abort.
+.. tip:: Whalebone uses regional cloud services to optimize the communication between clients and the cloud components. The region to which the customer's resolver is connected can be found in the URL of the tenant in the Admin Portal. For example, if the URL is https://portal.eu-01.whalebone.io/en/client-123456, the tenant is registered in the EU-01 region. This is useful when setting up the firewall rules in the customer's network.
 
-  
-  The main function of the resolver to get queries from the customers and answer back to them the answer requires certain ports to be opened on the resolver for the traffic originating from the client subnet or coming to the customer interface.
-  
-  ============ ========= ======= =========================== =========================
-  Direction    Protocol  Port    Source IP/Domain            Description              
-  ============ ========= ======= =========================== =========================
-  Inbound      TCP+UDP   53      Customer's subnet range(s)  DNS
-  Inbound      TCP       853     Customer's subnet range(s)  DNS over TLS (if used)
-  Inbound      TCP       443     Customer's subnet range(s)  DNS over HTTPS (if used)
-  ============ ========= ======= =========================== =========================
-  
-  The Blocking Pages are being hosted **directly** on the Resolvers so the IP addresses that are advertised to the clients must be used. The clients will then be redirected to the IP address of the resolver upon blocking. It is advised to allow only subnet(s) assigned to customers or trusted networks, otherwise it can be misused for various attacks or unauthorized users.
-  
-  ============ ========= ======= =========================== =========================
-  Direction    Protocol  Port    Source IP/Domain            Description              
-  ============ ========= ======= =========================== =========================
-  Inbound      TCP       80      Customer's subnet range(s)  Redirection/Blocking page
-  Inbound      TCP       443     Customer's subnet range(s)  Redirection/Blocking page
-  ============ ========= ======= =========================== =========================
+Local resolver needs the following egress ports opened:
 
-  The resolver's processes need to communicate on localhost. In case some firewall is in place please make sure that the traffic is allowed, i.e. ``iptables -A INPUT -s 127.0.0.1 -j ACCEPT``
+=========== =========== ======= =================================== ======================
+Direction   Protocol    Port    Destination Domain                  Description         
+=========== =========== ======= =================================== ======================
+Outbound    UDP         53      Any                                 DNS resolution
+Outbound    TCP         53      Any                                 DNS resolution
+Outbound    TCP         443     resolverapi.whalebone.io            Database updates
+Outbound    TCP         443     resolverapi.eu-01.whalebone.io      Database updates
+Outbound    TCP         443     resolverapi.apac-01.whalebone.io    Database updates
+Outbound    TCP         443     resolverapi.am-01.whalebone.io      Database updates
+Outbound    TCP         443     stream.whalebone.io                 Realtime database updates
+Outbound    TCP         443     stream.eu-01.whalebone.io           Realtime database updates
+Outbound    TCP         443     stream.apac-01.whalebone.io         Realtime database updates
+Outbound    TCP         443     stream.am-01.whalebone.io           Realtime database updates
+Outbound    TCP         443     logger.whalebone.io                 Logging stream
+Outbound    TCP         443     logger.eu-01.whalebone.io           Logging stream
+Outbound    TCP         443     logger.apac-01.whalebone.io         Logging stream
+Outbound    TCP         443     logger.am-01.whalebone.io           Logging stream
+Outbound    TCP         443     agentapi.whalebone.io               Resolver management
+Outbound    TCP         443     agentapi.eu-01.whalebone.io         Resolver management
+Outbound    TCP         443     agentapi.apac-01.whalebone.io       Resolver management
+Outbound    TCP         443     agentapi.am-01.whalebone.io         Resolver management
+Outbound    TCP         443     transfer.whalebone.io               Support log collection
+Outbound    TCP         443     portal.whalebone.io                 Admin portal
+Outbound    TCP         443     portal.eu-01.whalebone.io           Admin portal
+Outbound    TCP         443     portal.apac-01.whalebone.io         Admin portal
+Outbound    TCP         443     portal.am-01.whalebone.io           Admin portal
+Outbound    TCP         443     harbor.whalebone.io                 Resolver updates
+Outbound    TCP         443     harbor.eu-01.whalebone.io           Resolver updates
+Outbound    TCP         443     harbor.apac-01.whalebone.io         Resolver updates
+Outbound    TCP         443     harbor.am-01.whalebone.io           Resolver updates
+Outbound    TCP         443     download.docker.com                 Installation process
+Outbound    TCP         443     data.iana.org                       DNSSEC keys
+=========== =========== ======= =================================== ======================
 
-  ============ ========= ======= =========================== ===================================
-  Direction    Protocol  Port    Source IP/Domain            Description                        
-  ============ ========= ======= =========================== ===================================
-  Inbound      TCP       ANY     127.0.0.1                   Resolver's processes communication 
-  ============ ========= ======= =========================== ===================================
+.. warning:: Without communication on port 443 to the domains listed above, the resolver won't be installed at all and the installation script will abort.
+
+
+The main function of the resolver to get queries from the customers and answer back to them the answer requires certain ports to be opened on the resolver for the traffic originating from the client subnet or coming to the customer interface.
+
+============ ========= ======= =========================== =========================
+Direction    Protocol  Port    Source IP/Domain            Description              
+============ ========= ======= =========================== =========================
+Inbound      TCP+UDP   53      Customer's subnet range(s)  DNS
+Inbound      TCP       853     Customer's subnet range(s)  DNS over TLS (if used)
+Inbound      TCP       443     Customer's subnet range(s)  DNS over HTTPS (if used)
+============ ========= ======= =========================== =========================
+
+The Blocking Pages are being hosted **directly** on the Resolvers so the IP addresses that are advertised to the clients must be used. The clients will then be redirected to the IP address of the resolver upon blocking. It is advised to allow only subnet(s) assigned to customers or trusted networks, otherwise it can be misused for various attacks or unauthorized users.
+
+============ ========= ======= =========================== =========================
+Direction    Protocol  Port    Source IP/Domain            Description              
+============ ========= ======= =========================== =========================
+Inbound      TCP       80      Customer's subnet range(s)  Redirection/Blocking page
+Inbound      TCP       443     Customer's subnet range(s)  Redirection/Blocking page
+============ ========= ======= =========================== =========================
+
+The resolver's processes need to communicate on localhost. In case some firewall is in place please make sure that the traffic is allowed, i.e. ``iptables -A INPUT -s 127.0.0.1 -j ACCEPT``
+
+============ ========= ======= =========================== ===================================
+Direction    Protocol  Port    Source IP/Domain            Description                        
+============ ========= ======= =========================== ===================================
+Inbound      TCP       ANY     127.0.0.1                   Resolver's processes communication 
+============ ========= ======= =========================== ===================================
 
 .. note:: For hardware sizing estimation of large ISP or Enterprise networks feel free to contact Whalebone. Whalebone local resolver will need approx. twice the RAM and CPU than usual resolver BIND or Unbound. 
 

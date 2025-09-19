@@ -62,59 +62,75 @@ Pravidelně kontrolujte a udržujte verze operačního systému a Docker engine 
 Požadavky na nastavení sítě
 ---------------------------
 
-  * Místní resolver potřebuje otevřené následující výstupní porty:
+.. tip:: Whalebone využívá regionální cloudové služby k optimalizaci komunikace mezi klienty a cloudovými komponentami. Region, ke kterému je připojen resolver zákazníka, lze zjistit z URL v Admin Portálu. Například pokud je URL https://portal.eu-01.whalebone.io/en/client-123456, je zákazník registrován v regionu EU-01. Toto je užitečné při nastavování pravidel firewallu v síti zákazníka.
 
-  =========== =========== ======= ==================================== ================================
-  Směr        Protokol(y) Port    Cílová IP/Doména                     Popis         
-  =========== =========== ======= ==================================== ================================
-  Odchozí     TCP+UDP     53      Jakákoli                             DNS rekurze        
-  Odchozí     TCP         443     resolverapi.eu-01.whalebone.io       Aktualizace databáze hrozeb
-  Odchozí     TCP         443     resolverapi.whalebone.io             Aktualizace databáze hrozeb
-  Odchozí     TCP         443     stream.whalebone.io                  Aktualizace databáze hrozeb 
-  Odchozí     TCP         443     stream.eu-01.whalebone.io            Aktualizace databáze hrozeb 
-  Odchozí     TCP         443     logger.whalebone.io                  Logovací stream 
-  Odchozí     TCP         443     logger.eu-01.whalebone.io            Logovací stream     
-  Odchozí     TCP         443     agentapi.whalebone.io                Správa resolveru
-  Odchozí     TCP         443     agentapi.eu-01.whalebone.io          Správa resolveru
-  Odchozí     TCP         443     transfer.whalebone.io                Sběr podpůrných protokolů
-  Odchozí     TCP         443     portal.whalebone.io                  Portál správce
-  Odchozí     TCP         443     portal.eu-01.whalebone.io            Portál správce
-  Odchozí     TCP         443     harbor.whalebone.io                  Aktualizace resolveru
-  Odchozí     TCP         443     download.docker.com                  Instalační proces
-  Odchozí     TCP         443     data.iana.org                        DNSSEC klíče   
-  =========== =========== ======= ==================================== ================================
-  
-  .. warning:: Bez povolené komunikace na portu 443 s výše uvedenými doménami nebude resolver vůbec nainstalován a instalační skript se přeruší.
+Místní resolver potřebuje otevřené následující výstupní porty:
 
-  
-  Hlavní funkcí resolveru je přijímat dotazy od uživatelů a odpovídat jim na ně, což vyžaduje, aby byly na resolveru otevřeny určité porty pro provoz pocházející z klientské podsítě nebo přicházející do zákaznického rozhraní.
- 
- 
- 
-  =========== =========== ======= ============================ ==========================================
-  Směr        Protokol(y) Port    Cílová IP/Doména             Popis         
-  =========== =========== ======= ============================ ==========================================
-  Příchozí    TCP+UDP     53      Rozsah(y) podsítě zákazníka  DNS
-  Příchozí    TCP         853     Rozsah(y) podsítě zákazníka  DNS přes TLS (pokud se používá)
-  Příchozí    TCP         443     Rozsah(y) podsítě zákazníka  DNS přes HTTPS (pokud se používá)
-  =========== =========== ======= ============================ ==========================================
+=========== =========== ======= ==================================== ================================
+Směr        Protokol    Port    Cílová doména                        Popis         
+=========== =========== ======= ==================================== ================================
+Odchozí     UDP         53      Jakákoli                             DNS rekurze
+Odchozí     TCP         53      Jakákoli                             DNS rekurze
+Odchozí     TCP         443     resolverapi.whalebone.io             Aktualizace databáze hrozeb
+Odchozí     TCP         443     resolverapi.eu-01.whalebone.io       Aktualizace databáze hrozeb
+Odchozí     TCP         443     resolverapi.apac-01.whalebone.io     Aktualizace databáze hrozeb
+Odchozí     TCP         443     resolverapi.am-01.whalebone.io       Aktualizace databáze hrozeb
+Odchozí     TCP         443     stream.whalebone.io                  Aktualizace databáze hrozeb
+Odchozí     TCP         443     stream.eu-01.whalebone.io            Aktualizace databáze hrozeb
+Odchozí     TCP         443     stream.apac-01.whalebone.io          Aktualizace databáze hrozeb
+Odchozí     TCP         443     stream.am-01.whalebone.io            Aktualizace databáze hrozeb
+Odchozí     TCP         443     logger.whalebone.io                  Logovací stream
+Odchozí     TCP         443     logger.eu-01.whalebone.io            Logovací stream
+Odchozí     TCP         443     logger.apac-01.whalebone.io          Logovací stream
+Odchozí     TCP         443     logger.am-01.whalebone.io            Logovací stream
+Odchozí     TCP         443     agentapi.whalebone.io                Správa resolveru
+Odchozí     TCP         443     agentapi.eu-01.whalebone.io          Správa resolveru
+Odchozí     TCP         443     agentapi.apac-01.whalebone.io        Správa resolveru
+Odchozí     TCP         443     agentapi.am-01.whalebone.io          Správa resolveru
+Odchozí     TCP         443     transfer.whalebone.io                Sběr podpůrných protokolů
+Odchozí     TCP         443     portal.whalebone.io                  Portál správce
+Odchozí     TCP         443     portal.eu-01.whalebone.io            Portál správce
+Odchozí     TCP         443     portal.apac-01.whalebone.io          Portál správce
+Odchozí     TCP         443     portal.am-01.whalebone.io            Portál správce
+Odchozí     TCP         443     harbor.whalebone.io                  Aktualizace resolveru
+Odchozí     TCP         443     harbor.eu-01.whalebone.io            Aktualizace resolveru
+Odchozí     TCP         443     harbor.apac-01.whalebone.io          Aktualizace resolveru
+Odchozí     TCP         443     harbor.am-01.whalebone.io            Aktualizace resolveru
+Odchozí     TCP         443     download.docker.com                  Instalační proces
+Odchozí     TCP         443     data.iana.org                        DNSSEC klíče
+=========== =========== ======= ==================================== ================================
 
-  Blokační stránky jsou hostovány **přímo** na resolverech, takže musí být použity IP adresy, které jsou přístupné klientům. Klienti pak budou při blokování přesměrováni na IP adresu resolveru. Doporučujeme povolit pouze podsítě přidělené zákazníkům nebo důvěryhodným sítím, jinak by mohly být zneužity k různým útokům nebo neoprávněným uživatelům.
+.. warning:: Bez povolené komunikace na portu 443 s výše uvedenými doménami nebude resolver vůbec nainstalován a instalační skript se přeruší.
 
-  =========== =========== ======= ============================ ==========================================
-  Směr        Protokol(y) Port    Cílová IP/Doména             Popis         
-  =========== =========== ======= ============================ ==========================================
-  Příchozí    TCP         80      Rozsah(y) podsítě zákazníka  Stránka přesměrování/blokování
-  Příchozí    TCP         443     Rozsah(y) podsítě zákazníka  Stránka přesměrování/blokování
-  =========== =========== ======= ============================ ==========================================
-  
-  Procesy resolveru musí komunikovat na localhostu. V případě, že je v provozu nějaký firewall, ujistěte se, že je provoz povolen, tj. ``iptables -A INPUT -s 127.0.0.1 -j ACCEPT``.
 
-  =========== =========== ======= ============================ ==========================================
-  Směr        Protokol(y) Port    Cílová IP/Doména             Popis         
-  =========== =========== ======= ============================ ==========================================
-  Příchozí    TCP         ANY     127.0.0.1                    Procesy řešitele
-  =========== =========== ======= ============================ ==========================================
+Hlavní funkcí resolveru je přijímat dotazy od uživatelů a odpovídat jim na ně, což vyžaduje, aby byly na resolveru otevřeny určité porty pro provoz pocházející z klientské podsítě nebo přicházející do zákaznického rozhraní.
+
+
+
+=========== =========== ======= ============================ ==========================================
+Směr        Protokol(y) Port    Cílová IP/Doména             Popis         
+=========== =========== ======= ============================ ==========================================
+Příchozí    TCP+UDP     53      Rozsah(y) podsítě zákazníka  DNS
+Příchozí    TCP         853     Rozsah(y) podsítě zákazníka  DNS přes TLS (pokud se používá)
+Příchozí    TCP         443     Rozsah(y) podsítě zákazníka  DNS přes HTTPS (pokud se používá)
+=========== =========== ======= ============================ ==========================================
+
+Blokační stránky jsou hostovány **přímo** na resolverech, takže musí být použity IP adresy, které jsou přístupné klientům. Klienti pak budou při blokování přesměrováni na IP adresu resolveru. Doporučujeme povolit pouze podsítě přidělené zákazníkům nebo důvěryhodným sítím, jinak by mohly být zneužity k různým útokům nebo neoprávněným uživatelům.
+
+=========== =========== ======= ============================ ==========================================
+Směr        Protokol(y) Port    Cílová IP/Doména             Popis         
+=========== =========== ======= ============================ ==========================================
+Příchozí    TCP         80      Rozsah(y) podsítě zákazníka  Stránka přesměrování/blokování
+Příchozí    TCP         443     Rozsah(y) podsítě zákazníka  Stránka přesměrování/blokování
+=========== =========== ======= ============================ ==========================================
+
+Procesy resolveru musí komunikovat na localhostu. V případě, že je v provozu nějaký firewall, ujistěte se, že je provoz povolen, tj. ``iptables -A INPUT -s 127.0.0.1 -j ACCEPT``.
+
+=========== =========== ======= ============================ ==========================================
+Směr        Protokol(y) Port    Cílová IP/Doména             Popis         
+=========== =========== ======= ============================ ==========================================
+Příchozí    TCP         ANY     127.0.0.1                    Procesy řešitele
+=========== =========== ======= ============================ ==========================================
 
 .. note:: Pro odhad HW požadavků u nasazení vr velkých sítích ISP nebo podnikových sítích se neváhejte obrátit na společnost Whalebone. Lokální resolver Whalebone bude potřebovat přibližně dvojnásobek paměti RAM a procesoru než běžný resolver BIND nebo Unbound.
 

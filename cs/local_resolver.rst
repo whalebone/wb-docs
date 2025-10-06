@@ -55,7 +55,7 @@ Pravidelně kontrolujte a udržujte verze operačního systému a Docker engine 
       * Zkontrolujte, zda se v terminálu vypíše ``x86-64-v2 (supported, searched)``.
 
   * 4 GB RAM
-  * 80 GB HDD s alespoň 70 GB v oddílu /var
+  * Alespoň 70 GB v oddílu /var
 
 .. warning:: Pozor, Whalebone podporuje pouze nasazení bez desktopových prostředí, jako je GNOME, KDE nebo Xfce, protože ty mohou ovlivnit dostupnou paměť a zpracování DNS na serveru.
 

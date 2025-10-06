@@ -53,7 +53,7 @@ Please perform regular checks and maintain the resolver's operating system and D
       * Check if you see ``x86-64-v2 (supported, searched)`` in the terminal.
 
   * 4 GB RAM
-  * 80 GB HDD with at least 70 GB in /var partition
+  * At least 70 GB in /var partition
 
 .. warning:: Please note that Whalebone only supports deloyments without desktop environments such as GNOME, KDE or Xfce as those can impact available memory and DNS processing on the server.
 

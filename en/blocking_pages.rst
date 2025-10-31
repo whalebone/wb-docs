@@ -1,123 +1,115 @@
 Blocking Pages
-============================
+==============
 
-You can watch step-by-step video guide :ref:`here<Blocking page configuration video>`. 
-In case of blocking access to a domain (due to security, content or regulatory reasons), the resolvers are answering to the clients with a specific IP address that leads to one of the Blocking pages. While the clients initiate the HTTP(S) connections towards the blocked domain, they are presented with a custom Blocking page with different content based on the reason of the blocking. 
-For the Blocking Pages Whalebone provides sample template, however, they do not have to be followed and virtually every modification, branding and copywriting is possible. The template code is written to be compatible with the widest range of browsers to avoid problems with older versions.
+When access to a domain is blocked, the resolvers respond to clients with the IP address of a **blocking page**, where users are informed that they cannot access the given page and the reason why access was blocked. Whalebone provides a sample template for blocking pages, which can be fully customized. The template code is written to be compatible with the widest possible range of browsers.
 
-Different versions of the Blocking Pages can be assigned to different segments of the networks in **Resolvers** → **Policy assignment**.
-
+Different versions of **blocking pages** can be assigned to different network segments under **Resolvers** → **Policy Assignment**.
 
 .. figure:: ./img/blocking-pages-overview.png
-   :alt: Blocking Pages Overview
+   :alt: Overview of blocking pages
    :align: center
-   
-   Blocking Pages Overview
 
-For each version, based on the deployment details, there are four variants of the Blocking Pages that are available and can be configured:
+   Overview of blocking pages
 
-* **Security**: displayed when access is blocked due to security reasons
-* **Blacklist**: displayed when access is blocked by the Administrators
-* **Regulatory**: displayed when access is regulated due to law or court order
-* **Content**: displayed when access is blocked due to the content of the domain
+Whalebone offers four variants of blocking pages:
 
-Furthermore, each version can have different localization options. The language that is going to be presented to the user is infered from the language of the browser that is visiting the Blocking Page. New locales can be seamlessly added as an option.
+  * **Security**: displayed when access is blocked due to security reasons
+  * **Blacklist**: displayed when access is blocked by administrators
+  * **Legal**: displayed when access is regulated based on law or court order
+  * **Content**: displayed when access is blocked due to the domain's content
+
+Furthermore, each version can exist in different language mutations. The language of the blocking page is determined by the language of the browser accessing it.
 
 .. figure:: ./img/blocking-pages.png
-   :alt: Blocking Pages Menu
+   :alt: Blocking pages
    :align: center
-   
-   Blocking Pages Menu
 
-For each Locale several options are available. In the example above, the English version has the following options:
+   Blocking pages
 
-**Option 1.** – Use Template:
+The blocking page settings provide the following options:
 
-  When using the template option, the information that is provided as input to the following form are injected in the template code. This is the fastest and easiest way to customize the blocking pages.
+1. Using a template: When using a template, the entered information is inserted directly into the template code. This is the fastest and simplest way to customize the blocking page. Blocking page settings can be made by clicking the **Magic Wand** button. Using a template will overwrite the previous configuration.
 
-.. figure:: ./img/template.png
-   :alt: Template Customization
-   :align: center
-   
+   .. figure:: ./img/template.png
+      :alt: Using a template
+      :align: center
 
+2. Default blocking page localization: This option allows you to customize the default language of the blocking page. If a browser does not state its preferred language, the "default" language acts as a fallback mechanism. The default locale is marked with an asterisk (\*) symbol next to the language type.
 
-.. note:: Setting the blocking page could be done clicking on the **Magic wand** button. Note that it will override the previous version of blocking page.
-   
+3. Deleting blocking page localization: A locale can be deleted by clicking the **Trash** icon.
 
-**Option 2.** – Set as default locale:
+Each version of the blocking page (Security, Blacklist, Legal, and Content) can be further customized by editing the HTML code. Clicking on each version reveals an editor that allows you to make any desired changes.
 
-  This option can customize the default language of the Blocking Pages. In case some browser does not declare its preferred language, the "Default" language acts as a fallback mechanism. Default locale is indicated via wildcard symbol (*) next to the langue type.
+The editor also exposes a **"Validation"** interface, which analyzes the final HTML code and checks for allowed features. The check is based on the `id` of specific elements. More information and requirements for each feature can be found by clicking the respective labels.
 
-**Option 3.** – Delete the locale:
+.. note:: Each blocking page version has unique characteristics that can be selected. For example, the **Security** blocking page may include a **Bypass Blocking** button, which is not available in the **Regulation** and **Blacklist** page versions.
 
-Locale could be deleted clicking on **Bin** icon.
+After editing and saving changes to the blocking pages, it is important that they are applied to the individual resolvers.
 
+.. tip:: Blocking pages are displayed directly from the web server on the resolver. The pages are expected as a single file, so all other resources (CSS, images, scripts) must either be directly embedded into the HTML code or be available from a publicly accessible web server. The resolver does not provide any option to insert other content.
 
-Each of the Versions of the Blocking Page (Security, Blacklist, Regulatory, Content) can be customized in more detail by modifying the HTML code. Upon clicking on each version an editor is presented that allows for any required changes.
+You can view a video tutorial :ref:`here<Blocking page configuration video>`.
 
-The editor also exposes a "Verification" interface which parses the final HTML code and checks for the enabled functionalities. The check is based on the ``id`` of the specific elements. More information and requirements for each functionality can be found by clicking the respective labels.
+Signing Blocking Pages with a Certificate Authority
+---------------------------------------------------
 
-.. note:: Each Version of the Blocking Page has unique characteristics that can be selected. For example, the Security Blocking Page can include a "Bypass" button which is not available in the respective Regulatory and Blacklist versions.
+For deployments where you have control over the workstations, which is typically a corporate environment with Group Policy, you can insert a custom certificate authority used by the resolvers into their trusted CA stores. This causes browsers to go directly to the blocking page without displaying a certificate warning. The resolver essentially performs a **man-in-the-middle attack** every time it performs a redirect to the blocking page and provides its own certificate for the blocked domain.
 
+You create and set up the custom Certificate Authority in the following steps:
 
-After editing and saving the changes to the Blocking Pages it is important that they are applied to the individual resolvers.
+1. Create the `/certs` directory:
 
+   .. code-block:: shell
 
-.. tip:: The Blocking Pages are served from a web server directly on the Resolver. The pages are expected to be a single file so any additional resources (CSS, images, scripts) must be either embedded directly in the HTML code or served from a publicly accessible web server. The resolver does not provide any option to serve other content.
+      mkdir /certs
 
+2. Create the file "v3_cfg" in the `/certs` directory with the following content:
 
-Signing blocking pages with a CA
---------------------------------
+   .. code-block:: INI
 
-For deployments, where you have control over the endpoints (typically enterprise environment with Group Policy) and you're able to push self-signed SSL certificates to their trust stores, you can sign the blocking pages on the fly. This results in the browsers going directly to the blocking page without displaying the security warning, which is usually there. The resolver essentially performs a MITM any time it redirects to the blocking pages so the browser warning is expected.
+      [req]
+      req_extensions = v3_ca_extensions
+      distinguished_name = req_dn
+      [v3_ca_extensions]
+      basicConstraints = CA:TRUE
+      subjectKeyIdentifier = hash
+      authorityKeyIdentifier = keyid:always,issuer:always
+      keyUsage = cRLSign, keyCertSign
+      subjectAltName = @alt_names
+      [alt_names]
+      DNS.1 = localhost
+      [req_dn]
+      countryName = Country Name (2 letter code)
+      countryName_default = US
+      stateOrProvinceName = State or Province Name (full name)
+      stateOrProvinceName_default = New York
+      localityName = Locality Name (eg, city)
+      localityName_default = New York City
+      organizationName = Organization Name (eg, company)
+      organizationName_default = My Organization
+      commonName = Common Name (eg, your name or your server's hostname)
+      commonName_max = 64
 
-**Step 1.** – Create "v3_cfg" file with the following contents:
+3. Generate the certificate authority key:
 
-.. code-block:: INI
+   .. code-block:: shell
 
-   [req]
-   req_extensions = v3_ca_extensions
-   distinguished_name = req_dn
-   [v3_ca_extensions]
-   basicConstraints = CA:TRUE
-   subjectKeyIdentifier = hash
-   authorityKeyIdentifier = keyid:always,issuer:always
-   keyUsage = cRLSign, keyCertSign
-   subjectAltName = @alt_names
-   [alt_names]
-   DNS.1 = localhost
-   [req_dn]
-   countryName = Country Name (2 letter code)
-   countryName_default = US
-   stateOrProvinceName = State or Province Name (full name)
-   stateOrProvinceName_default = New York
-   localityName = Locality Name (eg, city)
-   localityName_default = New York City
-   organizationName = Organization Name (eg, company)
-   organizationName_default = My Organization
-   commonName = Common Name (eg, your name or your server's hostname)
-   commonName_max = 64
+      openssl ecparam -name prime256v1 -genkey -noout -out /certs/ca.key
 
+4. Create and sign the certificate authority certificate:
 
-**Step 2.** – Generate a key:
+   .. code-block:: shell
 
-.. code-block:: shell
+      openssl req -x509 -new -nodes -key /certs/ca.key -sha256 -days 3650 -out /certs/ca.crt -config /certs/v3_cfg
 
-   openssl genpkey -algorithm RSA -out /certs/ca.key
+5. Export the private key and certificate to a PFX file:
 
+   .. code-block:: shell
 
-**Step 3.** – Create and sign the certificate:
+      openssl pkcs12 -export -out /certs/ca.pfx -inkey /certs/ca.key -in /certs/ca.crt -certpbe PBE-SHA1-3DES -keypbe PBE-SHA1-3DES -export -macalg sha1
 
-.. code-block:: shell
+6. Back up the `/certs` directory to a safe place away from the resolver in case of the need for restoration.
 
-   openssl req -x509 -new -nodes -key /certs/ca.key -sha256 -days 1024 -out /certs/ca.crt -config /certs/v3_cfg
+7. Send the name and path of the file with the private key and certificate to **Whalebone support**. Our technicians will ensure the services are set up to start using the newly created Certificate Authority.
 
-
-**Step 4.** – Export the .pfx file and make sure it is placed in the /certs/ folder:
-
-.. code-block:: shell
-
-   openssl pkcs12 -export -in ca.crt -inkey ca.key -out ca.pfx -certpbe PBE-SHA1-3DES -keypbe PBE-SHA1-3DES -macal   
-
-
-**Step 5.** – Send the filename and password to Whalebone support to store the configuration persistently on the back-end to ensure that it survives the VM or container restart.
+8. Add the public key of the Certificate Authority (`/certs/ca.crt`) to the list of **trusted Certificate Authorities** on all workstations under your administration.

@@ -96,6 +96,7 @@ Outbound    TCP         443     harbor.apac-01.whalebone.io         Resolver upd
 Outbound    TCP         443     harbor.am-01.whalebone.io           Resolver updates
 Outbound    TCP         443     download.docker.com                 Installation process
 Outbound    TCP         443     data.iana.org                       DNSSEC keys
+Outbound    TCP         443     hooks.slack.com                     Support log collection
 =========== =========== ======= =================================== ======================
 
 .. warning:: Without communication on port 443 to the domains listed above, the resolver won't be installed at all and the installation script will abort.
@@ -150,9 +151,6 @@ Successful run of the installation script is ended with the notification ```Fina
 .. image:: ./img/lrv2-install.gif
    :align: center
 
-
-.. warning:: Local resolver is configured as an open resolver. It will respond to any request sent. This is quite comfortable in terms of availability of the services, but also could be a risk if the service is available from the outside networks. Please make sure you limit the access to the local resolver on port UDP/53 and TCP/53 from the trusted networks only, otherwise it can be misused for various DoS attacks.
-
 .. important:: The resolver's processes need to communicate on localhost. In case some firewall is in place please make sure that the traffic is allowed, i.e. ``iptables -A INPUT -s 127.0.0.1 -j ACCEPT``
 
 Verifying the installation
@@ -189,7 +187,5 @@ Please review your settings and if the issue persists, please contact support.
 Securing your resolver
 ----------------------
 
-Upon initial installation, the resolver is configured as an open resolver. It will respond to any request sent to it regardless of where the request originated from. This is quite 
-comfortable in terms of availability of the services, but could also be a risk if the service is available from the outside networks. Please make sure you limit the access 
-to the local resolver on port UDP/53 and TCP/53 from the trusted networks only, otherwise it can be misused for various DoS attacks.
+Upon initial installation, the resolver is configured as an open resolver. It will respond to any request sent to it regardless of where the request originated from. This is quite comfortable in terms of availability of the services, but could also be a risk if the service is available from the outside networks. Please make sure you limit the access to the local resolver on port UDP/53 and TCP/53 from the trusted networks only, otherwise it can be misused for various DoS attacks.
 

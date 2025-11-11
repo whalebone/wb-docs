@@ -87,7 +87,7 @@ Odchozí     TCP         443     agentapi.whalebone.io                Správa re
 Odchozí     TCP         443     agentapi.eu-01.whalebone.io          Správa resolveru
 Odchozí     TCP         443     agentapi.apac-01.whalebone.io        Správa resolveru
 Odchozí     TCP         443     agentapi.am-01.whalebone.io          Správa resolveru
-Odchozí     TCP         443     transfer.whalebone.io                Sběr podpůrných protokolů
+Odchozí     TCP         443     transfer.whalebone.io                Sběr dat pro řešení potíží
 Odchozí     TCP         443     portal.whalebone.io                  Portál správce
 Odchozí     TCP         443     portal.eu-01.whalebone.io            Portál správce
 Odchozí     TCP         443     portal.apac-01.whalebone.io          Portál správce
@@ -98,6 +98,7 @@ Odchozí     TCP         443     harbor.apac-01.whalebone.io          Aktualizac
 Odchozí     TCP         443     harbor.am-01.whalebone.io            Aktualizace resolveru
 Odchozí     TCP         443     download.docker.com                  Instalační proces
 Odchozí     TCP         443     data.iana.org                        DNSSEC klíče
+Odchozí     TCP         443     hooks.slack.com                      Sběr dat pro řešení potíží
 =========== =========== ======= ==================================== ================================
 
 .. warning:: Bez povolené komunikace na portu 443 s výše uvedenými doménami nebude resolver vůbec nainstalován a instalační skript se přeruší.
@@ -155,9 +156,7 @@ Po spuštění příkazu probíhá kontrola operačního systému a instalace po
 .. image:: ./img/lrv2-install.gif
    :align: center
 
-
-.. warning:: Lokální resolver je nakonfigurován jako otevřený resolver. Odpoví na jakýkoli zaslaný požadavek. To je poměrně pohodlné z hlediska dostupnosti služeb, ale také to může představovat riziko, pokud je služba dostupná z vnějších sítí. Ujistěte se, že jste omezili přístup k místnímu resolveru na porty UDP/53 a TCP/53 pouze z důvěryhodných sítí, jinak může být zneužit k různým DoS útokům.
-.. important:: The resolver's processes need to communicate on localhost. In case some firewall is in place please make sure that the traffic is allowed, i.e. ``iptables -A INPUT -s 127.0.0.1 -j ACCEPT``
+.. important:: Procesy resolveru potřebují komunikovat na localhostu. Pokud je aktivní firewall, ujistěte se, že je tato komunikace povolena, např. pomocí příkazu: ``iptables -A INPUT -s 127.0.0.1 -j ACCEPT``.
 
 Ověření správnosti instalace
 ----------------------------
@@ -193,6 +192,4 @@ Zkontrolujte prosím své nastavení a pokud problém přetrvává, kontaktujte 
 Zabezpečení resolveru
 ---------------------
 
-Při první instalaci je resolver nakonfigurován jako otevřený resolver. Odpoví na jakýkoli požadavek, který je mu zaslán, bez ohledu na to, odkud požadavek pochází. To je poměrně 
-pohodlné z hlediska dostupnosti služeb, ale může být také rizikem, pokud je služba dostupná z vnějších sítí. Ujistěte se, že jste omezili přístup 
-k místnímu resolveru na portech UDP/53 a TCP/53 pouze z důvěryhodných sítí, jinak může být zneužit k různým DoS útokům.
+Při první instalaci je resolver nakonfigurován jako otevřený resolver. Odpoví na jakýkoli požadavek, který je mu zaslán, bez ohledu na to, odkud požadavek pochází. To je poměrně pohodlné z hlediska dostupnosti služeb, ale může být také rizikem, pokud je služba dostupná z vnějších sítí. Ujistěte se, že jste omezili přístup k místnímu resolveru na portech UDP/53 a TCP/53 pouze z důvěryhodných sítí, jinak může být zneužit k různým DoS útokům.

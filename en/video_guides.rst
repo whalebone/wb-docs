@@ -50,7 +50,7 @@ Configuration
 
 Basic configuration
 -------------------
-Every network has its own specific needs. Whalebone can and will adapt to every single one of them. One of the key components that need to be configured when implementing Whalebone is setting up your “Security Policies.”
+Every network has its own specific needs. Whalebone can and will adapt to every single one of them. One of the key components that need to be configured when implementing Whalebone is setting up your "Security Policies."
 This part of the configuration allows you to adjust the default settings. You can for example lower the blocking threshold or deactivate blocking entirely which leaves you with the audit mode.
 In this mode, Whalebone monitors the incidents without preventing them from happening. The core of the configuration of audit and blocking is a so-called "score", which is assigned to individual domains by our algorithm. 
 The higher the score, the more dangerous the domain. It's up to you to choose from the preset levels of sensitivity or decide to adjust the threshold manually. We advise ISP networks to "block carefully". 
@@ -74,7 +74,7 @@ and assign a policy to a particular IP address or range. Make sure to save the s
 
 Security policies
 -----------------
-One of the key components that need to be configured when implementing Whalebone is setting up your “Security Policies. This part of the configuration allows you to adjust the default settings. You can for example lower the blocking threshold or deactivate blocking entirel
+One of the key components that need to be configured when implementing Whalebone is setting up your "Security Policies. This part of the configuration allows you to adjust the default settings. You can for example lower the blocking threshold or deactivate blocking entirel
 which leaves you with the audit mode. In this mode, Whalebone monitors the incidents without preventing them from happening. The core of the configuration of audit and blocking is a so-called "score"
 which is assigned to individual domains by our algorithm. The higher the score, the more dangerous the domain. It's up to you to choose from the preset levels of sensitivity or decide to adjust the threshold manually.
 

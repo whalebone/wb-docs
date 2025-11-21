@@ -35,7 +35,7 @@ Hlavní funkce:
 * **Statistiky tenantů a export do CSV**: Měsíční počty dotazů jsou zobrazeny v konzoli a ke stažení pro jakéhokoli uživatele s rolí tenanta.
 
 .. Povolte tyto funkce, jakmile bude funkce připravena a zveřejněna ve všech regionech:
-.. * **Prosazení politik a jemné doladění**: Označte jakoukoli politiku nebo jednotlivé pravidlo jako Enforced pro její uzamčení, nebo povolte podřízeným tenantům upravovat, sledovat rozdíly a „Obnovit výchozí“.
+.. * **Prosazení politik a jemné doladění**: Označte jakoukoli politiku nebo jednotlivé pravidlo jako Enforced pro její uzamčení, nebo povolte podřízeným tenantům upravovat, sledovat rozdíly a "Obnovit výchozí".
 
 Administrace tenantů
 ====================

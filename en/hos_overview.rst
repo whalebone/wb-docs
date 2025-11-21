@@ -4,7 +4,7 @@ Home Office Security Overview
 Why DNS-level protection matters
 --------------------------------
 
-Over 90 % of cyberattacks originate from DNS queries. By inspecting and filtering these requests, Home Office Security (HOS) client blocks threats before they are opened in browsers or reached by applications. Unlike traditional VPN-based protection, HOS works continuously, without slowing users down or requiring manual logins.
+Over 90 % of cyberattacks originate from DNS queries. By inspecting and filtering these requests, Home Office Security (HOS) blocks threats before they are opened in browsers, accessed by applications, or triggered by malicious email links. Unlike traditional VPN-based protection, HOS works continuously, without slowing users down or requiring manual logins.
 
 Whalebone Home Office Security protects company devices even when they operate outside the corporate network. It provides DNS-level protection for remote and hybrid employees, eliminating the need for an active VPN connection. The HOS client continuously monitors and filters DNS traffic to block threats before they reach users, securing every connection, regardless of where employees work.
 

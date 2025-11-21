@@ -4,12 +4,12 @@ Provoz a monitoring
 Stavy zařízení
 --------------
 
-============= ================================================================================ =====================================
-Stav          Popis                                                                            Spouštěč
-============= ================================================================================ =====================================
-**Aktivní**   Zařízení kontaktovalo backend Whalebone alespoň jednou za posledních 24 hodin.
-**Neaktivní** Zařízení nekontaktovalo backend Whalebone alespoň jednou za posledních 24 hodin. Zařízení je připojeno k firemní síti.
-============= ================================================================================ =====================================
+========= ====================================================================================================
+Stav          Popis
+========= ====================================================================================================
+Aktivní   Zařízení bylo aktivní a kontaktovalo s backendem Whalebone alespoň jednou za posledních 24 hodin.
+Neaktivní Zařízení nebylo aktivní nebo nekontaktovalo backend Whalebone alespoň jednou za posledních 24 hodin.
+========= ====================================================================================================
 
 Automatický výběr resolveru
 ---------------------------

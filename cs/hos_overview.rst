@@ -4,7 +4,7 @@ Přehled Home Office Security
 Proč je ochrana na úrovni DNS důležitá
 --------------------------------------
 
-Více než 90 % kybernetických útoků pochází z DNS dotazů. Klient Home Office Security (HOS) kontroluje a filtruje tyto požadavky, čímž blokuje hrozby dříve, než je zobrazí webový prohlížeč nebo k nim přistoupí aplikace. Na rozdíl od tradiční ochrany založené na VPN, HOS funguje nepřetržitě, aniž by uživatele zpomaloval nebo vyžadoval ruční přihlašování.
+Více než 90 % kybernetických útoků pochází z DNS dotazů. Klient Home Office Security (HOS) kontroluje a filtruje tyto požadavky, čímž blokuje hrozby dříve, než je zobrazí webový prohlížeč, přistoupí k nim aplikace nebo jsou spuštěny škodlivými odkazy v e-mailech. Na rozdíl od tradiční ochrany založené na VPN, HOS funguje nepřetržitě, aniž by uživatele zpomaloval nebo vyžadoval ruční přihlašování.
 
 Whalebone Home Office Security chrání firemní zařízení, i když fungují mimo firemní síť. Poskytuje ochranu na úrovni DNS pro zaměstnance pracující z domu nebo na služební cestě, čímž eliminuje potřebu aktivního připojení k VPN. Klient HOS nepřetržitě monitoruje a filtruje DNS provoz, aby zablokoval hrozby dříve, než se dostanou k uživatelům, a zabezpečuje každé připojení bez ohledu na to, kde zaměstnanci pracují.
 

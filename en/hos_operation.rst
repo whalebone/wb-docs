@@ -4,12 +4,12 @@ Operation and Monitoring
 Device states
 -------------
 
-============ ===================================================================================== ==========================================
-State        Description                                                                           Trigger
-============ ===================================================================================== ==========================================
-**Active**   The devices contacted the Whalebone backend at least once in the past 24 hours.                        
-**Inactive** The devices did not contact the Whalebone backend at least once in the past 24 hours. Device connected to the corporate network.
-============ ===================================================================================== ==========================================
+======== ===================================================================================================
+State        Description
+======== ===================================================================================================
+Active   The device was running and communicating with the Whalebone backend for the last 24 hours.
+Inactive The device was not running or was unable to connect to the Whalebone backend for the last 24 hours.
+======== ===================================================================================================
 
 Automatic resolver selection
 ----------------------------

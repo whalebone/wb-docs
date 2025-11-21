@@ -1,83 +1,95 @@
+Instalace
+=========
 
-************************
-Instalace krok za krokem
-************************
+Než začnete
+-----------
 
+* Zajistěte si přístup do portálu Whalebone.
+* Ověřte síťový přístup na TCP 443.
+* Pokud zavádíte pro více uživatelů, připravte si prostředí **MDM** nebo **Active Directory**.
 
-Chcete-li nainstalovat HOS do zařízení, musíte jej nejprve nakonfigurovat. Přejděte do **Whalebone Portalu**, přejděte do  (1) **Uživatelského menu** a zde na (2) **Home Office Security**.
+Konfigurace v portálu
+---------------------
 
+1. Přihlaste se do portálu Whalebone.
 
-.. image:: ./img/hos-sbs-1.png
-    :align: center
+2. Přejděte do **Home Office Security**, které se nachází v menu pod ikonou uživatele v pravém horním rohu obrazovky.
 
+    .. image:: ./img/hos-sbs-1.png
+        :align: center
 
-Skupina **Default** by již měla existovat. Pokud ne, vytvořte ji kliknutím na tlačítko (3) a **+ Vytvořit skupinu**.
+3. Ověřte přítomnost nebo vytvořte **skupinu zařízení** pomocí tlačítka **+ Vytvořit skupinu**.
 
-.. image:: ./img/hos-sbs-2.png
-    :align: center
+    .. image:: ./img/hos-sbs-2.png
+        :align: center
 
+4. Možnosti konfigurace skupiny zařízení:
+    
+      * **Název:** Identifikační štítek, např. Výchozí skupina (Default Group).
+    
+      * **Bezpečsnotní politika:** Vyberte preferovanou bezpečnostní politiku.
+    
+      * **Blokovační stránka:** Definujte, jaká šablona blokační stránky se má zobrazit.
+    
+      * **Výjimky na domény:** Zadejte domény, které by měly být vyjmuty z ochranu.
+    
+      * **Vypnout home office zabezpečení uvnitř podnikové sítě:** Volitelné; definujte:
+        
+          * *Interní doména*: Dotazovaná doména, která je dostupná pouze z interní sítě.
+          * *Interní odpověď*: Hodnota vrácená při připojení uvnitř sítě.
+          * *Typ dotazu*: Záznam A / AAAA / TXT, odpovídající vaší DNS konfiguraci.
 
-* **Název**: Tento údaj by měl jasně identifikovat skupinu zařízení, aby se odlišila od ostatních. Pokud používáte pouze jednu, můžete jeho název ponechat jako Default Group (Výchozí skupina). 
-* **Bezpečnostní politika**: Odpovídá zásadám, které vytvoříte v nabídce Konfigurace. Jedná se o soubor pravidel. Na základě zásad se zařízení nebo místní/cloudový resolver rozhoduje, co má při překladu DNS dělat. Tato sada pravidel zůstává v zařízení a je zpočátku aktualizována a později synchronizována. Z tohoto důvodu portál zajišťuje monitorování těchto zařízení.
-* **Blokační stránka**: odpovídá stránkám blokování, které vytvoříte v nabídce Konfigurace. 
-* **Výjimky na domény**: Služba HOS nebude přesměrovávat žádné dotazy DNS, které obsahují dotaz na doménu na seznamu výjimek. Např. při zadání ``example.com`` bude dotaz DNS vyřešen jako obvykle na resolveru nakonfigurovaném operačním systémem. Stejné pravidlo platí pro dotaz ``subdomena.example.com``.
-* **Vypnout HOS uvnitř podnikové sítě**: Po zaškrtnutí této možnosti se zobrazí další 3 textová pole. Konfigurace umožňuje, aby došlo k vypnutí HOS v podnikové sítě na základě procesu dotaz-odpověď. 
-    * **Interní doména**: Specifikuje na jakou interní doménu se bude HOS periodicky dotazovat.
-    * **Interní odpověď**: HOS po odelsání dotazu na interní doménu očekává odpověď specifikovanou v tomto poli.
-    * **Typ dotazu**: Dle zvoleného typu dotazu (A, AAAA a MX) musí být korektně nakonfigurován záznam na interním domain controlleru.  
+5. Kliknutím na **Přidat** skupinu uložíte.
 
-Po dokončení klikněte na tlačítko **Přidat** a vytvořte tuto skupinu.
+    .. image:: ./img/hos-sbs-3.png
+        :align: center
 
+Bezobslužná instalace (Windows 64-bit)
+--------------------------------------
 
+1. Vyberte cílovou skupinu, do které chcete přidat nově nainstalovaného klienta, kliknutím na tlačítko **Instalace do skupiny**, čímž se zobrazí odkazy ke stažení a instalační příkazy.
 
-.. image:: ./img/hos-sbs-3.png
-    :align: center
+2. Stáhněte soubor **Whalebone.Home.Office.Security.Installer.msi** z `https://github.com/whalebone/home-office-security/releases <https://github.com/whalebone/home-office-security/releases>`_.
 
+3. Zkopírujte instalační příkaz z portálu, například:
+    
+    .. code-block:: bash
 
-Kliknutím na tlačítko (5) **Install to group** se zobrazí pokyny k instalaci a/nebo můžete použít odkaz ke stažení instalačního programu HOS.
+        msiexec /i "Whalebone.Home.Office.Security.Installer.msi" TOKEN="12345678-1234-1234-1234-123456789012" REGION="eu-01"
 
-.. image:: ./img/hos-sbs-4.png
-    :align: center
+4. Použijte preferované MDM k distribuci aplikace uživatelům vytvořením nového nasazení s příkazem zkopírovaným z portálu.
 
+Odinstalace
+-----------
 
-Pokud jste si ještě nestáhli instalační program (6). Během stahování instalačního programu zkopírujte instalační příkaz do schránky (7). 
+.. code-block:: bash
 
-Instalace / aktualizace (Windows 64‑bit):
-
-.. code-block:: shell
-    :caption: Instalace / aktualizace (Windows 64‑bit)
-
-    msiexec /i "Whalebone.Home.Office.Security.Installer.msi" TOKEN="60d5806e-07fe-432a-a4ad-7797d82782b3" REGION="eu-01"
-
-Odinstalace (od v2.20.4 vyčistí také ProgramData):
-
-.. code-block:: shell
-
-    msiexec /x "Whalebone.Home.Office.Security.Installer.msi
-
-.. image:: ./img/hos-sbs-5.png
-    :align: center
-
-.. note::
-   • Proměnná **REGION** je volitelná. Povolené hodnoty: 
-     **eu-01**, **am-01** a **apac-01**.  
-   • Instalátor je nyní **pouze 64‑bitový**; 32bitové Windows nejsou podporovány.
-
-
-Najděte složku, ve které je instalátor umístěn. Měl by to být soubor s názvem **Whalebone.Home.Office.Security.Installer.msi**.
-
-Otevřete příkazový řádek, změňte adresář na složku, kde je instalátor, a vložte (8) příkaz myší (klikněte pravým tlačítkem myši). Spusťte příkaz. To vyžaduje oprávnění správce.
+    msiexec /x "Whalebone.Home.Office.Security.Installer.msi"
 
 
-Instalační program má minimální uživatelské rozhraní.
+Instalace přes GUI (Windows 64-bit)
+-----------------------------------
 
-.. image:: ./img/hos-sbs-6.png
-    :align: center
+1. Vyberte cílovou skupinu, do které chcete přidat nově nainstalovaného klienta, kliknutím na tlačítko **Instalace do skupiny**, čímž se zobrazí odkazy ke stažení a instalační příkazy.
 
-.. Tip:: Instalátor skončí s *Error 1602*, pokud chybí nebo je neplatný parametr **TOKEN** či **REGION**.
+2. Stáhněte soubor **Whalebone.Home.Office.Security.Installer.msi** z `https://github.com/whalebone/home-office-security/releases <https://github.com/whalebone/home-office-security/releases>`_.
 
-.. image:: ./img/hos-sbs-7.png
-    :align: center
+3. Dvojklikněte na stažený soubor MSI pro spuštění.
 
-Zařízení je nyní viditelné na Whalebone Portálu.
+4. Zadejte párovací token, který naleznete na portálu, do okna instalačního programu. Například:
+    
+    .. code-block:: text
 
+      aG9zLmFwcDovL2F1dGg/dG9rZW49MTIzNDU2NzgtMTIzNC0xMjM0LTEyMzQtMTIzNDU2Nzg5MDEyJnJlZ2lvbj1ldS0wMQ==
+
+Ruční instalace (Android / iOS)
+-------------------------------
+
+* Vyberte cílovou skupinu, do které chcete přidat nově nainstalovaného klienta, kliknutím na tlačítko **Instalace do skupiny**, které zobrazí odkazy ke stažení a aktivační QR kód.
+* Odešlete odkaz a QR kód uživatelům.
+* Uživatelé si aplikaci nainstalují a budou vyzváni k naskenování QR kódu k dokončení procesu instalace.
+
+Ověření po instalaci
+--------------------
+
+Zařízení se po úspěšné registraci objeví v seznamu zařízení v nastavení Home Office Security.

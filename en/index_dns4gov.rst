@@ -60,6 +60,7 @@ More information about the product and company is available on the official `Wha
    hos_overview
    hos_installation
    hos_operation
+   hos_troubleshooting
 
 .. toctree::
    :maxdepth: 1

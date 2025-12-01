@@ -33,7 +33,7 @@ Klíčové vlastnosti
 * **Přehledné uživatelské rozhraní**: odlehčené rozhraní s minimální požadovanou interakcí uživatele.
 
 Podporované operační systémy
----------------------------
+----------------------------
 
 =============== ===========================================
 Platforma       Minimální verze
@@ -73,6 +73,7 @@ Známá omezení
 * HOS může mít problémy s kompatibilitou s různými antivirovými programy, což vede k nekonzistentní detekci hrozeb.
 * Některý antivirový software může klienta Home Office Security klasifikovat jako hrozbu přesměrování DNS nebo ARP cache poisoning. Přesměrováním DNS provozu na cloudové DNS servery Whalebone je ovšem žádoucí a legitimní aktivita HOS klienta.
 * Aplikace GUI se nespustí, pokud je klient Home Office Security nasazen pomocí MDM nebo Zásad skupiny Active Directory (Active Directory Group Policies). Ochrana DNS provozu tím není dotčena.
+* Aplikace Home Office Security pro Android není kompatibilní s funkcí Private DNS.
 
 Změny
 -----

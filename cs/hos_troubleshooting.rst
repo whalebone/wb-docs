@@ -43,6 +43,18 @@ Uživatel má přístup k doménám, které by měly být blokovány (Windows)
 * **Možná příčina:** Služba Windows není spuštěna.
 * **Řešení:** Ověřte, zda běží služba Whalebone Home Office Security.
 
+Android hlásí chybu "Network has not Internet access"
+-----------------------------------------------------
+
+.. image:: ./img/hos-troubleshooting-1.png
+   :align: center
+
+* **Možná příčina:** Zařízení s Androidem má zapnutou funkci Private DNS.
+* **Řešení:** Vypněte Private DNS, protože tato funkce není kompatibilní s Home Office Security.
+
+  .. image:: ./img/hos-troubleshooting-2.png
+    :align: center
+
 Umístění logů a konfigurace (Windows)
 -------------------------------------
 

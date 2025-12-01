@@ -43,6 +43,18 @@ The user can access domains that should be blocked (Windows)
 * **Possible cause:** The Windows service is not running.
 * **Resolution:** Verify whether the Whalebone Home Office Security service is running.
 
+The "Network has not Internet access" error on Android
+------------------------------------------------------
+
+.. image:: ./img/hos-troubleshooting-1.png
+   :align: center
+
+* **Possible cause:** The Private DNS feature is enabled on the Android device.
+* **Resolution:** Disable Private DNS to resolve the issue because this feature is not compatible with Home Office Security.
+
+  .. image:: ./img/hos-troubleshooting-2.png
+    :align: center
+
 Log and configuration locations (Windows)
 -----------------------------------------
 

@@ -73,7 +73,7 @@ Known limitations
 * HOS may experience compatibility issues with different antivirus engines, leading to inconsistent threat detection.
 * Some antivirus software may classify the Home Office Security client as a DNS hijacking or ARP cache poisoning threat. However, the client protects users by redirecting their DNS traffic to Whalebone cloud DNS servers, which is a legitimate activity.
 * The GUI application does not start when the Home Office Security client is deployed using an MDM or Active Directory Group Policies. DNS traffic protection is not affected.
-* The Home Office Security app is not compatible with the Private DNS feature on Android devices.
+* The Home Office Security app is not compatible with the Private DNS feature on Android devices and the Private Relay feature on iOS devices.
 
 Changelog
 ---------

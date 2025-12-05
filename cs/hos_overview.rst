@@ -74,6 +74,7 @@ Známá omezení
 * Některý antivirový software může klienta Home Office Security klasifikovat jako hrozbu přesměrování DNS nebo ARP cache poisoning. Přesměrováním DNS provozu na cloudové DNS servery Whalebone je ovšem žádoucí a legitimní aktivita HOS klienta.
 * Aplikace GUI se nespustí, pokud je klient Home Office Security nasazen pomocí MDM nebo Zásad skupiny Active Directory (Active Directory Group Policies). Ochrana DNS provozu tím není dotčena.
 * Aplikace Home Office Security není kompatibilní s funkcí Private DNS v zařízeních s operačním systémem Android a funkcí Private Relay v zařízeních s operačním systémem iOS.
+* Aplikace Home Office Security není kompatibilní s aplikací Android Auto v zařízeních s operačním systémem Android.
 
 Změny
 -----

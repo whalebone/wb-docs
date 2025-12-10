@@ -9,14 +9,14 @@ Troubleshooting consists of four steps:
 
 **Step 1: Examine if on-premises Whalebone resolvers block the domain**
 
-  * If you have on-premises resolvers, use the "Is this domain blocked?" button in the resolver menu, under the three dots icon. The test result will tell you whether the resolver blocks the domain.
+  * If you have on-premises resolvers, use the "Is this domain blocked?" button in the resolver menu, under the three dots icon. The test result will tell you whether the resolver blocks the domain. If it is blocked, you have three options: add the domain into an allow list, report it as a false positive detection, or leave it blocked.
 
     .. image:: ./img/domain-resolution-analysis-1.png
       :align: center
 
 **Step 2: Examine the domain in the Threats page**
 
-  * Try to find the affected domain among blocked threats.
+  * Try to find the affected domain among blocked threats. Similarly to the previous option, if it is blocked, you have three options: add the domain into an allow list, report it as a false positive detection, or leave it blocked.
 
 **Step 3: Examine the domain in the DNS traffic**
 
@@ -37,8 +37,71 @@ Troubleshooting consists of four steps:
 
   * It can show that the DNSSEC validation process was unsuccessful or the authoritative DNS server was not reachable.
 
+**Step 5: Use the Developer Tools in the web browser to collect more details about the blocked domain**
+
+  * If the domain is not blocked, there are no obvious errors in DNS Traffic, and DNSVIZ shows that the domain is valid, you can use Developer Tools in your web browser to collect more details about the blocked domain. Look for errors in the Console tab and check the Network tab for failed requests. Eventually, you can save the network log and contact Whalebone Support for further assistance. See the :ref:`Developer Tools guide <developer-tools-guide>` for more information.
+
 You can watch a step-by-step video guide :ref:`here <domain-resolution-troubleshooting>`.
 
 The Whalebone administration portal provides the ability to trace the domain. This feature is available in **Resolvers** under each resolver's three dots. This feature shows what information is passed to the resolver when resolving a particular domain.
 
 You can watch a step-by-step video guide :ref:`here <domain-tracing>`.
+
+.. _developer-tools-guide:
+
+Developer Tools guide
+=====================
+
+The Developer Tools are built-in features of modern web browsers that allow users to inspect and debug web pages. They provide various tools for developers to analyze requests and domains involved in loading a web page. This chapter provides a brief overview of how to use Developer Tools to collect more details about network traffic and errors related to blocked domains in some popular web browsers. Once you have collected the network log, you can contact Whalebone Support for further assistance.
+
+.. tip::
+
+  Delete the DNS cache on your computer and home router before using Developer Tools to ensure that you are capturing fresh DNS requests. You can clear the DNS cache on the computer by running the following command in the command prompt or terminal:
+
+    - On Windows: `ipconfig /flushdns`
+    - On macOS: `sudo killall -HUP mDNSResponder`
+    - On Linux: The command may vary depending on the distribution and DNS service used. For example, for systems using systemd-resolved, you can use: `sudo systemd-resolve --flush-caches`
+
+  The router's DNS cache clearing process varies by manufacturer and model. Refer to your router's documentation for specific instructions. Restarting the router usually clears its DNS cache.
+
+Google Chrome
+-------------
+
+1. Open Google Chrome.
+2. Navigate to the web page where you are experiencing issues with accessing a domain.
+3. Right-click anywhere on the page and select "Inspect" to open Developer Tools. Alternatively, you can press `Ctrl + Shift + I` (Windows/Linux) or `Cmd + Option + I` (Mac).
+4. In Developer Tools, go to the "Network" tab.
+5. Check the "Preserve log" option to keep the log of network requests even if the page is reloaded.
+6. Reload the web page to capture all network requests. If for example, a video fails to play, load the page with the video and try to play it.
+7. Save the network log by clicking the "Export HAR (sanitized)..." button located in the Network tab's toolbar. This will save a HAR file containing all network requests and responses.
+
+.. image:: ./img/domain-resolution-analysis-3.png
+  :align: center
+
+Mozilla Firefox
+---------------
+
+1. Open Mozilla Firefox.
+2. Navigate to the web page where you are experiencing issues with accessing a domain.
+3. Right-click anywhere on the page and select "Inspect Element" to open Developer Tools. Alternatively, you can press `Ctrl + Shift + I` (Windows/Linux) or `Cmd + Option + I` (Mac).
+4. In Developer Tools, go to the "Network" tab.
+5. Click the gear icon in the upper right corner and check the "Persist Logs" option to keep the log of network requests even if the page is reloaded.
+6. Reload the web page to capture all network requests. If for example, a video fails to play, load the page with the video and try to play it.
+7. Save the network log by clicking the gear icon in the upper right corner and selecting "Save All As HAR". This will save a HAR file containing all network requests and responses.
+
+.. image:: ./img/domain-resolution-analysis-4.png
+  :align: center
+
+Microsoft Edge
+--------------
+
+1. Open Microsoft Edge.
+2. Navigate to the web page where you are experiencing issues with accessing a domain.
+3. Right-click anywhere on the page and select "Inspect" to open Developer Tools. Alternatively, you can press `Ctrl + Shift + I` (Windows/Linux) or `Cmd + Option + I` (Mac).
+4. In Developer Tools, go to the "Network" tab.
+5. Check the "Preserve log" option to keep the log of network requests even if the page is reloaded.
+6. Reload the web page to capture all network requests. If for example, a video fails to play, load the page with the video and try to play it.
+7. Save the network log by clicking the "Export HAR (sanitized)..." button located in the Network tab's toolbar. This will save a HAR file containing all network requests and responses.
+
+.. image:: ./img/domain-resolution-analysis-5.png
+  :align: center

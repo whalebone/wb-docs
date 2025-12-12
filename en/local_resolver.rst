@@ -60,7 +60,7 @@ Please perform regular checks and maintain the resolver's operating system and D
 Network requirements
 --------------------
 
-.. tip:: Whalebone uses regional cloud services to optimize the communication between clients and the cloud components. The region to which the customer's resolver is connected can be found in the URL of the tenant in the Admin Portal. For example, if the URL is https://portal.eu-01.whalebone.io/en/client-123456, the tenant is registered in the EU-01 region. This is useful when setting up the firewall rules in the customer's network.
+.. tip:: Whalebone uses regional cloud services to optimize the communication between clients and the cloud components. The region to which the customer's resolver is connected can be found in the URL of the tenant in the Admin Portal. For example, if the URL is https://portal.eu-01.whalebone.io/en/client-123456, the tenant is registered in the EU-01 region. This is useful when setting up the firewall rules in the customer's network. Some customers may be using the Legacy environment, in which the tenant URL will be https://portal.whalebone.io/en/client-123456.
 
 Local resolver needs the following egress ports opened:
 

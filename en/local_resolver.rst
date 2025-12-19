@@ -19,7 +19,7 @@ Please perform regular checks and maintain the resolver's operating system and D
 
 * **Operating system**
 
-  .. warning:: Please note that Whalebone only supports deloyments without desktop environments such as GNOME, KDE or Xfce as those can impact available memory and DNS processing on the server.
+  .. warning:: Please note that Whalebone only supports deployments without desktop environments such as GNOME, KDE or Xfce as those can impact available memory and DNS processing on the server.
 
   * The operating system must support the amd64-bit architecture.
   * Whalebone requires an actively maintained operating system distributed by one of the following operating system publishers:

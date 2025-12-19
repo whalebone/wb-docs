@@ -71,7 +71,7 @@ Počet DNS dotazů za sekundu Počet klientů Počet jader CPU RAM (GB) Volné m
 Požadavky na nastavení sítě
 ---------------------------
 
-.. tip:: Whalebone využívá regionální cloudové služby k optimalizaci komunikace mezi klienty a cloudovými komponentami. Region, ke kterému je připojen resolver zákazníka, lze zjistit z URL v Admin Portálu. Například pokud je URL https://portal.eu-01.whalebone.io/en/client-123456, je zákazník registrován v regionu EU-01. Toto je užitečné při nastavování pravidel firewallu v síti zákazníka.
+.. tip:: Whalebone používá regionální cloudové služby k optimalizaci komunikace mezi klienty a cloudovými komponentami. Region, ke kterému je připojen resolver zákazníka, lze nalézt v URL adrese účet v administrátorském portálu. Například pokud je URL adresa https://portal.eu-01.whalebone.io/en/client-123456, je účet registrován v regionu EU-01. To je užitečné při nastavování pravidel firewallu v síti zákazníka. Někteří zákazníci mohou používat prostředí Legacy, ve kterém bude URL adresa účtu https://portal.whalebone.io/en/client-123456.
 
 Místní resolver potřebuje otevřené následující výstupní porty:
 

@@ -24,8 +24,21 @@ You can watch step-by-step video guide :ref:`here<Alerts video>`.
 
 .. note:: When the alerting channel is syslog, by default TCP or TLS is supported as the transport layer protocol.
 
-.. note:: The Syslog or Webhook alerts are sent from the following IP addresses: 159.100.247.142 and 159.100.247.58. If you select one of these channels, make sure to make an incoming TCP traffic exception on your firewall to be able to receive the message.
+.. tip:: Whalebone uses regional cloud services to optimize the communication between clients and the cloud components. The region to which the customer's resolver is connected can be found in the URL of the tenant in the Admin Portal. For example, if the URL is https://portal.eu-01.whalebone.io/en/client-123456, the tenant is registered in the EU-01 region. This is useful when setting up the firewall rules in the customer's network. Some customers may be using the Legacy environment, in which the tenant URL will be https://portal.whalebone.io/en/client-123456.
 
+The Syslog or Webhook alerts are sent from the IP addresses listed in the table below. If you select one of these channels, make sure to make an incoming TCP traffic exception on your firewall to be able to receive the message.
+
++----------------+---------------------------------+
+| Region         | IP Address                      |
++================+=================================+
+| AM-01          | 34.174.88.243                   |
++----------------+---------------------------------+
+| APAC-01        | 34.126.172.166                  |
++----------------+---------------------------------+
+| EU-01          | 34.140.218.91                   |
++----------------+---------------------------------+
+| Legacy         | 159.100.247.142, 159.100.247.58 |
++----------------+---------------------------------+
 
 DNS traffic - count of unique requests from IP
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

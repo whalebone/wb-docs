@@ -19,6 +19,8 @@ Please perform regular checks and maintain the resolver's operating system and D
 
 * **Operating system**
 
+  .. warning:: Please note that Whalebone only supports deloyments without desktop environments such as GNOME, KDE or Xfce as those can impact available memory and DNS processing on the server.
+
   * The operating system must support the amd64-bit architecture.
   * Whalebone requires an actively maintained operating system distributed by one of the following operating system publishers:
 
@@ -29,6 +31,8 @@ Please perform regular checks and maintain the resolver's operating system and D
 
 * **Docker**
 
+  .. tip:: The installation script will install Docker engine. There is no need to install it manually prior to the installation.
+
   * Whalebone supports and is tested on versions of Docker that are supported by the community. See the supported versions `here <https://endoflife.date/docker-engine>`_.
 
 * **File systems** 
@@ -36,9 +40,7 @@ Please perform regular checks and maintain the resolver's operating system and D
   * ext4
   * xfs only with d_type support (ftype=1)
 
-* **Minimum hardware sizing**
-
-  * 2 CPU cores
+* **CPU**
 
   * The CPU supports the amd64-bit architecture and the x86-64-v2 instruction set. See below for instructions on how to verify if x86-64-v2 is supported:
 
@@ -52,10 +54,19 @@ Please perform regular checks and maintain the resolver's operating system and D
       * Execute ``/lib/ld-linux-x86-64.so.2 --help``.
       * Check if you see ``x86-64-v2 (supported, searched)`` in the terminal.
 
-  * 4 GB RAM
-  * At least 70 GB in /var partition
+Hardware sizing recommendations
+-------------------------------
 
-.. warning:: Please note that Whalebone only supports deloyments without desktop environments such as GNOME, KDE or Xfce as those can impact available memory and DNS processing on the server.
+The following table provides hardware sizing recommendations based on the expected DNS query load and number of clients per server. Whalebone recommends provisioning at least two servers for redundancy and high availability. Both servers should meet the minimum hardware requirements listed in the table below to handle the expected load even in the event of a failure of one of them.
+
+================================ ================= =================== ======== =========================
+Number of DNS queries per second Number of clients Number of CPU cores RAM (GB) Free disk space (GB)
+================================ ================= =================== ======== =========================
+5,000                            25,000            2                   4        80
+10,000                           50,000            4                   8        80
+20,000                           100,000           8                   16       80
+50,000                           250,000           20                  40       80
+================================ ================= =================== ======== =========================
 
 Network requirements
 --------------------
@@ -143,7 +154,6 @@ The command will run the installation script and will pass the one time token us
 
 .. image:: ./img/lrv2-create.gif
 	:align: center
-  
 
 Once the command is run the operating system is being checked and requirements installed. Script will inform you about the progress and it creates a detailed log named ``wb_install.log`` in current directory.
 Successful run of the installation script is ended with the notification ```Final tuning of the OS``` with value ``[ OK ]``. Right after the installation also the initialization takes place and it could take several minutes before the resolver starts the services.
@@ -182,10 +192,7 @@ Please review your settings and if the issue persists, please contact support.
    
    Blocking Page - Whalebone Resolver is not being used.
 
-
-
 Securing your resolver
 ----------------------
 
 Upon initial installation, the resolver is configured as an open resolver. It will respond to any request sent to it regardless of where the request originated from. This is quite comfortable in terms of availability of the services, but could also be a risk if the service is available from the outside networks. Please make sure you limit the access to the local resolver on port UDP/53 and TCP/53 from the trusted networks only, otherwise it can be misused for various DoS attacks.
-

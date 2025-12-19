@@ -7,8 +7,6 @@ podívejte se na :ref:`Cloudové nasazení<Cloudové nasazení>`.
 
 Whalebone resolver je založen na implementaci `Knot Resolveru <https://www.knot-resolver.cz/>`_ vyvinutého CZ.NIC.
 
-
-
 Systémové požadavky na lokální resolver
 =======================================
 
@@ -21,6 +19,8 @@ Pravidelně kontrolujte a udržujte verze operačního systému a Docker engine 
 
 * **Operační systém**
 
+  .. warning:: Pozor, Whalebone podporuje pouze nasazení bez desktopových prostředí, jako je GNOME, KDE nebo Xfce, protože ty mohou ovlivnit dostupnou paměť a zpracování DNS na serveru.
+
   * Operační systém musí podporovat 64bitovou (amd64) architekturu.
   * Lze si vybrat jednu z níže zmíněných distribucí operačního systému Linux. Tato distribuce musí mít aktivní podporu od svého vydavatele.
 
@@ -31,6 +31,8 @@ Pravidelně kontrolujte a udržujte verze operačního systému a Docker engine 
 
 * **Docker**
 
+  .. tip:: Instalační skript nainstaluje Docker engine. Není nutné jej před instalací instalovat ručně.
+
   * Whalebone podporuje a testuje na verzích Dockeru, které jsou podporovány komunitou. Podporované verze najdete `zde <https://endoflife.date/docker-engine>`_.
 
 * **Souborové systémy** 
@@ -38,9 +40,7 @@ Pravidelně kontrolujte a udržujte verze operačního systému a Docker engine 
   * ext4
   * xfs pouze s podporou d_type (ftype=1)
 
-* **Minimální požadavky na hardware**
-
-  * 2 jádra procesoru
+* **CPU**
 
   * CPU s podporou architektury amd64 a instrukční sadou x86-64-v2. Níže najdete instrukce pro ověření, zda server podporuje x86-64-v2:
 
@@ -54,10 +54,19 @@ Pravidelně kontrolujte a udržujte verze operačního systému a Docker engine 
       * Spusťte příkaz ``/lib/ld-linux-x86-64.so.2 --help``.
       * Zkontrolujte, zda se v terminálu vypíše ``x86-64-v2 (supported, searched)``.
 
-  * 4 GB RAM
-  * Alespoň 70 GB v oddílu /var
+Požadavky na výkon serveru
+--------------------------
 
-.. warning:: Pozor, Whalebone podporuje pouze nasazení bez desktopových prostředí, jako je GNOME, KDE nebo Xfce, protože ty mohou ovlivnit dostupnou paměť a zpracování DNS na serveru.
+Následující tabulka poskytuje doporučení pro velikost hardwaru na základě očekávaného zatížení DNS dotazů a počtu klientů na server. Společnost Whalebone doporučuje zajistit alespoň dva servery pro redundanci a vysokou dostupnost. Oba servery by měly splňovat minimální hardwarové požadavky uvedené v tabulce níže, aby byly schopny zvládnout očekávané zatížení i při výpadku jednoho z nich.
+
+=========================== ============= =============== ======== =========================
+Počet DNS dotazů za sekundu Počet klientů Počet jader CPU RAM (GB) Volné místo na disku (GB)
+=========================== ============= =============== ======== =========================
+5 000                       25 000        2               4        80
+10 000                      50 000        4               8        80
+20 000                      100 000       8               16       80
+50 000                      250 000       20              40       80
+=========================== ============= =============== ======== =========================
 
 Požadavky na nastavení sítě
 ---------------------------
@@ -103,10 +112,7 @@ Odchozí     TCP         443     hooks.slack.com                      Sběr dat 
 
 .. warning:: Bez povolené komunikace na portu 443 s výše uvedenými doménami nebude resolver vůbec nainstalován a instalační skript se přeruší.
 
-
 Hlavní funkcí resolveru je přijímat dotazy od uživatelů a odpovídat jim na ně, což vyžaduje, aby byly na resolveru otevřeny určité porty pro provoz pocházející z klientské podsítě nebo přicházející do zákaznického rozhraní.
-
-
 
 =========== =========== ======= ============================ ==========================================
 Směr        Protokol(y) Port    Cílová IP/Doména             Popis         
@@ -148,10 +154,8 @@ Příkaz spustí instalační skript a předá jednorázový token použitý pro
 .. image:: ./img/lrv2-create.gif
 	:align: center
 
-
 Po spuštění příkazu probíhá kontrola operačního systému a instalace požadavků. Skript vás bude informovat o průběhu a vytvoří podrobný protokol s názvem ``wb_install.log`` v aktuálním adresáři.
 Úspěšné spuštění instalačního skriptu je ukončeno oznámením ``Finální ladění operačního systému`` s hodnotou ``[ OK ]```. Hned po instalaci proběhne také inicializace a může trvat několik minut, než resolver spustí služby.
-
 
 .. image:: ./img/lrv2-install.gif
    :align: center
@@ -186,8 +190,6 @@ Zkontrolujte prosím své nastavení a pokud problém přetrvává, kontaktujte 
    :align: center
    
    Blokační stránka - resolver nefunguje správně.
-
-
 
 Zabezpečení resolveru
 ---------------------

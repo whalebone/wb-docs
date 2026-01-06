@@ -23,11 +23,21 @@ Videoprůvodce krok za krokem si můžete prohlédnout :ref:`zde<Alerty video>`.
 
 .. note:: Pokud je kanálem upozornění syslog, je ve výchozím nastavení jako protokol transportní vrstvy podporován protokol TCP nebo TLS.
 
-.. note:: Alerty přes Syslog nebo Webhook jsou odesílány z následujících IP adres: 159.100.247.142 a 159.100.247.58. Pokud vyberete jeden z těchto kanálů, ujistěte se, že jste na bráně firewall udělali výjimku pro příchozí provoz TCP, abyste mohli zprávu přijímat.
+.. tip:: Whalebone používá regionální cloudové služby k optimalizaci komunikace mezi klienty a cloudovými komponentami. Region, ke kterému je připojen resolver zákazníka, lze nalézt v URL adrese účet v administrátorském portálu. Například pokud je URL adresa https://portal.eu-01.whalebone.io/en/client-123456, je účet registrován v regionu EU-01. To je užitečné při nastavování pravidel firewallu v síti zákazníka. Někteří zákazníci mohou používat prostředí Legacy, ve kterém bude URL adresa účtu https://portal.whalebone.io/en/client-123456.
 
+Syslog nebo Webhook upozornění jsou odesílána z IP adres uvedených v tabulce níže. Pokud vyberete jeden z těchto kanálů, ujistěte se, že na svém firewallu povolíte příchozí TCP provoz, abyste mohli zprávu přijímat.
 
-
-
++----------------+---------------------------------+
+| Region         | IP adresa                       |
++================+=================================+
+| AM-01          | 34.174.88.243                   |
++----------------+---------------------------------+
+| APAC-01        | 34.126.172.166                  |
++----------------+---------------------------------+
+| EU-01          | 34.140.218.91                   |
++----------------+---------------------------------+
+| Legacy         | 159.100.247.142, 159.100.247.58 |
++----------------+---------------------------------+
 
 DNS provoz - Phishing na základě podobné domény (Homografický útok)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

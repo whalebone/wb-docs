@@ -1,5 +1,5 @@
 ==================
-Syslog Integration
+Syslog integrace
 ==================
 
 Integrace syslogu ve Whalebone poskytuje spolehlivý export bezpečnostních a provozních dat v reálném čase přímo z každého lokálního resolveru Whalebone do průmyslově standardních SIEM nástrojů, jako jsou Splunk, Elastic nebo jakékoliv kompatibilní externí řešení pro správu logů. Tato schopnost umožňuje organizacím centralizovat sběr logů, korelovat události DNS zabezpečení s dalšími zdroji dat a vytvářet automatizované detekční a reakční workflow. Streamováním událostí ve standardním formátu syslog je zajištěna bezproblémová integrace do stávající monitorovací infrastruktury a současně je podporována compliance, auditní požadavky a pokročilá analýza hrozeb.

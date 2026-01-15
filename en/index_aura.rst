@@ -50,7 +50,8 @@ More information about the product and company is available on the official `Wha
    :maxdepth: 1
    :caption: Organization Settings
    
-   user
+   user_management
+   organization_settings
    multitenancy
 
 .. toctree::

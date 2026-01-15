@@ -80,6 +80,8 @@ content.log
         "type": "A",
         "rcode": "0",
         "matrix": {
+            "accuracy_audit": "false",
+            "accuracy_block": "false",
             "content": "true",
             "advertisement": "false",
             "legal": "false",
@@ -91,19 +93,101 @@ content.log
         }
     }
 
-Important fields in the content.log file:
+Fields in the content.log file with explanations and possible values:
 
-- **timestamp**: The date and time when the event occurred.
+- **timestamp [string]** : The date and time when the event occurred.
 
-- **action**: The action taken by the resolver (e.g., "block" or "allow").
+- **action [string]**: The action taken by the resolver.
+    - "block": The DNS request was blocked, and the client received a response with the blocking page's IP address.
+    - "allow": The DNS query was allowed based on the user's request to bypass the blocking the page.
 
-- **client_ip**: The IP address of the client that made the DNS request.
+- **server_ip [string]**: The IP address of the resolver that processed the DNS request.
 
-- **server_ip**: The IP address of the resolver that processed the DNS request.
+- **client_ip [string]**: The IP address of the client that made the DNS request.
 
-- **domain**: The domain name that was requested.
+- **domain [string]**: The domain name that was requested.
 
-- **type**: The type of DNS record (e.g., "A", "AAAA", "CNAME").
+- **ioc [string]**: The Indicator of Compromise containing the specific domain that triggered the security event.
+
+- **identity [string]**: The internal identifier for IP address or IP range that is tied to any policy (e.g. “wb-default-policy” or any other unique name of the policy).
+
+- **mobile_client_id [string]**: The identifier for a mobile client we parse from TLS, used in Home Office Security.
+
+- **device_id [string]**: The ID of the device using Home Office Security.
+
+- **content_types [array]** : The content categories that the domain falls under.
+    - "porn"
+    - "gambling"
+    - "sexual-content"
+    - "weapons"
+    - "child-abuse"
+    - "drugs"
+    - "racism"
+    - "terrorism"
+    - "violence"
+    - "audio-video"
+    - "chat"
+    - "games"
+    - "social-networks"
+    - "advertisement"
+    - "coinminer"
+    - "doh"
+    - "p2p"
+    - "tracking"
+    - "vpn-proxies"
+    - "freemail"
+    - "alcohol-cigarettes"
+
+- **legal_types [array]**: The legal restriction identifiers that triggered the block.
+
+- **app_blocked_intersect [array]**: The specific applications that were blocked with the current request (e.g., "discord", "netflix").
+
+- **scheduled_filter [array]**: The content categories that were queried and have scheduled allowance.
+
+- **scheduled_internet [string]**:  The boolean value indicating if internet access is currently restricted based on a predefined schedule.
+
+- **policy_name [string]**: The name of the chosen policy for request.
+
+- **policy_group_id [string]**: The ID of the chosen policy for request.
+
+- **policy_tags [string]**: The label of the chosen policy for grouping and filtering of requests.
+
+- **pin [string]**: The numeric value often used to track bypass attempts or specific policy flags; defaults to "0".
+
+- **region [string]**: The customer deployment region.
+    - "eu-01"
+    - "apac-01"
+    - "am-01"
+    - "": The main (original) region.  
+
+- **segment_id [string]**: The identifier for a specific network or customer segment.
+
+- **brand_id [string]**: The identifier for a specific brand in multi-tenant or white-labeled environments.
+
+- **subscription_id [string]**: The identifier for the user's or organisation's subscription.
+
+- **answer [string]**: The answer given to the user in the DNS record.
+    - "SINKHOLE_IP": IP of the blocking page.
+
+- **sinkhole_type [string]**: The identifier of the sinkhole used for blocking.
+
+- **port [string]**: The client port number for the DNS request.
+
+- **type [string]**: The type of DNS record (e.g., "A", "AAAA", "CNAME").
+
+- **rcode [string]**: The DNS return code in the answer.
+
+- **matrix [object]**: The boolean values for the resolver to determine the action.
+    - "accuracy_audit": "true" if the domain's accuracy score met the threshold for auditing (logging without blocking), "false" otherwise.
+    - "accuracy_block": "true" if the accuracy score met the threshold for a security.
+    - "content": "true" if query falls under content filtering, "false" otherwise.
+    - "advertisement": "true" if query falls under advertisement content filtering, "false" otherwise.
+    - "legal": "true" if query falls under regulatory restrictions, "false" otherwise.
+    - "whitelist": "true" if the domain from the query is in the allow list, "false" otherwise.
+    - "blacklist": "true" if the domain from the query is in the deny list, "false" otherwise.
+    - "bypass": "true" if the blocking of the query was bypassed by the user, "false" otherwise.
+    - "apps_blocked": “true” if the query falls under application-level block rules, “false” otherwise.
+    - "apps_allowed": “true” if the query falls under application-level allow rules, “false” otherwise.
 
 passivedns.log
 ^^^^^^^^^^^^^^
@@ -122,30 +206,53 @@ passivedns.log
         "answer": "3.33.251.168",
         "identity": "wb-default-policy",
         "ttl": 1,
-        "res_action": "allow",
+        "rcode": 0,
         "ede_code": -1,
         "protocol": "UDP",
         "region": "eu-01",
         "rtt": 0
     }
 
-Important fields in the passivedns.log file:
+Fields in the passivedns.log file with explanations and possible values:
 
-- **response_time**: The date and time when the response was sent.
+- **response_time [string]**: The date and time when the response was sent.
 
-- **client**: The IP address of the client that made the DNS request.
+- **client [string]**: The IP address of the client that made the DNS request.
 
-- **server**: The IP address of the resolver that processed the DNS request.
+- **server [string]**: The IP address of the resolver that processed the DNS request.
 
-- **query**: The domain name that was requested.
+- **class [string]**: The class of the DNS request, typically “IN”.
 
-- **answer**: The IP address returned in the DNS response.
+- **type [string]**: The type of DNS record (e.g., "A", "AAAA", "CNAME").
 
-- **res_action**: The action taken by the resolver (e.g., "allow" or "block").
+- **query_port [number]**: The client port number for the DNS request.
 
-- **ede_code**: The Extended DNS Error code, which provides additional information about the DNS response.
+- **response_port [number]**: The server port number for the DNS response.
 
-- **type**: The type of DNS record (e.g., "A", "AAAA", "CNAME").
+- **query [string]**: The domain name that was requested.
+
+- **answer [string]**: The IP address returned in the DNS response.
+
+- **identity [string]**: The internal identifier for IP address or IP range that is tied to any policy (e.g. “wb-default-policy” or any other unique name of the policy).
+
+- **ttl [number]**: The Time To Live value for the DNS record, indicating how long the record can be cached.
+
+- **rcode [number]**: The DNS return code in the answer.
+
+- **ede_code [number]**: The Extended DNS Error code, which provides additional information about the DNS response; “-1” if no code provided.
+
+- **protocol [string]**: The protocol used for the DNS request.
+    - "UDP"
+    - "TCP"
+    - "TLS"
+
+- **region [string]**: The customer deployment region.
+    - “eu-01”
+    - “apac-01”
+    - “am-01”
+    - “”: The main (original) region.
+
+- **rtt [number]**: The DNS response time; defaults to “0” when value unknown.
 
 whalebone.log
 ^^^^^^^^^^^^^
@@ -180,10 +287,7 @@ whalebone.log
         "sinkhole_type": "8",
         "port": "63559",
         "type": "HTTPS",
-        "qclass": "IN",
         "rcode": "0",
-        "ede_code": -1,
-        "protocol": "UDP",
         "matrix": {
             "accuracy_audit": "true",
             "accuracy_block": "true",
@@ -198,27 +302,86 @@ whalebone.log
         }
     }
 
-Important fields in the whalebone.log file:
+Fields in the whalebone.log file with explanations and possible values:
 
-- **timestamp**: The date and time when the event occurred.
+- **timestamp [string]**: The date and time when the event occurred.
 
-- **action**: The action taken by the resolver (e.g., "block", "audit", or "allow").
-
+- **action [string]**: The action taken by the resolver.
     - "block": The DNS request was blocked, and the client received a response with the blocking page's IP address.
-
-    - "audit": The DNS request was logged for auditing purposes. This type of action is used for monitoring and analyzing traffic without interfering with the clients' normal behavior.
-
+    - "audit": The DNS request was logged for auditing purposes. This type of action is used for monitoring and analysing traffic without interfering with the clients' normal behaviour.
     - "allow": The DNS query was allowed based on the user's request to bypass the blocking the page.
 
-- **client_ip**: The IP address of the client that made the DNS request.
+- **server_ip [string]**: The IP address of the resolver that processed the DNS request.
 
-- **server_ip**: The IP address of the resolver that processed the DNS request.
+- **client_ip [string]**: The IP address of the client that made the DNS request.
 
-- **domain**: The domain name that was requested.
+- **domain [string]**: The domain name that was requested.
 
-- **accuracy**: Accuracy expresses the confidence level that a domain is truly dangerous, based on multiple factors such as security vendor consensus, amount of traffic across Whalebone resolvers, suspicious communication patterns, and results from internal research. The value ranges from 0 to 100, where 100 indicates the highest confidence that the target domain provides a malicious content.
+- **ioc [string]**: The Indicator of Compromise containing the specific domain that triggered the security event.
 
-- **threat_types**: The type of threat detected (e.g., "spam", "phishing", "malware").
+- **identity [string]**: An internal identifier for IP address or IP range that is tied to any policy (e.g. “wb-default-policy” or any other unique name of the policy).
+
+- **mobile_client_id [string]**: The identifier for a mobile client we parse from TLS, used in Home Office Security.
+
+- **device_id [string]**: The ID of the device using Home Office Security.
+
+- **accuracy [string]**: The value from 0 to 100 representing the confidence level that a domain is truly malicious. It is based on multiple factors such as security vendor consensus, amount of traffic across Whalebone resolvers, suspicious communication patterns, and results from internal research.
+
+- **threat_types [array]**: The categories of threats detected.
+    - “malware”
+    - “phishing”
+    - “c2c”
+    - “spam”
+    - "blacklist"
+    - "coinminer"
+    - "compromised"
+
+- **app_blocked_intersect [array]**: The specific applications that were blocked with the current request (e.g., “discord”, “netflix”).
+
+- **scheduled_internet [string]**:  The boolean value indicating if internet access is currently restricted based on a predefined schedule.
+
+- **policy_name [string]**: The name of the chosen policy for request.
+
+- **policy_group_id [string]**: The ID of the chosen policy for request.
+
+- **policy_tags [string]**: The label of the chosen policy for grouping and filtering of requests.
+
+- **pin [string]**: The numeric value often used to track bypass attempts or specific policy flags; defaults to "0".
+
+- **region [string]**: The customer deployment region.
+    - “eu-01”
+    - “apac-01”
+    - “am-01”
+    - “”: The main (original) region.
+
+- **segment_id [string]**: The identifier for a specific network or customer segment.
+
+- **brand_id [string]**: The identifier for a specific brand in multi-tenant or white-labeled environments.
+
+- **subscription_id [string]**: The identifier for the user's or organisation's subscription.
+
+- **answer [string]**: The answer given to the user in the DNS record.
+    - “SINKHOLE_IP”: IP of the blocking page.
+
+- **sinkhole_type [string]**: The identifier of the sinkhole used for blocking.
+
+- **port [string]**: The client port number for the DNS request.
+
+- **type [string]**: The type of DNS record (e.g., “A”, “AAAA”, “CNAME”, “HTTPS”).
+
+- **rcode [string]**: The DNS return code in the answer.
+
+- **matrix [object]**: The boolean values for the resolver to determine the action.
+    - "accuracy_audit": "true" if the domain's accuracy score met the threshold for auditing (logging without blocking), “false” otherwise.
+    - "accuracy_block": "true" if the accuracy score met the threshold for a security block, “false” otherwise.
+    - "content": “true” if query falls under content filtering, “false” otherwise.
+    - "advertisement": “true” if query falls under advertisement content filtering, “false” otherwise.
+    - "legal": “true” if query falls under regulatory restrictions, “false” otherwise.
+    - "whitelist": “true” if the domain from the query is in the allow list, “false” otherwise.
+    - "blacklist": “true” if the domain from the query is in the deny list, “false” otherwise.
+    - "bypass": “true” if the blocking of the query was bypassed by the user, “false” otherwise.
+    - "apps_blocked": “true” if the query falls under application-level block rules, “false” otherwise.
+    - "apps_allowed": “true” if the query falls under application-level allow rules, “false” otherwise.
 
 Limitations
 -----------

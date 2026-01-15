@@ -1,5 +1,5 @@
 ==================
-Syslog Integration
+Syslog integrace
 ==================
 
 Integrace syslogu ve Whalebone poskytuje spolehlivý export bezpečnostních a provozních dat v reálném čase přímo z každého lokálního resolveru Whalebone do průmyslově standardních SIEM nástrojů, jako jsou Splunk, Elastic nebo jakékoliv kompatibilní externí řešení pro správu logů. Tato schopnost umožňuje organizacím centralizovat sběr logů, korelovat události DNS zabezpečení s dalšími zdroji dat a vytvářet automatizované detekční a reakční workflow. Streamováním událostí ve standardním formátu syslog je zajištěna bezproblémová integrace do stávající monitorovací infrastruktury a současně je podporována compliance, auditní požadavky a pokročilá analýza hrozeb.
@@ -80,6 +80,8 @@ content.log
         "type": "A",
         "rcode": "0",
         "matrix": {
+            "accuracy_audit": "false",
+            "accuracy_block": "false",
             "content": "true",
             "advertisement": "false",
             "legal": "false",
@@ -91,19 +93,101 @@ content.log
         }
     }
 
-Důležité údaje v souboru content.log:
+Pole v souboru content.log s vysvětleními a možnými hodnotami:
 
-- **timestamp**: Datum a čas, kdy došlo k události.
+- **timestamp [string]** : Datum a čas, kdy k události došlo.
 
-- **action**: Akce provedená resolverem (např. "block" nebo "allow").
+- **action [string]**: Akce provedená resolverem.
+    - "block": DNS požadavek byl zablokován a klient obdržel odpověď s IP adresou blokační stránky.
+    - "allow": DNS dotaz byl povolen na základě požadavku uživatele o obejití blokační stránky.
 
-- **client_ip**: IP adresa klienta, který provedl DNS dotaz.
+- **server_ip [string]**: IP adresa resolveru, který zpracoval DNS požadavek.
 
-- **server_ip**:IP adresa resolveru, který DNS dotaz zpracoval.
+- **client_ip [string]**: IP adresa klienta, který odeslal DNS požadavek.
 
-- **domain**: Název domény, která byla požadována.
+- **domain [string]**: Název dotazované domény.
 
-- **type**: Typ DNS záznamu (např. "A", "AAAA", "CNAME").
+- **ioc [string]**: Indikátor kompromitace (Indicator of Compromise) obsahující konkrétní doménu, která vyvolala bezpečnostní událost.
+
+- **identity [string]**: Interní identifikátor pro IP adresu nebo rozsah IP, který je vázán na konkrétní politiku (např. "wb-default-policy" nebo jakýkoli jiný unikátní název politiky).
+
+- **mobile_client_id [string]**: Identifikátor mobilního klienta parsovaný z TLS, používaný v rámci Home Office Security.
+
+- **device_id [string]**: ID zařízení využívajícího Home Office Security.
+
+- **content_types [array]** : Kategorie obsahu, do kterých doména spadá.
+    - "porn"
+    - "gambling"
+    - "sexual-content"
+    - "weapons"
+    - "child-abuse"
+    - "drugs"
+    - "racism"
+    - "terrorism"
+    - "violence"
+    - "audio-video"
+    - "chat"
+    - "games"
+    - "social-networks"
+    - "advertisement"
+    - "coinminer"
+    - "doh"
+    - "p2p"
+    - "tracking"
+    - "vpn-proxies"
+    - "freemail"
+    - "alcohol-cigarettes"
+
+- **legal_types [array]**: Identifikátory zákonných omezení, která vyvolala zablokování.
+
+- **app_blocked_intersect [array]**: Konkrétní aplikace, které byly v rámci aktuálního požadavku zablokovány (např. "discord", "netflix").
+
+- **scheduled_filter [array]**: Kategorie obsahu, které byly dotazovány a mají nastaveno plánované povolení.
+
+- **scheduled_internet [string]**: Booleovská hodnota indikující, zda je v současné době přístup k internetu omezen na základě předdefinovaného časového plánu.
+
+- **policy_name [string]**: Název zvolené politiky pro daný požadavek.
+
+- **policy_group_id [string]**: ID zvolené politiky pro daný požadavek.
+
+- **policy_tags [string]**: Označení zvolené politiky pro účely seskupování a filtrování požadavků.
+
+- **pin [string]**: Numerická hodnota často používaná ke sledování pokusů o obejití nebo specifických příznaků politiky; výchozí hodnota je "0".
+
+- **region [string]**: Region nasazení u zákazníka.
+    - "eu-01"
+    - "apac-01"
+    - "am-01"
+    - "": Hlavní (původní) region.  
+
+- **segment_id [string]**: Identifikátor pro konkrétní síť nebo zákaznický segment.
+
+- **brand_id [string]**: Identifikátor pro konkrétní značku v multi-tenantním prostředí nebo v prostředí white-label.
+
+- **subscription_id [string]**: Identifikátor předplatného uživatele nebo organizace.
+
+- **answer [string]**: Odpověď poskytnutá uživateli v DNS záznamu.
+    - "SINKHOLE_IP": IP adresa blokační stránky.
+
+- **sinkhole_type**: Typ použitého sinkhole mechanismu.
+
+- **port [string]**: Číslo portu klienta pro DNS požadavek.
+
+- **type [string]**: Typ DNS záznamu (např. "A", "AAAA", "CNAME").
+
+- **rcode [string]**: Návratový kód DNS v odpovědi.
+
+- **matrix [object]**: Booleovské hodnoty pro resolver k určení akce.
+    - "accuracy_audit": "true", pokud skóre přesnosti domény dosáhlo prahu pro audit (záznam bez blokování), jinak "false".
+    - "accuracy_block": "true", pokud skóre přesnosti dosáhlo prahu pro bezpečnostní zablokování.
+    - "content": "true", pokud dotaz spadá pod filtrování obsahu, jinak "false".
+    - "advertisement": "true", pokud dotaz spadá pod filtrování reklamního obsahu, jinak "false".
+    - "legal": "true", pokud dotaz podléhá regulačním omezením, jinak "false".
+    - "whitelist": "true", pokud je doména z dotazu na seznamu povolených, jinak "false".
+    - "blacklist": "true", pokud je doména z dotazu na seznamu zakázaných, jinak "false".
+    - "bypass": "true", pokud uživatel obešel zablokování dotazu, jinak "false".
+    - "apps_blocked": "true", pokud dotaz spadá pod pravidla pro blokování na úrovni aplikací, jinak "false".
+    - "apps_allowed": "true", pokud dotaz spadá pod pravidla pro povolení na úrovni aplikací, jinak "false".
 
 passivedns.log
 ^^^^^^^^^^^^^^
@@ -122,30 +206,53 @@ passivedns.log
         "answer": "3.33.251.168",
         "identity": "wb-default-policy",
         "ttl": 1,
-        "res_action": "allow",
+        "rcode": 0,
         "ede_code": -1,
         "protocol": "UDP",
         "region": "eu-01",
         "rtt": 0
     }
 
-Důležité položky v souboru passivedns.log:
+Pole v souboru passivedns.log s vysvětleními a možnými hodnotami:
 
-- **response_time**: Datum a čas, kdy byla odeslána odpověď.
+- **response_time [string]**: Datum a čas, kdy byla odeslána odpověď.
 
-- **client**: IP adresa klienta, který provedl DNS dotaz.
+- **client [string]**: IP adresa klienta, který odeslal DNS požadavek.
 
-- **server**: IP adresa resolveru, který DNS dotaz zpracoval.
+- **server [string]**: IP adresa resolveru, který zpracoval DNS požadavek.
 
-- **query**: Název domény, která byla požadována.
+- **class [string]**: Třída DNS požadavku, obvykle "IN".
 
-- **answer**:IP adresa vrácená v DNS odpovědi.
+- **type [string]**: Typ DNS záznamu (např. "A", "AAAA", "CNAME").
 
-- **res_action**: Akce provedená resolverem (např. "allow" nebo "block").
+- **query_port [number]**: Číslo portu klienta pro DNS požadavek.
 
-- **ede_code**: Kód Extended DNS Error, který poskytuje dodatečné informace o DNS odpovědi.
+- **response_port [number]**: Číslo portu serveru pro DNS odpověď.
 
-- **type**: Typ DNS záznamu (např. "A", "AAAA", "CNAME").
+- **query [string]**: Název dotazované domény.
+
+- **answer [string]**: IP adresa vrácená v DNS odpovědi.
+
+- **identity [string]**: Interní identifikátor pro IP adresu nebo rozsah IP, který je vázán na konkrétní politiku (např. "wb-default-policy" nebo jakýkoli jiný unikátní název politiky).
+
+- **ttl [number]**: Hodnota Time To Live pro DNS záznam, udávající, jak dlouho může být záznam uchován v mezipaměti.
+
+- **rcode [number]**: Návratový kód DNS v odpovědi.
+
+- **ede_code [number]**: Rozšířený kód chyby DNS (Extended DNS Error), který poskytuje dodatečné informace o DNS odpovědi; "-1", pokud není kód poskytnut.
+
+- **protocol [string]**: Protokol použitý pro DNS požadavek.
+    - "UDP"
+    - "TCP"
+    - "TLS"
+
+- **region [string]**: Region nasazení u zákazníka.
+    - "eu-01"
+    - "apac-01"
+    - "am-01"
+    - "": Hlavní (původní) region.
+
+- **rtt [number]**: Doba odezvy DNS; výchozí hodnota je "0", pokud je neznámá.
 
 whalebone.log
 ^^^^^^^^^^^^^
@@ -180,10 +287,7 @@ whalebone.log
         "sinkhole_type": "8",
         "port": "63559",
         "type": "HTTPS",
-        "qclass": "IN",
         "rcode": "0",
-        "ede_code": -1,
-        "protocol": "UDP",
         "matrix": {
             "accuracy_audit": "true",
             "accuracy_block": "true",
@@ -198,27 +302,86 @@ whalebone.log
         }
     }
 
-Důležité položky v souboru whalebone.log:
+Pole v souboru whalebone.log s vysvětleními a možnými hodnotami:
 
-- **timestamp**: Datum a čas, kdy byla odeslána odpověď.
+- **timestamp [string]**: Datum a čas, kdy k události došlo.
 
-- **action**: Akce provedená resolverem (např. "allow", "audit" nebo "block").
+- **action [string]**: Akce provedená resolverem.
+    - "block": DNS požadavek byl zablokován a klient obdržel odpověď s IP adresou blokační stránky.
+    - "audit": DNS požadavek byl zaznamenán pro účely auditu. Tento typ akce se používá pro monitorování a analýzu provozu bez ovlivnění běžného chování klientů.
+    - "allow": DNS dotaz byl povolen na základě požadavku uživatele o obejití blokační stránky.
 
-    - "block": DNS dotaz byl zablokován a klientovi byla vrácena odpověď s IP adresou blokační stránky.
+- **server_ip [string]**: IP adresa resolveru, který zpracoval DNS požadavek.
 
-    - "audit": DNS dotaz byl zaznamenán pro účely auditu. Tento typ akce se používá pro monitorování a analýzu provozu bez zásahu do běžného chování klientů.
+- **client_ip [string]**: IP adresa klienta, který odeslal DNS požadavek.
 
-    - "allow": DNS dotaz byl povolen a na základě uživately žádosti o přístup ke stránce.
+- **domain [string]**: Název dotazované domény.
 
-- **client_ip**: IP adresa klienta, který provedl DNS dotaz.
+- **ioc [string]**: Indikátor kompromitace (Indicator of Compromise) obsahující konkrétní doménu, která vyvolala bezpečnostní událost.
 
-- **server_ip**: IP adresa resolveru, který DNS dotaz zpracoval.
+- **identity [string]**: Interní identifikátor pro IP adresu nebo rozsah IP, který je vázán na konkrétní politiku (např. "wb-default-policy" nebo jakýkoli jiný unikátní název politiky).
 
-- **domain**: Název domény, která byla požadována.
+- **mobile_client_id [string]**: Identifikátor mobilního klienta parsovaný z TLS, používaný v rámci Home Office Security.
 
-- **accuracy**: Přesnost vyjadřuje úroveň jistoty, že je doména skutečně nebezpečná, na základě několika faktorů, jako je shoda mezi dodavateli databází hrozeb, objem provozu přes resolvery Whalebone, podezřelé vzorce komunikace a výsledky interního výzkumu. Hodnota se pohybuje v rozmezí od 0 do 100, kde 100 znamená nejvyšší míru jistoty, že se jedná o doménu s nebezpečným obsahem.
+- **device_id [string]**: ID zařízení využívajícího Home Office Security.
 
-- **threat_types**: Typ detekované hrozby (např. "spam", "phishing", "malware").
+- **accuracy [string]**: Hodnota od 0 do 100 představující úroveň důvěry, že doména je skutečně škodlivá. Je založena na více faktorech, jako je konsenzus bezpečnostních dodavatelů, objem provozu napříč resolvery Whalebone, podezřelé vzorce komunikace a výsledky interního výzkumu.
+
+- **threat_types [array]**: Kategorie zjištěných hrozeb.
+    - "malware"
+    - "phishing"
+    - "c2c"
+    - "spam"
+    - "blacklist"
+    - "coinminer"
+    - "compromised"
+
+- **app_blocked_intersect [array]**: Konkrétní aplikace, které byly v rámci aktuálního požadavku zablokovány (např. "discord", "netflix").
+
+- **scheduled_internet [string]**: Booleovská hodnota indikující, zda je v současné době přístup k internetu omezen na základě předdefinovaného časového plánu.
+
+- **policy_name [string]**: Název zvolené politiky pro daný požadavek.
+
+- **policy_group_id [string]**: ID zvolené politiky pro daný požadavek.
+
+- **policy_tags [string]**: Označení zvolené politiky pro účely seskupování a filtrování požadavků.
+
+- **pin [string]**: Numerická hodnota často používaná ke sledování pokusů o obejití nebo specifických příznaků politiky; výchozí hodnota je "0".
+
+- **region [string]**: Region nasazení u zákazníka.
+    - "eu-01"
+    - "apac-01"
+    - "am-01"
+    - "": Hlavní (původní) region.
+
+- **segment_id [string]**: Identifikátor pro konkrétní síť nebo zákaznický segment.
+
+- **brand_id [string]**: Identifikátor pro konkrétní značku v multi-tenantním prostředí nebo v prostředí white-label.
+
+- **subscription_id [string]**: Identifikátor předplatného uživatele nebo organizace.
+
+- **answer [string]**: Odpověď poskytnutá uživateli v DNS záznamu.
+    - "SINKHOLE_IP": IP adresa blokační stránky.
+
+- **sinkhole_type [string]**: Identifikátor sinkhole mechanismu použitého pro blokování.
+
+- **port [string]**: Číslo portu klienta pro DNS požadavek.
+
+- **type [string]**: Typ DNS záznamu (např. "A", "AAAA", "CNAME", "HTTPS").
+
+- **rcode [string]**: Návratový kód DNS v odpovědi.
+
+- **matrix [object]**: Booleovské hodnoty pro resolver k určení akce.
+    - "accuracy_audit": "true", pokud skóre přesnosti domény dosáhlo prahu pro audit (záznam bez blokování), jinak "false".
+    - "accuracy_block": "true", pokud skóre přesnosti dosáhlo prahu pro bezpečnostní zablokování, jinak "false".
+    - "content": "true", pokud dotaz spadá pod filtrování obsahu, jinak "false".
+    - "advertisement": "true", pokud dotaz spadá pod filtrování reklamního obsahu, jinak "false".
+    - "legal": "true", pokud dotaz podléhá regulačním omezením, jinak "false".
+    - "whitelist": "true", pokud je doména z dotazu na seznamu povolených, jinak "false".
+    - "blacklist": "true", pokud je doména z dotazu na seznamu zakázaných, jinak "false".
+    - "bypass": "true", pokud uživatel obešel zablokování dotazu, jinak "false".
+    - "apps_blocked": "true", pokud dotaz spadá pod pravidla pro blokování na úrovni aplikací, jinak "false".
+    - "apps_allowed": "true", pokud dotaz spadá pod pravidla pro povolení na úrovni aplikací, jinak "false".
 
 Limitatace
 ----------

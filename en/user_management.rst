@@ -3,7 +3,7 @@
 User Management
 ===============
 
-Users management is located in **User menu** > **Users**.
+User management is located in the **User menu** > **Users**.
 
 Under this menu, an Administrator can manage user accounts by adding, removing, editing, or disabling them. Additionally, they are presented with an overview of the last login and password change details for each account.
 
@@ -49,7 +49,7 @@ Alerts admin
 API credentials
 ~~~~~~~~~~~~~~~
 
-- Create and rewoke API credentials for accessing the Whalebone Portal programmatically
+- Create and revoke API credentials for accessing the Whalebone Portal programmatically
 
 Blocking page editor
 ~~~~~~~~~~~~~~~~~~~~
@@ -142,7 +142,7 @@ Security policy admin
 ~~~~~~~~~~~~~~~~~~~~~
 
 - View, create, edit, and delete security policies
-- Manage blocking page settings, policy matching strategy, and policy assignemnts on on-premises DNS resolvers
+- Manage blocking page settings, policy matching strategy, and policy assignments on on-premises DNS resolvers
 - View policy assignments on cloud resolvers
 - View, create, edit, and delete custom allow and deny lists used for filtering and blocking
 - View DNS resolver logs
@@ -195,7 +195,7 @@ Read only operations
 
 - View security policies and their configurations
 - View DNS resolution settings for on-premises DNS resolvers
-- View allow and deny lists used for filtering and blocking
+- View the allow and deny lists used for filtering and blocking
 - View the configuration of blocking pages
 - View the list of on-premises DNS resolvers and their statuses without access to their configurations and logs
 

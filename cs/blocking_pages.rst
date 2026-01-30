@@ -68,13 +68,13 @@ Vlastní certifikační autoritu vytvoříte a nastavíte v následujících kro
    .. code-block:: INI
 
       [req]
-      req_extensions = v3_ca_extensions
+      x509_extensions = v3_ca_extensions
       distinguished_name = req_dn
       [v3_ca_extensions]
-      basicConstraints = CA:TRUE
+      basicConstraints = critical,CA:TRUE
       subjectKeyIdentifier = hash
       authorityKeyIdentifier = keyid:always,issuer:always
-      keyUsage = cRLSign, keyCertSign
+      keyUsage = critical, digitalSignature, cRLSign, keyCertSign
       subjectAltName = @alt_names
       [alt_names]
       DNS.1 = localhost

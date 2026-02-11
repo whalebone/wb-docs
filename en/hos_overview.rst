@@ -79,7 +79,7 @@ Known limitations
 Changelog
 ---------
 
-The changelog is available at `https://github.com/whalebone/home-office-security/releases <https://github.com/whalebone/home-office-security/releases>`_.
+The changelog is available for each client version in the Admin Portal after clicking the **Install to group** button for the respective Home Office Security device group.
 
 Glossary
 --------

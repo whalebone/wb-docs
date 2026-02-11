@@ -79,7 +79,7 @@ Známá omezení
 Změny
 -----
 
-Seznam změn je k dispozici na `https://github.com/whalebone/home-office-security/releases <https://github.com/whalebone/home-office-security/releases>`_.
+Seznam změn je k dispozici pro každou verzi klienta v Admin Portalu po kliknutí na tlačítko **Instalace do skupiny** pro příslušnou skupinu zařízení Home Office Security.
 
 Slovníček pojmů
 ---------------

@@ -47,9 +47,9 @@ Konfigurace v portálu
 Bezobslužná instalace (Windows 64-bit)
 --------------------------------------
 
-1. Vyberte cílovou skupinu, do které chcete přidat nově nainstalovaného klienta, kliknutím na tlačítko **Instalace do skupiny**, čímž se zobrazí odkazy ke stažení a instalační příkazy.
+1. Vyberte cílovou skupinu, do které chcete přidat nově nainstalovaného klienta. Kliknutím na tlačítko **Instalace do skupiny** se zobrazí tlačítko ke stažení a instalační příkazy.
 
-2. Stáhněte soubor **Whalebone.Home.Office.Security.Installer.msi** z `https://github.com/whalebone/home-office-security/releases <https://github.com/whalebone/home-office-security/releases>`_.
+2. Stáhněte požadovaný instalační soubor.
 
 3. Zkopírujte instalační příkaz z portálu, například:
     
@@ -70,9 +70,9 @@ Odinstalace
 Instalace přes GUI (Windows 64-bit)
 -----------------------------------
 
-1. Vyberte cílovou skupinu, do které chcete přidat nově nainstalovaného klienta, kliknutím na tlačítko **Instalace do skupiny**, čímž se zobrazí odkazy ke stažení a instalační příkazy.
+1. Vyberte cílovou skupinu, do které chcete přidat nově nainstalovaného klienta, kliknutím na tlačítko **Instalace do skupiny**, které zobrazí odkazy ke stažení a instalační příkazy.
 
-2. Stáhněte soubor **Whalebone.Home.Office.Security.Installer.msi** z `https://github.com/whalebone/home-office-security/releases <https://github.com/whalebone/home-office-security/releases>`_.
+2. Stáhněte požadovaný instalační soubor.
 
 3. Dvojklikněte na stažený soubor MSI pro spuštění.
 

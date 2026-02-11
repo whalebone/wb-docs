@@ -47,9 +47,9 @@ Portal configuration
 Unattended Installation (Windows 64-bit)
 ----------------------------------------
 
-1. Select the target group to which you want to add the newly installed client by clicking the **Install to group** button to display download links and installation commands.
+1. Select the target group to which you want to add the newly installed client by clicking the **Install to group** button to download the application and display the installation commands.
 
-2. Download **Whalebone.Home.Office.Security.Installer.msi** from `https://github.com/whalebone/home-office-security/releases <https://github.com/whalebone/home-office-security/releases>`_.
+2. Download the required installation file.
 
 3. Copy the installation command from the Portal, for example:
     
@@ -70,9 +70,9 @@ Uninstallation
 GUI Installation (Windows 64-bit)
 ---------------------------------
 
-1. Select the target group to which you want to add the newly installed client by clicking the **Install to group** button to display download links and installation commands.
+1. Select the target group to which you want to add the newly installed client by clicking the **Install to group** button to download the application and display the installation commands.
 
-2. Download **Whalebone.Home.Office.Security.Installer.msi** from `https://github.com/whalebone/home-office-security/releases <https://github.com/whalebone/home-office-security/releases>`_.
+2. Download the required installation file.
 
 3. Double-click the downloaded MSI file to execute it.
 

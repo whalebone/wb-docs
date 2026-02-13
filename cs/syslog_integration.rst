@@ -244,7 +244,9 @@ Pole v souboru passivedns.log s vysvětleními a možnými hodnotami:
 - **protocol [string]**: Protokol použitý pro DNS požadavek.
     - "UDP"
     - "TCP"
-    - "TLS"
+    - "DOT"
+    - "DOH"
+    - "QUIC"
 
 - **region [string]**: Region nasazení u zákazníka.
     - "eu-01"

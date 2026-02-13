@@ -1,136 +1,153 @@
 Data Analysis
 =============
 
-Whalebone Portal is a web user interface providing users with multiple options to analyze activity on DNS resolvers and the network.
+Whalebone Portal differentiates among three data types: **Content**, **DNS Traffic**, and **Threats**. Each of these categories has its own tab in the portal, allowing users to easily navigate and analyze the data. All three views share the same structure and use the same filtering options, as described in the following sections.
+
+The page structure is as follows:
+
+* **Filters**: Located at the top of the page, allowing users to filter the data based on various criteria.
+* **A graph with a traffic overview in time**: Located below the filters, providing visual representations of the data in time.
+* **Pie charts**: Located below the graph, showing the distribution of data based on different categories.
+* **Raw data**: Located at the bottom of the page, displaying the raw data in a tabular format.
+
+All graphs and tables are interactive, allowing users to click specific elements to filter the data. For example, clicking on a specific category in the pie chart will filter the data and update all charts to show only entries that belong to that category.
+
+More detailed filtering options are available at the top of the page, where users can select specific criteria to filter the data. These filters include options such as date range, content type, query type, and more. The filters apply to all charts and tables on the page, enabling users to analyze data based on their specific needs.
+
+The row with filters contains the following options:
+
+1. **Filter**: Opens a drop-down menu with various filtering options based on the type of data being analyzed.
+2. **Saved filters**: Allows users to access their saved filter settings for future use, making it easier to apply the same filters again without having to set them up each time.
+3. **Describe the filters you want to apply...**: A text box that allows users to enter specific criteria for filtering the data. This can include domain names, IP addresses, or other relevant information. The field supports full-text search and the AI mode, allowing users to build queries using natural language.
+4. **Quick date range selection**: Provides predefined time windows (e.g., 1 day, 7 days) for quick filtering of data based on common time frames.
+5. **From date selection**: Allows users to select a specific date and time to filter the data starting from that point.
+6. **To date selection**: To date selection: Allows users to filter data up to a specific date and time.
+
+.. figure:: ./img/data-analysis-1.png
+   :alt: Filters
+   :align: center
+
+   Data analysis filters
+
+.. tip:: Date selection can be performed in the graph, which shows the traffic overview over time. By clicking and dragging on the graph, users can select a time range, which automatically updates the filters and displays data for that period.
+
+   .. figure:: ./img/data-analysis-2.gif
+      :alt: Date selection in the graph
+      :align: center
+
+      Date selection in the graph
+
+The **Describe the filters you want to apply...** search field supports natural language queries, allowing users to build complex filters using simple language. For example, users can enter queries like "Show me all blocked domains related to gambling in the last 7 days" or "Find all DNS requests from IP address 192.168.1.1". The AI mode will interpret the query and apply the appropriate filters to display the relevant data.
+
+Apart from the AI mode, the search field also supports full-text search, allowing users to enter specific keywords or phrases to filter the data. For example, entering a specific domain name or IP address will filter the data to show only entries that match the search criteria. It also supports wildcard characters, enabling users to search for patterns in the data. For instance, entering "example.*" will filter the data to show all entries that contain domains starting with "example.".
+
+The "Add to filter" buttons in the pie charts with top 10 clients and domains allow users to quickly add all items from the chart to the filters. For example, if a user clicks "Add to filter" in the top 10 clients pie chart, all client IP addresses listed in that chart will be added to the filters, allowing the user to analyze data specifically for those clients.
+
+.. figure:: ./img/data-analysis-5.png
+   :alt: Add to filter
+   :align: center
+
+   Add to filter button in pie charts
+
+All filters are saved in the user's session and will be applied when the user returns to the portal. This means that if a user applies specific filters and then leaves the portal or switches to a different part of the portal, those filters will still be in place when they return, allowing for a seamless experience without the need to reapply filters each time.
+
+Raw DNS data can be exported to a CSV file using the button at the top of the table. The exported data will include all data currently filtered on the portal. Please note that the export is limited to 1,000,000 records. If you need to export more data, it is recommended to apply additional filters to narrow the results before exporting or to use the API to retrieve data.
 
 Content
 -------
 
-The **content** tab shows an overview of logged traffic subject to content filtering settings. If you do not have the content filter enabled or are not using it, nothing will be logged in this tab.
+The **Content** tab shows an overview of blocked domains subject to content filtering settings. If you do not have the content filter enabled or are not using it, nothing will be logged in this tab. There are 17 categories to choose from, including ``Sexual Content``, ``Gambling``, ``Audio/video``, or ``Games``.
 
-How to view all queries of a specific type
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Filtering Options
+~~~~~~~~~~~~~~~~~
 
-The easiest way to select queries of a particular type is by clicking the **filter** icon and selecting the desired query type. There are 17 categories to choose from, including ``Sexual Content``, ``Gambling``, ``Audio/video``, or ``Games``. Alternatively, you can click on one of the categories displayed on the pie graph under the **Category** section or directly in the plot showing all the data.
+The Filter button contains different options based on the type of data being analyzed. Here are the available options for each data type:
 
-By clicking on the pie graphs, you can also filter out the **Client IP** and **Resolver**.
+* **Client IP**: Filter the data based on specific client IP addresses.
+* **Device ID**: Filter the data based on specific device IDs.
+* **Domain**: Filter the data based on specific domain names.
+* **Content category**: Filter the data based on specific content categories (e.g., Sexual Content, Gambling, Audio/video, Games).
+* **Legal**: Filter the domains blocked by regulatory restrictions.
+* **Resolver ID**: Filter the data received by specific resolvers.
 
-How to search for a domain
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-To search for domains, use the **Result Filter** text box to enter the domain name you are looking for. Other ways to search for a domain are by clicking the domain in the **Domain** section or directly in the log list in the same column.
-
-How to change the date range of the available data
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The range of data that can be displayed in the portal preview can be changed in several ways. The basic selection method includes selecting predefined time windows of 1 or 7 days from the drop-down list next to the **results filter**. If desired, a specific time range can be specified using the **Start Date and Time** and **End Date and Time** windows.
-
-Domain categorization change
+Domain Categorization Change
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-It may happen that some of the domains are categorized incorrectly. You can check which categories a domain falls into by using the **Domain Analysis** tool located in the user menu. After entering a domain, the **Content Categorization** section will appear, showing the categories the domain falls into and also offering a **Suggest Category Change** button to suggest a change in categorization. It is also possible to report a domain as a false positive using the **Report as malicious** button.
+Some domains are categorized incorrectly. You can check which categories a domain falls into by using the **Domain Analysis** tool located in the user menu. After entering a domain, the **Content Categorization** section will appear, showing the categories the domain falls into and also offering a **Suggest Category Change** button to suggest a change in categorization. It is also possible to report a domain as a false negative using the **Report as malicious** button.
 
-Export to CSV
-~~~~~~~~~~~~~
+CSV Export
+~~~~~~~~~~
 
-It is possible to export the raw data containing the date, client's IP address, device name, domain, and content category type to a CSV file. The export button is located at the beginning of the table with the raw data. The exported data will contain all the data that is currently filtered on the portal. The export button is available only when there are up to 1,000,000 records in the filtered data.
+The raw data contains the following details:
+
+* date
+* client's IP address
+* device name
+* domain
+* content category type
  
 DNS Traffic
 -----------
 
-The ``DNS Traffic`` tab contains an overview of the traffic that has been logged on the resolver. It contains all the queries along with some additional information, such as the type, the answer, and the TTL (Time To Live) of the answer.
+The ``DNS Traffic`` tab provides an overview of traffic logged on resolvers. It contains all queries, along with additional information such as the query type, the answer, and the TTL (Time To Live).
 
-.. tip:: The data are subject to de-duplication. This means that the resolver logs only unique combinations of query, query type, and answer per 24-hour time frame. For this reason, a query might not be available on the portal even though it has been resolved.
+.. tip:: The data is subject to de-duplication. This means the resolver logs only unique combinations of query, query type, and answer within a 24-hour time frame. For this reason, a query might not appear on the portal even if it has been resolved.
 
 You can watch a step-by-step video guide :ref:`here<DNS traffic video>`.
 
-Below are some examples of the most useful filtering options for the available data.
+Filtering Options
+~~~~~~~~~~~~~~~~~
 
-How to view all queries of a specific type
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The Filter button contains different options based on the type of data being analyzed. Here are the available options for each data type:
 
-The easiest way to select queries of a particular type is by clicking the **filter** icon and selecting the desired query type. There are several options to choose from, including ``A``, ``AAA``, ``CNAME``, ``MX``, ``NS``, ``PTR``, ``RRSIG``,
-``SPF``, ``SRV``, and ``TXT``.
+* **Client IP**: Filter the data based on specific client IP addresses.
+* **Device ID**: Filter the data based on specific device IDs.
+* **Domain**: Filter the data based on specific domain names.
+* **Query Type**: Filter the data based on specific query types (e.g., A, AAAA, CNAME).
+* **Query**: Filter the data based on specific DNS queries.
+* **DNS Tunnel**: Enable or disable DNS tunnel detection in DNS traffic.
+* **DGA**: Enable or disable DGA (Domain Generation Algorithm) detection in DNS traffic.
+* **Country code**: Filter the data based on specific country codes.
+* **Segment**: Filter the data based on specific segments.
+* **Brand**: Filter the data based on specific brands.
+* **Resolver ID**: Filter the data received by specific resolvers.
+* **Answer**: Filter the data based on specific DNS answers.
+* **Protocol**: Filter the data based on specific protocols used in DNS traffic (e.g., UDP, TCP, DoH, or DoT).
+* **EDE code**: Filter the data based on specific Extended DNS Error (EDE) codes in DNS traffic.
 
-How to view all answers of a specific type
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-In the **Answers** window, you can select the desired answer, or in the log list in the **Answer** column, or click the desired answer.
-
-How to search for a domain
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-To search for domains, use the **Result Filter** text box to enter the domain name you are looking for. Other ways to search for a domain are by clicking the domain in the **Tier 2 Domains** section or directly in the log list in the same column.
-
-.. _How to change the date range of the available data traffic:
-
-How to change the date range of the available data
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The range of data that can be displayed in the portal preview can be changed in several ways. The basic selection method includes selecting predefined time windows of 1, 7, 14, or 30 days from the drop-down list located next to the **results filter**. If desired, a specific time range can be specified using the **Start Date and Time** and **End Date and Time** windows.
-
-How to view DGA (Domain Generation Algorithm) indications
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-DGA indications can be filtered in a similar way to displaying queries of a particular type. In this case, just select the last record in the list - **DGA**.
-
-.. figure:: ./img/data-analysis-1.png
-   :alt: DGA indications
-   :align: center
-
-   DGA indications
-
-How to report "False negative"
+How to Report "False Negative"
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In some cases, the score classification of a domain may not be correct. If you believe a domain should be blocked but is not, you can report it as malicious using the **Report as Malicious** button to initiate a domain review request. This option is located in the log table under the arrow icon for each query.
 
-.. figure:: ./img/data-analysis-2.png
+.. figure:: ./img/data-analysis-3.png
    :alt: Report false negative
    :align: center
 
    Report false negative
 
-Export to CSV
-~~~~~~~~~~~~~
+CSV Export
+~~~~~~~~~~
 
-It is possible to export the raw data containing the date, client's IP address, device name, query type, query, second-level domain, country, answer, TTL (Time to Live), and class to a CSV file. The export button is located at the beginning of the table with the raw data. The exported data will contain all the data that is currently filtered on the portal. The export button is available only when there are up to 1,000,000 records in the filtered data.
+The CSV export contains the following details:
+
+* date
+* client's IP address
+* device name
+* query type
+* query
+* second-level domain
+* country
+* answer
+* TTL (Time to Live)
+* class
 
 Threats
 -------
 
-Threats are special events where there is a DNS request for a domain that is present within the reputation database. There are two types of actions when a threat is detected. The first is to **audit** the event, which only logs the domain, but access is possible. The second action **block** that blocks the request to the malicious site.
-
-The action to be implemented depends on the policies assigned to the specific resolver. For more on that, please refer to :ref:`Security Policies<Security policies>`.
-
-Some pre-configured filters can be applied to the data on the portal. Some sample queries can be found below. These queries depict the majority of the use cases, but there is no hard limit, as the
-available search engine is **full-text** and *any* query can be compiled impromptu.
+Threats are special events in which a DNS request for a domain is present in the reputation database. There are two types of actions when a threat is detected. The first is to **audit** the event, which only logs the domain; however, access is still possible. The second action is a **block** that prevents requests to the malicious site and redirects the user to the blocking page.
 
 You can watch a step-by-step video guide :ref:`here<Threats video>`.
-
-How to search for audit or block events
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-There are two options for filtering different types of events. The first option is to use a visual filter. Within the graph, you can click one of the actions (audit, block, or allow) to filter it and display only the cases in which the event occurred. The second one is to click next to the **Result's filter** field on the **Filter button** and choose the desired filtering option.
-
-.. figure:: ./img/data-analysis-3.png
-   :alt: Threats action filter
-   :align: center
-
-   Threats action filter
-
-How to search for a domain
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The easiest way to search for a domain is by clicking on a specific domain in the log history. The second way is by typing the domain name into the **Result Filter** field.
-
-How to search for events based on a specific IP address
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Filtering logs from a specific IP address is possible by selecting a specific source IP address in the log history. The second option is to enter the domain name in the **Result Filter** field. Note that it will create field named "request_ip:" but fulltext filter is created using field "client_ip:"
-
-How to search for events based on a specific threat category
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Threats are categorized by their types. The categories are:
 
@@ -138,79 +155,57 @@ Threats are categorized by their types. The categories are:
 * C&C
 * Coinminer
 * Compromised
-* Deny list
 * Malware
 * Phishing
 * Spam
 
-.. tip:: The Deny list category is a custom list maintained by the customer's administrators to block domains on demand. Blacklist is part of the Whalebone threat intelligence data for known domains that host multiple threats or when the exact category could not be determined.
+How to Search for Events Blocked by a Deny List
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A simple way to find attacks is by selecting a specific category from the pie charts or in the log list under the **Threat Categories** column. Another option is to click the **Filter result** button next to the **Filter** field and select the desired filtering option.
+.. tip:: The Deny list category is a custom list maintained by the customer's administrators to block domains on demand. Blacklist is part of the Whalebone threat intelligence data for known domains that host multiple threats, or when the exact category could not be determined.
 
-.. figure:: ./img/data-analysis-4.png
-   :alt: Threats category filter
-   :align: center
+You can select the deny list category in the pie charts or in the log list under the **Threat Categories** column. Another option is to click the **Filter** button and set the **Deny list** filter to **Yes**.
 
-   Threats category filter
-
-.. _How to change the date range of the available data threats:
-
-How to change the date range of the available data
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The range of data that can be displayed in the portal preview can be changed in several ways. The basic selection method involves choosing predefined time windows of 1, 7, 14, or 30 days from the drop-down list next to the **results filter**. If necessary, a specific time range can be specified using the **Start Date and Time** and **End Date and Time** windows.
-
-How to analyze a domain:
-~~~~~~~~~~~~~~~~~~~~~~~~
+How to Analyze a Domain
+~~~~~~~~~~~~~~~~~~~~~~~
 
 To learn more about domain analysis, scoring of malicious domains, domain categories, or what external sources know about them, watch the step-by-step video :ref:`here<Domain analysis video>`.
 
-How to report "False positive"
+How to Report "False Positive"
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 In some cases, the score of a domain may be wrong. If you believe a domain should not be blocked but is, you can report it as misclassified using the **Report False Positive** button to initiate a domain review request.
 
-Fulltext filtering
-~~~~~~~~~~~~~~~~~~
+.. figure:: ./img/data-analysis-4.png
+   :alt: Report false positive
+   :align: center
 
-For more advanced use, you can use the full-text filter and build a compound query.
-These fields can be concatenated using logical operators. ``AND, OR, NOT, <, >``, and the wildcard character ``*`` are supported. Strings do not have to be wrapped with quotes. An example of the syntax is as follows:
+   Report false positive
 
-``action: block AND accu:>70 AND (client_ip: 10.20.30.41 OR 10.20.30.40 OR 192.168.*)``
-``AND NOT geoip.country_name: Germany AND matched_iocs.classification.type: malware AND NOT phishing``
+Filtering Options
+~~~~~~~~~~~~~~~~~
 
-When you run a full-text query, it updates the content of the entire dashboard.
+* **Client IP**: The source IP address that made the DNS request or incident
+* **Device ID**: The unique identifier of the device that made the DNS request or was involved in the incident
+* **Domain**: The domain in the DNS query
+* **Action**: The action that the resolver took with that specific query, such as ``block``, ``allow``, and ``audit``
+* **Threat category**: The category of the threat, such as ``malware``, ``phishing``, or ``c&c`` (command and control)
+* **Threat name**: The specific name of the threat, which may provide more detailed information about the nature of the threat
+* **Deny list**: Enable or disable the filter for domains that are present in deny lists
+* **Country code**: The country code associated with the client's IP address, which can provide insights into the geographic location of the source of the DNS request or incident
+* **Resolver ID**: The unique identifier of the resolver that processed the DNS request or was involved in the incident, which can help identify patterns or specific resolvers that may be associated with certain types of threats       
 
-+--------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+
-| Threats                              | Description                                                                               |  Example value                                                           |
-+======================================+===========================================================================================+==========================================================================+
-| ``timestamp``                        | The exact time when the resolver registered the DNS request or incident                   | ``2022-10-14T12:28:01.000Z``                                             |
-+--------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+
-| ``client_ip``                        | The source IP address that made the DNS request or incident                               | ``192.168.2.3``                                                          |
-+--------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+
-| ``domain``                           | The domain in the DNS query                                                               | ``whalebone.io`` OR ``whale*one.io``                                     |
-+--------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+
-| ``resolver_id``                      | The ID of the resolver that handled the event                                             | ``2404``                                                                 |
-+--------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+
-| ``device_id``                        | The device_id of the HOS agent                                                            | ``MB2A1b4OTDin3Xz6DgftAip72v57e``                                        |
-+--------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+
-| ``geoip.continent_code``             | The code of the continent from the PHP geoIP library                                      | ``AF | AN | AS | EU | NA | OC | SA``                                     |
-+--------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+
-| ``geoip.country_code3``              | The code of the country from the PHP geoIP library                                        | ``RU | CZ | US | CN | DE | ...``                                         |
-+--------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+
-| ``geoip.country_name``               | The name of the country from the PHP geoIP library                                        | ``Russia``                                                               |
-+--------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+
-| ``ip``                               | The IP in the DNS answer, or the IP that the resolver would answer if it didn't block     | ``174.85.249.36`` OR ``SERVFAIL`` OR ``NXDOMAIN``                        |
-+--------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+
-| ``action``                           | The action that the resolver took with that specific query                                | ``block | allow | audit``                                                |
-+--------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+
-| ``accu``                             | The score of the domain at the time of the event                                          |  ``0..100`` < and > operators can be used too                            |
-+--------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+
-| ``matched_iocs.classification.type`` | The type of threat                                                                        | ``malware | c&c | phishing | coinminer | spam | compromised | blacklist``|
-+--------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+
+CSV Export
+~~~~~~~~~~
 
-.. tip:: Filtering operators are placed statically in the URL address. Therefore, you can create your set of Filters in advance (such as viewing on individual IPs) and use them when necessary. Afterwards, you can place them in your CRM for the specific user's account and to access the filtered view immediately. It will help save your time when a customer asks for support, as you can immediately open their details.
+The CSV export contains the following details:
 
-Export to CSV
-~~~~~~~~~~~~~
-
-It is possible to export the raw data containing the date, action, client's IP address, device name, country, domain, score, threat category, threat name, and resolver's name to a CSV file. The export button is located at the beginning of the table with the raw data. The exported data will contain all the data that is currently filtered on the portal. The export button is available only when there are up to 1,000,000 records in the filtered data.
+* date
+* action
+* client's IP address
+* device name
+* country
+* domain
+* score
+* threat category
+* threat name
+* resolver's name

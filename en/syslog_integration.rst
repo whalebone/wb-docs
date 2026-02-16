@@ -244,7 +244,9 @@ Fields in the passivedns.log file with explanations and possible values:
 - **protocol [string]**: The protocol used for the DNS request.
     - "UDP"
     - "TCP"
-    - "TLS"
+    - "DOT"
+    - "DOH"
+    - "QUIC"
 
 - **region [string]**: The customer deployment region.
     - “eu-01”

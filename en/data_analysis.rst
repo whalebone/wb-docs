@@ -56,7 +56,7 @@ Raw DNS data can be exported to a CSV file using the button at the top of the ta
 Content
 -------
 
-The **Content** tab shows an overview of blocked domains subject to content filtering settings. If you do not have the content filter enabled or are not using it, nothing will be logged in this tab. There are 17 categories to choose from, including ``Sexual Content``, ``Gambling``, ``Audio/video``, or ``Games``.
+The **Content** tab shows an overview of blocked domains subject to content filtering settings. If you do not have the content filter enabled or are not using it, nothing will be logged in this tab. There are 18 categories to choose from, including ``Sexual Content``, ``Gambling``, ``Audio/video``, or ``Games``.
 
 Filtering Options
 ~~~~~~~~~~~~~~~~~
@@ -73,7 +73,7 @@ The Filter button contains different options based on the type of data being ana
 Domain Categorization Change
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Some domains are categorized incorrectly. You can check which categories a domain falls into by using the **Domain Analysis** tool located in the user menu. After entering a domain, the **Content Categorization** section will appear, showing the categories the domain falls into and also offering a **Suggest Category Change** button to suggest a change in categorization. It is also possible to report a domain as a false negative using the **Report as malicious** button.
+In case of a domain categorized incorectly you can check which categories a domain falls into by using the **Domain Analysis** tool located in the user menu. After entering a domain, the **Content Categorization** section will appear, showing the categories the domain falls into and also offering a **Suggest Category Change** button to suggest a change in categorization. It is also possible to report a domain as a false negative using the **Report as malicious** button.
 
 CSV Export
 ~~~~~~~~~~
@@ -105,8 +105,8 @@ The Filter button contains different options based on the type of data being ana
 * **Domain**: Filter the data based on specific domain names.
 * **Query Type**: Filter the data based on specific query types (e.g., A, AAAA, CNAME).
 * **Query**: Filter the data based on specific DNS queries.
-* **DNS Tunnel**: Enable or disable DNS tunnel detection in DNS traffic.
-* **DGA**: Enable or disable DGA (Domain Generation Algorithm) detection in DNS traffic.
+* **DNS Tunnel**: Filter out domains associated with DNS tunneling in DNS traffic.
+* **DGA**: Filter out data clasified as DGA (Domain Generation Algorithm) in DNS traffic.
 * **Country code**: Filter the data based on specific country codes.
 * **Segment**: Filter the data based on specific segments.
 * **Brand**: Filter the data based on specific brands.

@@ -18,6 +18,19 @@ Next, you need to activate the pipenv virtual environmet by executing `pipenv sh
 1. Create a new branch based on the `master` branch and give it a meaningful name.
 1. Make the desired changes.
 1. Make a test build
+    1. Create a file called `product_variables.py` in the directory where the `wb-docs` directory is:
+        ```
+        root/
+        ├─ wb-docs/
+        ├─ product_variables.py
+        ```
+    1. Paste the following content into `product_variables.py`:
+        ```
+        PRODUCT = {
+            "product": "Peacemaker"
+        }
+        ```
+        The `product` attribute supports the following values: `Peacemaker`, `Aura`, `Immunity`, and `DNS4GOV`.
     1. `pipenv shell`
     1. `pipenv sync --dev`
     1. `cd en` or `cd cs`, depending on which language you want to build

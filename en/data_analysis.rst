@@ -29,6 +29,8 @@ The row with filters contains the following options:
 
    Data analysis filters
 
+.. important:: If you do not see filters in the portal, it means that you do not have access to them. Please check that your account has the appropriate permissions to access the respective data, i.e., content filtering, DNS traffic, or threats. The permission names are ``Read all traffic (content, DNS, threats)``, ``Traffic Content``, ``Traffic DNS``, and ``Traffic Threats``. You can edit user permissions in the **Users** section of the portal, which is located in the user menu.
+
 .. tip:: Date selection can be performed in the graph, which shows the traffic overview over time. By clicking and dragging on the graph, users can select a time range, which automatically updates the filters and displays data for that period.
 
    .. figure:: ./img/data-analysis-2.gif
@@ -114,6 +116,103 @@ The Filter button contains different options based on the type of data being ana
 * **Answer**: Filter the data based on specific DNS answers.
 * **Protocol**: Filter the data based on specific protocols used in DNS traffic (e.g., UDP, TCP, DoH, or DoT).
 * **EDE code**: Filter the data based on specific Extended DNS Error (EDE) codes in DNS traffic.
+
+EDE Codes
+~~~~~~~~~
+
+In the DNS protocol, Extended DNS Error (EDE) codes were introduced by RFC 8914 to provide more specific diagnostic information than the traditional, blunt RCODEs (like SERVFAIL or NXDOMAIN). Instead of just saying "it failed," EDE codes tell you why—for example, if a DNSSEC validation failed or if a query was blocked by a firewall.
+
+.. list-table:: The Complete List of EDE Codes (0 - 27)
+   :header-rows: 1
+   :widths: 10 30 60
+
+   * - Code
+     - Name
+     - Meaning / Common Use Case
+   * - 0
+     - Other Error
+     - A catch-all for errors that don't fit other categories.
+   * - 1
+     - Unsupported DNSKEY Algorithm
+     - The resolver doesn't support the algorithm used to sign the zone.
+   * - 2
+     - Unsupported DS Digest Type
+     - The resolver doesn't support the hash algorithm in the DS record.
+   * - 3
+     - Stale Answer
+     - The resolver is returning expired data from cache because it can't reach the origin.
+   * - 4
+     - Forged Answer
+     - The resolver suspects the answer was tampered with (e.g., via a captive portal).
+   * - 5
+     - DNSSEC Indeterminate
+     - DNSSEC state is unclear; validation couldn't be completed.
+   * - 6
+     - DNSSEC Bogus
+     - DNSSEC validation failed (the signatures are invalid).
+   * - 7
+     - Signature Expired
+     - The RRSIG for the data has reached its expiration time.
+   * - 8
+     - Signature Not Yet Valid
+     - The RRSIG start time is in the future (check your server clock!).
+   * - 9
+     - Missing DNSKEY
+     - No DNSKEY record was found to match the DS record.
+   * - 10
+     - No Zone Key Bit Set
+     - A DNSKEY was found, but the "Zone Key" bit wasn't set.
+   * - 11
+     - NSEC Missing Expected
+     - NSEC/NSEC3 records are missing (proof of non-existence failed).
+   * - 12
+     - Cached Error
+     - The resolver is returning a previously cached error.
+   * - 13
+     - Not Ready
+     - The server is still booting up or loading the zone.
+   * - 14
+     - Blocked
+     - The query was blocked due to local policy (e.g., a "Blacklist").
+   * - 15
+     - Censored
+     - The query was blocked due to an external legal or regulatory requirement.
+   * - 16
+     - Filtered
+     - The query was blocked by a filter that isn't strictly "policy" or "censorship."
+   * - 17
+     - Prohibited
+     - The server refuses to answer this specific client.
+   * - 18
+     - Stale NXDOMAIN Answer
+     - A cached "Does not exist" response is being served while the server is offline.
+   * - 19
+     - Not Authoritative
+     - The server was expected to be authoritative for the zone but isn't.
+   * - 20
+     - Not Supported
+     - The server doesn't support the specific operation or query type.
+   * - 21
+     - No Reachable Authority
+     - The resolver couldn't connect to any of the upstream nameservers.
+   * - 22
+     - Network Error
+     - A general network-level failure occurred upstream.
+   * - 23
+     - Invalid Data
+     - The authoritative server provided data that is syntactically invalid.
+   * - 24
+     - Signature Expired (Invalid)
+     - Similar to 7, but often used when the signature itself is malformed.
+   * - 25
+     - Prohibited (Policy)
+     - Explicitly blocked due to a configured security policy.
+   * - 26
+     - Too Many Requests
+     - Rate-limiting is in effect for the client.
+   * - 27
+     - Provider Specific
+     - Some codes (27+) are reserved for specific implementations or future RFCs.
 
 How to Report "False Negative"
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -50,7 +50,7 @@ You can watch a step-by-step video guide :ref:`here <domain-tracing>`.
 .. _developer-tools-guide:
 
 Developer Tools guide
-=====================
+---------------------
 
 The Developer Tools are built-in features of modern web browsers that allow users to inspect and debug web pages. They provide various tools for developers to analyze requests and domains involved in loading a web page. This chapter provides a brief overview of how to use Developer Tools to collect more details about network traffic and errors related to blocked domains in some popular web browsers. Once you have collected the network log, you can contact Whalebone Support for further assistance.
 

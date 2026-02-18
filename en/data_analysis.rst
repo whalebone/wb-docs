@@ -41,9 +41,17 @@ The row with filters contains the following options:
 
 The **Describe the filters you want to apply...** search field supports natural language queries, allowing users to build complex filters using simple language. For example, users can enter queries like "Show me all blocked domains related to gambling in the last 7 days" or "Find all DNS requests from IP address 192.168.1.1". The AI mode will interpret the query and apply the appropriate filters to display the relevant data.
 
-Apart from the AI mode, the search field also supports full-text search, allowing users to enter specific keywords or phrases to filter the data. For example, entering a specific domain name or IP address will filter the data to show only entries that match the search criteria. It also supports wildcard characters, enabling users to search for patterns in the data. For instance, entering "example.*" will filter the data to show all entries that contain domains starting with "example.".
+If you want to build the search query without AI support, click the ``Filter`` button and select the fields you want to search in and build the query manually. For example, entering a specific domain name or IP address will filter the data to show only entries that match the search criteria. All fields also support the ``*`` wildcard character, ``!`` negation operator, and ``,`` to join multiple queries, enabling users to search for patterns in the data. For instance, entering "example.*" will filter the data to show all entries that contain domains starting with "example.". Here are some examples of queries that can be used in the search field:
 
-The "Add to filter" buttons in the pie charts with top 10 clients and domains allow users to quickly add all items from the chart to the filters. For example, if a user clicks "Add to filter" in the top 10 clients pie chart, all client IP addresses listed in that chart will be added to the filters, allowing the user to analyze data specifically for those clients.
+* ``*bone.io``: Shows all entries that contain domains ending with "bone.io", e.g., ``bone.io`` and ``whalebone.io``.
+* ``whalebone.*``: Shows all entries that contain domains starting with "whalebone.", e.g., ``whalebone.io`` and ``whalebone.com``.
+* ``*whalebone*``: Shows all entries that contain "whalebone" anywhere in the domain, e.g., ``whalebone.io`` and ``mywhalebone.com``.
+* ``!*bone.io``: Shows all entries that **do not** contain domains ending with "bone.io", e.g., ``example.com`` and ``test.io``.
+* ``!whale*``: Shows all entries that **do not** contain domains starting with "whale", e.g., ``example.com`` and ``test.io``.
+* ``!*whalebone*``: Shows all entries that **do not** contain "whalebone" anywhere in the domain, e.g., ``example.com`` and ``test.io``.
+* ``*.io, !whalebone.io``: Shows all entries that contain domains ending with ".io" but do not contain "whalebone.io", e.g., ``example.io`` and ``test.io``, but not ``whalebone.io``.
+
+The "Add to filter" buttons in the pie charts with the top 10 clients and domains allow users to quickly add all items from the chart to the filters. For example, if a user clicks "Add to filter" in the top 10 clients pie chart, all client IP addresses listed in that chart will be added to the filters, allowing the user to analyze data specifically for those clients.
 
 .. figure:: ./img/data-analysis-5.png
    :alt: Add to filter
@@ -91,7 +99,7 @@ The raw data contains the following details:
 DNS Traffic
 -----------
 
-The ``DNS Traffic`` tab provides an overview of traffic logged on resolvers. It contains all queries, along with additional information such as the query type, the answer, and the TTL (Time To Live).
+The ``DNS Traffic`` tab provides an overview of traffic logged on resolvers. It contains all queries, along with additional information such as query type, answer, and TTL (Time To Live).
 
 .. tip:: The data is subject to de-duplication. This means the resolver logs only unique combinations of query, query type, and answer within a 24-hour time frame. For this reason, a query might not appear on the portal even if it has been resolved.
 
@@ -108,7 +116,7 @@ The Filter button contains different options based on the type of data being ana
 * **Query Type**: Filter the data based on specific query types (e.g., A, AAAA, CNAME).
 * **Query**: Filter the data based on specific DNS queries.
 * **DNS Tunnel**: Filter out domains associated with DNS tunneling in DNS traffic.
-* **DGA**: Filter out data clasified as DGA (Domain Generation Algorithm) in DNS traffic.
+* **DGA**: Filter out data classified as DGA (Domain Generation Algorithm) in DNS traffic.
 * **Country code**: Filter the data based on specific country codes.
 * **Segment**: Filter the data based on specific segments.
 * **Brand**: Filter the data based on specific brands.
@@ -117,10 +125,13 @@ The Filter button contains different options based on the type of data being ana
 * **Protocol**: Filter the data based on specific protocols used in DNS traffic (e.g., UDP, TCP, DoH, or DoT).
 * **EDE code**: Filter the data based on specific Extended DNS Error (EDE) codes in DNS traffic.
 
-EDE Codes
-~~~~~~~~~
+Extended DNS Error (EDE) Codes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In the DNS protocol, Extended DNS Error (EDE) codes were introduced by RFC 8914 to provide more specific diagnostic information than the traditional, blunt RCODEs (like SERVFAIL or NXDOMAIN). Instead of just saying "it failed," EDE codes tell you why—for example, if a DNSSEC validation failed or if a query was blocked by a firewall.
+In the DNS protocol, Extended DNS Error (EDE) codes were introduced in RFC 8914 to provide more specific diagnostic information than the traditional, blunt RCODEs, such as SERVFAIL or NXDOMAIN. Instead of just saying "it failed," EDE codes tell you why—for example, if a DNSSEC validation failed or if a query was blocked by a firewall. The officially supported list of EDE codes can be found in `RFC 8914`_. The IANA organization maintains the proposed list of EDE codes, which currently includes codes from 0 to 30. The list is available at the `IANA website`_.
+
+.. _RFC 8914: https://datatracker.ietf.org/doc/html/rfc8914
+.. _IANA website: https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#extended-dns-error-codes
 
 .. list-table:: The Complete List of EDE Codes (0 - 27)
    :header-rows: 1
@@ -130,7 +141,7 @@ In the DNS protocol, Extended DNS Error (EDE) codes were introduced by RFC 8914 
      - Name
      - Meaning / Common Use Case
    * - 0
-     - Other Error
+     - Other
      - A catch-all for errors that don't fit other categories.
    * - 1
      - Unsupported DNSKEY Algorithm
@@ -160,59 +171,68 @@ In the DNS protocol, Extended DNS Error (EDE) codes were introduced by RFC 8914 
      - Missing DNSKEY
      - No DNSKEY record was found to match the DS record.
    * - 10
+     - RRSIGs Missing
+     - No RRSIG records were found for the queried data.
+   * - 11
      - No Zone Key Bit Set
      - A DNSKEY was found, but the "Zone Key" bit wasn't set.
-   * - 11
+   * - 12
      - NSEC Missing Expected
      - NSEC/NSEC3 records are missing (proof of non-existence failed).
-   * - 12
+   * - 13
      - Cached Error
      - The resolver is returning a previously cached error.
-   * - 13
+   * - 14
      - Not Ready
      - The server is still booting up or loading the zone.
-   * - 14
+   * - 15
      - Blocked
      - The query was blocked due to local policy (e.g., a "Blacklist").
-   * - 15
+   * - 16
      - Censored
      - The query was blocked due to an external legal or regulatory requirement.
-   * - 16
+   * - 17
      - Filtered
      - The query was blocked by a filter that isn't strictly "policy" or "censorship."
-   * - 17
+   * - 18
      - Prohibited
      - The server refuses to answer this specific client.
-   * - 18
+   * - 19
      - Stale NXDOMAIN Answer
      - A cached "Does not exist" response is being served while the server is offline.
-   * - 19
+   * - 20
      - Not Authoritative
      - The server was expected to be authoritative for the zone but isn't.
-   * - 20
+   * - 21
      - Not Supported
      - The server doesn't support the specific operation or query type.
-   * - 21
+   * - 22
      - No Reachable Authority
      - The resolver couldn't connect to any of the upstream nameservers.
-   * - 22
+   * - 23
      - Network Error
      - A general network-level failure occurred upstream.
-   * - 23
+   * - 24
      - Invalid Data
      - The authoritative server provided data that is syntactically invalid.
-   * - 24
-     - Signature Expired (Invalid)
-     - Similar to 7, but often used when the signature itself is malformed.
    * - 25
-     - Prohibited (Policy)
-     - Explicitly blocked due to a configured security policy.
+     - Signature Expired before Valid
+     - The signature's inception time is set later than its expiration time, creating a logical contradiction where the signature is never valid.
    * - 26
-     - Too Many Requests
-     - Rate-limiting is in effect for the client.
+     - Too Early
+     - The server declined to process the query received via Early Data (0-RTT) to mitigate replay risks. The client is expected to retry using a fully established connection.
    * - 27
-     - Provider Specific
-     - Some codes (27+) are reserved for specific implementations or future RFCs.
+     - Unsupported NSEC3 Iterations Value
+     - The authoritative zone requires many NSEC3 hashing iterations that exceed the resolver's maximum limit for computational work.
+   * - 28
+     - Unable to conform to policy
+     - The resolver cannot satisfy the specific administrative policy or provisioning domain requirements necessary to resolve the query.
+   * - 29
+     - Synthesized
+     - The response was generated locally by the resolver's internal logic rather than being retrieved from an authoritative upstream source.
+   * - 30
+     - Invalid Query Type
+     - The query was rejected because the requested Resource Record type (QTYPE) is undefined, reserved, or not supported by the server implementation.
 
 How to Report "False Negative"
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

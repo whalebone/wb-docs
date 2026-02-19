@@ -31,7 +31,7 @@ In case of a domain categorized incorectly you can check which categories a doma
 CSV Export
 ~~~~~~~~~~
 
-The raw data contains the following details:
+The CSV data contains the following details:
 
 * date
 * client's IP address

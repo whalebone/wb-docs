@@ -38,7 +38,7 @@ The Filter button contains different options based on the type of data being ana
 Extended DNS Error (EDE) Codes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In the DNS protocol, Extended DNS Error (EDE) codes were introduced in RFC 8914 to provide more specific diagnostic information than the traditional, blunt RCODEs, such as SERVFAIL or NXDOMAIN. Instead of just saying "it failed," EDE codes tell you why—for example, if a DNSSEC validation failed or if a query was blocked by a firewall. The officially supported list of EDE codes can be found in `RFC 8914`_. The IANA organization maintains the proposed list of EDE codes, which currently includes codes from 0 to 30. The list is available at the `IANA website`_.
+In the DNS protocol, Extended DNS Error (EDE) codes were introduced in RFC 8914 to provide more specific diagnostic information than the traditional, blunt RCODEs, such as SERVFAIL or NXDOMAIN. Instead of just saying "it failed," EDE codes tell you why—for example, if a DNSSEC validation failed or if a query was blocked by a firewall. The officially supported list of EDE codes can be found in `RFC 8914`_. The IANA organization maintains the extended list of EDE codes, which have not yet been recognized as a standard in an RFC. The IANA's list is available at the `IANA website`_.
 
 .. _RFC 8914: https://datatracker.ietf.org/doc/html/rfc8914
 .. _IANA website: https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#extended-dns-error-codes
@@ -158,7 +158,7 @@ In some cases, the score classification of a domain may not be correct. If you b
 CSV Export
 ~~~~~~~~~~
 
-The CSV export contains the following details:
+The CSV data contains the following details:
 
 * date
 * client's IP address

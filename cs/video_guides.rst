@@ -146,7 +146,7 @@ na konci zkušební verze nebo kdykoli se rozhodnete kontaktovat podporu společ
 Analýza
 ========
 
-.. _Analyza domeny video:
+.. _domain analysis video:
 
 Analýza domény
 --------------
@@ -167,7 +167,7 @@ probíhá na ní poměrně velký provoz a Whalebone ji kategorizuje jako **soci
 |
 |
 
-.. _Provoz DNS video:
+.. _dns traffic video:
 
 Provoz DNS
 ----------
@@ -189,6 +189,8 @@ Podobně můžete zvolit například dotazy **A**. Specializujeme se na detekci 
 |
 |
 |
+
+.. _threats video:
 
 Hrozby
 ------

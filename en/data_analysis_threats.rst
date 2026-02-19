@@ -29,6 +29,7 @@ To learn more about domain analysis, scoring of malicious domains, domain catego
 
 How to Report "False Positive"
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 In some cases, the score of a domain may be wrong. If you believe a domain should not be blocked but is, you can report it as misclassified using the **Report False Positive** button to initiate a domain review request.
 
 .. figure:: ./img/data-analysis-4.png
@@ -61,7 +62,7 @@ Filtering Options
 CSV Export
 ~~~~~~~~~~
 
-The CSV export contains the following details:
+The CSV data contains the following details:
 
 * date
 * action

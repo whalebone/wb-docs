@@ -36,11 +36,25 @@ Další informace o produktu a společnosti jsou k dispozici na oficiálních st
 
 .. toctree::
    :maxdepth: 1
-   :caption: Analýza a reporting
-   
-   data_analysis
+   :caption: Analýza dat
+
+   data_analysis_overview
+   data_analysis_content
+   data_analysis_dns_traffic
+   data_analysis_threats
    domain_resolution_analysis
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Upozornění a reportování
+   
    reporting
+   alerts
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Integrace
+
    api_integration
    syslog_integration
    active_directory

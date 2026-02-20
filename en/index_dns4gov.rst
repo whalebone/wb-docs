@@ -65,6 +65,14 @@ More information about the product and company is available on the official `Wha
 
 .. toctree::
    :maxdepth: 1
+   :caption: Single Sign-On (SSO)
+   
+   sso_overview
+   sso_configuration
+   sso_troubleshooting
+
+.. toctree::
+   :maxdepth: 1
    :caption: Step-by-Step Video Guides
 
    video_guides

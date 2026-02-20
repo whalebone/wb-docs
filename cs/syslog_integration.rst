@@ -203,9 +203,10 @@ passivedns.log
         "query_port": 39170,
         "response_port": 53,
         "query": "whalebone.com.",
-        "answer": "3.33.251.168",
+        "answer": "192.168.0.10",
         "identity": "wb-default-policy",
         "ttl": 1,
+        "res_action": "block",
         "rcode": 0,
         "ede_code": -1,
         "protocol": "UDP",
@@ -236,6 +237,11 @@ Pole v souboru passivedns.log s vysvětleními a možnými hodnotami:
 - **identity [string]**: Interní identifikátor pro IP adresu nebo rozsah IP, který je vázán na konkrétní politiku (např. "wb-default-policy" nebo jakýkoli jiný unikátní název politiky).
 
 - **ttl [number]**: Hodnota Time To Live pro DNS záznam, udávající, jak dlouho může být záznam uchován v mezipaměti.
+
+- **res_action [string]**: Akce provedená resolverem. Pouze přítomné, pokud resolver provedl nějakou akci na základě politik.
+    - "block": DNS požadavek byl zablokován a klient obdržel odpověď s IP adresou blokační stránky.
+    - "audit": DNS požadavek byl zaznamenán pro účely auditu. Tento typ akce se používá pro monitorování a analýzu provozu bez ovlivnění běžného chování klientů.
+    - "allow": DNS dotaz byl povolen na základě požadavku uživatele o obejití blokační stránky.
 
 - **rcode [number]**: Návratový kód DNS v odpovědi.
 

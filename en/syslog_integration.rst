@@ -203,9 +203,10 @@ passivedns.log
         "query_port": 39170,
         "response_port": 53,
         "query": "whalebone.com.",
-        "answer": "3.33.251.168",
+        "answer": "192.168.0.10",
         "identity": "wb-default-policy",
         "ttl": 1,
+        "res_action": "block",
         "rcode": 0,
         "ede_code": -1,
         "protocol": "UDP",
@@ -236,6 +237,11 @@ Fields in the passivedns.log file with explanations and possible values:
 - **identity [string]**: The internal identifier for IP address or IP range that is tied to any policy (e.g. “wb-default-policy” or any other unique name of the policy).
 
 - **ttl [number]**: The Time To Live value for the DNS record, indicating how long the record can be cached.
+
+- **res_action [string]**: The action taken by the resolver. Only present if the resolver took any of the actions based on the policies.
+    - "block": The DNS request was blocked, and the client received a response with the blocking page's IP address.
+    - "audit": The DNS request was logged for auditing purposes. This type of action is used for monitoring and analysing traffic without interfering with the clients' normal behaviour.
+    - "allow": The DNS query was allowed based on the user's request to bypass the blocking the page.
 
 - **rcode [number]**: The DNS return code in the answer.
 

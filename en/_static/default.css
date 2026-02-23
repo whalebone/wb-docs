@@ -5,3 +5,15 @@
 .wy-menu-vertical p.caption {
     color: #00B9BE;
 }
+
+/* This forces the table to respect the widths and wrap text */
+table.docutils {
+    width: 100% !important;
+    table-layout: fixed; /* Crucial for respecting :widths: */
+}
+
+table.docutils td, table.docutils th {
+    white-space: normal !important; /* Overrides 'nowrap' */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}

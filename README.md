@@ -18,10 +18,25 @@ Next, you need to activate the pipenv virtual environmet by executing `pipenv sh
 1. Create a new branch based on the `master` branch and give it a meaningful name.
 1. Make the desired changes.
 1. Make a test build
-    1. `pipenv shell`
-    1. `pipenv sync --dev`
-    1. `cd en` or `cd cs`, depending on which language you want to build
-    1. `sphinx-build -n -W -b html . ../doc`
+    1. Create a file called `product_variables.py` in the directory where the `wb-docs` directory is:
+        ```
+        root/
+        ├─ wb-docs/
+        ├─ product_variables.py
+        ```
+    1. Paste the following content into `product_variables.py`:
+        ```
+        PRODUCT = {
+            "product": "Peacemaker"
+        }
+        ```
+        The `product` attribute supports the following values: `Peacemaker`, `Aura`, `Immunity`, and `DNS4GOV`.
+    1. Install pipenv if you have not done it yet by executing `pip install pipenv`.
+    1. Switch the console to the `wb-docs` directory with the root of this repository.
+    1. Execute `pipenv shell` to switch to the virtual shell specific for this project.
+    1. Execute `pipenv sync --dev` to install missing dependencies.
+    1. Execute `cd en` or `cd cs`, depending on which language you want to build.
+    1. Execute `sphinx-build -n -W -b html . ../doc` to build the documentation.
     1. Important: Make sure there are no new warnings or errors in the output. There are some known warnings that can be ignored. They are related to deployment_XXX.rst, hos_XXX.rst, and idp_overview.rst.
 1. Review the changes in the HTML files in the doc directory.
 1. Commit the changes to the new branch.

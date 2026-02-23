@@ -36,11 +36,25 @@ More information about the product and company is available on the official `Wha
 
 .. toctree::
    :maxdepth: 1
-   :caption: Analysis and reporting
-   
-   data_analysis
+   :caption: Data Analysis
+
+   data_analysis_overview
+   data_analysis_content
+   data_analysis_dns_traffic
+   data_analysis_threats
    domain_resolution_analysis
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Alerting and Reporting
+   
    reporting
+   alerts
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Integrations
+
    api_integration
    syslog_integration
    active_directory

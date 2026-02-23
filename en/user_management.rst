@@ -20,7 +20,7 @@ The two types of users that are supported are:
 Below are described the different roles and the actions that they can perform.
 
 Role Definitions
-================
+----------------
 
 There are four main types of roles:
 
@@ -30,7 +30,7 @@ There are four main types of roles:
 - **Special**: The Special role is designed for users who require granular permissions tailored to specific tasks. This role allows for the assignment of precise actions and access levels based on the user's responsibilities within the organization.
 
 Special Role Permissions
-========================
+------------------------
 
 Role permissions are divided into two main categories: **Management permissions** and **View permissions**. Management permissions allow users to perform specific actions, while View permissions grant read-only access to certain data or settings.
 

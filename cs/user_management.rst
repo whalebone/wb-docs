@@ -20,7 +20,7 @@ Podporovány jsou dva typy uživatelů:
 Níže jsou popsány jednotlivé role a činnosti, které mohou vykonávat.
 
 Definice rolí
-=============
+~~~~~~~~~~~~~
 
 Existují čtyři hlavní typy rolí:
 
@@ -30,7 +30,7 @@ Existují čtyři hlavní typy rolí:
 - **Administrátor s dalšími oprávněními**: Role speciální je určena pro uživatele, kteří potřebují podrobnější oprávnění přizpůsobená konkrétním úkolům. Tato role umožňuje přiřazení přesných akcí a úrovní přístupu na základě odpovědností uživatele v rámci organizace.
 
 Oprávnění role Administrátor s dalšími oprávněními
-==================================================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Oprávnění této role jsou rozdělena do dvou hlavních kategorií: **Práva na správu** a **Práva na zobrazení**. Práva na správu umožňují uživatelům provádět konkrétní akce, zatímco práva na zobrazení poskytují přístup pouze pro čtení k určitým datům nebo nastavením.
 

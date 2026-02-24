@@ -23,6 +23,26 @@ The SSO configuration page will prompt you to enter the following information:
 * **Roles**: A mapping of the roles defined in your identity provider to the roles used in the Admin Portal. This allows you to assign appropriate permissions to users based on their roles in the IdP.
 * **Tenants Settings**: A mapping of tenant identifiers from your identity provider to the tenant names used in the Admin Portal. This is used to associate users with the correct tenant based on the information provided by the IdP.
 
+.. figure:: /img/sso-1.png
+   :alt: SSO Settings Page - General Settings
+
+   Example of the General Settings part of the SSO configuration page in the Admin Portal.
+
+.. figure:: /img/sso-2.png
+   :alt: SSO Settings Page - Domains
+
+   Example of domains configuration on the SSO configuration page in the Admin Portal.
+
+.. figure:: /img/sso-3.png
+   :alt: SSO Settings Page - Roles Mapping
+
+   Example of roles mapping configuration on the SSO configuration page in the Admin Portal.
+
+.. figure:: /img/sso-4.png
+   :alt: SSO Settings Page - Tenants Settings
+
+   Example of tenants settings configuration on the SSO configuration page in the Admin Portal.
+
 Admin Portal's SSO URLs
 -----------------------
 

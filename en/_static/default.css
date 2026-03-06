@@ -5,3 +5,16 @@
 .wy-menu-vertical p.caption {
     color: #00B9BE;
 }
+
+table.wb-table-compact-wrap {
+    width: 100%;
+    table-layout: fixed;
+    font-size: 0.9em;
+}
+
+table.wb-table-compact-wrap th,
+table.wb-table-compact-wrap td {
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: normal;
+}

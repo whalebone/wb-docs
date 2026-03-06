@@ -5,3 +5,27 @@
 .wy-menu-vertical p.caption {
     color: #00B9BE;
 }
+
+table.wb-table-compact-wrap {
+    width: 100%;
+    table-layout: fixed;
+    font-size: 0.9em;
+}
+
+table.wb-table-compact-wrap th,
+table.wb-table-compact-wrap td {
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: normal;
+}
+
+table.wb-table-compact-wrap thead th {
+    vertical-align: top;
+    line-height: 1.2;
+    padding-top: 0.6rem;
+    padding-bottom: 0.45rem;
+}
+
+table.wb-table-compact-wrap tbody td {
+    vertical-align: middle;
+}

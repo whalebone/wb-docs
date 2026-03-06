@@ -59,6 +59,8 @@ Požadavky na výkon serveru
 
 Následující tabulka poskytuje doporučení pro velikost hardwaru na základě očekávaného zatížení DNS dotazů a počtu klientů na server. Společnost Whalebone doporučuje zajistit alespoň dva servery pro redundanci a vysokou dostupnost. Oba servery by měly splňovat minimální hardwarové požadavky uvedené v tabulce níže, aby byly schopny zvládnout očekávané zatížení i při výpadku jednoho z nich.
 
+.. rst-class:: wb-table-compact-wrap
+
 =========================== ============= =============== ======== =========================
 Počet DNS dotazů za sekundu Počet klientů Počet jader CPU RAM (GB) Volné místo na disku (GB)
 =========================== ============= =============== ======== =========================

@@ -59,6 +59,8 @@ Hardware sizing recommendations
 
 The following table provides hardware sizing recommendations based on the expected DNS query load and number of clients per server. Whalebone recommends provisioning at least two servers for redundancy and high availability. Both servers should meet the minimum hardware requirements listed in the table below to handle the expected load even in the event of a failure of one of them.
 
+.. rst-class:: wb-table-compact-wrap
+
 ================================ ================= =================== ======== =========================
 Number of DNS queries per second Number of clients Number of CPU cores RAM (GB) Free disk space (GB)
 ================================ ================= =================== ======== =========================

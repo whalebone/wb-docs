@@ -40,6 +40,10 @@ Please perform regular checks and maintain the resolver's operating system and D
   * ext4
   * xfs only with d_type support (ftype=1)
 
+* **Disk space** 
+
+  * At least 70 GB of **free** disk space in the /var directory.
+
 * **CPU**
 
   * The CPU supports the amd64-bit architecture and the x86-64-v2 instruction set. See below for instructions on how to verify if x86-64-v2 is supported:

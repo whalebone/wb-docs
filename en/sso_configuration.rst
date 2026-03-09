@@ -11,10 +11,12 @@ The SSO configuration page will prompt you to enter the following information:
 
 * **Name**: The SSO configuration's unique identifier.
 * **Name ID Format**: The format of the Name ID that will be used in the SSO process. The Admin Portal supports the following formats:
+
   * `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`
   * `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`
   * `urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`
   * `urn:oasis:names:tc:SAML:2.0:nameid-format:transient`
+
 * **Tenant key**: (Optional) The name of the claim that will be used to identify the tenant in the SSO process. This claim should contain the tenant's unique identifier.
 * **Role key**: The name of the claim that will be used to identify the user's role to assign appropriate permissions in to the user account.
 * **Metadata contents**: The SSO metadata content provided by your identity provider. This typically includes information about the IdP, such as its entity ID, SSO URL, and certificate. Use this option if your identity provider does not support hosting the metadata at a URL, is not accessible from the internet, or if you prefer to enter it manually.

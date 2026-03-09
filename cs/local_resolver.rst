@@ -40,6 +40,10 @@ Pravidelně kontrolujte a udržujte verze operačního systému a Docker engine 
   * ext4
   * xfs pouze s podporou d_type (ftype=1)
 
+* **Kapacita disku** 
+
+  * Nejméně 70 GB **volného** místa na disku v adresáři /var.
+
 * **CPU**
 
   * CPU s podporou architektury amd64 a instrukční sadou x86-64-v2. Níže najdete instrukce pro ověření, zda server podporuje x86-64-v2:

@@ -47,7 +47,7 @@ Parameters:
 * **QUERY_TYPE**: Filter by DNS query type (Default=*)
 * **RESPONSE_TYPE**: Filter by DNS response (Default=*)
 * **IP_WILDCARD**: Include only these comma-separated IP addresses in the alert (Default=*)
-* **IP_WILDCARD_IGNORE**: Ignore these comma-separated domains in the alert (Default=none)
+* **IP_WILDCARD_IGNORE**: Ignore these comma-separated IP addresses in the alert (Default=none)
 * **DOMAIN_WILDCARD**: Include only these comma-separated domains in the alert(Default=*)
 * **DOMAIN_WILDCARD_IGNORE**: Ignore these comma-separated domains in the alert (Default=none)
 * **DGA**: Filter by domain generation algorithm - Only DGA, Without DGA, or both (Default=*)
@@ -120,7 +120,7 @@ Webhook and syslog message format:
    }
 
 DNS traffic - threshold for unique queries
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This alert is sent when the threshold for filtered unique DNS logs is reached
 
@@ -177,9 +177,9 @@ The alert is triggered when DNS tunneling to an unknown domain is detected.
 
 Parameters:
 
-* **MINUTES**: The time window when the DNSSEC errors are counted (Default=5)
+* **MINUTES**: The time window when the DNS tunneling events are counted (Default=5)
 * **TRESHOLD**: The number of events in the time window to trigger the alert (Default=1)
-* **QUREY_TYPE**: Filter by DNS query type (Default=*)
+* **QUERY_TYPE**: Filter by DNS query type (Default=*)
 * **RESPONSE_TYPE**: Filter by DNS response (Default=*)
 * **IP_WILDCARD**: Include only these comma-separated IP addresses in the alert (Default=*)
 * **IP_WILDCARD_IGNORE**: Ignore these comma-separated IP addresses in the alert (Default=none)
@@ -268,12 +268,12 @@ Webhook and syslog message format:
 Threats - count during intervals
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This alert is sent when the percentage of threat records exceeds the set time period.
+This alert is sent when the number of detected threats exceeds the threshold in the time window.
 
 Parameters:
 
 * **MINUTES**: time window in minutes (default=15)
-* **TRESHOLD**: number of events in the time window for triggering the alert, this is a percentage change (default=100).
+* **TRESHOLD**: number of events in the time window for triggering the alert (default=100).
 * **LOG_TYPE**: (default=*): filters by event type (audit/block)
 
 Webhook and syslog message format:

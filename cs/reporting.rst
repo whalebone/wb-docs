@@ -3,29 +3,25 @@
 Reporty
 =======
 
-Možnosti zasílání repotů lze nakonfigurovat v rozevírací nabídce pod účtem uživatele.
-Mezi možnosti, které lze nastavit, patří četnost, s jakou jsou hlášení doručována, preferovaný den v týdnu, jazyk a příjemci.
+Reporty lze nakonfigurovat v rozbalovací nabídce pod účtem uživatele. Přizpůsobit lze frekvenci doručování reportů, preferovaný den v týdnu, jazyk a příjemce.
 
-.. note:: Výchozím příjemcem je vlastník účtu a zprávy jsou doručovány na jeho příslušnou registrovanou e-mailovou adresu.
+.. note:: Výchozím příjemcem je vlastník účtu a reporty jsou doručovány na jeho registrovanou e-mailovou adresu.
 
 .. image:: ./img/report-configuration.gif
    :align: center
 
+Upozornění
+==========
 
-Alerty
-======
+Upozornění poskytují přehled o klíčových informacích, včetně stavu resolveru, stavu DNS překladu, využití hardwaru a bezpečnostních incidentech. Všechny tyto informace lze předávat přes více kanálů, např. e-mail, Slack, syslog nebo webhook. Nové upozornění můžete vytvořit z předdefinovaných šablon a následně jej upravit editací jeho parametrů. Podrobný videonávod najdete :ref:`zde<Alerty video>`.
 
-Alerting Whalebone poskytuje upozorňovat v reálném čase na klíčové informace, jako je stav resolveru, stav řešení, využití hardwaru, a také informuje o zásadních bezpečnostních incidentech a mnoha dalších.
-Všechny tyto informace lze předávat prostřednictvím několika kanálů, např. e-mailu, slacku, syslogu nebo webhooku. Nová upozornění lze vytvářet z předdefinovaných šablon a upozornění lze následně přizpůsobit úpravou jejich parametrů.
-Videoprůvodce krok za krokem si můžete prohlédnout :ref:`zde<Alerty video>`.
+.. note:: Pro zapnutí upozornění je nejprve nutné přiřadit příjemce kliknutím na název upozornění.
 
-.. note:: Chcete-li zapnout upozornění, musíte mu nejprve přiřadit cíl. Kliknutím na název výstrahy ji podrobně rozbalíte a v rámečku vyberete cíl. Kliknutím na adresy lze vybrat více cílů.
+.. note:: Syslog používá nešifrovaný TCP jako transportní protokol.
 
-.. note:: Pokud je kanálem upozornění syslog, je ve výchozím nastavení jako protokol transportní vrstvy podporován protokol TCP nebo TLS.
+.. tip:: Whalebone používá regionální cloudové služby pro optimalizaci komunikace mezi klienty a cloudovými komponentami. Region, ke kterému je zákaznický resolver připojen, najdete v URL Admin Portálu daného zákazníka. Například pokud je URL https://portal.eu-01.whalebone.io/en/client-123456, tenant je registrován v regionu EU-01. To je užitečné při nastavování pravidel firewallu v síti zákazníka. Někteří zákazníci mohou používat prostředí Legacy, kde URL tenanta bude https://portal.whalebone.io/en/client-123456.
 
-.. tip:: Whalebone používá regionální cloudové služby k optimalizaci komunikace mezi klienty a cloudovými komponentami. Region, ke kterému je připojen resolver zákazníka, lze nalézt v URL adrese účet v administrátorském portálu. Například pokud je URL adresa https://portal.eu-01.whalebone.io/en/client-123456, je účet registrován v regionu EU-01. To je užitečné při nastavování pravidel firewallu v síti zákazníka. Někteří zákazníci mohou používat prostředí Legacy, ve kterém bude URL adresa účtu https://portal.whalebone.io/en/client-123456.
-
-Syslog nebo Webhook upozornění jsou odesílána z IP adres uvedených v tabulce níže. Pokud vyberete jeden z těchto kanálů, ujistěte se, že na svém firewallu povolíte příchozí TCP provoz, abyste mohli zprávu přijímat.
+Upozornění zaslaná přes syslog nebo webhook jsou odesílána z IP adres uvedených v tabulce níže. Pokud zvolíte některý z těchto kanálů, ujistěte se, že na firewallu povolíte příchozí TCP provoz, abyste mohli zprávy přijímat.
 
 +----------------+---------------------------------+
 | Region         | IP adresa                       |
@@ -39,133 +35,302 @@ Syslog nebo Webhook upozornění jsou odesílána z IP adres uvedených v tabulc
 | Legacy         | 159.100.247.142, 159.100.247.58 |
 +----------------+---------------------------------+
 
-DNS provoz - Phishing na základě podobné domény (Homografický útok)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Toto upozornění je odesláno, když je zjištěn možný homografický útok pro zadanou doménu.
+DNS provoz - počet unikátních dotazů z IP
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Toto upozornění se spustí, když jedna zdrojová IP adresa dosáhne limitu unikátních požadavků s definovanými atributy.
+
 Parametry:
 
-* **DOMAIN**: Doména, která se má sledovat z hlediska možných útoků homografů (jedno upozornění může sledovat pouze jednu doménu).
+* **MINUTES**: časové okno v minutách (Default=15)
+* **TRESHOLD**: počet událostí v časovém okně pro spuštění upozornění (Default=100)
+* **QUERY_TYPE**: filtr podle typu DNS dotazu (Default=*)
+* **RESPONSE_TYPE**: filtr podle DNS odpovědi (Default=*)
+* **IP_WILDCARD**: zahrnout do upozornění pouze tyto IP adresy oddělené čárkou (Default=*)
+* **IP_WILDCARD_IGNORE**: ignorovat v upozornění tyto IP adresy oddělené čárkou (Default=none)
+* **DOMAIN_WILDCARD**: zahrnout do upozornění pouze tyto domény oddělené čárkou (Default=*)
+* **DOMAIN_WILDCARD_IGNORE**: ignorovat v upozornění tyto domény oddělené čárkou (Default=none)
+* **DGA**: filtr pro algoritmicky generované domény (DGA) - pouze DGA, bez DGA, nebo obojí (Default=*)
 
-* **DISTANCE**: Počet znaků, které se mohou lišit v doméně phishingu (výchozí=1)
+Formát webhook a syslog zprávy:
 
-* **DOMAIN_WILDCARD_IGNORE**: Tento seznam domén oddělených čárkou ve výstraze ignorujte.  V případě, že je DISTANCE větší než 1, bude detekce probíhat u domén, které podporují globální i regionální formáty nejvyšší úrovně. Doporučujeme přidávat legitimní domény na bílé seznamy, abyste se vyhnuli zbytečným poplachům. (Výchozí hodnota=žádná)
+.. code-block:: json
 
+   {
+      "client_name": "string",
+      "alert": "string",
+      "IP address": "string",
+      "Number of requests": "number",
+      "timestamp": "date"
+   }
 
+DNS provoz - procentuální nárůst dotazů
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Toto upozornění bude odesláno, když je počet DNS dotazů procentuálně vyšší v nastaveném časovém období.
+
+Parametry:
+
+* **MINUTES**: časové okno (Default=15)
+* **PERCENT**: procentuální navýšení (např. 200 %) - rozdíl mezi dvěma intervaly (Default=50)
+* **QUERY_TYPE**: filtr podle typu DNS dotazu (Default=*)
+* **RESPONSE_TYPE**: filtr podle DNS odpovědi (Default=*)
+
+Formát syslog zprávy:
+
+.. code-block::
+
+   Whalebone detected spike in %QUERY_TYPE% requests of more than %PERCENT% at %TIMESTAMP%.
+
+Formát webhook zprávy:
+
+.. code-block:: json
+
+   {
+      "client_name": "string",
+      "client_id": "number",
+      "resolver_id": "number",
+      "timestamp": "date"
+   }
+
+DNS provoz - Phishing na základě podobné domény
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Toto upozornění je odesláno, když je detekován možný homografní útok pro zadanou doménu.
+
+Parametry:
+
+* **DOMAIN**: doména, která se má monitorovat kvůli možným homografním útokům. DŮLEŽITÉ: Jedno upozornění může monitorovat pouze jednu doménu.
+* **DISTANCE**: počet znaků, které se mohou lišit ve phishingové doméně (Default=1)
+* **DOMAIN_WILDCARD_IGNORE**: ignorovat tento seznam domén oddělených čárkou. Pokud je DISTANCE větší než 1, detekce se provede pro domény, které podporují globální i regionální top-level formáty. Doporučuje se přidat legitimní domény na whitelist, aby se předešlo falešným poplachům. (Default=none)
+
+Formát webhook a syslog zprávy:
+
+.. code-block:: json
+
+   {
+      "client_name": "string",
+      "client_id": "number",
+      "alert": "string",
+      "Level2 domain": "string",
+      "Query": "string",
+      "Query type": "string",
+      "Timestamp (UTC)": "date",
+      "Client IP": "string"
+   }
 
 DNS provoz - počet unikátních dotazů
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Toto upozornění se odešle, když je dosaženo prahové hodnoty pro filtrované jedinečné protokoly DNS.
+
+Toto upozornění je odesláno při překročení počtu unikátních DNS dotazů na základě daného filtru.
+
 Parametry:
 
-* **MINUTES**: Časový rámec - časové okno (Výchozí=15)
+* **MINUTES**: časové okno (Default=15)
+* **TRESHOLD**: práh - počet událostí v časovém okně pro spuštění upozornění (Default=100)
+* **QUERY_TYPE**: filtr podle typu DNS dotazu (Default=*)
+* **RESPONSE_TYPE**: filtr podle DNS odpovědi (Default=*)
 
-* **TRESHOLD**: Prahová hodnota - počet událostí v časovém rámci pro spuštění výstrahy, jedná se o percentuální změnu (Výchozí=100).
+Formát webhook a syslog zprávy:
 
-* **QUERY_TYPE**: Filtrovat podle typu dotazu DNS (Výchozí=*)
+.. code-block:: json
 
-* **RESPONSE_TYPE**: Filtrovat podle odpovědi DNS (Výchozí=*)
+   {
+      "client_name": "string",
+      "client_id": "number",
+      "resolver_id": "number",
+      "timestamp": "date"
+   }
 
+DNS traffic - detekce chyby DNSSEC
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-DNS provoz - počet unikátních požadavků z IP
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Toto upozornění je odesláno, když počet DNSSEC chyb překročí předdefinovaný práh v pozorovaném období.
 
-Toto upozornění se spustí, když jedna zdrojová IP adresa dosáhne limitu jedinečných požadavků s definovanými atributy.
 Parametry:
 
-* **MINUTES**: časové okno v minutách (výchozí=15)
+* **MINUTES**: časové okno, ve kterém se DNSSEC chyby počítají (Default=15)
+* **TRESHOLD**: počet událostí v časovém okně pro spuštění upozornění (Default=100)
+* **QUERY_TYPE**: filtr podle typu DNS dotazu (Default=*)
+* **EDE_CODE**: filtr podle EDE kódu v DNS odpovědi (Default=Všechny DNSSEC kódy)
 
-* **TRESHOLD**: počet událostí v časovém rozmezí pro spuštění výstrahy, jedná se o percentuální změnu (výchozí=100).
+Formát webhook a syslog zprávy:
 
-* **QUERY_TYPE**: (Výchozí=*): filtruje podle typu dotazu DNS.
+.. code-block:: json
 
-* **RESPONSE_TYPE**: Filtrovat podle odpovědi DNS (Výchozí=*)
+   {
+      "client_name": "string",
+      "client_id": "number",
+      "alert": "string",
+      "Level2 domain": "string",
+      "Query": "string",
+      "Query type": "string",
+      "Timestamp (UTC)": "date",
+      "Client IP": "string",
+      "EDE Code": "number"
+   }
 
-* **IP_WILDCARD**: Zahrnout do výstrahy pouze tyto IP adresy oddělené čárkou (Výchozí=*)
+DNS provoz - detekce DNS tunnelingu
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* **IP_WILDCARD_IGNORE**: Ignorovat tyto domény oddělené čárkou ve výstraze (Výchozí=žádná)
+Upozornění se spustí, když je detekováno vytváření tunelu pomocí DNS protokolu na neznámou doménu.
 
-* **DOMAIN_WILDCARD**: Do upozornění zahrne pouze tyto domény oddělené čárkou(Výchozí=*)
-
-* **DOMAIN_WILDCARD_IGNORE**: Ignorovat tyto domény oddělené čárkou v upozornění (Výchozí=žádná)
-
-* **DGA**: Filtrování podle algoritmu generování domén - pouze s DGA, pouze bez DGA nebo obojí (Výchozí=*)
-   
-
-DNS provoz - procentuální nárůst dotazů
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Toto upozornění se odešle, pokud je počet záznamů o provozu DNS procentuálně vyšší za nastavené časové období.
 Parametry:
 
-* **MINUTES**: Časový rámec - časové okno (výchozí=15)
+* **MINUTES**: časové okno, ve kterém se počítají události s detekovaným DNS tunelováním (Default=5)
+* **TRESHOLD**: počet událostí v časovém okně pro spuštění upozornění (Default=1)
+* **QUERY_TYPE**: filtr podle typu DNS dotazu (Default=*)
+* **RESPONSE_TYPE**: filtr podle DNS odpovědi (Default=*)
+* **IP_WILDCARD**: zahrnout do upozornění pouze tyto IP adresy oddělené čárkou (Default=*)
+* **IP_WILDCARD_IGNORE**: ignorovat v upozornění tyto IP adresy oddělené čárkou (Default=none)
+* **DOMAIN_WILDCARD**: zahrnout do upozornění pouze tyto domény oddělené čárkou (Default=*)
+* **DOMAIN_WILDCARD_IGNORE**: ignorovat v upozornění tyto domény oddělené čárkou (Default=none)
 
-* **PERCENT**: Procentuální nárůst (např. 200 %) - rozdíl mezi dvěma intervaly (Výchozí=50)
+Formát webhook a syslog zprávy:
 
-* **QUERY_TYPE**: (Výchozí=*): Filtruje podle typu dotazu DNS.
+.. code-block:: json
 
-* **RESPONSE_TYPE**: Filtrovat podle odpovědi DNS (Výchozí=*)
+   {
+      "client_name": "string",
+      "client_id": "number",
+      "alert": "string",
+      "Level2 domain": "string",
+      "Query": "string",
+      "Query type": "string",
+      "Timestamp (UTC)": "date",
+      "Client IP": "string"
+   }
 
-Hrozby - nově blokovaná doména
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Toto upozornění se odešle, pokud resolver v zadaném časovém období zjistí nově zablokovanou hrozbu.
+Resolver - výpadek komunikace s cloudem
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Toto upozornění je odesláno, když backend neobdrží žádnou zprávu od lokálního resolveru déle než 20 minut.
+
+Formát webhook a syslog zprávy:
+
+.. code-block:: json
+
+   {
+      "client_name": "string",
+      "client_id": "number",
+      "resolver_id": "number",
+      "timestamp": "date"
+   }
+
+Resolver - nedostatek systémových prostředků
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Toto upozornění je odesláno, když lokální resolver detekuje, že využití systémových prostředků překračuje definovaný práh. Parametry jsou vyjádřeny jako procenta využitých oproti celkovým prostředkům. Například pokud chcete být upozorněni při využití 80 % celkového místa na disku hostitele, nastavte THRESHOLD_HDD na 80.
+
+* **THRESHOLD_CPU**: využití CPU (Default=80)
+* **THRESHOLD_MEMORY**: využití RAM (Default=90)
+* **THRESHOLD_HDD**: využití HDD (Default=80)
+
+Formát webhook a syslog zprávy:
+
+.. code-block:: json
+
+   {
+      "client_name": "string",
+      "client_id": "number",
+      "resolver_id": "number",
+      "hostname": "string",
+      "timestamp": "date",
+      "CPU-usage": "number",
+      "Memory-usage": "number",
+      "Disk-usage": "number",
+      "Alert-name": "string"
+   }
+
+Resolver - výpadek překladu
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Resolver periodicky provádí kontroly pro testování překladu známých domén. Každou minutu se kontrolují Google.com, facebook.com, microsoft.com a apple.com. Výchozí nastavení parametrů je velmi přísné, takže upozornění se odešle i tehdy, když během 10minutového intervalu selže překlad jedné ze čtyř domén.
+
 Parametry:
 
-* **DAYS**: Počet dní ve kterých budou vyhledávány nově blokované domény (výchozí=30)
+* **TRESHOLD**: počet událostí v časovém okně pro spuštění upozornění (Default=1)
+* **MINUTES**: časové okno v minutách (Default=10)
 
-* **DOMAIN_WILDCARD**: Do upozornění zahrne pouze tyto domény oddělené čárkou(Výchozí=*)
+Formát webhook a syslog zprávy:
 
+.. code-block:: json
 
+   {
+      "subject": "DNS resolution failure",
+      "client_name": "string",
+      "client_id": "number",
+      "resolver_id": "number",
+      "hostname": "string",
+      "timestamp": "date"
+   }
 
 Hrozby - počet za časový interval
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Toto upozornění se odešle, pokud je procento záznamů o hrozbě vyšší za nastavené časové období.
-Parametry:
-* **MINUTES**: časové okno v minutách (výchozí=15)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* **TRESHOLD**: počet událostí v časovém rozmezí pro spuštění výstrahy, jedná se o percentuální změnu (výchozí=100).
+Toto upozornění je odesláno, když počet detekovaných hrozeb překročí nastavenou mez v daném časovém období.
 
-* **LOG_TYPE**: (Výchozí=*): filtruje podle typu akce (audit/block)
-
-Hrozby - událost detekce
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Toto upozornění je odesláno v případě nové položky na stránce hrozeb podle zadaného typu hrozby a provedené akce.
 Parametry:
 
-* **LOG_TYPE**: (Výchozí=*): filtruje podle typu akce (audit/block)
+* **MINUTES**: časové okno v minutách (default=15)
+* **TRESHOLD**: počet událostí v časovém okně pro spuštění upozornění (default=100)
+* **LOG_TYPE**: (default=*): filtr podle typu události (audit/block)
 
-* **THREAT_TYPE**: (Výchozí=*): filtruje podle typu detekované hrozby
+Formát webhook a syslog zprávy:
 
+.. code-block:: json
 
-Resolver - Nedostatek systémových požadavků
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Toto upozornění je odesláno, když místní agent resolveru zjistí, že využití hardwaru vzrostlo nad definovanou mezní hodnotu. 
-Parametry jsou vyjádřeny v procentech využití v porovnání s celkovými prostředky. Jako příklad lze uvést, že chcete být upozorněni, když hostitel využívá 80 % celkového diskového prostoru, 
-nastavte hodnotu THRESHOLD_HDD na 80.  
-Parameters:
+   {
+      "client_name": "string",
+      "client_id": "number",
+      "resolver_id": "number",
+      "timestamp": "date"
+   }
 
-* **THRESHOLD_CPU**: (Výchozí hodnota=80): Využití procesoru.
+Threats - událost detekce
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* **THRESHOLD_MEMORY**: Využití paměti RAM (výchozí=90)
+Toto upozornění je odesláno, když je detekována událost dle zvoleného filtru.
 
-* **THRESHOLD_HDD**: Využití pevného disku (výchozí=80)
-
-
-
-
-Resolver - Výpadek komunikace s cloudem
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Toto upozornění je odesláno, když backend neobdrží žádnou zprávu od místního agenta resolveru po dobu delší než 20 minut.
-
-
-
-
-Resolver - Výpadek překladu
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Resolver pravidelně provádí kontroly, aby otestoval funkčnost překladu známých domén. Google.com, facebook.com, microsoft.com a apple.com jsou kontrolovány každou minutu. 
-Výchozí nastavení parametrů je velmi přísné, takže i když se rozlišení jedné ze čtyř domén během desetiminutového intervalu nezdaří, je odesláno upozornění. 
 Parametry:
 
-* **TRESHOLD**: počet událostí, které musí nastat během časového intervalu, aby se výstraha spustila (výchozí=1)
+* **LOG_TYPE**: (Default=*): filtr podle typu akce (audit/block)
+* **THREAT_TYPE**: (Default=*): filtr podle typu detekované hrozby
 
-* **MINUTY**: časový rámec v minutách (Výchozí=10)
+Formát webhook a syslog zprávy:
 
+.. code-block:: json
 
+   {
+      "client_name": "string",
+      "domain": "string",
+      "client": "string",
+      "country_code2": "string",
+      "client_id": "number",
+      "timestamp": "date",
+      "action": "string",
+      "threat_type_filter": "string"
+   }
+
+Threats - nově blokovaná doména
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Toto upozornění je odesláno, pokud resolver detekuje nově blokovanou hrozbu v zadaném časovém rámci.
+
+Parametry:
+
+* **DAYS**: počet dní, ve kterých se budou vyhledávat nově blokované domény (default=30)
+* **DOMAIN_WILDCARD**: zahrnout do upozornění pouze následující domény oddělené čárkou (Default=*)
+
+Formát webhook a syslog zprávy:
+
+.. code-block:: json
+
+   {
+      "client_name": "string",
+      "client_id": "number",
+      "resolver_id": "number",
+      "timestamp": "date",
+      "domain": "string",
+      "client": "string"
+   }

@@ -394,4 +394,4 @@ Pole v souboru whalebone.log s vysvětleními a možnými hodnotami:
 Limitatace
 ----------
 
-* Integrace syslogu používá protokol UDP. Pokud chcete použít protokol TCP nebo TLS, obraťte se prosím na Whalebone HelpDesk.
+* Integrace syslogu používá protokol UDP. Pokud chcete použít protokol TCP, obraťte se prosím na Whalebone HelpDesk.

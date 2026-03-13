@@ -394,4 +394,4 @@ Fields in the whalebone.log file with explanations and possible values:
 Limitations
 -----------
 
-* The syslog integration uses the UDP protocol. Please contact Whalebone HelpDesk if you want to use the TCP or TLS protocol.
+* The syslog integration uses the UDP protocol. Please contact Whalebone HelpDesk if you want to use the TCP protocol.

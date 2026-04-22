@@ -52,4 +52,4 @@ Endpoint protection:
 Data Retention
 --------------
 
-Whalebone retains data for 3 months. The data is automatically deleted after the retention period expires, and all backups are securely deleted as well. Users can also request the deletion of their data at any time, and Whalebone will comply with such requests in accordance with applicable laws and regulations.
+Whalebone retains live data for 3 months and backups for 6 months. The data is automatically deleted after the retention period expires, and all backups are securely deleted as well. Users can also request the deletion of their data at any time, and Whalebone will comply with such requests in accordance with applicable laws and regulations.

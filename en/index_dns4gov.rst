@@ -19,6 +19,7 @@ More information about the product and company is available on the official `Wha
    :caption: Quickstart
 
    quickstart
+   data_security
 
 .. toctree::
    :maxdepth: 1

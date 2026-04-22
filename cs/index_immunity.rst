@@ -84,6 +84,14 @@ Další informace o produktu a společnosti jsou k dispozici na oficiálních st
 
 .. toctree::
    :maxdepth: 1
+   :caption: Single Sign-On (SSO)
+   
+   sso_overview
+   sso_configuration
+   sso_troubleshooting
+
+.. toctree::
+   :maxdepth: 1
    :caption: Videonávody krok za krokem
 
    video_guides

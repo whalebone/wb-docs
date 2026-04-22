@@ -9,6 +9,7 @@ Reporty lze nakonfigurovat v rozbalovací nabídce pod účtem uživatele. Přiz
    :align: center
 
 Upozornění
+==========
 
 Upozornění poskytují přehled o klíčových informacích, včetně stavu resolveru, stavu DNS překladu, využití hardwaru a bezpečnostních incidentech. Všechny tyto informace lze předávat přes více kanálů, např. e-mail, Slack, syslog nebo webhook. Nové upozornění můžete vytvořit z předdefinovaných šablon a následně jej upravit editací jeho parametrů. Podrobný videonávod najdete :ref:`zde<Alerty video>`.
 

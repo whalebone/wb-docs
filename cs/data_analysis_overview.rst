@@ -3,6 +3,8 @@ Analýza dat
 
 Whalebone Portal rozlišuje tři typy dat: **Obsah**, **DNS provoz** a **Hrozby**. Každá z těchto kategorií má v portálu vlastní záložku, takže uživatelé mohou snadno procházet a analyzovat data. Všechny tři pohledy mají stejnou strukturu a používají stejné možnosti filtrování, jak je popsáno v následujících sekcích.
 
+.. important:: Všechna data a statistiky o DNS provozu v portálu Whalebone jsou standardně uchovávány po dobu **90 dnů**. V tomto časovém období můžete provádět důkladnou zpětnou analýzu síťového provozu pro všechny tři typy dat.
+
 Struktura stránky je následující:
 
 * **Filtry**: Umístěné v horní části stránky, umožňují uživatelům filtrovat data podle různých kritérií.

@@ -3,6 +3,8 @@ Data Analysis
 
 Whalebone Portal differentiates among three data types: **Content**, **DNS Traffic**, and **Threats**. Each of these categories has its own tab in the portal, allowing users to easily navigate and analyze the data. All three views share the same structure and use the same filtering options, as described in the following sections.
 
+.. important:: All statistics and DNS traffic logs within the Whalebone Portal are available for a period of **90 days**. Within this timeframe, you can perform a thorough retrospective analysis of network traffic across all three data types.
+
 The page structure is as follows:
 
 * **Filters**: Located at the top of the page, allowing users to filter the data based on various criteria.

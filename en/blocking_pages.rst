@@ -1,5 +1,6 @@
+**************
 Blocking Pages
-==============
+**************
 
 When access to a domain is blocked, the resolvers respond to clients with the IP address of a **blocking page**, where users are informed that they cannot access the given page and the reason why access was blocked. Whalebone provides a sample template for blocking pages, which can be fully customized. The template code is written to be compatible with the widest possible range of browsers.
 
@@ -51,19 +52,52 @@ After editing and saving changes to the blocking pages, it is important that the
 You can view a video tutorial :ref:`here<Blocking page configuration video>`.
 
 Signing Blocking Pages with a Certificate Authority
----------------------------------------------------
+===================================================
 
-For deployments where you have control over the workstations, which is typically a corporate environment with Group Policy, you can insert a custom certificate authority used by the resolvers into their trusted CA stores. This causes browsers to go directly to the blocking page without displaying a certificate warning. The resolver essentially performs a **man-in-the-middle attack** every time it performs a redirect to the blocking page and provides its own certificate for the blocked domain.
+For deployments where you have control over the workstations, which is typically a corporate environment with Group Policy, you can insert a custom certificate authority (CA) used by the resolvers into their trusted CA stores. This causes browsers to go directly to the blocking page without displaying a certificate warning. The resolver essentially performs a **man-in-the-middle attack** every time it performs a redirect to the blocking page and provides its own certificate for the blocked domain.
 
-You create and set up the custom Certificate Authority in the following steps:
+.. important:: This functionality applies only to blocking pages hosted on local resolvers (On-premise). If you are using blocking pages hosted on Whalebone Cloud, this configuration is not applicable.
+
+Prerequisites
+-------------
+
+To ensure the blocking page is accessible to clients, you must verify that the following network requirements are met:
+
+* The resolver must have **open incoming TCP ports 80 and 443** for all client subnets. 
+
+* For a complete list of network requirements, please refer to the `Server Performance Requirements <https://docs.whalebone.io/en/immunity/local_resolver.html#network-requirements>`_ in our documentation.
+
+Admin Portal Configuration
+--------------------------
+
+Make sure that each local resolver is configured to host the blocking page locally (On-premise):
+
+1. Navigate to **Resolvers** menu in the admin Portal. 
+
+2. Select the specific resolver and go to the **Policy assignment** tab. 
+
+3. Ensure the blocking page location is set to **On-premise local resolver** with resolvers IP addresses assigned. 
+
+4. Click **Save to resolver** button. 
+
+5. Return to the **Resolvers** page and click **Upload configuration** (red button) for each resolver to deploy the changes. 
+
+Certificate Authority creation and configuration
+------------------------------------------------
+
+To create and configure a custom CA, follow these steps:
 
 1. Create the `/certs` directory:
+
+   Create a dedicated directory for your certificates:
 
    .. code-block:: shell
 
       mkdir /certs
 
-2. Create the file "v3_cfg" in the `/certs` directory with the following content:
+2. Configure the file v3_cfg file:
+
+   This file defines how the certificate is generated. Create the file v3_cfg in the `/certs` directory with the following content:
 
    .. code-block:: INI
 
@@ -90,13 +124,37 @@ You create and set up the custom Certificate Authority in the following steps:
       commonName = Common Name (eg, your name or your server's hostname)
       commonName_max = 64
 
-3. Generate the certificate authority key:
+   Fields explanation and their possible values:
+
+   * [req] and [v3_ca_extensions]
+    
+      * Do not change the values here
+
+   * [alt_names]
+
+      * Here you can list multiple resolvers.
+
+      * While the naming is not functionally critical, we recommend using the actual hostnames (e.g., DNS.1 = WB1, DNS.2 = WB2).
+
+   * [req_dn]
+
+      * The first line (e.g., countryName) is for administrative identification.
+
+      * The second line with **_default** (e.g., countryName_default) determines the data actually encoded into the certificate.
+
+      * **commonName** is the name which represents the blocking page (eg, company name, resolver hostname or Whalebone Blocking Page).
+
+3. Generate the CA key:
+
+   Execute the following command to generate the authority key:
 
    .. code-block:: shell
 
       openssl ecparam -name prime256v1 -genkey -noout -out /certs/ca.key
 
-4. Create and sign the certificate authority certificate:
+4. Create the CA certificate:
+
+   Create the signed certificate based on your configuration:
 
    .. code-block:: shell
 
@@ -104,12 +162,20 @@ You create and set up the custom Certificate Authority in the following steps:
 
 5. Export the private key and certificate to a PFX file:
 
+   You will be prompted to create a password during this step (the certificate cannot be applied without this password):
+
    .. code-block:: shell
 
       openssl pkcs12 -export -out /certs/ca.pfx -inkey /certs/ca.key -in /certs/ca.crt -certpbe PBE-SHA1-3DES -keypbe PBE-SHA1-3DES -export -macalg sha1
 
-6. Back up the `/certs` directory to a safe place away from the resolver in case of the need for restoration.
+6. Backup CA:
 
-7. Send the name and path of the file with the private key and certificate to **Whalebone support**. Our technicians will ensure the services are set up to start using the newly created Certificate Authority.
+   Store the `/certs` directory in a secure location outside of the resolver (in case of the need for restoration). 
 
-8. Add the public key of the Certificate Authority (`/certs/ca.crt`) to the list of **trusted Certificate Authorities** on all workstations under your administration.
+7. Submit to Whalebone:
+
+   Send the path, filename and password of your .pfx file to **Whalebone support** (support@whalebone.io). Provide the .pfx password to our technicians using a secure tool such as `OneTimeSecret <https://onetimesecret.com/>`_. Our team will then complete the service setup. 
+
+8. CA propagation:
+
+   In the meantime, please add the public key of the Certificate Authority (`/certs/ca.crt`) to the list of **trusted Certificate Authorities** on all workstations under your administration. The new CA will propagate shortly after our support completes the setup.

@@ -7,46 +7,51 @@ You can watch a step-by-step video guide of basic security policy configuration 
 
 The step-by-step video guide with deeper explanation of security policy tuning is here: :ref:`Security Policies<Security policies video>`.
 
-To control Whalebone's security filtering you need to configure it's security policies. When you install Whalebone, it comes with a **Default** policy which is set to include all threat types and sets the tresholds to the value of **80/50**. This policy will also be automatically applied to every newly installed resolver. 
+To control Whalebone's security filtering you need to configure it's security policies. When you install Whalebone, it comes with a **Default** policy which is set to include all threat types and sets the tresholds to the value of **80/50**. This policy will also be automatically applied to every newly installed resolver.
+
+Security policies are managed under **Configuration** → **Security policies**. Each policy is shown in its own tab; click **+ Add policy** to create a new one. The right column of every policy shows:
+
+* **Name of the policy #{ID}** — the editable policy name. The numeric ID after the hash is the internal identifier; quote it when contacting support about a specific policy.
+* **Policy scope** — toggle **available also for child organizations** to make the policy inheritable to tenants underneath the current one. See :doc:`multitenancy` for the inheritance model.
+* **Assigned resolvers** — list of resolvers (local or cloud) currently using this policy, with a deep link to each resolver's detail page.
+
 In any policy there are several options to be configured:
 
 Malicious filtering tresholds
 -----------------------------
 Every domain in our threat intelligence database has certain value of the score. The score represents how malicious we believe that particular domain to be. In the policy you adjust two values related to the score:
 
-* **The blocking threshold** - Domains with a score higher or equal to this value will be blocked by Whalebone and the client request will be answered with and IP address of the blocking page. 
+* **The blocking threshold** - Domains with a score higher or equal to this value will be blocked by Whalebone and the client request will be answered with and IP address of the blocking page.
 * **The audit treshold** - Domains with a score higher or equal to this value, but lower than the blocking treshold will be monitored. The request will be allowed and the answer will be served either from cache or by performing the full DNS recursion. Requests will however be monitored in the Threats dashboard for later investigation, if needed.
 
-Individual actions could be turned off - e.g. turn off the blocking for testing purposes
+Each step can be enabled or disabled independently using the **Audit** and **Block** checkboxes above the threshold slider. Turning **Block** off, for example, lets you run the policy in audit-only mode while tuning thresholds.
+
 The slider values define the probability that the particular domain is malicious on the scale from **0** to **100** with **100** beeing the most malicious.
 
 .. tip:: The default threshold for blocking is set to **80** which is safe even for larger network with liberal policy towards the users. For more restrictive policy we suggest setting threshold for blocking to **70-75**, in very restrictive networks even down to **60**. Audit is purely informative, however setting the threshold too low can result in too many logged incidents.
 
-There are preconfigured policies available that cover the most usual cases. These cases are: **Don't Block**, **Block carefully** and **Block strictly**.
+There are preconfigured policies available that cover the most usual cases. These cases are: **Don't block**, **Block carefully** and **Block strictly**.
 
 * **Block carefully** setting prioritizes a low false positive rate and is suitable for ISPs.
-* **Block strictly** maximizes the detection rate and is suitable for most corporate deployments. 
-* **Don't block** turns off the blocking entirely and causes Whalebone to operate in a transparent/permissive mode, where it will only log (audit) the incidents but it won't actively block them. 
+* **Block strictly** maximizes the detection rate and is suitable for most corporate deployments.
+* **Don't block** turns off the blocking entirely and causes Whalebone to operate in a transparent/permissive mode, where it will only log (audit) the incidents but it won't actively block them.
 
 .. image:: ./img/score.png
    :align: center
 
-You can configure additional policies by clicking the **Add Policy** tab. First you select which of the existing policies you want the new policy to be based upon. Then click the pencil button under the **Name of the Policy** to clearly differentiate it from the others.
+You can configure additional policies by clicking the **+ Add policy** tab. First you select which of the existing policies you want the new policy to be based upon. Then click the pencil button under the **Name of the policy** to clearly differentiate it from the others.
 You can then modify the blocking and auditing sensitivity, add deny lists or set up regulatory filtering. The new policy is not saved until you click the **Save** button.
 
-
-.. tip:: The policy is not active unless it is assigned to some resolvers (local or cloud ones). To start enforcing the policy, navigate to **Resolvers** →  **Policy Assignment** and assign it to a specific **subnet** or **resolver**.
-  
-
+.. tip:: The policy is not active unless it is assigned to some resolvers (local or cloud ones). To start enforcing the policy, navigate to **Resolvers** → **Policy Assignment** and assign it to a specific **subnet** or **resolver**.
 
 Types of threats
 ----------------
 
 The default settings is to include all types of threats. If you want to exclude some you can do so by unchecking the box **Include all types of threats**. From the drop-down menu you can now choose the specific categories of audited/blocked threats. The available categories are: **blacklist**, **c&c**, **coinminer**, **compromised**, **malware**, **phishing** and **spam**.
 
-A full list of what each category includes can be found below: 
+A full list of what each category includes can be found below:
 
-* **C&C (Command and Control)**:  domains that facilitate botnet communication to coordinate its activity. A botnet is a network of infected computers, which are controlled as a group. 
+* **C&C (Command and Control)**: domains that facilitate botnet communication to coordinate its activity. A botnet is a network of infected computers, which are controlled as a group.
 * **Malware**: domains that host and distribute any kind of malicious code.
 * **Phishing**: domains aiming to trick users and extract sensitive information such as credit card details, login credentials, etc.
 * **Blacklist**: domains that are known to serve multiple nefarious purposes at the same time or over a period of time.
@@ -59,21 +64,23 @@ A full list of what each category includes can be found below:
 Allow lists
 -----------
 
-  * Domains that will never be blocked (unless they are also present in a regulatory compliance feed).
-  * The allow list has the second highest priority when evaluating how to resolve a domain.
-  * The allow list is applied to the domain and all of the subdomains, e.g.: allowed domain ``whalebone.io`` will also allow ``docs.whalebone.io``, but not vice versa.
-  * The list can be configured on the **Allow / Deny List** tab on the left side of **Configuration** page.
-  * One list can hold up to 10 000 domains.
+* Domains that will never be blocked (unless they are also present in a regulatory compliance feed).
+* The allow list has the second highest priority when evaluating how to resolve a domain.
+* The allow list is applied to the domain and all of the subdomains, e.g.: allowed domain ``whalebone.io`` will also allow ``docs.whalebone.io``, but not vice versa.
+* The list can be configured on the dedicated **Allow / Deny lists** sub-page on the left side of the **Configuration** menu (Allow lists are shown in the right column on that sub-page).
+* One list can hold up to 10 000 domains. For larger feeds, contact `support <mailto:support@whalebone.io>`_ to enable the **Private Feeds** feature.
 
 Deny lists
 ----------
 
-  * Domains that will be blocked at all times (unless the same domain is also present on an allow list).
-  * The deny list is applied to the domain and all of the subdomains, e.g.: denied domain ``malware.ninja`` will also deny ``super.malware.ninja``, but not vice versa.
-  * The list can be configured on the **Allow / Deny List** tab on the right side of **Configuration** page.
-  * One list can hold up to 10 000 domains.
+* Domains that will be blocked at all times (unless the same domain is also present on an allow list).
+* The deny list is applied to the domain and all of the subdomains, e.g.: denied domain ``malware.ninja`` will also deny ``super.malware.ninja``, but not vice versa.
+* The list can be configured on the dedicated **Allow / Deny lists** sub-page on the left side of the **Configuration** menu (Deny lists are shown in the left column on that sub-page).
+* One list can hold up to 10 000 domains. For larger feeds, contact `support <mailto:support@whalebone.io>`_ to enable the **Private Feeds** feature.
 
-The custom lists support a `Lex specialis derogat legi generali` principle, in which a more specific domain listing overrides a more general domain listing. This way, you can have the whole domain ``malware.ninja`` on a Deny list 
+Each list card shows the number of domains in the list and how many policies currently reference it (badge **"N× used"**), making it easy to spot orphaned lists.
+
+The custom lists support a `Lex specialis derogat legi generali` principle, in which a more specific domain listing overrides a more general domain listing. This way, you can have the whole domain ``malware.ninja`` on a Deny list
 but if you have ``friendly.malware.ninja`` on an Allow list, this will take precedence and communication to this site will act as an exception and will be allowed by the resolver.
 
 .. warning:: After creating an allow or deny list, it needs to be assigned to the specific security policy, or else the changes will not take effect.
@@ -81,42 +88,48 @@ but if you have ``friendly.malware.ninja`` on an Allow list, this will take prec
 .. image:: ./img/denylist_en.gif
    :align: center
 
-
 Regulatory restrictions
 -----------------------
 
-  * Integrated list of domains that must be applied in order to conform to Regulatory Restrictions of a country.
-  * Examples of these domains include cases of illegal gambling or child pornograpy. 
-  * Domains on the regulatory restrictions list will be always blocked, if the list is applied to the security policy.
-  * They have the highest priority and their filtering cannot be overriden. Not even adding a domain to an allow list will cause the resolver to stop blocking it.
-     
+* Integrated list of domains that must be applied in order to conform to Regulatory Restrictions of a country.
+* Examples of these domains include cases of illegal gambling or child pornograpy.
+* Domains on the regulatory restrictions list will be always blocked, if the list is applied to the security policy.
+* They have the highest priority and their filtering cannot be overriden. Not even adding a domain to an allow list will cause the resolver to stop blocking it.
 
-.. warning:: Each country has different Regulatory lists. In case of multi-country deployments different policies can be used in order to apply the proper Regulatory Restrictions. 
+.. warning:: Each country has different Regulatory lists. In case of multi-country deployments different policies can be used in order to apply the proper Regulatory Restrictions.
 
 Content filtering
 -----------------
 
-  Particular Content categories can be applied on a per-policy level. This is useful in case different segments of the networks come with different requirements. For example, in case of a School environment all the **Adult** categories can be enabled and access to relevant content can be restricted.
+Particular Content categories can be applied on a per-policy level. This is useful in case different segments of the networks come with different requirements. For example, in case of a School environment all the **Adult** categories can be enabled and access to relevant content can be restricted.
 
-  A diverse set of content filtering categories are available:
+In the live portal the categories are organized into four groups, each toggleable as a whole or category-by-category:
 
-*	**Sexual content**: Sexual and pornographic material,
-*	**Gambling**: games and activities involving betting money,
-*	**Weapons**: guns and weapon-related sites,
+* **Adult** — Gambling, Sexual content, Weapons.
+* **Crime** — Child abuse, Drugs, Racism, Terrorism, Violence.
+* **Entertainment** — Audio/Video, Chat, Games, Social networks.
+* **Other** — Advertisement, Crypto-mining, DoH, P2P, Tracking, VPN and proxy services.
+
+A diverse set of content filtering categories are available:
+
+* **Sexual content**: Sexual and pornographic material,
+* **Gambling**: games and activities involving betting money,
+* **Weapons**: guns and weapon-related sites,
 * **Audio-video**: audio and video streaming services,
-*	**Games**: online games and gaming websites,
-*	**Chat**: instant messaging and chatting applications,
-*	**Social-networks**: social networking sites and applications,
-*	**Child abuse**: websites related to child abuse dissemination of child pornography,
-*	**Drugs**: drug related websites including alcohol and tobacco,
-*	**Racism**: content linked to racism and xenophobia,
-*	**Violence**: explicit violence and gore,
-*	**Terrorism**: domains linked to terrorism support,
-*	**Advertisement**: banners, context advertisements and other advertisements systems,
-*	**Crypto-mining**: domains connected to crypto-currency mining activities,
-*	**DoH**: DNS over HTTPS. These are domains that provide obfuscation of the DNS requests in HTTP traffic,
-*	**P2P**: domains linked to peer to peer networks where multimedia content is shared by the users,
-*	**Tracking**: web and email tracking systems.
+* **Games**: online games and gaming websites,
+* **Chat**: instant messaging and chatting applications,
+* **Social-networks**: social networking sites and applications,
+* **Child abuse**: websites related to child abuse dissemination of child pornography,
+* **Drugs**: drug related websites including alcohol and tobacco,
+* **Racism**: content linked to racism and xenophobia,
+* **Violence**: explicit violence and gore,
+* **Terrorism**: domains linked to terrorism support,
+* **Advertisement**: banners, context advertisements and other advertisements systems,
+* **Crypto-mining**: domains connected to crypto-currency mining activities,
+* **DoH**: DNS over HTTPS. These are domains that provide obfuscation of the DNS requests in HTTP traffic,
+* **P2P**: domains linked to peer to peer networks where multimedia content is shared by the users,
+* **Tracking**: web and email tracking systems,
+* **VPN and proxy services**: websites and services providing VPNs or anonymizing proxies.
 
 Safe Search
 ^^^^^^^^^^^
@@ -144,15 +157,14 @@ Filtering schedule
 The content filter can also be applied for specific times of the day. When a particular category is ticked, a clock icon will appear next to it. If you click the clock icon, you can add a new schedule for this category. Multiple schedules may be active for the same category. This way, you may only allow access to social networks during the lunch break and after working hours. Finish the settings by clicking **Apply** and **Save** the security policy.
 
 .. image:: ./img/schedules.png
-  :align: center
-
+   :align: center
 
 .. note:: By applying the schedule, you are **allowing** access to domains from that content category during that specific time period.
 
 Filter priorities
 -----------------
 
-  All filters mentioned above are executed in a particular order according to their priority. The order of filter priorities, sorted from highest to lowest, is as follows:
+All filters mentioned above are executed in a particular order according to their priority. The order of filter priorities, sorted from highest to lowest, is as follows:
 
 #. Regulatory restrictions
 #. Deny lists

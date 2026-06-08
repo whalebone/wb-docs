@@ -147,13 +147,13 @@ Vysvětlení významu polí a možné hodnoty:
 
 * Druhý řádek s **_default** (např. countryName_default) určuje data, která budou skutečně zakódována do certifikátu.
 
-* **commonName** je název, který reprezentuje blokační stránku (např. název společnosti, hostname resolveru nebo "Whalebone Blocking Page").
+* **commonName** je název, který reprezentuje blokační stránku (např. název společnosti, název hostitele (hostname) nebo "Whalebone Blocking Page").
 
 * [alt_names]
 
 * Zde můžete uvést více resolverů.
 
-* I když pojmenování není z funkčního hlediska kritické, doporučujeme použít skutečné hostnames resolverů (např. DNS.1 = WB1, DNS.2 = WB2).
+* I když pojmenování není z funkčního hlediska kritické, doporučujeme použít skutečný název hostitele (např. DNS.1 = WB1, DNS.2 = WB2).
 
 3. Vygenerujte klíč certifikační autority:
 

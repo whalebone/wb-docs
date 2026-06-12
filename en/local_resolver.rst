@@ -40,10 +40,6 @@ Please perform regular checks and maintain the resolver's operating system and D
   * ext4
   * xfs only with d_type support (ftype=1)
 
-* **Disk space** 
-
-  * At least 70 GB of **free** disk space in the /var directory.
-
 * **CPU**
 
   * The CPU supports the amd64-bit architecture and the x86-64-v2 instruction set. See below for instructions on how to verify if x86-64-v2 is supported:
@@ -57,6 +53,18 @@ Please perform regular checks and maintain the resolver's operating system and D
 
       * Execute ``/lib/ld-linux-x86-64.so.2 --help``.
       * Check if you see ``x86-64-v2 (supported, searched)`` in the terminal.
+
+* **Disk space** 
+
+  * At least 70 GB of free disk space in the **/var** directory.
+
+    * LMDB databases – domain, policy, IP range, and deny lists databases used for Threat, Content and Legal (regulatory) blocking.
+
+    * Database updates – both the current and newly downloaded database versions are temporarily stored during the update process.
+    
+    * System services – Docker images, operational data and logs of individual resolver components.
+
+.. important:: Starting with version 3.2.0, the resolver dynamically utilizes available storage for operational data, service logs and LMDB databases (up to 50% of available disk space is pre-allocated for LMDB ). The 70 GB requirement represents the minimum recommended capacity to ensure stable operation and accommodate future database growth. During database updates, both the current and newly downloaded database versions must be stored simultaneously to prevent any interruption of protection. Insufficient free disk space may cause the resolver process to terminate, resulting in restart loops and the loss of DNS protection.
 
 Hardware sizing recommendations
 -------------------------------

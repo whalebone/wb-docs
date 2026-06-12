@@ -40,10 +40,6 @@ Pravidelně kontrolujte a udržujte verze operačního systému a Docker engine 
   * ext4
   * xfs pouze s podporou d_type (ftype=1)
 
-* **Kapacita disku** 
-
-  * Nejméně 70 GB **volného** místa na disku v adresáři /var.
-
 * **CPU**
 
   * CPU s podporou architektury amd64 a instrukční sadou x86-64-v2. Níže najdete instrukce pro ověření, zda server podporuje x86-64-v2:
@@ -57,6 +53,18 @@ Pravidelně kontrolujte a udržujte verze operačního systému a Docker engine 
 
       * Spusťte příkaz ``/lib/ld-linux-x86-64.so.2 --help``.
       * Zkontrolujte, zda se v terminálu vypíše ``x86-64-v2 (supported, searched)``.
+
+* **Kapacita disku** 
+
+  * Nejméně 70 GB alokovaného místa na disku pro adresář **/var**.
+
+    * Databáze LMDB – databáze domén, politik, IP rozsahů a seznamů “blokované” využívané pro blokace hrozeb, obsahu a regulatorních restrikcí.
+
+    * Aktualizace databází – během aktualizace jsou dočasně uchovávány aktuální i nově stažené databáze.
+
+    * Systémové služby – Docker image, provozní data a logy jednotlivých komponent resolveru.
+
+.. important:: Resolver od verze 3.2.0 dynamicky využívá dostupné úložiště pro provozní data, logy služeb a databázi LMDB (přibližně až 50 % dostupného prostoru je alokováno pro LMDB). Požadavek 70 GB proto představuje minimální doporučenou kapacitu pro stabilní provoz i budoucí růst databází. Během procesu aktualizace databází je navíc nutné dočasně uchovávat aktuální i nově staženou verzi databází současně, aby nedošlo k přerušení ochrany. Nedostatek volného místa může vést k ukončení procesu resolveru, restartovacím smyčkám a nedostupnosti DNS ochrany.
 
 Požadavky na výkon serveru
 --------------------------

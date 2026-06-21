@@ -10,8 +10,8 @@ Předčasné ukončení MSI
 Chyba "Nepodporovaná architektura"
 ----------------------------------
 
-* **Možná příčina:** 32bitový operační systém Windows není podporován.
-* **Řešení:** Nainstalujte aplikaci na 64bitové operační systémy Windows.
+* **Možná příčina:** Zařízení používá 32bitový Windows nebo Windows on ARM, což není podporováno.
+* **Řešení:** Nainstalujte aplikaci na Windows s architekturou CPU x86-64 (amd64).
 
 Zařízení není viditelné v Administračním portálu
 ------------------------------------------------

@@ -35,15 +35,15 @@ Key features
 Supported operating systems
 ---------------------------
 
-=============== =============================
+=============== =========================================
 Platform        Minimum version
-=============== =============================
-Windows Desktop Windows 10 (64-bit) or higher
+=============== =========================================
+Windows Desktop Windows 10 or higher (x86-64/amd64)
 Android         Android 5 or higher
 iOS             iOS 15.0 (SDK ≥ 13.4)
 Linux           Not supported
 macOS X         On the product roadmap
-=============== =============================
+=============== =========================================
 
 System requirements
 -------------------
@@ -60,7 +60,7 @@ System requirements
 
 * The Home Office Security client must be excluded from antivirus network protection to ensure its correct functioning.
 
-* Windows: 64-bit CPU architecture
+* Windows: x86-64 (amd64) CPU architecture. Windows on ARM is not supported.
 
 * Windows: Local administrator rights are required for installation
 
@@ -69,7 +69,7 @@ Known limitations
 
 * Security-policy propagation can take up to 4 hours to reach all devices.
 * IPv6 networks may experience incorrect resolutions.
-* 64-bit only – x86 Windows not supported.
+* Windows on ARM and 32-bit Windows are not supported.
 * HOS may experience compatibility issues with different antivirus engines, leading to inconsistent threat detection.
 * Some antivirus software may classify the Home Office Security client as a DNS hijacking or ARP cache poisoning threat. However, the client protects users by redirecting their DNS traffic to Whalebone cloud DNS servers, which is a legitimate activity.
 * The GUI application does not start when the Home Office Security client is deployed using an MDM or Active Directory Group Policies. DNS traffic protection is not affected.

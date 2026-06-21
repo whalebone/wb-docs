@@ -11,7 +11,7 @@ MSI exits early
 --------------------------------
 
 * **Possible cause:** The device runs 32-bit Windows or Windows on ARM, which is not supported.
-* **Resolution:** Install the application on Windows with an x86-64 (amd64) CPU architecture.
+* **Resolution:** Install the application on 64-bit Windows operating systems.
 
 Device not visible in the Admin Portal
 --------------------------------------

@@ -38,7 +38,7 @@ Podporované operační systémy
 =============== ===========================================
 Platforma       Minimální verze
 =============== ===========================================
-Windows Desktop Windows 10 nebo vyšší (x86-64/amd64)
+Windows Desktop Windows 10 (64-bit) nebo vyšší
 Android         Android 5 nebo vyšší
 iOS             iOS 15.0 (SDK ≥ 13.4)
 Linux           Nepodporováno
@@ -60,7 +60,7 @@ Systémové požadavky
 
 * Klient Home Office Security musí být vyloučen z antivirové síťové ochrany, aby byla zajištěna jeho správná funkce.
 
-* Windows: architektura CPU x86-64 (amd64). Windows on ARM není podporován.
+* Windows: 64bitová architektura CPU
 
 * Windows: Pro instalaci jsou vyžadována práva lokálního administrátora
 

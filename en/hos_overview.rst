@@ -35,15 +35,15 @@ Key features
 Supported operating systems
 ---------------------------
 
-=============== =========================================
+=============== =============================
 Platform        Minimum version
-=============== =========================================
-Windows Desktop Windows 10 or higher (x86-64/amd64)
+=============== =============================
+Windows Desktop Windows 10 (64-bit) or higher
 Android         Android 5 or higher
 iOS             iOS 15.0 (SDK ≥ 13.4)
 Linux           Not supported
 macOS X         On the product roadmap
-=============== =========================================
+=============== =============================
 
 System requirements
 -------------------
@@ -60,7 +60,7 @@ System requirements
 
 * The Home Office Security client must be excluded from antivirus network protection to ensure its correct functioning.
 
-* Windows: x86-64 (amd64) CPU architecture. Windows on ARM is not supported.
+* Windows: 64-bit CPU architecture
 
 * Windows: Local administrator rights are required for installation
 

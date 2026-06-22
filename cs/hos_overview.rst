@@ -69,7 +69,7 @@ Známá omezení
 
 * Šíření bezpečnostních politik může trvat až 4 hodiny, než se dostane na všechna zařízení.
 * Sítě IPv6 mohou zaznamenat problémy s DNS překladem.
-* Pouze 64-bit – x86 Windows nejsou podporovány.
+* Windows on ARM a 32bitový Windows nejsou podporovány.
 * HOS může mít problémy s kompatibilitou s různými antivirovými programy, což vede k nekonzistentní detekci hrozeb.
 * Některý antivirový software může klienta Home Office Security klasifikovat jako hrozbu přesměrování DNS nebo ARP cache poisoning. Přesměrováním DNS provozu na cloudové DNS servery Whalebone je ovšem žádoucí a legitimní aktivita HOS klienta.
 * Aplikace GUI se nespustí, pokud je klient Home Office Security nasazen pomocí MDM nebo Zásad skupiny Active Directory (Active Directory Group Policies). Ochrana DNS provozu tím není dotčena.

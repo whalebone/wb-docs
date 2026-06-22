@@ -10,7 +10,7 @@ MSI exits early
 "Unsupported architecture" error
 --------------------------------
 
-* **Possible cause:** The 32-bit Windows operating system is not supported.
+* **Possible cause:** The device runs 32-bit Windows or Windows on ARM, which is not supported.
 * **Resolution:** Install the application on 64-bit Windows operating systems.
 
 Device not visible in the Admin Portal

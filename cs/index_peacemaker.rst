@@ -26,6 +26,7 @@ Další informace o produktu a společnosti jsou k dispozici na oficiálních st
 
    local_resolver
    resolvers
+   resolver_changelog
    security_policies
    dns_resolution
    knot_tips_tricks

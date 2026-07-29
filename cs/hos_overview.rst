@@ -75,6 +75,8 @@ Známá omezení
 * Aplikace GUI se nespustí, pokud je klient Home Office Security nasazen pomocí MDM nebo Zásad skupiny Active Directory (Active Directory Group Policies). Ochrana DNS provozu tím není dotčena.
 * Aplikace Home Office Security není kompatibilní s funkcí Private DNS v zařízeních s operačním systémem Android a funkcí Private Relay v zařízeních s operačním systémem iOS.
 * Aplikace Home Office Security není kompatibilní s aplikací Android Auto v zařízeních s operačním systémem Android.
+* Funkce prohlížeče Safari Pokročilá ochrana před sledováním a fingerprintingem při blokaci způsobuje fallback na dedikované Safari resolvery. Tato funkce je defaultně zapnuta pro anonymní prohlížení a lze je vypnout v "Safari" -> "Pokročilé" -> "Pokročilá ochrana před sledováním a fingerprintingem" -> "vypnuto"
+
 
 Změny
 -----

@@ -60,6 +60,7 @@ More information about the product and company is available on the official `Wha
    syslog_integration
    active_directory
    snmp_monitoring
+   logmanager_integration
 
 .. toctree::
    :maxdepth: 1

@@ -60,6 +60,7 @@ Další informace o produktu a společnosti jsou k dispozici na oficiálních st
    syslog_integration
    active_directory
    snmp_monitoring
+   logmanager_integration
 
 .. toctree::
    :maxdepth: 1

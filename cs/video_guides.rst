@@ -100,9 +100,9 @@ a přiřadit zásady konkrétní IP adrese nebo rozsahu. Nezapomeňte nastavení
 |
 |
 
-.. _Konfigurace bokacni stranky video:
+.. _Konfigurace blokacni stranky video:
 
-Konfigurace bokační stránky
+Konfigurace blokační stránky
 ---------------------------
 
 Pomocí Whalebone portálu můžete plně přizpůsobit blokáční stránky, které se zobrazí v případě, že se někdo pokusí ve svém prohlížeči přistoupit na nebezpečnou webovou stránku. Tento nástroj potřebuje místní resolver, u kterého můžete blokovací stránku přepnout z cloudu na lokální. 

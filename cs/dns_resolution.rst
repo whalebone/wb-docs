@@ -1,50 +1,52 @@
 Konfigurace překladu DNS
 =========================
 
-Možnosti konfigurace resolveru najdete v zíložce **Konfigurace**  na kartě **DNS Překlad**. Tato záložka umožňuje provést základní konfiguraci bez znalosti konfigurační syntaxe. 
+Možnosti konfigurace překladu DNS najdete v sekci **Konfigurace** na podstránce **DNS překlad**. Tato podstránka umožňuje provést základní konfiguraci bez znalosti konfigurační syntaxe.
 Dále je zde textová oblast umožňující definovat libovolnou konfiguraci k základnímu `Knot Resolveru <https://www.knot-resolver.cz/>`_.
+
+Více pojmenovaných profilů
+--------------------------
+
+Nastavení překladu DNS žije v **profilech**. V portálu je každý profil vlastní kartou (výchozí profil se jmenuje **Výchozí DNS překlad**) a odkaz **+ Přidat DNS překlad** vytvoří nový profil na základě aktuálně vybraného. Každý resolver je přiřazen k právě jednomu profilu prostřednictvím své záložky **Pokročilá konfigurace**; pravý sloupec **Přiřazené resolvery** vypisuje všechny resolvery, které profil používají, a odkazuje na jejich detail. Více profilů využijete tehdy, když různé skupiny resolverů potřebují odlišné upstream servery, statické záznamy nebo Knot skripty.
 
 Dostupné možnosti konfigurace:
 
 * **Používat IPv6 pro dotazy na autoritativní servery**
 
-  * Pokud je systém správně nakonfigurován, je možné povolit IPv6.
-  * V opačném případě by aktivace protokolu IPv6 mohla mít negativní vliv na výkon a latenci resolveru.
+* Pokud je systém správně nakonfigurován, je možné povolit IPv6.
+* V opačném případě by aktivace protokolu IPv6 mohla mít negativní vliv na výkon a latenci resolveru.
 
 * **Přesměrovat dotazy na nadřazené resolvery**
 
-  * Tato možnost umožňuje přesměrovat všechny nebo vybrané dotazy na předřazené resolvery nebo autoritativní servery DNS (vhodné např. pro přesměrování na řadiče domény služby Active Directory).
-  * **Zakázat DNSSEC validaci**
+* Tato možnost umožňuje přesměrovat všechny nebo vybrané dotazy na předřazené resolvery nebo autoritativní servery DNS (vhodné např. pro přesměrování na řadiče domény služby Active Directory).
+* **Zakázat DNSSEC validaci**
 
-    * Pokud je tato možnost zaškrtnuta, odpovědi z přesměrovaných dotazů nebudou ověřovány pomocí DNSSEC.  
-    * Tuto možnost doporučujeme zaškrtnout v případě, že předávací server nemá správně nakonfigurován DNSSEC.
+* Pokud je tato možnost zaškrtnuta, odpovědi z přesměrovaných dotazů nebudou ověřovány pomocí DNSSEC.
+* Tuto možnost doporučujeme zaškrtnout v případě, že předávací server nemá správně nakonfigurován DNSSEC.
 
-  * **Všechny dotazy na**
+* **Všechny dotazy na**
 
-    * Možnost předání všech dotazů jednomu nebo více resolverům.
-    * Toto nastavení ukládá všechny odpovědi do mezipaměti!
+* Možnost předání všech dotazů jednomu nebo více resolverům.
+* Toto nastavení ukládá všechny odpovědi do mezipaměti!
 
-  * **Následující domény**
+* **Následující domény**
 
-    * Možnost vybrat konkrétní domény, které mají být předávány na jeden ,nebo více resolverů.
-    * Pro různé domény lze definovat různé resolvery.
-    * Ukládání do mezipaměti pro vybrané domény bude vypnuto!
+* Možnost vybrat konkrétní domény, které mají být předávány na jeden, nebo více resolverů.
+* Pro různé domény lze definovat různé resolvery.
+* Ukládání do mezipaměti pro vybrané domény bude vypnuto!
 
 * **Statické záznamy**
 
-  * Předdefinované odpovědi, které mají být vráceny pro konkrétní domény.
-  * Mohly by sloužit pro speciální účely, jako je monitorování nebo velmi jednoduché nahrazování záznamů na autoritativním serveru.
-
+* Předdefinované odpovědi, které mají být vráceny pro konkrétní domény.
+* Mohou sloužit pro speciální účely, jako je monitorování nebo velmi jednoduché nahrazování záznamů na autoritativním serveru.
 
 * **Nastavení DNS překladu**
 
-  * Textová oblast pro pokročilou konfiguraci.
-  * Slouží k přímé konfiguraci Knot Resolveru.
-  * `Kompletní konfigurace Knot Resolveru <https://knot-resolver.readthedocs.io/en/stable/config-overview.html>`_
-  * Podporuje skriptování v jazyce Lua.
+* Textová oblast pro pokročilou konfiguraci.
+* Slouží k přímé konfiguraci Knot Resolveru.
+* `Kompletní konfigurace Knot Resolveru <https://knot-resolver.readthedocs.io/en/stable/config-overview.html>`_
+* Podporuje skriptování v jazyce Lua.
 
-
- 
 .. image:: ./img/resolution_cs.gif
    :align: center
 

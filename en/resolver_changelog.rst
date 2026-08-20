@@ -24,8 +24,8 @@ Required before upgrade
    CPU instructions, including AES, to the virtual machine. Otherwise, the
    resolver may fail because of a library dependency.
 
-   At least 70 GB of free disk space is required in the ``/var`` directory.
-   See :doc:`local_resolver` for the complete system requirements.
+   The filesystem containing ``/var`` must have a total capacity of at least
+   70 GB. See :doc:`local_resolver` for the complete system requirements.
 
 Release highlights
 ------------------

@@ -24,6 +24,9 @@ Požadavky před aktualizací
    instrukce CPU x86-64-v2 nebo x86-64-v3, včetně AES. V opačném případě může
    resolver selhat kvůli závislosti použité knihovny.
 
+   V adresáři ``/var`` je vyžadováno nejméně 70 GB volného místa na disku.
+   Úplné systémové požadavky najdete v části :doc:`local_resolver`.
+
 Hlavní změny v aktualizaci
 --------------------------
 

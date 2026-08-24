@@ -5,6 +5,67 @@ Přehled verzí resolveru
 Tato stránka obsahuje poznámky k jednotlivým verzím Whalebone Resolveru určené
 zákazníkům. Před aktualizací si přečtěte požadavky a poznámky k cílové verzi.
 
+Resolver 3.5.0
+==============
+
+Požadavky před aktualizací
+--------------------------
+
+.. important::
+
+   **Je vyžadován Docker Engine 24.0 nebo novější.**
+
+   Tato verze není kompatibilní s Docker Engine 23.0 a staršími verzemi. Před
+   aktualizací resolveru ověřte, že server používá Docker Engine 24.0 nebo
+   novější. V opačném případě může aktualizace selhat a resolver může skončit ve
+   stavu **Nedostupný**, jehož oprava vyžaduje ruční zásah na serveru.
+
+   Virtualizované prostředí musí virtuálnímu stroji zpřístupnit požadované
+   instrukce CPU x86-64-v2 nebo x86-64-v3, včetně AES. V opačném případě může
+   resolver selhat kvůli závislosti použité knihovny.
+
+   Souborový systém obsahující adresář ``/var`` musí mít celkovou kapacitu
+   alespoň 70 GB. Úplné systémové požadavky najdete v části
+   :doc:`local_resolver`.
+
+Hlavní změny v aktualizaci
+--------------------------
+
+.. only:: Immunity or Peacemaker
+
+   * **Výrazně vyšší výkon resolveru:** Ve stejném kontrolovaném testovacím
+     prostředí dosáhl Resolver 3.5.0 2,3násobné propustnosti na jedno jádro CPU
+     oproti Resolveru 3.4.1. Skutečný výkon závisí na konfiguraci nasazení a
+     profilu provozu. To poskytuje větší kapacitu na stávajícím hardwaru a
+     umožňuje předvídatelnější plánování kapacity a bezpečnější aktualizace.
+   * **Deduplikace záznamů o hrozbách — ve výchozím nastavení vypnuta:**
+     Opakované události spojené se stejnou hrozbou lze nyní seskupit v rámci
+     nastavitelného časového okna. Jediná hrozba tak během DDoS útoku nebo
+     jiného nárůstu provozu nebude nepřiměřeně dominovat statistikám hrozeb,
+     přičemž zůstane zachována informace o jejím výskytu.
+   * **Vyšší provozní stabilita:** Pomalé operace Dockeru a dočasná odpojení od
+     cloudu již neblokují lokální kontroly stavu ani zpracování požadavků.
+
+.. only:: Aura
+
+   * **Výrazně vyšší výkon resolveru:** Ve stejném kontrolovaném testovacím
+     prostředí dosáhl Resolver 3.5.0 2,3násobné propustnosti na jedno jádro CPU
+     oproti Resolveru 3.4.1. Skutečný výkon závisí na konfiguraci nasazení a
+     profilu provozu. To poskytuje větší kapacitu na stávajícím hardwaru,
+     umožňuje plánování kapacity na základě naměřených dat a odstraňuje
+     významnou překážku aktualizace na Resolver 3.x.
+   * **Deduplikace záznamů o hrozbách — ve výchozím nastavení vypnuta:**
+     Opakované události spojené se stejnou hrozbou lze nyní seskupit v rámci
+     nastavitelného časového okna. Jediná hrozba tak během DDoS útoku nebo
+     jiného nárůstu provozu nebude nepřiměřeně dominovat statistikám hrozeb,
+     přičemž zůstane zachována informace o jejím výskytu.
+   * **Spolehlivější aktualizace rozsahů IP adres a RADIUS:** Změny databází
+     rozsahů IP adres a RADIUS v reálném čase se nyní aplikují atomicky v
+     dávkách. To zvyšuje výkon aktualizací a zabraňuje částečnému uplatnění
+     změn.
+   * **Vyšší provozní stabilita:** Pomalé operace Dockeru a dočasná odpojení od
+     cloudu již neblokují lokální kontroly stavu ani zpracování požadavků.
+
 Resolver 3.4.1
 ==============
 
@@ -372,6 +433,50 @@ Starší verze Resolveru 1.x
 
 Resolver 1.x již není podporován. Následující historické verze jsou uvedeny pro
 referenci.
+
+Resolver 1.0.92-security-fix
+----------------------------
+
+Hlavní změny v aktualizaci
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Jedná se o cílenou bezpečnostní aktualizaci pro zákazníky, kteří stále
+používají starší větev Resolveru 1.x.
+
+Aktualizace přináší vybrané kritické bezpečnostní opravy, které snižují
+bezprostřední bezpečnostní riziko pro dotčená nasazení Resolveru 1.x. Obsahuje
+opravy scénářů pádu Resolveru při útocích vedoucích k odepření služby a vybraná
+zlepšení správnosti DNS odpovědí.
+
+Bezpečnostní opravy
+~~~~~~~~~~~~~~~~~~~
+
+Tato aktualizace obsahuje vybrané bezpečnostní opravy, které řeší scénáře pádu,
+jež by mohly být v dotčených konfiguracích úmyslně vyvolány speciálně
+vytvořeným DNS provozem.
+
+Zlepšení správnosti DNSSEC a DNS odpovědí
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Aktualizace dále obsahuje vybrané opravy správnosti související se zpracováním
+DNSSEC odpovědí a chováním mezipaměti Resolveru, včetně lepšího zpracování
+prázdných odpovědí ANSWER/AUTHORITY a chování TTL v mezipaměti.
+
+Zlepšení řízení ukládání do mezipaměti pro DoH
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Chování řízení ukládání do mezipaměti pro DNS-over-HTTPS bylo vylepšeno tak,
+aby odpovědi lépe respektovaly limity TTL nastavené v mezipaměti Resolveru.
+
+Omezený rozsah podpory starší větve
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Tato aktualizace neobnovuje obecnou funkční ani provozní podporu Resolveru 1.x.
+Je poskytována pouze jako cílená bezpečnostní oprava pro zákazníky, kteří
+nemohou okamžitě přejít na Resolver 3.x.
+
+Zákazníkům i nadále důrazně doporučujeme naplánovat aktualizaci na Resolver
+3.x, který zůstává preferovanou a aktivně podporovanou verzí.
 
 Resolver 1.0.93
 ---------------

@@ -5,6 +5,68 @@ Resolver changelog
 This page contains customer-facing release notes for Whalebone Resolver.
 Before upgrading, review the requirements and notes for the target version.
 
+Resolver 3.5.0
+==============
+
+Required before upgrade
+-----------------------
+
+.. important::
+
+   **Docker Engine 24.0 or newer is required.**
+
+   This release is not compatible with Docker Engine 23.0 and earlier. Before
+   upgrading the resolver, make sure the server is running Docker Engine 24.0
+   or newer. Otherwise, the upgrade may fail and the resolver may end up in an
+   **Unavailable** state, requiring manual intervention on the server.
+
+   Virtualized environments must expose the required x86-64-v2 or x86-64-v3
+   CPU instructions, including AES, to the virtual machine. Otherwise, the
+   resolver may fail because of a library dependency.
+
+   The filesystem containing ``/var`` must have a total capacity of at least
+   70 GB. See :doc:`local_resolver` for the complete system requirements.
+
+Release highlights
+------------------
+
+.. only:: Immunity or Peacemaker
+
+   * **Significantly higher resolver performance:** In the same controlled
+     benchmark setup, Resolver 3.5.0 delivered 2.3 times the throughput per CPU
+     core of Resolver 3.4.1. Actual performance depends on the deployment
+     configuration and traffic profile. This provides more capacity on
+     existing hardware and supports more predictable capacity planning and
+     safer upgrades.
+   * **Threat-log deduplication — disabled by default:** Repeated events for the
+     same threat can now be grouped within a configurable time window. This
+     prevents a single threat from disproportionately dominating threat
+     statistics during DDoS attacks or other traffic spikes, while preserving
+     visibility that the threat occurred.
+   * **Improved operational stability:** Slow Docker operations and temporary
+     cloud disconnections no longer block local health checks or request
+     processing.
+
+.. only:: Aura
+
+   * **Significantly higher resolver performance:** In the same controlled
+     benchmark setup, Resolver 3.5.0 delivered 2.3 times the throughput per CPU
+     core of Resolver 3.4.1. Actual performance depends on the deployment
+     configuration and traffic profile. This provides more capacity on
+     existing hardware, enables evidence-based capacity sizing, and removes a
+     major obstacle to upgrading to Resolver 3.x.
+   * **Threat-log deduplication — disabled by default:** Repeated events for the
+     same threat can now be grouped within a configurable time window. This
+     prevents a single threat from flooding threat statistics during DDoS
+     attacks or other traffic spikes, keeping reporting representative while
+     maintaining visibility into the threat.
+   * **More reliable IP-range and RADIUS updates:** Real-time IP-range and
+     RADIUS database changes are now applied atomically in batches. This
+     improves update performance and prevents partially applied changes.
+   * **Improved operational stability:** Slow Docker operations and temporary
+     cloud disconnections no longer block local health checks or request
+     processing.
+
 Resolver 3.4.1
 ==============
 
@@ -386,6 +448,50 @@ Legacy Resolver 1.x
 
 Resolver 1.x is end of life. The following historical releases are included for
 reference.
+
+Resolver 1.0.92-security-fix
+----------------------------
+
+Release highlights
+~~~~~~~~~~~~~~~~~~
+
+This is a limited security release for customers who are still running the
+legacy Resolver 1.x branch.
+
+The release backports selected critical upstream security fixes to reduce
+immediate security exposure for affected Resolver 1.x deployments. It includes
+fixes for denial-of-service crash scenarios in the resolver engine and selected
+DNS correctness improvements.
+
+Security fixes
+~~~~~~~~~~~~~~
+
+This release includes selected upstream security fixes that address crash
+scenarios which could be intentionally triggered by crafted DNS traffic in
+affected configurations.
+
+DNSSEC and DNS response correctness improvements
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The release also includes selected correctness fixes related to DNSSEC response
+handling and resolver cache behavior, including improved handling of empty
+ANSWER/AUTHORITY replies and cache TTL behavior.
+
+DoH cache-control improvement
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+DNS-over-HTTPS cache-control behavior has been improved so responses better
+respect resolver cache TTL limits.
+
+Limited legacy support scope
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This release does not reopen general feature or maintenance support for
+Resolver 1.x. It is provided only as a targeted security backport for customers
+who cannot immediately move to Resolver 3.x.
+
+Customers are still strongly recommended to plan an upgrade to Resolver 3.x,
+which remains the preferred and actively maintained release line.
 
 Resolver 1.0.93
 ---------------

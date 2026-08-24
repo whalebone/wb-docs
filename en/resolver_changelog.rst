@@ -5,6 +5,42 @@ Resolver changelog
 This page contains customer-facing release notes for Whalebone Resolver.
 Before upgrading, review the requirements and notes for the target version.
 
+Resolver 3.5.1
+==============
+
+Required before upgrade
+-----------------------
+
+.. important::
+
+   **Docker Engine 24.0 or newer is required.**
+
+   This release is not compatible with Docker Engine 23.0 and earlier. Before
+   upgrading the resolver, make sure the server is running Docker Engine 24.0
+   or newer. Otherwise, the upgrade may fail and the resolver may end up in an
+   **Unavailable** state, requiring manual intervention on the server.
+
+   Virtualized environments must expose the required x86-64-v2 or x86-64-v3
+   CPU instructions, including AES, to the virtual machine. Otherwise, the
+   resolver may fail because of a library dependency. See the
+   `troubleshooting guide <https://helpdesk.whalebone.io/en/support/solutions/articles/9000270277-no-threats-or-content-showing-after-upgrade>`_
+   for more information.
+
+Release highlights
+------------------
+
+.. only:: Immunity or Peacemaker
+
+   * **Minor logging improvement:** Routine database lookups are now logged at
+     the appropriate level.
+
+.. only:: Aura
+
+   * **Improved RADIUS reliability:** Prevents false monitoring alerts and
+     unnecessary service restarts in deployments using RADIUS identities.
+   * **Minor logging improvement:** Routine database lookups are now logged at
+     the appropriate level.
+
 Resolver 3.5.0
 ==============
 

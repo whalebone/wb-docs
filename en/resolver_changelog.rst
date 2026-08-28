@@ -37,7 +37,10 @@ Required before upgrade
 Security update
 ---------------
 
-This update contains important security fixes for Resolver.
+This update contains a security fix for Resolver. For deployments where Resolver
+is not protected by a firewall or equivalent network controls, this update should
+be considered critical. We strongly recommend upgrading all Resolver deployments
+to this version as soon as possible.
 
 Resolver 3.5.1
 ==============
@@ -414,7 +417,10 @@ Resolver 2.1.8
 Security update
 ---------------
 
-This update contains important security fixes for Resolver.
+This update contains a security fix for Resolver. For deployments where Resolver
+is not protected by a firewall or equivalent network controls, this update should
+be considered critical. We strongly recommend upgrading all Resolver deployments
+to this version as soon as possible.
 
 Resolver 2.1.7
 ==============

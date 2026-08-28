@@ -36,7 +36,10 @@ Požadavky před aktualizací
 Bezpečnostní aktualizace
 ------------------------
 
-Tato aktualizace obsahuje důležité bezpečnostní opravy pro Resolver.
+Tato aktualizace obsahuje bezpečnostní opravu pro Resolver. U instalací, kde
+Resolver není chráněn firewallem nebo odpovídajícími síťovými opatřeními, by tato
+aktualizace měla být považována za kritickou. Důrazně doporučujeme co nejdříve
+aktualizovat všechny instalace Resolveru na tuto verzi.
 
 Resolver 3.5.1
 ==============
@@ -398,7 +401,10 @@ Resolver 2.1.8
 Bezpečnostní aktualizace
 ------------------------
 
-Tato aktualizace obsahuje důležité bezpečnostní opravy pro Resolver.
+Tato aktualizace obsahuje bezpečnostní opravu pro Resolver. U instalací, kde
+Resolver není chráněn firewallem nebo odpovídajícími síťovými opatřeními, by tato
+aktualizace měla být považována za kritickou. Důrazně doporučujeme co nejdříve
+aktualizovat všechny instalace Resolveru na tuto verzi.
 
 Resolver 2.1.7
 ==============

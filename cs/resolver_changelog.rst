@@ -5,6 +5,55 @@ Přehled verzí resolveru
 Tato stránka obsahuje poznámky k jednotlivým verzím Whalebone Resolveru určené
 zákazníkům. Před aktualizací si přečtěte požadavky a poznámky k cílové verzi.
 
+Resolver 3.5.3
+==============
+
+Požadavky před aktualizací
+--------------------------
+
+.. important::
+
+   **Je vyžadována dostatečná kapacita disku pro adresář ``/var``.**
+
+   Souborový systém obsahující adresář ``/var`` musí mít celkovou kapacitu
+   alespoň 70 GB pro databáze resolveru, provozní data a logy služeb. Úplné
+   hardwarové a softwarové požadavky najdete v části :doc:`local_resolver`.
+
+   **Je vyžadován Docker Engine 24.0 nebo novější.**
+
+   Tato verze není kompatibilní s Docker Engine 23.0 a staršími verzemi. Před
+   aktualizací resolveru ověřte, že server používá Docker Engine 24.0 nebo
+   novější. V opačném případě může aktualizace selhat a resolver může skončit ve
+   stavu **Nedostupný**, jehož oprava vyžaduje ruční zásah na serveru. Další
+   informace najdete v
+   `průvodci řešením problémů s aktualizací Dockeru <https://helpdesk.whalebone.io/en/support/solutions/articles/9000278430-resolver-fails-or-ends-up-in-unavailable-after-upgrading>`_.
+
+   Virtualizované prostředí musí virtuálnímu stroji zpřístupnit požadované
+   instrukce CPU x86-64-v2 nebo x86-64-v3, včetně AES. V opačném případě může
+   resolver selhat kvůli závislosti použité knihovny. Další informace najdete v
+   `průvodci řešením problémů s CPU <https://helpdesk.whalebone.io/en/support/solutions/articles/9000270277-no-threats-or-content-showing-after-upgrade>`_.
+
+Hlavní změny v aktualizaci
+--------------------------
+
+.. only:: Immunity or Peacemaker
+
+   * **Vylepšené odesílání logů:** Spojení pro odesílání logů se pravidelně
+     obnovují, aby se provoz rovnoměrněji rozložil mezi backendové servery.
+   * **Oprava logování DNS provozu:** Komprimované archivy logů jsou nyní
+     správně vyloučeny z odesílání, čímž se zabraňuje vstupu neplatných dat do
+     systému zpracování logů.
+
+.. only:: Aura
+
+   * **Vyšší stabilita RADIUS:** Opraven pád při zpracování účetních zpráv
+     RADIUS obsahujících více IP adres.
+   * **Vylepšené odesílání logů:** Spojení pro odesílání logů se pravidelně
+     obnovují, aby se provoz rovnoměrněji rozložil mezi backendové servery.
+   * **Oprava logování DNS provozu:** Komprimované archivy logů jsou nyní
+     správně vyloučeny z odesílání, čímž se zabraňuje vstupu neplatných dat do
+     systému zpracování logů.
+
 Resolver 3.5.2
 ==============
 

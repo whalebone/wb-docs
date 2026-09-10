@@ -5,6 +5,91 @@ Přehled verzí resolveru
 Tato stránka obsahuje poznámky k jednotlivým verzím Whalebone Resolveru určené
 zákazníkům. Před aktualizací si přečtěte požadavky a poznámky k cílové verzi.
 
+Resolver 3.5.3
+==============
+
+Požadavky před aktualizací
+--------------------------
+
+.. important::
+
+   **Je vyžadována dostatečná kapacita disku pro adresář ``/var``.**
+
+   Souborový systém obsahující adresář ``/var`` musí mít celkovou kapacitu
+   alespoň 70 GB pro databáze resolveru, provozní data a logy služeb. Úplné
+   hardwarové a softwarové požadavky najdete v části :doc:`local_resolver`.
+
+   **Je vyžadován Docker Engine 24.0 nebo novější.**
+
+   Tato verze není kompatibilní s Docker Engine 23.0 a staršími verzemi. Před
+   aktualizací resolveru ověřte, že server používá Docker Engine 24.0 nebo
+   novější. V opačném případě může aktualizace selhat a resolver může skončit ve
+   stavu **Nedostupný**, jehož oprava vyžaduje ruční zásah na serveru. Další
+   informace najdete v
+   `průvodci řešením problémů s aktualizací Dockeru <https://helpdesk.whalebone.io/en/support/solutions/articles/9000278430-resolver-fails-or-ends-up-in-unavailable-after-upgrading>`_.
+
+   Virtualizované prostředí musí virtuálnímu stroji zpřístupnit požadované
+   instrukce CPU x86-64-v2 nebo x86-64-v3, včetně AES. V opačném případě může
+   resolver selhat kvůli závislosti použité knihovny. Další informace najdete v
+   `průvodci řešením problémů s CPU <https://helpdesk.whalebone.io/en/support/solutions/articles/9000270277-no-threats-or-content-showing-after-upgrade>`_.
+
+Hlavní změny v aktualizaci
+--------------------------
+
+.. only:: Immunity or Peacemaker
+
+   * **Vylepšené odesílání logů:** Spojení pro odesílání logů se pravidelně
+     obnovují, aby se provoz rovnoměrněji rozložil mezi backendové servery.
+   * **Oprava logování DNS provozu:** Komprimované archivy logů jsou nyní
+     správně vyloučeny z odesílání, čímž se zabraňuje vstupu neplatných dat do
+     systému zpracování logů.
+
+.. only:: Aura
+
+   * **Vyšší stabilita RADIUS:** Opraven pád při zpracování účetních zpráv
+     RADIUS obsahujících více IP adres.
+   * **Vylepšené odesílání logů:** Spojení pro odesílání logů se pravidelně
+     obnovují, aby se provoz rovnoměrněji rozložil mezi backendové servery.
+   * **Oprava logování DNS provozu:** Komprimované archivy logů jsou nyní
+     správně vyloučeny z odesílání, čímž se zabraňuje vstupu neplatných dat do
+     systému zpracování logů.
+
+Resolver 3.5.2
+==============
+
+Požadavky před aktualizací
+--------------------------
+
+.. important::
+
+   **Je vyžadována dostatečná kapacita disku pro adresář ``/var``.**
+
+   Souborový systém obsahující adresář ``/var`` musí mít celkovou kapacitu
+   alespoň 70 GB pro databáze resolveru, provozní data a logy služeb. Úplné
+   hardwarové a softwarové požadavky najdete v části :doc:`local_resolver`.
+
+   **Je vyžadován Docker Engine 24.0 nebo novější.**
+
+   Tato verze není kompatibilní s Docker Engine 23.0 a staršími verzemi. Před
+   aktualizací resolveru ověřte, že server používá Docker Engine 24.0 nebo
+   novější. V opačném případě může aktualizace selhat a resolver může skončit ve
+   stavu **Nedostupný**, jehož oprava vyžaduje ruční zásah na serveru. Další
+   informace najdete v
+   `průvodci řešením problémů s aktualizací Dockeru <https://helpdesk.whalebone.io/en/support/solutions/articles/9000278430-resolver-fails-or-ends-up-in-unavailable-after-upgrading>`_.
+
+   Virtualizované prostředí musí virtuálnímu stroji zpřístupnit požadované
+   instrukce CPU x86-64-v2 nebo x86-64-v3, včetně AES. V opačném případě může
+   resolver selhat kvůli závislosti použité knihovny. Další informace najdete v
+   `průvodci řešením problémů s CPU <https://helpdesk.whalebone.io/en/support/solutions/articles/9000270277-no-threats-or-content-showing-after-upgrade>`_.
+
+Bezpečnostní aktualizace
+------------------------
+
+Tato aktualizace obsahuje bezpečnostní opravu pro Resolver. U instalací, kde
+Resolver není chráněn firewallem nebo odpovídajícími síťovými opatřeními, by tato
+aktualizace měla být považována za kritickou. Důrazně doporučujeme co nejdříve
+aktualizovat všechny instalace Resolveru na tuto verzi.
+
 Resolver 3.5.1
 ==============
 
@@ -358,6 +443,17 @@ Změny
 * Agent používá Ubuntu 24.04 a Python 3.12.
 * Statistiky resolveru se sbírají přes řídicí socket.
 * Zlepšena spolehlivost UNIX socketů a mazání mezipaměti jedné domény.
+
+Resolver 2.1.8
+==============
+
+Bezpečnostní aktualizace
+------------------------
+
+Tato aktualizace obsahuje bezpečnostní opravu pro Resolver. U instalací, kde
+Resolver není chráněn firewallem nebo odpovídajícími síťovými opatřeními, by tato
+aktualizace měla být považována za kritickou. Důrazně doporučujeme co nejdříve
+aktualizovat všechny instalace Resolveru na tuto verzi.
 
 Resolver 2.1.7
 ==============

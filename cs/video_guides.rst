@@ -9,13 +9,22 @@ Nasazení lokálního resolveru
 Na rozdíl od jiných podobných služeb lze Whalebone nasadit jako plnohodnotný lokální resolver DNS. Tento typ nasazení doporučujeme.
 Instalace je poměrně jednoduchá. Potřebujete pouze přístup k portálu Whalebone Portal a virtuální nebo fyzický server, který je z hlediska hardwaru poměrně nenáročný.
 Z hlediska systémových požadavků Whalebone podporuje nejnovější verze nejpoužívanějších linuxových distribucí Debian, Ubuntu, CentOS a Red hat Enterprise Linux.
-Minimální velikost hardwaru jsou 2 jádra CPU, 4 GB RAM a 40 GB pevný disk. Takový stroj zvládne až 20 000 uživatelů. 
+Minimální požadavky na hardware jsou 2 jádra CPU, 4 GB RAM a 80 GB volného
+místa na disku. Požadovaná kapacita serveru závisí na očekávaném zatížení DNS
+dotazů a počtu klientů. Podívejte se na :ref:`aktuální doporučení pro
+dimenzování hardwaru <resolver-hardware-sizing-recommendations>`.
 
 Před nastavením serveru se ujistěte, jestli splňujete síťové požadavky a nebráníte přístupu na server zvenčí. Jakmile je server připraven, přejděte na portál Whalebone a vytvořte nový resolver.
 Vymyslete vhodný název, který můžete později změnit. Jakmile iniciujete přidání nového resolveru, zobrazí se jednořádkový příkaz instalačního skriptu. Zkopírujte jej do schránky.
 V tomto okamžiku přistupte k terminálu serveru vytvořeného pro tento resolver. Zbývá jen spustit instalační skript dříve zkopírovaný do schránky.
 Instalace by neměla trvat déle než několik minut. Skript vás bude informovat o jejím průběhu. Pokud instalace neproběhla úspěšně, zašlete nám protokol o instalaci a my se na to podíváme.
 Zanedlouho se stav resolveru změní. Jakmile se resolver stane aktivním, můžete na něj směrovat provoz a začít chránit svou síť.
+
+.. important::
+
+   Video níže uvádí zastaralý požadavek na 40 GB místa na disku. Je vyžadováno
+   alespoň 80 GB volného místa na disku. Řiďte se aktuálními doporučeními pro
+   dimenzování hardwaru uvedenými v odkazu výše.
 
 .. raw:: html
 

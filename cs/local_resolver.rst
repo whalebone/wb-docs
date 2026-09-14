@@ -66,6 +66,8 @@ Pravidelně kontrolujte a udržujte verze operačního systému a Docker engine 
 
 .. important:: Resolver od verze 3.2.0 dynamicky využívá dostupné úložiště pro provozní data, logy služeb a databázi LMDB (přibližně až 50 % dostupného prostoru je alokováno pro LMDB). Požadavek 70 GB proto představuje minimální doporučenou kapacitu pro stabilní provoz i budoucí růst databází. Během procesu aktualizace databází je navíc nutné dočasně uchovávat aktuální i nově staženou verzi databází současně, aby nedošlo k přerušení ochrany. Nedostatek volného místa může vést k ukončení procesu resolveru, restartovacím smyčkám a nedostupnosti DNS ochrany.
 
+.. _resolver-hardware-sizing-recommendations:
+
 Požadavky na výkon serveru
 --------------------------
 

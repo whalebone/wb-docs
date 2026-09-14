@@ -66,6 +66,8 @@ Please perform regular checks and maintain the resolver's operating system and D
 
 .. important:: Starting with version 3.2.0, the resolver dynamically utilizes available storage for operational data, service logs and LMDB databases (up to 50% of available disk space is pre-allocated for LMDB ). The 70 GB requirement represents the minimum recommended capacity to ensure stable operation and accommodate future database growth. During database updates, both the current and newly downloaded database versions must be stored simultaneously to prevent any interruption of protection. Insufficient free disk space may cause the resolver process to terminate, resulting in restart loops and the loss of DNS protection.
 
+.. _resolver-hardware-sizing-recommendations:
+
 Hardware sizing recommendations
 -------------------------------
 

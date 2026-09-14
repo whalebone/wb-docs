@@ -9,13 +9,22 @@ On-premise resolver deployment
 Unlike other similar services, Whalebone can be deployed as a full-fledged local DNS resolver. This is the type of deployment we encourage.
 The installation is fairly simple. All you need is access to Whalebone Portal and a virtual or physical server, which is rather undemanding in terms of hardware.
 First, let's take a look at system requirements. Whalebone suports the latest versions of the most popular Linux distributions Debian, Ubuntu, CentOS, and Red hat Enterprise Linux.
-The minimum hardware sizing is 2 CPU cores, 4 GB RAM, and a 40 GB HDD. Such a machine can handle up to 20,000 users. 
+The minimum hardware sizing is 2 CPU cores, 4 GB RAM, and 80 GB of free disk
+space. The required server capacity depends on the expected DNS query load and
+number of clients. See the :ref:`current hardware sizing recommendations
+<resolver-hardware-sizing-recommendations>`.
 
 Before setting up your server, make sure you don't fall short of the network requirements and prevent the machine from being reachable from outside your network. Once the server is ready, go to the Whalebone Portal and create a new resolver.
 Come up with a fitting name, which can be changed later on. Once you initiate the addition of the new resolver, you'll see the installation script one-liner command. Copy it to the clipboard.
 At this point, access the terminal of the server created for this resolver. All that's left to do is to run the installation script previously copied to the clipboard.
 The installation shouldn't take more than a couple of minutes. The script will inform you about the progress. If the installation wasn't successful, send us the installation log and we'll look into it.
 Before long, the status of the resolver changes. As soon as the resolver becomes Active, you can route the traffic to it and start protecting your network.
+
+.. important::
+
+   The video below mentions an outdated 40 GB disk requirement. At least 80 GB
+   of free disk space is required. Follow the current hardware sizing
+   recommendations linked above.
 
 .. raw:: html
 

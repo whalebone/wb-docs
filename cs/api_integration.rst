@@ -1,9 +1,12 @@
+
+.. _Integrace API:
+
 Integrace API
 -------------
 Whalebone API je jednoduchý a praktický způsob, jak přistupovat ke všem datům, která jsou shromažďována Whalebone resolvery a integrovat je do externích systémů. Dokumentace API má dvě oddělené schémata. Jedno pro získávání událostí od Whalebone a druhé pro získávání a konfiguraci nastavení.
 
 
-* Pokud chcete získávat incidenty, data DNS provozu a metriky resolveru, použijte `toto schéma. <https://apidocs.whalebone.io/public/>`__
+* Pokud chcete získávat incidenty, data DNS provozu, auditní záznamy, incidenty Identity Protection a metriky resolveru, použijte `toto schéma. <https://apidocs.whalebone.io/public/>`__
 
 * Pokud chcete konfigurovat resolver, aktualizovat politiky, přidávat domény na seznamy povolených/zakázaných nebo získat nastavení, použijte `toto schéma. <https://portal.whalebone.io/api/public/v1/doc>`__
 

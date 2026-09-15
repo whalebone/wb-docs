@@ -1,9 +1,12 @@
+
+.. _API Integration:
+
 API Integration
 ---------------
 Whalebone API is a practical way to access all the data that are gathered by Whalebone's resolvers and integrate them to external systems. 
 The API documentation has two separate schemas. One for getting the events from Whalebone and one for getting and configuring the settings. 
 
-* If you want to retrieve incidents, DNS traffic data and resolver metrics use `this schema. <https://apidocs.whalebone.io/public/>`__
+* If you want to retrieve incidents, DNS traffic data, audit logs, Identity Protection incidents, and resolver metrics use `this schema. <https://apidocs.whalebone.io/public/>`__
 
 * If you want to configure the resolver, update policies, add domains to allow/deny lists or get the settings, use `this schema. <https://portal.whalebone.io/api/public/v1/doc>`__  
 

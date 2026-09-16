@@ -69,6 +69,7 @@ More information about the product and company is available on the official `Wha
    user_management
    organization_settings
    multitenancy
+   audit_logs
 
 .. toctree::
    :maxdepth: 1

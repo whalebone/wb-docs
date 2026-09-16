@@ -69,6 +69,7 @@ Další informace o produktu a společnosti jsou k dispozici na oficiálních st
    user_management
    organization_settings
    multitenancy
+   audit_logs
 
 .. toctree::
    :maxdepth: 1

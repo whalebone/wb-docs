@@ -63,7 +63,6 @@ Allow lists
   * The allow list has the second highest priority when evaluating how to resolve a domain.
   * The allow list is applied to the domain and all of the subdomains, e.g.: allowed domain ``whalebone.io`` will also allow ``docs.whalebone.io``, but not vice versa.
   * The list can be configured on the **Allow / Deny List** tab on the left side of **Configuration** page.
-  * One list can hold up to 10 000 domains.
 
 Deny lists
 ----------
@@ -71,12 +70,13 @@ Deny lists
   * Domains that will be blocked at all times (unless the same domain is also present on an allow list).
   * The deny list is applied to the domain and all of the subdomains, e.g.: denied domain ``malware.ninja`` will also deny ``super.malware.ninja``, but not vice versa.
   * The list can be configured on the **Allow / Deny List** tab on the right side of **Configuration** page.
-  * One list can hold up to 10 000 domains.
 
 The custom lists support a `Lex specialis derogat legi generali` principle, in which a more specific domain listing overrides a more general domain listing. This way, you can have the whole domain ``malware.ninja`` on a Deny list 
 but if you have ``friendly.malware.ninja`` on an Allow list, this will take precedence and communication to this site will act as an exception and will be allowed by the resolver.
 
-.. warning:: After creating an allow or deny list, it needs to be assigned to the specific security policy, or else the changes will not take effect.
+.. note:: After creating an allow or deny list, it needs to be assigned to the specific security policy, or else the changes will not take effect.
+
+.. important:: All lists together may contain up to 10,000 domains.
 
 .. image:: ./img/denylist_en.gif
    :align: center

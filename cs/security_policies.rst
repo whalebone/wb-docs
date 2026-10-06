@@ -64,7 +64,6 @@ Povolené
   * Seznam povolených domén má při vyhodnocování způsobu překladu domény druhou nejvyšší prioritu.
   * Seznam povolených se použije na doménu a všechny subdomény, např.: povolená doména ``whalebone.io`` povolí také ``docs.whalebone.io``, ale ne naopak.
   * Seznam lze nakonfigurovat na kartě **Blokované / Povolené** na levé straně stránky **Konfigurace**.
-  * Jeden seznam může obsahovat až 10 000 domén.
 
 Blokované
 ----------
@@ -72,13 +71,13 @@ Blokované
   * Domény, které budou vždy blokovány (pokud se stejná doména nenachází také v seznamu povolených domén).
   * Seznam deny se vztahuje na doménu a všechny subdomény, např.: zakázaná doména ``malware.ninja`` bude zakázána také ``super.malware.ninja``, ale ne naopak.
   * Seznam lze nakonfigurovat na kartě **Blokované / Povolené** na levé straně stránky **Konfigurace**.
-  * Jeden seznam může obsahovat až 10 000 domén.
 
 Seznamy podporují zásadu `Lex specialis derogat legi generali`, podle níž má specifičtější seznam domén přednost před obecnějším seznamem domén. Tímto způsobem můžete mít celou doménu ``malware.ninja`` v seznamu Deny. 
 ale pokud máte doménu ``friendly.malware.ninja`` v seznamu Allow, bude mít tato doména přednost a komunikace s touto stránkou bude fungovat jako výjimka a resolver ji povolí.
 
-.. warning:: Po vytvoření seznamu povolených nebo zakázaných položek je třeba jej přiřadit ke konkrétní zásadě zabezpečení, jinak se změny neprojeví.
+.. note:: Po vytvoření seznamu povolených nebo zakázaných položek je třeba jej přiřadit ke konkrétní zásadě zabezpečení, jinak se změny neprojeví.
 
+.. important:: Všechny seznamy dohromady mohou obsahovat maximálně 10 000 domén.
 
 .. image:: ./img/denylist_cs.gif
    :align: center

@@ -11,7 +11,8 @@ Resolver 3.5.4
 Požadavky před aktualizací
 --------------------------
 
-.. important::
+.. admonition:: Důležité — kliknutím rozbalíte požadavky před aktualizací
+   :class: important
    :collapsible: closed
 
    **Je vyžadována dostatečná kapacita disku pro adresář ``/var``.**

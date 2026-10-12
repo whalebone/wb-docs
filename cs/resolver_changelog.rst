@@ -12,6 +12,7 @@ Požadavky před aktualizací
 --------------------------
 
 .. important::
+   :collapsible: closed
 
    **Je vyžadována dostatečná kapacita disku pro adresář ``/var``.**
 

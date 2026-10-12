@@ -12,6 +12,7 @@ Required before upgrade
 -----------------------
 
 .. important::
+   :collapsible: closed
 
    **Sufficient disk capacity for ``/var`` is required.**
 

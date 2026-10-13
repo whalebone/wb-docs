@@ -11,7 +11,8 @@ Resolver 3.5.4
 Required before upgrade
 -----------------------
 
-.. important::
+.. admonition:: Important — click to expand upgrade requirements
+   :class: important
    :collapsible: closed
 
    **Sufficient disk capacity for ``/var`` is required.**

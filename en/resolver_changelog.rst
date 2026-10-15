@@ -5,6 +5,50 @@ Resolver changelog
 This page contains customer-facing release notes for Whalebone Resolver.
 Before upgrading, review the requirements and notes for the target version.
 
+Resolver 3.5.5
+==============
+
+Required before upgrade
+-----------------------
+
+.. admonition:: Important — click to expand upgrade requirements
+   :class: important
+   :collapsible: closed
+
+   **Sufficient disk capacity for ``/var`` is required.**
+
+   The filesystem containing ``/var`` must have a total capacity of at least
+   70 GB for Resolver databases, operational data, and service logs. See
+   :doc:`local_resolver` for the complete hardware and software requirements.
+
+   **Docker Engine 24.0 or newer is required.**
+
+   This release is not compatible with Docker Engine 23.0 and earlier. Before
+   upgrading the Resolver, make sure the server is running Docker Engine 24.0
+   or newer. Otherwise, the upgrade may fail and the Resolver may end up in an
+   **Unavailable** state, requiring manual intervention on the server. See the
+   `Docker upgrade troubleshooting guide <https://helpdesk.whalebone.io/en/support/solutions/articles/9000278430-resolver-fails-or-ends-up-in-unavailable-after-upgrading>`_
+   for more information.
+
+   Virtualized environments must expose the required x86-64-v2 or x86-64-v3
+   CPU instructions, including AES, to the virtual machine. Otherwise, the
+   Resolver may fail because of a library dependency. See the
+   `CPU troubleshooting guide <https://helpdesk.whalebone.io/en/support/solutions/articles/9000270277-no-threats-or-content-showing-after-upgrade>`_
+   for more information.
+
+Release highlights
+------------------
+
+* **Reliable filtering as databases grow:** Fixed an issue where growth of
+  policy or custom-list databases during real-time updates could cause
+  filtering to stop until the Resolver was restarted. The Resolver now handles
+  these database size changes automatically.
+* **Lower disk load during database updates:** Database downloads and
+  extraction now write data progressively and avoid an unnecessary full
+  database copy. This reduces disk load and the risk of DNS interruptions on
+  slow storage. Database update coordination also allows more time for
+  operations to complete.
+
 Resolver 3.5.4
 ==============
 

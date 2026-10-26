@@ -6,14 +6,14 @@ Stav ochrany hlásí problém
 
 Zkontrolujte nadpis a podnadpis na hlavní obrazovce a ve Windows také oznámení v systémové liště. Běžné provozní stavy popisuje část :ref:`hos-client-states`, úplné chybové zprávy část :ref:`hos-error-states`.
 
-* **Paused by user:** Zapněte ochranu pomocí přepínače.
-* **Trusted network:** Ochrana je zajištěna na úrovni sítě. Pokud se stav objeví mimo firemní síť, ověřte nastavení detekce interní domény ve skupině zařízení.
-* **VPN detected / Incompatible software:** Ochrana je v pohotovostním režimu. Zkontrolujte aktivní VPN připojení nebo software, který může být v konfliktu s HOS.
-* **No internet:** Obnovte připojení k internetu; ochrana se spustí po obnovení konektivity.
-* **DoH unreachable / DoH failed:** Zkontrolujte dostupnost cloudových resolverů na TCP 443. První stav znamená, že není dostupný žádný vhodný DoH resolver; druhý znamená překročení časového limitu u 10 po sobě jdoucích požadavků na vybraný resolver. Kontaktujte svého IT administrátora.
-* **Proxy blocked:** Požádejte svého IT administrátora o kontrolu nastavení síťového proxy serveru.
-* **Protection service stopped / Windows service unavailable:** Restartujte počítač. Pokud problém přetrvává, kontaktujte svého IT administrátora a shromážděte logy podle postupu níže.
-* **Whalebone servers unavailable:** Kontaktujte svého IT nebo bezpečnostního administrátora, aby ověřil dostupnost cloudových služeb Whalebone.
+* **Ochrana pozastavena:** Zapněte ochranu pomocí přepínače.
+* **Jste na důvěryhodné síti:** Ochrana je zajištěna na úrovni sítě. Pokud se stav objeví mimo firemní síť, ověřte nastavení detekce interní domény ve skupině zařízení.
+* **Detekována VPN:** Ochrana je v pohotovostním režimu. Zkontrolujte aktivní VPN připojení nebo software, který může být v konfliktu s HOS.
+* **Nejste připojeni k internetu:** Obnovte připojení k internetu; ochrana se spustí po obnovení konektivity.
+* **Ochranné DNS resolvery jsou nedostupné:** Zkontrolujte dostupnost cloudových resolverů na TCP 443. Podnadpis rozlišuje nedostupnost vhodného DoH resolveru a selhání vybraného resolveru po překročení časového limitu u 10 po sobě jdoucích požadavků. Kontaktujte svého IT administrátora.
+* **Síťová proxy blokuje ochranu:** Požádejte svého IT administrátora o kontrolu nastavení síťového proxy serveru.
+* **Ochranná služba neběží / Nedostupná služba Windows:** Restartujte počítač. Pokud problém přetrvává, kontaktujte svého IT administrátora a shromážděte logy podle postupu níže.
+* **Nedostupné servery Whalebone:** Kontaktujte svého IT nebo bezpečnostního administrátora, aby ověřil dostupnost cloudových služeb Whalebone.
 
 Předčasné ukončení MSI
 ----------------------

@@ -5,3 +5,13 @@
 .wy-menu-vertical p.caption {
     color: #00B9BE;
 }
+
+table.hos-state-table {
+    width: 100% !important;
+    table-layout: fixed;
+}
+
+table.hos-state-table td, table.hos-state-table th {
+    white-space: normal !important;
+    overflow-wrap: break-word;
+}

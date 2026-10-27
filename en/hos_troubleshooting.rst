@@ -1,6 +1,20 @@
 Troubleshooting
 ===============
 
+Protection state indicates a problem
+------------------------------------
+
+Check the home screen title and subtitle and, on Windows, the tray notification. See :ref:`hos-client-states` for normal operating states and :ref:`hos-error-states` for the complete error messages.
+
+* **Paused by user:** Turn protection back on using the toggle.
+* **Trusted network:** Protection is provided at the network level. If this state appears outside the corporate network, verify the internal-domain detection settings in the device group.
+* **VPN detected / Incompatible software:** Protection is on standby. Check the active VPN connection or software that may conflict with HOS.
+* **No internet:** Restore the internet connection; protection will start when connectivity returns.
+* **DoH unreachable / DoH failed:** Check access to the cloud resolvers on TCP 443. The first state means that no suitable DoH resolver can be reached; the second means 10 consecutive requests to the selected resolver timed out. Contact your IT administrator.
+* **Proxy blocked:** Ask your IT administrator to check the network proxy settings.
+* **Protection service stopped / Windows service unavailable:** Restart the computer. If the problem persists, contact your IT administrator and follow the log collection steps below.
+* **Whalebone servers unavailable:** Contact your IT or security administrator to check access to the Whalebone cloud services.
+
 MSI exits early
 ---------------
 

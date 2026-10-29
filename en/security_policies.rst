@@ -121,7 +121,7 @@ A diverse set of content filtering categories is available:
 Safe Search
 ~~~~~~~~~~~
 
-The most well-known search engine offers the possibility of Safe Search - filtering the search results to be safe for minors. Safe Search is automatically enabled if the filtering for one of the following content categories is enabled:
+The most well-known search engines offers the possibility of Safe Search - filtering the search results to be safe for minors. Safe Search is automatically enabled if the filtering for one of the following content categories is enabled:
 
 * Sexual content (Adult)
 * Weapons (Adult)

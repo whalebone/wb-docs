@@ -15,7 +15,7 @@ Malicious filtering thresholds
 Every domain in our threat intelligence database has a certain score value. The score represents how malicious we believe that particular domain to be. In the policy, you adjust two values related to the score:
 
 * **The blocking threshold** - Domains with a score higher than or equal to this value will be blocked by Whalebone, and the client request will be answered with the IP address of the blocking page. 
-* **The audit threshold ** - Domains with a score higher or equal to this value, but lower than the blocking threshold, will be monitored. The request will be allowed, and the answer will be served either from cache or by performing the full DNS recursion. Requests will, however, be monitored in the Threats dashboard for later investigation, if needed.
+* **The audit threshold** - Domains with a score higher or equal to this value, but lower than the blocking threshold, will be monitored. The request will be allowed, and the answer will be served either from cache or by performing the full DNS recursion. Requests will, however, be monitored in the Threats dashboard for later investigation, if needed.
 
 Individual actions could be turned off - e.g. turn off the blocking for testing purposes
 The slider values define the probability that the particular domain is malicious on the scale from **0** to **100**, with **100** being the most malicious.

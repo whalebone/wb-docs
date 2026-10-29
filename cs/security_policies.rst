@@ -116,14 +116,36 @@ Obshahová filtrace
 * **Reklamy**: bannery, kontextové reklamy a další reklamní systémy,
 * **Těžba kryptoměn**: domény spojené s těžbou kryptoměn,
 * **DoH**: DNS přes HTTPS. Jedná se o domény, které zajišťují obfuskaci požadavků DNS v provozu HTTP,
-* **P2P**: domény spojené s peer to peer sítěmi, kde uživatelé sdílejí multimediální obsah,
-* **Sledování**: webové a e-mailové sledovací systémy.
+* **P2P**: domény spojené s peer-to-peer sítěmi, kde uživatelé sdílejí multimediální obsah,
+* **Sledování**: webové a e-mailové sledovací systémy,
+* **VPN a proxy služby**: zahrnuje webové stránky a služby poskytující VPN a proxy.
+
+Bezpečné vyhledávání
+~~~~~~~~~~~~~~~~~~~~
+
+Nejznámější vyhledávače nabízí možnost bezpečného vyhledávání – filtrování výsledků tak, aby byly vhodné pro nezletilé. Bezpečné vyhledávání se aktivuje automaticky, pokud je zapnuto filtrování pro některou z následujících kategorií obsahu:
+
+* Sexuální obsah (pro dospělé)
+* Zbraně (pro dospělé)
+* Zneužívání dětí (trestná činnost)
+* Drogy (trestná činnost)
+* Terorismus (trestná činnost)
+* Násilí (trestná činnost)
+
+Podporovány jsou následující vyhledávače:
+
+* Google
+* Bing
+* DuckDuckGo
+* Ecosia
+
+Časově omezená obsahová filtrace
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Filtr obsahu lze použít i pro konkrétní denní dobu. Po zaškrtnutí určité kategorie se vedle ní zobrazí ikona hodin. Pokud na ikonu hodin kliknete, můžete pro tuto kategorii přidat nový plán. Pro stejnou kategorii může být aktivních více rozvrhů. Takto můžete povolit přístup k sociálním sítím pouze během polední přestávky a po skončení pracovní doby. Nastavení dokončete kliknutím na tlačítko **Použít** a **Uložit** zásady zabezpečení.
    
 .. image:: ./img/schedules.png
   :align: center
-
 
 .. note:: Použitím plánu **povolíte** přístup k doménám z dané kategorie obsahu v daném časovém období.
 

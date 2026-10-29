@@ -5,6 +5,129 @@ Přehled verzí resolveru
 Tato stránka obsahuje poznámky k jednotlivým verzím Whalebone Resolveru určené
 zákazníkům. Před aktualizací si přečtěte požadavky a poznámky k cílové verzi.
 
+Resolver 3.6.0
+==============
+
+Požadavky před aktualizací
+--------------------------
+
+.. admonition:: Důležité — kliknutím rozbalíte požadavky před aktualizací
+   :class: important
+   :collapsible: closed
+
+   **Je vyžadována dostatečná kapacita disku pro adresář ``/var``.**
+
+   Souborový systém obsahující adresář ``/var`` musí mít celkovou kapacitu
+   alespoň 70 GB pro databáze Resolveru, provozní data a logy služeb. Úplné
+   hardwarové a softwarové požadavky najdete v části :doc:`local_resolver`.
+
+   **Je vyžadován Docker Engine 24.0 nebo novější.**
+
+   Tato verze není kompatibilní s Docker Engine 23.0 a staršími verzemi. Před
+   aktualizací Resolveru ověřte, že server používá Docker Engine 24.0 nebo
+   novější. V opačném případě může aktualizace selhat a Resolver může skončit ve
+   stavu **Nedostupný**, jehož oprava vyžaduje ruční zásah na serveru. Další
+   informace najdete v
+   `průvodci řešením problémů s aktualizací Dockeru <https://helpdesk.whalebone.io/en/support/solutions/articles/9000278430-resolver-fails-or-ends-up-in-unavailable-after-upgrading>`_.
+
+   Virtualizované prostředí musí virtuálnímu stroji zpřístupnit požadované
+   instrukce CPU x86-64-v2 nebo x86-64-v3, včetně AES. V opačném případě může
+   Resolver selhat kvůli závislosti použité knihovny. Další informace najdete v
+   `průvodci řešením problémů s CPU <https://helpdesk.whalebone.io/en/support/solutions/articles/9000270277-no-threats-or-content-showing-after-upgrade>`_.
+
+Hlavní změny v aktualizaci
+--------------------------
+
+Tato aktualizace posiluje zabezpečení, zlepšuje monitorování Resolveru a správu
+logů a řeší problémy se spolehlivostí.
+
+* **Posílení zabezpečení správy Resolveru:** Správcovský agent již neposkytuje
+  neomezenou akci pro spouštění příkazů v kontejnerech, čímž se snižuje riziko
+  spouštění privilegovaných příkazů přes toto rozhraní.
+* **Lepší přehled o stavu Resolveru:** Další monitorovací údaje pokrývají lokální
+  databáze, zpracování ve službách a proudy aktualizací v reálném čase. To
+  pomáhá provozním týmům dříve rozpoznat selhávající nebo zastavené aktualizace.
+* **Lepší správa místa na disku:** Přesnější kontrola dostupného místa na disku
+  nyní zohledňuje velikost logů, dobu jejich uchovávání a nastavení komprese,
+  čímž snižuje riziko problémů s úložištěm při aktualizacích Resolveru.
+  Vylepšená rotace logů také pomáhá udržovat využití disku předvídatelné.
+* **Bezpečnější aktualizace a obnovení provozu:** Opraven problém při změně verze
+  Resolveru, který mohl způsobit opakované restarty správcovské služby a
+  nedostupnost blokování domén až do ručního obnovení provozu.
+* **Spolehlivější logování DNS provozu při vysoké zátěži:** Větší interní fronta
+  snižuje riziko ztráty záznamů DNS provozu při krátkodobém přerušení
+  zpracování. Nevylučuje však možné ztráty při všech situacích přetížení.
+
+.. only:: Aura
+
+   * **Spolehlivější aktualizace identit RADIUS:** Lepší zotavení z dočasných
+     selhání při vytváření konzumentů NATS a opravené limity jejich počtu
+     pomáhají obnovit aktualizace identit RADIUS bez restartování Resolveru.
+
+Resolver 3.5.6
+==============
+
+Požadavky před aktualizací
+--------------------------
+
+.. admonition:: Důležité — kliknutím rozbalíte požadavky před aktualizací
+   :class: important
+   :collapsible: closed
+
+   **Je vyžadována dostatečná kapacita disku pro adresář ``/var``.**
+
+   Souborový systém obsahující adresář ``/var`` musí mít celkovou kapacitu
+   alespoň 70 GB pro databáze Resolveru, provozní data a logy služeb. Úplné
+   hardwarové a softwarové požadavky najdete v části :doc:`local_resolver`.
+
+   **Je vyžadován Docker Engine 24.0 nebo novější.**
+
+   Tato verze není kompatibilní s Docker Engine 23.0 a staršími verzemi. Před
+   aktualizací Resolveru ověřte, že server používá Docker Engine 24.0 nebo
+   novější. V opačném případě může aktualizace selhat a Resolver může skončit ve
+   stavu **Nedostupný**, jehož oprava vyžaduje ruční zásah na serveru. Další
+   informace najdete v
+   `průvodci řešením problémů s aktualizací Dockeru <https://helpdesk.whalebone.io/en/support/solutions/articles/9000278430-resolver-fails-or-ends-up-in-unavailable-after-upgrading>`_.
+
+   Virtualizované prostředí musí virtuálnímu stroji zpřístupnit požadované
+   instrukce CPU x86-64-v2 nebo x86-64-v3, včetně AES. V opačném případě může
+   Resolver selhat kvůli závislosti použité knihovny. Další informace najdete v
+   `průvodci řešením problémů s CPU <https://helpdesk.whalebone.io/en/support/solutions/articles/9000270277-no-threats-or-content-showing-after-upgrade>`_.
+
+Hlavní změny v aktualizaci
+--------------------------
+
+* **Opravy zranitelností vedoucích k odepření služby:** Tato aktualizace
+  opravuje chyby, které mohly v dotčených konfiguracích umožnit pád nebo
+  zacyklení Resolveru při zpracování DNS provozu. Tři opravy se týkají
+  přeposílání dotazů, ověřování DNSSEC a vyčerpání odchozích TCP portů při
+  zapnutém specifickém nastavení odchozího síťového rozhraní.
+* **Bezpečnější ověřování certifikátů:** Komponenty pro správu Resolveru nyní
+  odmítají certifikační řetězce obsahující dotčené kompromitované certifikáty
+  zprostředkujících certifikačních autorit. Zahrnuje to opravu CVE-2026-111943
+  v klientovi pro správu založeném na Go a aktualizované úložiště důvěryhodných
+  certifikátů CA pro agenta. Vlastní certifikáty Whalebone nebyly vydány
+  dotčenou certifikační autoritou.
+* **Spolehlivější výkon DNS:** Vylepšené opětovné načítání velkých mezipamětí
+  Resolveru v operační paměti pomáhá předcházet zpoždění DNS dotazů při
+  aktualizacích RPZ. Engine také obsahuje opravy zvýšené latence při komunikaci
+  přes TCP a zpracování připojení DNS-over-HTTPS (DoH).
+
+.. warning:: Vyžadovaná bezpečnostní aktualizace hostitele – kompromitace CA eMudhra
+
+   Kompromitované soukromé klíče zprostředkujících certifikačních autorit
+   eMudhra mohou umožnit, aby systémy s neaktuálním úložištěm důvěryhodných
+   certifikátů CA přijaly podvržené certifikáty TLS. Ověřte, že každý
+   hostitelský server Resolveru má nainstalovanou bezpečnostní aktualizaci
+   balíčku ``ca-certificates`` pro příslušnou distribuci Linuxu, která tento
+   incident řeší.
+
+   **Aktualizace na Resolver 3.5.6 neaktualizuje úložiště důvěryhodných
+   certifikátů CA hostitele**, které Docker používá k ověřování HTTPS připojení
+   k registru kontejnerů Whalebone. Toto opatření na hostiteli je oddělené od
+   souvisejícího problému ověřování certifikátů v Go (CVE-2026-111943), který je
+   opraven v komponentách Resolveru.
+
 Resolver 3.5.5
 ==============
 

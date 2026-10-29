@@ -5,6 +5,127 @@ Resolver changelog
 This page contains customer-facing release notes for Whalebone Resolver.
 Before upgrading, review the requirements and notes for the target version.
 
+Resolver 3.6.0
+==============
+
+Required before upgrade
+-----------------------
+
+.. admonition:: Important — click to expand upgrade requirements
+   :class: important
+   :collapsible: closed
+
+   **Sufficient disk capacity for ``/var`` is required.**
+
+   The filesystem containing ``/var`` must have a total capacity of at least
+   70 GB for Resolver databases, operational data, and service logs. See
+   :doc:`local_resolver` for the complete hardware and software requirements.
+
+   **Docker Engine 24.0 or newer is required.**
+
+   This release is not compatible with Docker Engine 23.0 and earlier. Before
+   upgrading the Resolver, make sure the server is running Docker Engine 24.0
+   or newer. Otherwise, the upgrade may fail and the Resolver may end up in an
+   **Unavailable** state, requiring manual intervention on the server. See the
+   `Docker upgrade troubleshooting guide <https://helpdesk.whalebone.io/en/support/solutions/articles/9000278430-resolver-fails-or-ends-up-in-unavailable-after-upgrading>`_
+   for more information.
+
+   Virtualized environments must expose the required x86-64-v2 or x86-64-v3
+   CPU instructions, including AES, to the virtual machine. Otherwise, the
+   Resolver may fail because of a library dependency. See the
+   `CPU troubleshooting guide <https://helpdesk.whalebone.io/en/support/solutions/articles/9000270277-no-threats-or-content-showing-after-upgrade>`_
+   for more information.
+
+Release highlights
+------------------
+
+This update strengthens security, improves Resolver monitoring and log
+management, and addresses reliability issues.
+
+* **Resolver management security hardening:** The management agent no longer
+  provides an unrestricted container-command execution action, reducing the
+  risk of privileged command execution through that interface.
+* **Better visibility into Resolver health:** Additional monitoring data covers
+  local databases, service processing, and real-time update streams. This helps
+  operators identify failing or stalled updates earlier.
+* **Improved disk-space management:** More accurate disk-space validation now
+  accounts for log sizes, retention, and compression settings, reducing the
+  risk of storage-related issues during Resolver upgrades. Improved log
+  rotation also helps keep disk usage predictable.
+* **Safer upgrades and recovery:** Fixed an issue during Resolver version
+  changes that could cause repeated management-service restarts and leave
+  domain blocking unavailable until manual recovery.
+* **Improved DNS traffic logging under load:** A larger internal queue reduces
+  the risk of DNS traffic records being dropped during short processing stalls.
+  It does not eliminate possible losses under all overload conditions.
+
+.. only:: Aura
+
+   * **More reliable RADIUS identity updates:** Improved recovery from temporary
+     NATS consumer-creation failures and corrected consumer limits help RADIUS
+     identity updates resume without restarting the Resolver.
+
+Resolver 3.5.6
+==============
+
+Required before upgrade
+-----------------------
+
+.. admonition:: Important — click to expand upgrade requirements
+   :class: important
+   :collapsible: closed
+
+   **Sufficient disk capacity for ``/var`` is required.**
+
+   The filesystem containing ``/var`` must have a total capacity of at least
+   70 GB for Resolver databases, operational data, and service logs. See
+   :doc:`local_resolver` for the complete hardware and software requirements.
+
+   **Docker Engine 24.0 or newer is required.**
+
+   This release is not compatible with Docker Engine 23.0 and earlier. Before
+   upgrading the Resolver, make sure the server is running Docker Engine 24.0
+   or newer. Otherwise, the upgrade may fail and the Resolver may end up in an
+   **Unavailable** state, requiring manual intervention on the server. See the
+   `Docker upgrade troubleshooting guide <https://helpdesk.whalebone.io/en/support/solutions/articles/9000278430-resolver-fails-or-ends-up-in-unavailable-after-upgrading>`_
+   for more information.
+
+   Virtualized environments must expose the required x86-64-v2 or x86-64-v3
+   CPU instructions, including AES, to the virtual machine. Otherwise, the
+   Resolver may fail because of a library dependency. See the
+   `CPU troubleshooting guide <https://helpdesk.whalebone.io/en/support/solutions/articles/9000270277-no-threats-or-content-showing-after-upgrade>`_
+   for more information.
+
+Release highlights
+------------------
+
+* **Denial-of-service security fixes:** This update fixes issues that could
+  allow DNS traffic to crash or loop the Resolver in affected configurations.
+  The three fixes cover forwarding, DNSSEC validation, and outgoing TCP-port
+  exhaustion when a specific outgoing-interface setting is enabled.
+* **Stronger certificate verification:** Resolver management components now
+  reject certificate chains containing affected compromised intermediate CA
+  certificates. This includes a Go-based management-client fix for
+  CVE-2026-111943 and an updated CA trust store for the agent. Whalebone's own
+  certificates were not issued by the affected CA.
+* **More reliable DNS performance:** Improved reload handling for large
+  Resolver caches in memory helps avoid DNS query delays during RPZ updates.
+  The engine also includes fixes for excessive TCP latency and DNS-over-HTTPS
+  (DoH) connection handling.
+
+.. warning:: Required host security update — eMudhra CA compromise
+
+   Compromised eMudhra intermediate CA keys could allow systems with outdated
+   CA trust stores to accept forged TLS certificates. Ensure that each Resolver
+   host has the Linux distribution's ``ca-certificates`` security update
+   addressing this incident.
+
+   **Upgrading to Resolver 3.5.6 does not update the host CA trust store**,
+   which Docker uses to verify HTTPS connections to the Whalebone container
+   registry. This host-side mitigation is separate from the related Go
+   certificate-verification issue (CVE-2026-111943) addressed in Resolver
+   components.
+
 Resolver 3.5.5
 ==============
 

@@ -119,7 +119,7 @@ A diverse set of content filtering categories is available:
 *	**Tracking**: web and email tracking systems.
 
 Safe Search
-~~~~~~~~~~~
+^^^^^^^^^^^
 
 The most well-known search engines offers the possibility of Safe Search - filtering the search results to be safe for minors. Safe Search is automatically enabled if the filtering for one of the following content categories is enabled:
 

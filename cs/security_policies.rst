@@ -123,7 +123,7 @@ Obshahová filtrace
 Bezpečné vyhledávání
 ~~~~~~~~~~~~~~~~~~~~
 
-Nejznámější vyhledávač nabízí možnost bezpečného vyhledávání – filtrování výsledků tak, aby byly vhodné pro nezletilé. Bezpečné vyhledávání se aktivuje automaticky, pokud je zapnuto filtrování pro některou z následujících kategorií obsahu:
+Nejznámější vyhledávače nabízí možnost bezpečného vyhledávání – filtrování výsledků tak, aby byly vhodné pro nezletilé. Bezpečné vyhledávání se aktivuje automaticky, pokud je zapnuto filtrování pro některou z následujících kategorií obsahu:
 
 * Sexuální obsah (pro dospělé)
 * Zbraně (pro dospělé)

@@ -26,8 +26,8 @@ Pravidelně kontrolujte a udržujte verze operačního systému a Docker engine 
 
     * `Red Hat Enterprise Linux (Full support) <https://access.redhat.com/product-life-cycles?product=Red%20Hat%20Enterprise%20Linux>`_
     * `CentOS Stream (Active support) <https://endoflife.date/centos-stream>`_
-    * `Debian (Supported by LTS team) <https://wiki.debian.org/LTS/>`_
-    * `Ubuntu (Standard support) <https://ubuntu.com/about/release-cycle>`_
+    * `Debian 12 a 13 <https://wiki.debian.org/DebianReleases>`_
+    * `Ubuntu 22.04 LTS, 24.04 LTS a 26.04 LTS (standardní podpora) <https://ubuntu.com/about/release-cycle>`_
 
 * **Docker**
 

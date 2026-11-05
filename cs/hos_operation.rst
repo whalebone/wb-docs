@@ -33,7 +33,7 @@ Klient Home Office Security zobrazuje konkrétní stavy ochrany a důvody selhá
      - Připojování k zabezpečené službě
    * - Aktivní ochrana
      - Jste v bezpečí
-     - Škodlivé webové stránky jsou filtrovány
+     - Blokujeme škodlivé stránky
    * - Pozastaveno uživatelem
      - Ochrana pozastavena
      - Ochranu obnovíte přepnutím tlačítka
@@ -69,24 +69,24 @@ Následující stavy vysvětlují, proč se ochranu nepodařilo zapnout.
      - Podnadpis
    * - Nedostupné DoH resolvery
      - Ochranné DNS resolvery jsou nedostupné
-     - Ochranné resolvery jsou nedostupné: Kontaktujte svého správce IT
+     - Kontaktujte svého správce IT
    * - Selhání DoH resolveru
      - Ochranné DNS resolvery jsou nedostupné
-     - Ochranné resolvery selhaly: Kontaktujte svého správce IT
+     - Kontaktujte svého správce IT
    * - Blokování proxy serverem
      - Síťová proxy blokuje ochranu
-     - Síťová proxy blokuje ochranu. Kontaktujte svého správce IT.
+     - Kontaktujte svého správce IT
    * - Zastavená služba ochrany
      - Ochranná služba neběží
      - Pro vyřešení problému kontaktujte naši podporu
    * - Nedostupné servery Whalebone
-     - Ochranu se nepodařilo aktivovat
+     - Nepodařilo se zapnout ochranu
      - Servery Whalebone jsou nedostupné. Kontaktujte svého správce IT.
    * - Nedostupná služba Windows
      - Ochranu se nepodařilo aktivovat
      - Windows službu se nepodařilo spustit. Restartujte počítač nebo kontaktujte svého správce IT.
 
-Stav **Nedostupné DoH resolvery** znamená, že se klient nemůže připojit k žádnému vhodnému DNS-over-HTTPS resolveru. Stav **Selhání DoH resolveru** znamená, že vybraný resolver neodpověděl v časovém limitu na 10 po sobě jdoucích požadavků. Oba stavy mají stejný nadpis, ale podnadpis rozlišuje příčinu selhání.
+Stav **Nedostupné DoH resolvery** znamená, že se klient nemůže připojit k žádnému vhodnému DNS-over-HTTPS resolveru. Stav **Selhání DoH resolveru** znamená, že vybraný resolver neodpověděl v časovém limitu na 10 po sobě jdoucích požadavků. Oba stavy zobrazují stejný nadpis a podnadpis a také stejné oznámení v systémové liště.
 
 Doporučený postup a sběr logů popisuje část :doc:`hos_troubleshooting`.
 
@@ -94,6 +94,8 @@ Oznámení v systémové liště Windows
 ----------------------------------
 
 Klient Home Office Security uvádí důvod selhání také v oznámeních v systémové liště Windows.
+
+Od verze 2.23.5 se oznámení zobrazují se zpožděním, aby je nevyvolávaly krátké změny sítě, například při spuštění počítače, probuzení z režimu spánku nebo opětovném připojení VPN. Problém je oznámen až poté, co trvá 60 sekund, a do svého vyřešení jen jednou. Oznámení **Všechny problémy byly vyřešeny.** se zobrazí až poté, co služba opět 60 sekund funguje, a pouze pokud je v tu chvíli ochrana aktivní. Stejné zpoždění platí i pro zjištění neodpovídající služby, proto se oznámení **Nedostupná služba Windows** zobrazí přibližně po 120 sekundách. Ikona v systémové liště vždy okamžitě ukazuje aktuální stav.
 
 .. list-table:: Zprávy v systémové liště Windows
    :class: hos-state-table

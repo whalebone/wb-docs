@@ -25,7 +25,7 @@ Please perform regular checks and maintain the resolver's operating system and D
   * Whalebone requires an actively maintained operating system distributed by one of the following operating system publishers:
 
     * `Red Hat Enterprise Linux (Full support) <https://access.redhat.com/product-life-cycles?product=Red%20Hat%20Enterprise%20Linux>`_
-    * `CentOS Stream (Active support) <https://endoflife.date/centos-stream>`_
+    * `CentOS Stream 9 and 10 <https://endoflife.date/centos-stream>`_
     * `Debian 12 and 13 <https://wiki.debian.org/DebianReleases>`_
     * `Ubuntu 22.04 LTS, 24.04 LTS, and 26.04 LTS (Standard support) <https://ubuntu.com/about/release-cycle>`_
 

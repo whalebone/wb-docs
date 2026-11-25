@@ -31,14 +31,14 @@ The Home Office Security client shows specific protection states and failure rea
      - Just a second …
      - Connecting to the protection service
    * - Active
-     - Protection is active
+     - You are safe
      - Malicious websites are being filtered
    * - Paused by user
      - Protection paused
-     - Turn protection back on using the toggle
+     - Resume the protection by swiping the toggle button
    * - Trusted network
-     - You are on a trusted network
-     - Your protection is enabled at the network level
+     - You are on trusted network
+     - Internal network: Protection on network level
    * - VPN detected
      - VPN detected
      - Protection is on standby
@@ -67,16 +67,16 @@ The following states explain why protection could not be enabled.
      - Subtitle
    * - DoH unreachable
      - Protective DNS resolvers cannot be reached
-     - Protective DNS servers cannot be reached. Contact your IT administrator.
+     - Protective resolvers unreachable: Contact your IT administrator
    * - DoH failed
      - Protective DNS resolvers cannot be reached
-     - Protective resolvers failed. Contact your IT administrator.
+     - Contact your IT administrator
    * - Proxy blocked
      - Network proxy is blocking protection
-     - Network proxy is blocking protection. Contact your IT administrator.
-   * - Protection service stopped
-     - Protection service is not running
      - Contact your IT administrator
+   * - Protection service stopped
+     - The protection service is not running
+     - Contact our support to resolve the issue
    * - Whalebone servers unavailable
      - Protection could not be enabled
      - Whalebone servers cannot be reached. Contact your IT administrator.
@@ -84,7 +84,7 @@ The following states explain why protection could not be enabled.
      - Protection could not be enabled
      - Windows service cannot be started. Restart your computer or contact your IT administrator.
 
-**DoH unreachable** means that the client cannot connect to any suitable DNS-over-HTTPS resolver. **DoH failed** means that the selected resolver timed out on 10 consecutive requests. Although both states share a title, their subtitles distinguish the failure.
+**DoH unreachable** means that the client cannot connect to any suitable DNS-over-HTTPS resolver. **DoH failed** means that the selected resolver timed out on 10 consecutive requests. Both states share the same title, and the tray notification is the same for both.
 
 For recommended actions and log collection, see :doc:`hos_troubleshooting`.
 
@@ -93,6 +93,8 @@ Windows tray notifications
 
 The Home Office Security client also reports the failure reason in Windows tray notifications.
 
+Since version 2.23.5, notifications are delayed so that short network transitions, such as starting the computer, waking it from sleep, or reconnecting a VPN, do not cause any. A problem is announced only after it has lasted 60 seconds, and only once until it is resolved. The **All issues have been resolved.** notification appears only after the service has been operating again for 60 seconds, and only if protection is active at that point. Because the same delay applies to detecting an unresponsive service, the **Windows service unavailable** notification appears after about 120 seconds. The tray icon always reflects the current state immediately.
+
 .. list-table:: Windows tray messages
    :header-rows: 1
    :widths: 30 70
@@ -100,15 +102,15 @@ The Home Office Security client also reports the failure reason in Windows tray 
    * - Condition
      - Notification
    * - DoH unreachable or DoH failed
-     - Protection could not be enabled since protective resolvers cannot be reached. Please contact your IT administrator.
+     - Protective resolvers cannot be reached. Please contact your IT or security administrator to resolve the situation.
    * - Proxy blocked
      - Protection could not be enabled due to incorrect network proxy settings. Please contact your IT administrator.
    * - Protection service stopped
-     - Protection could not be enabled since the protection service is not running. Restart your computer or contact your IT administrator.
+     - Protection could not be enabled since protection service is not running. Restart your computer or contact your IT administrator.
    * - Whalebone servers unavailable
      - Protection could not be enabled since cloud services cannot be reached. Please contact your IT or security administrator.
    * - Windows service unavailable
-     - Protection could not be enabled since the protection service is not responding. Restart your computer or contact your IT administrator.
+     - Protection could not be enabled since protection service is not responding. Restart your computer or contact your IT administrator.
    * - Resolved
      - All issues have been resolved.
 

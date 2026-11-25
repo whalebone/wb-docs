@@ -25,9 +25,9 @@ Please perform regular checks and maintain the resolver's operating system and D
   * Whalebone requires an actively maintained operating system distributed by one of the following operating system publishers:
 
     * `Red Hat Enterprise Linux (Full support) <https://access.redhat.com/product-life-cycles?product=Red%20Hat%20Enterprise%20Linux>`_
-    * `CentOS Stream (Active support) <https://endoflife.date/centos-stream>`_
-    * `Debian (Supported by LTS team) <https://wiki.debian.org/LTS/>`_
-    * `Ubuntu (Standard support) <https://ubuntu.com/about/release-cycle>`_
+    * `CentOS Stream 9 and 10 <https://endoflife.date/centos-stream>`_
+    * `Debian 12 and 13 <https://wiki.debian.org/DebianReleases>`_
+    * `Ubuntu 22.04 LTS, 24.04 LTS, and 26.04 LTS (Standard support) <https://ubuntu.com/about/release-cycle>`_
 
 * **Docker**
 
@@ -39,10 +39,6 @@ Please perform regular checks and maintain the resolver's operating system and D
 
   * ext4
   * xfs only with d_type support (ftype=1)
-
-* **Disk space** 
-
-  * At least 70 GB of **free** disk space in the /var directory.
 
 * **CPU**
 
@@ -58,6 +54,20 @@ Please perform regular checks and maintain the resolver's operating system and D
       * Execute ``/lib/ld-linux-x86-64.so.2 --help``.
       * Check if you see ``x86-64-v2 (supported, searched)`` in the terminal.
 
+* **Disk space** 
+
+  * At least 70 GB of free disk space in the **/var** directory.
+
+    * LMDB databases – domain, policy, IP range, and deny lists databases used for Threat, Content and Legal (regulatory) blocking.
+
+    * Database updates – both the current and newly downloaded database versions are temporarily stored during the update process.
+    
+    * System services – Docker images, operational data and logs of individual resolver components.
+
+.. important:: Starting with version 3.2.0, the resolver dynamically utilizes available storage for operational data, service logs and LMDB databases (up to 50% of available disk space is pre-allocated for LMDB ). The 70 GB requirement represents the minimum recommended capacity to ensure stable operation and accommodate future database growth. During database updates, both the current and newly downloaded database versions must be stored simultaneously to prevent any interruption of protection. Insufficient free disk space may cause the resolver process to terminate, resulting in restart loops and the loss of DNS protection.
+
+.. _resolver-hardware-sizing-recommendations:
+
 Hardware sizing recommendations
 -------------------------------
 
@@ -66,10 +76,10 @@ The following table provides hardware sizing recommendations based on the expect
 ================================ ================= =================== ======== =========================
 Number of DNS queries per second Number of clients Number of CPU cores RAM (GB) Free disk space (GB)
 ================================ ================= =================== ======== =========================
-5,000                            25,000            2                   4        80
-10,000                           50,000            4                   8        80
-20,000                           100,000           8                   16       80
-50,000                           250,000           20                  40       80
+4,000                            8,000             2                   4        80
+8,000                            16,000            4                   8        80
+16,000                           32,000            8                   16       80
+40,000                           80,000            20                  40       80
 ================================ ================= =================== ======== =========================
 
 Network requirements

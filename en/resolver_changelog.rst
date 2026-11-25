@@ -1,0 +1,897 @@
+******************
+Resolver changelog
+******************
+
+This page contains customer-facing release notes for Whalebone Resolver.
+Before upgrading, review the requirements and notes for the target version.
+
+Resolver 3.6.0
+==============
+
+Required before upgrade
+-----------------------
+
+.. admonition:: Important — click to expand upgrade requirements
+   :class: important
+   :collapsible: closed
+
+   **Sufficient disk capacity for ``/var`` is required.**
+
+   The filesystem containing ``/var`` must have a total capacity of at least
+   70 GB for Resolver databases, operational data, and service logs. See
+   :doc:`local_resolver` for the complete hardware and software requirements.
+
+   **Docker Engine 24.0 or newer is required.**
+
+   This release is not compatible with Docker Engine 23.0 and earlier. Before
+   upgrading the Resolver, make sure the server is running Docker Engine 24.0
+   or newer. Otherwise, the upgrade may fail and the Resolver may end up in an
+   **Unavailable** state, requiring manual intervention on the server. See the
+   `Docker upgrade troubleshooting guide <https://helpdesk.whalebone.io/en/support/solutions/articles/9000278430-resolver-fails-or-ends-up-in-unavailable-after-upgrading>`_
+   for more information.
+
+   Virtualized environments must expose the required x86-64-v2 or x86-64-v3
+   CPU instructions, including AES, to the virtual machine. Otherwise, the
+   Resolver may fail because of a library dependency. See the
+   `CPU troubleshooting guide <https://helpdesk.whalebone.io/en/support/solutions/articles/9000270277-no-threats-or-content-showing-after-upgrade>`_
+   for more information.
+
+Release highlights
+------------------
+
+This update strengthens security, improves Resolver monitoring and log
+management, and addresses reliability issues.
+
+* **Resolver management security hardening:** The management agent no longer
+  provides an unrestricted container-command execution action, reducing the
+  risk of privileged command execution through that interface.
+* **Better visibility into Resolver health:** Additional monitoring data covers
+  local databases, service processing, and real-time update streams. This helps
+  operators identify failing or stalled updates earlier.
+* **Improved disk-space management:** More accurate disk-space validation now
+  accounts for log sizes, retention, and compression settings, reducing the
+  risk of storage-related issues during Resolver upgrades. Improved log
+  rotation also helps keep disk usage predictable.
+* **Safer upgrades and recovery:** Fixed an issue during Resolver version
+  changes that could cause repeated management-service restarts and leave
+  domain blocking unavailable until manual recovery.
+* **Improved DNS traffic logging under load:** A larger internal queue reduces
+  the risk of DNS traffic records being dropped during short processing stalls.
+  It does not eliminate possible losses under all overload conditions.
+
+.. only:: Aura
+
+   * **More reliable RADIUS identity updates:** Improved recovery from temporary
+     NATS consumer-creation failures and corrected consumer limits help RADIUS
+     identity updates resume without restarting the Resolver.
+
+Resolver 3.5.6
+==============
+
+Required before upgrade
+-----------------------
+
+.. admonition:: Important — click to expand upgrade requirements
+   :class: important
+   :collapsible: closed
+
+   **Sufficient disk capacity for ``/var`` is required.**
+
+   The filesystem containing ``/var`` must have a total capacity of at least
+   70 GB for Resolver databases, operational data, and service logs. See
+   :doc:`local_resolver` for the complete hardware and software requirements.
+
+   **Docker Engine 24.0 or newer is required.**
+
+   This release is not compatible with Docker Engine 23.0 and earlier. Before
+   upgrading the Resolver, make sure the server is running Docker Engine 24.0
+   or newer. Otherwise, the upgrade may fail and the Resolver may end up in an
+   **Unavailable** state, requiring manual intervention on the server. See the
+   `Docker upgrade troubleshooting guide <https://helpdesk.whalebone.io/en/support/solutions/articles/9000278430-resolver-fails-or-ends-up-in-unavailable-after-upgrading>`_
+   for more information.
+
+   Virtualized environments must expose the required x86-64-v2 or x86-64-v3
+   CPU instructions, including AES, to the virtual machine. Otherwise, the
+   Resolver may fail because of a library dependency. See the
+   `CPU troubleshooting guide <https://helpdesk.whalebone.io/en/support/solutions/articles/9000270277-no-threats-or-content-showing-after-upgrade>`_
+   for more information.
+
+Release highlights
+------------------
+
+* **Denial-of-service security fixes:** This update fixes issues that could
+  allow DNS traffic to crash or loop the Resolver in affected configurations.
+  The three fixes cover forwarding, DNSSEC validation, and outgoing TCP-port
+  exhaustion when a specific outgoing-interface setting is enabled.
+* **Stronger certificate verification:** Resolver management components now
+  reject certificate chains containing affected compromised intermediate CA
+  certificates. This includes a Go-based management-client fix for
+  CVE-2026-111943 and an updated CA trust store for the agent. Whalebone's own
+  certificates were not issued by the affected CA.
+* **More reliable DNS performance:** Improved reload handling for large
+  Resolver caches in memory helps avoid DNS query delays during RPZ updates.
+  The engine also includes fixes for excessive TCP latency and DNS-over-HTTPS
+  (DoH) connection handling.
+
+.. warning:: Required host security update — eMudhra CA compromise
+
+   Compromised eMudhra intermediate CA keys could allow systems with outdated
+   CA trust stores to accept forged TLS certificates. Ensure that each Resolver
+   host has the Linux distribution's ``ca-certificates`` security update
+   addressing this incident.
+
+   **Upgrading to Resolver 3.5.6 does not update the host CA trust store**,
+   which Docker uses to verify HTTPS connections to the Whalebone container
+   registry. This host-side mitigation is separate from the related Go
+   certificate-verification issue (CVE-2026-111943) addressed in Resolver
+   components.
+
+Resolver 3.5.5
+==============
+
+Required before upgrade
+-----------------------
+
+.. admonition:: Important — click to expand upgrade requirements
+   :class: important
+   :collapsible: closed
+
+   **Sufficient disk capacity for ``/var`` is required.**
+
+   The filesystem containing ``/var`` must have a total capacity of at least
+   70 GB for Resolver databases, operational data, and service logs. See
+   :doc:`local_resolver` for the complete hardware and software requirements.
+
+   **Docker Engine 24.0 or newer is required.**
+
+   This release is not compatible with Docker Engine 23.0 and earlier. Before
+   upgrading the Resolver, make sure the server is running Docker Engine 24.0
+   or newer. Otherwise, the upgrade may fail and the Resolver may end up in an
+   **Unavailable** state, requiring manual intervention on the server. See the
+   `Docker upgrade troubleshooting guide <https://helpdesk.whalebone.io/en/support/solutions/articles/9000278430-resolver-fails-or-ends-up-in-unavailable-after-upgrading>`_
+   for more information.
+
+   Virtualized environments must expose the required x86-64-v2 or x86-64-v3
+   CPU instructions, including AES, to the virtual machine. Otherwise, the
+   Resolver may fail because of a library dependency. See the
+   `CPU troubleshooting guide <https://helpdesk.whalebone.io/en/support/solutions/articles/9000270277-no-threats-or-content-showing-after-upgrade>`_
+   for more information.
+
+Release highlights
+------------------
+
+* **Reliable filtering as databases grow:** Fixed an issue where growth of
+  policy or custom-list databases during real-time updates could cause
+  filtering to stop until the Resolver was restarted. The Resolver now handles
+  these database size changes automatically.
+* **Lower disk load during database updates:** Database downloads and
+  extraction now write data progressively and avoid an unnecessary full
+  database copy. This reduces disk load and the risk of DNS interruptions on
+  slow storage. Database update coordination also allows more time for
+  operations to complete.
+
+Resolver 3.5.4
+==============
+
+Required before upgrade
+-----------------------
+
+.. admonition:: Important — click to expand upgrade requirements
+   :class: important
+   :collapsible: closed
+
+   **Sufficient disk capacity for ``/var`` is required.**
+
+   The filesystem containing ``/var`` must have a total capacity of at least
+   70 GB for Resolver databases, operational data, and service logs. See
+   :doc:`local_resolver` for the complete hardware and software requirements.
+
+   **Docker Engine 24.0 or newer is required.**
+
+   This release is not compatible with Docker Engine 23.0 and earlier. Before
+   upgrading the Resolver, make sure the server is running Docker Engine 24.0
+   or newer. Otherwise, the upgrade may fail and the Resolver may end up in an
+   **Unavailable** state, requiring manual intervention on the server. See the
+   `Docker upgrade troubleshooting guide <https://helpdesk.whalebone.io/en/support/solutions/articles/9000278430-resolver-fails-or-ends-up-in-unavailable-after-upgrading>`_
+   for more information.
+
+   Virtualized environments must expose the required x86-64-v2 or x86-64-v3
+   CPU instructions, including AES, to the virtual machine. Otherwise, the
+   Resolver may fail because of a library dependency. See the
+   `CPU troubleshooting guide <https://helpdesk.whalebone.io/en/support/solutions/articles/9000270277-no-threats-or-content-showing-after-upgrade>`_
+   for more information.
+
+Release highlights
+------------------
+
+* **Correct DNS replies for blocked domains:** Fixed malformed responses to MX
+  and other affected DNS query types for blocked domains. The Resolver now
+  returns a valid response without answer records when a blocking answer cannot
+  be generated, while keeping the domain blocked.
+* **More reliable remote management:** Fixed an issue where automatic service
+  recovery could remove the Resolver's own management agent, leaving remote
+  management and monitoring unavailable and requiring manual intervention.
+
+Resolver 3.5.3
+==============
+
+Required before upgrade
+-----------------------
+
+.. important::
+
+   **Sufficient disk capacity for ``/var`` is required.**
+
+   The filesystem containing ``/var`` must have a total capacity of at least
+   70 GB for resolver databases, operational data, and service logs. See
+   :doc:`local_resolver` for the complete hardware and software requirements.
+
+   **Docker Engine 24.0 or newer is required.**
+
+   This release is not compatible with Docker Engine 23.0 and earlier. Before
+   upgrading the resolver, make sure the server is running Docker Engine 24.0
+   or newer. Otherwise, the upgrade may fail and the resolver may end up in an
+   **Unavailable** state, requiring manual intervention on the server. See the
+   `Docker upgrade troubleshooting guide <https://helpdesk.whalebone.io/en/support/solutions/articles/9000278430-resolver-fails-or-ends-up-in-unavailable-after-upgrading>`_
+   for more information.
+
+   Virtualized environments must expose the required x86-64-v2 or x86-64-v3
+   CPU instructions, including AES, to the virtual machine. Otherwise, the
+   resolver may fail because of a library dependency. See the
+   `CPU troubleshooting guide <https://helpdesk.whalebone.io/en/support/solutions/articles/9000270277-no-threats-or-content-showing-after-upgrade>`_
+   for more information.
+
+Release highlights
+------------------
+
+.. only:: Immunity or Peacemaker
+
+   * **Improved log forwarding:** Log forwarding connections are refreshed
+     periodically to distribute traffic more evenly across backend servers.
+   * **DNS traffic logging fix:** Compressed log archives are now correctly
+     excluded from forwarding, preventing invalid data from entering the
+     logging pipeline.
+
+.. only:: Aura
+
+   * **Improved RADIUS stability:** Fixed a crash when processing RADIUS
+     accounting messages containing multiple IP addresses.
+   * **Improved log forwarding:** Log forwarding connections are refreshed
+     periodically to distribute traffic more evenly across backend servers.
+   * **DNS traffic logging fix:** Compressed log archives are now correctly
+     excluded from forwarding, preventing invalid data from entering the
+     logging pipeline.
+
+Resolver 3.5.2
+==============
+
+Required before upgrade
+-----------------------
+
+.. important::
+
+   **Sufficient disk capacity for ``/var`` is required.**
+
+   The filesystem containing ``/var`` must have a total capacity of at least
+   70 GB for resolver databases, operational data, and service logs. See
+   :doc:`local_resolver` for the complete hardware and software requirements.
+
+   **Docker Engine 24.0 or newer is required.**
+
+   This release is not compatible with Docker Engine 23.0 and earlier. Before
+   upgrading the resolver, make sure the server is running Docker Engine 24.0
+   or newer. Otherwise, the upgrade may fail and the resolver may end up in an
+   **Unavailable** state, requiring manual intervention on the server. See the
+   `Docker upgrade troubleshooting guide <https://helpdesk.whalebone.io/en/support/solutions/articles/9000278430-resolver-fails-or-ends-up-in-unavailable-after-upgrading>`_
+   for more information.
+
+   Virtualized environments must expose the required x86-64-v2 or x86-64-v3
+   CPU instructions, including AES, to the virtual machine. Otherwise, the
+   resolver may fail because of a library dependency. See the
+   `CPU troubleshooting guide <https://helpdesk.whalebone.io/en/support/solutions/articles/9000270277-no-threats-or-content-showing-after-upgrade>`_
+   for more information.
+
+Security update
+---------------
+
+This update contains a security fix for Resolver. For deployments where Resolver
+is not protected by a firewall or equivalent network controls, this update should
+be considered critical. We strongly recommend upgrading all Resolver deployments
+to this version as soon as possible.
+
+Resolver 3.5.1
+==============
+
+Required before upgrade
+-----------------------
+
+.. important::
+
+   **Sufficient disk capacity for ``/var`` is required.**
+
+   The filesystem containing ``/var`` must have a total capacity of at least
+   70 GB for resolver databases, operational data, and service logs. See
+   :doc:`local_resolver` for the complete hardware and software requirements.
+
+   **Docker Engine 24.0 or newer is required.**
+
+   This release is not compatible with Docker Engine 23.0 and earlier. Before
+   upgrading the resolver, make sure the server is running Docker Engine 24.0
+   or newer. Otherwise, the upgrade may fail and the resolver may end up in an
+   **Unavailable** state, requiring manual intervention on the server. See the
+   `Docker upgrade troubleshooting guide <https://helpdesk.whalebone.io/en/support/solutions/articles/9000278430-resolver-fails-or-ends-up-in-unavailable-after-upgrading>`_
+   for more information.
+
+   Virtualized environments must expose the required x86-64-v2 or x86-64-v3
+   CPU instructions, including AES, to the virtual machine. Otherwise, the
+   resolver may fail because of a library dependency. See the
+   `CPU troubleshooting guide <https://helpdesk.whalebone.io/en/support/solutions/articles/9000270277-no-threats-or-content-showing-after-upgrade>`_
+   for more information.
+
+Release highlights
+------------------
+
+.. only:: Immunity or Peacemaker
+
+   * **Minor logging improvement:** Routine database lookups are now logged at
+     the appropriate level.
+
+.. only:: Aura
+
+   * **Improved RADIUS reliability:** Prevents false monitoring alerts and
+     unnecessary service restarts in deployments using RADIUS identities.
+   * **Minor logging improvement:** Routine database lookups are now logged at
+     the appropriate level.
+
+Resolver 3.5.0
+==============
+
+Required before upgrade
+-----------------------
+
+.. important::
+
+   **Docker Engine 24.0 or newer is required.**
+
+   This release is not compatible with Docker Engine 23.0 and earlier. Before
+   upgrading the resolver, make sure the server is running Docker Engine 24.0
+   or newer. Otherwise, the upgrade may fail and the resolver may end up in an
+   **Unavailable** state, requiring manual intervention on the server.
+
+   Virtualized environments must expose the required x86-64-v2 or x86-64-v3
+   CPU instructions, including AES, to the virtual machine. Otherwise, the
+   resolver may fail because of a library dependency.
+
+   The filesystem containing ``/var`` must have a total capacity of at least
+   70 GB. See :doc:`local_resolver` for the complete system requirements.
+
+Release highlights
+------------------
+
+.. only:: Immunity or Peacemaker
+
+   * **Significantly higher resolver performance:** In the same controlled
+     benchmark setup, Resolver 3.5.0 delivered 2.3 times the throughput per CPU
+     core of Resolver 3.4.1. Actual performance depends on the deployment
+     configuration and traffic profile. This provides more capacity on
+     existing hardware and supports more predictable capacity planning and
+     safer upgrades.
+   * **Threat-log deduplication — disabled by default:** Repeated events for the
+     same threat can now be grouped within a configurable time window. This
+     prevents a single threat from disproportionately dominating threat
+     statistics during DDoS attacks or other traffic spikes, while preserving
+     visibility that the threat occurred.
+   * **Improved operational stability:** Slow Docker operations and temporary
+     cloud disconnections no longer block local health checks or request
+     processing.
+
+.. only:: Aura
+
+   * **Significantly higher resolver performance:** In the same controlled
+     benchmark setup, Resolver 3.5.0 delivered 2.3 times the throughput per CPU
+     core of Resolver 3.4.1. Actual performance depends on the deployment
+     configuration and traffic profile. This provides more capacity on
+     existing hardware, enables evidence-based capacity sizing, and removes a
+     major obstacle to upgrading to Resolver 3.x.
+   * **Threat-log deduplication — disabled by default:** Repeated events for the
+     same threat can now be grouped within a configurable time window. This
+     prevents a single threat from flooding threat statistics during DDoS
+     attacks or other traffic spikes, keeping reporting representative while
+     maintaining visibility into the threat.
+   * **More reliable IP-range and RADIUS updates:** Real-time IP-range and
+     RADIUS database changes are now applied atomically in batches. This
+     improves update performance and prevents partially applied changes.
+   * **Improved operational stability:** Slow Docker operations and temporary
+     cloud disconnections no longer block local health checks or request
+     processing.
+
+Resolver 3.4.1
+==============
+
+Required before upgrade
+-----------------------
+
+.. important::
+
+   **Docker Engine 24.0 or newer is required.**
+
+   This release is not compatible with Docker Engine 23.0 and earlier. Before
+   upgrading the resolver, make sure the server is running Docker Engine 24.0
+   or newer. Otherwise, the upgrade may fail and the resolver may end up in an
+   **Unavailable** state, requiring manual intervention on the server.
+
+   Virtualized environments must expose the required x86-64-v2 or x86-64-v3
+   CPU instructions, including AES, to the virtual machine. Otherwise, the
+   resolver may fail because of a library dependency.
+
+Release highlights
+------------------
+
+* **Security and DNSSEC reliability fixes:** Includes important upstream
+  security fixes in the resolver engine, including DNS-over-QUIC issues that
+  could allow remote code execution in affected configurations. It also
+  improves DNSSEC correctness in aggressive-caching edge cases and updates the
+  IANA certificate used during root trust-anchor bootstrapping.
+* **Resolver protocol and DNS behavior fixes:** Improves DoH cache-control
+  behavior, DNS64/CNAME handling, EDNS BADVERS responses, and selected
+  local-data and RPZ edge cases. These changes improve resolver correctness and
+  standards compliance in specific DNS scenarios.
+
+Resolver 3.4.0
+==============
+
+Required before upgrade
+-----------------------
+
+.. important::
+
+   **Docker Engine 24.0 or newer is required.**
+
+   This release is not compatible with Docker Engine 23.0 and earlier. Before
+   upgrading the resolver, make sure the server is running Docker Engine 24.0
+   or newer. Otherwise, the upgrade may fail and the resolver may end up in an
+   **Unavailable** state, requiring manual intervention on the server.
+
+   Virtualized environments must expose the required x86-64-v2 or x86-64-v3
+   CPU instructions, including AES, to the virtual machine.
+
+Release highlights
+------------------
+
+This release improves database update efficiency and operational reliability.
+
+* **Flexible upgrade handling for disk-space requirements:** Resolver upgrades
+  can be allowed after manual configuration when a deployment does not meet the
+  minimum disk-space requirement. Meeting the documented minimum hardware
+  requirements is still strongly recommended for stable operation.
+* **More efficient database downloads:** Resolver databases are downloaded and
+  managed per database environment. Only changed database parts are
+  downloaded, reducing unnecessary full database transfers.
+* **Improved service coexistence on resolver hosts:** Blocking-page HTTP and
+  HTTPS listeners can bind to specific IP addresses, making it easier to run
+  the blocking page alongside services such as DoH on the same host.
+* **Operational reliability fixes:** Improves cache sizing, LMDB timestamp
+  checks, resolver-container restart behavior, Docker statistics collection,
+  and blocking-page debug logging.
+
+.. only:: Aura
+
+   * **RADIUS and Diameter traffic filtering:** Accounting traffic can be
+     filtered before forwarding using configurable attribute and AVP rules.
+   * **Passive Diameter listener support:** Resolver deployments can process
+     mirrored Diameter CCR traffic without sending responses.
+
+Notes
+-----
+
+* During upgrade, the existing resolver database cache layout is migrated
+  automatically to the new per-environment structure. No manual migration is
+  expected during the standard upgrade path.
+* If disk-space validation is bypassed, the resolver may still be running below
+  the recommended storage requirements. Use this only in controlled and
+  reviewed environments.
+* Resolver memory usage may increase after upgrade. This is expected because
+  the cache configuration is now applied correctly and the cache is stored in
+  memory. A larger cache can improve the cache hit ratio and performance.
+
+Resolver 3.3.0
+==============
+
+.. only:: Immunity or Peacemaker
+
+   Required before upgrade
+   -----------------------
+
+   .. important::
+
+      Docker Engine 24.0 or newer is required. Virtualized environments must
+      expose the required x86-64-v2 CPU instructions, including AES.
+
+   This release improves blocking coverage, DNS traffic logging, real-time
+   updates, and operational safety.
+
+   * **Stronger blocking coverage:** Domains are blocked across more DNS query
+     types, including TXT and CNAME.
+   * **Enhanced DNS traffic logging controls:** Optional anonymization,
+     deduplication, and sampling make logs easier to use for reporting,
+     troubleshooting, and high-volume operations.
+   * **More real-time threat-intelligence updates:** Resolvers receive more
+     threat indicators in real time.
+   * **Faster policy updates:** Supported policy and configuration changes are
+     streamed directly to resolvers.
+   * **Safer upgrades and operations:** Adds pre-upgrade disk and log-rotation
+     validation, blocking health checks, improved recovery behavior, and
+     smoother metrics after resolver restarts.
+
+   .. note::
+
+      After upgrade, some existing local log files may be processed once more,
+      temporarily duplicating exported logs. DNS resolution and blocking are
+      not affected.
+
+.. only:: Aura
+
+   This release improves blocking coverage, identity handling, DNS traffic
+   logging, real-time policy updates, and operational safety.
+
+   * **Stronger blocking coverage:** Domains can be blocked regardless of DNS
+     query type, including modern query types such as HTTPS.
+   * **Cisco EDNS0 identity support:** The resolver can extract device identity
+     from configured EDNS0 packet data and use it for policy matching.
+   * **Enhanced DNS traffic logging controls:** Adds optional anonymization,
+     deduplication, and sampling.
+   * **Faster policy updates:** Supported policy and configuration changes are
+     streamed directly to resolvers.
+   * **Safer upgrades and operations:** Adds pre-upgrade disk and log-rotation
+     validation, blocking health checks, improved recovery behavior, and
+     smoother metrics after resolver restarts.
+
+   .. note::
+
+      After upgrade, some existing local log files may be processed once more,
+      temporarily duplicating exported logs. DNS resolution and blocking are
+      not affected.
+
+Resolver 3.2.0
+==============
+
+Advanced threat protection
+--------------------------
+
+* **Deep CNAME inspection:** The resolver inspects the complete CNAME chain, up
+  to ten levels deep, when processing DNS requests.
+* **TXT-record threat blocking:** TXT queries to domains identified as threats
+  are actively blocked, helping prevent command-and-control communication and
+  data exfiltration.
+
+Enhanced visibility and logging
+-------------------------------
+
+* **Richer threat and content logs:** Exported logs include the protocol,
+  ``qclass``, and ``ede_code`` fields.
+
+Protocol upgrades and user experience
+-------------------------------------
+
+* **DNS-over-QUIC support (Beta):** The DNS engine was upgraded to Knot Resolver
+  6.2.0, adding early support for DNS-over-QUIC. Test this beta feature in
+  non-critical environments.
+* **YouTube Safe Search update:** YouTube and related domains were removed from
+  the enforced Safe Search list to restore access to YouTube live streams.
+
+Resolver 3.1.4
+==============
+
+* Improved stability under heavy DNS traffic.
+* Fixed rare cache database locking issues.
+
+Resolver 3.1.3
+==============
+
+This release fixes Knot Resolver caching behavior that could keep empty DNS
+answers (NOERROR/NODATA) cached for too long, causing persistent resolution
+failures after transient upstream issues.
+
+* **Fix:** Empty responses no longer persist with an unexpectedly long TTL.
+* **Result:** Reduces cases where affected domains recover only after a cache
+  flush or switching resolvers.
+* **Impact:** Improves DNS resolution stability during transient upstream or
+  authoritative-server anomalies and reduces the need for manual cache clearing.
+* **Recommendation:** No configuration changes are required. Temporary TTL caps
+  used only as a workaround can be reviewed after upgrade. Optionally flush the
+  cache after deployment to clear already-stuck entries sooner.
+
+Resolver 3.1.1
+==============
+
+* **Safer upgrades and rollbacks:** Hardens rollback flows so the resolver
+  returns to a working state even if an invalid configuration is deployed.
+* **More reliable monitoring:** Fixes an edge case where resolver metrics could
+  disappear after a failed upgrade and rollback.
+* **Cleaner operations:** Reduces noisy errors where optional dnstag/dnstap
+  logging is not used.
+* **Public-cloud blocking page:** Fixes a rare case where incorrect customer
+  branding could be shown.
+* **Improved resilience:** Improves automatic recovery after rare database or
+  load failures.
+
+Resolver 3.0.1
+==============
+
+Required before upgrade
+-----------------------
+
+.. important::
+
+   Docker Engine 24.0 or newer is required. Virtualized environments must
+   expose x86-64-v2 CPU instructions, including AES.
+
+Fixed
+-----
+
+* **Resolver robustness:** Fixes two rare conditions that could cause the
+  resolver to exit while processing unusual DNS messages. No configuration
+  changes are required.
+
+Resolver 3.0.0
+==============
+
+Required before upgrade
+-----------------------
+
+.. warning::
+
+   This release is not compatible with DNS forwarding for the ``.local``
+   domain.
+
+.. important::
+
+   Docker Engine 24.0 or newer is required. Virtualized environments must
+   expose x86-64-v2 CPU instructions, including AES.
+
+New features
+------------
+
+* Safe Search enforcement.
+* CPU-aware deferring.
+* DNS rate limiting.
+* Static DNS records support all record types.
+
+Changes
+-------
+
+* Added support for Knot Resolver 6.x and upgraded to Knot Resolver 6.0.14.
+* Added crash detection for Knot Resolver 5 and 6.
+* Added the ``ratelimited`` flag to dnstap messages.
+* Added Safe Search support for content-filtered clients.
+* Updated the agent base image to Ubuntu 24.04 and Python 3.12.
+* Resolver statistics are collected through the management socket.
+* Improved UNIX-socket reliability and single-domain cache clearing.
+
+Resolver 2.1.8
+==============
+
+Security update
+---------------
+
+This update contains a security fix for Resolver. For deployments where Resolver
+is not protected by a firewall or equivalent network controls, this update should
+be considered critical. We strongly recommend upgrading all Resolver deployments
+to this version as soon as possible.
+
+Resolver 2.1.7
+==============
+
+This release focuses on upstream security and DNSSEC correctness fixes.
+
+* Fixes aggressive-caching edge cases in RRSIG label and NSEC next-name
+  handling.
+* Updates the IANA certificate used during root trust-anchor bootstrapping.
+* Improves DNSSEC responses with empty ANSWER and AUTHORITY sections.
+* Improves DoH cache-control behavior.
+
+Resolver 2.1.6
+==============
+
+* Improved HTTPS sinkhole behavior for HTTPS-record requests. User-defined and
+  default IPv4 and IPv6 sinkhole values are applied more consistently.
+
+Resolver 2.1.5
+==============
+
+* Improved stability under heavy DNS traffic.
+* Fixed rare cache database locking issues.
+
+Resolver 2.1.4
+==============
+
+This release fixes Knot Resolver caching behavior that could keep empty DNS
+answers (NOERROR/NODATA) cached for too long.
+
+* Corrects handling of cached empty responses so they do not persist with an
+  unexpectedly long TTL.
+* Improves stability during transient upstream or authoritative-server issues.
+* No configuration changes are required. Optionally flush the cache after
+  deployment to clear already-stuck entries sooner.
+
+Resolver 2.1.1
+==============
+
+Required before upgrade
+-----------------------
+
+.. important::
+
+   Docker Engine 24.0 or newer is required. Virtualized environments must
+   expose x86-64-v2 CPU instructions, including AES.
+
+* Fixes two rare conditions that could cause the resolver to exit while
+  processing unusual DNS messages.
+* No configuration changes are required.
+
+Resolver 2.1.0
+==============
+
+Required before upgrade
+-----------------------
+
+.. important::
+
+   Docker Engine 24.0 or newer is required. Virtualized environments must
+   expose x86-64-v2 CPU instructions, including AES.
+
+New features
+------------
+
+* Fixes a DNSSEC vulnerability.
+* Adds EDE codes, protocol, ``qclass``, and response time to logs and dnstap.
+* Adds a mechanism for sharing extended log data.
+* Excludes ``connectivity-check.whalebone.io`` traffic from logs.
+* Adds client-IP anonymization support.
+* Adds TLS-hardening options for internal communication.
+* Adds IPv6-prefix-based customer identity support.
+
+Changes
+-------
+
+* Upgrades Knot Resolver to 5.7.5 and LMDB to 0.9.33.
+* Extends passive DNS logs with rate-limiting and diagnostic fields.
+* Changes logcat output filenames to use a ``-<date>.ndjson`` suffix.
+* Removes deprecated NATS-related environment variables.
+
+Resolver 2.0.1
+==============
+
+* Rolls the agent's Python version back to 3.8 for compatibility with Docker
+  Engine 23.0 and earlier.
+
+.. warning::
+
+   The next release requires Docker Engine 24.0 or newer. Upgrade Docker before
+   upgrading beyond Resolver 2.0.1.
+
+Resolver 2.0.0
+==============
+
+.. warning::
+
+   Upgrade Docker Engine to version 24.0 or newer before upgrading the
+   resolver.
+
+Highlights
+----------
+
+* Improves fallback behavior when downloaded databases are corrupted.
+* Adds database creation timestamps to resolver status information.
+* Adds support for DNS requests originating behind CGNAT.
+* Adds policy tags to dnstap, threat, and content logs.
+* Persists database ETags across service restarts.
+* Adds optional reverse-IP lookup and configurable log filtering.
+* Passes the HTTP originator port to blocking-page bypass requests.
+* Improves container health checks, local API reliability, database handling,
+  and concurrent LMDB access.
+* Removes the bypass button from deny-list and legally mandated blocking pages.
+
+Legacy Resolver 1.x
+===================
+
+Resolver 1.x is end of life. The following historical releases are included for
+reference.
+
+Resolver 1.0.92-security-fix
+----------------------------
+
+Release highlights
+~~~~~~~~~~~~~~~~~~
+
+This is a limited security release for customers who are still running the
+legacy Resolver 1.x branch.
+
+The release backports selected critical upstream security fixes to reduce
+immediate security exposure for affected Resolver 1.x deployments. It includes
+fixes for denial-of-service crash scenarios in the resolver engine and selected
+DNS correctness improvements.
+
+Security fixes
+~~~~~~~~~~~~~~
+
+This release includes selected upstream security fixes that address crash
+scenarios which could be intentionally triggered by crafted DNS traffic in
+affected configurations.
+
+DNSSEC and DNS response correctness improvements
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The release also includes selected correctness fixes related to DNSSEC response
+handling and resolver cache behavior, including improved handling of empty
+ANSWER/AUTHORITY replies and cache TTL behavior.
+
+DoH cache-control improvement
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+DNS-over-HTTPS cache-control behavior has been improved so responses better
+respect resolver cache TTL limits.
+
+Limited legacy support scope
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This release does not reopen general feature or maintenance support for
+Resolver 1.x. It is provided only as a targeted security backport for customers
+who cannot immediately move to Resolver 3.x.
+
+Customers are still strongly recommended to plan an upgrade to Resolver 3.x,
+which remains the preferred and actively maintained release line.
+
+Resolver 1.0.93
+---------------
+
+* If corrupted or missing databases are detected at startup, they are skipped
+  and empty databases are initialized in the cache directory.
+
+Resolver 1.0.92
+---------------
+
+* Upgrades Knot Resolver to 5.7.4, adds the KSK-2024 DNSSEC root key, and
+  reduces buffering that could contribute to TCP denial-of-service conditions.
+* Improves database initialization, cleanup, and concurrent update handling.
+* Adds blocking-page visit statistics and strengthens blocking-page TLS
+  configuration to require TLS 1.2 or newer.
+* Rewrites kresman and consumer components in Go for improved performance and
+  memory management.
+
+Resolver 1.0.91
+---------------
+
+* Improves consumer performance and fixes a memory leak.
+* Improves database lifecycle handling and configurable gRPC streams.
+* Makes generated-certificate cache access thread-safe.
+
+Resolver 1.0.89
+---------------
+
+* Upgrades Knot Resolver to 5.7.4 to address a security vulnerability, reduce
+  TCP buffering, and add the KSK-2024 DNSSEC root key.
+
+Resolver 1.0.87
+---------------
+
+* Fixes cloud-resolver log attribution and handling of malicious,
+  non-existent domains.
+* Opens dnstag logs in append mode to support log rotation and reduce CPU use.
+
+Resolver 1.0.84
+---------------
+
+* Adds blocking-page visit statistics.
+* Upgrades Knot Resolver to 5.7.3 and improves startup database handling.
+* Prevents temporary database-download artifacts from filling disk space.
+* Strengthens blocking-page TLS configuration to require TLS 1.2 or newer.
+
+Resolver 1.0.82
+---------------
+
+* Introduces component-specific versioning for components with third-party
+  dependencies.
+* Adds signed container images, improved database locking and lifecycle
+  handling, configurable bypass duration, and blocking-page metrics.
+* Adds hostname enrichment to threat logs and improves connection stability.

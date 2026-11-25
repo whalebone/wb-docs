@@ -26,6 +26,7 @@ More information about the product and company is available on the official `Wha
 
    local_resolver
    resolvers
+   resolver_changelog
    security_policies
    dns_resolution
    knot_tips_tricks
@@ -59,6 +60,7 @@ More information about the product and company is available on the official `Wha
    syslog_integration
    active_directory
    snmp_monitoring
+   logmanager_integration
 
 .. toctree::
    :maxdepth: 1
@@ -67,6 +69,7 @@ More information about the product and company is available on the official `Wha
    user_management
    organization_settings
    multitenancy
+   audit_logs
 
 .. toctree::
    :maxdepth: 1

@@ -64,7 +64,6 @@ Povolené
   * Seznam povolených domén má při vyhodnocování způsobu překladu domény druhou nejvyšší prioritu.
   * Seznam povolených se použije na doménu a všechny subdomény, např.: povolená doména ``whalebone.io`` povolí také ``docs.whalebone.io``, ale ne naopak.
   * Seznam lze nakonfigurovat na kartě **Blokované / Povolené** na levé straně stránky **Konfigurace**.
-  * Jeden seznam může obsahovat až 10 000 domén.
 
 Blokované
 ----------
@@ -72,13 +71,13 @@ Blokované
   * Domény, které budou vždy blokovány (pokud se stejná doména nenachází také v seznamu povolených domén).
   * Seznam deny se vztahuje na doménu a všechny subdomény, např.: zakázaná doména ``malware.ninja`` bude zakázána také ``super.malware.ninja``, ale ne naopak.
   * Seznam lze nakonfigurovat na kartě **Blokované / Povolené** na levé straně stránky **Konfigurace**.
-  * Jeden seznam může obsahovat až 10 000 domén.
 
 Seznamy podporují zásadu `Lex specialis derogat legi generali`, podle níž má specifičtější seznam domén přednost před obecnějším seznamem domén. Tímto způsobem můžete mít celou doménu ``malware.ninja`` v seznamu Deny. 
 ale pokud máte doménu ``friendly.malware.ninja`` v seznamu Allow, bude mít tato doména přednost a komunikace s touto stránkou bude fungovat jako výjimka a resolver ji povolí.
 
-.. warning:: Po vytvoření seznamu povolených nebo zakázaných položek je třeba jej přiřadit ke konkrétní zásadě zabezpečení, jinak se změny neprojeví.
+.. note:: Po vytvoření seznamu povolených nebo zakázaných položek je třeba jej přiřadit ke konkrétní zásadě zabezpečení, jinak se změny neprojeví.
 
+.. important:: Všechny seznamy dohromady mohou obsahovat maximálně 10 000 domén.
 
 .. image:: ./img/denylist_cs.gif
    :align: center
@@ -117,14 +116,36 @@ Obshahová filtrace
 * **Reklamy**: bannery, kontextové reklamy a další reklamní systémy,
 * **Těžba kryptoměn**: domény spojené s těžbou kryptoměn,
 * **DoH**: DNS přes HTTPS. Jedná se o domény, které zajišťují obfuskaci požadavků DNS v provozu HTTP,
-* **P2P**: domény spojené s peer to peer sítěmi, kde uživatelé sdílejí multimediální obsah,
-* **Sledování**: webové a e-mailové sledovací systémy.
+* **P2P**: domény spojené s peer-to-peer sítěmi, kde uživatelé sdílejí multimediální obsah,
+* **Sledování**: webové a e-mailové sledovací systémy,
+* **VPN a proxy služby**: zahrnuje webové stránky a služby poskytující VPN a proxy.
+
+Bezpečné vyhledávání
+~~~~~~~~~~~~~~~~~~~~
+
+Nejznámější vyhledávače nabízí možnost bezpečného vyhledávání – filtrování výsledků tak, aby byly vhodné pro nezletilé. Bezpečné vyhledávání se aktivuje automaticky, pokud je zapnuto filtrování pro některou z následujících kategorií obsahu:
+
+* Sexuální obsah (pro dospělé)
+* Zbraně (pro dospělé)
+* Zneužívání dětí (trestná činnost)
+* Drogy (trestná činnost)
+* Terorismus (trestná činnost)
+* Násilí (trestná činnost)
+
+Podporovány jsou následující vyhledávače:
+
+* Google
+* Bing
+* DuckDuckGo
+* Ecosia
+
+Časově omezená obsahová filtrace
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Filtr obsahu lze použít i pro konkrétní denní dobu. Po zaškrtnutí určité kategorie se vedle ní zobrazí ikona hodin. Pokud na ikonu hodin kliknete, můžete pro tuto kategorii přidat nový plán. Pro stejnou kategorii může být aktivních více rozvrhů. Takto můžete povolit přístup k sociálním sítím pouze během polední přestávky a po skončení pracovní doby. Nastavení dokončete kliknutím na tlačítko **Použít** a **Uložit** zásady zabezpečení.
    
 .. image:: ./img/schedules.png
   :align: center
-
 
 .. note:: Použitím plánu **povolíte** přístup k doménám z dané kategorie obsahu v daném časovém období.
 

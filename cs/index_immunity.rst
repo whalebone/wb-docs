@@ -26,6 +26,7 @@ Další informace o produktu a společnosti jsou k dispozici na oficiálních st
 
    local_resolver
    resolvers
+   resolver_changelog
    security_policies
    dns_resolution
    knot_tips_tricks
@@ -59,6 +60,7 @@ Další informace o produktu a společnosti jsou k dispozici na oficiálních st
    syslog_integration
    active_directory
    snmp_monitoring
+   logmanager_integration
 
 .. toctree::
    :maxdepth: 1
@@ -67,6 +69,7 @@ Další informace o produktu a společnosti jsou k dispozici na oficiálních st
    user_management
    organization_settings
    multitenancy
+   audit_logs
 
 .. toctree::
    :maxdepth: 1

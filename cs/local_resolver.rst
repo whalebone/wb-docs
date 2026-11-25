@@ -25,9 +25,9 @@ Pravidelně kontrolujte a udržujte verze operačního systému a Docker engine 
   * Lze si vybrat jednu z níže zmíněných distribucí operačního systému Linux. Tato distribuce musí mít aktivní podporu od svého vydavatele.
 
     * `Red Hat Enterprise Linux (Full support) <https://access.redhat.com/product-life-cycles?product=Red%20Hat%20Enterprise%20Linux>`_
-    * `CentOS Stream (Active support) <https://endoflife.date/centos-stream>`_
-    * `Debian (Supported by LTS team) <https://wiki.debian.org/LTS/>`_
-    * `Ubuntu (Standard support) <https://ubuntu.com/about/release-cycle>`_
+    * `CentOS Stream 9 a 10 <https://endoflife.date/centos-stream>`_
+    * `Debian 12 a 13 <https://wiki.debian.org/DebianReleases>`_
+    * `Ubuntu 22.04 LTS, 24.04 LTS a 26.04 LTS (standardní podpora) <https://ubuntu.com/about/release-cycle>`_
 
 * **Docker**
 
@@ -39,10 +39,6 @@ Pravidelně kontrolujte a udržujte verze operačního systému a Docker engine 
 
   * ext4
   * xfs pouze s podporou d_type (ftype=1)
-
-* **Kapacita disku** 
-
-  * Nejméně 70 GB **volného** místa na disku v adresáři /var.
 
 * **CPU**
 
@@ -58,6 +54,20 @@ Pravidelně kontrolujte a udržujte verze operačního systému a Docker engine 
       * Spusťte příkaz ``/lib/ld-linux-x86-64.so.2 --help``.
       * Zkontrolujte, zda se v terminálu vypíše ``x86-64-v2 (supported, searched)``.
 
+* **Kapacita disku** 
+
+  * Nejméně 70 GB alokovaného místa na disku pro adresář **/var**.
+
+    * Databáze LMDB – databáze domén, politik, IP rozsahů a seznamů “blokované” využívané pro blokace hrozeb, obsahu a regulatorních restrikcí.
+
+    * Aktualizace databází – během aktualizace jsou dočasně uchovávány aktuální i nově stažené databáze.
+
+    * Systémové služby – Docker image, provozní data a logy jednotlivých komponent resolveru.
+
+.. important:: Resolver od verze 3.2.0 dynamicky využívá dostupné úložiště pro provozní data, logy služeb a databázi LMDB (přibližně až 50 % dostupného prostoru je alokováno pro LMDB). Požadavek 70 GB proto představuje minimální doporučenou kapacitu pro stabilní provoz i budoucí růst databází. Během procesu aktualizace databází je navíc nutné dočasně uchovávat aktuální i nově staženou verzi databází současně, aby nedošlo k přerušení ochrany. Nedostatek volného místa může vést k ukončení procesu resolveru, restartovacím smyčkám a nedostupnosti DNS ochrany.
+
+.. _resolver-hardware-sizing-recommendations:
+
 Požadavky na výkon serveru
 --------------------------
 
@@ -66,10 +76,10 @@ Následující tabulka poskytuje doporučení pro velikost hardwaru na základě
 =========================== ============= =============== ======== =========================
 Počet DNS dotazů za sekundu Počet klientů Počet jader CPU RAM (GB) Volné místo na disku (GB)
 =========================== ============= =============== ======== =========================
-5 000                       25 000        2               4        80
-10 000                      50 000        4               8        80
-20 000                      100 000       8               16       80
-50 000                      250 000       20              40       80
+4 000                       8 000         2               4        80
+8 000                       16 000        4               8        80
+16 000                      32 000        8               16       80
+40 000                      80 000        20              40       80
 =========================== ============= =============== ======== =========================
 
 Požadavky na nastavení sítě

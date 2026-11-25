@@ -5,6 +5,97 @@ Přehled verzí resolveru
 Tato stránka obsahuje poznámky k jednotlivým verzím Whalebone Resolveru určené
 zákazníkům. Před aktualizací si přečtěte požadavky a poznámky k cílové verzi.
 
+Resolver 3.6.2
+==============
+
+Požadavky před aktualizací
+--------------------------
+
+.. admonition:: Důležité — kliknutím rozbalíte požadavky před aktualizací
+   :class: important
+   :collapsible: closed
+
+   **Je vyžadována dostatečná kapacita disku pro adresář ``/var``.**
+
+   Souborový systém obsahující adresář ``/var`` musí mít celkovou kapacitu
+   alespoň 70 GB pro databáze Resolveru, provozní data a logy služeb. Úplné
+   hardwarové a softwarové požadavky najdete v části :doc:`local_resolver`.
+
+   **Je vyžadován Docker Engine 24.0 nebo novější.**
+
+   Tato verze není kompatibilní s Docker Engine 23.0 a staršími verzemi. Před
+   aktualizací Resolveru ověřte, že server používá Docker Engine 24.0 nebo
+   novější. V opačném případě může aktualizace selhat a Resolver může skončit ve
+   stavu **Nedostupný**, jehož oprava vyžaduje ruční zásah na serveru. Další
+   informace najdete v
+   `průvodci řešením problémů s aktualizací Dockeru <https://helpdesk.whalebone.io/en/support/solutions/articles/9000278430-resolver-fails-or-ends-up-in-unavailable-after-upgrading>`_.
+
+   Virtualizované prostředí musí virtuálnímu stroji zpřístupnit požadované
+   instrukce CPU x86-64-v2 nebo x86-64-v3, včetně AES. V opačném případě může
+   Resolver selhat kvůli závislosti použité knihovny. Další informace najdete v
+   `průvodci řešením problémů s CPU <https://helpdesk.whalebone.io/en/support/solutions/articles/9000270277-no-threats-or-content-showing-after-upgrade>`_.
+
+Hlavní změny v aktualizaci
+--------------------------
+
+* **Pokračování z blokovací stránky:** Uživatelé, na které se vztahuje výchozí
+  politika, mohou po povoleném obejití blokace pokračovat na web.
+* **Obnova po neúspěšné aktualizaci:** Pokud se během aktualizace aktualizuje
+  agent Resolveru a následně selže aktualizace jiné služby, agent obnoví
+  předchozí konfiguraci všech dotčených služeb. Tím zabrání opakovaným
+  restartům a v Admin Portalu se zobrazí výsledek návratu k předchozí
+  konfiguraci.
+* **Kontroly stavu a restarty Resolveru:** Po aktualizaci agent ověří, že aktivní
+  Resolver naslouchá na portu 53, i když předchozí kontejner stále běží. Služba
+  pro správu Resolveru se také korektně ukončí při zátěži nebo během stahování
+  databáze.
+* **Zabezpečení blokovací stránky:** Tato aktualizace opravuje chybu, která mohla
+  způsobit pád webového serveru blokovací stránky.
+
+.. only:: Aura
+
+   * **Účtovací události RADIUS:** Při restartu služba pro správu Resolveru
+     dokončí zpracování čekajících účtovacích událostí RADIUS nebo je po
+     restartu obdrží znovu. Tím se zabrání ztrátě aktualizací identit účastníků.
+
+Resolver 3.6.1
+==============
+
+Požadavky před aktualizací
+--------------------------
+
+.. admonition:: Důležité — kliknutím rozbalíte požadavky před aktualizací
+   :class: important
+   :collapsible: closed
+
+   **Je vyžadována dostatečná kapacita disku pro adresář ``/var``.**
+
+   Souborový systém obsahující adresář ``/var`` musí mít celkovou kapacitu
+   alespoň 70 GB pro databáze Resolveru, provozní data a logy služeb. Úplné
+   hardwarové a softwarové požadavky najdete v části :doc:`local_resolver`.
+
+   **Je vyžadován Docker Engine 24.0 nebo novější.**
+
+   Tato verze není kompatibilní s Docker Engine 23.0 a staršími verzemi. Před
+   aktualizací Resolveru ověřte, že server používá Docker Engine 24.0 nebo
+   novější. V opačném případě může aktualizace selhat a Resolver může skončit ve
+   stavu **Nedostupný**, jehož oprava vyžaduje ruční zásah na serveru. Další
+   informace najdete v
+   `průvodci řešením problémů s aktualizací Dockeru <https://helpdesk.whalebone.io/en/support/solutions/articles/9000278430-resolver-fails-or-ends-up-in-unavailable-after-upgrading>`_.
+
+   Virtualizované prostředí musí virtuálnímu stroji zpřístupnit požadované
+   instrukce CPU x86-64-v2 nebo x86-64-v3, včetně AES. V opačném případě může
+   Resolver selhat kvůli závislosti použité knihovny. Další informace najdete v
+   `průvodci řešením problémů s CPU <https://helpdesk.whalebone.io/en/support/solutions/articles/9000270277-no-threats-or-content-showing-after-upgrade>`_.
+
+Hlavní změny v aktualizaci
+--------------------------
+
+* **Méně falešných upozornění na selhání překladu DNS:** Kontrola stavu
+  překladu DNS nyní hlásí selhání pouze tehdy, když selžou všechny čtyři
+  testovací domény, čímž snižuje počet falešných upozornění způsobených
+  jednotlivým neúspěšným dotazem nebo kontrolou trasování.
+
 Resolver 3.6.0
 ==============
 

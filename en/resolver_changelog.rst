@@ -5,6 +5,106 @@ Resolver changelog
 This page contains customer-facing release notes for Whalebone Resolver.
 Before upgrading, review the requirements and notes for the target version.
 
+Resolver 3.6.2
+==============
+
+Required before upgrade
+-----------------------
+
+.. admonition:: Important — click to expand upgrade requirements
+   :class: important
+   :collapsible: closed
+
+   **Sufficient disk capacity for ``/var`` is required.**
+
+   The filesystem containing ``/var`` must have a total capacity of at least
+   70 GB for Resolver databases, operational data, and service logs. See
+   :doc:`local_resolver` for the complete hardware and software requirements.
+
+   **Docker Engine 24.0 or newer is required.**
+
+   This release is not compatible with Docker Engine 23.0 and earlier. Before
+   upgrading the Resolver, make sure the server is running Docker Engine 24.0
+   or newer. Otherwise, the upgrade may fail and the Resolver may end up in an
+   **Unavailable** state, requiring manual intervention on the server. See the
+   `Docker upgrade troubleshooting guide <https://helpdesk.whalebone.io/en/support/solutions/articles/9000278430-resolver-fails-or-ends-up-in-unavailable-after-upgrading>`_
+   for more information.
+
+   Virtualized environments must expose the required x86-64-v2 or x86-64-v3
+   CPU instructions, including AES, to the virtual machine. Otherwise, the
+   Resolver may fail because of a library dependency. See the
+   `CPU troubleshooting guide <https://helpdesk.whalebone.io/en/support/solutions/articles/9000270277-no-threats-or-content-showing-after-upgrade>`_
+   for more information.
+
+Release highlights
+------------------
+
+* **Blocking page bypass:** Users covered by the default policy can now
+  continue to a site after an allowed bypass.
+* **Recovery after a failed upgrade:** If an upgrade updates the Resolver agent
+  and then fails on another service, the agent restores the previous
+  configuration for all affected services. This prevents a restart loop and
+  lets the Admin Portal show the rollback result.
+* **Resolver health checks and restarts:** After an upgrade, the agent checks
+  that the active Resolver is listening on port 53, even if the previous
+  container is still running. The Resolver management service also shuts down
+  cleanly under load or during a database download.
+* **Blocking page security:** This update fixes an issue that could cause the
+  blocking page web server to crash.
+
+.. only:: Aura
+
+   * **RADIUS accounting:** When the Resolver management service restarts, it
+     finishes processing pending RADIUS accounting events or receives them
+     again after restart. This prevents the loss of subscriber identity
+     updates.
+
+Resolver 3.6.1
+==============
+
+Required before upgrade
+-----------------------
+
+.. admonition:: Important — click to expand upgrade requirements
+   :class: important
+   :collapsible: closed
+
+   **Sufficient disk capacity for ``/var`` is required.**
+
+   The filesystem containing ``/var`` must have a total capacity of at least
+   70 GB for Resolver databases, operational data, and service logs. See
+   :doc:`local_resolver` for the complete hardware and software requirements.
+
+   **Docker Engine 24.0 or newer is required.**
+
+   This release is not compatible with Docker Engine 23.0 and earlier. Before
+   upgrading the Resolver, make sure the server is running Docker Engine 24.0
+   or newer. Otherwise, the upgrade may fail and the Resolver may end up in an
+   **Unavailable** state, requiring manual intervention on the server. See the
+   `Docker upgrade troubleshooting guide <https://helpdesk.whalebone.io/en/support/solutions/articles/9000278430-resolver-fails-or-ends-up-in-unavailable-after-upgrading>`_
+   for more information.
+
+   Virtualized environments must expose the required x86-64-v2 or x86-64-v3
+   CPU instructions, including AES, to the virtual machine. Otherwise, the
+   Resolver may fail because of a library dependency. See the
+   `CPU troubleshooting guide <https://helpdesk.whalebone.io/en/support/solutions/articles/9000270277-no-threats-or-content-showing-after-upgrade>`_
+   for more information.
+
+Release highlights
+------------------
+
+.. only:: Aura
+
+   * **Fewer false DNS resolution failure alerts:** The DNS resolution health
+     check now reports failure only when all four test domains fail, reducing
+     false alerts caused by an individual failed lookup or trace check.
+
+.. only:: Immunity or Peacemaker
+
+   * **Fewer false DNS resolution alerts:** The DNS resolution health check now
+     reports failure only when all four test domains fail, reducing false
+     alerts caused by an individual failed lookup or trace check.
+
 Resolver 3.6.0
 ==============
 

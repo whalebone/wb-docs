@@ -56,7 +56,7 @@ Pravidelně kontrolujte a udržujte verze operačního systému a Docker engine 
 
 * **Kapacita disku** 
 
-  * Nejméně 80 GB alokovaného místa na disku pro adresář **/var**.
+  * Nejméně 70 GB volného místa na disku pro adresář **/var**. Pokud je adresář **/var/log** umístěn na samostatném oddílu, jeho minimální velikost je 10 GB.
 
     * Databáze LMDB – databáze domén, politik, IP rozsahů a seznamů “blokované” využívané pro blokace hrozeb, obsahu a regulatorních restrikcí.
 
@@ -64,7 +64,7 @@ Pravidelně kontrolujte a udržujte verze operačního systému a Docker engine 
 
     * Systémové služby – Docker image, provozní data a logy jednotlivých komponent resolveru.
 
-.. important:: Resolver od verze 3.2.0 dynamicky využívá dostupné úložiště pro provozní data, logy služeb a databázi LMDB (přibližně až 50 % dostupného prostoru je alokováno pro LMDB). Požadavek 80 GB proto představuje minimální doporučenou kapacitu pro stabilní provoz i budoucí růst databází. Během procesu aktualizace databází je navíc nutné dočasně uchovávat aktuální i nově staženou verzi databází současně, aby nedošlo k přerušení ochrany. Nedostatek volného místa může vést k ukončení procesu resolveru, restartovacím smyčkám a nedostupnosti DNS ochrany.
+.. important:: Resolver od verze 3.2.0 dynamicky využívá dostupné úložiště pro provozní data, logy služeb a databázi LMDB (přibližně až 50 % dostupného prostoru je alokováno pro LMDB). Požadavek 70 GB proto představuje minimální doporučenou kapacitu pro stabilní provoz i budoucí růst databází. Během procesu aktualizace databází je navíc nutné dočasně uchovávat aktuální i nově staženou verzi databází současně, aby nedošlo k přerušení ochrany. Nedostatek volného místa může vést k ukončení procesu resolveru, restartovacím smyčkám a nedostupnosti DNS ochrany.
 
 .. _resolver-hardware-sizing-recommendations:
 
@@ -76,10 +76,10 @@ Následující tabulka poskytuje doporučení pro velikost hardwaru na základě
 =========================== ============= =============== ======== =========================
 Počet DNS dotazů za sekundu Počet klientů Počet jader CPU RAM (GB) Volné místo na disku (GB)
 =========================== ============= =============== ======== =========================
-4 000                       8 000         2               4        80
-8 000                       16 000        4               8        80
-16 000                      32 000        8               16       80
-40 000                      80 000        20              40       80
+4 000                       8 000         2               4        70
+8 000                       16 000        4               8        70
+16 000                      32 000        8               16       70
+40 000                      80 000        20              40       70
 =========================== ============= =============== ======== =========================
 
 Požadavky na nastavení sítě

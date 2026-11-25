@@ -56,7 +56,7 @@ Please perform regular checks and maintain the resolver's operating system and D
 
 * **Disk space** 
 
-  * At least 80 GB of free disk space in the **/var** directory.
+  * At least 70 GB of free disk space in the **/var** directory. If the **/var/log** directory is located on a separate partition, its minimum size is 10 GB.
 
     * LMDB databases – domain, policy, IP range, and deny lists databases used for Threat, Content and Legal (regulatory) blocking.
 
@@ -64,7 +64,7 @@ Please perform regular checks and maintain the resolver's operating system and D
     
     * System services – Docker images, operational data and logs of individual resolver components.
 
-.. important:: Starting with version 3.2.0, the resolver dynamically utilizes available storage for operational data, service logs and LMDB databases (up to 50% of available disk space is pre-allocated for LMDB ). The 80 GB requirement represents the minimum recommended capacity to ensure stable operation and accommodate future database growth. During database updates, both the current and newly downloaded database versions must be stored simultaneously to prevent any interruption of protection. Insufficient free disk space may cause the resolver process to terminate, resulting in restart loops and the loss of DNS protection.
+.. important:: Starting with version 3.2.0, the resolver dynamically utilizes available storage for operational data, service logs and LMDB databases (up to 50% of available disk space is pre-allocated for LMDB ). The 70 GB requirement represents the minimum recommended capacity to ensure stable operation and accommodate future database growth. During database updates, both the current and newly downloaded database versions must be stored simultaneously to prevent any interruption of protection. Insufficient free disk space may cause the resolver process to terminate, resulting in restart loops and the loss of DNS protection.
 
 .. _resolver-hardware-sizing-recommendations:
 
@@ -76,10 +76,10 @@ The following table provides hardware sizing recommendations based on the expect
 ================================ ================= =================== ======== =========================
 Number of DNS queries per second Number of clients Number of CPU cores RAM (GB) Free disk space (GB)
 ================================ ================= =================== ======== =========================
-4,000                            8,000             2                   4        80
-8,000                            16,000            4                   8        80
-16,000                           32,000            8                   16       80
-40,000                           80,000            20                  40       80
+4,000                            8,000             2                   4        70
+8,000                            16,000            4                   8        70
+16,000                           32,000            8                   16       70
+40,000                           80,000            20                  40       70
 ================================ ================= =================== ======== =========================
 
 Network requirements

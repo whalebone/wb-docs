@@ -56,7 +56,7 @@ Please perform regular checks and maintain the resolver's operating system and D
 
 * **Disk space** 
 
-  * At least 70 GB of free disk space in the **/var** directory.
+  * At least 70 GB of free disk space in the **/var** directory. If the **/var/log** directory is located on a separate partition, its minimum size is 10 GB.
 
     * LMDB databases – domain, policy, IP range, and deny lists databases used for Threat, Content and Legal (regulatory) blocking.
 
@@ -76,53 +76,183 @@ The following table provides hardware sizing recommendations based on the expect
 ================================ ================= =================== ======== =========================
 Number of DNS queries per second Number of clients Number of CPU cores RAM (GB) Free disk space (GB)
 ================================ ================= =================== ======== =========================
-4,000                            8,000             2                   4        80
-8,000                            16,000            4                   8        80
-16,000                           32,000            8                   16       80
-40,000                           80,000            20                  40       80
+4,000                            8,000             2                   4        70
+8,000                            16,000            4                   8        70
+16,000                           32,000            8                   16       70
+40,000                           80,000            20                  40       70
 ================================ ================= =================== ======== =========================
 
 Network requirements
 --------------------
 
-.. tip:: Whalebone uses regional cloud services to optimize the communication between clients and the cloud components. The region to which the customer's resolver is connected can be found in the URL of the tenant in the Admin Portal. For example, if the URL is https://portal.eu-01.whalebone.io/en/client-123456, the tenant is registered in the EU-01 region. This is useful when setting up the firewall rules in the customer's network. Some customers may be using the Legacy environment, in which the tenant URL will be https://portal.whalebone.io/en/client-123456.
+.. tip:: Whalebone uses regional cloud services to optimize the communication between clients and the cloud components. The region to which the customer's resolver is connected can be found in the Admin Portal.
 
-Local resolver needs the following egress ports opened:
+  .. figure:: ./img/region.png
+     :align: center
 
-=========== =========== ======= =================================== ======================
-Direction   Protocol    Port    Destination Domain                  Description         
-=========== =========== ======= =================================== ======================
-Outbound    UDP         53      Any                                 DNS resolution
-Outbound    TCP         53      Any                                 DNS resolution
-Outbound    TCP         443     resolverapi.whalebone.io            Database updates
-Outbound    TCP         443     resolverapi.eu-01.whalebone.io      Database updates
-Outbound    TCP         443     resolverapi.apac-01.whalebone.io    Database updates
-Outbound    TCP         443     resolverapi.am-01.whalebone.io      Database updates
-Outbound    TCP         443     stream.whalebone.io                 Realtime database updates
-Outbound    TCP         443     stream.eu-01.whalebone.io           Realtime database updates
-Outbound    TCP         443     stream.apac-01.whalebone.io         Realtime database updates
-Outbound    TCP         443     stream.am-01.whalebone.io           Realtime database updates
-Outbound    TCP         443     logger.whalebone.io                 Logging stream
-Outbound    TCP         443     logger.eu-01.whalebone.io           Logging stream
-Outbound    TCP         443     logger.apac-01.whalebone.io         Logging stream
-Outbound    TCP         443     logger.am-01.whalebone.io           Logging stream
-Outbound    TCP         443     agentapi.whalebone.io               Resolver management
-Outbound    TCP         443     agentapi.eu-01.whalebone.io         Resolver management
-Outbound    TCP         443     agentapi.apac-01.whalebone.io       Resolver management
-Outbound    TCP         443     agentapi.am-01.whalebone.io         Resolver management
-Outbound    TCP         443     transfer.whalebone.io               Support log collection
-Outbound    TCP         443     portal.whalebone.io                 Admin portal
-Outbound    TCP         443     portal.eu-01.whalebone.io           Admin portal
-Outbound    TCP         443     portal.apac-01.whalebone.io         Admin portal
-Outbound    TCP         443     portal.am-01.whalebone.io           Admin portal
-Outbound    TCP         443     harbor.whalebone.io                 Resolver updates
-Outbound    TCP         443     harbor.eu-01.whalebone.io           Resolver updates
-Outbound    TCP         443     harbor.apac-01.whalebone.io         Resolver updates
-Outbound    TCP         443     harbor.am-01.whalebone.io           Resolver updates
-Outbound    TCP         443     download.docker.com                 Installation process
-Outbound    TCP         443     data.iana.org                       DNSSEC keys
-Outbound    TCP         443     hooks.slack.com                     Support log collection
-=========== =========== ======= =================================== ======================
+     Location of the resolver region in the Admin Portal.
+
+Local resolver needs the following **egress** ports opened:
+
+.. list-table:: Egress ports for the local resolver
+   :header-rows: 1
+   :widths: 13 10 32 15 30
+
+   * - Protocol
+     - Port
+     - Destination Domain
+     - Region
+     - Description
+   * - UDP
+     - 53
+     - Any
+     - All
+     - DNS resolution
+   * - TCP
+     - 53
+     - Any
+     - All
+     - DNS resolution
+   * - TCP
+     - 443
+     - resolverapi.whalebone.io
+     - Main region
+     - Database updates
+   * - TCP
+     - 443
+     - resolverapi.eu-01.whalebone.io
+     - EU-01
+     - Database updates
+   * - TCP
+     - 443
+     - resolverapi.apac-01.whalebone.io
+     - APAC-01
+     - Database updates
+   * - TCP
+     - 443
+     - resolverapi.am-01.whalebone.io
+     - AM-01
+     - Database updates
+   * - TCP
+     - 443
+     - stream.whalebone.io
+     - Main region
+     - Realtime database updates
+   * - TCP
+     - 443
+     - stream.eu-01.whalebone.io
+     - EU-01
+     - Realtime database updates
+   * - TCP
+     - 443
+     - stream.apac-01.whalebone.io
+     - APAC-01
+     - Realtime database updates
+   * - TCP
+     - 443
+     - stream.am-01.whalebone.io
+     - AM-01
+     - Realtime database updates
+   * - TCP
+     - 443
+     - logger.whalebone.io
+     - Main region
+     - Logging stream
+   * - TCP
+     - 443
+     - logger.eu-01.whalebone.io
+     - EU-01
+     - Logging stream
+   * - TCP
+     - 443
+     - logger.apac-01.whalebone.io
+     - APAC-01
+     - Logging stream
+   * - TCP
+     - 443
+     - logger.am-01.whalebone.io
+     - AM-01
+     - Logging stream
+   * - TCP
+     - 443
+     - agentapi.whalebone.io
+     - Main region
+     - Resolver management
+   * - TCP
+     - 443
+     - agentapi.eu-01.whalebone.io
+     - EU-01
+     - Resolver management
+   * - TCP
+     - 443
+     - agentapi.apac-01.whalebone.io
+     - APAC-01
+     - Resolver management
+   * - TCP
+     - 443
+     - agentapi.am-01.whalebone.io
+     - AM-01
+     - Resolver management
+   * - TCP
+     - 443
+     - transfer.whalebone.io
+     - All
+     - Support log collection
+   * - TCP
+     - 443
+     - portal.whalebone.io
+     - Main region
+     - Admin portal
+   * - TCP
+     - 443
+     - portal.eu-01.whalebone.io
+     - EU-01
+     - Admin portal
+   * - TCP
+     - 443
+     - portal.apac-01.whalebone.io
+     - APAC-01
+     - Admin portal
+   * - TCP
+     - 443
+     - portal.am-01.whalebone.io
+     - AM-01
+     - Admin portal
+   * - TCP
+     - 443
+     - harbor.whalebone.io
+     - Main region
+     - Resolver updates
+   * - TCP
+     - 443
+     - harbor.eu-01.whalebone.io
+     - EU-01
+     - Resolver updates
+   * - TCP
+     - 443
+     - harbor.apac-01.whalebone.io
+     - APAC-01
+     - Resolver updates
+   * - TCP
+     - 443
+     - harbor.am-01.whalebone.io
+     - AM-01
+     - Resolver updates
+   * - TCP
+     - 443
+     - download.docker.com
+     - All
+     - Installation process
+   * - TCP
+     - 443
+     - data.iana.org
+     - All
+     - DNSSEC keys
+   * - TCP
+     - 443
+     - hooks.slack.com
+     - All
+     - Support log collection
 
 .. warning:: Without communication on port 443 to the domains listed above, the resolver won't be installed at all and the installation script will abort.
 

@@ -56,7 +56,7 @@ Pravidelně kontrolujte a udržujte verze operačního systému a Docker engine 
 
 * **Kapacita disku** 
 
-  * Nejméně 70 GB alokovaného místa na disku pro adresář **/var**.
+  * Nejméně 80 GB alokovaného místa na disku pro adresář **/var**.
 
     * Databáze LMDB – databáze domén, politik, IP rozsahů a seznamů “blokované” využívané pro blokace hrozeb, obsahu a regulatorních restrikcí.
 
@@ -64,7 +64,7 @@ Pravidelně kontrolujte a udržujte verze operačního systému a Docker engine 
 
     * Systémové služby – Docker image, provozní data a logy jednotlivých komponent resolveru.
 
-.. important:: Resolver od verze 3.2.0 dynamicky využívá dostupné úložiště pro provozní data, logy služeb a databázi LMDB (přibližně až 50 % dostupného prostoru je alokováno pro LMDB). Požadavek 70 GB proto představuje minimální doporučenou kapacitu pro stabilní provoz i budoucí růst databází. Během procesu aktualizace databází je navíc nutné dočasně uchovávat aktuální i nově staženou verzi databází současně, aby nedošlo k přerušení ochrany. Nedostatek volného místa může vést k ukončení procesu resolveru, restartovacím smyčkám a nedostupnosti DNS ochrany.
+.. important:: Resolver od verze 3.2.0 dynamicky využívá dostupné úložiště pro provozní data, logy služeb a databázi LMDB (přibližně až 50 % dostupného prostoru je alokováno pro LMDB). Požadavek 80 GB proto představuje minimální doporučenou kapacitu pro stabilní provoz i budoucí růst databází. Během procesu aktualizace databází je navíc nutné dočasně uchovávat aktuální i nově staženou verzi databází současně, aby nedošlo k přerušení ochrany. Nedostatek volného místa může vést k ukončení procesu resolveru, restartovacím smyčkám a nedostupnosti DNS ochrany.
 
 .. _resolver-hardware-sizing-recommendations:
 
@@ -85,44 +85,174 @@ Počet DNS dotazů za sekundu Počet klientů Počet jader CPU RAM (GB) Volné m
 Požadavky na nastavení sítě
 ---------------------------
 
-.. tip:: Whalebone používá regionální cloudové služby k optimalizaci komunikace mezi klienty a cloudovými komponentami. Region, ke kterému je připojen resolver zákazníka, lze nalézt v URL adrese účet v administrátorském portálu. Například pokud je URL adresa https://portal.eu-01.whalebone.io/en/client-123456, je účet registrován v regionu EU-01. To je užitečné při nastavování pravidel firewallu v síti zákazníka. Někteří zákazníci mohou používat prostředí Legacy, ve kterém bude URL adresa účtu https://portal.whalebone.io/en/client-123456.
+.. tip:: Whalebone používá regionální cloudové služby k optimalizaci komunikace mezi klienty a cloudovými komponentami. Region, ke kterému je připojen resolver zákazníka, lze nalézt v administrátorském portálu.
 
-Místní resolver potřebuje otevřené následující výstupní porty:
+  .. figure:: ./img/region.png
+     :align: center
 
-=========== =========== ======= ==================================== ================================
-Směr        Protokol    Port    Cílová doména                        Popis         
-=========== =========== ======= ==================================== ================================
-Odchozí     UDP         53      Jakákoli                             DNS rekurze
-Odchozí     TCP         53      Jakákoli                             DNS rekurze
-Odchozí     TCP         443     resolverapi.whalebone.io             Aktualizace databáze hrozeb
-Odchozí     TCP         443     resolverapi.eu-01.whalebone.io       Aktualizace databáze hrozeb
-Odchozí     TCP         443     resolverapi.apac-01.whalebone.io     Aktualizace databáze hrozeb
-Odchozí     TCP         443     resolverapi.am-01.whalebone.io       Aktualizace databáze hrozeb
-Odchozí     TCP         443     stream.whalebone.io                  Aktualizace databáze hrozeb
-Odchozí     TCP         443     stream.eu-01.whalebone.io            Aktualizace databáze hrozeb
-Odchozí     TCP         443     stream.apac-01.whalebone.io          Aktualizace databáze hrozeb
-Odchozí     TCP         443     stream.am-01.whalebone.io            Aktualizace databáze hrozeb
-Odchozí     TCP         443     logger.whalebone.io                  Logovací stream
-Odchozí     TCP         443     logger.eu-01.whalebone.io            Logovací stream
-Odchozí     TCP         443     logger.apac-01.whalebone.io          Logovací stream
-Odchozí     TCP         443     logger.am-01.whalebone.io            Logovací stream
-Odchozí     TCP         443     agentapi.whalebone.io                Správa resolveru
-Odchozí     TCP         443     agentapi.eu-01.whalebone.io          Správa resolveru
-Odchozí     TCP         443     agentapi.apac-01.whalebone.io        Správa resolveru
-Odchozí     TCP         443     agentapi.am-01.whalebone.io          Správa resolveru
-Odchozí     TCP         443     transfer.whalebone.io                Sběr dat pro řešení potíží
-Odchozí     TCP         443     portal.whalebone.io                  Portál správce
-Odchozí     TCP         443     portal.eu-01.whalebone.io            Portál správce
-Odchozí     TCP         443     portal.apac-01.whalebone.io          Portál správce
-Odchozí     TCP         443     portal.am-01.whalebone.io            Portál správce
-Odchozí     TCP         443     harbor.whalebone.io                  Aktualizace resolveru
-Odchozí     TCP         443     harbor.eu-01.whalebone.io            Aktualizace resolveru
-Odchozí     TCP         443     harbor.apac-01.whalebone.io          Aktualizace resolveru
-Odchozí     TCP         443     harbor.am-01.whalebone.io            Aktualizace resolveru
-Odchozí     TCP         443     download.docker.com                  Instalační proces
-Odchozí     TCP         443     data.iana.org                        DNSSEC klíče
-Odchozí     TCP         443     hooks.slack.com                      Sběr dat pro řešení potíží
-=========== =========== ======= ==================================== ================================
+     Umístění regionu resolveru v administrátorském portálu.
+
+Místní resolver potřebuje otevřené následující **výstupní** porty:
+
+.. list-table:: Směr komunikace
+   :header-rows: 1
+   :widths: 13 10 32 15 30
+
+   * - Protokol
+     - Port
+     - Cílová doména
+     - Region
+     - Popis
+   * - UDP
+     - 53
+     - Jakákoli
+     - Všechny
+     - DNS rekurze
+   * - TCP
+     - 53
+     - Jakákoli
+     - Všechny
+     - DNS rekurze
+   * - TCP
+     - 443
+     - resolverapi.whalebone.io
+     - Main region
+     - Aktualizace databáze hrozeb
+   * - TCP
+     - 443
+     - resolverapi.eu-01.whalebone.io
+     - EU-01
+     - Aktualizace databáze hrozeb
+   * - TCP
+     - 443
+     - resolverapi.apac-01.whalebone.io
+     - APAC-01
+     - Aktualizace databáze hrozeb
+   * - TCP
+     - 443
+     - resolverapi.am-01.whalebone.io
+     - AM-01
+     - Aktualizace databáze hrozeb
+   * - TCP
+     - 443
+     - stream.whalebone.io
+     - Main region
+     - Aktualizace databáze hrozeb
+   * - TCP
+     - 443
+     - stream.eu-01.whalebone.io
+     - EU-01
+     - Aktualizace databáze hrozeb
+   * - TCP
+     - 443
+     - stream.apac-01.whalebone.io
+     - APAC-01
+     - Aktualizace databáze hrozeb
+   * - TCP
+     - 443
+     - stream.am-01.whalebone.io
+     - AM-01
+     - Aktualizace databáze hrozeb
+   * - TCP
+     - 443
+     - logger.whalebone.io
+     - Main region
+     - Záznamy o stavu resolveru a DNS provozu
+   * - TCP
+     - 443
+     - logger.eu-01.whalebone.io
+     - EU-01
+     - Záznamy o stavu resolveru a DNS provozu
+   * - TCP
+     - 443
+     - logger.apac-01.whalebone.io
+     - APAC-01
+     - Záznamy o stavu resolveru a DNS provozu
+   * - TCP
+     - 443
+     - logger.am-01.whalebone.io
+     - AM-01
+     - Záznamy o stavu resolveru a DNS provozu
+   * - TCP
+     - 443
+     - agentapi.whalebone.io
+     - Main region
+     - Správa resolveru
+   * - TCP
+     - 443
+     - agentapi.eu-01.whalebone.io
+     - EU-01
+     - Správa resolveru
+   * - TCP
+     - 443
+     - agentapi.apac-01.whalebone.io
+     - APAC-01
+     - Správa resolveru
+   * - TCP
+     - 443
+     - agentapi.am-01.whalebone.io
+     - AM-01
+     - Správa resolveru
+   * - TCP
+     - 443
+     - transfer.whalebone.io
+     - Všechny
+     - Sběr dat pro řešení potíží
+   * - TCP
+     - 443
+     - portal.whalebone.io
+     - Main region
+     - Portál správce
+   * - TCP
+     - 443
+     - portal.eu-01.whalebone.io
+     - EU-01
+     - Portál správce
+   * - TCP
+     - 443
+     - portal.apac-01.whalebone.io
+     - APAC-01
+     - Portál správce
+   * - TCP
+     - 443
+     - portal.am-01.whalebone.io
+     - AM-01
+     - Portál správce
+   * - TCP
+     - 443
+     - harbor.whalebone.io
+     - Main region
+     - Aktualizace resolveru
+   * - TCP
+     - 443
+     - harbor.eu-01.whalebone.io
+     - EU-01
+     - Aktualizace resolveru
+   * - TCP
+     - 443
+     - harbor.apac-01.whalebone.io
+     - APAC-01
+     - Aktualizace resolveru
+   * - TCP
+     - 443
+     - harbor.am-01.whalebone.io
+     - AM-01
+     - Aktualizace resolveru
+   * - TCP
+     - 443
+     - download.docker.com
+     - Všechny
+     - Instalační proces
+   * - TCP
+     - 443
+     - data.iana.org
+     - Všechny
+     - DNSSEC klíče
+   * - TCP
+     - 443
+     - hooks.slack.com
+     - Všechny
+     - Sběr dat pro řešení potíží
 
 .. warning:: Bez povolené komunikace na portu 443 s výše uvedenými doménami nebude resolver vůbec nainstalován a instalační skript se přeruší.
 

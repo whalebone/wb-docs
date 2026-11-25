@@ -20,7 +20,7 @@ Every domain in our threat intelligence database has a certain score value. The 
 Individual actions could be turned off - e.g. turn off the blocking for testing purposes
 The slider values define the probability that the particular domain is malicious on the scale from **0** to **100**, with **100** being the most malicious.
 
-.. tip:: The default threshold for blocking is set to **80**, which is safe even for larger networks with a liberal policy towards the users. For more restrictive policy we suggest setting threshold for blocking to **70-75**, in very restrictive networks even down to **60**. Audit is purely informative; however, setting the threshold too low can result in too many logged incidents.
+.. tip:: The default threshold for blocking is set to **80**, which is safe even for larger networks with a strict policy towards the users. Audit is purely informative; however, setting the threshold too low can result in too many logged incidents.
 
 There are preconfigured policies available that cover the most common cases. These cases are: **Don't Block**, **Block carefully**, and **Block strictly**.
 

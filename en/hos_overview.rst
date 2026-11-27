@@ -69,6 +69,7 @@ Known limitations
 
 * Security-policy propagation can take up to 4 hours to reach all devices.
 * IPv6 networks may experience incorrect resolutions.
+* Custom HTTPS certificate for blocking page is not supported.
 * Windows on ARM and 32-bit Windows are not supported.
 * HOS may experience compatibility issues with different antivirus engines, leading to inconsistent threat detection.
 * Some antivirus software may classify the Home Office Security client as a DNS hijacking or ARP cache poisoning threat. However, the client protects users by redirecting their DNS traffic to Whalebone cloud DNS servers, which is a legitimate activity.

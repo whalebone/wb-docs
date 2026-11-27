@@ -69,6 +69,7 @@ Known limitations
 
 * Security-policy propagation can take up to 4 hours to reach all devices.
 * IPv6 networks may experience incorrect resolutions.
+* When accessing blocked HTTPS domains, the blocking page presents the DoH proxy's certificate instead of a certificate matching the blocked domain, causing a browser certificate warning.
 * Windows on ARM and 32-bit Windows are not supported.
 * HOS may experience compatibility issues with different antivirus engines, leading to inconsistent threat detection.
 * Some antivirus software may classify the Home Office Security client as a DNS hijacking or ARP cache poisoning threat. However, the client protects users by redirecting their DNS traffic to Whalebone cloud DNS servers, which is a legitimate activity.

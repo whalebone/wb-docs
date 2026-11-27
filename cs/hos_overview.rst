@@ -69,7 +69,7 @@ Známá omezení
 
 * Šíření bezpečnostních politik může trvat až 4 hodiny, než se dostane na všechna zařízení.
 * Sítě IPv6 mohou zaznamenat problémy s DNS překladem.
-* Při přístupu k blokovaným HTTPS doménám předkládá blokační stránka certifikát DoH proxy namísto certifikátu odpovídajícího blokované doméně, což vyvolá varování prohlížeče o certifikátu.
+* Vlastní HTTPS certifikát pro blokační stránku není podporován.
 * Windows on ARM a 32bitový Windows nejsou podporovány.
 * HOS může mít problémy s kompatibilitou s různými antivirovými programy, což vede k nekonzistentní detekci hrozeb.
 * Některý antivirový software může klienta Home Office Security klasifikovat jako hrozbu přesměrování DNS nebo ARP cache poisoning. Přesměrováním DNS provozu na cloudové DNS servery Whalebone je ovšem žádoucí a legitimní aktivita HOS klienta.
